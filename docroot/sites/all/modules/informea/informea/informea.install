@@ -107,3 +107,10 @@ function informea_update_7008() {
 function informea_update_7009() {
   features_revert(array('informea_search' => ['fe_block']));
 }
+
+/**
+ * Tour font changes
+ */
+function informea_update_7010() {
+  features_revert(array('informea' => ['bootstrap_tour']));
+}
