@@ -100,3 +100,10 @@ function informea_update_7007() {
 function informea_update_7008() {
   features_revert(array('informea_search' => ['views_view']));
 }
+
+/**
+ * Documents disclaimer block
+ */
+function informea_update_7009() {
+  features_revert(array('informea_search' => ['fe_block']));
+}
