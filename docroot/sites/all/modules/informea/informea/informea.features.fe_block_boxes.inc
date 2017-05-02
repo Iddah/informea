@@ -11,6 +11,14 @@ function informea_default_fe_block_boxes() {
   $export = array();
 
   $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Documents disclaimer';
+  $fe_block_boxes->format = 'full_html';
+  $fe_block_boxes->machine_name = 'documents_disclaimer';
+  $fe_block_boxes->body = '<div class="alert alert-warning">Dear user, please note that this section is still being consolidated with more MEA Secretariats adding their documents through the identified mechanism in the coming months.</div>';
+
+  $export['documents_disclaimer'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
   $fe_block_boxes->info = 'Map Disclaimer';
   $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'map_disclaimer';
