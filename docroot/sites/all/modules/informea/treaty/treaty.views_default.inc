@@ -564,7 +564,7 @@ function treaty_views_default_views() {
   $handler->display->display_options['title'] = 'Treaty Member Parties';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer nodes';
+  $handler->display->display_options['access']['perm'] = 'edit any member_party content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'input_required';
@@ -741,7 +741,8 @@ function treaty_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/reports/parties';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Treaty Member Parties';
+  $handler->display->display_options['menu']['title'] = 'Member Parties';
+  $handler->display->display_options['menu']['description'] = 'This report provides an overview of the member parties to conventions';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
