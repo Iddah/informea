@@ -19,9 +19,53 @@ define('DATA_SOURCE_FAOLEX', 3689);
 define('DATA_SOURCE_INFORMEA', 815);
 
 /**
+ * Implements hook_views_query_alter().
+ */
+function informea_views_query_alter(&$view, &$query) {
+  global $language;
+  if (($view->name == 'treaty_parties') && (@$query->table_queue['node_field_data_field_country'])) {
+    $query->table_queue['node_field_data_field_country']['join']->extra[] = ['field' => 'language', 'value' => $language->language];
+  }
+  if (($view->name == 'treaty_parties') && (@$query->table_queue['node_field_data_field_country__field_data_title_field'])) {
+    $query->table_queue['node_field_data_field_country__field_data_title_field']['join']->extra[] = ['field' => 'language', 'value' => $language->language];
+  }
+}
+
+/**
+ * Get enabled treaty used in member parties
+ */
+function informea_get_treaty_options_in_use($form) {
+  $options = [];
+  $query = db_select('field_data_field_treaty', 'dt')
+    ->distinct()
+    ->fields('dt', array('field_treaty_target_id'))->distinct();
+
+  $query->condition('dt.bundle', 'member_party');
+  $query->join('node', 't', 't.nid = dt.entity_id');
+  $query->condition('t.status', 1);
+  $query->join('node', 'p', 'p.nid = dt.field_treaty_target_id');
+  $query->condition('p.status', 1);
+  $result = $query->execute()->fetchCol();
+  foreach($form['treaty']['#options'] as $tid => $option) {
+    if (!in_array($tid, $result)) {
+      if ($tid != 'All') {
+        continue;
+      }
+    }
+    $options[$tid] = $option;
+  }
+  return $options;
+}
+
+/**
  * Implements hook_form_alter().
  */
 function informea_form_alter(&$form, $form_state, $form_id) {
+
+  if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'treaty_parties') {
+    $form['treaty']['#options'] = informea_get_treaty_options_in_use($form);
+  }
+
   if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'the_content') {
     $form['field_treaty_target_id'] = array(
       '#type' => 'entityreference',

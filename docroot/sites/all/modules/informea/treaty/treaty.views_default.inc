@@ -549,5 +549,241 @@ function treaty_views_default_views() {
   );
   $export['treaty_listing_page'] = $view;
 
+  $view = new view();
+  $view->name = 'treaty_parties';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Treaty Member Parties';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Treaty Member Parties';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit any member_party content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title_field' => 'title_field',
+    'field_party_date_1' => 'field_party_date_1',
+    'field_party_date_2' => 'field_party_date_2',
+    'field_entry_into_force' => 'field_entry_into_force',
+    'field_party_status' => 'field_party_status',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title_field';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title_field' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_party_date_1' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_party_date_2' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_entry_into_force' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_party_status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_country_target_id']['id'] = 'field_country_target_id';
+  $handler->display->display_options['relationships']['field_country_target_id']['table'] = 'field_data_field_country';
+  $handler->display->display_options['relationships']['field_country_target_id']['field'] = 'field_country_target_id';
+  $handler->display->display_options['relationships']['field_country_target_id']['label'] = 'Country';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Country';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Field: Content: Date 1 */
+  $handler->display->display_options['fields']['field_party_date_1']['id'] = 'field_party_date_1';
+  $handler->display->display_options['fields']['field_party_date_1']['table'] = 'field_data_field_party_date_1';
+  $handler->display->display_options['fields']['field_party_date_1']['field'] = 'field_party_date_1';
+  $handler->display->display_options['fields']['field_party_date_1']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Date 2 */
+  $handler->display->display_options['fields']['field_party_date_2']['id'] = 'field_party_date_2';
+  $handler->display->display_options['fields']['field_party_date_2']['table'] = 'field_data_field_party_date_2';
+  $handler->display->display_options['fields']['field_party_date_2']['field'] = 'field_party_date_2';
+  $handler->display->display_options['fields']['field_party_date_2']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Entry into force */
+  $handler->display->display_options['fields']['field_entry_into_force']['id'] = 'field_entry_into_force';
+  $handler->display->display_options['fields']['field_entry_into_force']['table'] = 'field_data_field_entry_into_force';
+  $handler->display->display_options['fields']['field_entry_into_force']['field'] = 'field_entry_into_force';
+  $handler->display->display_options['fields']['field_entry_into_force']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_party_status']['id'] = 'field_party_status';
+  $handler->display->display_options['fields']['field_party_status']['table'] = 'field_data_field_party_status';
+  $handler->display->display_options['fields']['field_party_status']['field'] = 'field_party_status';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  /* Filter criterion: Content: Treaty (field_treaty) */
+  $handler->display->display_options['filters']['field_treaty_target_id']['id'] = 'field_treaty_target_id';
+  $handler->display->display_options['filters']['field_treaty_target_id']['table'] = 'field_data_field_treaty';
+  $handler->display->display_options['filters']['field_treaty_target_id']['field'] = 'field_treaty_target_id';
+  $handler->display->display_options['filters']['field_treaty_target_id']['group'] = 1;
+  $handler->display->display_options['filters']['field_treaty_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_treaty_target_id']['expose']['operator_id'] = 'field_treaty_target_id_op';
+  $handler->display->display_options['filters']['field_treaty_target_id']['expose']['label'] = 'Treaty';
+  $handler->display->display_options['filters']['field_treaty_target_id']['expose']['operator'] = 'field_treaty_target_id_op';
+  $handler->display->display_options['filters']['field_treaty_target_id']['expose']['identifier'] = 'treaty';
+  $handler->display->display_options['filters']['field_treaty_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Content: Status (field_party_status) */
+  $handler->display->display_options['filters']['field_party_status_tid']['id'] = 'field_party_status_tid';
+  $handler->display->display_options['filters']['field_party_status_tid']['table'] = 'field_data_field_party_status';
+  $handler->display->display_options['filters']['field_party_status_tid']['field'] = 'field_party_status_tid';
+  $handler->display->display_options['filters']['field_party_status_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_party_status_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_party_status_tid']['expose']['operator_id'] = 'field_party_status_tid_op';
+  $handler->display->display_options['filters']['field_party_status_tid']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_party_status_tid']['expose']['operator'] = 'field_party_status_tid_op';
+  $handler->display->display_options['filters']['field_party_status_tid']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['field_party_status_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  $handler->display->display_options['filters']['field_party_status_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_party_status_tid']['vocabulary'] = 'party_status';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'member_party' => 'member_party',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/reports/parties';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Member Parties';
+  $handler->display->display_options['menu']['description'] = 'This report provides an overview of the member parties to conventions';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['path'] = 'admin/reports/parties_csv';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $translatables['treaty_parties'] = array(
+    t('Master'),
+    t('Treaty Member Parties'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Select any filter and click on Apply to see results'),
+    t('Country'),
+    t('Date 1'),
+    t('Date 2'),
+    t('Entry into force'),
+    t('Status'),
+    t('Treaty'),
+    t('Page'),
+    t('Data export'),
+  );
+  $export['treaty_parties'] = $view;
+
   return $export;
 }
