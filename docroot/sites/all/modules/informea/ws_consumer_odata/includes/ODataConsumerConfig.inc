@@ -168,7 +168,7 @@ class ODataConsumerConfig {
     $odata_name = $this->odata_name;
     $odata_entity = $this->odata_entity;
     $username = variable_get("informea_odata_consumer_{$odata_name}_{$odata_entity}_user");
-    $password = variable_get("informea_odata_consumer_{$odata_name}_{$odata_entity}_user");
+    $password = variable_get("informea_odata_consumer_{$odata_name}_{$odata_entity}_pass");
     // @todo: Replace here with $config['credentials'][$odata_name][$odata_entity]
     // But also needs an UI to edit in /admin/config/services/odata-migrations
     # $config = static::getConfiguration();
