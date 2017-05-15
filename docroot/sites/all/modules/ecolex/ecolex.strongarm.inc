@@ -211,19 +211,19 @@ function ecolex_strongarm() {
           'weight' => '2',
         ),
         'path' => array(
-          'weight' => '46',
+          'weight' => '0',
         ),
         'language' => array(
-          'weight' => '48',
+          'weight' => '37',
         ),
         'redirect' => array(
-          'weight' => '45',
+          'weight' => '35',
         ),
         'metatags' => array(
-          'weight' => '47',
+          'weight' => '36',
         ),
         'xmlsitemap' => array(
-          'weight' => '44',
+          'weight' => '34',
         ),
       ),
       'display' => array(),
