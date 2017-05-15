@@ -6,7 +6,8 @@ class ODataConsumerV4 extends ODataConsumer {
   public function loadRemoteData($url) {
     $ret = NULL;
     ws_consumer_odata_log(__METHOD__ . ": Retrieving OData result from: " . $url, MigrationBase::MESSAGE_NOTICE);
-    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'));
+    list($username, $password) = $this->config->getAuthenticationCredentials();
+    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'), $username, $password);
     if (!empty($response) && $json = json_decode($response)) {
       $ret = (object)['results' => $json->value];
     }
@@ -25,14 +26,15 @@ class ODataConsumerV4 extends ODataConsumer {
     $url = $base_url . '/' . $entity . '/$count';
 
     ws_consumer_odata_log(get_class($this) . ': Remote counting entities: ' . $url);
-    $response = ODataMigrationUtil::http_request($url);
+    list($username, $password) = $this->config->getAuthenticationCredentials();
+    $response = ODataMigrationUtil::http_request($url, array(), $username, $password);
 
     if (!empty($response)) {
       $ret = intval($response);
     }
     else {
       $url = $base_url . '/' . $entity . '?$inlinecount=allpages';
-      $response = ODataMigrationUtil::http_request($url);
+      $response = ODataMigrationUtil::http_request($url, array(), $username, $password);
       $element_name = 'm:count';
       $found = preg_match(
         '#<'.$element_name.'(?:\s+[^>]+)?>(.*?)'.'</'.$element_name.'>#s',

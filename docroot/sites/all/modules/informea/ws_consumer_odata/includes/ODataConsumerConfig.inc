@@ -158,6 +158,23 @@ class ODataConsumerConfig {
     return 'migrate_map_odata_' . $this->odata_name . '_meetings';
   }
 
+
+  /**
+   * @return [username, password]
+   */
+  function getAuthenticationCredentials() {
+    $username = null;
+    $password = null;
+    $odata_name = $this->odata_name;
+    $odata_entity = $this->odata_entity;
+    $username = variable_get("informea_odata_consumer_{$odata_name}_{$odata_entity}_user");
+    $password = variable_get("informea_odata_consumer_{$odata_name}_{$odata_entity}_user");
+    // @todo: Replace here with $config['credentials'][$odata_name][$odata_entity]
+    // But also needs an UI to edit in /admin/config/services/odata-migrations
+    # $config = static::getConfiguration();
+    return array($username, $password);
+  }
+
   static function getConfiguration() {
     $serialized = variable_get(self::$SETTINGS_VARIABLE, NULL);
     $config = static::getConfigurationDefault();
@@ -290,7 +307,7 @@ class ODataConsumerConfig {
         return '&$expand=name&$orderby=updated%20desc,id';
 
       case self::$ODATA_ENTITY_DOCUMENT:
-        return '&$expand=authors,descriptions,files,identifiers,keywords,referenceToEntities,tags,titles,types&$orderby=updated%20desc,id';
+        return '&$expand=authors,description,files,identifiers,keywords,referenceToEntities,tags,title,types&$orderby=updated%20desc,id';
     }
     return '';
   }

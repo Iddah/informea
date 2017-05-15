@@ -36,11 +36,11 @@ class DocumentsODataMigration extends AbstractODataMigration {
     $this->addFieldMapping('field_original_id', 'id');
 
     $this->addFieldMapping('title', 'title_en');
-    $this->addFieldMapping('title_field', 'titles');
-    $this->addFieldMapping('title_field:language', 'titles_language');
+    $this->addFieldMapping('title_field', 'title');
+    $this->addFieldMapping('title_field:language', 'title_language');
 
-    $this->addFieldMapping('body', 'descriptions');
-    $this->addFieldMapping('body:language', 'descriptions_language');
+    $this->addFieldMapping('body', 'description');
+    $this->addFieldMapping('body:language', 'description_language');
 
     $this->addFieldMapping('field_sorting_date', 'published');
     $this->addFieldMapping('field_sorting_date:timezone')->defaultValue('Europe/Zurich');
@@ -133,7 +133,7 @@ class DocumentsODataMigration extends AbstractODataMigration {
     /* Fill with remote-data */
     $consumer = $this->source->getConsumer();
     $all_languages = array('en');
-    $titles = $consumer->loadNavigationProperty($row, 'titles');
+    $titles = $consumer->loadNavigationProperty($row, 'title');
     $row->title_en = ODataMigrationUtil::prepareTitle($titles);
     list($titles, $languages) = ODataMigrationUtil::getSingleValuedMultilingualField($titles);
     foreach($languages as $key => $language) {
@@ -141,8 +141,8 @@ class DocumentsODataMigration extends AbstractODataMigration {
         $titles[$key] = ODataMigrationUtil::fix_unicode_characters($titles[$key]);
       }
     }
-    $row->titles = $titles;
-    $row->titles_language = $languages;
+    $row->title = $titles;
+    $row->title_language = $languages;
     $all_languages = array_merge($all_languages, $languages);
 
     // types
@@ -181,10 +181,10 @@ class DocumentsODataMigration extends AbstractODataMigration {
     }
     $row->authors = $authors;
 
-    $description = $consumer->loadNavigationProperty($row, 'descriptions');
+    $description = $consumer->loadNavigationProperty($row, 'description');
     list($descriptions, $languages) = ODataMigrationUtil::getSingleValuedMultilingualField($description);
-    $row->descriptions = $descriptions;
-    $row->descriptions_language = $languages;
+    $row->description = $descriptions;
+    $row->description_language = $languages;
     $all_languages = array_merge($all_languages, $languages);
     $files = $consumer->loadNavigationProperty($row, 'files');
     $row->files = array();
@@ -237,7 +237,7 @@ class DocumentsODataMigration extends AbstractODataMigration {
       }
     }
 
-    $this->truncateFields($row, ['title_en', 'titles']);
+    $this->truncateFields($row, ['title_en', 'title']);
 
     return $this->validateRow($row);
   }
@@ -265,9 +265,9 @@ class InforMEAODataDocumentsMigrateSource extends InforMEAAbstractODataMigrateSo
   public function fields() {
     return array(
       'id' => 'Remote primary key',
-      'titles' => 'Document title',
+      'title' => 'Document title',
       'title_en' => 'Document title in English',
-      'titles_language' => 'Title languages list',
+      'title_language' => 'Title languages list',
       'published' => 'Publication date',
       'thumbnailUrl' => 'URL to document thumbnail/cover page',
       'treaty' => 'The document is linked to this treaty',
@@ -275,8 +275,8 @@ class InforMEAODataDocumentsMigrateSource extends InforMEAAbstractODataMigrateSo
       'country' => 'Country',
       'displayOrder' => 'Decisions display order',
       'authors' => 'Document authors',
-      'descriptions' => 'Document description',
-      'descriptions_language' => 'Document description languages',
+      'description' => 'Document description',
+      'description_language' => 'Document description languages',
       'files' => 'Document files',
       'files_language' => 'Document files languages',
       'identifiers' => 'Document identifiers',

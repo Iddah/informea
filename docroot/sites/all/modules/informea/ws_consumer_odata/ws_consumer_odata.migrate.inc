@@ -85,6 +85,7 @@ function ws_consumer_odata_migrate_api() {
       'odata_aewa_documents' => ODataMigrationUtil::createMigrationConfig(ODataConsumerConfig::$ODATA_NAME_AEWA, ODataConsumerConfig::$ODATA_ENTITY_DOCUMENT),
       'odata_ascobans_documents' => ODataMigrationUtil::createMigrationConfig(ODataConsumerConfig::$ODATA_NAME_ASCOBANS, ODataConsumerConfig::$ODATA_ENTITY_DOCUMENT),
       'odata_basel_documents' => ODataMigrationUtil::createMigrationConfig(ODataConsumerConfig::$ODATA_NAME_BASEL, ODataConsumerConfig::$ODATA_ENTITY_DOCUMENT),
+      'odata_ramsar_documents' => ODataMigrationUtil::createMigrationConfig(ODataConsumerConfig::$ODATA_NAME_RAMSAR, ODataConsumerConfig::$ODATA_ENTITY_DOCUMENT),
     )
   );
 
@@ -321,12 +322,15 @@ class ODataMigrationUtil {
   }
 
 
-  static public function http_request($url, $headers = array()) {
+  static public function http_request($url, $headers = array(), $username = null, $password = null) {
     migrate_instrument_start(__CLASS__ . ' http_request');
     ws_consumer_odata_log(__METHOD__ . ": HTTP request: $url", MigrationBase::MESSAGE_INFORMATIONAL);
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    if (!empty($username) && !empty($password)) {
+      curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+    }
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_NOBODY, 0);
