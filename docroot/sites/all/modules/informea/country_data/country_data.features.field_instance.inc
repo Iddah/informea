@@ -1985,7 +1985,7 @@ function country_data_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -2174,6 +2174,59 @@ function country_data_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-member_party-field_party_status_original'.
+  $field_instances['node-member_party-field_party_status_original'] = array(
+    'bundle' => 'member_party',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Original status text label as was imported from the source',
+    'display' => array(
+      'ajax' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'treaty_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_party_status_original',
+    'label' => 'Original status',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-member_party-field_region'.
   $field_instances['node-member_party-field_region'] = array(
     'bundle' => 'member_party',
@@ -2231,7 +2284,7 @@ function country_data_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -2390,6 +2443,8 @@ function country_data_field_default_field_instances() {
   t('Longitude');
   t('Name');
   t('Original ID');
+  t('Original status');
+  t('Original status text label as was imported from the source');
   t('Position');
   t('Prefix');
   t('Primary NFP');

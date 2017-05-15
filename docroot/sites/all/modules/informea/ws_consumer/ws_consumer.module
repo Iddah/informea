@@ -58,9 +58,10 @@ function ws_consumer_update_treaty_ratification($node_treaty) {
         'ws_consumer',
         'Loading XML for treaty "!label (!odata)" from !url',
         array('!url' => $xml_url, '!label' => $treaty_w->label(), '!odata' => $odata_name),
-        WATCHDOG_INFO
+        WATCHDOG_NOTICE
     );
     $data = ws_consumer_service_process_xml($xml_url);
+    ws_consumer_service_fuck_up_the_data($data, $node_treaty);
     if (!empty($data->entry_into_force)) {
       $node_treaty->field_entry_into_force[LANGUAGE_NONE][0] = array(
         'value' => date('Y-m-d 16:00:00', $data->entry_into_force),
@@ -74,6 +75,7 @@ function ws_consumer_update_treaty_ratification($node_treaty) {
         $party = ws_consumer_get_party_by_key($treaty_w->getIdentifier(), $country_w->getIdentifier());
         $date1 = strtotime($ratification->date1);
         $date2 = strtotime($ratification->date2);
+        $status_original = $ratification->status_original;
         $treaty_date = $treaty_w->field_entry_into_force->value();
         if ($treaty_date === NULL) {
           $date3 = NULL;
@@ -96,56 +98,64 @@ function ws_consumer_update_treaty_ratification($node_treaty) {
         }
         $party_w = entity_metadata_wrapper('node', $party);
         $current_status = $party_w->field_party_status->value();
-        $old_status_name = $current_status ? $current_status->name : NULL;
         try {
+          $reason = 'new record';
           if (empty($party->nid)) {
             $party_w->field_country->set(array(intval($ratification->country_ob->nid)));
             $party_w->field_treaty->set(array(intval($treaty_w->getIdentifier())));
           }
+          if ($status_original != $party_w->field_party_status_original->value()) {
+            $reason = 'original party status string changed';
+            $save = TRUE;
+            $party_w->field_party_status_original->set($status_original);
+          }
           if (!empty($date1) && $party_w->field_party_date_1->value() != $date1) {
             $save = TRUE;
+            $reason = 'date1 changed';
             $party_w->field_party_date_1->set(strtotime($ratification->date1));
           }
           if (!empty($date2) && $party_w->field_party_date_2->value() != $date2) {
             $save = TRUE;
+            $reason = 'date2 changed';
             $party_w->field_party_date_2->set(strtotime($ratification->date2));
           }
           if ($date3 == NULL && $party_w->field_entry_into_force->value() != NULL) {
             $save = TRUE;
+            $reason = 'date3 changed, was null';
             $party_w->field_entry_into_force = NULL;
           }
           elseif (!empty($date3) && $party_w->field_entry_into_force->value() != $date3) {
             $save = TRUE;
+            $reason = 'date3 changed';
             $party_w->field_entry_into_force->set($date3);
           }
-          if ($status = taxonomy_get_term_by_name($ratification->status, 'party_status')) {
-            reset($status); $status = current($status);
-            if (!$current_status || ($current_status->tid != $status->tid)) {
-              $save = TRUE;
-              $party_w->field_party_status = $status->tid;
-            }
-            if (empty($statistics[$ratification->status])) {
-              $statistics[$ratification->status] = 0;
-            }
-            $statistics[$ratification->status]++;
-          }
-          else {
-            watchdog(
-              'ws_consumer',
-              "Cannot set party status: '!status' because term is not in vocabulary 'party status'",
-              array('!status' => $ratification->status),
+          $unknown = taxonomy_get_term_by_name('Unknown', 'party_status');
+          $status = taxonomy_get_term_by_name($ratification->status, 'party_status');
+          if (empty($status)) {
+            watchdog('ws_consumer',"!party: Unknown party status: '!status', setting to 'Unknown'",
+              array('!status' => $ratification->status, '!party' => $ratification->country_verbatim),
               WATCHDOG_ERROR
             );
+            $status = $unknown;
           }
+          reset($status); $status = current($status);
+          if (!$current_status || ($current_status->tid != $status->tid)) {
+            $save = TRUE;
+            $reason = 'status changed';
+            $party_w->field_party_status = $status->tid;
+          }
+          if (empty($statistics[$ratification->status])) {
+            $statistics[$ratification->status] = 0;
+          }
+          $statistics[$ratification->status]++;
           if ($save) {
             $new = empty($party->nid);
             node_save($party);
             $party_w->save();
-            $new_status = $status ? $status->name : NULL;
             watchdog(
               'ws_consumer',
-              '!status member party status !title (nid:!nid) from !old => !new',
-              array('!status' => $new ? 'New' : 'Updated',  '!title' => $party_w->label(), '!nid' => $party->nid, '!old' => $old_status_name, '!new' => $new_status),
+              '!status member party status !title (nid:!nid), reason: !reason',
+              array('!status' => $new ? 'New' : 'Updated',  '!title' => $party_w->label(), '!nid' => $party->nid, '!reason' => $reason),
               WATCHDOG_INFO
             );
           }
@@ -263,17 +273,28 @@ function ws_consumer_service_process_xml($url) {
             $warnings = 'date2 is not a string. Setting to empty';
           }
         }
-        $status = NULL;
+        $status_original = null;
         if (!empty($row[3])) {
+          // Non-UN, custom implementations - we have added a new XML column
+          $status_original = $row[3];
+          $status = strtolower($row[3]);
+          if ($status == 'contracting party') {
+            $status = 'ratification';
+          }
         } else if(preg_match('/\ a$/', $row[2])) { // a
+          $status_original = 'Accession';
           $status = 'accession';
         } elseif(preg_match('/\ AA$/', $row[2])) { // AA
+          $status_original = 'Approval';
           $status = 'approval';
         } elseif(preg_match('/\ A$/', $row[2])) { // A
+          $status_original = 'Acceptance';
           $status = 'acceptance';
         } elseif (!empty($date2)) {
+          $status_original = 'Ratification';
           $status = 'ratification';
         } else {
+          $status_original = 'Signatory';
           $status = 'signatory';
         }
         $country_ob = ws_consumer_un_database_get_country($country);
@@ -286,6 +307,7 @@ function ws_consumer_service_process_xml($url) {
         $ob->date2 = $date2;
         $ob->date2_verbatim = $row[2];
         $ob->status = $status;
+        $ob->status_original = $status_original;
         $ob->warnings = $warnings;
         $ob->errors = array();
         $ret->ratification[] = $ob;
@@ -346,4 +368,19 @@ function ws_consumer_un_database_get_country($country_name) {
     watchdog('ws_consumer', 'Cannot find country: !c', array('!c' => $country_name), WATCHDOG_ERROR);
   }
   return $country_ob;
+}
+
+function ws_consumer_service_fuck_up_the_data(&$data, $node_treaty) {
+  foreach ($data->ratification as $ratification) {
+    switch($node_treaty->nid) {
+      case Treaty::RAMSAR_NID:
+        if ($ratification->status_original == 'Signature without reservation as to ratification') {
+          $ratification->status = 'ratification';
+        }
+        if ($ratification->status_original == 'Notification of succession') {
+          $ratification->status = 'ratification';
+        }
+        break;
+    }
+  }
 }

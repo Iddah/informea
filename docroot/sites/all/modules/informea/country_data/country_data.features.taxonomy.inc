@@ -33,6 +33,9 @@ function country_data_taxonomy_default_vocabularies() {
           ),
         ),
       ),
+      'tes' => array(
+        'enable' => FALSE,
+      ),
     ),
     'party_status' => array(
       'name' => 'Party status',
@@ -58,6 +61,9 @@ function country_data_taxonomy_default_vocabularies() {
           ),
         ),
       ),
+      'tes' => array(
+        'enable' => FALSE,
+      ),
     ),
     'person_type' => array(
       'name' => 'Person type',
@@ -82,6 +88,9 @@ function country_data_taxonomy_default_vocabularies() {
             0 => 'rdfs:comment',
           ),
         ),
+      ),
+      'tes' => array(
+        'enable' => FALSE,
       ),
     ),
   );

@@ -494,10 +494,7 @@ function treaty_create_table_with_members($members, $node) {
     $date1 = empty($date1_unix) ? '&nbsp;' : format_date($date1_unix, 'short');
     $date2_unix = $wrapper->field_party_date_2->value();
     $date2 = empty($date2_unix) ? '&nbsp;' : format_date($date2_unix, 'short');
-    $status_label = '';
-    if ($status = $wrapper->field_party_status->value()) {
-      $status_label = $status->name;
-    }
+    $status_label = $wrapper->field_party_status_original->value();
     $entry_into_force_unix = $wrapper->field_entry_into_force->value();
     $entry_into_force = empty($entry_into_force_unix) ? '&nbsp;' : format_date($entry_into_force_unix, 'short');
     $light_blue_class = '';
@@ -507,18 +504,35 @@ function treaty_create_table_with_members($members, $node) {
       $light_blue_class = 'party-row-light-blue';
     }
 
-    $row = array(
-      'data' => array(
-        array(
-          'data' => sprintf('%s <span>%s</span>', $flag, $wrapper->field_country->label()),
-          'class' => $light_blue_class,
+    if ($node->nid == Treaty::RAMSAR_NID) {
+      $row = [
+        'data' => [
+          [
+            'data' => sprintf('%s <span>%s</span>', $flag, $wrapper->field_country->label()),
+            'class' => $light_blue_class,
+          ],
+          [
+            'data' => $status_label,
+            'class' => 'text-center ' . $light_blue_class
+          ],
+          ['data' => $date2, 'class' => 'text-center ' . $light_blue_class],
+        ],
+      ];
+    }
+    else {
+      $row = array(
+        'data' => array(
+          array(
+            'data' => sprintf('%s <span>%s</span>', $flag, $wrapper->field_country->label()),
+            'class' => $light_blue_class,
+          ),
+          array('data' => $date1, 'class' => 'text-center ' . $light_blue_class),
+          array('data' => $date2, 'class' => 'text-center ' . $light_blue_class),
+          array('data' => $status_label, 'class' => 'text-center ' . $light_blue_class),
+          array('data' => $entry_into_force, 'class' => 'text-center ' . $light_blue_class),
         ),
-        array('data' => $date1, 'class' => 'text-center ' . $light_blue_class),
-        array('data' => $date2, 'class' => 'text-center ' . $light_blue_class),
-        array('data' => $status_label, 'class' => 'text-center ' . $light_blue_class),
-        array('data' => $entry_into_force, 'class' => 'text-center ' . $light_blue_class),
-      ),
-    );
+      );
+    }
     $nfps = country_data_get_treaty_focal_points($country->nid, $node->nid);
     if (count($nfps)) {
       $row['data'][] = array(
@@ -548,21 +562,38 @@ function treaty_create_table_with_members($members, $node) {
       $rows[] = $row;
     }
   }
-  $table = array(
-    'attributes' => array(
-      'id' => 'table-parties',
-      'class' => 'table-no-striping'
-    ),
-    'header' => array(
-      t('Party'),
-      array('data' => t('Signature'), 'class' => array('text-center')),
-      array('data' => t('Ratification'), 'class' => array('text-center')),
-      array('data' => t('Status'), 'class' => array('text-center')),
-      array('data' => t('Party'), 'class' => array('text-center')),
-      array('data' => t('Focal points'), 'class' => array('text-center'))
-    ),
-    'rows' => $rows
-  );
+  if ($node->nid == Treaty::RAMSAR_NID) {
+    $table = array(
+      'attributes' => array(
+        'id' => 'table-parties',
+        'class' => 'table-no-striping'
+      ),
+      'header' => array(
+        t('Party'),
+        array('data' => t('Deposit of instrument'), 'class' => array('text-center')),
+        array('data' => t('Entry into force'), 'class' => array('text-center')),
+      ),
+      'rows' => $rows
+    );
+  }
+  else {
+
+    $table = [
+      'attributes' => [
+        'id' => 'table-parties',
+        'class' => 'table-no-striping'
+      ],
+      'header' => [
+        t('Party'),
+        ['data' => t('Signature'), 'class' => ['text-center']],
+        ['data' => t('Ratification'), 'class' => ['text-center']],
+        ['data' => t('Status'), 'class' => ['text-center']],
+        ['data' => t('Party'), 'class' => ['text-center']],
+        ['data' => t('Focal points'), 'class' => ['text-center']]
+      ],
+      'rows' => $rows
+    ];
+  }
   return $table;
 }
 
