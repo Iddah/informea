@@ -182,7 +182,7 @@ search-bilateral-treaties/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Instrument',
+    'title' => 'Treaty/Organisation',
     'visibility' => 1,
   );
 
