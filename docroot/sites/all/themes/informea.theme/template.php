@@ -434,7 +434,6 @@ function informea_theme_slider() {
     )
   );
 }
-;
 /**
  * Implements hook_form_FORM_ID_alter().
  */
