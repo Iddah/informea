@@ -515,7 +515,7 @@ function treaty_create_table_with_members($members, $node) {
             'data' => $status_label,
             'class' => 'text-center ' . $light_blue_class
           ],
-          ['data' => $date2, 'class' => 'text-center ' . $light_blue_class],
+          ['data' => $date1, 'class' => 'text-center ' . $light_blue_class],
         ],
       ];
     }
@@ -570,7 +570,7 @@ function treaty_create_table_with_members($members, $node) {
       ),
       'header' => array(
         t('Party'),
-        array('data' => t('Deposit of instrument'), 'class' => array('text-center')),
+        array('data' => t('Status'), 'class' => array('text-center')),
         array('data' => t('Entry into force'), 'class' => array('text-center')),
       ),
       'rows' => $rows
