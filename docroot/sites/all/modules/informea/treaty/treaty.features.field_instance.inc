@@ -1176,7 +1176,7 @@ function treaty_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ecolex_tags',
-    'label' => 'ECOLEX Tags',
+    'label' => 'ECOLEX Subject(s)',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1692,7 +1692,7 @@ function treaty_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_informea_tags',
-    'label' => 'Topics',
+    'label' => 'InforMEA Tags',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -5474,7 +5474,7 @@ function treaty_field_default_field_instances() {
   t('Depositary');
   t('Description');
   t('ECOLEX Keywords');
-  t('ECOLEX Tags');
+  t('ECOLEX Subject(s)');
   t('ECOLEX URL');
   t('Entry into force');
   t('FAOLEX URL');
@@ -5484,6 +5484,7 @@ function treaty_field_default_field_instances() {
   t('Has API National Reports');
   t('Has parties from UN');
   t('Indentation');
+  t('InforMEA Tags');
   t('InforMEA tags');
   t('Internet Reference');
   t('Is protocol');
@@ -5524,7 +5525,6 @@ function treaty_field_default_field_instances() {
   t('Select the treaty from the list to which this paragraph belongs to');
   t('Title');
   t('Title abbreviation');
-  t('Topics');
   t('Treaty');
   t('Treaty decisions URL');
   t('Treaty parties URL');

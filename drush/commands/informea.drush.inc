@@ -55,6 +55,11 @@ function informea_drush_command() {
     'options' => array(),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
   );
+  $items['informea-tag-court-decisions'] = array(
+    'description' => "Tag court decisions with ECOLEX mappings",
+    'options' => array(),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+  );
   return $items;
 }
 
@@ -238,4 +243,20 @@ function _drush_informea_read_mapping_file($file) {
     fclose($handle);
   }
   return $rows;
+}
+
+
+function drush_informea_tag_court_decisions() {
+  $q = new EntityFieldQuery();
+  $q->entityCondition('entity_type', 'node');
+  $q->entityCondition('bundle', 'court_decisions');
+
+  $rows = $q->execute();
+  foreach ($rows['node'] as $nid => $row) {
+    $node = node_load($nid);
+    if (ecolex_nod_map_ecolex_term($node)) {
+      node_save($node);
+      echo "Updated node: {$nid}\n";
+    }
+  }
 }

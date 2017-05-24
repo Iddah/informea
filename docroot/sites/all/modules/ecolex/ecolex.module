@@ -222,23 +222,45 @@ function ecolex_get_court_decisions_types_in_use() {
 }
 
 function ecolex_get_court_decisions_keywords_in_use($country = NULL) {
-  $query = db_select('field_data_field_ecolex_keywords', 'a')->fields(NULL, array('a.field_ecolex_keywords_tid'));
-  if (!empty($country)) {
-    $query->innerJoin('field_data_field_country', 'b', 'a.entity_id = b.entity_id');
-    $query->condition('b.field_country_target_id', $country);
-  }
-  $query->condition('a.bundle', 'court_decisions');
-  $query->groupBy('field_ecolex_keywords_tid');
-  return $query->execute()->fetchCol();
+  return thesaurus_get_tags_in_use('field_ecolex_keywords', 'court_decisions', $country);
 }
 
 function ecolex_get_legislations_keywords_in_use($country = NULL) {
-  $query = db_select('field_data_field_ecolex_keywords', 'a')->fields(NULL, array('field_ecolex_keywords_tid'));
-  if (!empty($country)) {
-    $query->innerJoin('field_data_field_country', 'b', 'a.entity_id = b.entity_id');
-    $query->condition('b.field_country_target_id', $country);
+  return thesaurus_get_tags_in_use('field_ecolex_keywords', 'legislation', $country);
+}
+
+/**
+ * Assign to node in field_informea_tags the LEO terms extracted from
+ * field_ecolex_keywords based on the VocBench ECOLEX-LEO mappings.
+ *
+ * @param \stdClass $node Node with field_ecolex_keywords and field_informea_tags
+ * @return true if node was changed and requires saving
+ */
+function ecolex_nod_map_ecolex_term($node) {
+  $ret = false;
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
+  $ecolex = $wrapper->field_ecolex_keywords->value();
+  if (count($ecolex)) {
+    $leo = $node->field_informea_tags[LANGUAGE_NONE];
+    if ($leo != null) {
+      array_walk($leo, function (&$v) {
+        $v = $v['tid'];
+      });
+    }
+    else {
+      $leo = array();
+    }
+    foreach ($ecolex as $term) {
+      $twr = entity_metadata_wrapper('taxonomy_term', $term);
+      $mapped_terms = ThesaurusMapping::mapEcolexTermToLEO($twr->label());
+      foreach($mapped_terms as $leo_tid) {
+        // Append new terms if they do not already exist
+        if (!in_array($leo_tid, $leo)) {
+          $node->field_informea_tags[LANGUAGE_NONE][] = array('tid' => $leo_tid);
+          $ret = true;
+        }
+      }
+    }
   }
-  $query->condition('a.bundle', 'legislation');
-  $query->groupBy('field_ecolex_keywords_tid');
-  return $query->execute()->fetchCol();
+  return $ret;
 }

@@ -73,9 +73,8 @@ function drush_ws_consumer_odata_ws_consumer_purge_orphans($treaty_odata_identif
   $dry_run = drush_get_option('dry-run');
   $config = new ODataConsumerConfig(array('odata_entity' => $odata_entity, 'odata_name' => $treaty_odata_identifier));
   $klass = $config->getODataConsumerClass();
-  $uri = $config->getEndpointURL();
   /** @var ODataConsumer $consumer */
-  $consumer = new $klass($uri);
+  $consumer = new $klass($config);
 
   // https://www.drupal.org/node/1416672
   $migration_name = drupal_strtolower('odata_' . $treaty_odata_identifier . '_' . $odata_entity);
@@ -106,10 +105,10 @@ function drush_ws_consumer_odata_ws_consumer_purge_orphans($treaty_odata_identif
     if (!$consumer->itemExists($odata_entity, $source_id)) {
       $delete_src[] = $source_id;
       $delete_nids[] = $nid;
+      ws_consumer_odata_log(__METHOD__ . "(): Deleting orphan record: $source_id ($nid)", MigrationBase::MESSAGE_INFORMATIONAL);
+      $deleted++;
       if (!$dry_run) {
-        ws_consumer_odata_log(__METHOD__ . "(): Deleting orphan record: $source_id ($nid)", MigrationBase::MESSAGE_INFORMATIONAL);
         node_delete($nid);
-        $deleted++;
         $migration->getMap()->delete(array($source_id));
       }
     }

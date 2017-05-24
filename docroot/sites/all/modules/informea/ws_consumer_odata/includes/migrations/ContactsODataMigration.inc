@@ -5,6 +5,8 @@
  */
 class ContactsODataMigration extends AbstractODataMigration {
 
+  protected $migrated_ids = [];
+
   /**
    * {@inheritdoc}
    */
@@ -77,7 +79,7 @@ class ContactsODataMigration extends AbstractODataMigration {
    *
    * {@inheritdoc}
    */
-  function prepareRow($row) {
+  public function prepareRow($row) {
     parent::prepareRow($row);
 
     if ($row->gender !== NULL) {
@@ -114,6 +116,9 @@ class ContactsODataMigration extends AbstractODataMigration {
 
     $row->roles = $consumer->loadContactRolesProperty($row);
     $row->email = str_replace(' ', '', $row->email);
+    if (strlen($row->email) > 255) {
+      $row->email = null;
+    }
     $row->title_en = $this->getContactName($row);
     foreach ($row->roles as $odata_name => $roles) {
       if ($tob = $this->getTreatyByODataIdentifier($odata_name)) {
@@ -137,12 +142,8 @@ class ContactsODataMigration extends AbstractODataMigration {
    * @return bool
    *   FALSE if row is invalid
    */
-  function validateRow($row) {
+  public function validateRow($row) {
     if (!$this->validateEnglishTitle($row)) {
-      return FALSE;
-    }
-    if (strlen($row->email) > 255) {
-      ws_consumer_odata_log('Skipping Contact Person with source id=' . $row->id .' because the email is invalid', MigrationBase::MESSAGE_ERROR);
       return FALSE;
     }
 
@@ -195,7 +196,7 @@ class ContactsODataMigration extends AbstractODataMigration {
     return $name;
   }
 
-  function complete($entity, stdClass $row) {
+  public function complete($entity, stdClass $row) {
     foreach ($row->roles as $odata_name => $roles) {
       $treaty = treaty_load_by_odata_name($odata_name);
       foreach ($roles as $delta => $role) {
@@ -211,6 +212,41 @@ class ContactsODataMigration extends AbstractODataMigration {
         $ob->setHostEntity('node', $entity);
         $ob->save();
       }
+    }
+    $this->migrated_ids[] = $row->id;
+  }
+
+  /**
+   * Delete destination when source data is removed
+   */
+  public function postImport() {
+    parent::postImport();
+
+    $query = db_select('migrate_map_' . strtolower($this->getMachineName()), 'm')
+      ->fields('m', array('sourceid1', 'destid1'))
+      ->isNotNull('destid1');
+    if (!empty($this->migrated_ids)) {
+      $query->condition('sourceid1', $this->migrated_ids, 'NOT IN');
+    }
+
+     $rows = $query->execute()->fetchAllKeyed();
+
+    $klass = $this->config->getODataConsumerClass();
+    /** @var ODataConsumer $consumer */
+    $consumer = new $klass($this->config);
+    $deleted = 0;
+    foreach ($rows as $source_id => $nid) {
+      ws_consumer_odata_log("{$this->getMachineName()}: Checking source id: $source_id", MigrationBase::MESSAGE_INFORMATIONAL);
+      if (!$consumer->itemExists($this->config->odata_entity, $source_id)) {
+        ws_consumer_odata_log("{$this->getMachineName()}: Deleting orphan record: $source_id ($nid)", MigrationBase::MESSAGE_INFORMATIONAL);
+        node_delete($nid);
+        $this->getMap()->delete(array($source_id));
+        $deleted++;
+      }
+    }
+
+    if ($deleted > 0) {
+      ws_consumer_odata_log("{$this->getMachineName()}: Deleted {$deleted} orphan records", MigrationBase::MESSAGE_INFORMATIONAL);
     }
   }
 }

@@ -10,7 +10,7 @@ use Drupal\akoma_ntoso\AkomaNtoso;
 use Drupal\akoma_ntoso\Elements\Element as AkomaNtosoElement;
 use Drupal\akoma_ntoso\Elements\Document as AkomaNtosoDocument;
 
-define('INFORMEA_TREATY_TEXT_ALLOWED_TAGS', '<table><tr><td><th><tbody><thead><b><i><em><strong>');
+define('INFORMEA_TREATY_TEXT_ALLOWED_TAGS', '<table><tr><td><th><tbody><thead><b><i><em><strong><a>');
 
 /**
  * Implements hook_menu().
@@ -1536,7 +1536,6 @@ function treaty_get_url_base($nid, $odata_identifier) {
     } else {
       $path = 'treaties/' . $odata_identifier;
     }
-    krumo($path);
   }
   return $path;
 }

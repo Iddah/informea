@@ -27,13 +27,14 @@ abstract class ODataConsumer {
     $base_url = $this->config->getEndpointURL();
     $url = $base_url . '/' . $entity . '/$count';
     ws_consumer_odata_log(get_class($this) . ': Remote counting entities: ' . $url);
-    $response = ODataMigrationUtil::http_request($url);
+    list($username, $password) = $this->config->getAuthenticationCredentials();
+    $response = ODataMigrationUtil::http_request($url, array(), $username, $password);
     if (!empty($response)) {
       $ret = intval($response);
     }
     else {
       $url = $base_url . '/' . $entity . '?$inlinecount=allpages';
-      $response = ODataMigrationUtil::http_request($url);
+      $response = ODataMigrationUtil::http_request($url, array(), $username, $password);
       $element_name = 'm:count';
       $found = preg_match(
         '#<'.$element_name.'(?:\s+[^>]+)?>(.*?)'.'</'.$element_name.'>#s',
@@ -68,7 +69,8 @@ abstract class ODataConsumer {
     $base_url = $this->config->getEndpointURL();
     $url = $base_url . '/' . $entity . "('" . $id . "')?" . $odata_extra_params;
     ws_consumer_odata_log(__METHOD__ . "($entity, $id): Retrieving data from : $url", MigrationBase::MESSAGE_NOTICE);
-    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'));
+    list($username, $password) = $this->config->getAuthenticationCredentials();
+    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'), $username, $password);
     if (empty($response)) {
       if ($this->useGUIDInURL) {
         $url = $base_url . '/' . $entity . "(guid'" . $id . "')?" . $odata_extra_params;
@@ -76,7 +78,8 @@ abstract class ODataConsumer {
       else {
         $url = $base_url . '/' . $entity . "('" . $id . "')?" . $odata_extra_params;
       }
-      $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'));
+      list($username, $password) = $this->config->getAuthenticationCredentials();
+      $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'), $username, $password);
       if (empty($response)) {
         ws_consumer_odata_log(__METHOD__ . "($entity, $id): HTTP request failure ({$response->code}) for URL: $url", MigrationBase::MESSAGE_ERROR);
         return $ret;
@@ -111,10 +114,11 @@ abstract class ODataConsumer {
     curl_setopt($ch,CURLOPT_MAXREDIRS, 3);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_NOBODY, FALSE);
+    curl_setopt($ch, CURLOPT_HEADER, TRUE);
     curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    if ($code != 200 && $code != 301) {
+    if ($code == 404) {
+      // Item no longer exists
       return FALSE;
     }
     return TRUE;
@@ -227,7 +231,8 @@ abstract class ODataConsumer {
   public function loadRemoteData($url) {
     $ret = NULL;
     ws_consumer_odata_log(__METHOD__ . ": Retrieving OData result from: " . $url, MigrationBase::MESSAGE_NOTICE);
-    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'));
+    list($username, $password) = $this->config->getAuthenticationCredentials();
+    $response = ODataMigrationUtil::http_request($url, array('Accept: application/json'), $username, $password);
     if (!empty($response) && $json = json_decode($response)) {
       $ret = $json->d;
     }

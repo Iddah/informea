@@ -1305,7 +1305,7 @@ function informea_field_default_field_instances() {
     'bundle' => 'thesaurus_informea',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Corresponding ECOLEX subjects',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1316,7 +1316,7 @@ function informea_field_default_field_instances() {
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_ecolex_tags',
-    'label' => 'ECOLEX terms',
+    'label' => 'ECOLEX Subject(s)',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1912,7 +1912,9 @@ function informea_field_default_field_instances() {
   t('Agrovoc terms');
   t('Attached files');
   t('Body');
+  t('Corresponding ECOLEX subjects');
   t('Description');
+  t('ECOLEX Subject(s)');
   t('ECOLEX terms');
   t('Enter a comma-separated list of words to describe your content.');
   t('Environmental Goal');

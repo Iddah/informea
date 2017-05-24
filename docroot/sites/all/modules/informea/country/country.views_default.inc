@@ -313,17 +313,18 @@ function country_views_default_views() {
     'legislation' => 'legislation',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: ECOLEX Keywords (field_ecolex_keywords) */
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['id'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['table'] = 'field_data_field_ecolex_keywords';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['field'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['operator_id'] = 'field_ecolex_keywords_tid_op';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['label'] = 'Keywords';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['operator'] = 'field_ecolex_keywords_tid_op';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['identifier'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Title (title_field) */
+  $handler->display->display_options['filters']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['filters']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_field_value']['group'] = 1;
+  $handler->display->display_options['filters']['title_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator_id'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['identifier'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -336,17 +337,31 @@ function country_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['group_info']['label'] = 'ECOLEX Keywords (field_ecolex_keywords)';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['group_info']['identifier'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
+  /* Filter criterion: Content: InforMEA tags (field_informea_tags) */
+  $handler->display->display_options['filters']['field_informea_tags_tid']['id'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['table'] = 'field_data_field_informea_tags';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['field'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_informea_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['operator_id'] = 'field_informea_tags_tid_op';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['label'] = 'InforMEA Tags';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['operator'] = 'field_informea_tags_tid_op';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['identifier'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
   );
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['vocabulary'] = 'thesaurus_ecolex';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['error_message'] = FALSE;
+  $handler->display->display_options['filters']['field_informea_tags_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['vocabulary'] = 'thesaurus_informea';
   $handler->display->display_options['path'] = 'countries/%/parties';
 
   /* Display: Literature */
@@ -531,16 +546,18 @@ function country_views_default_views() {
     'court_decisions' => 'court_decisions',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: ECOLEX Keywords (field_ecolex_keywords) */
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['id'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['table'] = 'field_data_field_ecolex_keywords';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['field'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['operator_id'] = 'field_ecolex_keywords_tid_op';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['label'] = 'Keywords';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['operator'] = 'field_ecolex_keywords_tid_op';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['identifier'] = 'field_ecolex_keywords_tid';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Title (title_field) */
+  $handler->display->display_options['filters']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['filters']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_field_value']['group'] = 1;
+  $handler->display->display_options['filters']['title_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator_id'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['identifier'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -553,8 +570,31 @@ function country_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_ecolex_keywords_tid']['vocabulary'] = 'thesaurus_ecolex';
+  /* Filter criterion: Content: InforMEA tags (field_informea_tags) */
+  $handler->display->display_options['filters']['field_informea_tags_tid']['id'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['table'] = 'field_data_field_informea_tags';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['field'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_informea_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['operator_id'] = 'field_informea_tags_tid_op';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['label'] = 'InforMEA tags';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['operator'] = 'field_informea_tags_tid_op';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['identifier'] = 'field_informea_tags_tid';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  $handler->display->display_options['filters']['field_informea_tags_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_informea_tags_tid']['vocabulary'] = 'thesaurus_informea';
   $handler->display->display_options['path'] = 'countries/%/parties';
 
   /* Display: Embed national reports */
@@ -988,10 +1028,11 @@ function country_views_default_views() {
     t('Content entity referenced from field_treaty'),
     t('Legislation'),
     t('Body'),
-    t('Keywords'),
-    t('ECOLEX Keywords (field_ecolex_keywords)'),
+    t('Search'),
+    t('InforMEA Tags'),
     t('Literature'),
     t('Court decisions'),
+    t('InforMEA tags'),
     t('Embed national reports'),
     t('National reports'),
     t('Document(s)'),

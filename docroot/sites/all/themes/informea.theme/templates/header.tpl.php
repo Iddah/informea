@@ -139,6 +139,7 @@
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
         <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('id' => 'glossary-menu-link'))); ?></li>
+        <li><?php print l(t('Documents'), 'documents', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
         <li><?php print l(t('Learning'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'learning-menu-link'))); ?></li>
       </ul><!-- .nav .navbar-nav -->
       </nav><!-- .navbar-collapse .collapse -->

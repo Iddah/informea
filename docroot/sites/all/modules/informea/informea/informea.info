@@ -64,6 +64,7 @@ features[facetapi][] = search_api@informea_legislations:block:field_country
 features[facetapi][] = search_api@informea_legislations:block:field_region
 features[facetapi][] = search_api@informea_legislations:block:field_sorting_date
 features[facetapi][] = search_api@informea_legislations:block:field_type_of_text
+features[fe_block_boxes][] = documents_disclaimer
 features[fe_block_boxes][] = map_disclaimer
 features[fe_block_settings][] = block-map_disclaimer
 features[fe_block_settings][] = informea-informea_front_page_slider
