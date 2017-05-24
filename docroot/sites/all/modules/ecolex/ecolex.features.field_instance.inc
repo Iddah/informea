@@ -2042,7 +2042,7 @@ function ecolex_field_default_field_instances() {
         'label_position' => 'above',
         'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '1900:+3',
+        'year_range' => '1950:+3',
       ),
       'type' => 'date_popup',
       'weight' => 14,
