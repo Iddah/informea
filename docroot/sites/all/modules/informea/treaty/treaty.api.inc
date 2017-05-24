@@ -1,5 +1,10 @@
 <?php
 
+class Treaty {
+  const RAMSAR_NID = 272;
+
+}
+
 function treaty_url_context($path) {
   if (preg_match('/^node/', $path)) {
     $path = preg_replace('/node\/?[0-9]*\/?/', '', $path);
