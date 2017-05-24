@@ -1293,11 +1293,15 @@ function ecolex_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'inline',
-    'formatter' => 'external_url',
+    'formatter' => 'file_default',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
-    'formatter_settings' => array(),
+    'formatter_settings' => array(
+      'data_element_key' => '',
+      'skip_safe' => 0,
+      'skip_empty_values' => 0,
+    ),
     'context' => 'argument_entity_id:node_1',
     'override_title' => 0,
     'override_title_text' => '',

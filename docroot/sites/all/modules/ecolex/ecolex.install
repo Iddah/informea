@@ -12,3 +12,10 @@ function ecolex_update_7001() {
 function ecolex_update_7002() {
   features_revert(array('ecolex' => ['field_instance']));
 }
+
+/**
+ * Revert court_decisions fields
+ */
+function ecolex_update_7003() {
+  features_revert_module('ecolex');
+}
