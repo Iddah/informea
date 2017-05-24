@@ -136,9 +136,6 @@ function treaty_get_treaties_as_select_options() {
           case 'action-plans':
             $count = country_deliverable_count_treaty_action_plans($nid);
             break;
-          default:
-            // We preserve the 'summary' context
-            $count = 1;
         }
         if (!empty($count)) {
           $path .= '/' . $menu_object->context;
