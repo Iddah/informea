@@ -42,7 +42,7 @@ function informea_search_views_pre_render(&$view) {
     case 'informea_search_publications':
       $content = '';
       if (@$_GET['search_api_views_fulltext']) {
-        $content = sprintf('<div class="results-for">%s: "%s"</div>', t('Results for'), @$_GET['search_api_views_fulltext']);
+        $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['search_api_views_fulltext']);
       }
       $view->attachment_before = $content;
       break;
