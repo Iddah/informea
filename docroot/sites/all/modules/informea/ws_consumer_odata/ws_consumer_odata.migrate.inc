@@ -413,25 +413,17 @@ class ODataMigrationUtil {
     }
     $disable_hooks = array(
       'entity_update' => array(
-        'search_api',
-        'search_api_solr',
         'event_calendar',
         'feeds',
-        'pathauto',
       ),
       'node_update' => array(
-        'search_api',
-        'search_api_solr',
         'event_calendar',
         'feeds',
-        'pathauto',
       ),
       'entity_insert' => array(
         'feeds',
-        'search_api_solr',
         'event_calendar',
         'feeds',
-        'search_api'
       ),
     );
     return array(
