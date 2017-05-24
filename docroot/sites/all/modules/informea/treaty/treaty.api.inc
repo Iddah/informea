@@ -118,6 +118,9 @@ function treaty_get_treaties_as_select_options() {
       $path = 'treaties/' . $node->field_odata_identifier[LANGUAGE_NONE][0]['value'];
       if (!empty($menu_object->context)) {
         switch ($menu_object->context) {
+          case 'text':
+            $count = count(treaty_get_treaty_text($nid, FALSE));
+            break;
           case 'protocols':
             $count = treaty_count_child_protocols($nid);
             break;
@@ -134,7 +137,7 @@ function treaty_get_treaties_as_select_options() {
             $count = country_deliverable_count_treaty_action_plans($nid);
             break;
           default:
-            // We preserve other contexts
+            // We preserve the 'summary' context
             $count = 1;
         }
         if (!empty($count)) {
@@ -147,7 +150,7 @@ function treaty_get_treaties_as_select_options() {
   return $ret;
 }
 
-function treaty_get_treaty_text($id_treaty) {
+function treaty_get_treaty_text($id_treaty, $load_entities = TRUE) {
   $query = new EntityFieldQuery();
   // Retrieve treaty articles
   $articles = $query->entityCondition('entity_type', 'node')
@@ -155,7 +158,7 @@ function treaty_get_treaty_text($id_treaty) {
                   ->fieldCondition('field_treaty', 'target_id', $id_treaty)
                   ->fieldOrderBy('field_sorting_order', 'value')
                   ->execute();
-  if (isset($articles['node'])) {
+  if (isset($articles['node']) && $load_entities === TRUE) {
     $articles = node_load_multiple(array_keys($articles['node']));
     // Retrieve paragraphs for each article
     foreach ($articles as &$article) {

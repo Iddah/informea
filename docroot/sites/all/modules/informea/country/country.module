@@ -380,7 +380,7 @@ function country_country_contextual_menu_alter(&$contextual_menu, $node) {
         'title' => t('National reports'),
         'count' => country_get_national_report_count($node->nid)
       ),
-        'legislation' => array(
+      'legislation' => array(
         'title' => t('Legislation'),
         'count' => country_get_legislation_count($node->nid)
       ),
