@@ -38,8 +38,14 @@
 .target {
     margin-left: 20px;
 }
+.accordion .target {
+    margin-right: 20px;
+}
 .indicator {
     margin-left: 10px;
+}
+.indicator .list-inline {
+    margin-left: 0;
 }
 
 /* GEG page only */

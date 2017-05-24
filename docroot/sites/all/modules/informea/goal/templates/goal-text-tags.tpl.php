@@ -12,7 +12,10 @@
 
     foreach ($tags as $tag) {
       $tw = entity_metadata_wrapper('taxonomy_term', $tag);
-      $terms[] = l($tw->label(), 'taxonomy/term/' . $tag->tid);
+      $tl = $tw->label();
+      if(!empty($tl)) {
+        $terms[] = l($tl, 'taxonomy/term/' . $tag->tid);
+      }
     }
     ?>
     <?php print implode(', ', $terms); ?>

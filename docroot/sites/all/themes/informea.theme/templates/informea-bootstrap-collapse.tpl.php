@@ -41,7 +41,8 @@ $show_filter_input = isset($variables['show-filter-input']) ? $variables['show-f
         print $element['tags'];
       }
       ?>
-      <h4 class="panel-title"><?php print $element['header']; ?></a></h4>&nbsp;<i class="glyphicon glyphicon-plus-sign"></i>
+      <i class="glyphicon glyphicon-plus-sign"></i>
+      <h4 class="panel-title"><?php print $element['header']; ?></h4>
     </div>
     <div id="collapse-<?php print $eid; ?>" class="panel-collapse collapse<?php print $in; ?>" role="tabpanel" aria-labelledby="heading-<?php print $eid; ?>" aria-expanded="false">
       <?php if ($add_panel_body): ?>

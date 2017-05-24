@@ -8,17 +8,6 @@ $expanded = isset($_GET['target']) ? $_GET['target'] == $target->nid : FALSE;
     <ul class="list-inline actions">
       <li class="action-hover">
         <?php
-        print l('<i class="glyphicon glyphicon-eye-open"></i>', "node/{$target->nid}", array(
-          'attributes' => array(
-            'data-toggle' => 'tooltip', 'data-placement' => 'top',
-            'title' => t('View target page'),
-          ),
-          'html' => TRUE,
-        ));
-        ?>
-      </li>
-      <li class="action-hover">
-        <?php
         print l('<i class="glyphicon glyphicon-link"></i>', $base_goal_url, array(
           'attributes' => array(
             'data-toggle' => 'tooltip', 'data-placement' => 'top',
@@ -52,7 +41,7 @@ $expanded = isset($_GET['target']) ? $_GET['target'] == $target->nid : FALSE;
     <h4 class="panel-title panel-title-target">
       <p class="title"><?php print $pw->label(); ?></p>
       <?php if($pw->body->value()): ?>
-        <?php print($pw->body->value->value(array('decode' => FALSE))); ?>
+        <?php print l($pw->body->value->value(array('decode' => FALSE)), "node/{$target->nid}", array('html' => TRUE)); ?>
       <?php endif; ?>
     </h4><!-- .panel-title -->
     <?php print theme('goal_text_tags', array('tags' => $tags)); ?>

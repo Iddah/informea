@@ -5,19 +5,8 @@
   $expanded = isset($_GET['goal']) ? $_GET['goal'] == $goal->nid : FALSE;
   ?>
   <div class="panel <?php print $expanded ? 'panel-warning' : 'panel-default'; ?>">
-    <div class="panel-heading smallipop <?php print $expanded ? '' : ' collapsed' ;?>" role="tab" id="heading-<?php echo $goal->nid; ?>" data-toggle="collapse" data-target="#goal-<?php echo $goal->nid; ?>" aria-expanded="<?php print $expanded ? 'true' : 'false' ;?>" aria-controls="article-<?php echo $goal->nid; ?>">
+    <div class="panel-heading smallipop" role="tab" id="heading-<?php echo $goal->nid; ?>">
       <ul class="list-inline actions">
-        <li class="action-hover">
-          <?php
-          print l('<i class="glyphicon glyphicon-eye-open"></i>', "node/{$goal->nid}", array(
-            'attributes' => array(
-              'data-toggle' => 'tooltip', 'data-placement' => 'top',
-              'title' => t('View goal page'),
-            ),
-            'html' => TRUE,
-          ));
-          ?>
-        </li>
         <li class="action-hover">
           <?php
           print l('<i class="glyphicon glyphicon-link"></i>', $base_goal_url, array(
@@ -49,9 +38,9 @@
           </li>
         <?php endif; ?>
       </ul><!-- .list-inline .actions -->
-      <i class="glyphicon glyphicon-plus-sign"></i>
+      <i class="glyphicon glyphicon-plus-sign <?php print $expanded ? '' : ' collapsed' ;?>" data-toggle="collapse" data-target="#goal-<?php echo $goal->nid; ?>" aria-expanded="<?php print $expanded ? 'true' : 'false' ;?>" aria-controls="article-<?php echo $goal->nid; ?>"></i>
       <h4 class="panel-title">
-        <?php echo $aw->label(); ?>
+        <?php echo l($aw->label(), "node/{$goal->nid}", array('html' => TRUE)); ?>
       </h4><!-- .panel-title -->
       <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
     </div><!-- .panel-heading .smallipop -->
