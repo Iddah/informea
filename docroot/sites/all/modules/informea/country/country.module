@@ -685,26 +685,26 @@ function country_form_alter(&$form, &$form_state, $form_id) {
     if ($form['#id'] == 'views-exposed-form-country-related-content-page-court-decisions') {
       $view = $form_state['view'];
       $country = !empty($view->args[0]) ? $view->args[0] : NULL;
-      $allowed = ecolex_get_court_decisions_keywords_in_use($country);
+      $allowed = thesaurus_get_tags_in_use('field_informea_tags', 'court_decisions', $country);
       $options = array('All' => '- ' . t('Any') . ' -');
-      foreach ($form['field_ecolex_keywords_tid']['#options'] as $k => $v) {
+      foreach ($form['field_informea_tags_tid']['#options'] as $k => $v) {
         if (in_array($k, $allowed)) {
           $options[$k] = $v;
         }
       }
-      $form['field_ecolex_keywords_tid']['#options'] = $options;
+      $form['field_informea_tags_tid']['#options'] = $options;
     }
     if ($form['#id'] == 'views-exposed-form-country-related-content-page-legislation') {
       $view = $form_state['view'];
       $country = !empty($view->args[0]) ? $view->args[0] : NULL;
-      $allowed = ecolex_get_legislations_keywords_in_use($country);
+      $allowed = thesaurus_get_tags_in_use('field_informea_tags', 'legislation', $country);
       $options = array('All' => '- ' . t('Any') . ' -');
-      foreach ($form['field_ecolex_keywords_tid']['#options'] as $k => $v) {
+      foreach ($form['field_informea_tags_tid']['#options'] as $k => $v) {
         if (in_array($k, $allowed)) {
           $options[$k] = $v;
         }
       }
-      $form['field_ecolex_keywords_tid']['#options'] = $options;
+      $form['field_informea_tags_tid']['#options'] = $options;
     }
   }
 }

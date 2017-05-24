@@ -16,7 +16,7 @@
 function informea_theme_preprocess_page(&$variables) {
   $breadcrumbs = array();
   // Add the autocomplete library.
-  drupal_add_library('system', 'ui.autocomplete');
+ drupal_add_library('system', 'ui.autocomplete');
   menu_secondary_local_tasks();
   if (arg(0) == 'taxonomy') {
     // Unset related terms in taxonomy page
@@ -175,9 +175,10 @@ function informea_theme_preprocess_page(&$variables) {
   }
 
   if ($variables['is_front']) {
+    // Adds the front page Survey JavaScript file to the page.
+    drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/survey.js');
     // Adds the front page JavaScript file to the page.
     drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/front.js');
-
     // Country block from the front page
     // Replace the <select> at this stage to avoid replacement issue coming from i18n_block_translate_block
     if (!empty($variables['page']['front_page_content']['block_10'])) {
@@ -433,7 +434,6 @@ function informea_theme_slider() {
     )
   );
 }
-
 /**
  * Implements hook_form_FORM_ID_alter().
  */

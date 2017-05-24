@@ -1617,9 +1617,7 @@ body.page-node-303 h2.block-title { font-size: 18px; font-weight: bold;}
 .accordion .panel-heading ul { margin: 0; }
 .accordion .panel-heading .glyphicon-plus-sign { color: #777; font-size: 14px; display: inline; }
 .accordion .panel-heading .glyphicon-plus-sign:before { content: "\e082"; }
-.accordion .panel-heading.collapsed .glyphicon-plus-sign { color: #c6cedb; }
-.accordion .panel-heading.collapsed .glyphicon-plus-sign:before { content: "\e081"; }
-.accordion .panel-heading:hover { border: 1px solid #39c; background-color: #D2EEFC; }
+.accordion .panel-heading .actions { float: right; }
 .accordion .panel-heading img { display: inline; border: 1px solid #ddd; border-radius: 4px; margin-right: .5em; background-color: #fff; width: 50px; padding: 6px;}
 .accordion .panel-heading img.flag-xs,
 .accordion .panel-heading img.flag-small,
@@ -1628,6 +1626,31 @@ body.page-node-303 h2.block-title { font-size: 18px; font-weight: bold;}
 }
 .accordion .panel-heading a.permalink { margin-left: .3em; font-size: .9em; color: #777; }
 .accordion .panel-heading img ~ a.permalink { line-height: 50px; }
+.accordion .panel-heading > .panel-title  * { display: inline; }
+.accordion .indicator > a > p { display: inline; }
+
+/* Content collapsed and hover styles */
+.accordion .panel-heading.collapsed .glyphicon-plus-sign:hover,
+.accordion_plus .panel-heading .glyphicon-plus-sign.collapsed:hover {
+  color: #777;
+}
+.accordion .panel-heading.collapsed .glyphicon-plus-sign,
+.accordion_plus .panel-heading .glyphicon-plus-sign.collapsed { color: #999; }
+
+.accordion .panel-heading.collapsed .glyphicon-plus-sign:before,
+.accordion_plus .panel-heading .glyphicon-plus-sign.collapsed:before { content: "\e081"; }
+
+
+.accordion .panel-heading:hover { border: 1px solid #39c; background-color: #D2EEFC; }
+.accordion .panel-heading:hover img { border-color: #39c; }
+.accordion .panel-heading:hover .glyphicon-plus-sign,
+.accordion .panel-heading:hover .actions a,
+.accordion .panel-heading:hover a.permalink { color: #487084;}
+
+
+.accordion .panel-heading:hover .glyphicon-plus-sign:hover,
+.accordion .panel-heading:hover .actions a:hover,
+.accordion .panel-heading:hover a.permalink:hover { color: #39c; }
 
 .accordion.panel-group { margin-bottom: 0;}
 .accordion.panel-group .panel-heading { padding-left: 15px; padding-right: 15px; }
@@ -1638,6 +1661,13 @@ body.page-node-303 h2.block-title { font-size: 18px; font-weight: bold;}
 
 .accordion .panel-collapse { padding-left: 4%; border-top: 1px solid #ddd;}
 .accordion .panel>.panel-heading+.panel-collapse>.panel-body { border: 0;}
+
+/* sdg accordions custom styling */
+.accordion_plus.panel-group .panel-heading,
+.accordion_plus.panel-group .panel-heading:hover {
+  cursor: default;
+}
+.accordion_plus .panel-heading .glyphicon-plus-sign { cursor: pointer; }
 
 img.flag-xs { max-height: 16px; }
 img.flag-small { max-height: 32px; }
@@ -1657,6 +1687,11 @@ img.flag-medium { max-height: 48px; }
 
 .panel-group .panel-heading:hover {
   cursor: pointer;
+}
+
+
+.indicator.smallipop a {
+  color: inherit;
 }
 
 #table-parties .list-group {
@@ -1938,21 +1973,6 @@ body[class*='page-search'] input.facetapi-checkbox { margin-right: 5px; }
 }
 .view-search-law-and-literature .meta .views-field-field-country .glyphicon {
   margin-right: .2em;
-}
-.view-search-law-and-literature a[data-toggle="collapse"] .glyphicon-plus-sign,
-.view-search-law-and-literature a[data-toggle="collapse"].collapsed .glyphicon-plus-sign:hover,
-.accordion .panel-heading.collapsed .glyphicon-plus-sign:hover {
-  color: #777;
-}
-.view-search-law-and-literature a[data-toggle="collapse"] .glyphicon-plus-sign:before {
-  content: "\e082";
-}
-.view-search-law-and-literature a[data-toggle="collapse"].collapsed .glyphicon-plus-sign {
-  color: #c6cedb;
-}
-
-.view-search-law-and-literature a[data-toggle="collapse"].collapsed .glyphicon-plus-sign:before {
-  content: "\e081";
 }
 
 strong.excerpt {
@@ -2744,12 +2764,13 @@ iframe.pdfjs {
 }
 
 .panel-heading > .actions > .action-hover {
-  display: none;
+  display: inline-block;
+  visibility: hidden;
 }
 
 .panel-heading:hover > .actions > .action-hover,
 .panel-heading:focus > .actions > .action-hover {
-  display: inline-block;
+  visibility: visible;
 }
 
 .panel-title-target {

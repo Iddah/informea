@@ -862,3 +862,59 @@ function thesaurus_panels_pane_content_alter(&$content, $pane, $args, $contexts)
     $content = false;
   }
 }
+
+function thesaurus_get_tags_in_use($field, $content_type = NULL, $country_id = NULL) {
+  $query = db_select("field_data_{$field}", 'a')->fields('a', array("{$field}_tid"));
+  if (!empty($content_type)) {
+    $query->condition('a.bundle', $content_type);
+  }
+  if (!empty($country_id)) {
+    $query->innerJoin('field_data_field_country', 'b', 'a.entity_id = b.entity_id');
+    $query->condition('b.field_country_target_id', $country_id);
+  }
+  $query->groupBy("{$field}_tid");
+  return $query->execute()->fetchCol();
+}
+
+/*
+ * get term based on synonyms and name
+ * */
+function thesaurus_get_brs_map_terms($name) {
+  static $map = [], $vid;
+
+  if (!$name) {
+    return [];
+  }
+
+  if (@$map[$name]) {
+    return $map[$name];
+  }
+
+  if (!$vid) {
+    $vdk = taxonomy_vocabulary_machine_name_load('thesaurus_informea');
+    $vid = $vdk->vid;
+  }
+
+  $tids = [];
+
+  $query = db_select('field_data_field_term_synonyms', 's')
+    ->condition('s.field_term_synonyms_value', $name);
+  $query->join('taxonomy_term_data', 'td', 'td.tid = s.entity_id');
+  $query->fields('td', ['tid', 'name']);
+  $all = $query->execute()->fetchAll();
+  foreach($all as $row) {
+    $tids[$row->tid] = $row->name;
+  }
+  // No synonyms found
+  if (!$tids) {
+    $tid = ODataMigrationUtil::getTaxonomyTermByName($name, $vid);
+    if ($tid){
+      $term = taxonomy_term_load($tid);
+      $tids[$tid] = $term->name;
+    }
+  }
+
+  $map[$name] = $tids;
+
+  return $tids;
+}

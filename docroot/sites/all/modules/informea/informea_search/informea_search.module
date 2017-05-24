@@ -397,7 +397,7 @@ function informea_search_block_switch_topic_view() {
     'search-bilateral-treaties' => t('Bilateral treaties'),
     'search-legislation' => t('Legislation'),
     'search-court-decisions' => t('Court decisions'),
-    'search-publications' => t('Publications'),
+    'search-publications' => t('Documents'),
   );
   $tabs = array();
 

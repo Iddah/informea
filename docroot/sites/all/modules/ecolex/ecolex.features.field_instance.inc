@@ -59,7 +59,7 @@ function ecolex_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 23,
     ),
   );
 
@@ -113,7 +113,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 41,
+      'weight' => 4,
     ),
   );
 
@@ -166,7 +166,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 33,
+      'weight' => 28,
     ),
   );
 
@@ -219,7 +219,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 19,
     ),
   );
 
@@ -281,7 +281,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 15,
     ),
   );
 
@@ -334,7 +334,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
+      'weight' => 34,
     ),
   );
 
@@ -388,7 +388,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 18,
     ),
   );
 
@@ -441,7 +441,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 17,
     ),
   );
 
@@ -491,7 +491,7 @@ function ecolex_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 0,
+      'weight' => 26,
     ),
   );
 
@@ -554,11 +554,12 @@ function ecolex_field_default_field_instances() {
         'input_format' => 'j M Y',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '1900:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -621,11 +622,12 @@ function ecolex_field_default_field_instances() {
         'input_format' => 'j M Y',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '1900:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -694,7 +696,7 @@ function ecolex_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 29,
+      'weight' => 38,
     ),
   );
 
@@ -763,7 +765,7 @@ function ecolex_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 30,
+      'weight' => 40,
     ),
   );
 
@@ -825,7 +827,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 25,
     ),
   );
 
@@ -879,13 +881,14 @@ function ecolex_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
+        'use_select2' => FALSE,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 25,
+      'type' => 'options_select',
+      'weight' => 42,
     ),
   );
 
@@ -946,7 +949,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 32,
     ),
   );
 
@@ -1006,7 +1009,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 24,
+      'weight' => 43,
     ),
   );
 
@@ -1059,7 +1062,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 33,
     ),
   );
 
@@ -1181,7 +1184,7 @@ function ecolex_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 27,
+      'weight' => 24,
     ),
   );
 
@@ -1237,14 +1240,14 @@ function ecolex_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'taxonomy',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
         'use_select2' => FALSE,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 26,
+      'type' => 'options_select',
+      'weight' => 44,
     ),
   );
 
@@ -1297,7 +1300,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 29,
     ),
   );
 
@@ -1350,7 +1353,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 43,
+      'weight' => 3,
     ),
   );
 
@@ -1412,7 +1415,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 20,
     ),
   );
 
@@ -1518,7 +1521,7 @@ function ecolex_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 39,
+      'weight' => 27,
     ),
   );
 
@@ -1577,7 +1580,7 @@ function ecolex_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 28,
+      'weight' => 22,
     ),
   );
 
@@ -1630,7 +1633,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 22,
+      'weight' => 30,
     ),
   );
 
@@ -1682,7 +1685,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 42,
+      'weight' => 2,
     ),
   );
 
@@ -1736,7 +1739,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 35,
     ),
   );
 
@@ -1790,7 +1793,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 38,
+      'weight' => 36,
     ),
   );
 
@@ -1843,7 +1846,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 40,
+      'weight' => 5,
     ),
   );
 
@@ -1904,7 +1907,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 31,
     ),
   );
 
@@ -1961,7 +1964,7 @@ function ecolex_field_default_field_instances() {
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'none',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
@@ -1974,7 +1977,7 @@ function ecolex_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 31,
+      'weight' => 41,
     ),
   );
 
@@ -2037,11 +2040,12 @@ function ecolex_field_default_field_instances() {
         'input_format' => 'j M Y',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '-3:+3',
+        'year_range' => '1950:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 6,
+      'weight' => 14,
     ),
   );
 
@@ -2104,7 +2108,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -2165,7 +2169,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 18,
+      'weight' => 16,
     ),
   );
 
@@ -2218,7 +2222,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 8,
     ),
   );
 
@@ -2271,7 +2275,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 9,
     ),
   );
 
@@ -2325,7 +2329,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 10,
     ),
   );
 
@@ -2387,7 +2391,7 @@ function ecolex_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -2444,7 +2448,7 @@ function ecolex_field_default_field_instances() {
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'none',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
@@ -2457,7 +2461,7 @@ function ecolex_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 39,
     ),
   );
 
@@ -2512,7 +2516,7 @@ function ecolex_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 7,
     ),
   );
 

@@ -3,14 +3,9 @@ $pw = entity_metadata_wrapper('node', $indicator->nid);
 $tags = $pw->field_informea_tags->value();
 $highlight = isset($_GET['indicator']) ? $_GET['indicator'] == $indicator->nid : FALSE;
 ?>
-<div class="indicator smallipop <?php print $highlight ? 'highlight' : '' ;?>" id="indicator-<?php print $indicator->nid; ?>">
-  <p>
-    <?php if($pw->body->value()): ?>
-      <?php print($pw->body->value->value(array('decode' => FALSE))); ?>
-    <?php endif; ?>
-  </p>
-  <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
-  <ul class="list-inline actions">
+<div class="indicator clearfix smallipop <?php print $highlight ? 'highlight' : '' ;?>" id="indicator-<?php print $indicator->nid; ?>">
+  <!-- Action links are placed at the top and floated right so they sit at the top-right corner -->
+  <ul class="list-inline actions pull-right">
     <li class="action-hover">
       <?php
       print l('<i class="glyphicon glyphicon-link"></i>', $base_goal_url, array(
@@ -42,4 +37,19 @@ $highlight = isset($_GET['indicator']) ? $_GET['indicator'] == $indicator->nid :
       </li>
     <?php endif; ?>
   </ul><!-- .list-inline .actions -->
+  <?php
+    print l('<p>' . $pw->label() . '</p>', "node/{$indicator->nid}", array(
+      'attributes' => array(
+        'data-toggle' => 'tooltip', 'data-placement' => 'top',
+        'title' => t('View indicator page'),
+      ),
+      'html' => TRUE,
+    ));
+    ?>
+  <?php if($pw->body->value()): ?>
+    <p>
+      <?php print($pw->body->value->value(array('decode' => FALSE))); ?>
+    </p>
+  <?php endif; ?>
+  <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
 </div><!-- .indicator .smallipop -->
