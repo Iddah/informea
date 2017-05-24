@@ -372,3 +372,22 @@ function goal_link($node, $suffix = '') {
   $goal = $wrapper->field_goal_source->value();
   return url('taxonomy/term/' . $goal->tid . $suffix);
 }
+
+/**
+ * Implements hook_node_view().
+ */
+function goal_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'goal' && $view_mode == 'full') {
+    $node_w = entity_metadata_wrapper('node', $node);
+    $type = $node_w->field_goal_type->value();
+    if (strtolower($type->name) == 'indicator' && !empty($node_w->field_parent_goal->value()[0])) {
+      // https://trello.com/c/XpJt9s01
+      // On the indicator page the Goal should be the actual "name of the goal + number"
+      // Now it’s the number “15.5” which can be misleading
+      $parent_goal = $node_w->field_parent_goal->value()[0];
+      $field = field_view_field('node', $parent_goal, 'field_parent_goal', 'full');
+      $field[0]['#markup'] .= " {$parent_goal->title}";
+      $node->content['field_parent_goal'] = $field;
+    }
+  }
+}
