@@ -116,8 +116,30 @@ function treaty_get_treaties_as_select_options() {
       $label = field_get_items('node', $node, 'title_field');
       $label = isset($label[0]['value']) ? $label[0]['value'] : $node->title;
       $path = 'treaties/' . $node->field_odata_identifier[LANGUAGE_NONE][0]['value'];
-      if (isset($menu_object->context)) {
-        $path .= '/' . $menu_object->context;
+      if (!empty($menu_object->context)) {
+        switch ($menu_object->context) {
+          case 'protocols':
+            $count = treaty_count_child_protocols($nid);
+            break;
+          case 'decisions':
+            $count = decision_count_treaty_decisions($nid);
+            break;
+          case 'parties':
+            $count = country_data_treaty_count_membership($nid);
+            break;
+          case 'national-reports':
+            $count = country_deliverable_count_treaty_national_reports($nid);
+            break;
+          case 'action-plans':
+            $count = country_deliverable_count_treaty_action_plans($nid);
+            break;
+          default:
+            // We preserve other contexts
+            $count = 1;
+        }
+        if (!empty($count)) {
+          $path .= '/' . $menu_object->context;
+        }
       }
       $ret[url($path, array('absolute' => TRUE))] = $label;
     }
