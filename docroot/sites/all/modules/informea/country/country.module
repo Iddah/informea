@@ -51,8 +51,18 @@ function country_menu() {
     'type' => MENU_NORMAL_ITEM,
     'description' => 'Set the region to all nodes.',
   );
+    $items = array();
+  $items['country/form'] = array(
+    'title' => 'Country Legislation : Data collection form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('country_legislation_collection_form'),
+    'access arguments' => array('access content'),
+    'description' => 'Legislation Collection form',
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
+
 
 /**
  * Implements hook_theme().
@@ -675,6 +685,62 @@ function country_batch_update_region_finish($success, $results, $operations) {
   else {
     drupal_set_message('An error occurred.', 'error');
   }
+}
+
+
+/**
+ * This function gets called in the browser address bar for: 
+ * "http://yourhost/?q=my_module/form".
+  */
+function country_legislation_collection_form($form, &$form_state) {
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#size' => '100',
+    '#title' => t('Title'),
+  );
+    $form['Country'] = array(
+    '#type' => 'select',
+    '#title' => t('Country'),
+    #default_value' => $country_get_countries_select_options(),
+  );
+      $form['Document'] = array(
+    '#type' => 'select',
+    '#title' => t('Document type'),
+  );
+
+      $form['date_of_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Date of text'),
+    '#required' => TRUE
+  );
+    
+    $form['abstract'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Abstract'),
+  );
+
+    $form['key_topics'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Key topics'),
+  );
+      $form['url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Link to full text'),
+  );
+
+  $form['captcha'] = array(
+  '#type' => 'captcha',
+   '#description' => t('This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.'),
+  '#captcha_type' => 'captcha/Math',
+);
+
+   // Provide a submit button.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+
+  return $form;
 }
 
 /**
