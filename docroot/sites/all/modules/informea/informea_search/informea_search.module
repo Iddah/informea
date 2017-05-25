@@ -42,7 +42,7 @@ function informea_search_views_pre_render(&$view) {
     case 'informea_search_publications':
       $content = '';
       if (@$_GET['search_api_views_fulltext']) {
-        $content = sprintf('<div class="results-for">%s: "%s"</div>', t('Results for'), @$_GET['search_api_views_fulltext']);
+        $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['search_api_views_fulltext']);
       }
       $view->attachment_before = $content;
       break;
@@ -323,7 +323,7 @@ function informea_search_form($form, $form_state) {
     'search_api_views_fulltext' => [
       '#theme_wrappers' => array('informea_search_form_wrapper'),
       '#type' => 'textfield',
-      '#default_value' => $search_query,
+      '#default_value' => html_entity_decode($search_query),
       '#size' => 25,
       '#maxlength' => 255,
       '#attributes' => array(

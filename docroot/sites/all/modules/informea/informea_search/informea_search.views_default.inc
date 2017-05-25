@@ -30,7 +30,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
-  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -214,7 +213,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
-  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -428,7 +426,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
-  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -595,7 +592,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
-  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
@@ -799,7 +795,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
-  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
