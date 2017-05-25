@@ -121,8 +121,30 @@ function treaty_get_treaties_as_select_options() {
       $label = field_get_items('node', $node, 'title_field');
       $label = isset($label[0]['value']) ? $label[0]['value'] : $node->title;
       $path = 'treaties/' . $node->field_odata_identifier[LANGUAGE_NONE][0]['value'];
-      if (isset($menu_object->context)) {
-        $path .= '/' . $menu_object->context;
+      if (!empty($menu_object->context)) {
+        switch ($menu_object->context) {
+          case 'text':
+            $count = count(treaty_get_treaty_text($nid, FALSE));
+            break;
+          case 'protocols':
+            $count = treaty_count_child_protocols($nid);
+            break;
+          case 'decisions':
+            $count = decision_count_treaty_decisions($nid);
+            break;
+          case 'parties':
+            $count = country_data_treaty_count_membership($nid);
+            break;
+          case 'national-reports':
+            $count = country_deliverable_count_treaty_national_reports($nid);
+            break;
+          case 'action-plans':
+            $count = country_deliverable_count_treaty_action_plans($nid);
+            break;
+        }
+        if (!empty($count)) {
+          $path .= '/' . $menu_object->context;
+        }
       }
       $ret[url($path, array('absolute' => TRUE))] = $label;
     }
@@ -130,7 +152,7 @@ function treaty_get_treaties_as_select_options() {
   return $ret;
 }
 
-function treaty_get_treaty_text($id_treaty) {
+function treaty_get_treaty_text($id_treaty, $load_entities = TRUE) {
   $query = new EntityFieldQuery();
   // Retrieve treaty articles
   $articles = $query->entityCondition('entity_type', 'node')
@@ -138,7 +160,7 @@ function treaty_get_treaty_text($id_treaty) {
                   ->fieldCondition('field_treaty', 'target_id', $id_treaty)
                   ->fieldOrderBy('field_sorting_order', 'value')
                   ->execute();
-  if (isset($articles['node'])) {
+  if (isset($articles['node']) && $load_entities === TRUE) {
     $articles = node_load_multiple(array_keys($articles['node']));
     // Retrieve paragraphs for each article
     foreach ($articles as &$article) {
