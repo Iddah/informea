@@ -52,8 +52,8 @@ function country_menu() {
     'description' => 'Set the region to all nodes.',
   );
     $items = array();
-  $items['country/form'] = array(
-    'title' => 'Country Legislation : Data collection form',
+  $items['country/add-legislations'] = array(
+    'title' => 'Legislation and case laws collection form',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('country_legislation_collection_form'),
     'access arguments' => array('access content'),
@@ -686,46 +686,47 @@ function country_batch_update_region_finish($success, $results, $operations) {
     drupal_set_message('An error occurred.', 'error');
   }
 }
-
-
 /**
- * This function gets called in the browser address bar for: 
- * "http://yourhost/?q=my_module/form".
-  */
+ * This function gets called in the browser address bar 
+*/
 function country_legislation_collection_form($form, &$form_state) {
   $form['name'] = array(
     '#type' => 'textfield',
     '#size' => '100',
     '#title' => t('Title'),
+     '#required' => TRUE
   );
     $form['Country'] = array(
     '#type' => 'select',
     '#title' => t('Country'),
-    #default_value' => $country_get_countries_select_options(),
+    #default_value' =>$country_get_countries_select_options($countries),
   );
       $form['Document'] = array(
     '#type' => 'select',
     '#title' => t('Document type'),
+     #default_value' =>$country_get_countries_select_options(),
   );
 
-      $form['date_of_text'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Date of text'),
-    '#required' => TRUE
-  );
-    
     $form['abstract'] = array(
     '#type' => 'textarea',
     '#title' => t('Abstract'),
   );
+      $form['date_of_text'] = array(
+    '#type' => 'datepicker',
+    '#required' => TRUE
+  );
 
+    $form['url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Link to full text'),
+  );
     $form['key_topics'] = array(
     '#type' => 'textfield',
     '#title' => t('Key topics'),
   );
-      $form['url'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Link to full text'),
+    $form['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Upload a file'),
   );
 
   $form['captcha'] = array(
@@ -737,7 +738,7 @@ function country_legislation_collection_form($form, &$form_state) {
    // Provide a submit button.
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => 'Submit',
+    '#value' => t('Submit'),
   );
 
   return $form;
