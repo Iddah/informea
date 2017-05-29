@@ -720,10 +720,18 @@ $form['language'] = array(
     '#options' => country_get_countries_select_options()
   );
 
-      $form['document_type'] = array(
+/**
+ * provides document dropdown options 
+*/
+   $terms = taxonomy_get_tree($vocabulary);
+   $options = array();
+   foreach ($terms as $data) {
+    $options[$data->tid] = $data->name;
+  }
+    $form['document_type'] = array(
     '#type' => 'select',
     '#title' => t('Type of document'),
-    '#options' => $options,
+    '#options' =>  $options,
   );
 
     $form['abstract'] = array(
@@ -760,15 +768,6 @@ $form['language'] = array(
   );
 
   return $form;
-
-  /**
- * provides document dropdown options 
-*/
-  $terms = taxonomy_get_tree($vocabulary);
-  foreach ($terms as $data) {
-    $options[$data->tid] = $data->name;
-  }
-
 }
 
 /**
