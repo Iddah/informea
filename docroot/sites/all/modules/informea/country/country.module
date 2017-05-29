@@ -53,7 +53,7 @@ function country_menu() {
   );
     $items = array();
   $items['country/add-legislations'] = array(
-    'title' => 'Legislation and case laws collection form',
+    'title' => 'Legislation and case laws data collection form',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('country_legislation_collection_form'),
     'access arguments' => array('access content'),
@@ -690,29 +690,39 @@ function country_batch_update_region_finish($success, $results, $operations) {
  * This function gets called in the browser address bar 
 */
 function country_legislation_collection_form($form, &$form_state) {
+$form['language'] = array(
+    '#type' => 'select',
+    '#title' => t('Language'),
+    #default_value' => 'English',
+  ); 
   $form['name'] = array(
     '#type' => 'textfield',
     '#size' => '100',
     '#title' => t('Title'),
      '#required' => TRUE
   );
-    $form['Country'] = array(
+    $form['legislation_Id'] = array(
+    '#type' => 'textfield',
+    '#size' => '100',
+    '#title' => t('Legislation ID')
+  );
+    $form['field_country'] = array(
     '#type' => 'select',
     '#title' => t('Country'),
-    #default_value' =>$country_get_countries_select_options($countries),
+    #options' => country_get_countries_select_options()
   );
-      $form['Document'] = array(
+      $form['document'] = array(
     '#type' => 'select',
     '#title' => t('Document type'),
-     #default_value' =>$country_get_countries_select_options(),
+     #options' => 
   );
 
     $form['abstract'] = array(
     '#type' => 'textarea',
-    '#title' => t('Abstract'),
+    '#title' => t('Abstract')
   );
-      $form['date_of_text'] = array(
-    '#type' => 'datepicker',
+    $form['date_of_text'] = array(
+    '#type' => 'date_popup',
     '#required' => TRUE
   );
 
@@ -721,8 +731,8 @@ function country_legislation_collection_form($form, &$form_state) {
     '#title' => t('Link to full text'),
   );
     $form['key_topics'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Key topics'),
+    '#type' => 'entity_autocomplete',
+    '#title' => t('Key topics')
   );
     $form['file'] = array(
     '#type' => 'managed_file',
