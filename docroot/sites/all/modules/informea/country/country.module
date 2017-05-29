@@ -686,6 +686,8 @@ function country_batch_update_region_finish($success, $results, $operations) {
     drupal_set_message('An error occurred.', 'error');
   }
 }
+
+
 /**
  * This function gets called in the browser address bar 
 */
@@ -693,7 +695,7 @@ function country_legislation_collection_form($form, &$form_state) {
 $form['language'] = array(
     '#type' => 'select',
     '#title' => t('Language'),
-    #default_value' => 'English',
+    '#options' => array(t('--- SELECT ---'), t('English'), t('French'), t('Spanish'), t('Russian'),t('Spanish'), t('Arabic'),t('Chinese, simplified'))
   ); 
   $form['name'] = array(
     '#type' => 'textfield',
@@ -701,38 +703,44 @@ $form['language'] = array(
     '#title' => t('Title'),
      '#required' => TRUE
   );
-    $form['legislation_Id'] = array(
+    $form['legislation_id'] = array(
     '#type' => 'textfield',
     '#size' => '100',
-    '#title' => t('Legislation ID')
+    '#title' => t('Legislation ID number')
   );
+
+    $form['date_of_text'] = array(
+    '#type' => 'date_popup',
+    '#required' => TRUE
+  );
+
     $form['field_country'] = array(
     '#type' => 'select',
     '#title' => t('Country'),
-    #options' => country_get_countries_select_options()
+    '#options' => country_get_countries_select_options()
   );
-      $form['document'] = array(
+
+      $form['document_type'] = array(
     '#type' => 'select',
-    '#title' => t('Document type'),
-     #options' => 
+    '#title' => t('Type of document'),
+    '#options' => $options,
   );
 
     $form['abstract'] = array(
     '#type' => 'textarea',
     '#title' => t('Abstract')
   );
-    $form['date_of_text'] = array(
-    '#type' => 'date_popup',
-    '#required' => TRUE
-  );
 
     $form['url'] = array(
     '#type' => 'textfield',
     '#title' => t('Link to full text'),
   );
-    $form['key_topics'] = array(
-    '#type' => 'entity_autocomplete',
-    '#title' => t('Key topics')
+
+    $form['field_informea_tags'] = array(
+    '#type' => 'taxonomy_term_reference',
+    '#default_value' => taxonomy_implode_tags($tags),
+    '#title' => t('Key topics'),
+    '#autocomplete_path' => 'taxonomy/autocomplete/field_tags',
   );
     $form['file'] = array(
     '#type' => 'managed_file',
@@ -752,6 +760,15 @@ $form['language'] = array(
   );
 
   return $form;
+
+  /**
+ * provides document dropdown options 
+*/
+  $terms = taxonomy_get_tree($vocabulary);
+  foreach ($terms as $data) {
+    $options[$data->tid] = $data->name;
+  }
+
 }
 
 /**
