@@ -695,8 +695,16 @@ function country_legislation_collection_form($form, &$form_state) {
 $form['language'] = array(
     '#type' => 'select',
     '#title' => t('Language'),
-    '#options' => array(t('--- SELECT ---'), t('English'), t('French'), t('Spanish'), t('Russian'),t('Spanish'), t('Arabic'),t('Chinese, simplified'))
-  ); 
+    '#options' => array(
+      NULL => t('- Select -'),
+      'en' => t('English'),
+      'fr' => t('French'),
+      'ru' => t('Russian'),
+      'es' => t('Spanish'),
+      'ar' => t('Arabic'),
+      'zh-hans' => t('Chinese, simplified'),
+    ),
+  );
   $form['name'] = array(
     '#type' => 'textfield',
     '#size' => '100',
@@ -720,15 +728,16 @@ $form['language'] = array(
     '#options' => country_get_countries_select_options()
   );
 
-/**
- * provides document dropdown options 
-*/
-   $terms = taxonomy_get_tree($vocabulary);
-   $options = array();
-   foreach ($terms as $data) {
+  /**
+   * provides document dropdown options
+   */
+  $vocabulary =  taxonomy_vocabulary_machine_name_load('document_type');
+  $terms = taxonomy_get_tree($vocabulary->vid);
+  $options = array(NULL => t('- Select -'));
+  foreach ($terms as $data) {
     $options[$data->tid] = $data->name;
   }
-    $form['document_type'] = array(
+  $form['document_type'] = array(
     '#type' => 'select',
     '#title' => t('Type of document'),
     '#options' =>  $options,
