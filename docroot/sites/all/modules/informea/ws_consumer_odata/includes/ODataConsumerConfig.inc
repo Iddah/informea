@@ -307,7 +307,7 @@ class ODataConsumerConfig {
         return '&$expand=name&$orderby=updated%20desc,id';
 
       case self::$ODATA_ENTITY_DOCUMENT:
-        return '&$expand=authors,description,files,identifiers,keywords,referenceToEntities,tags,title,types&$orderby=updated%20desc,id';
+        return '&$expand=authors,description,files,identifiers,keywords,referenceToEntities,tags,treaties,title,types&$orderby=updated%20desc,id';
     }
     return '';
   }

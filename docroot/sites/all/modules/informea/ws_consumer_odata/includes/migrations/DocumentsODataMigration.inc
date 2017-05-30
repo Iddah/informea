@@ -49,7 +49,7 @@ class DocumentsODataMigration extends AbstractODataMigration {
     $this->addFieldMapping('field_last_update:timezone')->defaultValue('Europe/Zurich');
     //    $this->addFieldMapping('changed', 'changed'); - causes entity translation errors
 
-    $this->addFieldMapping('field_treaty', 'treaty');
+    $this->addFieldMapping('field_treaty', 'treaties');
 
     $this->addFieldMapping('field_document_type', 'types');
     $this->addFieldMapping('field_document_type:source_type')->defaultValue('tid');
@@ -229,7 +229,19 @@ class DocumentsODataMigration extends AbstractODataMigration {
     if (!empty($row->published)) {
       $row->published = $this->fixDateValue($row->published);
     }
-    $row->treaty = $this->getTreatyByODataIdentifier($row->treaty)->nid;
+    $treaties = $consumer->loadNavigationProperty($row, 'treaties');
+    $row->treaties = array();
+    foreach ($treaties as $tob) {
+      if ($tn = $this->getTreatyByODataIdentifier($tob->value)) {
+        $row->treaties[] = $tn->nid;
+      }
+    }
+    if ($treaty = $this->getTreatyByODataIdentifier($row->treaty)) {
+      if (!in_array($treaty->nid, $row->treaties)) {
+        $row->treaties[] = $treaty->nid;
+      }
+    }
+    $row->treaties = array_unique($row->treaties);
     $row->filename = array();
     foreach ($row->files as $file) {
       if ($filename = $this->extractFilenameFromURL($file)) {
@@ -246,7 +258,8 @@ class DocumentsODataMigration extends AbstractODataMigration {
     if (!$this->validateEnglishTitle($row)) {
       return FALSE;
     }
-    if (!$this->validateTreaty($row)) {
+    if (empty($row->treaties)) {
+      ws_consumer_odata_log('Skipping ' . $this->config->odata_entity . ' with source id=' . $row->id .' because it has no treaties', MigrationBase::MESSAGE_ERROR);
       return FALSE;
     }
     if (empty($row->files)) {
@@ -271,6 +284,7 @@ class InforMEAODataDocumentsMigrateSource extends InforMEAAbstractODataMigrateSo
       'published' => 'Publication date',
       'thumbnailUrl' => 'URL to document thumbnail/cover page',
       'treaty' => 'The document is linked to this treaty',
+      'treaties' => 'The document is linked to multiple treaties',
       'updated' => 'Last update date',
       'country' => 'Country',
       'displayOrder' => 'Decisions display order',
