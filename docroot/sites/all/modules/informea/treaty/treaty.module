@@ -503,12 +503,12 @@ function treaty_create_table_with_members($members, $node) {
       && (strtotime('-3 month', time()) < $date2_unix)) {
       $light_blue_class = 'party-row-light-blue';
     }
-
+    $country_link = l($wrapper->field_country->label(), 'node/' . $member->nid);
     if ($node->nid == Treaty::RAMSAR_NID) {
       $row = [
         'data' => [
           [
-            'data' => sprintf('%s <span>%s</span>', $flag, $wrapper->field_country->label()),
+            'data' => sprintf('%s <span>%s</span>', $flag, $country_link),
             'class' => $light_blue_class,
           ],
           [
@@ -523,7 +523,7 @@ function treaty_create_table_with_members($members, $node) {
       $row = array(
         'data' => array(
           array(
-            'data' => sprintf('%s <span>%s</span>', $flag, $wrapper->field_country->label()),
+            'data' => sprintf('%s <span>%s</span>', $flag, $country_link),
             'class' => $light_blue_class,
           ),
           array('data' => $date1, 'class' => 'text-center ' . $light_blue_class),
