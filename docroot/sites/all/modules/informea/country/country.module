@@ -731,13 +731,13 @@ $form['language'] = array(
   /**
    * provides document dropdown options
    */
-  $vocabulary =  taxonomy_vocabulary_machine_name_load('document_type');
+  $vocabulary =  taxonomy_vocabulary_machine_name_load('type_of_text');
   $terms = taxonomy_get_tree($vocabulary->vid);
   $options = array(NULL => t('- Select -'));
   foreach ($terms as $data) {
     $options[$data->tid] = $data->name;
   }
-  $form['document_type'] = array(
+  $form['type_of_text'] = array(
     '#type' => 'select',
     '#title' => t('Type of document'),
     '#options' =>  $options,
@@ -752,16 +752,27 @@ $form['language'] = array(
     '#type' => 'textfield',
     '#title' => t('Link to full text'),
   );
-
+  /**
+   * provides terms autocomplete
+   */
+  $vocabulary =  taxonomy_vocabulary_machine_name_load('type_of_text');
+  $terms = taxonomy_get_tree($vocabulary->vid);
+  foreach ($terms as $data) {
+    $options[$data->tid] = $data->name;
+  }
     $form['field_informea_tags'] = array(
-    '#type' => 'taxonomy_term_reference',
-    '#default_value' => taxonomy_implode_tags($tags),
+    '#type' => 'textfield',
+    '#autocomplete_path' => 'taxonomy/autocomplete/'. $vocabulary->vid,
     '#title' => t('Key topics'),
-    '#autocomplete_path' => 'taxonomy/autocomplete/field_tags',
   );
     $form['file'] = array(
     '#type' => 'managed_file',
     '#title' => t('Upload a file'),
+  );
+
+    $form['author'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Please provide your name'),
   );
 
   $form['captcha'] = array(
