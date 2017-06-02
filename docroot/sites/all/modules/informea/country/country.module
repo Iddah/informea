@@ -790,20 +790,17 @@ $form['language'] = array(
 
 function legislation_collection_form_submit($legislation, $form, &$form_state) {
 $to = "iddah.kamau@unep.org"; // to e-mail address
-$from = "ikm@unep.ch"; // from e-mail address
+$from = "ikm@unep.ch"; 
  
 $subject = "legislation content added"; // subject of e-mail
 $body = "text to display in e-mail body"; //it might be any variable from the form eg. $form_state['values']['title']
-$form_state['values']['author']
-$form_state['values']['country']
  
 //params is the array passed to hook_mail function 
 $params = array(
     'subject' => $subject,
     'body' => $body,
     );
-
-drupal_mail('legislation content', 'information', $to, language_default(), $params, $from);
+drupal_mail('legislation', 'information', $to, language_default(), $params, $from);
 drupal_set_message(t('Thank you, legislation data has been submitted.'));
 }
 
