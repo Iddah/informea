@@ -710,13 +710,10 @@ $form['language'] = array(
     '#title' => t('Title of Legislation'),
      '#required' => TRUE
   );
-    $form['legislation_id'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Legislation ID number')
-  );
-
     $form['date_of_text'] = array(
     '#type' => 'date_popup',
+    '#description' => 'Date when legislation was published',
+    '#label' =>t('Legislation Date *'),
     '#required' => TRUE
   );
 
@@ -743,7 +740,8 @@ $form['language'] = array(
 
     $form['abstract'] = array(
     '#type' => 'textarea',
-    '#title' => t('Abstract')
+    '#title' => t('Abstract'),
+    #resizable = TRUE
   );
 
     $form['url'] = array(
@@ -764,28 +762,52 @@ $form['language'] = array(
     '#title' => t('Key topics'),
   );
     $form['upload'] = array(
-    '#type' => 'file',
+    '#type' => 'managed_file',
     '#title' => t('Upload a file'),
+    '#description' => t('PDF and Word documents only'),
+    '#upload_location' => variable_get('legislations/'),
+    '#upload_validators' => array(
+    'file_validate_extensions' => array('pdf doc docx txt'),
+    // Pass the maximum file size in bytes
+    'file_validate_size' => array(MAX_FILE_SIZE*7842880),
+     ),
   );
 
     $form['author'] = array(
     '#type' => 'textfield',
     '#title' => t('Please provide your name'),
   );
-
+    $form['personalinfo']['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email'),
+    '#description' => "Please enter your email.",
+    '#maxlength' => 155,
+    '#element_validate' => array('legislation_collection_form_validate'),
+  );
   $form['captcha'] = array(
   '#type' => 'captcha',
    '#description' => t('This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.'),
   '#captcha_type' => 'captcha/Math',
 );
+   $form['contact'] = array(
+    '#type' => 'item',
+    '#markup' => '<p>'.t('If you are having difficulties filling this form, or for other enquieries, please <a href="/contact">contact</a> us.').'</p>',
+    #delta = 10
+  );
 
-   // Provide a submit button.
+   // Provide a submit button.''
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Submit'),
   );
 
   return $form;
+}
+
+function legislation_collection_form_validate($element, $form, &$form_state) {
+ if (!valid_email_address($element['#value'])) {
+   form_error($element, t('The email address appears to be invalid.'));
+   }
 }
 
 function legislation_collection_form_submit($legislation, $form, &$form_state) {
