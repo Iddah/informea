@@ -860,8 +860,8 @@ function country_legislation_collection_form_submit($form, &$form_state) {
   $node->uid = 0;
   $node->status = 0;
   node_save($node);
-  #$to = "iddah.kamau@unep.org";
-  $to = 'cristian.romanescu@gmail.com';
+  $to = 'iddah.kamau@unep.org';
+  #$to = 'cristian.romanescu@gmail.com';
   $params = array('node' => $node, 'author' => $author, 'author_email' => $email);
   drupal_mail('country', 'collect_legislation', $to, 'en', $params, 'no-reply@informea.org');
 }
