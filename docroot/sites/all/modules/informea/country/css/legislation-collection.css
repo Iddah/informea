@@ -1,0 +1,5 @@
+.form-group { margin-bottom: 25px !important; }
+.form-item-date-of-text>label { float: left; }
+#edit-date-of-text { display: block; clear: both; }
+.form-item-date-of-text-date { display: block; clear: both; }
+#edit-date-of-text .form-group { margin-bottom: 0 !important; }
