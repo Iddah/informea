@@ -692,159 +692,200 @@ function country_batch_update_region_finish($success, $results, $operations) {
  * This function gets called in the browser address bar 
 */
 function country_legislation_collection_form($form, &$form_state) {
-$form['language'] = array(
+  $form['intro'] = [
+    '#type' => 'item',
+    '#markup' => t('<p>Please use this form to enter custom legislation</p>'),
+  ];
+  $form['title'] = [
+    '#type' => 'textfield',
+    '#title' => t('Legislation title'),
+    '#required' => TRUE
+  ];
+  $form['language'] = [
     '#type' => 'select',
     '#title' => t('Language'),
-    '#options' => array(
-      NULL => t('- Select -'),
+    '#options' => [
+      NULL => t('Please select'),
       'en' => t('English'),
       'fr' => t('French'),
       'ru' => t('Russian'),
       'es' => t('Spanish'),
       'ar' => t('Arabic'),
       'zh-hans' => t('Chinese, simplified'),
-    ),
-  );
-  $form['title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Title of Legislation'),
-     '#required' => TRUE
-  );
-    $form['date_of_text'] = array(
+    ],
+    '#select2' => array(),
+    '#default_value' => 'en',
+  ];
+  $form['date_of_text'] = [
     '#type' => 'date_popup',
+    '#field_type' => 'date',
     '#description' => 'Date when legislation was published',
-    '#label' =>t('Legislation Date *'),
-    '#required' => TRUE
-  );
+    '#title' => t('Legislation date'),
+    '#date_label_position' => 'before',
+    '#required' => true,
+  ];
 
-    $form['field_country'] = array(
+  $countries = country_get_countries();
+  $options = array('' => t('Please select'));
+  foreach($countries as $country) {
+    $w = entity_metadata_wrapper('node', $country);
+    $options[$country->nid] = $w->title_field->value();
+  }
+  $form['field_country'] = [
     '#type' => 'select',
     '#title' => t('Country'),
-    '#options' => country_get_countries_select_options()
-  );
+    '#options' => $options,
+    '#select2' => array(),
+  ];
 
-  /**
-   * provides document dropdown options
-   */
-  $vocabulary =  taxonomy_vocabulary_machine_name_load('type_of_text');
+  $vocabulary = taxonomy_vocabulary_machine_name_load('type_of_text');
   $terms = taxonomy_get_tree($vocabulary->vid);
-  $options = array(NULL => t('- Select -'));
+  $options = [NULL => t('Please select')];
   foreach ($terms as $data) {
     $options[$data->tid] = $data->name;
   }
-  $form['type_of_text'] = array(
+  $form['type_of_text'] = [
     '#type' => 'select',
     '#title' => t('Type of document'),
-    '#options' =>  $options,
-  );
-
-    $form['abstract'] = array(
+    '#options' => $options,
+    '#select2' => array(),
+  ];
+  $form['abstract'] = [
     '#type' => 'textarea',
     '#title' => t('Abstract'),
     #resizable = TRUE
-  );
-
-    $form['url'] = array(
+  ];
+  $form['url'] = [
     '#type' => 'textfield',
     '#title' => t('Link to full text'),
-  );
-  /**
-   * provides terms autocomplete
-   */
-  $vocabulary =  taxonomy_vocabulary_machine_name_load('type_of_text');
+    '#description' => t('Enter the link to an Internet website where document can be found.')
+  ];
+
+  $options = array();
+  $vocabulary = taxonomy_vocabulary_machine_name_load('thesaurus_informea');
   $terms = taxonomy_get_tree($vocabulary->vid);
   foreach ($terms as $data) {
     $options[$data->tid] = $data->name;
   }
-    $form['field_informea_tags'] = array(
-    '#type' => 'textfield',
-    '#autocomplete_path' => 'taxonomy/autocomplete/'. $vocabulary->vid,
+  $form['field_informea_tags'] = [
+    '#type' => 'select',
     '#title' => t('Key topics'),
-  );
-    $form['upload'] = array(
+    '#options' => $options,
+    '#multiple' => true,
+    '#select2' => array(),
+  ];
+  $form['upload'] = [
     '#type' => 'managed_file',
     '#title' => t('Upload a file'),
     '#description' => t('Only documents in PDF and Word documents are allowed.'),
-    '#upload_location' => variable_get('public://legislations/'),
-    '#upload_validators' => array(
-    'file_validate_extensions' => array('pdf doc docx txt'),
-     ),
-  );
+    '#upload_location' => variable_get('public://legislation/'),
+    '#upload_validators' => [
+      'file_validate_extensions' => ['pdf doc docx'],
+    ],
+  ];
 
-    $form['legislation_author'] = array(
+  $form['personalinfo']['legislation_author'] = [
     '#type' => 'textfield',
-    '#title' => t('Please provide your name'),
-  );
-    $form['personalinfo']['email'] = array(
+    '#title' => t('Please enter your name'),
+  ];
+  $form['personalinfo']['email'] = [
     '#type' => 'textfield',
     '#title' => t('Email'),
-    '#description' => "Please enter your email.",
+    '#description' => 'Please enter your email if you would like to be contacted by UNEP regarding your contribution',
     '#maxlength' => 155,
-    '#element_validate' => array('legislation_collection_form_validate'),
-  );
-  $form['captcha'] = array(
-  '#type' => 'captcha',
-   '#description' => t('This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.'),
-  '#captcha_type' => 'captcha/Math',
-);
-   $form['contact'] = array(
+  ];
+  $form['captcha'] = [
+    '#type' => 'captcha',
+    '#description' => t('This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.'),
+    '#captcha_type' => 'captcha/Math',
+  ];
+  $form['contact'] = [
     '#type' => 'item',
-    '#markup' => '<p>'.t('If you are having difficulties filling this form, or for other enquieries, please <a href="/contact" target="_blank">contact</a> us.').'</p>',
+    '#markup' => '<p>' . t('If you are having difficulties filling this form, or for other enquieries, please <a href="/contact" target="_blank">contact</a> us.') . '</p>',
     #delta = 10
-  );
+  ];
 
-   // Provide a submit button
-  $form['submit'] = array(
+  // Provide a submit button
+  $form['submit'] = [
     '#type' => 'submit',
     '#value' => t('Submit'),
-  );
+  ];
+  $form['#attached']['css'] = array(drupal_get_path('module', 'country') . '/css/legislation-collection.css');
   return $form;
 }
 
-function legislation_collection_form_validate($element, $form, &$form_state) {
- if (!valid_email_address($element['#value'])) {
-   form_set_error($element, t('The email address appears to be invalid, please submit a valid E-mail address.'));
-   }
+function country_legislation_collection_form_validate($form, &$form_state) {
+  # todo
+  # if (!valid_email_address($element['#value'])) {
+  # form_set_error($element, t('The email address appears to be invalid, please submit a valid E-mail address.'));
+  # }
 }
 
-function legislation_collection_form_submit($form, &$form_state) {
-drupal_set_message(t('Thank you, legislation data has been submitted.'));
+function country_legislation_collection_form_submit($form, &$form_state) {
+  drupal_set_message(t('Thank you for your contribution, data has been submitted to UNEP for review.'));
+  $values = $form_state['values'];
 
-//Rebuild the form
-$form_state['rebuild'] = TRUE;
-
-// Save legislation setting variables
-variable_set('language', $form_state['values']['language']);
-variable_set('title', $form_state['values']['title']);
-variable_set('date_of_text', $form_state['values']['date_of_text']);
-variable_set('field_country', $form_state['values']['field_country']);
-variable_set('type_of_text', $form_state['values']['type_of_text']);
-variable_set('abstract', $form_state['values']['abstract']);
-variable_set('url', $form_state['values']['url']);
-variable_set('field_informea_tags', $form_state['values']['field_informea_tags']);
-variable_set('upload', $form_state['values']['upload']);
-variable_set('legislation_author', $form_state['values']['legislation_author']);
-variable_set('email', $form_state['values']['email']);
-
-$message = 'New legislation data added'; // Body of your email here.
- $params = array(
-           'body' => $message,
-           'subject' => 'Website Information Request',
-           'headers'=>'simple',
-     );
-     $to = "iddah.kamau@unep.org";
-    drupal_mail('Legislation data', 'send_legislation', $to, language_default(), $params, 'demo@demo.com', RUE);
+  dpm($form_state);
+  $author = $values['legislation_author'];
+  $email = $values['email'];
+  $language = !empty($values['language']) ? $values['language'] : 'en'; // @todo: sanitize
+  $sort_date = date('Y-m-d H:i:s', strtotime($values['date_of_text']));
+  $node = (object) array(
+    'type' => 'legislation',
+    'title' => trim($form_state['values']['title']),
+    'title_field' => array($language => array(0 => array('value' => trim($values['title'])))),
+    'language' => $language,
+    'field_sorting_date' => array(LANGUAGE_NONE => array(0 => array('value' => $sort_date))),
+    'field_abstract' => array($language => array(0 => array('value' => trim(check_plain($values['abstract']))))),
+    'field_informea_tags' => array(LANGUAGE_NONE => array()),
+    'field_data_source' => array(LANGUAGE_NONE => array(0 => array('tid' => 815))),
+  );
+  if (!empty($values['field_informea_tags'])) {
+    foreach($values['field_informea_tags'] as $i => $tid) {
+      $node->field_informea_tags[LANGUAGE_NONE][$i] = array('tid' => $tid);
+    }
+  }
+  if (!empty($values['upload'])) {
+    $node->field_files[$language][] = array('fid' => $values['upload'], 'display' => 1, 'description' => '');
+  }
+  if (!empty($values['type_of_text'])) {
+    $node->field_type_of_text = array(LANGUAGE_NONE => array(0 => array('tid' => $values['type_of_text'])));
+  }
+  if (!empty($values['url'])) {
+    $node->field_url = array($language => array(0 => array('url' => $values['url'])));
+  }
+  if (!empty($values['field_country'])) {
+    $node->field_country = array(LANGUAGE_NONE => array(0 => array('target_id' => $values['field_country'])));
+  }
+  node_object_prepare($node);
+  $node = node_submit($node);
+  $node->uid = 0;
+  $node->status = 0;
+  node_save($node);
+  #$to = "iddah.kamau@unep.org";
+  $to = 'cristian.romanescu@gmail.com';
+  $params = array('node' => $node, 'author' => $author, 'author_email' => $email);
+  drupal_mail('country', 'collect_legislation', $to, 'en', $params, 'no-reply@informea.org');
 }
 
-function legislation_collection_form_mail($key,&$message,$params){
-       switch ($key) {
-             case 'send_legislation':
-                  $message['subject']=t($params['subject']);
-                  $message['body'][]=$params['body'];
-                  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
-       break;
-          }
- }
+function country_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'collect_legislation':
+      dpm($params);
+      $node = $params['node'];
+      $url = url('node/' . $node->nid, array('absolute' => true,));
+      $author = !empty($params['author']) ? 'by ' . $params['author'] : 'anonymously';
+      $author .= !empty($params['author_email']) ? ' (' . $params['author_email'] . ')' : '';
+      $body = <<<EOT
+    <p>Greetings,</p>
+    <p>A new legislation has been submitted $author via web form and is available for review here: $url.<br />
+    It is currently unpublished until you review it and set it to published.</p>
+EOT;
+      $message['subject'] = '[InforMEA][Legislation] New legislation submitted #' . $node->nid;
+      $message['body'][] = $body;
+     break;
+  }
+}
 
 /**
  * Implements hook_form_alter().
