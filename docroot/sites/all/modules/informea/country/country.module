@@ -764,12 +764,10 @@ $form['language'] = array(
     $form['upload'] = array(
     '#type' => 'managed_file',
     '#title' => t('Upload a file'),
-    '#description' => t('PDF and Word documents only'),
+    '#description' => t('Only documents in PDF and Word documents are allowed.'),
     '#upload_location' => variable_get('public://legislations/'),
     '#upload_validators' => array(
     'file_validate_extensions' => array('pdf doc docx txt'),
-    // Pass the maximum file size in bytes
-    'file_validate_size' => array(MAX_FILE_SIZE*7842880),
      ),
   );
 
