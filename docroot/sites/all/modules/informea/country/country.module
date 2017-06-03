@@ -765,7 +765,7 @@ $form['language'] = array(
     '#type' => 'managed_file',
     '#title' => t('Upload a file'),
     '#description' => t('PDF and Word documents only'),
-    '#upload_location' => variable_get('legislations/'),
+    '#upload_location' => variable_get('public://legislations/'),
     '#upload_validators' => array(
     'file_validate_extensions' => array('pdf doc docx txt'),
     // Pass the maximum file size in bytes
@@ -773,7 +773,7 @@ $form['language'] = array(
      ),
   );
 
-    $form['author'] = array(
+    $form['legislation_author'] = array(
     '#type' => 'textfield',
     '#title' => t('Please provide your name'),
   );
@@ -791,49 +791,63 @@ $form['language'] = array(
 );
    $form['contact'] = array(
     '#type' => 'item',
-    '#markup' => '<p>'.t('If you are having difficulties filling this form, or for other enquieries, please <a href="/contact">contact</a> us.').'</p>',
+    '#markup' => '<p>'.t('If you are having difficulties filling this form, or for other enquieries, please <a href="/contact" target="_blank">contact</a> us.').'</p>',
     #delta = 10
   );
 
-   // Provide a submit button.''
+   // Provide a submit button
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Submit'),
   );
-
   return $form;
 }
 
 function legislation_collection_form_validate($element, $form, &$form_state) {
  if (!valid_email_address($element['#value'])) {
-   form_error($element, t('The email address appears to be invalid.'));
+   form_set_error($element, t('The email address appears to be invalid, please submit a valid E-mail address.'));
    }
 }
 
-function legislation_collection_form_submit($legislation, $form, &$form_state) {
-$to = "iddah.kamau@unep.org"; // to e-mail address
-$from = "ikm@unep.ch"; 
- 
-$subject = "legislation content added"; // subject of e-mail
-$body = "text to display in e-mail body"; //it might be any variable from the form eg. $form_state['values']['title']
- 
-//params is the array passed to hook_mail function 
-$params = array(
-    'subject' => $subject,
-    'body' => $body,
-    );
-drupal_mail('legislation', 'information', $to, language_default(), $params, $from);
+function legislation_collection_form_submit($form, &$form_state) {
 drupal_set_message(t('Thank you, legislation data has been submitted.'));
+
+//Rebuild the form
+$form_state['rebuild'] = TRUE;
+
+// Save legislation setting variables
+variable_set('language', $form_state['values']['language']);
+variable_set('title', $form_state['values']['title']);
+variable_set('date_of_text', $form_state['values']['date_of_text']);
+variable_set('field_country', $form_state['values']['field_country']);
+variable_set('type_of_text', $form_state['values']['type_of_text']);
+variable_set('abstract', $form_state['values']['abstract']);
+variable_set('url', $form_state['values']['url']);
+variable_set('field_informea_tags', $form_state['values']['field_informea_tags']);
+variable_set('upload', $form_state['values']['upload']);
+variable_set('legislation_author', $form_state['values']['legislation_author']);
+variable_set('email', $form_state['values']['email']);
+
+$message = 'New legislation data added'; // Body of your email here.
+ $params = array(
+           'body' => $message,
+           'subject' => 'Website Information Request',
+           'headers'=>'simple',
+     );
+     $to = "iddah.kamau@unep.org";
+    drupal_mail('Legislation data', 'send_legislation', $to, language_default(), $params, 'demo@demo.com', RUE);
 }
 
-function legislation_collection_form_mail($key, &$message, $params) {
-  switch ($key) {
-    case 'information':
-      $message['subject'] = $params['subject'];
-      $message['body'] = $params['body'];
-    break;
-    }
-}
+function legislation_collection_form_mail($key,&$message,$params){
+       switch ($key) {
+             case 'send_legislation':
+                  $message['subject']=t($params['subject']);
+                  $message['body'][]=$params['body'];
+                  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+       break;
+          }
+ }
+
 /**
  * Implements hook_form_alter().
  */
