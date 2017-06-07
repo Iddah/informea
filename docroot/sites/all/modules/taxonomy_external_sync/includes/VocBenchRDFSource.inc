@@ -117,10 +117,16 @@ class VocBenchRDFSource extends DefaultSource {
 
         // skos:altLabel
         if ($altLabels = $resource->allResources('skosxl:altLabel')) {
+          /** @var \EasyRdf_Resource $altLabel */
           foreach($altLabels as $altLabel) {
             /** @var /EasyRdf_Literal $lit */
-            $lit = $altLabel->get('skosxl:literalForm');
-            $term->altLabel[$lit->getLang()][] = $lit->getValue();
+            if ($lit = $altLabel->get('skosxl:literalForm')) {
+              $term->altLabel[$lit->getLang()][] = $lit->getValue();
+            }
+            else {
+              watchdog('thesaurus', 'Found altLabel without skos:literalForm: !uri',
+                array('!uri' => $altLabel->getUri()), WATCHDOG_ERROR);
+            }
           }
         }
 
