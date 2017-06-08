@@ -33,6 +33,9 @@ function declaration_taxonomy_default_vocabularies() {
           ),
         ),
       ),
+      'tes' => array(
+        'enable' => FALSE,
+      ),
     ),
   );
 }
