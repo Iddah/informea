@@ -192,6 +192,10 @@ function informea_theme_preprocess_page(&$variables) {
       );
       $block_data['#markup'] = preg_replace('/<select.*><\/select>/i', drupal_render($html), $block_data['#markup']);
     }
+    if(!empty($variables['navbar_classes_array'])) {
+      $which_to_replace = array_search("navbar-default",$variables['navbar_classes_array']);
+      $variables['navbar_classes_array'][$which_to_replace] = 'navbar-alternate';
+    }
   }
 
   if (!empty($breadcrumbs)) {

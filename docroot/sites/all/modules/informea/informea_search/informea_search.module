@@ -327,7 +327,7 @@ function informea_search_form($form, $form_state) {
       '#size' => 25,
       '#maxlength' => 255,
       '#attributes' => array(
-        'placeholder' => t('Explore InforMEA'),
+        'placeholder' => t('Enter keyword or go to our library directly'),
       )
     ],
     'actions' => [

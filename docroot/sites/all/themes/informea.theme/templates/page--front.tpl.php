@@ -25,7 +25,7 @@
     </div><!-- .row -->
   </div><!-- .container -->
 </div><!-- .hero-unit -->
-<div class="container">
+<div class="container main-container">
   <?php if (!user_is_anonymous()) { print $messages; } ?>
   <div class="row" id="row-features">
     <?php if (!empty($page['content'])): ?>
