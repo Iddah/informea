@@ -18,13 +18,6 @@
 <?php include 'header.tpl.php'; ?>
 <div class="hero-unit">
   <div class="container">
-    <?php if(!empty($page['front_page_announcements'])): ?>
-    <div class="broadcast">
-      <div class="broadcast-body">
-      <?php print render($page['front_page_announcements']); ?>
-      </div><!-- .broadcast-body -->
-    </div><!-- .broadcast -->
-    <?php endif; ?>
     <div class="row">
       <?php if (!empty($page['front_page_hero'])): ?>
         <?php print render($page['front_page_hero']); ?>
@@ -38,6 +31,16 @@
     <?php if (!empty($page['content'])): ?>
       <?php print render($page['front_page_content']); ?>
     <?php endif; ?>
+    <?php if(!empty($page['front_page_announcements'])): ?>
+    <div class="col-xs-12">
+      <div class="broadcast">
+        <div class="broadcast-body">
+          <?php print render($page['front_page_announcements']); ?>
+          </div><!-- .broadcast-body -->
+        </div><!-- .broadcast -->
+      <?php endif; ?>
+    </div>
   </div><!-- .row #row-features -->
+
 </div><!-- .container -->
 <?php include 'footer.tpl.php'; ?>
