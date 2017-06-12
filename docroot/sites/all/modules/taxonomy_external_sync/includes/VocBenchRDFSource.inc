@@ -165,10 +165,30 @@ class VocBenchRDFSource extends DefaultSource {
       }
     }
 
+    $prefLabels = [];
     // Remove invalid parents (orphaned)
+    // Prepare labels for deprecated check
     foreach ($terms as $key => &$term) {
       if (isset($term->parent) && !isset($terms[$term->parent])) {
         unset($term->parent);
+      }
+      if (empty($term->status) || $term->status != 'Published') {
+        foreach($term->prefLabel as $lang => $label) {
+          $prefLabels[$lang][$label] = $term->status;
+        }
+      }
+    }
+
+    foreach($terms as $key => &$term) {
+      foreach($term->altLabel as $lang => $labels) {
+        foreach($labels as $idx => $label) {
+          if (isset($prefLabels[$lang][$label])) {
+            unset($term->altLabel[$lang][$idx]);
+          }
+        }
+        if (!$term->altLabel[$lang]) {
+          unset($term->altLabel[$lang]);
+        }
       }
     }
     return $terms;
