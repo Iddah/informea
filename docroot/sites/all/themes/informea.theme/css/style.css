@@ -3602,3 +3602,6 @@ body.front .broadcast .btn {
   border: none;
   border-radius: 0;
 }
+[dir] body.front .footer {
+  margin-top: 0;
+}
