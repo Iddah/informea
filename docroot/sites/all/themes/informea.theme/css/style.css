@@ -3387,6 +3387,18 @@ span.ecolex-logo {
 [dir] .navbar-alternate #search-form input, [dir] .navbar-alternate #search-form button, [dir] .navbar-alternate #search-form .btn {
   border-radius: 4px;
 }
+.navbar-alternate #search-form .glyphicon-search:before {
+  content: '';
+  height: 1.5em;
+  width: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+}
+[dir] .navbar-alternate #search-form .glyphicon-search:before {
+  background-image: url('../img/search-icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .navbar-alternate #search-form input {
   font-weight: 200;
   font-style: italic;
