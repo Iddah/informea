@@ -477,11 +477,20 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
 function informea_theme_informea_search_form_wrapper($variables) {
   $output = '<div class="input-group">';
   $output .= $variables['element']['#children'];
-  $output .= '<span class="input-group-btn">';
+  $output .= '<div class="input-group-btn">';
   $output .= '<button type="submit" class="btn btn-default">';
   $output .= _bootstrap_icon('search');
+  if(drupal_is_front_page()) {
+    $output .= t('<span>Search</span> ');
+  }
   $output .= '</button>';
-  $output .= '</span>';
+  // @todo: replace
+  if(drupal_is_front_page()) {
+    $output .= '<a class="btn btn-default" href="#">';
+    $output .= t('<span>Library</span>');
+    $output .= '</a>';
+  }
+  $output .= '</div>';
   $output .= '</div>';
   return $output;
 }
