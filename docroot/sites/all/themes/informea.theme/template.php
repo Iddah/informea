@@ -486,8 +486,8 @@ function informea_theme_informea_search_form_wrapper($variables) {
   $output .= '</button>';
   // @todo: replace
   if(drupal_is_front_page()) {
-    $output .= '<a class="btn btn-default" href="#">';
-    $output .= t('<span>Library</span>');
+    $output .= '<a class="btn btn-default disabled" href="#">';
+    $output .= t('<span>Browse</span>');
     $output .= '</a>';
   }
   $output .= '</div>';
