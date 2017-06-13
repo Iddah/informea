@@ -308,7 +308,7 @@ function thesaurus_default_page_manager_handlers() {
     ),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Description',
+    'override_title_text' => 'Definition(s)',
     'override_title_heading' => 'div',
   );
   $pane->cache = array();
