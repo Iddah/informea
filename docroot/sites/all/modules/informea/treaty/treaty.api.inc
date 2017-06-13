@@ -141,6 +141,9 @@ function treaty_get_treaties_as_select_options() {
           case 'action-plans':
             $count = country_deliverable_count_treaty_action_plans($nid);
             break;
+          case 'documents':
+            $count = country_deliverable_count_treaty_documents($nid);
+            break;
         }
         if (!empty($count)) {
           $path .= '/' . $menu_object->context;
