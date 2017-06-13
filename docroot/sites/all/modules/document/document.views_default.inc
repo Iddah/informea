@@ -155,6 +155,20 @@ function document_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'documents';
+
+  /* Display: Single MEA's documents */
+  $handler = $view->new_display('page', 'Single MEA\'s documents', 'page_1');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Content: Treaty */
+  $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_treaty']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_treaty']['not'] = 0;
+  $handler->display->display_options['path'] = 'node/%/documents';
   $translatables['documents'] = array(
     t('Master'),
     t('Documents'),
@@ -189,6 +203,8 @@ function document_views_default_views() {
 [field_files]'),
     t('Search'),
     t('Page'),
+    t('Single MEA\'s documents'),
+    t('All'),
   );
   $export['documents'] = $view;
 
