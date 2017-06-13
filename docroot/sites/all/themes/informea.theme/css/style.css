@@ -3226,7 +3226,22 @@ span.ecolex-logo {
 }
 
 .navbar-alternate {
-  color: #00506f;
+  color: #fff;
+  min-height: 460px;
+  min-height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 16px;
 }
 [dir] .navbar-alternate {
@@ -3234,7 +3249,11 @@ span.ecolex-logo {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 50px;
+  padding-bottom: 24px;
   text-align: center;
+}
+.navbar-alternate + .hero-unit {
+  max-height: calc(50vh);
 }
 [dir=ltr] .navbar-alternate .navbar-header, [dir=ltr] .navbar-alternate .navbar-collapse, [dir=ltr] .navbar-alternate .logo.pull-left {
   float: none !important;
@@ -3271,7 +3290,8 @@ span.ecolex-logo {
   background-color: #fff;
 }
 [dir] .navbar-alternate .navbar-collapse {
-  margin-top: 26px;
+  margin-top: 0px;
+  margin-bottom: 26px;
 }
 .navbar-alternate .navbar-collapse > .nav > li {
   font-size: 20px;
@@ -3314,7 +3334,7 @@ span.ecolex-logo {
 .navbar-alternate .navbar-collapse > .nav > li:focus > a,
 .navbar-alternate .navbar-collapse > .nav > li > a:hover,
 .navbar-alternate .navbar-collapse > .nav > li > a:focus {
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   outline: none;
 }
 [dir] .navbar-alternate .navbar-collapse > .nav > li:hover > a, [dir] .navbar-alternate .navbar-collapse > .nav > li:focus > a, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:hover, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:focus {
@@ -3555,7 +3575,9 @@ body.front .hero-unit {
 }
 [dir] body.front .hero-unit {
   background-color: #fff;
-  padding-top: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 0;
   text-align: justify;
 }
 body.front .hero-unit .lead {
