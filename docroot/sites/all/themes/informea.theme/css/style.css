@@ -3423,7 +3423,7 @@ span.ecolex-logo {
   vertical-align: middle;
 }
 [dir] .navbar-alternate #search-form .glyphicon-search:before {
-  background-image: url('../img/search-icon.png');
+  background-image: url('../img/search-icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
