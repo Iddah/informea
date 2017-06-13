@@ -3176,7 +3176,8 @@ body.page-search-bilateral-treaties .view-empty {
   display: inline-block;
   float: none;
 }
-.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions .pane-title {
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions .pane-title,
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-term-related-uri .pane-title {
   font-weight: bold;
 }
 .panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul {

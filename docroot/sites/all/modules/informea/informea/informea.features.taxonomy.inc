@@ -263,7 +263,7 @@ function informea_taxonomy_default_vocabularies() {
           'field_term_geg_url' => '',
           'field_term_popularity' => '',
           'field_term_reference_url' => 'relatedMatch',
-          'field_term_related_uri' => '',
+          'field_term_related_uri' => 'related',
           'field_term_substantive' => '',
           'field_term_synonyms' => 'altLabel',
           'field_term_tag' => '',

@@ -459,7 +459,7 @@ function thesaurus_default_page_manager_handlers() {
     ),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Synonyms',
+    'override_title_text' => 'Used for',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -473,6 +473,36 @@ function thesaurus_default_page_manager_handlers() {
   $pane->uuid = '27524512-75b9-453c-b279-6a96a3a97c21';
   $display->content['new-27524512-75b9-453c-b279-6a96a3a97c21'] = $pane;
   $display->panels['other_information'][2] = 'new-27524512-75b9-453c-b279-6a96a3a97c21';
+  $pane = new stdClass();
+  $pane->pid = 'new-21b1d752-b367-46c3-acb5-fb6d9c8e5692';
+  $pane->panel = 'other_information';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'taxonomy_term:field_term_related_uri';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(),
+    'context' => 'argument_term_1',
+    'override_title' => 1,
+    'override_title_text' => 'Related terms',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '21b1d752-b367-46c3-acb5-fb6d9c8e5692';
+  $display->content['new-21b1d752-b367-46c3-acb5-fb6d9c8e5692'] = $pane;
+  $display->panels['other_information'][3] = 'new-21b1d752-b367-46c3-acb5-fb6d9c8e5692';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -944,7 +974,7 @@ Legislation',
     ),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Synonyms',
+    'override_title_text' => 'Used for',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -958,6 +988,36 @@ Legislation',
   $pane->uuid = 'ac1d8da1-b969-4f4a-9534-e855043e0c74';
   $display->content['new-ac1d8da1-b969-4f4a-9534-e855043e0c74'] = $pane;
   $display->panels['other_information'][2] = 'new-ac1d8da1-b969-4f4a-9534-e855043e0c74';
+  $pane = new stdClass();
+  $pane->pid = 'new-7be9d403-a6ec-4aff-8e08-a45464aa5d25';
+  $pane->panel = 'other_information';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'taxonomy_term:field_term_related_uri';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(),
+    'context' => 'argument_term_1',
+    'override_title' => 1,
+    'override_title_text' => 'Related terms',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '7be9d403-a6ec-4aff-8e08-a45464aa5d25';
+  $display->content['new-7be9d403-a6ec-4aff-8e08-a45464aa5d25'] = $pane;
+  $display->panels['other_information'][3] = 'new-7be9d403-a6ec-4aff-8e08-a45464aa5d25';
   $pane = new stdClass();
   $pane->pid = 'new-7e5d8635-376d-4a2f-953c-13ac2cd1231c';
   $pane->panel = 'tagged_content';
@@ -1375,7 +1435,7 @@ Court decisions',
     ),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Synonyms',
+    'override_title_text' => 'Used for',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1389,6 +1449,36 @@ Court decisions',
   $pane->uuid = '27524512-75b9-453c-b279-6a96a3a97c21';
   $display->content['new-27524512-75b9-453c-b279-6a96a3a97c21'] = $pane;
   $display->panels['other_information'][2] = 'new-27524512-75b9-453c-b279-6a96a3a97c21';
+  $pane = new stdClass();
+  $pane->pid = 'new-bdb8f5fc-50be-4a64-8e5a-27ca7839ff5a';
+  $pane->panel = 'other_information';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'taxonomy_term:field_term_related_uri';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(),
+    'context' => 'argument_term_1',
+    'override_title' => 1,
+    'override_title_text' => 'Related terms',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = 'bdb8f5fc-50be-4a64-8e5a-27ca7839ff5a';
+  $display->content['new-bdb8f5fc-50be-4a64-8e5a-27ca7839ff5a'] = $pane;
+  $display->panels['other_information'][3] = 'new-bdb8f5fc-50be-4a64-8e5a-27ca7839ff5a';
   $pane = new stdClass();
   $pane->pid = 'new-2b8e332f-09f4-4e6c-ac37-bdcbc4a0a8c0';
   $pane->panel = 'tagged_content';
@@ -1787,7 +1877,7 @@ Legislation',
     'formatter_settings' => array(),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Synonyms',
+    'override_title_text' => 'Used for',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -1801,6 +1891,36 @@ Legislation',
   $pane->uuid = 'eccecd17-7675-4501-bb54-dac15e2c7e04';
   $display->content['new-eccecd17-7675-4501-bb54-dac15e2c7e04'] = $pane;
   $display->panels['other_information'][2] = 'new-eccecd17-7675-4501-bb54-dac15e2c7e04';
+  $pane = new stdClass();
+  $pane->pid = 'new-276341f9-37fa-4c80-911c-fc0028d9033f';
+  $pane->panel = 'other_information';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'taxonomy_term:field_term_related_uri';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(),
+    'context' => 'argument_term_1',
+    'override_title' => 1,
+    'override_title_text' => 'Related terms',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '276341f9-37fa-4c80-911c-fc0028d9033f';
+  $display->content['new-276341f9-37fa-4c80-911c-fc0028d9033f'] = $pane;
+  $display->panels['other_information'][3] = 'new-276341f9-37fa-4c80-911c-fc0028d9033f';
   $pane = new stdClass();
   $pane->pid = 'new-0ff8a402-ded1-4dd1-9d24-2b8f11ca8af6';
   $pane->panel = 'tagged_content';
@@ -2292,7 +2412,7 @@ Publications',
     'formatter_settings' => array(),
     'context' => 'argument_term_1',
     'override_title' => 1,
-    'override_title_text' => 'Synonyms',
+    'override_title_text' => 'Used for',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -2306,6 +2426,36 @@ Publications',
   $pane->uuid = '6bd77781-58a1-47ac-99c9-108b15d6e244';
   $display->content['new-6bd77781-58a1-47ac-99c9-108b15d6e244'] = $pane;
   $display->panels['other_information'][2] = 'new-6bd77781-58a1-47ac-99c9-108b15d6e244';
+  $pane = new stdClass();
+  $pane->pid = 'new-8b6e1b0d-7a0b-4dfb-bf05-e6b3f5c5418e';
+  $pane->panel = 'other_information';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'taxonomy_term:field_term_related_uri';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'hidden',
+    'formatter' => 'link_default',
+    'delta_limit' => '0',
+    'delta_offset' => '0',
+    'delta_reversed' => 0,
+    'formatter_settings' => array(),
+    'context' => 'argument_term_1',
+    'override_title' => 1,
+    'override_title_text' => 'Related terms',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '8b6e1b0d-7a0b-4dfb-bf05-e6b3f5c5418e';
+  $display->content['new-8b6e1b0d-7a0b-4dfb-bf05-e6b3f5c5418e'] = $pane;
+  $display->panels['other_information'][3] = 'new-8b6e1b0d-7a0b-4dfb-bf05-e6b3f5c5418e';
   $pane = new stdClass();
   $pane->pid = 'new-de91fe73-0366-4f74-920f-6f7365adb0f9';
   $pane->panel = 'tagged_content';

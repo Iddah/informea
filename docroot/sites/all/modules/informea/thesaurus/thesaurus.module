@@ -856,9 +856,10 @@ function thesaurus_panels_pane_content_alter(&$content, $pane, $args, $contexts)
     'ac1d8da1-b969-4f4a-9534-e855043e0c74',
     'eccecd17-7675-4501-bb54-dac15e2c7e04',
     '6bd77781-58a1-47ac-99c9-108b15d6e244',
+    '21b1d752-b367-46c3-acb5-fb6d9c8e5692',
   ];
   if (!empty($pane->uuid) && in_array($pane->uuid, $uids) && empty($content->content['#items'][0]['value'])) {
-    // Hide field synonyms on taxonomy term pages if it is empty
+    // Hide field on taxonomy term pages if it is empty
     $content = false;
   }
 }
