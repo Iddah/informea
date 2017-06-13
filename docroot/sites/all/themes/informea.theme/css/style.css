@@ -3226,16 +3226,14 @@ span.ecolex-logo {
 }
 
 .navbar-alternate {
-  color: #1a607e;
-  color: #006574;
-  color: #1e5e79;
-  color: #005768;
+  color: #00506f;
   font-size: 16px;
 }
 [dir] .navbar-alternate {
-  background-color: #2CA0D2;
-  background-color: #00BEDA;
-  padding-bottom: 30px;
+  background-color: #0099d5;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 50px;
   text-align: center;
 }
 [dir=ltr] .navbar-alternate .navbar-header, [dir=ltr] .navbar-alternate .navbar-collapse, [dir=ltr] .navbar-alternate .logo.pull-left {
@@ -3248,7 +3246,13 @@ span.ecolex-logo {
   display: none;
 }
 [dir] .navbar-alternate .header-brand {
-  padding: 40px 0;
+  padding: 50px 0;
+}
+[dir] .navbar-alternate .navbar-collapse + .header-brand {
+  padding-top: 26px;
+}
+[dir] .navbar-alternate .header-brand + .navbar-collapse {
+  margin-top: 0;
 }
 .navbar-alternate .logo img {
   max-height: 90px;
@@ -3266,9 +3270,8 @@ span.ecolex-logo {
 [dir] .navbar-alternate .navbar-toggle .icon-bar {
   background-color: #fff;
 }
-[dir] .navbar-alternate .navbar-collapse > .nav {
-  padding-top: 20px;
-  padding-bottom: 20px;
+[dir] .navbar-alternate .navbar-collapse {
+  margin-top: 26px;
 }
 .navbar-alternate .navbar-collapse > .nav > li {
   font-size: 20px;
@@ -3307,12 +3310,14 @@ span.ecolex-logo {
   padding-right: 15px;
   padding-left: 15px;
 }
+.navbar-alternate .navbar-collapse > .nav > li:hover > a,
+.navbar-alternate .navbar-collapse > .nav > li:focus > a,
 .navbar-alternate .navbar-collapse > .nav > li > a:hover,
 .navbar-alternate .navbar-collapse > .nav > li > a:focus {
   color: rgba(255, 255, 255, 0.9);
   outline: none;
 }
-[dir] .navbar-alternate .navbar-collapse > .nav > li > a:hover, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:focus {
+[dir] .navbar-alternate .navbar-collapse > .nav > li:hover > a, [dir] .navbar-alternate .navbar-collapse > .nav > li:focus > a, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:hover, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:focus {
   background-color: transparent;
 }
 .navbar-alternate .navbar-nav > li > .dropdown-menu {
@@ -3329,6 +3334,9 @@ span.ecolex-logo {
 }
 .navbar-alternate #search-form {
   width: 100%;
+}
+[dir] .navbar-alternate #search-form {
+  margin-top: 0;
 }
 [dir=ltr] .navbar-alternate #search-form {
   margin-left: 0;
@@ -3471,6 +3479,15 @@ span.ecolex-logo {
 [dir=rtl] .navbar-alternate #search-form button + button, [dir=rtl] .navbar-alternate #search-form .btn + button, [dir=rtl] .navbar-alternate #search-form button + .btn, [dir=rtl] .navbar-alternate #search-form .btn + .btn {
   margin-right: 6px;
 }
+.navbar-alternate #search-form button > *,
+.navbar-alternate #search-form .btn > * {
+  vertical-align: middle;
+}
+.navbar-alternate #search-form button > .glyphicon,
+.navbar-alternate #search-form .btn > .glyphicon {
+  display: inline;
+  top: 0;
+}
 [dir=ltr] .navbar-alternate .search-examples {
   padding-left: 35px;
 }
@@ -3533,7 +3550,7 @@ body.front #col-carousel .item {
 }
 body.front .hero-unit {
   color: #333;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 200;
 }
 [dir] body.front .hero-unit {
@@ -3563,7 +3580,7 @@ body.front .hero-unit .lead:after {
   padding-top: 0;
 }
 body.front .hero-unit #col-about a {
-  color: #00BEDA;
+  color: #0099d5;
 }
 body.front .hero-unit .carousel-indicators {
   top: 100%;
@@ -3572,7 +3589,7 @@ body.front .hero-unit .carousel-indicators {
   background-color: #58595b;
 }
 [dir] body.front .hero-unit .carousel-indicators .active {
-  background-color: #00BEDA;
+  background-color: #0099d5;
 }
 [dir] body.front > .main-container {
   margin-top: 20px;
@@ -3591,7 +3608,7 @@ body.front .broadcast {
 }
 [dir] body.front .broadcast .btn-outline {
   border: none;
-  background-color: #00BEDA;
+  background-color: #0099d5;
   padding: 15px 25px;
 }
 [dir=ltr] body.front .broadcast .btn-outline {
@@ -3600,10 +3617,11 @@ body.front .broadcast {
 [dir=rtl] body.front .broadcast .btn-outline {
   margin-right: 1em;
 }
+body.front .broadcast .btn-outline,
 body.front .broadcast .btn-outline:hover,
 body.front .broadcast .btn-outline:focus,
 body.front .broadcast .btn-outline:active {
-  color: #333;
+  color: #fff;
 }
 body.front .broadcast p,
 body.front .broadcast .btn {
