@@ -323,20 +323,11 @@ class EcolexLegislationMigrateSource extends MigrateSource {
     $this->url_pattern = 'http://www.ecolex.org/export/?type=legislation&format=json'; // todo cache
     $this->check_modify_date = variable_get('ecolex_legislation_check_modify_date', FALSE);
     $this->updated_after = 0;
-    echo "\n\n";
     if ($this->check_modify_date) {
       $this->updated_after = date('Ymd', strtotime('-10 days'));
       $this->url_pattern .= '&updated_after=' . $this->updated_after;
-      echo "Check modify date ON\n";
-    }
-    else {
-      echo "Check modify date OFF\n";
     }
     $this->log_detail = variable_get('ecolex_legislation_log_detail', FALSE);
-    if ($this->log_detail) {
-      echo "Log detail ON\n";
-    }
-    $this->computeCount();
   }
 
   public function __toString() {
@@ -385,7 +376,6 @@ class EcolexLegislationMigrateSource extends MigrateSource {
         $this->totalCount = $json->count;
       }
     }
-    echo "Total: {$this->totalCount}\n";
     return $this->totalCount;
   }
 
@@ -401,6 +391,14 @@ class EcolexLegislationMigrateSource extends MigrateSource {
     $this->currentPage = 0;
     $this->currentCount = 0;
     $this->fetched_rows = 0;
+    $this->computeCount();
+    ecolex_migration_log(
+      sprintf("Check using modification date: %s", $this->check_modify_date ? 'YES' : 'NO'),
+      MigrationBase::MESSAGE_INFORMATIONAL
+    );
+    if ($this->log_detail) {
+      ecolex_migration_log("Detailed logging enabled", MigrationBase::MESSAGE_WARNING);
+    }
   }
 
   public function getDatesOfModification($sourceid1) {
