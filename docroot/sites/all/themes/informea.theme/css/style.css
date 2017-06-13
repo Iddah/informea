@@ -3183,7 +3183,7 @@ body.page-search-bilateral-treaties .view-empty {
   list-style-type: none;
   padding-left: 0;
 }
-.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul li {
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul li:not(.first) {
   margin-top: 5px;
 }
 
