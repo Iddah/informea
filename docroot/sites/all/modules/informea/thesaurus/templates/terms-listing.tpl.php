@@ -17,6 +17,11 @@
             ?>
             <li>
               <a href="<?php print thesaurus_url_term($term) ;?>"><?php print $term->name; ?></a>
+              <span class="hidden synonyms">
+                <?php
+                  print render(field_view_field('taxonomy_term', $term, 'field_term_synonyms', ['label' => 'hidden']));
+                ?>
+              </span>
             </li>
             <?php
           endforeach;
