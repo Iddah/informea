@@ -3227,8 +3227,7 @@ span.ecolex-logo {
 
 .navbar-alternate {
   color: #fff;
-  min-height: 460px;
-  min-height: 50vh;
+  min-height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3251,9 +3250,6 @@ span.ecolex-logo {
   padding-bottom: 50px;
   padding-bottom: 24px;
   text-align: center;
-}
-.navbar-alternate + .hero-unit {
-  max-height: calc(50vh);
 }
 [dir=ltr] .navbar-alternate .navbar-header, [dir=ltr] .navbar-alternate .navbar-collapse, [dir=ltr] .navbar-alternate .logo.pull-left {
   float: none !important;
@@ -3291,7 +3287,6 @@ span.ecolex-logo {
 }
 [dir] .navbar-alternate .navbar-collapse {
   margin-top: 0px;
-  margin-bottom: 26px;
 }
 .navbar-alternate .navbar-collapse > .nav > li {
   font-size: 20px;
