@@ -3228,6 +3228,8 @@ span.ecolex-logo {
 .navbar-alternate {
   color: #fff;
   min-height: 400px;
+  height: 50.22321429vh;
+  max-height: 450px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
