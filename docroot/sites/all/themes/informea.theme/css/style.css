@@ -3643,6 +3643,7 @@ body.front .broadcast .btn {
 }
 .search-divider {
   position: relative;
+  font-weight: 200;
 }
 [dir] .search-divider {
   margin: .5em 0;
