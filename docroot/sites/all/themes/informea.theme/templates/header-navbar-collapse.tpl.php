@@ -1,6 +1,6 @@
 <nav class="navbar-collapse collapse navbar-left" role="navigation">
   <ul class="nav navbar-nav">
-    <li><?php print l(t('All documents'), 'search', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
+    <li><?php print l(t('Browse'), 'search', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
     <li class="dropdown dropdown-full-width">
       <?php print l(t('Treaties') . ' <span class="caret"></span>', 'treaties', array('attributes' => array('class' => array('dropdown-toggle'), 'id' => 'treaties-menu-link'), 'absolute' => TRUE, 'html' => TRUE)); ?>
       <ul class="dropdown-menu row" role="menu">
