@@ -3227,22 +3227,6 @@ span.ecolex-logo {
 
 .navbar-alternate {
   color: #fff;
-  min-height: 400px;
-  height: 50.22321429vh;
-  max-height: 450px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   font-size: 16px;
 }
 [dir] .navbar-alternate {
@@ -3250,7 +3234,7 @@ span.ecolex-logo {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 50px;
-  padding-bottom: 24px;
+  padding-bottom: 26px;
   text-align: center;
 }
 [dir=ltr] .navbar-alternate .navbar-header, [dir=ltr] .navbar-alternate .navbar-collapse, [dir=ltr] .navbar-alternate .logo.pull-left {
@@ -3332,6 +3316,7 @@ span.ecolex-logo {
 .navbar-alternate .navbar-collapse > .nav > li > a:hover,
 .navbar-alternate .navbar-collapse > .nav > li > a:focus {
   color: #fff;
+  color: #fc3;
   outline: none;
 }
 [dir] .navbar-alternate .navbar-collapse > .nav > li:hover > a, [dir] .navbar-alternate .navbar-collapse > .nav > li:focus > a, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:hover, [dir] .navbar-alternate .navbar-collapse > .nav > li > a:focus {
@@ -3545,6 +3530,8 @@ body.front .secondary-nav .language-switcher-locale-url {
 body.front .secondary-nav .region-above-nav li > a {
   font-weight: 200;
   font-size: 14px;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 [dir] body.front .secondary-nav .region-above-nav li > a:hover, [dir] body.front .secondary-nav .region-above-nav li > a:active, [dir] body.front .secondary-nav .region-above-nav li > a:focus {
   background-color: #3C3F44;
@@ -3653,4 +3640,36 @@ body.front .broadcast .btn {
 }
 [dir] body.front .footer {
   margin-top: 0;
+}
+.search-divider {
+  position: relative;
+}
+[dir] .search-divider {
+  margin: .5em 0;
+}
+.search-divider:before {
+  content: '';
+  display: inline-block;
+  width: 90%;
+  top: 50%;
+  position: absolute;
+}
+[dir] .search-divider:before {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+[dir=ltr] .search-divider:before {
+  left: 5%;
+  right: 5%;
+}
+[dir=rtl] .search-divider:before {
+  right: 5%;
+  left: 5%;
+}
+.search-divider > div {
+  display: inline-block;
+  position: relative;
+}
+[dir] .search-divider > div {
+  background-color: #0099d5;
+  padding: .2em .5em;
 }

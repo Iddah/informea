@@ -20,9 +20,14 @@
   <div class="container">
     <?php
       if(drupal_is_front_page()) {
-        include 'header-navbar-collapse.tpl.php';
         include 'header-brand.tpl.php';
         include 'header-content.tpl.php';
+        ?>
+        <div class="search-divider">
+          <div><?php print t('or browse by category') ?></div>
+        </div>
+        <?php
+        include 'header-navbar-collapse.tpl.php';
       }
       else {
         include 'header-brand.tpl.php';

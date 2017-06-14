@@ -1,5 +1,6 @@
 <nav class="navbar-collapse collapse navbar-left" role="navigation">
   <ul class="nav navbar-nav">
+    <li><?php print l(t('All documents'), 'search', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
     <li class="dropdown dropdown-full-width">
       <?php print l(t('Treaties') . ' <span class="caret"></span>', 'treaties', array('attributes' => array('class' => array('dropdown-toggle'), 'id' => 'treaties-menu-link'), 'absolute' => TRUE, 'html' => TRUE)); ?>
       <ul class="dropdown-menu row" role="menu">
@@ -102,6 +103,7 @@
     <li><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
     <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('id' => 'glossary-menu-link'))); ?></li>
     <li><?php print l(t('Documents'), 'documents', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
+    <li><?php print l(t('Goals'), 'goals', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
     <li><?php print l(t('Learning'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'learning-menu-link'))); ?></li>
   </ul><!-- .nav .navbar-nav -->
   </nav><!-- .navbar-collapse .collapse -->

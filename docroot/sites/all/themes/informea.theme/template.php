@@ -484,12 +484,12 @@ function informea_theme_informea_search_form_wrapper($variables) {
     $output .= t('<span>Search</span> ');
   }
   $output .= '</button>';
-  // @todo: replace
-  if(drupal_is_front_page()) {
-    $output .= '<a class="btn btn-default disabled" href="#">';
-    $output .= t('<span>Browse</span>');
-    $output .= '</a>';
-  }
+  // // @todo: replace
+  // if(drupal_is_front_page()) {
+  //   $output .= '<a class="btn btn-default disabled" href="#">';
+  //   $output .= t('<span>Browse</span>');
+  //   $output .= '</a>';
+  // }
   $output .= '</div>';
   $output .= '</div>';
   return $output;

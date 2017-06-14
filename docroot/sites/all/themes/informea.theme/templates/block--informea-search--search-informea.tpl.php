@@ -54,10 +54,5 @@
   <?php print render($title_suffix); ?>
 
   <?php print $content ?>
-  <?php if(drupal_is_front_page()): ?>
-    <div class="search-examples">
-      e.g. Search for 'alien species' to query all MEAs and related documents
-    </div>
-  <?php endif ?>
 
 </section> <!-- /.block -->
