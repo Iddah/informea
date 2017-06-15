@@ -150,6 +150,14 @@ function country_deliverable_count_treaty_action_plans($id_treaty) {
   return -1;
 }
 
+function country_deliverable_count_treaty_documents($id_treaty) {
+  $q = db_select('field_data_field_treaty', 't');
+  $q->fields('t');
+  $q->condition('bundle', 'document');
+  $q->condition('field_treaty_target_id', $id_treaty);
+  return $q->execute()->rowCount();
+}
+
 function country_deliverable_national_reports_group_by_country($id_treaty) {
   $query = db_select('field_data_field_treaty', 'a')
     ->fields('a', array('entity_id'))->fields('b', array('field_country_target_id'));

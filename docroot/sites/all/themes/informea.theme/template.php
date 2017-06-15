@@ -197,6 +197,14 @@ function informea_theme_preprocess_page(&$variables) {
   if (!empty($breadcrumbs)) {
     informea_theme_set_page_breadcrumb($breadcrumbs);
   }
+
+  $view = views_get_page_view();
+  if (!empty($view) && $view->name == 'documents' && $view->current_display == 'page_1') {
+    $node = node_load(arg(1));
+    $variables['node'] = $node;
+    $variables['theme_hook_suggestions'][] = 'page__node__treaty';
+    drupal_set_title($node->title);
+  }
 }
 
 function informea_theme_theme() {
@@ -657,5 +665,20 @@ function informea_theme_views_mini_pager($vars) {
       'title' => NULL,
       'type' => 'ul'
     ));
+  }
+}
+
+function informea_theme_preprocess_field(&$variables, $hook) {
+  if ($variables['element']['#field_name'] == 'field_term_related_uri') {
+    foreach ($variables['items'] as $key => &$item) {
+      $related_term = thesaurus_term_load_by_uri($item['#element']['url'], 'thesaurus_informea');
+      if (!empty($related_term)) {
+        $name_field = field_get_items('taxonomy_term', $related_term, 'name_field');
+        if (!empty($name_field[0]['value'])) {
+          // Set the title of the link as the term name instead of displaying the full url
+          $item['#element']['title'] = $name_field[0]['value'];
+        }
+      }
+    }
   }
 }

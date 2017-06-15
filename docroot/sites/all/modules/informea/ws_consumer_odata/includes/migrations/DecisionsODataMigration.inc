@@ -201,6 +201,11 @@ class DecisionsODataMigration extends AbstractODataMigration {
         }
       }
     }
+    else {
+      ws_consumer_odata_log('Skipping ' . $this->config->odata_entity . ' with source id=' . $row->id .' because is missing meeting', MigrationBase::MESSAGE_ERROR);
+      return FALSE;
+    }
+
     return $this->validateRow($row);
   }
 
