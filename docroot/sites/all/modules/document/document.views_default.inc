@@ -168,6 +168,94 @@ function document_views_default_views() {
 
   /* Display: Single MEA's documents */
   $handler = $view->new_display('page', 'Single MEA\'s documents', 'page_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Content: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'medium',
+    'image_link' => '',
+  );
+  /* Field: Indexed Content: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
+  /* Field: Indexed Content: The main body text */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Body';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
+  /* Field: Indexed Content: Attached files */
+  $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
+  $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
+  $handler->display->display_options['fields']['field_files']['label'] = '';
+  $handler->display->display_options['fields']['field_files']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_files']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_files']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_files']['type'] = 'external_url';
+  $handler->display->display_options['fields']['field_files']['delta_offset'] = '0';
+  /* Field: Indexed Content: Document type */
+  $handler->display->display_options['fields']['field_document_type']['id'] = 'field_document_type';
+  $handler->display->display_options['fields']['field_document_type']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['field_document_type']['field'] = 'field_document_type';
+  $handler->display->display_options['fields']['field_document_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_document_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_document_type']['alter']['text'] = '<dt>Category:&nbsp;&nbsp;</dt><dl>[field_document_type]</dl>';
+  $handler->display->display_options['fields']['field_document_type']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_document_type']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_document_type']['bypass_access'] = 0;
+  /* Field: Indexed Content: Treaty */
+  $handler->display->display_options['fields']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['fields']['field_treaty']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['fields']['field_treaty']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_treaty']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_treaty']['alter']['text'] = '<dt>Instrument:&nbsp;&nbsp;</dt><dl>[field_treaty]</dl>';
+  $handler->display->display_options['fields']['field_treaty']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
+  /* Field: Indexed Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['alter']['text'] = '<dt>Country:&nbsp;&nbsp;</dt><dl>[field_country]</dl>';
+  $handler->display->display_options['fields']['field_country']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title]
+[body]
+<dl class="dl-horizontal">
+[field_document_type]
+[field_country]
+</dl>
+[field_files]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Treaty */
   $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
@@ -219,6 +307,13 @@ function document_views_default_views() {
     t('Search'),
     t('Page'),
     t('Single MEA\'s documents'),
+    t('[title]
+[body]
+<dl class="dl-horizontal">
+[field_document_type]
+[field_country]
+</dl>
+[field_files]'),
     t('All'),
   );
   $export['documents'] = $view;
