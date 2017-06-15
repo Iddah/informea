@@ -63,7 +63,15 @@ function thesaurus_export_to_xls($source, $destination) {
         $altLabel .= $alt;
       }
     }
-    $def = $term->definition['en'];
+    $definition1 = '';
+    $definition2 = '';
+    $definition3 = '';
+    if (!empty($term->definition['en'])) {
+      $def = $term->definition['en'];
+      $definition1 = $def[0];
+      $definition2 = count($def) > 1 ? $def[1] : '';
+      $definition3 = count($def) > 2 ? $def[2] : '';
+    }
     $related = '';
     foreach ($term->related as $rel) {
       $related .= $terms[$rel]->prefLabel['en'] . ', ';
@@ -72,9 +80,9 @@ function thesaurus_export_to_xls($source, $destination) {
       $uri,
       $term->prefLabel['en'],
       $altLabel,
-      $def[0],
-      count($def) > 1 ? $def[1] : '',
-      count($def) > 2 ? $def[2] : '',
+      $definition1,
+      $definition2,
+      $definition3,
       $related,
       isset($term->broader) ? $terms[$term->broader]->prefLabel['en'] : '',
     );

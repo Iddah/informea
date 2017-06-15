@@ -3176,6 +3176,18 @@ body.page-search-bilateral-treaties .view-empty {
   display: inline-block;
   float: none;
 }
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions .pane-title,
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-term-related-uri .pane-title {
+  font-weight: bold;
+}
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul li:not(.first) {
+  margin-top: 5px;
+}
+
 .node_view_panel .panels-flexible-row {
   padding-top: 22px;
   border-top: 1px solid #dddddd;

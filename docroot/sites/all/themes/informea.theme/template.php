@@ -667,3 +667,18 @@ function informea_theme_views_mini_pager($vars) {
     ));
   }
 }
+
+function informea_theme_preprocess_field(&$variables, $hook) {
+  if ($variables['element']['#field_name'] == 'field_term_related_uri') {
+    foreach ($variables['items'] as $key => &$item) {
+      $related_term = thesaurus_term_load_by_uri($item['#element']['url'], 'thesaurus_informea');
+      if (!empty($related_term)) {
+        $name_field = field_get_items('taxonomy_term', $related_term, 'name_field');
+        if (!empty($name_field[0]['value'])) {
+          // Set the title of the link as the term name instead of displaying the full url
+          $item['#element']['title'] = $name_field[0]['value'];
+        }
+      }
+    }
+  }
+}
