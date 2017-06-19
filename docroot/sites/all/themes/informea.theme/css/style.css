@@ -1889,6 +1889,9 @@ input.facetapi-checkbox { margin-right: 5px; }
   margin-top: 0;
 }
 
+
+#edit-search-api-views-fulltext-wrapper { display: none; }
+
 /*
 body[class*='page-search'] .block-facetapi a {
   color: #444;
@@ -2162,7 +2165,7 @@ strong.excerpt {
 }
 
 .results-for {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 /* Decision page */
