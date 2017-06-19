@@ -105,9 +105,11 @@ class VocBenchRDFSource extends DefaultSource {
         // skos:prefLabel
         if ($prefLabels = $resource->allResources('skosxl:prefLabel')) {
           foreach($prefLabels as $prefLabel) {
-            /** @var /EasyRdf_Literal $lit */
-            $lit = $prefLabel->get('skosxl:literalForm');
-            $term->prefLabel[$lit->getLang()] = $lit->getValue();
+            $status = $prefLabel->get('vb:hasStatus');
+            if ($status->getValue() == 'Published') {
+              $lit = $prefLabel->get('skosxl:literalForm');
+              $term->prefLabel[$lit->getLang()] = $lit->getValue();
+            }
           }
         }
 
@@ -119,13 +121,16 @@ class VocBenchRDFSource extends DefaultSource {
         if ($altLabels = $resource->allResources('skosxl:altLabel')) {
           /** @var \EasyRdf_Resource $altLabel */
           foreach($altLabels as $altLabel) {
-            /** @var /EasyRdf_Literal $lit */
-            if ($lit = $altLabel->get('skosxl:literalForm')) {
-              $term->altLabel[$lit->getLang()][] = $lit->getValue();
-            }
-            else {
-              watchdog('thesaurus', 'Found altLabel without skos:literalForm: !uri',
-                array('!uri' => $altLabel->getUri()), WATCHDOG_ERROR);
+            $status = $altLabel->get('vb:hasStatus');
+            if ($status->getValue() == 'Published') {
+              /** @var /EasyRdf_Literal $lit */
+              if ($lit = $altLabel->get('skosxl:literalForm')) {
+                $term->altLabel[$lit->getLang()][] = $lit->getValue();
+              }
+              else {
+                watchdog('thesaurus', 'Found altLabel without skos:literalForm: !uri',
+                  array('!uri' => $altLabel->getUri()), WATCHDOG_ERROR);
+              }
             }
           }
         }
