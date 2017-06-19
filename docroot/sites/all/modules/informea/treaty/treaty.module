@@ -121,6 +121,7 @@ function _treaty_url_get_custom_node_view_types() {
     'parties',
     'national-reports',
     'action-plans',
+    'documents',
   );
 }
 
@@ -649,6 +650,7 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
     $nr_count = country_deliverable_count_treaty_national_reports($node->nid);
     $ap_count = country_deliverable_count_treaty_action_plans($node->nid);
     $p_count = country_data_treaty_count_membership($node->nid);
+    $doc_count = country_deliverable_count_treaty_documents($node->nid);
     $menu_items = array(
       '' => array(
         'title' => t('Summary')
@@ -662,20 +664,29 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
       ),
       'decisions' => array(
         'title' => t('Decisions'),
-        'count' => $d_count,
+        'count' => $d_count > 0 ? $d_count : t('n/a') ,
+        'disabled' => $d_count <= 0,
       ),
       'parties' => array(
         'title' => t('Parties'),
-        'count' => $p_count,
+        'count' => $p_count > 0 ? $p_count : t('n/a'),
+        'disabled' => $p_count <= 0,
       ),
       'national-reports' => array(
         'title' => t('National reports'),
-        'count' => $nr_count,
+        'count' => $nr_count > 0 ? $nr_count : t('n/a'),
+        'disabled' => $nr_count <= 0,
       ),
       'action-plans' => array(
         'title' => t('National plans'),
-        'count' => $ap_count,
-      )
+        'count' => $ap_count > 0 ? $ap_count : t('n/a'),
+        'disabled' => $ap_count <= 0,
+      ),
+      'documents' => array(
+        'title' => t('Documents'),
+        'count' => $doc_count > 0 ? $doc_count : t('n/a'),
+        'disabled' => $doc_count <= 0,
+      ),
     );
 
     $text = treaty_get_treaty_text($node->nid);
@@ -685,28 +696,6 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
 
     if (treaty_count_child_protocols($node->nid) == 0) {
       unset($menu_items['protocols']);
-    }
-    if ($d_count == -1) {
-      $menu_items['decisions']['count'] = t('n/a');
-    }
-    if ($nr_count == -1) {
-      $menu_items['national-reports']['count'] = t('n/a');
-    }
-    if ($ap_count == -1) {
-      $menu_items['action-plans']['count'] = t('n/a');
-    }
-    if ($p_count <= 0) {
-      $menu_items['parties']['count'] = t('n/a');
-      $menu_items['parties']['disabled'] = TRUE;
-    }
-    if ($d_count <= 0) {
-      $menu_items['decisions']['disabled'] = TRUE;
-    }
-    if ($nr_count <= 0) {
-      $menu_items['national-reports']['disabled'] = TRUE;
-    }
-    if ($ap_count <= 0) {
-      $menu_items['action-plans']['disabled'] = TRUE;
     }
 
     if ($course_url = $wrapper->field_online_course_link->value()) {
@@ -1202,6 +1191,8 @@ function treaty_node_access($node, $op, $account) {
 * This hook declares what blocks are provided by the module.
 */
 function treaty_block_info() {
+  $blocks = array();
+
   $blocks['treaty_global'] = array(
     'info' => t('Global treaties and conventions'),
     'status' => TRUE,
@@ -1210,6 +1201,14 @@ function treaty_block_info() {
     'pages' => 'treaties'
   );
 
+  $blocks['treaty_documents_local_tasks'] = array(
+    'info' => t('Treaty documents local tasks'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'node/*/documents*',
+    'weight' => '-100',
+  );
   return $blocks;
 }
 
@@ -1219,11 +1218,24 @@ function treaty_block_info() {
  * This hook generates the contents of the blocks themselves.
  */
 function treaty_block_view($delta = '') {
+  $block = [];
+
   switch ($delta) {
     case 'treaty_global':
       $block['subject'] = t('Global treaties');
       $block['content'] = treaty_block_contents($delta);
+      break;
 
+    case 'treaty_documents_local_tasks':
+      if (is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        if (!empty($node->type) && $node->type == 'treaty') {
+          $node->context = 'documents';
+          $menu = [];
+          treaty_treaty_contextual_menu_alter($menu, $node);
+          $block['content'] = $menu;
+        }
+      }
       break;
   }
 

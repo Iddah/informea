@@ -291,7 +291,7 @@ function thesaurus_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'textformatter_list',
+    'formatter' => 'text_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
@@ -474,7 +474,7 @@ function thesaurus_default_page_manager_handlers() {
   $display->content['new-27524512-75b9-453c-b279-6a96a3a97c21'] = $pane;
   $display->panels['other_information'][2] = 'new-27524512-75b9-453c-b279-6a96a3a97c21';
   $pane = new stdClass();
-  $pane->pid = 'new-21b1d752-b367-46c3-acb5-fb6d9c8e5692';
+  $pane->pid = 'new-0ee70e04-20a4-4c54-a228-84442a6f088f';
   $pane->panel = 'other_information';
   $pane->type = 'entity_field';
   $pane->subtype = 'taxonomy_term:field_term_related_uri';
@@ -500,9 +500,9 @@ function thesaurus_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 3;
   $pane->locks = array();
-  $pane->uuid = '21b1d752-b367-46c3-acb5-fb6d9c8e5692';
-  $display->content['new-21b1d752-b367-46c3-acb5-fb6d9c8e5692'] = $pane;
-  $display->panels['other_information'][3] = 'new-21b1d752-b367-46c3-acb5-fb6d9c8e5692';
+  $pane->uuid = '0ee70e04-20a4-4c54-a228-84442a6f088f';
+  $display->content['new-0ee70e04-20a4-4c54-a228-84442a6f088f'] = $pane;
+  $display->panels['other_information'][3] = 'new-0ee70e04-20a4-4c54-a228-84442a6f088f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -788,7 +788,7 @@ Legislation',
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'textformatter_list',
+    'formatter' => 'text_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
@@ -1198,7 +1198,7 @@ Court decisions',
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'textformatter_list',
+    'formatter' => 'text_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
@@ -1655,7 +1655,7 @@ Legislation',
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'textformatter_list',
+    'formatter' => 'text_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
@@ -2098,7 +2098,7 @@ Publications',
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'hidden',
-    'formatter' => 'textformatter_list',
+    'formatter' => 'text_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,

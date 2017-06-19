@@ -197,6 +197,14 @@ function informea_theme_preprocess_page(&$variables) {
   if (!empty($breadcrumbs)) {
     informea_theme_set_page_breadcrumb($breadcrumbs);
   }
+
+  $view = views_get_page_view();
+  if (!empty($view) && $view->name == 'documents' && $view->current_display == 'page_1') {
+    $node = node_load(arg(1));
+    $variables['node'] = $node;
+    $variables['theme_hook_suggestions'][] = 'page__node__treaty';
+    drupal_set_title($node->title);
+  }
 }
 
 function informea_theme_theme() {
