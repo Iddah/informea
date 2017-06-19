@@ -30,3 +30,12 @@ function treaty_update_7004() {
   module_enable(array('views_data_export'));
   features_revert(array('treaty' => ['views_view']));
 }
+
+/**
+ * Configure treaties/%node/documents page
+ */
+function treaty_update_7005() {
+  features_revert_module('document');
+  features_revert_module('treaty');
+  features_revert_module('informea_search');
+}

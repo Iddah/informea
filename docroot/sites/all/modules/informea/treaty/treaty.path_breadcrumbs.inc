@@ -179,6 +179,63 @@ function treaty_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'treaties_documents';
+  $path_breadcrumb->name = 'Treaties Documents';
+  $path_breadcrumb->path = 'node/%node/documents';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Treaties',
+      1 => '%node:title',
+      2 => 'Documents',
+    ),
+    'paths' => array(
+      0 => 'treaties',
+      1 => '%node:url',
+      2 => '%node:url/documents',
+    ),
+    'home' => 1,
+    'translatable' => 1,
+    'arguments' => array(
+      'node' => array(
+        'position' => 1,
+        'argument' => 'entity_id:node',
+        'settings' => array(
+          'identifier' => 'Content: ID',
+        ),
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'treaty' => 'treaty',
+            ),
+          ),
+          'context' => 'node',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'entity_field_value:node:treaty:field_parent_treaty',
+          'settings' => array(
+            'field_parent_treaty' => array(
+              'und' => array(),
+            ),
+            'field_parent_treaty_target_id' => array(),
+          ),
+          'context' => 'node',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['treaties_documents'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'treaties_nat_report';
   $path_breadcrumb->name = 'Treaties Nat Reports';
   $path_breadcrumb->path = 'node/%node/national-reports';
@@ -461,6 +518,67 @@ function treaty_path_breadcrumbs_settings_info() {
   );
   $path_breadcrumb->weight = 0;
   $export['treaties_protocols_decisions'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'treaties_protocols_documents';
+  $path_breadcrumb->name = 'Treaties Protocols Documents';
+  $path_breadcrumb->path = 'node/%node/documents';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Treaties',
+      1 => '%node:field-parent-treaty:title',
+      2 => 'Protocols',
+      3 => '%node:title',
+      4 => 'Documents',
+    ),
+    'paths' => array(
+      0 => 'treaties',
+      1 => '%node:field-parent-treaty:url',
+      2 => '%node:field-parent-treaty:url/protocols',
+      3 => '%node:url',
+      4 => '%node:url/documents',
+    ),
+    'home' => 1,
+    'translatable' => 1,
+    'arguments' => array(
+      'node' => array(
+        'position' => 1,
+        'argument' => 'entity_id:node',
+        'settings' => array(
+          'identifier' => 'Content: ID',
+        ),
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'treaty' => 'treaty',
+            ),
+          ),
+          'context' => 'node',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'entity_field_value:node:treaty:field_parent_treaty',
+          'settings' => array(
+            'field_parent_treaty' => array(
+              'und' => array(),
+            ),
+            'field_parent_treaty_target_id' => array(),
+          ),
+          'context' => 'node',
+          'not' => TRUE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['treaties_protocols_documents'] = $path_breadcrumb;
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;

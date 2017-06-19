@@ -3180,12 +3180,8 @@ body.page-search-bilateral-treaties .view-empty {
 .panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-term-related-uri .pane-title {
   font-weight: bold;
 }
-.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions ul li:not(.first) {
-  margin-top: 5px;
+.panels-flexible-thesaurus_term_page .pane-taxonomy-term-field-definitions .field-item {
+  margin-bottom: 10px;
 }
 
 .node_view_panel .panels-flexible-row {
@@ -3235,4 +3231,11 @@ span.ecolex-logo {
   width: 90px;
   background: url(../img/ecolex-logo.png) no-repeat top left;
   background-size: 80px 60px;
+}
+.region-sidebar-first #block-treaty-treaty-documents-local-tasks {
+  margin: -19px -19px 0 -19px;
+}
+.region-sidebar-first #block-treaty-treaty-documents-local-tasks .nav-pills.nav-stacked {
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
