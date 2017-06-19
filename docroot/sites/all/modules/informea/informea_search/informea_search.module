@@ -443,7 +443,16 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
       case 'views-exposed-form-informea-search-legislation-page':
       case 'views-exposed-form-informea-search-court-decision-page':
       case 'views-exposed-form-informea-search-publications-page':
-        // hide($form);
+        if (isset($_GET['f'])) {
+          foreach ($_GET['f'] as $key => $val) {
+            $form["f[{$key}]"] = [
+              '#type' => 'hidden',
+              '#weight' => '50',
+              '#value' => $val,
+            ];
+          }
+        }
+        break;
     }
   }
 }
