@@ -31,6 +31,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Sort';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort results by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending / Older first';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending / Newest first';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -108,7 +112,7 @@ function informea_search_views_default_views() {
 [search_api_excerpt]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Files */
+  /* Field: Indexed Content: Attached files */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -124,6 +128,14 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Date of text */
+  $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_sorting_date']['expose']['label'] = 'Date of text';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -167,11 +179,11 @@ function informea_search_views_default_views() {
     t('Master'),
     t('Search InforMEA'),
     t('more'),
-    t('Apply'),
+    t('Sort'),
     t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Sort results by'),
+    t('Ascending / Older first'),
+    t('Descending / Newest first'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -187,7 +199,9 @@ function informea_search_views_default_views() {
     t('<div class="meta search-index">
 [search_api_excerpt]
 </div>'),
-    t('Files'),
+    t('Attached files'),
+    t('Relevance'),
+    t('Date of text'),
     t('Fulltext search'),
     t('Multilateral treaties'),
   );
@@ -214,6 +228,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Sort';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort results by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending / Older first';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending / Newest first';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -258,7 +276,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
   $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Court jurisdiction */
+  /* Field: Indexed Content: Jurisdiction */
   $handler->display->display_options['fields']['field_jurisdiction']['id'] = 'field_jurisdiction';
   $handler->display->display_options['fields']['field_jurisdiction']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_jurisdiction']['field'] = 'field_jurisdiction';
@@ -270,7 +288,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_jurisdiction']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_jurisdiction']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_jurisdiction']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of document */
+  /* Field: Indexed Content: Type of text */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -329,6 +347,15 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Date of text */
+  $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_sorting_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_sorting_date']['expose']['label'] = 'Date of text';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -373,11 +400,11 @@ function informea_search_views_default_views() {
     t('Master'),
     t('Search InforMEA'),
     t('more'),
-    t('Apply'),
+    t('Sort'),
     t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Sort results by'),
+    t('Ascending / Older first'),
+    t('Descending / Newest first'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -401,6 +428,8 @@ function informea_search_views_default_views() {
 [field_ecolex_url]
 </div>
 '),
+    t('Relevance'),
+    t('Date of text'),
     t('Fulltext search'),
     t('Page'),
   );
@@ -427,6 +456,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Sort';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort results by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending / Older first';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending / Newest first';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -489,7 +522,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of document */
+  /* Field: Indexed Content: Type of text */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -516,6 +549,15 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Date of text */
+  $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_court_decisions';
+  $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_sorting_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_sorting_date']['expose']['label'] = 'Date of text';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_court_decisions';
@@ -546,11 +588,11 @@ function informea_search_views_default_views() {
     t('Master'),
     t('Search InforMEA'),
     t('more'),
-    t('Apply'),
+    t('Sort'),
     t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Sort results by'),
+    t('Ascending / Older first'),
+    t('Descending / Newest first'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -567,6 +609,8 @@ function informea_search_views_default_views() {
 [field_country]
 [field_type_of_text]
 </div>'),
+    t('Relevance'),
+    t('Date of text'),
     t('Fulltext search'),
     t('Page'),
   );
@@ -593,6 +637,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Sort';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort results by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending / Older first';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending / Newest first';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -648,7 +696,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of document */
+  /* Field: Indexed Content: Type of text */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -715,6 +763,15 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Date of text */
+  $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_legislations';
+  $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_sorting_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_sorting_date']['expose']['label'] = 'Date of text';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_legislations';
@@ -745,11 +802,11 @@ function informea_search_views_default_views() {
     t('Master'),
     t('Search InforMEA'),
     t('more'),
-    t('Apply'),
+    t('Sort'),
     t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Sort results by'),
+    t('Ascending / Older first'),
+    t('Descending / Newest first'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -770,6 +827,8 @@ function informea_search_views_default_views() {
 [field_faolex_url]
 [field_ecolex_url]
 </div>'),
+    t('Relevance'),
+    t('Date of text'),
     t('Fulltext search'),
     t('Page'),
   );
@@ -796,6 +855,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Sort';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort results by';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending / Older first';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending / Newest first';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -938,6 +1001,15 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Date of text */
+  $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
+  $handler->display->display_options['sorts']['field_sorting_date']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_sorting_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_sorting_date']['expose']['label'] = 'Date of text';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_publications';
@@ -968,11 +1040,11 @@ function informea_search_views_default_views() {
     t('Master'),
     t('Search InforMEA'),
     t('more'),
-    t('Apply'),
+    t('Sort'),
     t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Sort results by'),
+    t('Ascending / Older first'),
+    t('Descending / Newest first'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -997,6 +1069,8 @@ function informea_search_views_default_views() {
 [field_publication_place]
 [field_ecolex_url]
 </div>'),
+    t('Relevance'),
+    t('Date of text'),
     t('Fulltext search'),
     t('Page'),
   );
