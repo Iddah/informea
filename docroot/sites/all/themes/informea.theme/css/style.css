@@ -419,7 +419,7 @@ h1 {
 /* Navbar nav links */
 
 .navbar-nav > li > a {
-  padding: 24px 10px;
+  padding: 24px 6px;
   text-transform: uppercase;
 }
 
@@ -569,7 +569,7 @@ h1 {
 }
 
 @media (min-width: 1199px) {
-  #search-form { width: 420px; }
+  #search-form { width: 400px; }
 }
 
 @media (max-width: 1199px) {
