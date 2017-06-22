@@ -16,3 +16,22 @@ function country_data_theme() {
 		),
 	);
 }
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function country_data_views_pre_render(&$view) {
+  if ($view->name == 'ws_member_parties' && $view->current_display == 'services_1') {
+    foreach($view->result as $row) {
+      if(!empty($row->field_field_party_date_1[0])) {
+        $d = strtotime($row->field_field_party_date_1[0]['raw']['value']);
+        $row->field_field_party_date_1[0]['rendered']['#markup'] = date('Ymd', $d);
+      }
+      if(!empty($row->field_field_party_date_2)) {
+        $d = strtotime($row->field_field_party_date_2[0]['raw']['value']);
+        $row->field_field_party_date_2[0]['rendered']['#markup'] = date('Ymd', $d);
+      }
+    }
+  }
+
+}
