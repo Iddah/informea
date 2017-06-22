@@ -96,6 +96,12 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_party_status_original']['table'] = 'field_data_field_party_status_original';
   $handler->display->display_options['fields']['field_party_status_original']['field'] = 'field_party_status_original';
   $handler->display->display_options['fields']['field_party_status_original']['label'] = 'original_status';
+  /* Field: Content: Official name */
+  $handler->display->display_options['fields']['field_official_name']['id'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['table'] = 'field_data_field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['field'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['fields']['field_official_name']['label'] = 'treaty_official_name';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -207,6 +213,7 @@ function country_data_views_default_views() {
     t('country_iso_3'),
     t('informea_status'),
     t('original_status'),
+    t('treaty_official_name'),
     t('iso2'),
     t('iso3'),
     t('Services'),
