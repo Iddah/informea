@@ -85,6 +85,17 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_country_iso3']['field'] = 'field_country_iso3';
   $handler->display->display_options['fields']['field_country_iso3']['relationship'] = 'field_country_target_id';
   $handler->display->display_options['fields']['field_country_iso3']['label'] = 'country_iso_3';
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_party_status']['id'] = 'field_party_status';
+  $handler->display->display_options['fields']['field_party_status']['table'] = 'field_data_field_party_status';
+  $handler->display->display_options['fields']['field_party_status']['field'] = 'field_party_status';
+  $handler->display->display_options['fields']['field_party_status']['label'] = 'informea_status';
+  $handler->display->display_options['fields']['field_party_status']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Original status */
+  $handler->display->display_options['fields']['field_party_status_original']['id'] = 'field_party_status_original';
+  $handler->display->display_options['fields']['field_party_status_original']['table'] = 'field_data_field_party_status_original';
+  $handler->display->display_options['fields']['field_party_status_original']['field'] = 'field_party_status_original';
+  $handler->display->display_options['fields']['field_party_status_original']['label'] = 'original_status';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -150,6 +161,29 @@ function country_data_views_default_views() {
     10 => 0,
     11 => 0,
   );
+  /* Filter criterion: Content: OData identifier (field_odata_identifier) */
+  $handler->display->display_options['filters']['field_odata_identifier_value']['id'] = 'field_odata_identifier_value';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['table'] = 'field_data_field_odata_identifier';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['field'] = 'field_odata_identifier_value';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_odata_identifier_value']['expose']['operator_id'] = 'field_odata_identifier_value_op';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['expose']['label'] = 'treaty';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['expose']['operator'] = 'field_odata_identifier_value_op';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['expose']['identifier'] = 'treaty';
+  $handler->display->display_options['filters']['field_odata_identifier_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
 
   /* Display: Services */
   $handler = $view->new_display('services', 'Services', 'services_1');
@@ -171,6 +205,8 @@ function country_data_views_default_views() {
     t('[field_party_date_2-value]'),
     t('country_iso_2'),
     t('country_iso_3'),
+    t('informea_status'),
+    t('original_status'),
     t('iso2'),
     t('iso3'),
     t('Services'),
