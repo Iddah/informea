@@ -190,6 +190,29 @@ function country_data_views_default_views() {
     10 => 0,
     11 => 0,
   );
+  /* Filter criterion: Content: Official name (field_official_name) */
+  $handler->display->display_options['filters']['field_official_name_value']['id'] = 'field_official_name_value';
+  $handler->display->display_options['filters']['field_official_name_value']['table'] = 'field_data_field_official_name';
+  $handler->display->display_options['filters']['field_official_name_value']['field'] = 'field_official_name_value';
+  $handler->display->display_options['filters']['field_official_name_value']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['filters']['field_official_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_official_name_value']['expose']['operator_id'] = 'field_official_name_value_op';
+  $handler->display->display_options['filters']['field_official_name_value']['expose']['label'] = 'treaty_official_name';
+  $handler->display->display_options['filters']['field_official_name_value']['expose']['operator'] = 'field_official_name_value_op';
+  $handler->display->display_options['filters']['field_official_name_value']['expose']['identifier'] = 'treaty_official_name';
+  $handler->display->display_options['filters']['field_official_name_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
 
   /* Display: Services */
   $handler = $view->new_display('services', 'Services', 'services_1');
