@@ -1221,6 +1221,36 @@ function ecolex_default_page_manager_handlers() {
   $display->content['new-2680e910-3828-45ca-a867-35e393b669d0'] = $pane;
   $display->panels['text'][5] = 'new-2680e910-3828-45ca-a867-35e393b669d0';
   $pane = new stdClass();
+  $pane->pid = 'new-f5ec9255-5049-464e-b54c-f7c1db788a0b';
+  $pane->panel = 'text';
+  $pane->type = 'entity_field';
+  $pane->subtype = 'node:field_url';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'label' => 'inline',
+    'formatter' => 'link_url',
+    'delta_limit' => 0,
+    'delta_offset' => '0',
+    'delta_reversed' => FALSE,
+    'formatter_settings' => array(),
+    'context' => 'argument_entity_id:node_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 6;
+  $pane->locks = array();
+  $pane->uuid = 'f5ec9255-5049-464e-b54c-f7c1db788a0b';
+  $display->content['new-f5ec9255-5049-464e-b54c-f7c1db788a0b'] = $pane;
+  $display->panels['text'][6] = 'new-f5ec9255-5049-464e-b54c-f7c1db788a0b';
+  $pane = new stdClass();
   $pane->pid = 'new-15ba12cd-60cd-40ee-9bb1-9e064f787e98';
   $pane->panel = 'text_';
   $pane->type = 'entity_field';
