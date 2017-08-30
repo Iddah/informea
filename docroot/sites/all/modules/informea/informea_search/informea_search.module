@@ -160,10 +160,10 @@ function _informea_search_get_treaties_by_data_source($source_tid, $negate_condi
       ->propertyCondition('status', NODE_PUBLISHED);
     foreach ($field_conditions as $condition) {
       $query->fieldCondition(
-        current($condition),
-        next($condition),
-        next($condition),
-        next($condition) ?: '='
+        $condition['field'],
+        $condition['column'],
+        $condition['value'],
+        !empty($condition['operator']) ? $condition['operator'] : '='
       );
     }
     $result = $query->execute();
