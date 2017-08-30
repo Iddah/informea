@@ -105,10 +105,7 @@ function informea_search_block_view($delta = '') {
  */
 function informea_search_search_api_views_query_alter(view &$view, SearchApiViewsQuery &$query) {
   if ($view->name == 'informea_search') {
-    $multilateral_treaties = _informea_search_get_treaties_by_data_source(DATA_SOURCE_ECOLEX, true);
-    if (empty($multilateral_treaties)) {
-      $multilateral_treaties = [-1];
-    }
+    $multilateral_treaties = _informea_search_get_treaties_by_data_source(DATA_SOURCE_ECOLEX, true) ?: [-1];
     $group = $query->set_where_group('OR');
     foreach ($multilateral_treaties as $multilateral_treaty) {
       // @todo: SearchApiViewsQuery does not support operator "IN"?!?!
@@ -129,7 +126,18 @@ function informea_search_search_api_solr_query_alter(array &$call_args, SearchAp
   }
 }
 
-function _informea_search_get_treaties_by_data_source($source_tid, $negate_condition = false) {
+/**
+ * @param $source_tid
+ * @param bool $negate_condition
+ * @param array $field_conditions
+ *  Each condition is an array with the following keys:
+ *   - field
+ *   - column
+ *   - value
+ *   - operator (optional - default is "=")
+ * @return array
+ */
+function _informea_search_get_treaties_by_data_source($source_tid, $negate_condition = false, $field_conditions = []) {
   $query = db_select('node', 'n');
   $query->leftJoin('field_data_field_data_source', 'ds', 'n.nid = ds.entity_id');
   $query->fields('n', ['nid']);
@@ -143,7 +151,26 @@ function _informea_search_get_treaties_by_data_source($source_tid, $negate_condi
   else {
     $query->condition('ds.field_data_source_tid', $source_tid, '=');
   }
-  return $query->execute()->fetchCol();
+  $ret = $query->execute()->fetchCol();
+
+  if (!empty($field_conditions)) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'treaty')
+      ->propertyCondition('status', NODE_PUBLISHED);
+    foreach ($field_conditions as $condition) {
+      $query->fieldCondition(
+        current($condition),
+        next($condition),
+        next($condition),
+        next($condition) ?: '='
+      );
+    }
+    $result = $query->execute();
+    $ret2 = !empty($result['node']) ? $result['node'] : [];
+    $ret = array_intersect($ret, array_keys($ret2));
+  }
+  return $ret;
 }
 
 /**

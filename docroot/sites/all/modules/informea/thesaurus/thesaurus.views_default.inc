@@ -122,7 +122,7 @@ function thesaurus_views_default_views() {
 [field_ecolex_url]
 </div>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -150,6 +150,15 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['filters']['field_data_source']['value'] = array(
     2767 => '2767',
   );
+  /* Filter criterion: Indexed Content: Type of text */
+  $handler->display->display_options['filters']['field_type_of_text']['id'] = 'field_type_of_text';
+  $handler->display->display_options['filters']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['field_type_of_text']['field'] = 'field_type_of_text';
+  $handler->display->display_options['filters']['field_type_of_text']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_type_of_text']['value'] = array(
+    816 => '816',
+  );
+  $handler->display->display_options['filters']['field_type_of_text']['type'] = 'select';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -270,7 +279,7 @@ function thesaurus_views_default_views() {
 [field_type_of_text]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';

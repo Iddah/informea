@@ -392,6 +392,15 @@ function informea_search_views_default_views() {
   $handler->display->display_options['filters']['field_data_source']['value'] = array(
     2767 => '2767',
   );
+  /* Filter criterion: Indexed Content: Type of text */
+  $handler->display->display_options['filters']['field_type_of_text']['id'] = 'field_type_of_text';
+  $handler->display->display_options['filters']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['field_type_of_text']['field'] = 'field_type_of_text';
+  $handler->display->display_options['filters']['field_type_of_text']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_type_of_text']['value'] = array(
+    816 => '816',
+  );
+  $handler->display->display_options['filters']['field_type_of_text']['type'] = 'select';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

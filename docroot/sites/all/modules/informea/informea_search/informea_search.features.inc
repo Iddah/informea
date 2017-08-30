@@ -72,6 +72,7 @@ function informea_search_default_search_api_index() {
         "field_sorting_date" : { "type" : "date" },
         "field_sorting_order" : { "type" : "integer" },
         "field_treaty" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_type_of_text" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "language" : { "type" : "string" },
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
