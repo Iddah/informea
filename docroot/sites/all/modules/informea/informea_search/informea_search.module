@@ -347,36 +347,6 @@ function informea_search_external_search() {
   drupal_goto('search/' . $input);
 }
 
-function _informea_search_get_topic_count($topic) {
-  $current_view = views_get_page_view();
-  $view_name = 'informea_search';
-  $display_name = 'page';
-  switch ($topic) {
-    case 'search-bilateral-treaties':
-      $view_name = 'informea_search_bilateral_treaties';
-      break;
-    case 'search-legislation':
-      $view_name = 'informea_search_legislation';
-      break;
-    case 'search-court-decisions':
-      $view_name = 'informea_search_court_decision';
-      break;
-    case 'search-publications':
-      $view_name = 'informea_search_publications';
-      break;
-  }
-  $view = views_get_view($view_name);
-  if (is_object($view)) {
-    $view->set_display($display_name);
-    $view->set_arguments($current_view->args);
-    $view->get_total_rows = true;
-    $view->pre_execute();
-    $view->execute($display_name);
-    return $view->total_rows;
-  }
-  return 0;
-}
-
 function informea_search_block_switch_topic_view() {
   $url = check_plain(arg(0));
   $fulltext = '';
