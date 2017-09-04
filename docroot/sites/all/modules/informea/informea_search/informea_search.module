@@ -378,13 +378,6 @@ function _informea_search_get_topic_count($topic) {
 }
 
 function informea_search_block_switch_topic_view() {
-  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $include_count = true;
-  }
-  else {
-    $include_count = false;
-  }
-
   $url = check_plain(arg(0));
   $fulltext = '';
   if (!empty($_GET['search_api_views_fulltext'])) {
@@ -405,13 +398,7 @@ function informea_search_block_switch_topic_view() {
   foreach($elements as $link_url => $title) {
     $link_options = array('html' => true);
     $link_options['query'] = array('search_api_views_fulltext' => $fulltext);
-    if ($include_count == true) {
-      $count = _informea_search_get_topic_count($link_url);
-      $link_title = $title . ' <span class="badge">' . $count . '</span>';
-    }
-    else {
-      $link_title = $title;
-    }
+    $link_title = $title;
     $tabs[] = array(
       'data' => l($link_title, $link_url, $link_options),
       'class' => $link_url == $url ? array('active') : array(),
