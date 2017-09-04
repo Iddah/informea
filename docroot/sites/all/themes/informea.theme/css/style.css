@@ -334,16 +334,9 @@ h1 {
 }
 
 .nav-pills.nav-stacked > li.active > a {
-  background-color: transparent;
-  border-right-color: #39c;
-  color: #0080d5;
-}
-
-.nav-pills.nav-stacked > li.active > a > .badge {
-  background-color: #999;
+  background-color: #0099d5;
   color: #fff;
 }
-
 
 /* Navbars */
 /* ------- */
