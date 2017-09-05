@@ -67,7 +67,7 @@ function informea_search_default_search_api_index() {
         "field_meeting" : { "type" : "integer", "entity_type" : "node" },
         "field_official_name" : { "type" : "text", "boost" : "2.0" },
         "field_official_publication" : { "type" : "text" },
-        "field_original_id" : { "type" : "text" },
+        "field_original_id" : { "type" : "string" },
         "field_region" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_sorting_date" : { "type" : "date" },
         "field_sorting_order" : { "type" : "integer" },
