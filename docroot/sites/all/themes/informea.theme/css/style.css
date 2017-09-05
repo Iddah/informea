@@ -334,16 +334,9 @@ h1 {
 }
 
 .nav-pills.nav-stacked > li.active > a {
-  background-color: transparent;
-  border-right-color: #39c;
-  color: #0080d5;
-}
-
-.nav-pills.nav-stacked > li.active > a > .badge {
-  background-color: #999;
+  background-color: #0099d5;
   color: #fff;
 }
-
 
 /* Navbars */
 /* ------- */
@@ -3139,6 +3132,35 @@ iframe.pdfjs {
   visibility: visible!important;
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.view-informea-search .meta-container,
+.view-informea-search-legislation .meta-container,
+.view-informea-search-court-decision .meta-container,
+.view-informea-search-publications .meta-container,
+.view-informea-search-bilateral-treaties .meta-container {
+  color: #8a8a8a;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 90%;
+}
+.view-informea-search .meta-container .meta.content-type,
+.view-informea-search-legislation .meta-container .meta.content-type,
+.view-informea-search-court-decision .meta-container .meta.content-type,
+.view-informea-search-publications .meta-container .meta.content-type,
+.view-informea-search-bilateral-treaties .meta-container .meta.content-type {
+  color: #333;
+  padding: 1px 3px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background: #eee;
+}
+.view-informea-search .meta-container .glyphicon,
+.view-informea-search-legislation .meta-container .glyphicon,
+.view-informea-search-court-decision .meta-container .glyphicon,
+.view-informea-search-publications .meta-container .glyphicon,
+.view-informea-search-bilateral-treaties .meta-container .glyphicon {
+  margin-right: 5px;
 }
 
 body.page-search div.region-sidebar-first ul,
