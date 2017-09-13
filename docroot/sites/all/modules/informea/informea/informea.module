@@ -19,6 +19,21 @@ define('DATA_SOURCE_FAOLEX', 3689);
 define('DATA_SOURCE_INFORMEA', 815);
 
 /**
+ * Implements hook_flush_caches().
+ *
+ * Called from update.php (among others) to flush the caches.
+ */
+function informea_flush_caches() {
+  if (function_exists('memcache_storage_flush_all_cache')) {
+    memcache_storage_flush_all_cache();
+  }
+  if (function_exists('varnish_purge_all_pages')) {
+    varnish_purge_all_pages();
+  }
+  return array();
+}
+
+/**
  * Implements hook_views_query_alter().
  */
 function informea_views_query_alter(&$view, &$query) {
