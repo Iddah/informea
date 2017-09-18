@@ -810,6 +810,18 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_parent_declaration']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_parent_declaration']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_parent_declaration']['bypass_access'] = 0;
+  /* Field: Indexed Content: Parent section */
+  $handler->display->display_options['fields']['field_declaration_parent_section']['id'] = 'field_declaration_parent_section';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['field'] = 'field_declaration_parent_section';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['label'] = '';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['alter']['text'] = '<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['bypass_access'] = 0;
   /* Field: Indexed Content: Goal Type */
   $handler->display->display_options['fields']['field_goal_type']['id'] = 'field_goal_type';
   $handler->display->display_options['fields']['field_goal_type']['table'] = 'search_api_index_informea_goals_and_principles';
@@ -855,6 +867,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta-container">
 [type]
 [field_parent_declaration]
+[field_declaration_parent_section]
 [field_goal_type]
 [field_parent_goal_1]
 [field_parent_goal]
@@ -921,12 +934,14 @@ function informea_search_views_default_views() {
     t('Parent Goal'),
     t('<span class="meta content-type">[type]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_declaration]</span>'),
+    t('<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-folder-open"></span>[field_goal_type]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_goal_1]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_parent_goal]</span>'),
     t('<div class="meta-container">
 [type]
 [field_parent_declaration]
+[field_declaration_parent_section]
 [field_goal_type]
 [field_parent_goal_1]
 [field_parent_goal]
