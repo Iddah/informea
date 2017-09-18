@@ -437,8 +437,8 @@ documents',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'informea-search-goals-and-principles
-informea-search-goals-and-principles/*',
+    'pages' => 'search-goals-and-principles
+search-goals-and-principles/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -639,8 +639,8 @@ search-publications/*',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'informea-search-goals-and-principles
-informea-search-goals-and-principles/*',
+    'pages' => 'search-goals-and-principles
+search-goals-and-principles/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -875,8 +875,8 @@ search/*',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'informea-search-goals-and-principles
-informea-search-goals-and-principles/*',
+    'pages' => 'search-goals-and-principles
+search-goals-and-principles/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -904,8 +904,8 @@ informea-search-goals-and-principles/*',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'informea-search-goals-and-principles
-informea-search-goals-and-principles/*',
+    'pages' => 'search-goals-and-principles
+search-goals-and-principles/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(

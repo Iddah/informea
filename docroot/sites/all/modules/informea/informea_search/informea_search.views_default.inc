@@ -814,7 +814,7 @@ function informea_search_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'informea-search-goals-and-principles';
+  $handler->display->display_options['path'] = 'search-goals-and-principles';
   $translatables['informea_search_goals_and_principles'] = array(
     t('Master'),
     t('Search InforMEA'),
