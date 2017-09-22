@@ -173,7 +173,7 @@ abstract class InforMEAAbstractODataMigrateSource extends MigrateSource {
 
 class ODataMigrationUtil {
 
-  function fix_unicode_characters($orig_str) {
+  public static function fix_unicode_characters($orig_str) {
     static $unicode = [];
     $unicode_letters = ["\udbc0\udeab", "\udbc0\udeba", "\udbc0\udec8", "\udbc0\udea4", "\udbc0\udebb", "\udbc0\udeb0", "\udbc0\udeaf", "\udbc0\udc03", "\udbc0\udec1", "\udbc0\udebd", "\udbc0\udeaa", "\udbc0\udeb1", "\udbc0\udec3", "\udbc0\udea6", "\udbc0\uded4", "\udbc0\udec4", "\udbc0\udecd", "\udbc0\udeb8", "\udbc0\uded3", "\udbc0\udea5", "\udbc0\uded0", "\udbc0\udeb6", "\udbc0\udec9", "\udbc0\udea7", "\udbc0\udebf", "\udbc0\udec0"];
     if (!$unicode) {
