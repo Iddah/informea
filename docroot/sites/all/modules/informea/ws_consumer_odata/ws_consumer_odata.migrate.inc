@@ -114,6 +114,7 @@ abstract class InforMEAAbstractODataMigrateSource extends MigrateSource {
     $this->config = $config;
     $klass = $this->config->getODataConsumerClass();
     $this->consumer = new $klass($config);
+    $this->pageSize = ODataConsumerConfig::getODataPageSize();
   }
 
   public function __toString() {
