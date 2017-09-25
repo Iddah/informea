@@ -107,3 +107,11 @@ function informea_update_7008() {
 function informea_update_7009() {
   features_revert(array('informea_search' => ['fe_block']));
 }
+
+/**
+ * Enable recaptcha module.
+ */
+function informea_update_7010() {
+  module_enable(['recaptcha']);
+  features_revert_module('informea');
+}
