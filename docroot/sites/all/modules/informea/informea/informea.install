@@ -110,8 +110,10 @@ function informea_update_7009() {
 
 /**
  * Enable recaptcha module.
+ * Tour font changes
  */
 function informea_update_7010() {
   module_enable(['recaptcha']);
   features_revert(array('informea' => ['captcha_points']));
+  features_revert(array('informea' => ['bootstrap_tour']));
 }
