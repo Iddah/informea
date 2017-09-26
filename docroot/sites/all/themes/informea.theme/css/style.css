@@ -1888,7 +1888,7 @@ input.facetapi-checkbox { margin-right: 5px; }
 }
 
 
-#edit-search-api-views-fulltext-wrapper { display: none; }
+/*#edit-search-api-views-fulltext-wrapper { display: none; }*/
 
 /*
 body[class*='page-search'] .block-facetapi a {
