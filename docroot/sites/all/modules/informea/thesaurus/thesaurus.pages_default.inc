@@ -323,6 +323,32 @@ function thesaurus_default_page_manager_handlers() {
   $display->content['new-bba677b8-00a4-4325-858f-2037cea703e4'] = $pane;
   $display->panels['definition'][0] = 'new-bba677b8-00a4-4325-858f-2037cea703e4';
   $pane = new stdClass();
+  $pane->pid = 'new-5b31cdc9-b65a-4df0-8c12-bfecda7d1bd1';
+  $pane->panel = 'definition';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Link to search page',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">See all documents containing the keywords "</span><a href="/search?search_api_views_fulltext=&quot;%term:name-field&quot;">%term:name-field</a><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">"</span></p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '5b31cdc9-b65a-4df0-8c12-bfecda7d1bd1';
+  $display->content['new-5b31cdc9-b65a-4df0-8c12-bfecda7d1bd1'] = $pane;
+  $display->panels['definition'][1] = 'new-5b31cdc9-b65a-4df0-8c12-bfecda7d1bd1';
+  $pane = new stdClass();
   $pane->pid = 'new-91aa4fbd-98cf-4ca0-9124-ba0574762f7d';
   $pane->panel = 'full_width_content';
   $pane->type = 'page_tabs';
@@ -820,6 +846,32 @@ Legislation',
   $display->content['new-a7d71f88-321c-4e70-bc46-8da01a2662e8'] = $pane;
   $display->panels['definition'][0] = 'new-a7d71f88-321c-4e70-bc46-8da01a2662e8';
   $pane = new stdClass();
+  $pane->pid = 'new-131fa333-8315-4aa7-8507-9b974a515f7d';
+  $pane->panel = 'definition';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Link to search page',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">See all documents containing the keywords "</span><a href="/search?search_api_views_fulltext=&quot;%taxonomy_term:name-field&quot;" style="font-size: 13.008px; line-height: 20.0063px;">%taxonomy_term:name-field</a><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">"</span></p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '131fa333-8315-4aa7-8507-9b974a515f7d';
+  $display->content['new-131fa333-8315-4aa7-8507-9b974a515f7d'] = $pane;
+  $display->panels['definition'][1] = 'new-131fa333-8315-4aa7-8507-9b974a515f7d';
+  $pane = new stdClass();
   $pane->pid = 'new-52c4d4eb-1127-4430-81a7-c5b530e0cdfb';
   $pane->panel = 'facets';
   $pane->type = 'block';
@@ -1229,6 +1281,32 @@ Court decisions',
   $pane->uuid = 'd712fc8a-7b10-4da9-a5d9-ec293d6b11c8';
   $display->content['new-d712fc8a-7b10-4da9-a5d9-ec293d6b11c8'] = $pane;
   $display->panels['definition'][0] = 'new-d712fc8a-7b10-4da9-a5d9-ec293d6b11c8';
+  $pane = new stdClass();
+  $pane->pid = 'new-2ae70b4c-f985-490a-9d97-6ab8f61162ae';
+  $pane->panel = 'definition';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Link to search page',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">See all documents containing the keywords "</span><a href="/search?search_api_views_fulltext=&quot;%taxonomy_term:name-field&quot;" style="font-size: 13.008px; line-height: 20.0063px;">%taxonomy_term:name-field</a><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">"</span></p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '2ae70b4c-f985-490a-9d97-6ab8f61162ae';
+  $display->content['new-2ae70b4c-f985-490a-9d97-6ab8f61162ae'] = $pane;
+  $display->panels['definition'][1] = 'new-2ae70b4c-f985-490a-9d97-6ab8f61162ae';
   $pane = new stdClass();
   $pane->pid = 'new-5e2ddf60-c47c-4b37-aa45-58f6bf4c934c';
   $pane->panel = 'facets';
@@ -1687,6 +1765,32 @@ Legislation',
   $display->content['new-6e7f1c92-9b75-4fa9-961b-2c92cf7bfa38'] = $pane;
   $display->panels['definition'][0] = 'new-6e7f1c92-9b75-4fa9-961b-2c92cf7bfa38';
   $pane = new stdClass();
+  $pane->pid = 'new-79457439-11ec-458f-95fd-c5c97017948e';
+  $pane->panel = 'definition';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Link to search page',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">See all documents containing the keywords "</span><a href="/search?search_api_views_fulltext=&quot;%taxonomy_term:name-field&quot;" style="font-size: 13.008px; line-height: 20.0063px;">%taxonomy_term:name-field</a><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">"</span></p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '79457439-11ec-458f-95fd-c5c97017948e';
+  $display->content['new-79457439-11ec-458f-95fd-c5c97017948e'] = $pane;
+  $display->panels['definition'][1] = 'new-79457439-11ec-458f-95fd-c5c97017948e';
+  $pane = new stdClass();
   $pane->pid = 'new-79088584-ec54-4803-8a76-8091bb67474b';
   $pane->panel = 'facets';
   $pane->type = 'block';
@@ -2129,6 +2233,32 @@ Publications',
   $pane->uuid = '1b5fd9a7-f261-47f9-88d2-16ee6fdd4e32';
   $display->content['new-1b5fd9a7-f261-47f9-88d2-16ee6fdd4e32'] = $pane;
   $display->panels['definition'][0] = 'new-1b5fd9a7-f261-47f9-88d2-16ee6fdd4e32';
+  $pane = new stdClass();
+  $pane->pid = 'new-8be4a605-36fd-4a59-b497-de55adbaa0f6';
+  $pane->panel = 'definition';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Link to search page',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<p><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">See all documents containing the keywords "</span><a href="/search?search_api_views_fulltext=&quot;%taxonomy_term:name-field&quot;" style="font-size: 13.008px; line-height: 20.0063px;">%taxonomy_term:name-field</a><span style="color: rgb(51, 51, 51); font-family: &quot;PT Sans&quot;, sans-serif; font-size: 15px; line-height: 21.4286px;">"</span></p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '8be4a605-36fd-4a59-b497-de55adbaa0f6';
+  $display->content['new-8be4a605-36fd-4a59-b497-de55adbaa0f6'] = $pane;
+  $display->panels['definition'][1] = 'new-8be4a605-36fd-4a59-b497-de55adbaa0f6';
   $pane = new stdClass();
   $pane->pid = 'new-25aca4d4-3623-487e-8ab4-0f52d31bc9d7';
   $pane->panel = 'facets';

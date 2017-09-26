@@ -18,6 +18,9 @@ function informea_theme_preprocess_page(&$variables) {
   // Add the autocomplete library.
  drupal_add_library('system', 'ui.autocomplete');
   menu_secondary_local_tasks();
+  if (current_path() == 'goals') {
+    drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/goals.js');
+  }
   if (arg(0) == 'taxonomy') {
     // Unset related terms in taxonomy page
     unset($variables['page']['content']['system_main']['nodes']);

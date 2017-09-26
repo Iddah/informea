@@ -351,11 +351,14 @@ function informea_search_block_switch_topic_view() {
   $url = check_plain(arg(0));
   $fulltext = '';
   if (!empty($_GET['search_api_views_fulltext'])) {
-    $fulltext = check_plain($_GET['search_api_views_fulltext']);
+    $fulltext = $_GET['search_api_views_fulltext'];
   }
   else if (!empty(arg(1))) {
-    $fulltext = check_plain(arg(1));
+    $fulltext = arg(1);
   }
+
+  $fulltext = htmlspecialchars($fulltext, ENT_NOQUOTES, 'UTF-8');
+
   $elements = array(
     'search' => t('Multilateral treaties'),
     'search-bilateral-treaties' => t('Bilateral treaties'),
@@ -397,7 +400,16 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
       case 'views-exposed-form-informea-search-legislation-page':
       case 'views-exposed-form-informea-search-court-decision-page':
       case 'views-exposed-form-informea-search-publications-page':
-        // hide($form);
+        if (isset($_GET['f'])) {
+          foreach ($_GET['f'] as $key => $val) {
+            $form["f[{$key}]"] = [
+              '#type' => 'hidden',
+              '#weight' => '50',
+              '#value' => $val,
+            ];
+          }
+        }
+        break;
     }
   }
 }

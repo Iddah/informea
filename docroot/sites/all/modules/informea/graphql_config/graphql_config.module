@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Graphql config feature.
+ */
+
+include_once 'graphql_config.features.inc';
