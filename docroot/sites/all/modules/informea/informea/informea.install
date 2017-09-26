@@ -113,5 +113,5 @@ function informea_update_7009() {
  */
 function informea_update_7010() {
   module_enable(['recaptcha']);
-  features_revert_module('informea');
+  features_revert(array('informea' => ['captcha_points']));
 }
