@@ -3269,3 +3269,7 @@ span.ecolex-logo {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+.webform-client-form div .captcha {
+  margin-top: 20px;
+}
