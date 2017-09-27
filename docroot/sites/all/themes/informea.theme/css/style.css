@@ -653,11 +653,21 @@ h1 {
     -webkit-box-shadow: 0 -1px 0 0 rgba(247, 247, 247, .25) inset;
     box-shadow: 0 -1px 0 0 rgba(247, 247, 247, .25) inset;
   }
+  .secondary-nav-mobile > .container {
+    padding: 0;
+  }
   .region-above-nav {
+    position: relative;
     padding: 5px 0;
+    text-align: left;
   }
   .region-above-nav li {
     border-right: none;
+  }
+  .region-above-nav #block-locale-language-content {
+    position: absolute;
+    margin-top: 8px;
+    right: 0;
   }
   .region-above-nav #block-locale-language-content .dropdown > ul {
     z-index: 1001;
