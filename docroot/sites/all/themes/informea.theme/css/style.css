@@ -3073,6 +3073,7 @@ iframe.pdfjs {
 
 /* Search & Taxonomy term related content */
 .taxonomy-term-related-content h2,
+[class^="view-informea-search"] h2,
 .view-informea-search-legislation h2,
 .view-informea-search-court-decision h2,
 .view-informea-search-publications h2,
@@ -3081,6 +3082,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .views-row,
+div[class*="view-informea-search"] .views-row,
 .view-informea-search-bilateral-treaties .views-row,
 .view-informea-search-legislation .views-row,
 .view-informea-search-court-decision .views-row,
@@ -3090,6 +3092,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .views-row .img-thumbnail,
+[class*="view-informea-search"] .views-row .img-thumbnail,
 .view-informea-search-bilateral-treaties .views-row .img-thumbnail,
 .view-informea-search-legislation .views-row .img-thumbnail,
 .view-informea-search-court-decision .views-row .img-thumbnail,
@@ -3101,12 +3104,26 @@ iframe.pdfjs {
 
 .taxonomy-term-related-content .views-row .views-field-title-field:not(:first-child),
 .taxonomy-term-related-content .views-row .views-field-title-field:not(:first-child) ~ .views-field,
+[class*="view-informea-search"] .views-row .views-field,
 .view-informea-search-bilateral-treaties .views-row .views-field,
 .view-informea-search-legislation .views-row .views-field,
 .view-informea-search-publications .views-row .views-field,
 .view-informea-search-court-decision .views-row .views-field {
   margin-left: 60px;
   margin-bottom: 2px;
+}
+
+.view-informea-search-goals-and-principles .views-row .views-field {
+  margin-left: 0;
+}
+
+
+.view-informea-search-goals-and-principles .views-row .views-field-title-field .field-content a {
+  max-height: 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .taxonomy-term-related-content .views-row .views-field-field-logo,
@@ -3133,6 +3150,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .meta .separator,
+[class*="view-informea-search"] .meta .separator,
 .view-informea-search-legislation .meta .separator,
 .view-informea-search-court-decision .meta .separator,
 .view-informea-search-publications .meta .separator,
@@ -3143,6 +3161,7 @@ iframe.pdfjs {
 }
 
 .view-informea-search .meta-container,
+[class*="view-informea-search"] .meta-container,
 .view-informea-search-legislation .meta-container,
 .view-informea-search-court-decision .meta-container,
 .view-informea-search-publications .meta-container,
@@ -3153,6 +3172,7 @@ iframe.pdfjs {
   font-size: 90%;
 }
 .view-informea-search .meta-container .meta.content-type,
+[class*="view-informea-search"] .meta-container .meta.content-type,
 .view-informea-search-legislation .meta-container .meta.content-type,
 .view-informea-search-court-decision .meta-container .meta.content-type,
 .view-informea-search-publications .meta-container .meta.content-type,
@@ -3163,6 +3183,7 @@ iframe.pdfjs {
   border-radius: 2px;
   background: #eee;
 }
+[class*="view-informea-search"] .meta-container .glyphicon,
 .view-informea-search .meta-container .glyphicon,
 .view-informea-search-legislation .meta-container .glyphicon,
 .view-informea-search-court-decision .meta-container .glyphicon,
@@ -3171,6 +3192,7 @@ iframe.pdfjs {
   margin-right: 5px;
 }
 
+body[class*="page-search"] div.region-sidebar-first ul,
 body.page-search div.region-sidebar-first ul,
 body.page-search-legislation div.region-sidebar-first ul,
 body.page-search-court-decisions div.region-sidebar-first ul,
@@ -3181,7 +3203,9 @@ body.page-search-bilateral-treaties div.region-sidebar-first ul {
   padding: 0;
 }
 
+body[class*="page-search"] input.facetapi-checkbox,
 body.page-search input.facetapi-checkbox,
+body[class*="page-search"] div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-legislation div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-court-decisions div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-publications div.region-sidebar-first input.facetapi-checkbox,
@@ -3189,6 +3213,7 @@ body.page-search-bilateral-treaties div.region-sidebar-first input.facetapi-chec
   margin-right: 5px;
 }
 
+body[class*="page-search"] .view-empty,
 body.page-search .view-empty,
 body.page-search-legislation .view-empty,
 body.page-search-court-decisions .view-empty,

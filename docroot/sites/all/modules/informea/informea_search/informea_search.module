@@ -41,6 +41,7 @@ function informea_search_views_pre_render(&$view) {
     case 'informea_search_court_decision':
     case 'informea_search_publications':
     case 'informea_search_bilateral_treaties':
+    case 'informea_search_goals_and_principles':
       $content = '';
       if (@$_GET['search_api_views_fulltext']) {
         $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['search_api_views_fulltext']);
@@ -77,7 +78,9 @@ search-court-decisions/*
 search-publications
 search-publications/*
 search-bilateral-treaties
-search-bilateral-treaties/*',
+search-bilateral-treaties/*
+search-goals-and-principles
+search-goals-and-principles/*',
     )
   );
 }
@@ -310,6 +313,9 @@ function informea_search_form($form, $form_state) {
     case 'informea_search_publications':
       $action = 'search-publications';
       break;
+    case 'informea_search_goals_and_principles':
+      $action = 'search-goals-and-principles';
+      break;
     default:
       $action = 'search';
   }
@@ -365,6 +371,7 @@ function informea_search_block_switch_topic_view() {
     'search-legislation' => t('Legislation'),
     'search-court-decisions' => t('Court decisions'),
     'search-publications' => t('Documents'),
+    'search-goals-and-principles' => t('Goals'),
   );
   $tabs = array();
 
@@ -400,6 +407,7 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
       case 'views-exposed-form-informea-search-legislation-page':
       case 'views-exposed-form-informea-search-court-decision-page':
       case 'views-exposed-form-informea-search-publications-page':
+      case 'views-exposed-form-informea-search-goals-and-principles-page':
         if (isset($_GET['f'])) {
           foreach ($_GET['f'] as $key => $val) {
             $form["f[{$key}]"] = [

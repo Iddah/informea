@@ -742,6 +742,292 @@ function informea_search_views_default_views() {
   $export['informea_search_court_decision'] = $view;
 
   $view = new view();
+  $view->name = 'informea_search_goals_and_principles';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_informea_goals_and_principles';
+  $view->human_name = 'InforMEA Search Goals and Principles';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Search InforMEA';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Indexed Content: Goal */
+  $handler->display->display_options['relationships']['field_parent_goal']['id'] = 'field_parent_goal';
+  $handler->display->display_options['relationships']['field_parent_goal']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['relationships']['field_parent_goal']['field'] = 'field_parent_goal';
+  $handler->display->display_options['relationships']['field_parent_goal']['label'] = 'Parent Goal';
+  /* Relationship: Content: Goal */
+  $handler->display->display_options['relationships']['field_parent_goal_1']['id'] = 'field_parent_goal_1';
+  $handler->display->display_options['relationships']['field_parent_goal_1']['table'] = 'entity_node';
+  $handler->display->display_options['relationships']['field_parent_goal_1']['field'] = 'field_parent_goal';
+  $handler->display->display_options['relationships']['field_parent_goal_1']['relationship'] = 'field_parent_goal';
+  $handler->display->display_options['relationships']['field_parent_goal_1']['label'] = 'Parent Parent Goal';
+  /* Field: Indexed Content: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
+  /* Field: Indexed Content: The main body text */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '400',
+  );
+  /* Field: Indexed Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[title_field]: [body]';
+  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => 'content',
+    'title_class' => '',
+  );
+  /* Field: Search: Excerpt */
+  $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
+  /* Field: Indexed Content: Source */
+  $handler->display->display_options['fields']['field_goal_source']['id'] = 'field_goal_source';
+  $handler->display->display_options['fields']['field_goal_source']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_goal_source']['field'] = 'field_goal_source';
+  $handler->display->display_options['fields']['field_goal_source']['label'] = '';
+  $handler->display->display_options['fields']['field_goal_source']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_source']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_source']['alter']['text'] = '<span class="meta content-type">[field_goal_source]</span>';
+  $handler->display->display_options['fields']['field_goal_source']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_goal_source']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_goal_source']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_goal_source']['bypass_access'] = 0;
+  /* Field: Indexed Content: Parent declaration */
+  $handler->display->display_options['fields']['field_parent_declaration']['id'] = 'field_parent_declaration';
+  $handler->display->display_options['fields']['field_parent_declaration']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_parent_declaration']['field'] = 'field_parent_declaration';
+  $handler->display->display_options['fields']['field_parent_declaration']['label'] = '';
+  $handler->display->display_options['fields']['field_parent_declaration']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_declaration']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_declaration']['alter']['text'] = '<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_declaration]</span>';
+  $handler->display->display_options['fields']['field_parent_declaration']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_parent_declaration']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_parent_declaration']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_parent_declaration']['bypass_access'] = 0;
+  /* Field: Indexed Content: Parent section */
+  $handler->display->display_options['fields']['field_declaration_parent_section']['id'] = 'field_declaration_parent_section';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['field'] = 'field_declaration_parent_section';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['label'] = '';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['alter']['text'] = '<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_declaration_parent_section']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_declaration_parent_section']['bypass_access'] = 0;
+  /* Field: Indexed Content: Goal Type */
+  $handler->display->display_options['fields']['field_goal_type']['id'] = 'field_goal_type';
+  $handler->display->display_options['fields']['field_goal_type']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_goal_type']['field'] = 'field_goal_type';
+  $handler->display->display_options['fields']['field_goal_type']['label'] = '';
+  $handler->display->display_options['fields']['field_goal_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_type']['alter']['text'] = '<span class="meta"> · <span class="glyphicon glyphicon-folder-open"></span>[field_goal_type]</span>';
+  $handler->display->display_options['fields']['field_goal_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_goal_type']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_goal_type']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_goal_type']['bypass_access'] = 0;
+  /* Field: Content: Goal Type */
+  $handler->display->display_options['fields']['field_goal_type_1']['id'] = 'field_goal_type_1';
+  $handler->display->display_options['fields']['field_goal_type_1']['table'] = 'entity_node';
+  $handler->display->display_options['fields']['field_goal_type_1']['field'] = 'field_goal_type';
+  $handler->display->display_options['fields']['field_goal_type_1']['relationship'] = 'field_parent_goal';
+  $handler->display->display_options['fields']['field_goal_type_1']['label'] = '';
+  $handler->display->display_options['fields']['field_goal_type_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_type_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_goal_type_1']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_goal_type_1']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_goal_type_1']['bypass_access'] = 0;
+  /* Field: Indexed Content: Goal */
+  $handler->display->display_options['fields']['field_parent_goal']['id'] = 'field_parent_goal';
+  $handler->display->display_options['fields']['field_parent_goal']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_parent_goal']['field'] = 'field_parent_goal';
+  $handler->display->display_options['fields']['field_parent_goal']['label'] = '';
+  $handler->display->display_options['fields']['field_parent_goal']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_goal']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_goal']['alter']['text'] = '<span class="meta"> of [field_goal_type_1] <i>[field_parent_goal]</i></span>';
+  $handler->display->display_options['fields']['field_parent_goal']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_parent_goal']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_parent_goal']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_parent_goal']['bypass_access'] = 0;
+  /* Field: Content: Goal Type */
+  $handler->display->display_options['fields']['field_goal_type_2']['id'] = 'field_goal_type_2';
+  $handler->display->display_options['fields']['field_goal_type_2']['table'] = 'entity_node';
+  $handler->display->display_options['fields']['field_goal_type_2']['field'] = 'field_goal_type';
+  $handler->display->display_options['fields']['field_goal_type_2']['relationship'] = 'field_parent_goal_1';
+  $handler->display->display_options['fields']['field_goal_type_2']['label'] = '';
+  $handler->display->display_options['fields']['field_goal_type_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_goal_type_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_goal_type_2']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_goal_type_2']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_goal_type_2']['bypass_access'] = 0;
+  /* Field: Content: Goal */
+  $handler->display->display_options['fields']['field_parent_goal_1']['id'] = 'field_parent_goal_1';
+  $handler->display->display_options['fields']['field_parent_goal_1']['table'] = 'entity_node';
+  $handler->display->display_options['fields']['field_parent_goal_1']['field'] = 'field_parent_goal';
+  $handler->display->display_options['fields']['field_parent_goal_1']['relationship'] = 'field_parent_goal';
+  $handler->display->display_options['fields']['field_parent_goal_1']['label'] = '';
+  $handler->display->display_options['fields']['field_parent_goal_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_goal_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_parent_goal_1']['alter']['text'] = '<span class="meta"> of [field_goal_type_2] <i>[field_parent_goal_1]</i></span>';
+  $handler->display->display_options['fields']['field_parent_goal_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_parent_goal_1']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_parent_goal_1']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_parent_goal_1']['bypass_access'] = 0;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta-container">
+[field_goal_source]
+[field_parent_declaration]
+[field_declaration_parent_section]
+[field_goal_type]
+[field_parent_goal]
+[field_parent_goal_1]
+</div>
+';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Search: Relevance */
+  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Fulltext search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = '<>';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'declaration_paragraph' => 'declaration_paragraph',
+  );
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['operator'] = '<>';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'declaration' => 'declaration',
+    'declaration_section' => 'declaration_section',
+    'declaration_paragraph' => 'declaration_paragraph',
+  );
+  /* Filter criterion: Indexed Content: Source */
+  $handler->display->display_options['filters']['field_goal_source']['id'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['field_goal_source']['field'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_goal_source']['value'] = array(
+    1740 => '1740',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'search-goals-and-principles';
+  $translatables['informea_search_goals_and_principles'] = array(
+    t('Master'),
+    t('Search InforMEA'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Parent Goal'),
+    t('Parent Parent Goal'),
+    t('Node ID'),
+    t('.'),
+    t('[title_field]: [body]'),
+    t('<span class="meta content-type">[field_goal_source]</span>'),
+    t('<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_declaration]</span>'),
+    t('<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>'),
+    t('<span class="meta"> · <span class="glyphicon glyphicon-folder-open"></span>[field_goal_type]</span>'),
+    t('<span class="meta"> of [field_goal_type_1] <i>[field_parent_goal]</i></span>'),
+    t('<span class="meta"> of [field_goal_type_2] <i>[field_parent_goal_1]</i></span>'),
+    t('<div class="meta-container">
+[field_goal_source]
+[field_parent_declaration]
+[field_declaration_parent_section]
+[field_goal_type]
+[field_parent_goal]
+[field_parent_goal_1]
+</div>
+'),
+    t('Relevance'),
+    t('Fulltext search'),
+    t('Page'),
+  );
+  $export['informea_search_goals_and_principles'] = $view;
+
+  $view = new view();
   $view->name = 'informea_search_legislation';
   $view->description = '';
   $view->tag = 'default';
