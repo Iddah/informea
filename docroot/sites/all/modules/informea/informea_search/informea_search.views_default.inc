@@ -973,6 +973,14 @@ function informea_search_views_default_views() {
     'declaration_section' => 'declaration_section',
     'declaration_paragraph' => 'declaration_paragraph',
   );
+  /* Filter criterion: Indexed Content: Source */
+  $handler->display->display_options['filters']['field_goal_source']['id'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['field_goal_source']['field'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_goal_source']['value'] = array(
+    1740 => '1740',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
