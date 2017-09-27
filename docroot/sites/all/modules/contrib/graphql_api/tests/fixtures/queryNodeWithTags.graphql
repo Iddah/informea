@@ -1,0 +1,9 @@
+query nodeWithTags($nid: Int) {
+    article (nid: $nid) {
+        nid,
+        title,
+        tags {
+            name
+        }
+    }
+}

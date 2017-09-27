@@ -412,7 +412,7 @@ h1 {
 /* Navbar nav links */
 
 .navbar-nav > li > a {
-  padding: 24px 10px;
+  padding: 24px 6px;
   text-transform: uppercase;
 }
 
@@ -562,7 +562,7 @@ h1 {
 }
 
 @media (min-width: 1199px) {
-  #search-form { width: 420px; }
+  #search-form { width: 400px; }
 }
 
 @media (max-width: 1199px) {
@@ -1889,6 +1889,8 @@ input.facetapi-checkbox { margin-right: 5px; }
 
 
 #edit-search-api-views-fulltext-wrapper { display: none; }
+#views-exposed-form-documents-page #edit-search-api-views-fulltext-wrapper,
+#views-exposed-form-documents-page-1 #edit-search-api-views-fulltext-wrapper{ display: block }
 
 /*
 body[class*='page-search'] .block-facetapi a {
@@ -3284,4 +3286,8 @@ span.ecolex-logo {
 .region-sidebar-first #block-treaty-treaty-documents-local-tasks .nav-pills.nav-stacked {
   box-shadow: none;
   -webkit-box-shadow: none;
+}
+
+.webform-client-form div .captcha {
+  margin-top: 20px;
 }
