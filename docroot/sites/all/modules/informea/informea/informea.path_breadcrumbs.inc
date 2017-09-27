@@ -12,6 +12,50 @@ function informea_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'declarations';
+  $path_breadcrumb->name = 'Declarations';
+  $path_breadcrumb->path = 'node/%node';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Declarations',
+      1 => '%node:title',
+    ),
+    'paths' => array(
+      0 => '<none>',
+      1 => '%node:url',
+    ),
+    'home' => 1,
+    'translatable' => 1,
+    'arguments' => array(
+      'node' => array(
+        'position' => 1,
+        'argument' => 'entity_id:node',
+        'settings' => array(
+          'identifier' => 'Content: ID',
+        ),
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'declaration' => 'declaration',
+            ),
+          ),
+          'context' => 'node',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['declarations'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'documents';
   $path_breadcrumb->name = 'Documents';
   $path_breadcrumb->path = 'node/%node';
@@ -101,10 +145,12 @@ function informea_path_breadcrumbs_settings_info() {
   $path_breadcrumb->path = 'taxonomy/term/%term';
   $path_breadcrumb->data = array(
     'titles' => array(
-      0 => '%term:name',
+      0 => 'Goals',
+      1 => '%term:name',
     ),
     'paths' => array(
-      0 => '%term:url',
+      0 => '/goals',
+      1 => '%term:url',
     ),
     'home' => 1,
     'translatable' => 1,

@@ -172,6 +172,7 @@ features[language][] = ru
 features[language][] = zh-hans
 features[node][] = article
 features[node][] = page
+features[path_breadcrumbs][] = declarations
 features[path_breadcrumbs][] = documents
 features[path_breadcrumbs][] = documents_view
 features[path_breadcrumbs][] = glossary
