@@ -926,7 +926,7 @@ function thesaurus_get_brs_map_terms($name) {
 
 function thesaurus_taxonomy_term_view($term, $view_mode, $langcode) {
   // Redirect terms in party_status to terms with matching names in thesaurus_informea.
-  if ($term->vocabulary_machine_name == 'party_status') {
+  if ($term->vocabulary_machine_name == 'party_status' && $view_mode == 'full') {
     $term = taxonomy_get_term_by_name($term->name, 'thesaurus_informea');
     if (!empty($term)) {
       $term = reset($term);
