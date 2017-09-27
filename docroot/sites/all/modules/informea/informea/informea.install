@@ -115,3 +115,10 @@ function informea_update_7010() {
   module_enable(['recaptcha']);
   features_revert(array('informea' => ['captcha_points']));
 }
+
+/**
+ * Update breadcrumbs.
+ */
+function informea_update_7011() {
+  features_revert_module('informea');
+}

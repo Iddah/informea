@@ -177,6 +177,7 @@ features[path_breadcrumbs][] = documents_view
 features[path_breadcrumbs][] = glossary
 features[path_breadcrumbs][] = goal_sources
 features[path_breadcrumbs][] = goals
+features[path_breadcrumbs][] = goals_view
 features[path_breadcrumbs][] = parties_view
 features[search_api_index][] = informea_court_decisions
 features[search_api_index][] = informea_legislations

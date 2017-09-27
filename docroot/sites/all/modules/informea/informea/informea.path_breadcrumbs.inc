@@ -236,6 +236,26 @@ function informea_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'goals_view';
+  $path_breadcrumb->name = 'Goals view';
+  $path_breadcrumb->path = 'goals';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Goals',
+    ),
+    'paths' => array(
+      0 => '/goals',
+    ),
+    'home' => 1,
+    'translatable' => 0,
+    'arguments' => array(),
+    'access' => array(),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['goals_view'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'parties_view';
   $path_breadcrumb->name = 'Parties view';
   $path_breadcrumb->path = 'countries';
