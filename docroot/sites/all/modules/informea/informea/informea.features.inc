@@ -57,6 +57,9 @@ function informea_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
+  if ($module == "path_breadcrumbs" && $api == "path_breadcrumbs") {
+    return array("version" => "1");
+  }
   if ($module == "services" && $api == "services") {
     return array("version" => "3");
   }
