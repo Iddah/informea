@@ -73,7 +73,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Attached files */
+  /* Field: Indexed Content: Files */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -127,6 +127,11 @@ function document_views_default_views() {
 </dl>
 [field_files]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Search: Relevance */
+  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   /* Sort criterion: Indexed Content: Order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_informea_publications';
@@ -202,7 +207,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Attached files */
+  /* Field: Indexed Content: Files */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
