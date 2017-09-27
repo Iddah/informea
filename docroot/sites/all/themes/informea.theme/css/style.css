@@ -3275,3 +3275,19 @@ span.ecolex-logo {
 .webform-client-form div .captcha {
   margin-top: 20px;
 }
+
+@media (max-width: 992px) {
+  .footer-section .list-inline li a .image {
+    display: none;
+  }
+  .footer-section .list-inline li {
+    display: block;
+    padding-top: 0;
+    padding-left: 0;
+    float: none !important;
+  }
+  .footer-section .list-inline li .brand {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
