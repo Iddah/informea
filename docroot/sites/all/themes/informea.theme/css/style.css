@@ -664,10 +664,18 @@ h1 {
   .region-above-nav li {
     border-right: none;
   }
+  .region-above-nav #block-menu-menu-secondary-menu li.first {
+    display: none;
+  }
   .region-above-nav #block-locale-language-content {
-    position: absolute;
-    margin-top: 8px;
-    right: 0;
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .region-above-nav #block-locale-language-content .dropdown {
+    display: inline-block;
+    width: 80px;
   }
   .region-above-nav #block-locale-language-content .dropdown > ul {
     z-index: 1001;
