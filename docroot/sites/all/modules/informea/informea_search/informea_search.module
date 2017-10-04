@@ -421,3 +421,18 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+ * Implements hook_facetapi_widgets().
+ */
+function informea_search_facetapi_widgets() {
+  return array(
+    'facetapi_checkbox_links_altered' => array(
+      'handler' => array(
+        'label' => t('Links with checkboxes (altered by informea)'),
+        'class' => 'FacetapiWidgetCheckboxLinksInformea',
+        'query types' => array('term', 'date'),
+      ),
+    ),
+  );
+}

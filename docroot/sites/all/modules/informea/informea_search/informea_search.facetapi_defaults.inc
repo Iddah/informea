@@ -432,6 +432,7 @@ function informea_search_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -439,7 +440,7 @@ function informea_search_facetapi_default_facet_settings() {
     'individual_parent' => '0',
     'query_type' => 'term',
     'limit_active_items' => 0,
-    'default_true' => '1',
+    'default_true' => TRUE,
     'facet_search_ids' => array(),
     'exclude' => 0,
   );
@@ -454,19 +455,20 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->facet = 'field_goal_type';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '20',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
-    'facet_mincount' => '1',
+    'facet_mincount' => '0',
     'facet_missing' => '0',
     'flatten' => '0',
     'individual_parent' => '0',
     'query_type' => 'term',
     'limit_active_items' => 0,
-    'default_true' => '1',
+    'default_true' => TRUE,
     'facet_search_ids' => array(),
     'exclude' => 0,
   );
@@ -579,7 +581,7 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'facetapi_checkbox_links_altered',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
@@ -622,7 +624,7 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'facetapi_checkbox_links_altered',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',

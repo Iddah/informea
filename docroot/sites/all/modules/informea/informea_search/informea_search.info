@@ -92,3 +92,4 @@ features[views_view][] = informea_search_legislation
 features[views_view][] = informea_search_publications
 files[] = informea_search.pages.inc
 files[] = informea_search.results.inc
+files[] = plugins/facetapi/FacetapiWidgetCheckboxLinksInformea.php
