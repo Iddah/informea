@@ -7,6 +7,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
   }
 
   public function buildListItems($build) {
+    // @TODO Also preserve the selected items from other facets (need to use $item['#query']['f'])
     switch ($this->getKey()) {
       case 'field_goal_source':
         foreach ($build as $tid => &$item) {
