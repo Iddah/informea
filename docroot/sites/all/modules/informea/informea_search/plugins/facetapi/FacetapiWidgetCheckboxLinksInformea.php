@@ -10,7 +10,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
     switch ($this->getKey()) {
       case 'field_goal_source':
         foreach ($build as $tid => &$item) {
-          $item['#count'] = '';
+          $item['#count'] = 'hidden';
           switch ($tid) {
             case 1753:
               $item['#markup'] = t('Sustainable Development Goals (SDG)');
@@ -40,7 +40,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#query' => ['f' => []],
             '#check_query' => [],
             '#uncheck_query' => [],
-            '#count' => '',
+            '#count' => 'hidden',
             '#weight' => 1,
           ],
           'target' => [
@@ -50,13 +50,13 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#theme' => 'facetapi_link_inactive',
             '#check_query' => [],
             '#uncheck_query' => [],
-            '#count' => '',
+            '#count' => 'hidden',
             '#weight' => 2,
           ],
         ];
 
         foreach ($build as $tid => &$item) {
-          $item['#count'] = '';
+          $item['#count'] = 'hidden';
           $filter = "field_goal_type:{$tid}";
           switch ($tid) {
             case 1733:

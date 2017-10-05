@@ -687,7 +687,7 @@ function informea_theme_preprocess_field(&$variables, $hook) {
 }
 
 function informea_theme_facetapi_link_inactive($variables) {
-  if ($variables['path'] == 'search-goals-and-principles') {
+  if ($variables['count'] == 'hidden') {
     unset($variables['count']);
   }
   return theme_facetapi_link_inactive($variables);
