@@ -8,4 +8,6 @@ drush sql-sync @informea.prod @self -y
 
 drush devify -y
 
+drush updatedb -y
+
 drush cc all
