@@ -474,3 +474,19 @@ function informea_search_facetapi_widgets() {
     ),
   );
 }
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function informea_search_entity_property_info_alter(&$info) {
+  $info['node']['properties']['title_index'] = array(
+    'type' => 'text',
+    'label' => t('Title - indexed as string (used for sorting)'),
+    'sanitized' => TRUE,
+    'getter callback' => '_informea_search_title_index_property_callback',
+  );
+}
+
+function _informea_search_title_index_property_callback($item) {
+  return $item->title;
+}

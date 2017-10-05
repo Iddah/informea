@@ -238,6 +238,7 @@ function informea_search_default_search_api_index() {
         "status" : { "type" : "integer" },
         "title" : { "type" : "text" },
         "title_field" : { "type" : "text" },
+        "title_index" : { "type" : "string" },
         "type" : { "type" : "string" },
         "url" : { "type" : "uri" }
       },

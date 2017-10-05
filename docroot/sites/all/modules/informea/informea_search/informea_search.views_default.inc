@@ -921,6 +921,10 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Content: Title - indexed as string (used for sorting) */
+  $handler->display->display_options['sorts']['title_index']['id'] = 'title_index';
+  $handler->display->display_options['sorts']['title_index']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['sorts']['title_index']['field'] = 'title_index';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_goals_and_principles';
