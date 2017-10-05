@@ -10,7 +10,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
     switch ($this->getKey()) {
       case 'field_goal_source':
         foreach ($build as $tid => &$item) {
-          unset($item['#count']);
+          $item['#count'] = '';
           switch ($tid) {
             case 1753:
               $item['#markup'] = t('Sustainable Development Goals (SDG)');
@@ -40,6 +40,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#query' => ['f' => []],
             '#check_query' => [],
             '#uncheck_query' => [],
+            '#count' => '',
             '#weight' => 1,
           ],
           'target' => [
@@ -49,12 +50,13 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#theme' => 'facetapi_link_inactive',
             '#check_query' => [],
             '#uncheck_query' => [],
+            '#count' => '',
             '#weight' => 2,
           ],
         ];
 
         foreach ($build as $tid => &$item) {
-          unset($item['#count']);
+          $item['#count'] = '';
           $filter = "field_goal_type:{$tid}";
           switch ($tid) {
             case 1733:
@@ -95,6 +97,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             $item['#query']['f'] = array_unique(array_diff($item['#check_query'], $item['#uncheck_query']));
           }
           else {
+            $item['#active'] = 0;
             $item['#query']['f'] = array_unique($item['#check_query']);
           }
           $build[] = $item;
