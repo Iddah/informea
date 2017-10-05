@@ -370,6 +370,12 @@ function _informea_search_get_topic_count($topic) {
     case 'search-literature':
       $view_name = 'informea_search_literature';
       break;
+    case 'search-publications':
+      $view_name = 'informea_search_publications';
+      break;
+    case 'search-goals-and-principles':
+      $view_name = 'informea_search_goals_and_principles';
+      break;
   }
   $view = views_get_view($view_name);
   if (is_object($view)) {

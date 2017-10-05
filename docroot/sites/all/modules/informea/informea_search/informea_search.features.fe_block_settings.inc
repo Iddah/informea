@@ -897,5 +897,44 @@ search-goals-and-principles/*',
     'visibility' => 1,
   );
 
+  $export['informea_search-search_informea_switch_topic'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'search_informea_switch_topic',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'informea_search',
+    'node_types' => array(),
+    'pages' => 'search
+search/*
+search-legislation
+search-legislation/*
+search-court-decisions
+search-court-decisions/*
+search-publications
+search-publications/*
+search-bilateral-treaties
+search-bilateral-treaties/*
+search-goals-and-principles
+search-goals-and-principles/*',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'header',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -49,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => -50,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   return $export;
 }
