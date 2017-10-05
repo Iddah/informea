@@ -7,7 +7,6 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
   }
 
   public function buildListItems($build) {
-    // @TODO Also preserve the selected items from other facets (need to use $item['#query']['f'])
     switch ($this->getKey()) {
       case 'field_goal_source':
         foreach ($build as $tid => &$item) {
@@ -39,6 +38,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#active ' => 0,
             '#theme' => 'facetapi_link_inactive',
             '#query' => ['f' => []],
+            '#check_query' => [],
             '#uncheck_query' => [],
             '#weight' => 1,
           ],
@@ -47,6 +47,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#html' => FALSE,
             '#active ' => 0,
             '#theme' => 'facetapi_link_inactive',
+            '#check_query' => [],
             '#uncheck_query' => [],
             '#weight' => 2,
           ],
@@ -59,39 +60,29 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             case 1733:
             case 1734:
             case 1736:
-              // Goal
-              $customBuild['goal']['#path'] = $item['#path'];
-              $customBuild['goal']['#query']['f'][] = $filter;
-              if (!empty($item['#active'])) {
-                $customBuild['goal']['#theme'] = $item['#theme'];
-                $customBuild['goal']['#active'] = 1;
-                $customBuild['target']['#query']['f'][] = $filter;
-                $customBuild['target']['#uncheck_query'][] = $filter;
-              }
+              $type = 'goal';
               break;
 
             case 1732:
             case 1737:
-              // Target
-              $customBuild['target']['#path'] = $item['#path'];
-              $customBuild['target']['#query']['f'][] = $filter;
-              if (!empty($item['#active'])) {
-                $customBuild['target']['#theme'] = $item['#theme'];
-                $customBuild['target']['#active'] = 1;
-                $customBuild['goal']['#query']['f'][] = $filter;
-                $customBuild['goal']['#uncheck_query'][] = $filter;
-              }
+              $type = 'target';
               break;
 
             default:
               // Indicator
-              if (!empty($item['#active'])) {
-                $customBuild['goal']['#query']['f'][] = $filter;
-                $customBuild['goal']['#uncheck_query'][] = $filter;
-                $customBuild['target']['#query']['f'][] = $filter;
-                $customBuild['target']['#uncheck_query'][] = $filter;
-              }
+              $type = NULL;
               $item['#weight'] = 3;
+          }
+          if (!empty($type)) {
+            $customBuild[$type]['#path'] = $item['#path'];
+
+            $customBuild[$type]['#check_query'] = array_merge($customBuild[$type]['#check_query'], $item['#query']['f']);
+            $customBuild[$type]['#uncheck_query'][] = $filter;
+
+            if (!empty($item['#active'])) {
+              $customBuild[$type]['#theme'] = $item['#theme'];
+              $customBuild[$type]['#active'] = 1;
+            }
           }
         }
 
@@ -101,9 +92,11 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
 
         foreach ($customBuild as &$item) {
           if (!empty($item['#active'])) {
-            $item['#query']['f'] = $item['#uncheck_query'];
+            $item['#query']['f'] = array_unique(array_diff($item['#check_query'], $item['#uncheck_query']));
           }
-          $item['#query']['f'] = array_unique($item['#query']['f']);
+          else {
+            $item['#query']['f'] = array_unique($item['#check_query']);
+          }
           $build[] = $item;
         }
         break;
@@ -113,7 +106,6 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
       $bw = !empty($b['#weight']) ? $b['#weight'] : 100;
       return ($aw < $bw) ? -1 : 1;
     });
-    $build = parent::buildListItems($build);
-    return $build;
+    return parent::buildListItems($build);
   }
 }
