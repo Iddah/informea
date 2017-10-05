@@ -3137,11 +3137,7 @@ div[class*="view-informea-search"] .views-row,
 
 
 .view-informea-search-goals-and-principles .views-row .views-field-title-field .field-content a {
-  max-height: 20px;
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .taxonomy-term-related-content .views-row .views-field-field-logo,

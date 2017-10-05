@@ -788,8 +788,11 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['text'] = ': [body]';
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '400',
   );
@@ -799,7 +802,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[title_field]: [body]';
+  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[title_field][body]';
   $handler->display->display_options['fields']['title_field']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
@@ -911,21 +914,6 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_parent_goal_1']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_parent_goal_1']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_parent_goal_1']['bypass_access'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta-container">
-[field_goal_source]
-[field_parent_declaration]
-[field_declaration_parent_section]
-[field_goal_type]
-[field_parent_goal]
-[field_parent_goal_1]
-</div>
-';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Search: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_goals_and_principles';
@@ -1005,22 +993,14 @@ function informea_search_views_default_views() {
     t('Parent Parent Goal'),
     t('Node ID'),
     t('.'),
-    t('[title_field]: [body]'),
+    t(': [body]'),
+    t('[title_field][body]'),
     t('<span class="meta content-type">[field_goal_source]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_declaration]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-folder-open"></span>[field_goal_type]</span>'),
     t('<span class="meta"> of [field_goal_type_1] <i>[field_parent_goal]</i></span>'),
     t('<span class="meta"> of [field_goal_type_2] <i>[field_parent_goal_1]</i></span>'),
-    t('<div class="meta-container">
-[field_goal_source]
-[field_parent_declaration]
-[field_declaration_parent_section]
-[field_goal_type]
-[field_parent_goal]
-[field_parent_goal_1]
-</div>
-'),
     t('Relevance'),
     t('Fulltext search'),
     t('Page'),

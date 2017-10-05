@@ -24,17 +24,33 @@
 ?>
 <?php
 
+$prepend = NULL;
 if (!empty($row->_entity_properties['field_goal_source'])) {
   $source = $row->_entity_properties['field_goal_source'];
   $type = $row->_entity_properties['field_goal_type'];
   // Add "SDG" in front of the SDG goals (in search results), as it is now for
   // GEG. Same for AICHI strategic goals (call it "Strategic goal").
-  if ($source == 1753 && $type == 1734) {
-    $output = preg_replace('/(Goal\s)/', "SDG $1", $output);
+  if ($source == 1753) {
+    // SDG
+    if ($type == 1734) {
+      $prepend = 'SDG ';
+    }
+    elseif ($type == 1737) {
+      $prepend = 'SDG Target ';
+    }
+    elseif ($type == 1735) {
+      $prepend = 'SDG Indicator ';
+    }
   }
-  if ($source == 1738 && $type == 1736) {
-    $output = preg_replace('/(Goal\s)/', "Strategic $1", $output);
+  if ($source == 1738) {
+    // Aichi
+    if ($type == 1736 || $type = 1732) {
+      $prepend = 'Strategic ';
+    }
   }
+}
+if (!empty($prepend)) {
+  $output = preg_replace('/(\<a\shref\=\".*\"\>)/', "$1{$prepend}", $output);
 }
 print $output;
 
