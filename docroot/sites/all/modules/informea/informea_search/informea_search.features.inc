@@ -213,11 +213,15 @@ function informea_search_default_search_api_index() {
         "attachments_field_document_abstract" : { "type" : "text" },
         "attachments_field_document_other" : { "type" : "text" },
         "attachments_field_files" : { "type" : "text" },
+        "body:summary" : { "type" : "text" },
+        "body:value" : { "type" : "text" },
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
         "field_abbreviation" : { "type" : "text" },
         "field_declaration_paragraph_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_declaration_parent_section" : { "type" : "integer", "entity_type" : "node" },
+        "field_feed_item_description:summary" : { "type" : "text" },
+        "field_feed_item_description:value" : { "type" : "text" },
         "field_geg_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_geg_theme" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_geographical_scope" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -287,23 +291,27 @@ function informea_search_default_search_api_index() {
           "weight" : "0",
           "settings" : { "fields" : {
               "title" : true,
-              "field_original_id" : true,
               "title_field" : true,
+              "field_original_id" : true,
               "field_abbreviation" : true,
               "field_official_order" : true
             }
           }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
             "fields" : {
               "title" : true,
-              "field_original_id" : true,
               "title_field" : true,
+              "field_original_id" : true,
               "field_abbreviation" : true,
-              "field_official_order" : true
+              "field_official_order" : true,
+              "body:value" : true,
+              "body:summary" : true,
+              "field_feed_item_description:value" : true,
+              "field_feed_item_description:summary" : true
             },
             "title" : 0,
             "alt" : 1,
@@ -316,8 +324,8 @@ function informea_search_default_search_api_index() {
           "settings" : {
             "fields" : {
               "title" : true,
-              "field_original_id" : true,
               "title_field" : true,
+              "field_original_id" : true,
               "field_abbreviation" : true,
               "field_official_order" : true
             },
@@ -331,8 +339,8 @@ function informea_search_default_search_api_index() {
           "settings" : {
             "fields" : {
               "title" : true,
-              "field_original_id" : true,
               "title_field" : true,
+              "field_original_id" : true,
               "field_abbreviation" : true,
               "field_official_order" : true
             },
