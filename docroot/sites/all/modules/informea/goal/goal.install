@@ -5,3 +5,10 @@
 function goal_update_7001() {
   features_revert(array('goal' => ['field_base', 'field_instance']));
 }
+
+/**
+ * Make field_images translatable.
+ */
+function goal_update_7002() {
+  features_revert(array('goal' => ['field_base', 'field_instance']));
+}
