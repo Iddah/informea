@@ -2,7 +2,6 @@
 $pw = entity_metadata_wrapper('node', $specific_indicator->nid);
 $tags = $pw->field_informea_tags->value();
 $highlight = isset($_GET['specific_indicator']) ? $_GET['specific_indicator'] == $specific_indicator->nid : FALSE;
-//$expanded = isset($_GET['specific_indicator']) ? $_GET['specific_indicator'] == $specific_indicator->nid : FALSE;
 ?>
 <div class="indicator clearfix smallipop <?php print $highlight ? 'highlight' : '' ;?>" id="specific_indicator-<?php print $specific_indicator->nid; ?>">
   <!-- Action links are placed at the top and floated right so they sit at the top-right corner -->
@@ -42,6 +41,8 @@ $highlight = isset($_GET['specific_indicator']) ? $_GET['specific_indicator'] ==
       </li>
     <?php endif; ?>
   </ul><!-- .list-inline .actions -->
+    <h4 class="panel-title panel-title-target">
+        <p class="title">
   <?php
     print l('<p>' . $pw->label() . '</p>', "node/{$specific_indicator->nid}", array(
       'attributes' => array(
@@ -50,11 +51,10 @@ $highlight = isset($_GET['specific_indicator']) ? $_GET['specific_indicator'] ==
       ),
       'html' => TRUE,
     ));
-    ?>
+    ?></p>
+    </h4>
   <?php if($pw->body->value()): ?>
-    <p>
       <?php print($pw->body->value->value(array('decode' => FALSE))); ?>
-    </p>
   <?php endif; ?>
   <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
 </div><!-- .indicator .smallipop -->
