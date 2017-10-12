@@ -787,34 +787,6 @@ function informea_search_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_images_1']['delta_offset'] = '0';
-  /* Field: Content: Images */
-  $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
-  $handler->display->display_options['fields']['field_images']['table'] = 'entity_node';
-  $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
-  $handler->display->display_options['fields']['field_images']['relationship'] = 'field_parent_goal';
-  $handler->display->display_options['fields']['field_images']['label'] = '';
-  $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_images']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_images']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_images']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_images']['delta_offset'] = '0';
-  /* Field: Content: Images */
-  $handler->display->display_options['fields']['field_images_2']['id'] = 'field_images_2';
-  $handler->display->display_options['fields']['field_images_2']['table'] = 'entity_node';
-  $handler->display->display_options['fields']['field_images_2']['field'] = 'field_images';
-  $handler->display->display_options['fields']['field_images_2']['relationship'] = 'field_parent_goal_1';
-  $handler->display->display_options['fields']['field_images_2']['label'] = '';
-  $handler->display->display_options['fields']['field_images_2']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_images_2']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_images_2']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_images_2']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_images_2']['delta_offset'] = '0';
   /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_informea_goals_and_principles';

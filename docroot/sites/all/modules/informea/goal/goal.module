@@ -391,3 +391,44 @@ function goal_node_view($node, $view_mode, $langcode) {
     }
   }
 }
+
+/**
+ * Provide goal icon for target or indicator.
+ */
+function goal_get_icon($entity, $output) {
+  static $cache = [];
+  if ($output) {
+    return $output;
+  }
+  $ew = entity_metadata_wrapper('node', $entity);
+  $goal_type = $ew->field_goal_type->value();
+  if (!$goal_type) {
+    return '';
+  }
+  if ($goal_type->tid == 1734) {
+    return '';
+  }
+  $goal = $ew->field_parent_goal->value();
+  if (!$goal) {
+    return ;
+  }
+  // Check for target or indicator broken parent.
+  if (!$goal[0]) {
+    return '';
+  }
+  $parent_nid = $goal[0]->nid;
+  if (isset($cache[$parent_nid])) {
+    return $cache[$parent_nid];
+  }
+  $pw = entity_metadata_wrapper('node', $goal[0]);
+  if ($goal_type->tid == 1735) {
+    $goal = $pw->field_parent_goal->value();
+    $pw = entity_metadata_wrapper('node', $goal[0]);
+  }
+  $cache[$parent_nid] = '';
+  $icons = $pw->field_images->value();
+  if ($icons) {
+    $cache[$parent_nid] = empty($icons[0]) ? null : theme('image_style', array('style_name' => 'thumbnail', 'path' => $icons[0]['uri']));
+  }
+  return $cache[$parent_nid];
+}

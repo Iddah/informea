@@ -24,4 +24,5 @@
 
 ?>
 <?php
+$output = goal_get_icon($row->entity, $output);
 print str_replace('<img ', '<img class="img-thumbnail" ', $output);
