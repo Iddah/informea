@@ -79,6 +79,12 @@ function goal_theme() {
       'variables' => array('goal', 'target', 'indicator', 'base_goal_url'),
       'path' => drupal_get_path('module', 'goal'),
     ),
+    'goal_target_indicator_specific' => array(
+      'render element' => 'element',
+      'template' => 'templates/goal-target-indicator-specific',
+      'variables' => array('goal', 'target', 'indicator', 'specific', 'base_goal_url'),
+      'path' => drupal_get_path('module', 'goal'),
+    ),
     'goal_related_content' => array(
       'render element' => 'element',
       'template' => 'templates/goal-related-content',
@@ -353,7 +359,11 @@ function goal_taxonomy_term_view($term, $view_mode, $langcode) {
     foreach ($goals as $goal) {
       $targets = _get_goal_children($term, $goal, $target_type);
       foreach ($targets as $target) {
-        $target->indicators = _get_goal_children($term, $target, 'Indicator');
+        $indicators = _get_goal_children($term, $target, 'Indicator');
+        foreach ($indicators as $indicator) {
+          $indicator->specific_indicators = _get_goal_children($term, $indicator, 'Indicator');
+        }
+        $target->indicators = $indicators;
       }
       $goal->targets = $targets;
     }
