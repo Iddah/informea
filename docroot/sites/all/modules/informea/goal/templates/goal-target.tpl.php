@@ -47,9 +47,8 @@ $expanded = isset($_GET['target']) ? $_GET['target'] == $target->nid : FALSE;
     <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
   </div><!-- .panel-heading .smallipop -->
   <div id="target-<?php echo $target->nid; ?>" class="panel-collapse collapse<?php print $expanded ? ' in' : '' ;?>" role="tabpanel" aria-labelledby="heading-<?php echo $target->nid; ?>">
-    <div class="target">
+      <div class="">
       <?php if (!empty($target->indicators)): ?>
-        <h4><?php print t('Indicators:'); ?></h4>
         <?php foreach ($target->indicators as $indicator): ?>
           <?php print theme('goal_target_indicator', array('goal' => $goal, 'target' => $target, 'indicator' => $indicator, 'base_goal_url' => $base_goal_url)); ?>
         <?php endforeach; ?>
