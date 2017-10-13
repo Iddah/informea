@@ -227,6 +227,8 @@ function informea_search_default_search_api_index() {
         "field_geographical_scope" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_goal_source" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_goal_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_images:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
+        "field_images:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_informea_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_lead_institution" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_official_order" : { "type" : "text" },
