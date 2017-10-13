@@ -13,17 +13,17 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
           $item['#count'] = 'hidden';
           switch ($tid) {
             case 1753:
-              $item['#markup'] = t('Sustainable Development Goals (SDG)');
+              $item['#markup'] = t('SDG');
               $item['#weight'] = 1;
               break;
 
             case 1739:
-              $item['#markup'] = t('Global Environmental Goals (GEG)');
+              $item['#markup'] = t('GEG');
               $item['#weight'] = 2;
               break;
 
             case 1738:
-              $item['#markup'] = t('Strategic Plans');
+              $item['#markup'] = t('Aichi');
               $item['#weight'] = 3;
               break;
           }
