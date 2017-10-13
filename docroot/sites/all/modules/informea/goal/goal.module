@@ -435,6 +435,7 @@ function goal_get_icon($entity, $output) {
   if (!$goal_type) {
     return '';
   }
+  // Goal = 1734.
   if ($goal_type->tid == 1734) {
     return '';
   }
@@ -452,7 +453,8 @@ function goal_get_icon($entity, $output) {
   }
   $pw = entity_metadata_wrapper('node', $goal[0]);
   $icons = $pw->field_images->value();
-  if (($goal_type->tid == 1735) || ($goal_type->tid == 1732) && !$icons) {
+  if (!$icons) {
+    // Check parent of parent icon.
     $goal = $pw->field_parent_goal->value();
     if ($goal) {
       $pw = entity_metadata_wrapper('node', $goal[0]);
