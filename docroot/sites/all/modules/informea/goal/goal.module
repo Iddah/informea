@@ -451,12 +451,15 @@ function goal_get_icon($entity, $output) {
     return $cache[$parent_nid];
   }
   $pw = entity_metadata_wrapper('node', $goal[0]);
-  if ($goal_type->tid == 1735) {
+  $icons = $pw->field_images->value();
+  if (($goal_type->tid == 1735) || ($goal_type->tid == 1732) && !$icons) {
     $goal = $pw->field_parent_goal->value();
-    $pw = entity_metadata_wrapper('node', $goal[0]);
+    if ($goal) {
+      $pw = entity_metadata_wrapper('node', $goal[0]);
+      $icons = $pw->field_images->value();
+    }
   }
   $cache[$parent_nid] = '';
-  $icons = $pw->field_images->value();
   if ($icons) {
     $cache[$parent_nid] = empty($icons[0]) ? null : theme('image_style', array('style_name' => 'thumbnail', 'path' => $icons[0]['uri']));
   }
