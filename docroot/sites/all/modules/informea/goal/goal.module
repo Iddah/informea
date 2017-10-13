@@ -247,7 +247,27 @@ function goal_get_related_content($goal_nid) {
       $return[$treaty_id]->decisions[$decision_id]->children[] = $paragraph;
     }
   }
-    return $return;
+
+  $q = db_select('field_data_field_sdg_goals', 'g');
+  $q->innerJoin('field_data_field_treaty', 't', 'g.entity_id  = t.entity_id');
+  $q->fields('g', ['entity_id'])
+    ->fields('t', ['field_treaty_target_id'])
+    ->condition('g.bundle', 'document')
+    ->condition('g.field_sdg_goals_target_id', $goal_nid);
+
+  $documents = $q->execute()->fetchAll();
+  foreach ($documents as $document) {
+    $treaty_id = $document->field_treaty_target_id;
+    if (empty($return[$treaty_id])) {
+      $treaty = node_load($treaty_id);
+      $treaty->documents = [];
+      $return[$treaty_id] = $treaty;
+    }
+    $document = node_load($document->entity_id);
+    $return[$treaty_id]->documents[] = $document;
+  }
+
+  return $return;
 }
 
 function goal_preprocess_goal_target_indicator(&$variables) {

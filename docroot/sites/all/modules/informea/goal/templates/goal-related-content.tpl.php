@@ -120,6 +120,27 @@
                 <?php endforeach; ?>
               <?php endif; ?>
               <!-- END OF NATIONAL REPORTS -->
+                <!-- DOCUMENTS -->
+              <?php if(!empty($treaty->documents)): ?>
+                  <h3><?php print t('Documents'); ?></h3>
+                <?php foreach($treaty->documents as $document): ?>
+                  <?php $document_w = entity_metadata_wrapper('node', $document); ?>
+                      <div class="accordion panel-group tagged-content" role="tablist" aria-multiselectable="true">
+                          <div class="panel panel-default">
+                              <div class="panel-heading collapsed" role="tab" id="heading-<?php print $document->nid; ?>" data-target="#content-<?php print $document->nid; ?>" data-toggle="collapse" aria-expanded="false">
+                                  <i class="glyphicon glyphicon-plus-sign"></i>
+                                  <h4 class="panel-title">
+                                    <?php print $document_w->label(); ?>
+                                  </h4><!-- .panel-title -->
+                              </div>
+                              <div class="accordion panel-group panel-collapse collapse" id="content-<?php print $document->nid; ?>" role="tabpanel">
+                                <?php print l('['.t('View Source document').']','node/'. $document->nid, array('attributes' => array('class' => array('permalink'),'target' => '_blank'), 'html' => TRUE)); ?> </p>
+                              </div>
+                          </div>
+                      </div>
+                <?php endforeach; ?>
+              <?php endif; ?>
+                <!-- END OF DOCUMENTS -->
             </div>
           </div>
         </div>
