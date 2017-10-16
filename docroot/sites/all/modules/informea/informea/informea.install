@@ -124,3 +124,13 @@ function informea_update_7010() {
 function informea_update_7011() {
   features_revert_module('informea');
 }
+
+
+/**
+ * Task 185: disable the ajax control that creates automatically the terms.
+ */
+function informea_update_7012() {
+  features_revert_module('declaration');
+  features_revert_module('ecolex');
+  features_revert_module('treaty');
+}
