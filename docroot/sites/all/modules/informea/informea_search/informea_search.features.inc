@@ -358,7 +358,11 @@ function informea_search_default_search_api_index() {
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
             "excerpt_length" : "256",
-            "exclude_fields" : [],
+            "exclude_fields" : {
+              "field_official_order" : "field_official_order",
+              "field_original_id" : "field_original_id",
+              "title_field" : "title_field"
+            },
             "highlight" : "always"
           }
         }
