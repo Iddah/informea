@@ -428,7 +428,7 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->enabled = FALSE;
   $facet->settings = array(
     'operator' => 'and',
-    'hard_limit' => '20',
+    'hard_limit' => '-1',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
@@ -456,13 +456,13 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->enabled = FALSE;
   $facet->settings = array(
     'operator' => 'or',
-    'hard_limit' => '20',
+    'hard_limit' => '-1',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
       'roles' => array(),
     ),
-    'facet_mincount' => '0',
+    'facet_mincount' => '1',
     'facet_missing' => '0',
     'flatten' => '0',
     'individual_parent' => '0',
@@ -604,7 +604,7 @@ function informea_search_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '5',
+    'soft_limit' => '0',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
@@ -647,7 +647,7 @@ function informea_search_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '5',
+    'soft_limit' => '0',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
