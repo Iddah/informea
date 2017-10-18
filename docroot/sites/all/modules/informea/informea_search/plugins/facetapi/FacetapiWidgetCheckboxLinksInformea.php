@@ -100,7 +100,9 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             $item['#active'] = 0;
             $item['#query']['f'] = array_unique($item['#check_query']);
           }
-          $build[] = $item;
+          if (!empty($item['#query']['f'])) {
+            $build[] = $item;
+          }
         }
         break;
     }
