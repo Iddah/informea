@@ -244,7 +244,7 @@ function informea_path_breadcrumbs_settings_info() {
       4 => '%node:title',
     ),
     'paths' => array(
-      0 => 'goal',
+      0 => 'goals',
       1 => '%node:field-goal-source:url',
       2 => '%node:field-parent-goal:0:field-parent-goal:0:url',
       3 => '%node:field-parent-goal:0:url',
