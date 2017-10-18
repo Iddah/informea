@@ -20,14 +20,14 @@ $expanded = isset($_GET['indicator']) ? $_GET['indicator'] == $indicator->nid : 
     </div><!-- .indicator .smallipop -->
 
     <?php if (!empty($indicator->specific_indicators)): ?>
-    <div id="indicator-<?php echo $indicator->nid; ?>" class="" aria-labelledby="heading-<?php echo $indicator->nid; ?>">
-    <ul>
-      <?php foreach ($indicator->specific_indicators as $specific_indicator): ?>
-      <li>
-        <?php print theme('goal_target_indicator_specific', array('goal' => $goal, 'target' => $target, 'indicator' => $indicator, 'specific_indicator' => $specific_indicator, 'base_goal_url' => $base_goal_url)); ?>
-      </li>
-      <?php endforeach; ?>
-    </ul>
+    <div>
+        <ul style="padding: 0 0 0 40px;">
+          <?php foreach ($indicator->specific_indicators as $specific_indicator): ?>
+          <li id="indicator-<?php echo $specific_indicator->nid; ?>" class="indicator">
+            <?php print theme('goal_target_indicator_specific', array('goal' => $goal, 'target' => $target, 'indicator' => $indicator, 'specific_indicator' => $specific_indicator, 'base_goal_url' => $base_goal_url)); ?>
+          </li>
+          <?php endforeach; ?>
+        </ul>
     </div><!-- .panel-collapse .collapse -->
     <?php endif; ?>
 </div><!-- .panel .panel-default -->
