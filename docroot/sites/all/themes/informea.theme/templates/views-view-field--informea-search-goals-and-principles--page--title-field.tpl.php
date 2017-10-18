@@ -44,7 +44,7 @@ if (!empty($row->_entity_properties['field_goal_source'])) {
   }
   if ($source == 1738) {
     // Aichi
-    if ($type == 1736 || $type = 1732) {
+    if ($type == 1736) {
       $prepend = 'Strategic ';
     }
   }
