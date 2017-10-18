@@ -48,6 +48,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             '#html' => FALSE,
             '#active ' => 0,
             '#theme' => 'facetapi_link_inactive',
+            '#query' => ['f' => []],
             '#check_query' => [],
             '#uncheck_query' => [],
             '#count' => 'hidden',
@@ -77,13 +78,20 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
           }
           if (!empty($type)) {
             $customBuild[$type]['#path'] = $item['#path'];
-
-            $customBuild[$type]['#check_query'] = array_merge($customBuild[$type]['#check_query'], $item['#query']['f']);
+            if (!empty($item['#query']['f'])) {
+              $customBuild[$type]['#check_query'] = array_merge($customBuild[$type]['#check_query'], $item['#query']['f']);
+            }
             $customBuild[$type]['#uncheck_query'][] = $filter;
 
             if (!empty($item['#active'])) {
               $customBuild[$type]['#theme'] = $item['#theme'];
               $customBuild[$type]['#active'] = 1;
+            }
+
+            foreach($item['#query'] as $key => $value) {
+              if ($key != 'f') {
+                $customBuild[$type]['#query'][$key] = $value;
+              }
             }
           }
         }
@@ -100,7 +108,7 @@ class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
             $item['#active'] = 0;
             $item['#query']['f'] = array_unique($item['#check_query']);
           }
-          if (!empty($item['#query']['f'])) {
+          if (!empty($item['#query']['f']) || count($item['#query']) > 1) {
             $build[] = $item;
           }
         }
