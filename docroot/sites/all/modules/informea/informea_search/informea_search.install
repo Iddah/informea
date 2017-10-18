@@ -27,3 +27,19 @@ function informea_search_update_7003() {
 function informea_search_update_7004() {
   features_revert_module('informea_search');
 }
+
+/**
+ * 220 Hide the # of GEG Goals.
+ */
+function informea_search_update_7005() {
+  features_revert(array('informea_search' => ['views_view']));
+}
+
+
+/**
+ * Update breadcrumbs.
+ */
+function informea_search_update_7006() {
+  features_revert(array('informea' => ['path_breadcrumbs']));
+  features_revert(array('informea_search' => ['path_breadcrumbs']));
+}
