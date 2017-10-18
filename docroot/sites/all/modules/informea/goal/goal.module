@@ -127,9 +127,26 @@ function goal_block_view($delta = '') {
 
         $ob_w = entity_metadata_wrapper('node', $ob);
         $type = $ob_w->field_goal_type->value();
-        switch ($type->name) {
-          case 'Goal':
-            $ob->targets = _get_goal_children($ob_w->field_goal_source->value(), $ob, 'Target');
+        $source = $ob_w->field_goal_source->value();
+        switch ($source->tid) {
+          case '1738':
+            // Magic number for Aichi Biodiversity Targets
+            $target_type = 'Aichi Target';
+            break;
+          case '1740':
+            // Magic number for MDG's
+          case '1753':
+            // Magic number for SDG's
+            $target_type = 'Target';
+            break;
+          default:
+            $target_type = '';
+        }
+        switch ($type->tid) {
+          case 1733:
+          case 1734:
+          case 1736:
+            $ob->targets = _get_goal_children($ob_w->field_goal_source->value(), $ob, $target_type);
             if (!empty($ob->targets)) {
               $block['content'] = '<h3>' . t('Targets') . '</h3>';
               $block['content'] .= '<div class="children-container"><div class="accordion panel-group panel-collapse collapse in" role="tabpanel">';
@@ -140,7 +157,9 @@ function goal_block_view($delta = '') {
               $block['content'] .= '</div></div>';
             }
             break;
-          case 'Target':
+
+          case 1732:
+          case 1737:
             $parent = $ob_w->field_parent_goal->value();
             if (!empty($parent) && is_array($parent)) {
               $parent = reset($parent);
