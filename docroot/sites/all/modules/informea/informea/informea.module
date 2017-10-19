@@ -795,9 +795,10 @@ function informea_block_view_block_4_alter(&$data, $block) {
  * Implements hook_page_alter().
  */
 function informea_page_alter(&$page) {
+  global $base_url;
   if (module_exists('analytics_integration') && $ga_informea_key = variable_get('ga_informea_key', null)) {
     analytics_integration_add_google_analytics_library($ga_informea_key);
-    $current_path = url(request_uri(), array('absolute' => TRUE));
+    $current_path = $base_url . request_uri();
     analytics_integration_google_analytics_send_hit($ga_informea_key, $current_path, 'informea', drupal_get_title(), 'pageview', false);
     /* UNEP webmaster request to send hits to monitor all affliate unep.org websites */
     analytics_integration_google_analytics_send_hit(ANALYTICS_INTEGRATION_UNEP, $current_path, 'unep', drupal_get_title());
