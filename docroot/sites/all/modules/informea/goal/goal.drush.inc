@@ -222,6 +222,15 @@ function drush_goal_informea_sdg_full_import() {
   }
 }
 
+function goal_get_row_value($row, $keys) {
+  foreach($keys as $key) {
+    if (isset($row[$key])) {
+      return $row[$key];
+    }
+  }
+  return '';
+}
+
 function drush_goal_import_treaty_goals_mappings($path = NULL) {
   if (!file_exists($path)) {
     drupal_set_message(t('File !path does not exists!', array('!path'=>$path)), 'error');
@@ -237,11 +246,24 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
     return;
   }
   $updated = 0;
+  $same = 0;
+
+  drush_log("keys = " . implode(', ', array_keys($data)));
+  if (is_array($data)) {
+    drush_log('Rows in file ' . count($data), 'ok');
+  }
+  else {
+    drush_log('Error data not array ', 'error');
+  }
   foreach ($data as $key => $row) {
+
     if (empty($row['Permalink'])) {
       continue;
     }
-    $goal_no = rtrim($row['SDG Goal'], ',. ');
+    if ($row['Permalink'] == '-') {
+      continue;
+    }
+    $goal_no = rtrim(goal_get_row_value($row, ['SDG Goal', 'SDG Goal(s)']), ',. ');
     $goal_ids = _goal_parse_row_numbers($goal_no);
     $error = 0;
     foreach($goal_ids as $goal_id) {
@@ -264,7 +286,7 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
       continue;
     }
 
-    $target_no = rtrim($row['SDG Target'], ',. ');
+    $target_no = rtrim(goal_get_row_value($row, ['SDG Target', 'SDG Target(s)']), ',. ');
     $target_ids = _goal_parse_row_numbers($target_no);
     foreach($target_ids as $target_id) {
       if ($target_id == strval(intval($target_id))) {
@@ -299,11 +321,18 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
     }
 
     if ($treaty_node && $new_sdg_goals) {
-      $treaty_node->field_sdg_goals['und'] = array_values($new_sdg_goals);
+      if (isset($treaty_node->field_sdg_goals[LANGUAGE_NONE])) {
+        if (md5(json_encode($treaty_node->field_sdg_goals[LANGUAGE_NONE]))==md5(json_encode(array_values($new_sdg_goals)))) {
+          $same++;
+          continue;
+        }
+      }
+      $treaty_node->field_sdg_goals[LANGUAGE_NONE] = array_values($new_sdg_goals);
       node_save($treaty_node);
       $updated++;
     }
   }
+  drush_log('Same ' . $same, 'ok');
   drush_log('Updated ' . $updated, 'ok');
 }
 
