@@ -141,6 +141,7 @@ function _goal_update_node_fields(&$node) {
  */
 function goal_update_7002() {
   features_revert_module('goal');
+  features_revert_module('informea_search');
 }
 
 /**
