@@ -137,10 +137,16 @@ function _goal_update_node_fields(&$node) {
 }
 
 /**
- * Enhancement #227: Goals, targets, indicators - restructure existing content
+ * Enhancement #227: New fields
  */
 function goal_update_7002() {
   features_revert_module('goal');
+}
+
+/**
+ * Enhancement #227: Goals, targets, indicators - restructure existing content
+ */
+function goal_update_7003() {
   $tids = [GOAL_SOURCE_AICHI, GOAL_SOURCE_SDG, GOAL_SOURCE_GEG];
 
   $query = new EntityFieldQuery();
@@ -149,8 +155,6 @@ function goal_update_7002() {
     ->fieldCondition('field_goal_source', 'tid', $tids, 'IN');
   $result = $query->execute();
   $goals = !empty($result['node']) ? $result['node'] : [];
-
-  var_dump(count($goals));
 
   foreach ($goals as $item) {
     $node = node_load($item->nid);
@@ -165,7 +169,7 @@ function goal_update_7002() {
 /**
  * Enhancement #227: Delete deprecated terms
  */
-function goal_update_7003() {
+function goal_update_7004() {
   taxonomy_term_delete(1732); // Aichi Target
   taxonomy_term_delete(1733); // GEG
   taxonomy_term_delete(1736); // Strategic Goal
