@@ -175,6 +175,10 @@ function goal_update_7002() {
       'goal_type' => 'Goal',
       'target_type' => 'Target',
     ],
+    GOAL_SOURCE_GEG => [
+      'goal_type' => 'GEG',
+      'target_type' => NULL,
+    ],
   ];
   foreach ($sources as $id => $data) {
     $term = taxonomy_term_load($id);
