@@ -1,7 +1,146 @@
 <?php
+
 /**
  * Lead Institution ajax autocomplete entity reference field
  */
 function goal_update_7001() {
   features_revert(array('goal' => ['field_base', 'field_instance']));
+}
+
+function _goal_update_node_fields($node) {
+  $source = $node->field_goal_source[LANGUAGE_NONE][0]['tid'];
+  $type = $node->field_goal_type[LANGUAGE_NONE][0]['tid'];
+  $title = !empty($node->title_field[LANGUAGE_NONE])
+    ? $node->title_field[LANGUAGE_NONE][0]['value']
+    : $node->title_field['en'][0]['value'];
+
+  switch ($type) {
+    case 1733: // GEG (to be deleted)
+    case 1736: // Strategic Goal (to be deleted)
+      $type = GOAL_TYPE_GOAL;
+      break;
+
+    case 1732: // Aichi Target (to be deleted)
+      $type = GOAL_TYPE_TARGET;
+      break;
+  }
+  $node->field_goal_type[LANGUAGE_NONE][0]['tid'] = $type;
+
+  $node->field_sorting_order = [
+    LANGUAGE_NONE => [
+      0 => [
+        'value' => $order + 1,
+      ],
+    ],
+  ];
+
+  switch ($source) {
+    case GOAL_SOURCE_SDG:
+      if ($type == GOAL_TYPE_TARGET) {
+        // Prefix title with "Target" and move description to field_summary
+        if (!preg_match('/^Target/', $node->title)) {
+          $node->title = "Target {$node->title}";
+        }
+
+        foreach ($node->title_field as $language => &$value) {
+          if (!empty($value[0]['value']) && !preg_match('/^Target/', $value[0]['value'])) {
+            $value[0]['value'] = "Target {$value[0]['value']}";
+          }
+        }
+
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
+      elseif ($type == GOAL_TYPE_INDICATOR) {
+        // Prefix title with "Indicator" and move from title to field_summary
+        if (preg_match('/^(\d\.*)+\s(.*)/', $node->title, $matches)) {
+          $summary = end($matches);
+          $node->field_summary = [
+            LANGUAGE_NONE => [
+              0 => [
+                'value' => $summary,
+              ],
+            ],
+          ];
+          $node->title = trim(str_replace($summary, '', $node->title));
+        }
+
+        if (!preg_match('/^Indicator/', $node->title)) {
+          $node->title = "Indicator {$node->title}";
+        }
+
+        foreach ($node->title_field as $language => &$value) {
+          if (!empty($value[0]['value'])) {
+            if (preg_match('/^(\d\.*)+\s(.*)/', $value[0]['value'], $matches)) {
+              $summary = end($matches);
+              $node->field_summary[$language] = [
+                0 => [
+                  'value' => $summary,
+                ],
+              ];
+              $value[0]['value'] = trim(str_replace($summary, '', $value[0]['value']));
+            }
+            if (!preg_match('/^Indicator/', $value[0]['value'])) {
+              $value[0]['value'] = "Indicator {$value[0]['value']}";
+            }
+          }
+        }
+      }
+      break;
+
+    case GOAL_SOURCE_AICHI:
+
+      break;
+
+    case GOAL_SOURCE_GEG:
+
+      break;
+  }
+
+  node_save($node);
+}
+
+function _goal_update_children($items) {
+  $items = array_values($items);
+  foreach ($items as $order => $item) {
+    $node = node_load($item->nid);
+    _goal_update_node_fields($node);
+    if (function_exists('drush_log')) {
+      drush_log("Updated node $item->nid", 'success');
+    }
+    if (!empty($item->children)) {
+      _goal_update_children($item->children);
+    }
+  }
+}
+
+function goal_update_7002() {
+  $sources = [
+    GOAL_SOURCE_AICHI => [
+      // Aichi
+      'goal_type' => 'Strategic goal',
+      'target_type' => 'Aichi Target',
+    ],
+    GOAL_SOURCE_SDG => [
+      // SDG
+      'goal_type' => 'Goal',
+      'target_type' => 'Target',
+    ],
+  ];
+  foreach ($sources as $id => $data) {
+    $term = taxonomy_term_load($id);
+    $goals = _get_goal_source_goals($term, $data['goal_type']);
+    foreach ($goals as $goal_sorting_order => $goal) {
+      $targets = _get_goal_children($term, $goal, $data['target_type']);
+      foreach ($targets as $target_sorting_order => $target) {
+        $indicators = _get_goal_children($term, $target, 'Indicator');
+        foreach ($indicators as $indicator_sorting_order => $indicator) {
+          $indicator->children = _get_goal_children($term, $indicator, 'Indicator');
+        }
+        $target->children = $indicators;
+      }
+      $goal->children = $targets;
+    }
+    _goal_update_children($goals);
+  }
 }
