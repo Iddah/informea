@@ -929,8 +929,8 @@ function goal_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'bypass_access' => FALSE,
-          'link' => FALSE,
+          'bypass_access' => 0,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 3,
