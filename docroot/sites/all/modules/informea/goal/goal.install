@@ -65,7 +65,7 @@ function _goal_update_node_move_text_from_title_to_summary(&$node) {
   }
 }
 
-function _goal_update_node_fields(&$node, $sorting_order = 0) {
+function _goal_update_node_fields(&$node) {
   $source = $node->field_goal_source[LANGUAGE_NONE][0]['tid'];
   $type = $node->field_goal_type[LANGUAGE_NONE][0]['tid'];
 
@@ -80,14 +80,6 @@ function _goal_update_node_fields(&$node, $sorting_order = 0) {
       break;
   }
   $node->field_goal_type[LANGUAGE_NONE][0]['tid'] = $type;
-
-  $node->field_sorting_order = [
-    LANGUAGE_NONE => [
-      0 => [
-        'value' => $sorting_order + 1,
-      ],
-    ],
-  ];
 
   switch ($source) {
     case GOAL_SOURCE_SDG:
@@ -144,57 +136,29 @@ function _goal_update_node_fields(&$node, $sorting_order = 0) {
   }
 }
 
-function _goal_update_children($items) {
-  $items = array_values($items);
-  foreach ($items as $order => $item) {
-    $node = node_load($item->nid);
-    _goal_update_node_fields($node, $order);
-    node_save($node);
-    if (function_exists('drush_log')) {
-      drush_log("Updated node $item->nid", 'success');
-    }
-    if (!empty($item->children)) {
-      _goal_update_children($item->children);
-    }
-  }
-}
-
 /**
  * Enhancement #227: Goals, targets, indicators - restructure existing content
  */
 function goal_update_7002() {
   features_revert_module('goal');
-  $sources = [
-    GOAL_SOURCE_AICHI => [
-      // Aichi
-      'goal_type' => 'Strategic goal',
-      'target_type' => 'Aichi Target',
-    ],
-    GOAL_SOURCE_SDG => [
-      // SDG
-      'goal_type' => 'Goal',
-      'target_type' => 'Target',
-    ],
-    GOAL_SOURCE_GEG => [
-      'goal_type' => 'GEG',
-      'target_type' => NULL,
-    ],
-  ];
-  foreach ($sources as $id => $data) {
-    $term = taxonomy_term_load($id);
-    $goals = _get_goal_source_goals($term, $data['goal_type']);
-    foreach ($goals as $goal_sorting_order => $goal) {
-      $targets = _get_goal_children($term, $goal, $data['target_type']);
-      foreach ($targets as $target_sorting_order => $target) {
-        $indicators = _get_goal_children($term, $target, 'Indicator');
-        foreach ($indicators as $indicator_sorting_order => $indicator) {
-          $indicator->children = _get_goal_children($term, $indicator, 'Indicator');
-        }
-        $target->children = $indicators;
-      }
-      $goal->children = $targets;
+  $tids = [GOAL_SOURCE_AICHI, GOAL_SOURCE_SDG, GOAL_SOURCE_GEG];
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'goal')
+    ->fieldCondition('field_goal_source', 'tid', $tids, 'IN');
+  $result = $query->execute();
+  $goals = !empty($result['node']) ? $result['node'] : [];
+
+  var_dump(count($goals));
+
+  foreach ($goals as $item) {
+    $node = node_load($item->nid);
+    _goal_update_node_fields($node);
+    node_save($node);
+    if (function_exists('drush_log')) {
+      drush_log("Updated node $item->nid", 'success');
     }
-    _goal_update_children($goals);
   }
 }
 
