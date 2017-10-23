@@ -39,10 +39,13 @@ $expanded = isset($_GET['target']) ? $_GET['target'] == $target->nid : FALSE;
     </ul><!-- .list-inline .actions -->
     <i class="glyphicon glyphicon-plus-sign"></i>
     <h4 class="panel-title panel-title-target">
-      <p class="title"><?php print $pw->label(); ?></p>
-      <?php if($pw->body->value()): ?>
-        <?php print l($pw->body->value->value(array('decode' => FALSE)), "node/{$target->nid}", array('html' => TRUE)); ?>
-      <?php endif; ?>
+        <?php
+          $summary = $pw->label();
+          if (!empty($pw->field_summary->value())) {
+            $summary .= ': ' . $pw->field_summary->value();
+          }
+          print l(strip_tags($summary), "node/{$target->nid}", array('html' => TRUE));
+        ?>
     </h4><!-- .panel-title -->
     <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
   </div><!-- .panel-heading .smallipop -->

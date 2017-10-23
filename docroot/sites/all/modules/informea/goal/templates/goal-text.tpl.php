@@ -40,7 +40,13 @@
       </ul><!-- .list-inline .actions -->
       <i class="glyphicon glyphicon-plus-sign <?php print $expanded ? '' : ' collapsed' ;?>" data-toggle="collapse" data-target="#goal-<?php echo $goal->nid; ?>" aria-expanded="<?php print $expanded ? 'true' : 'false' ;?>" aria-controls="article-<?php echo $goal->nid; ?>"></i>
       <h4 class="panel-title">
-        <?php echo l($aw->label(), "node/{$goal->nid}", array('html' => TRUE)); ?>
+        <?php
+        $summary = $aw->label();
+        if (!empty($aw->field_summary->value())) {
+          $summary .= ': ' . $aw->field_summary->value();
+        }
+        print l(strip_tags($summary), "node/{$goal->nid}", array('html' => TRUE));
+        ?>
       </h4><!-- .panel-title -->
       <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
     </div><!-- .panel-heading .smallipop -->

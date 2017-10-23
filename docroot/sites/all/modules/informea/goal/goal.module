@@ -376,35 +376,14 @@ function goal_taxonomy_term_view($term, $view_mode, $langcode) {
     drupal_add_library('informea', 'scrollto');
     drupal_add_library('informea', 'smallipop');
     drupal_add_css(drupal_get_path('module', 'goal') . '/styles/goal.css');
-    switch ($term->tid) {
-      case GOAL_SOURCE_AICHI:
-        // Magic number for Aichi Biodiversity Targets
-        $goal_type = 'Strategic goal';
-        $target_type = 'Aichi Target';
-        break;
-      case GOAL_SOURCE_GEG:
-        // Magic number for GEG. We only show the view
-        hide($term->content);
-        $goal_type = '';
-        $target_type = '';
-        break;
-      case GOAL_SOURCE_MDG:
-        // Magic number for MDG's
-        $goal_type = 'Goal';
-        $target_type = 'Target';
-        break;
-      case GOAL_SOURCE_SDG:
-        // Magic number for SDG's
-        $goal_type = 'Goal';
-        $target_type = 'Target';
-        break;
-      default:
-        $goal_type = '';
-        $target_type = '';
+    if ($term->tid == GOAL_SOURCE_GEG) {
+      // Magic number for GEG. We only show the view
+      hide($term->content);
     }
-    $goals = _get_goal_source_goals($term, $goal_type);
+
+    $goals = _get_goal_source_goals($term, 'Goal');
     foreach ($goals as $goal) {
-      $targets = _get_goal_children($term, $goal, $target_type);
+      $targets = _get_goal_children($term, $goal, 'Target');
       foreach ($targets as $target) {
         $indicators = _get_goal_children($term, $target, 'Indicator');
         foreach ($indicators as $indicator) {

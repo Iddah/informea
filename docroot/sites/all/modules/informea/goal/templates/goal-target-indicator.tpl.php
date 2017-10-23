@@ -7,14 +7,20 @@ $expanded = isset($_GET['indicator']) ? $_GET['indicator'] == $indicator->nid : 
 <div class="panel <?php print $expanded ? 'panel-warning' : 'panel-default'; ?>">
     <div style="padding: 10px 0;" class=" indicator clearfix smallipop <?php print $expanded ? '' : ' collapsed' ;?> <?php print $highlight ? 'highlight' : '' ;?>" id="heading-<?php print $indicator->nid; ?>" data-toggle="collapse" data-target="#indicator-<?php echo $indicator->nid; ?>" aria-expanded="<?php print $expanded ? 'true' : 'false' ;?>">
         <h4 class="panel-title panel-title-target">
-            <p class="_title"><?php
-        print l( $pw->label(), "node/{$indicator->nid}", array(
-          'attributes' => array(
-            'data-toggle' => 'tooltip', 'data-placement' => 'top',
-            'title' => t('View indicator page'),
-          ),
-          'html' => TRUE,
-        ));
+            <p class="_title">
+
+              <?php
+              $summary = $pw->label();
+              if (!empty($pw->field_summary->value())) {
+                $summary .= ': ' . $pw->field_summary->value();
+              }
+              print l(strip_tags($summary), "node/{$indicator->nid}", array(
+                'attributes' => array(
+                  'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                  'title' => t('View indicator page'),
+                ),
+                'html' => TRUE,
+              ));
               ?></p></h4>
       <?php print theme('goal_text_tags', array('tags' => $tags)); ?>
     </div><!-- .indicator .smallipop -->
