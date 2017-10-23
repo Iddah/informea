@@ -7,12 +7,49 @@ function goal_update_7001() {
   features_revert(array('goal' => ['field_base', 'field_instance']));
 }
 
+function _goal_update_node_title_with_prefix($node, $prefix) {
+  if (!preg_match("/^$prefix/", $node->title)) {
+    $node->title = "{$prefix} {$node->title}";
+  }
+
+  foreach ($node->title_field as $language => &$value) {
+    if (!empty($value[0]['value']) && !preg_match("/^$prefix/", $value[0]['value'])) {
+      $value[0]['value'] = "{$prefix} {$value[0]['value']}";
+    }
+  }
+}
+
+function _goal_update_node_move_text_from_title_to_summary($node) {
+  $pattern = '(\d\.*)+(\s|\W)+(.+)';
+
+  if (preg_match($pattern, $node->title, $matches)) {
+    $summary = end($matches);
+    $node->field_summary[LANGUAGE_NONE] = [
+      0 => [
+        'value' => $summary,
+      ],
+    ];
+    $node->title = trim(str_replace($summary, '', $node->title));
+  }
+
+  foreach ($node->title_field as $language => &$value) {
+    if (!empty($value[0]['value'])) {
+      if (preg_match($pattern, $value[0]['value'], $matches)) {
+        $summary = end($matches);
+        $node->field_summary[$language] = [
+          0 => [
+            'value' => $summary,
+          ],
+        ];
+        $value[0]['value'] = trim(str_replace($summary, '', $value[0]['value']));
+      }
+    }
+  }
+}
+
 function _goal_update_node_fields($node) {
   $source = $node->field_goal_source[LANGUAGE_NONE][0]['tid'];
   $type = $node->field_goal_type[LANGUAGE_NONE][0]['tid'];
-  $title = !empty($node->title_field[LANGUAGE_NONE])
-    ? $node->title_field[LANGUAGE_NONE][0]['value']
-    : $node->title_field['en'][0]['value'];
 
   switch ($type) {
     case 1733: // GEG (to be deleted)
@@ -38,66 +75,49 @@ function _goal_update_node_fields($node) {
     case GOAL_SOURCE_SDG:
       if ($type == GOAL_TYPE_TARGET) {
         // Prefix title with "Target" and move description to field_summary
-        if (!preg_match('/^Target/', $node->title)) {
-          $node->title = "Target {$node->title}";
-        }
-
-        foreach ($node->title_field as $language => &$value) {
-          if (!empty($value[0]['value']) && !preg_match('/^Target/', $value[0]['value'])) {
-            $value[0]['value'] = "Target {$value[0]['value']}";
-          }
-        }
-
+        _goal_update_node_title_with_prefix($node, 'Target');
         $node->field_summary = $node->body;
         $node->body = [];
       }
       elseif ($type == GOAL_TYPE_INDICATOR) {
         // Prefix title with "Indicator" and move from title to field_summary
-        if (preg_match('/^(\d\.*)+\s(.*)/', $node->title, $matches)) {
-          $summary = end($matches);
-          $node->field_summary = [
-            LANGUAGE_NONE => [
-              0 => [
-                'value' => $summary,
-              ],
-            ],
-          ];
-          $node->title = trim(str_replace($summary, '', $node->title));
-        }
-
-        if (!preg_match('/^Indicator/', $node->title)) {
-          $node->title = "Indicator {$node->title}";
-        }
-
-        foreach ($node->title_field as $language => &$value) {
-          if (!empty($value[0]['value'])) {
-            if (preg_match('/^(\d\.*)+\s(.*)/', $value[0]['value'], $matches)) {
-              $summary = end($matches);
-              $node->field_summary[$language] = [
-                0 => [
-                  'value' => $summary,
-                ],
-              ];
-              $value[0]['value'] = trim(str_replace($summary, '', $value[0]['value']));
-            }
-            if (!preg_match('/^Indicator/', $value[0]['value'])) {
-              $value[0]['value'] = "Indicator {$value[0]['value']}";
-            }
-          }
-        }
+        _goal_update_node_move_text_from_title_to_summary($node);
+        _goal_update_node_title_with_prefix($node, 'Indicator');
       }
       break;
 
     case GOAL_SOURCE_AICHI:
+      if ($type == GOAL_TYPE_GOAL) {
+        // Prefix title with "Strategic"
+        _goal_update_node_title_with_prefix($node, 'Strategic');
+      }
+      elseif ($type == GOAL_TYPE_TARGET) {
+        // Move description to field_summary
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
+      elseif ($type == GOAL_TYPE_INDICATOR) {
+        // Clear description and move from title to field_summary
+        _goal_update_node_move_text_from_title_to_summary($node);
+        $node->body = [];
+      }
 
       break;
 
     case GOAL_SOURCE_GEG:
-
+      if ($type == GOAL_TYPE_GOAL) {
+        // Title = "Goal" and move description to field_summary
+        $node->title = 'Goal';
+        foreach ($node->title_field as $language => &$value) {
+          if (!empty($value[0]['value'])) {
+            $value[0]['value'] = 'Goal';
+          }
+        }
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
       break;
   }
-
-  node_save($node);
 }
 
 function _goal_update_children($items) {
@@ -105,6 +125,7 @@ function _goal_update_children($items) {
   foreach ($items as $order => $item) {
     $node = node_load($item->nid);
     _goal_update_node_fields($node);
+    node_save($node);
     if (function_exists('drush_log')) {
       drush_log("Updated node $item->nid", 'success');
     }
