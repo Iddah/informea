@@ -146,9 +146,10 @@ function _goal_update_children($items) {
 }
 
 /**
- * Enhancement #227 Goals, targets, indicators - restructure existing content
+ * Enhancement #227: Goals, targets, indicators - restructure existing content
  */
 function goal_update_7002() {
+  features_revert_module('goal');
   $sources = [
     GOAL_SOURCE_AICHI => [
       // Aichi
@@ -177,4 +178,13 @@ function goal_update_7002() {
     }
     _goal_update_children($goals);
   }
+}
+
+/**
+ * Enhancement #227: Delete deprecated terms
+ */
+function goal_update_7003() {
+  taxonomy_term_delete(1732); // Aichi Target
+  taxonomy_term_delete(1733); // GEG
+  taxonomy_term_delete(1736); // Strategic Goal
 }
