@@ -22,8 +22,13 @@ function _goal_update_node_title_with_prefix(&$node, $prefix) {
 function _goal_update_node_move_text_from_title_to_summary(&$node) {
   $pattern = '/(\d\.*)+(\s|\W)+(\w+.*)/';
 
+  $pattern2 = '/(\.\d)+(\s|\W)+(\w+.*)/';
+
   if (preg_match($pattern, $node->title, $matches)) {
     $summary = end($matches);
+    while (preg_match($pattern2, $summary, $matches)) {
+      $summary = end($matches);
+    }
     if (strlen($summary) > 5) {
       $node->field_summary[LANGUAGE_NONE] = [
         0 => [
@@ -41,6 +46,9 @@ function _goal_update_node_move_text_from_title_to_summary(&$node) {
     if (!empty($value[0]['value'])) {
       if (preg_match($pattern, $value[0]['value'], $matches)) {
         $summary = end($matches);
+        while (preg_match($pattern2, $summary, $matches)) {
+          $summary = end($matches);
+        }
         if (strlen($summary) > 5) {
           $node->field_summary[$language] = [
             0 => [
