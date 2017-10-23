@@ -1,10 +1,10 @@
 <?php
 
 // ToDo: Do we need to retrieve these tids programmatically matched by term name?
-define('DRUSH_GOAL_SDG_TID', 1753);
-define('DRUSH_GOAL_GOAL_TID', 1734);
-define('DRUSH_GOAL_TARGET_TID', 1737);
-define('DRUSH_GOAL_INDICATOR_TID', 1735);
+define('DRUSH_GOAL_SDG_TID', GOAL_SOURCE_SDG);
+define('DRUSH_GOAL_GOAL_TID', GOAL_TYPE_GOAL);
+define('DRUSH_GOAL_TARGET_TID', GOAL_TYPE_TARGET);
+define('DRUSH_GOAL_INDICATOR_TID', GOAL_TYPE_INDICATOR);
 
 /**
  * Implementation of hook_drush_command().

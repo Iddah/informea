@@ -6,6 +6,14 @@
 
 include_once 'goal.features.inc';
 
+define('GOAL_SOURCE_SDG', 1753);
+define('GOAL_SOURCE_AICHI', 1738);
+define('GOAL_SOURCE_GEG', 1739);
+define('GOAL_SOURCE_MDG', 1740);
+define('GOAL_TYPE_GOAL', 1734);
+define('GOAL_TYPE_TARGET', 1737);
+define('GOAL_TYPE_INDICATOR', 1735);
+
 /**
  * Implements hook_menu().
  */
@@ -37,7 +45,7 @@ function sdg_goals_autocomplete_callback($string) {
   $q = db_select('node', 'n');
   $q->innerJoin('field_data_field_goal_source', 'gs', 'n.nid = gs.entity_id');
   $q->fields('n', ['nid', 'title']);
-  $q->condition('gs.field_goal_source_tid', '1753'); /* SDG goals */
+  $q->condition('gs.field_goal_source_tid', GOAL_SOURCE_SDG); /* SDG goals */
   $q->condition('n.title', '%' . db_like($string) . '%', 'LIKE');
   $items = $q->execute()->fetchAllKeyed();
   foreach ($items as $nid => $title) {
@@ -129,13 +137,13 @@ function goal_block_view($delta = '') {
         $type = $ob_w->field_goal_type->value();
         $source = $ob_w->field_goal_source->value();
         switch ($source->tid) {
-          case '1738':
+          case GOAL_SOURCE_AICHI:
             // Magic number for Aichi Biodiversity Targets
             $target_type = 'Aichi Target';
             break;
-          case '1740':
+          case GOAL_SOURCE_MDG:
             // Magic number for MDG's
-          case '1753':
+          case GOAL_SOURCE_SDG:
             // Magic number for SDG's
             $target_type = 'Target';
             break;
@@ -144,7 +152,7 @@ function goal_block_view($delta = '') {
         }
         switch ($type->tid) {
           case 1733:
-          case 1734:
+          case GOAL_TYPE_GOAL:
           case 1736:
             $ob->targets = _get_goal_children($ob_w->field_goal_source->value(), $ob, $target_type);
             if (!empty($ob->targets)) {
@@ -159,7 +167,7 @@ function goal_block_view($delta = '') {
             break;
 
           case 1732:
-          case 1737:
+          case GOAL_TYPE_TARGET:
             $parent = $ob_w->field_parent_goal->value();
             if (!empty($parent) && is_array($parent)) {
               $parent = reset($parent);
@@ -369,23 +377,23 @@ function goal_taxonomy_term_view($term, $view_mode, $langcode) {
     drupal_add_library('informea', 'smallipop');
     drupal_add_css(drupal_get_path('module', 'goal') . '/styles/goal.css');
     switch ($term->tid) {
-      case '1738':
+      case GOAL_SOURCE_AICHI:
         // Magic number for Aichi Biodiversity Targets
         $goal_type = 'Strategic goal';
         $target_type = 'Aichi Target';
         break;
-      case '1739':
+      case GOAL_SOURCE_GEG:
         // Magic number for GEG. We only show the view
         hide($term->content);
         $goal_type = '';
         $target_type = '';
         break;
-      case '1740':
+      case GOAL_SOURCE_MDG:
         // Magic number for MDG's
         $goal_type = 'Goal';
         $target_type = 'Target';
         break;
-      case '1753':
+      case GOAL_SOURCE_SDG:
         // Magic number for SDG's
         $goal_type = 'Goal';
         $target_type = 'Target';
@@ -455,7 +463,7 @@ function goal_get_icon($entity, $output) {
     return '';
   }
   // Goal = 1734.
-  if ($goal_type->tid == 1734) {
+  if ($goal_type->tid == GOAL_TYPE_GOAL) {
     return '';
   }
   $goal = $ew->field_parent_goal->value();
