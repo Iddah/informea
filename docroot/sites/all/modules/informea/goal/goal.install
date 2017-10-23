@@ -128,6 +128,12 @@ function _goal_update_node_fields(&$node, $sorting_order = 0) {
       }
       break;
   }
+
+
+  foreach($node->field_summary as $language => &$value) {
+    $value[0]['value'] = strip_tags($value[0]['value']);
+    $value[0]['format'] = NULL;
+  }
 }
 
 function _goal_update_children($items) {
