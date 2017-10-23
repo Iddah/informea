@@ -7,7 +7,7 @@ function goal_update_7001() {
   features_revert(array('goal' => ['field_base', 'field_instance']));
 }
 
-function _goal_update_node_title_with_prefix($node, $prefix) {
+function _goal_update_node_title_with_prefix(&$node, $prefix) {
   if (!preg_match("/^$prefix/", $node->title)) {
     $node->title = "{$prefix} {$node->title}";
   }
@@ -19,8 +19,8 @@ function _goal_update_node_title_with_prefix($node, $prefix) {
   }
 }
 
-function _goal_update_node_move_text_from_title_to_summary($node) {
-  $pattern = '(\d\.*)+(\s|\W)+(.+)';
+function _goal_update_node_move_text_from_title_to_summary(&$node) {
+  $pattern = '/(\d\.*)+(\s|\W)+(.+)/';
 
   if (preg_match($pattern, $node->title, $matches)) {
     $summary = end($matches);
@@ -47,7 +47,7 @@ function _goal_update_node_move_text_from_title_to_summary($node) {
   }
 }
 
-function _goal_update_node_fields($node) {
+function _goal_update_node_fields(&$node, $sorting_order = 0) {
   $source = $node->field_goal_source[LANGUAGE_NONE][0]['tid'];
   $type = $node->field_goal_type[LANGUAGE_NONE][0]['tid'];
 
@@ -66,7 +66,7 @@ function _goal_update_node_fields($node) {
   $node->field_sorting_order = [
     LANGUAGE_NONE => [
       0 => [
-        'value' => $order + 1,
+        'value' => $sorting_order + 1,
       ],
     ],
   ];
@@ -124,7 +124,7 @@ function _goal_update_children($items) {
   $items = array_values($items);
   foreach ($items as $order => $item) {
     $node = node_load($item->nid);
-    _goal_update_node_fields($node);
+    _goal_update_node_fields($node, $order);
     node_save($node);
     if (function_exists('drush_log')) {
       drush_log("Updated node $item->nid", 'success');
@@ -135,6 +135,9 @@ function _goal_update_children($items) {
   }
 }
 
+/**
+ * Enhancement #227 Goals, targets, indicators - restructure existing content
+ */
 function goal_update_7002() {
   $sources = [
     GOAL_SOURCE_AICHI => [
