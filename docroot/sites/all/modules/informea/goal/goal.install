@@ -24,7 +24,7 @@ function _goal_update_node_move_text_from_title_to_summary(&$node) {
 
   if (preg_match($pattern, $node->title, $matches)) {
     $summary = end($matches);
-    if (strlen($summary > 5)) {
+    if (strlen($summary) > 5) {
       $node->field_summary[LANGUAGE_NONE] = [
         0 => [
           'value' => $summary,
@@ -41,7 +41,7 @@ function _goal_update_node_move_text_from_title_to_summary(&$node) {
     if (!empty($value[0]['value'])) {
       if (preg_match($pattern, $value[0]['value'], $matches)) {
         $summary = end($matches);
-        if (strlen($summary > 5)) {
+        if (strlen($summary) > 5) {
           $node->field_summary[$language] = [
             0 => [
               'value' => $summary,
