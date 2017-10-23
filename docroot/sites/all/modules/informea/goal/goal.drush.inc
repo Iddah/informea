@@ -31,6 +31,11 @@ function goal_drush_command() {
     ),
   );
 
+  $items['fix-goals-content'] = array(
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'description' => 'Fix goals content',
+  );
+
   return $items;
 }
 
@@ -336,4 +341,161 @@ function _goal_get_goal_original_ids() {
   $q->condition('bundle', 'goal');
   $q->condition('entity_type', 'node');
   return $q->execute()->fetchAllKeyed(0, 1);
+}
+
+function _goal_update_node_title_with_prefix(&$node, $prefix) {
+  if (!preg_match("/^$prefix/", $node->title)) {
+    $node->title = "{$prefix} {$node->title}";
+  }
+
+  foreach ($node->title_field as $language => &$value) {
+    if (!empty($value[0]['value']) && !preg_match("/^$prefix/", $value[0]['value'])) {
+      $value[0]['value'] = "{$prefix} {$value[0]['value']}";
+    }
+  }
+}
+
+function _goal_update_node_move_text_from_title_to_summary(&$node) {
+  $pattern = '/(\d\.*)+(\s|\W)+(\w+.*)/';
+
+  $pattern2 = '/(\.\d)+(\s|\W)+(\w+.*)/';
+
+  if (preg_match($pattern, $node->title, $matches)) {
+    $summary = end($matches);
+    while (preg_match($pattern2, $summary, $matches)) {
+      $summary = end($matches);
+    }
+    if (strlen($summary) > 5) {
+      $node->field_summary[LANGUAGE_NONE] = [
+        0 => [
+          'value' => $summary,
+        ],
+      ];
+      $node->title = trim(str_replace($summary, '', $node->title));
+    }
+  }
+  if (preg_match('/(\W+)$/', $node->title, $matches)) {
+    $node->title = substr($node->title, 0, count(end($matches)) * -1);
+  }
+
+  foreach ($node->title_field as $language => &$value) {
+    if (!empty($value[0]['value'])) {
+      if (preg_match($pattern, $value[0]['value'], $matches)) {
+        $summary = end($matches);
+        while (preg_match($pattern2, $summary, $matches)) {
+          $summary = end($matches);
+        }
+        if (strlen($summary) > 5) {
+          $node->field_summary[$language] = [
+            0 => [
+              'value' => $summary,
+            ],
+          ];
+          $value[0]['value'] = trim(str_replace($summary, '', $value[0]['value']));
+        }
+      }
+      if (preg_match('/(\W+)$/', $value[0]['value'], $matches)) {
+        $value[0]['value'] = substr($value[0]['value'], 0, count(end($matches)) * -1);
+      }
+    }
+  }
+}
+
+function _goal_update_node_fields(&$node) {
+  $source = $node->field_goal_source[LANGUAGE_NONE][0]['tid'];
+  $type = $node->field_goal_type[LANGUAGE_NONE][0]['tid'];
+
+  switch ($type) {
+    case 1733: // GEG (to be deleted)
+    case 1736: // Strategic Goal (to be deleted)
+      $type = GOAL_TYPE_GOAL;
+      break;
+
+    case 1732: // Aichi Target (to be deleted)
+      $type = GOAL_TYPE_TARGET;
+      break;
+  }
+  $node->field_goal_type[LANGUAGE_NONE][0]['tid'] = $type;
+
+  switch ($source) {
+    case GOAL_SOURCE_SDG:
+      if ($type == GOAL_TYPE_TARGET) {
+        // Prefix title with "Target" and move description to field_summary
+        _goal_update_node_title_with_prefix($node, 'Target');
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
+      elseif ($type == GOAL_TYPE_INDICATOR) {
+        // Prefix title with "Indicator" and move from title to field_summary
+        _goal_update_node_move_text_from_title_to_summary($node);
+        _goal_update_node_title_with_prefix($node, 'Indicator');
+      }
+      break;
+
+    case GOAL_SOURCE_AICHI:
+      if ($type == GOAL_TYPE_GOAL) {
+        // Prefix title with "Strategic"
+        _goal_update_node_title_with_prefix($node, 'Strategic');
+      }
+      elseif ($type == GOAL_TYPE_TARGET) {
+        // Move description to field_summary
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
+      elseif ($type == GOAL_TYPE_INDICATOR) {
+        // Clear description and move from title to field_summary
+        _goal_update_node_move_text_from_title_to_summary($node);
+        $node->body = [];
+      }
+
+      break;
+
+    case GOAL_SOURCE_GEG:
+      if ($type == GOAL_TYPE_GOAL) {
+        // Title = "Goal" and move description to field_summary
+        $node->title = 'Goal';
+        foreach ($node->title_field as $language => &$value) {
+          if (!empty($value[0]['value'])) {
+            $value[0]['value'] = 'Goal';
+          }
+        }
+        $node->field_summary = $node->body;
+        $node->body = [];
+      }
+      break;
+  }
+
+
+  foreach($node->field_summary as $language => &$value) {
+    $value[0]['value'] = strip_tags($value[0]['value']);
+    $value[0]['format'] = NULL;
+  }
+}
+
+/**
+ * Enhancement #227: Goals, targets, indicators - restructure existing content
+ */
+function drush_goal_fix_goals_content() {
+  if (variable_get('fix_goals_content_flag', FALSE)) {
+    drush_set_error('The content has already been fixed.');
+    return;
+  }
+  variable_set('fix_goals_content_flag', TRUE);
+  $tids = [GOAL_SOURCE_AICHI, GOAL_SOURCE_SDG, GOAL_SOURCE_GEG];
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'goal')
+    ->fieldCondition('field_goal_source', 'tid', $tids, 'IN');
+  $result = $query->execute();
+  $goals = !empty($result['node']) ? $result['node'] : [];
+
+  foreach ($goals as $item) {
+    $node = node_load($item->nid);
+    _goal_update_node_fields($node);
+    node_save($node);
+    if (function_exists('drush_log')) {
+      drush_log("Updated node $item->nid", 'success');
+    }
+  }
 }
