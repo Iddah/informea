@@ -763,17 +763,21 @@ function informea_search_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Indexed Content: Goal */
+  /* Relationship: Indexed Content: Parent */
   $handler->display->display_options['relationships']['field_parent_goal']['id'] = 'field_parent_goal';
   $handler->display->display_options['relationships']['field_parent_goal']['table'] = 'search_api_index_informea_goals_and_principles';
   $handler->display->display_options['relationships']['field_parent_goal']['field'] = 'field_parent_goal';
   $handler->display->display_options['relationships']['field_parent_goal']['label'] = 'Parent Goal';
-  /* Relationship: Content: Goal */
+  /* Relationship: Content: Parent */
   $handler->display->display_options['relationships']['field_parent_goal_1']['id'] = 'field_parent_goal_1';
   $handler->display->display_options['relationships']['field_parent_goal_1']['table'] = 'entity_node';
   $handler->display->display_options['relationships']['field_parent_goal_1']['field'] = 'field_parent_goal';
   $handler->display->display_options['relationships']['field_parent_goal_1']['relationship'] = 'field_parent_goal';
   $handler->display->display_options['relationships']['field_parent_goal_1']['label'] = 'Parent Parent Goal';
+  /* Relationship: Indexed Content: Source */
+  $handler->display->display_options['relationships']['field_goal_source']['id'] = 'field_goal_source';
+  $handler->display->display_options['relationships']['field_goal_source']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['relationships']['field_goal_source']['field'] = 'field_goal_source';
   /* Field: Indexed Content: Images */
   $handler->display->display_options['fields']['field_images_1']['id'] = 'field_images_1';
   $handler->display->display_options['fields']['field_images_1']['table'] = 'search_api_index_informea_goals_and_principles';
@@ -795,27 +799,33 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['separator'] = '';
   $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: The main body text */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_informea_goals_and_principles';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = ': [body]';
-  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
-  $handler->display->display_options['fields']['body']['settings'] = array(
-    'trim_length' => '400',
-  );
+  /* Field: Taxonomy term: Abbreviation */
+  $handler->display->display_options['fields']['field_abbreviation']['id'] = 'field_abbreviation';
+  $handler->display->display_options['fields']['field_abbreviation']['table'] = 'entity_taxonomy_term';
+  $handler->display->display_options['fields']['field_abbreviation']['field'] = 'field_abbreviation';
+  $handler->display->display_options['fields']['field_abbreviation']['relationship'] = 'field_goal_source';
+  $handler->display->display_options['fields']['field_abbreviation']['label'] = '';
+  $handler->display->display_options['fields']['field_abbreviation']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_abbreviation']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_abbreviation']['alter']['text'] = '[field_abbreviation] ';
+  $handler->display->display_options['fields']['field_abbreviation']['element_label_colon'] = FALSE;
+  /* Field: Indexed Content: Summary */
+  $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['label'] = '';
+  $handler->display->display_options['fields']['field_summary']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_summary']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_summary']['alter']['text'] = ': [field_summary]';
+  $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_summary']['type'] = 'text_plain';
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_goals_and_principles';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[title_field][body]';
+  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[field_abbreviation][title_field][field_summary]';
   $handler->display->display_options['fields']['title_field']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
@@ -891,7 +901,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_goal_type_1']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_goal_type_1']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_goal_type_1']['bypass_access'] = 0;
-  /* Field: Indexed Content: Goal */
+  /* Field: Indexed Content: Parent */
   $handler->display->display_options['fields']['field_parent_goal']['id'] = 'field_parent_goal';
   $handler->display->display_options['fields']['field_parent_goal']['table'] = 'search_api_index_informea_goals_and_principles';
   $handler->display->display_options['fields']['field_parent_goal']['field'] = 'field_parent_goal';
@@ -914,7 +924,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_goal_type_2']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_goal_type_2']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_goal_type_2']['bypass_access'] = 0;
-  /* Field: Content: Goal */
+  /* Field: Content: Parent */
   $handler->display->display_options['fields']['field_parent_goal_1']['id'] = 'field_parent_goal_1';
   $handler->display->display_options['fields']['field_parent_goal_1']['table'] = 'entity_node';
   $handler->display->display_options['fields']['field_parent_goal_1']['field'] = 'field_parent_goal';
@@ -1018,10 +1028,12 @@ function informea_search_views_default_views() {
     t('last »'),
     t('Parent Goal'),
     t('Parent Parent Goal'),
+    t('Source'),
     t('Node ID'),
     t('.'),
-    t(': [body]'),
-    t('[title_field][body]'),
+    t('[field_abbreviation] '),
+    t(': [field_summary]'),
+    t('[field_abbreviation][title_field][field_summary]'),
     t('<span class="meta"><span class="glyphicon glyphicon-folder-open"></span>[field_goal_source]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-pushpin"></span>[field_parent_declaration]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-tasks"></span>[field_declaration_parent_section]</span>'),

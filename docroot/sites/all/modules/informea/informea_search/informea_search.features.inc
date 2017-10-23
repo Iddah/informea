@@ -231,7 +231,6 @@ function informea_search_default_search_api_index() {
         "field_goal_source" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_goal_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_images:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
-        "field_images:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_informea_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_lead_institution" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_official_order" : { "type" : "text" },
@@ -241,6 +240,7 @@ function informea_search_default_search_api_index() {
         "field_referenced_decisions" : { "type" : "integer", "entity_type" : "node" },
         "field_sdg_goals" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_sorting_order" : { "type" : "integer" },
+        "field_summary" : { "type" : "text" },
         "language" : { "type" : "string" },
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
@@ -364,6 +364,8 @@ function informea_search_default_search_api_index() {
             "exclude_fields" : {
               "field_official_order" : "field_official_order",
               "field_original_id" : "field_original_id",
+              "field_summary" : "field_summary",
+              "title" : "title",
               "title_field" : "title_field"
             },
             "highlight" : "always"
