@@ -209,8 +209,10 @@ function goal_block_view($delta = '') {
         }
         $items = goal_get_related_content($ob->nid);
         if (!empty($items)) {
-          $block['content'] .= '<h3>' . t('Related content') . '</h3>';
+          $block['content'] .= sprintf('<div><h3>%s</h3>', t('Related content'));
           $block['content'] .= theme('goal_related_content', array('items' => $items));
+          $block['content'] .= '</div>';
+
         }
       }
       break;
