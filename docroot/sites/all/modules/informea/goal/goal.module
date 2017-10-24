@@ -126,6 +126,7 @@ function goal_block_view($delta = '') {
   $block = [];
   switch ($delta) {
     case 'goal_related_content_block':
+      $block['content'] = '';
       $ob = menu_get_object();
       if (!empty($ob) && $ob->type == 'goal') {
         drupal_add_js(drupal_get_path('module', 'goal') . '/js/goal.js');
@@ -136,54 +137,75 @@ function goal_block_view($delta = '') {
         $ob_w = entity_metadata_wrapper('node', $ob);
         $type = $ob_w->field_goal_type->value();
         $source = $ob_w->field_goal_source->value();
-        switch ($source->tid) {
-          case GOAL_SOURCE_AICHI:
-            // Magic number for Aichi Biodiversity Targets
-            $target_type = 'Aichi Target';
-            break;
-          case GOAL_SOURCE_MDG:
-            // Magic number for MDG's
-          case GOAL_SOURCE_SDG:
-            // Magic number for SDG's
-            $target_type = 'Target';
-            break;
-          default:
-            $target_type = '';
-        }
         switch ($type->tid) {
-          case 1733:
           case GOAL_TYPE_GOAL:
-          case 1736:
-            $ob->targets = _get_goal_children($ob_w->field_goal_source->value(), $ob, $target_type);
-            if (!empty($ob->targets)) {
-              $block['content'] = '<h3>' . t('Targets') . '</h3>';
-              $block['content'] .= '<div class="children-container"><div class="accordion panel-group panel-collapse collapse in" role="tabpanel">';
-              foreach ($ob->targets as $target) {
-                $target->indicators = _get_goal_children($ob_w->field_goal_source->value(), $target, 'Indicator');
-                $block['content'] .= theme('goal_target', array('goal' => $ob, 'target' => $target, 'base_goal_url' => url('taxonomy/term/' . $ob_w->field_goal_source->value()->tid, ['absolute' => TRUE,])));
+            $targets = _get_goal_children($source, $ob, 'Target');
+            if (!empty($targets)) {
+              $block['content'] = sprintf('<div><h3>%s</h3>', t('Targets'));
+              foreach ($targets as $target) {
+                $indicators = _get_goal_children($source, $target, 'Indicator');
+                foreach ($indicators as $indicator) {
+                  $indicator->specific_indicators = _get_goal_children($source, $indicator, 'Indicator');
+                }
+                $target->indicators = $indicators;
+                $block['content'] .= theme('goal_target', [
+                  'goal' => $ob,
+                  'target' => $target,
+                  'base_goal_url' => url('taxonomy/term/' . $source->tid, ['absolute' => TRUE,])
+                ]);
               }
-              $block['content'] .= '</div></div>';
+              $block['content'] .= '</div>';
             }
             break;
 
-          case 1732:
           case GOAL_TYPE_TARGET:
-            $parent = $ob_w->field_parent_goal->value();
-            if (!empty($parent) && is_array($parent)) {
-              $parent = reset($parent);
-            }
-            $ob->indicators = _get_goal_children($ob_w->field_goal_source->value(), $ob, 'Indicator');
-            if (!empty($ob->indicators)) {
-              $block['content'] = '<h3>' . t('Indicators') . '</h3>';
-              $block['content'] .= '<div class="children-container"><div class="accordion panel-group panel-collapse collapse in" role="tabpanel">';
-              foreach ($ob->indicators as $indicator) {
-                $block['content'] .= theme('goal_target_indicator', array('goal' => $parent, 'target' => $ob, 'indicator' => $indicator, 'base_goal_url' => url('taxonomy/term/' . $ob_w->field_goal_source->value()->tid, ['absolute' => TRUE,])));
+            $indicators = _get_goal_children($source, $ob, 'Indicator');
+            if (!empty($indicators)) {
+              $parent = $ob_w->field_parent_goal->value();
+              if (!empty($parent) && is_array($parent)) {
+                $parent = reset($parent);
               }
-              $block['content'] .= '</div></div>';
+              $block['content'] = sprintf('<div><h3>%s</h3>', t('Indicators'));
+              foreach ($indicators as $indicator) {
+                $indicator->specific_indicators = _get_goal_children($source, $indicator, 'Indicator');
+                $block['content'] .= theme('goal_target_indicator', [
+                  'goal' => $parent,
+                  'target' => $ob,
+                  'indicator' => $indicator,
+                  'base_goal_url' => url('taxonomy/term/' . $source->tid, ['absolute' => TRUE,])
+                ]);
+              }
+              $block['content'] .= '</div>';
             }
             break;
-          default:
-            $block['content'] = '';
+
+          case GOAL_TYPE_INDICATOR:
+            $specific_indicators = _get_goal_children($source, $ob, 'Indicator');
+            if (!empty($specific_indicators)) {
+              $parent = $ob_w->field_parent_goal->value();
+              if (!empty($parent) && is_array($parent)) {
+                $parent = reset($parent);
+              }
+
+              $parent_w = entity_metadata_wrapper('node', $parent);
+              $parent2 = $parent_w->field_parent_goal->value();
+              if (!empty($parent2) && is_array($parent2)) {
+                $parent2 = reset($parent2);
+              }
+
+              $block['content'] = sprintf('<div><h3>%s</h3>', t('Specific indicators'));
+              foreach ($specific_indicators as $specific_indicator) {
+                $block['content'] .= theme('goal_target_indicator_specific', [
+                  'goal' => $parent2,
+                  'target' => $parent,
+                  'indicator' => $ob,
+                  'specific_indicator' => $specific_indicator,
+                  'base_goal_url' => url('taxonomy/term/' . $source->tid, ['absolute' => TRUE,])
+                ]);
+              }
+              $block['content'] .= '</div>';
+            }
+            break;
         }
         $items = goal_get_related_content($ob->nid);
         if (!empty($items)) {
