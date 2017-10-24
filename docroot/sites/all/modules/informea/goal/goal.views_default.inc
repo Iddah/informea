@@ -127,7 +127,7 @@ function goal_views_default_views() {
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Goal (field_parent_goal) */
+  /* Contextual filter: Content: Parent (field_parent_goal) */
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['id'] = 'field_parent_goal_target_id';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['table'] = 'field_data_field_parent_goal';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['field'] = 'field_parent_goal_target_id';
@@ -181,7 +181,7 @@ function goal_views_default_views() {
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Goal (field_parent_goal) */
+  /* Contextual filter: Content: Parent (field_parent_goal) */
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['id'] = 'field_parent_goal_target_id';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['table'] = 'field_data_field_parent_goal';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['field'] = 'field_parent_goal_target_id';
@@ -190,7 +190,7 @@ function goal_views_default_views() {
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Content: Goal (field_parent_goal) */
+  /* Contextual filter: Content: Parent (field_parent_goal) */
   $handler->display->display_options['arguments']['field_parent_goal_target_id_1']['id'] = 'field_parent_goal_target_id_1';
   $handler->display->display_options['arguments']['field_parent_goal_target_id_1']['table'] = 'field_data_field_parent_goal';
   $handler->display->display_options['arguments']['field_parent_goal_target_id_1']['field'] = 'field_parent_goal_target_id';
@@ -249,7 +249,7 @@ function goal_views_default_views() {
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Goal (field_parent_goal) */
+  /* Contextual filter: Content: Parent (field_parent_goal) */
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['id'] = 'field_parent_goal_target_id';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['table'] = 'field_data_field_parent_goal';
   $handler->display->display_options['arguments']['field_parent_goal_target_id']['field'] = 'field_parent_goal_target_id';

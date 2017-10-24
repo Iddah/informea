@@ -334,16 +334,9 @@ h1 {
 }
 
 .nav-pills.nav-stacked > li.active > a {
-  background-color: transparent;
-  border-right-color: #39c;
-  color: #0080d5;
-}
-
-.nav-pills.nav-stacked > li.active > a > .badge {
-  background-color: #999;
+  background-color: #0099d5;
   color: #fff;
 }
-
 
 /* Navbars */
 /* ------- */
@@ -654,15 +647,35 @@ h1 {
   background-color: #216587;
   text-decoration: none;
 }
-@media only screen and (max-width : 767px) {
-  .region-above-nav #block-menu-menu-secondary-menu {
-    width: 79%;
+@media only screen and (max-width : 1000px) {
+  .secondary-nav-mobile {
+    border-bottom: 1px solid rgba(26, 58, 111, .25);
+    -webkit-box-shadow: 0 -1px 0 0 rgba(247, 247, 247, .25) inset;
+    box-shadow: 0 -1px 0 0 rgba(247, 247, 247, .25) inset;
   }
-  .region-above-nav #block-menu-menu-secondary-menu li{
-    width: 25%;
+  .secondary-nav-mobile > .container {
+    padding: 0;
+  }
+  .region-above-nav {
+    position: relative;
+    padding: 5px 0;
+    text-align: left;
+  }
+  .region-above-nav li {
+    border-right: none;
+  }
+  .region-above-nav #block-menu-menu-secondary-menu li.first {
+    display: none;
   }
   .region-above-nav #block-locale-language-content {
-    width: 19%;
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .region-above-nav #block-locale-language-content .dropdown {
+    display: inline-block;
+    width: 80px;
   }
   .region-above-nav #block-locale-language-content .dropdown > ul {
     z-index: 1001;
@@ -704,12 +717,16 @@ h1 {
   .region-above-nav #block-locale-language-content > .language-switcher-locale-url {
     display: none;
   }
+  .navbar-default .navbar-nav > li > a {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 .region-above-nav div.contextual-links-wrapper {
   z-index: 1001;
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width : 1000px) {
   .secondary-nav .container {
     padding: 0 15px;
   }
@@ -1896,6 +1913,8 @@ input.facetapi-checkbox { margin-right: 5px; }
 
 
 #edit-search-api-views-fulltext-wrapper { display: none; }
+#views-exposed-form-documents-page #edit-search-api-views-fulltext-wrapper,
+#views-exposed-form-documents-page-1 #edit-search-api-views-fulltext-wrapper{ display: block }
 
 /*
 body[class*='page-search'] .block-facetapi a {
@@ -3072,6 +3091,7 @@ iframe.pdfjs {
 
 /* Search & Taxonomy term related content */
 .taxonomy-term-related-content h2,
+[class^="view-informea-search"] h2,
 .view-informea-search-legislation h2,
 .view-informea-search-court-decision h2,
 .view-informea-search-publications h2,
@@ -3080,6 +3100,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .views-row,
+div[class*="view-informea-search"] .views-row,
 .view-informea-search-bilateral-treaties .views-row,
 .view-informea-search-legislation .views-row,
 .view-informea-search-court-decision .views-row,
@@ -3089,6 +3110,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .views-row .img-thumbnail,
+[class*="view-informea-search"] .views-row .img-thumbnail,
 .view-informea-search-bilateral-treaties .views-row .img-thumbnail,
 .view-informea-search-legislation .views-row .img-thumbnail,
 .view-informea-search-court-decision .views-row .img-thumbnail,
@@ -3100,12 +3122,17 @@ iframe.pdfjs {
 
 .taxonomy-term-related-content .views-row .views-field-title-field:not(:first-child),
 .taxonomy-term-related-content .views-row .views-field-title-field:not(:first-child) ~ .views-field,
+[class*="view-informea-search"] .views-row .views-field,
 .view-informea-search-bilateral-treaties .views-row .views-field,
 .view-informea-search-legislation .views-row .views-field,
 .view-informea-search-publications .views-row .views-field,
 .view-informea-search-court-decision .views-row .views-field {
   margin-left: 60px;
   margin-bottom: 2px;
+}
+
+.view-informea-search-goals-and-principles .views-row .views-field-title-field .field-content a {
+  display: block;
 }
 
 .taxonomy-term-related-content .views-row .views-field-field-logo,
@@ -3132,6 +3159,7 @@ iframe.pdfjs {
 }
 
 .taxonomy-term-related-content .meta .separator,
+[class*="view-informea-search"] .meta .separator,
 .view-informea-search-legislation .meta .separator,
 .view-informea-search-court-decision .meta .separator,
 .view-informea-search-publications .meta .separator,
@@ -3141,6 +3169,39 @@ iframe.pdfjs {
   margin-right: 3px;
 }
 
+.view-informea-search .meta-container,
+[class*="view-informea-search"] .meta-container,
+.view-informea-search-legislation .meta-container,
+.view-informea-search-court-decision .meta-container,
+.view-informea-search-publications .meta-container,
+.view-informea-search-bilateral-treaties .meta-container {
+  color: #8a8a8a;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 90%;
+}
+.view-informea-search .meta-container .meta.content-type,
+[class*="view-informea-search"] .meta-container .meta.content-type,
+.view-informea-search-legislation .meta-container .meta.content-type,
+.view-informea-search-court-decision .meta-container .meta.content-type,
+.view-informea-search-publications .meta-container .meta.content-type,
+.view-informea-search-bilateral-treaties .meta-container .meta.content-type {
+  color: #333;
+  padding: 1px 3px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background: #eee;
+}
+[class*="view-informea-search"] .meta-container .glyphicon,
+.view-informea-search .meta-container .glyphicon,
+.view-informea-search-legislation .meta-container .glyphicon,
+.view-informea-search-court-decision .meta-container .glyphicon,
+.view-informea-search-publications .meta-container .glyphicon,
+.view-informea-search-bilateral-treaties .meta-container .glyphicon {
+  margin-right: 5px;
+}
+
+body[class*="page-search"] div.region-sidebar-first ul,
 body.page-search div.region-sidebar-first ul,
 body.page-search-legislation div.region-sidebar-first ul,
 body.page-search-court-decisions div.region-sidebar-first ul,
@@ -3151,7 +3212,9 @@ body.page-search-bilateral-treaties div.region-sidebar-first ul {
   padding: 0;
 }
 
+body[class*="page-search"] input.facetapi-checkbox,
 body.page-search input.facetapi-checkbox,
+body[class*="page-search"] div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-legislation div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-court-decisions div.region-sidebar-first input.facetapi-checkbox,
 body.page-search-publications div.region-sidebar-first input.facetapi-checkbox,
@@ -3159,6 +3222,7 @@ body.page-search-bilateral-treaties div.region-sidebar-first input.facetapi-chec
   margin-right: 5px;
 }
 
+body[class*="page-search"] .view-empty,
 body.page-search .view-empty,
 body.page-search-legislation .view-empty,
 body.page-search-court-decisions .view-empty,
@@ -3246,4 +3310,24 @@ span.ecolex-logo {
 .region-sidebar-first #block-treaty-treaty-documents-local-tasks .nav-pills.nav-stacked {
   box-shadow: none;
   -webkit-box-shadow: none;
+}
+
+.webform-client-form div .captcha {
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  .footer-section .list-inline li a .image {
+    display: none;
+  }
+  .footer-section .list-inline li {
+    display: block;
+    padding-top: 0;
+    padding-left: 0;
+    float: none !important;
+  }
+  .footer-section .list-inline li .brand {
+    text-align: left;
+    margin-bottom: 0;
+  }
 }

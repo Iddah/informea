@@ -87,3 +87,16 @@
 .node-type-goal .children-container .accordion {
     padding-left: 0;
 }
+
+.node-type-goal .panel {
+    margin: 0;
+}
+
+
+.node-type-goal .panel > .panel-heading > .panel-title {
+    display: inline;
+}
+
+.node-type-goal .panel-default > .panel-heading {
+    background: none;
+}

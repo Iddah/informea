@@ -1,0 +1,23 @@
+diff --git a/src/Schema.php b/src/Schema.php
+index 5602f8b..ae50227 100644
+--- a/src/Schema.php
++++ b/src/Schema.php
+@@ -356,15 +356,16 @@ class Schema {
+           }
+         }
+       }
+-
++      $args_new = [];
+       foreach ($args as $arg_name => $arg) {
+         if (isset($paging_args[$arg_name])) continue;
+ 
+-        $args["{$arg_name}_IN"] = [
++        $args_new["{$arg_name}_IN"] = [
+           'name' => "{$arg_name}_IN",
+           'type' => Type::listOf($arg['type'])
+         ];
+       }
++      $args = $args_new + $args;
+     }
+ 
+     return $args;

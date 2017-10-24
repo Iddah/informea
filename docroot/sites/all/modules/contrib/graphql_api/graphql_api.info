@@ -1,0 +1,21 @@
+name = GraphQL API
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = xautoload
+dependencies[] = composer_manager
+
+files[] = tests/graphql_api.test
+; Information added by Drupal.org packaging script on 2016-11-22
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "graphql_api"
+datestamp = "1479787191"
+
+
+; Information added by Drupal.org packaging script on 2017-03-11
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "graphql_api"
+datestamp = "1489228687"
+

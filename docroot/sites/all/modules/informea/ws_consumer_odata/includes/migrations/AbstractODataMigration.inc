@@ -145,6 +145,7 @@ abstract class AbstractODataMigration extends Migration {
       strtolower('Protocol Concerning Pollution from Land-Based Sources and Activities (LBS)') => 81035,
       strtolower('Protocol for the Protection of the Mediterranean Sea against Pollution from Land-based Sources and Activities') => 238505,
       strtolower('Protocol Concerning Cooperation in Combating Pollution of the Mediterranean Sea by Oil and other Harmful Substances in Cases of Emergency') => 241288,
+      strtolower('FOCAL POINTS IN RATIFIED COUNTRIES OF THE ABIDJAN CONVENTION AREA') => 289,
     );
     if (array_key_exists(strtolower($machine_name), $static)) {
       return node_load($static[strtolower($machine_name)]);

@@ -1,7 +1,16 @@
 <?php
+
 /**
  * Lead Institution ajax autocomplete entity reference field
  */
 function goal_update_7001() {
   features_revert(array('goal' => ['field_base', 'field_instance']));
+}
+
+/**
+ * Enhancement #227: New fields
+ */
+function goal_update_7002() {
+  features_revert_module('goal');
+  features_revert_module('informea_search');
 }

@@ -1,0 +1,12 @@
+name = Graphql config
+description = Graphql config for: Entity types, Info fields and Property info
+core = 7.x
+package = InforMEA
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = graphql_entity_type
+features[variable][] = graphql_info_fields
+features[variable][] = graphql_info_property

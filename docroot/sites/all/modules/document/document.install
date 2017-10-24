@@ -15,3 +15,17 @@ function document_update_7002() {
   features_revert(array('informea' => ['fe_block_settings']));
   features_revert(array('informea_search' => ['fe_block_settings']));
 }
+
+/**
+ * Documents are now ordered by displayOrder.
+ */
+function document_update_7003() {
+  features_revert(array('document' => ['views_view']));
+}
+
+/**
+ * Added sdg goal field.
+ */
+function document_update_7004() {
+  features_revert(array('document' => ['field_base', 'field_instance']));
+}

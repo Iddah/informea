@@ -144,6 +144,12 @@ class DecisionsODataMigration extends AbstractODataMigration {
         if (in_array(strtolower($file->mimeType), array('image/jpeg'))) {
           continue;
         }
+
+        if (!valid_url($file->url, TRUE)) {
+          ws_consumer_odata_log('Invalid file for Decision id=' . $row->id . ', url=' . $file->url, MigrationBase::MESSAGE_WARNING);
+          continue;
+        }
+
         if (empty($file->url)) {
           ws_consumer_odata_log('Invalid file for Decision id=' . $row->id, MigrationBase::MESSAGE_WARNING);
           continue;

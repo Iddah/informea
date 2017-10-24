@@ -1,0 +1,362 @@
+<?php
+use Drupal\graphql_api\DrupalSchema;
+use GraphQL\GraphQL;
+
+/**
+ * @file
+ */
+define('GRAPHQL_API_PATH', drupal_get_path('module', 'graphql_api'));
+
+function graphql_api_get_flag($base, $key, $default = NULL) {
+  $var = variable_get($base, []);
+  if (isset($var[$key])) {
+    return $var[$key];
+  }
+  return $default;
+}
+
+function graphql_api_settings_form_submit($form, &$form_state) {
+  $values = [];
+  foreach($form_state['input'] as $key => $value) {
+    $parts = explode('__', $key);
+    if (count($parts)==2) {
+      $values[$parts[0]][$parts[1]]=$value;
+    }
+  }
+  foreach ($values as $key => $value) {
+    variable_set($key, $value);
+  }
+}
+
+function graphql_api_settings_form($form, &$form_state) {
+
+  $exclude_prefix = [
+    'tmgmt', 'comment', 'translation_validator', 'node_project',
+    'node_approval', 'linkchecker', 'rules_config', 'workbench',
+    'dashboard_item', 'osha_alert', 'search_api', 'site',
+    'menu_link', 'wysiwyg_profile', 'redirect', 'i18n_translation'
+  ];
+  $entity_types = entity_get_info();
+  $info_fields = field_info_fields();
+  $properties = entity_get_property_info();
+/*
+  krumo('entity_types:' );
+  krumo($entity_types );
+
+  krumo('info_fields:');
+  krumo($info_fields);
+
+  krumo('properties:');
+  krumo($properties);
+*/
+
+  $form['entity_types'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Enabled Entity types'),
+  );
+  foreach($entity_types as $entity_type => $entity_type_info) {
+    $skip = FALSE;
+    foreach($exclude_prefix as $prefix) {
+      if (strpos('-' . $entity_type, $prefix)) {
+        $skip = TRUE;
+      }
+    }
+    if ($skip) {
+      continue;
+    }
+
+    $base = 'graphql_entity_type';
+    $form['entity_types'][$entity_type] = array(
+      '#collapsible' => TRUE,
+      '#type' => 'fieldset',
+      '#title' => t('Entity ' . $entity_type),
+    );
+    $form['entity_types'][$entity_type][$base.'__'.$entity_type] = array(
+      '#type' => 'checkbox',
+      '#title' => ucfirst($entity_type),
+      '#default_value' => graphql_api_get_flag($base, $entity_type,0),
+    );
+    foreach($entity_type_info['bundles'] as $bundle => $bundle_info) {
+      $form['entity_types'][$entity_type][$base.'__'.$entity_type . '_' . $bundle] = array(
+        '#type' => 'checkbox',
+        '#title' => ucfirst($entity_type). ' ' . $bundle,
+        '#default_value' => graphql_api_get_flag($base, $entity_type . '_' . $bundle, 0),
+      );
+    }
+  }
+
+  $form['info_fields'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Enabled info fields'),
+    '#collapsible' => TRUE,
+  );
+  $bundles_used = [];
+
+  $exclude_fields = ['file', 'comment', 'user', 'entity_collection', 'field_collection_item'];
+
+  //'node'
+  //'taxonomy_term'
+
+  foreach($info_fields as $info_field => $info_field_info) {
+    foreach($exclude_fields as $exclude_field) {
+      unset($info_field_info['bundles'][$exclude_field]);
+    }
+
+    if (!@$info_field_info['bundles']) { // todo only node field for now
+      continue;
+    }
+    $_title = ucfirst($info_field) . ' (' . implode(', ', array_keys($info_field_info['bundles'])) . ')';
+    foreach ($info_field_info['bundles'] as $bundle => $bundle_info) {
+      @$bundles_used[$bundle]++;
+      $_title .= ' [' . implode(', ', $info_field_info['bundles'][$bundle]) . ']';
+    }
+
+    $base = 'graphql_info_fields';
+    $form['info_fields'][$base.'__'.$info_field] = array(
+      '#type' => 'checkbox',
+      '#title' => $_title,
+      '#default_value' => graphql_api_get_flag($base, $info_field, 0),
+    );
+  }
+
+  $form['property_info'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Enabled property info'),
+  );
+  foreach($properties as $entity_type  => $entity_property_info ) {
+    $skip = FALSE;
+    foreach($exclude_prefix as $prefix) {
+      if (strpos('-' . $entity_type, $prefix)) {
+        $skip = TRUE;
+      }
+    }
+    if ($skip) {
+      continue;
+    }
+
+    $form['property_info'][$entity_type] = array(
+      '#collapsible' => TRUE,
+      '#type' => 'fieldset',
+      '#title' => t('Property ' . $entity_type),
+    );
+
+/*
+    if (@$entity_property_info['bundles']) {
+      foreach($entity_property_info['bundles'] as $bundle_name => $bundle_info) { // todo later to make possible exclude fields
+      }
+    }
+*/
+
+    foreach($entity_property_info['properties'] as $property_name => $property_info) {
+      $base = 'graphql_info_property';
+      $form['property_info'][$entity_type][$base.'__'.$entity_type . '_' . $property_name] = array(
+        '#type' => 'checkbox',
+        '#title' => ucfirst($entity_type . '_' . $property_name) . ' ['. $property_info['label']. ']',
+        '#default_value' => graphql_api_get_flag($base, $entity_type . '_' . $property_name, 0),
+      );
+    }
+  }
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+function graphql_api_test_page() {
+  $_REQUEST['test'] = 1;
+  try {
+    $api = graphql_api();
+//    $api->addBlackList([
+//      'rules_config','translation_validator','node_approval','node_project_managers',
+//    'workbench_moderation_transition', 'tmgmt_local_task_item', 'dashboard_item', 'search_api_index',
+//    'search_api_server', 'redirect','i18n_translation','taxonomy_term',]);
+//
+//    $api->addBlackList([
+//      "comment","entity_collection","field_collection_item","match_redirect","osha_alert_service","linkchecker_link","linkchecker_node","file","taxonomy_vocabulary","tmgmt_job","tmgmt_job_item","tmgmt_message","tmgmt_translator","tmgmt_remote","tmgmt_local_task","user"]);
+
+
+    $api->build();
+  } catch (Exception $e) {
+    krumo($e->getMessage());
+  }
+  return date('H:i:s');
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ */
+function graphql_api_menu() {
+  $items = [];
+  $items['admin/config/graphql'] = [
+    'title' => 'GraphQL Config',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('graphql_api_settings_form'),
+    'access arguments' => ['use graphql_api query'],
+    'access callback' => 'graphql_api_access_callback',
+    'weight' => 1,
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  $items['admin/test/graphql_page'] = [
+    'title' => 'GraphQL test page',
+    'page callback' => 'graphql_api_test_page',
+    'page arguments' => [],
+    'access arguments' => ['use graphql_api query'],
+    'access callback' => 'graphql_api_access_callback',
+  ];
+
+  $items['admin/test/graphql'] = [
+    'page callback' => 'graphql_api_test_page_callback',
+    'page arguments' => [],
+    'access arguments' => ['use graphql_api query'],
+    'access callback' => 'graphql_api_access_callback',
+    'file path' => GRAPHQL_API_PATH . '/includes',
+    'file' => 'graphql_api_test_page_callback.inc'
+  ];
+
+  $items['graphql'] = [
+    'page callback' => 'graphql_api_page_callback',
+    'page arguments' => [],
+    'access arguments' => ['use graphql_api query'],
+    'access callback' => 'graphql_api_access_callback',
+    'file path' => GRAPHQL_API_PATH . '/includes',
+    'file' => 'graphql_api_page_callback.inc'
+  ];
+
+  $items['graphqleditor'] = [
+    'title' => 'GraphiQL',
+    'page callback' => 'graphql_api_graphqleditor_callback',
+    'page arguments' => [],
+    'access arguments' => ['use graphql_api query'],
+    'file path' => GRAPHQL_API_PATH . '/includes',
+    'file' => 'graphql_api_graphqleditor_callback.inc'
+  ];
+
+  return $items;
+}
+
+function graphql_api_access_callback($perm) {
+  if (!empty($_SERVER['HTTP_GRAPHQL_TOKEN']) && $_SERVER['HTTP_GRAPHQL_TOKEN'] === variable_get('graphql_token', 'graphql_private_token')) {
+    return TRUE;
+  }
+  return user_access($perm);
+}
+
+/**
+ * Implements hook_permission().
+ */
+function graphql_api_permission() {
+  return array(
+    'use graphql_api query' => array(
+      'title' => t('Use GraphQL query'),
+      'description' => t('Perform query on GraphQL endpoint.'),
+    ),
+    'use graphql_api introspection' => array(
+      'title' => t('Browse GraphQL schema'),
+      'description' => t('Perform introspection query on GraphQL endpoint.'),
+    ),
+  );
+}
+
+/**
+ * Get GraphQL info
+ *
+ * @return array|mixed
+ */
+function graphql_api_info() {
+  foreach (module_list() as $module => $module_info) {
+    module_load_include('inc', $module, $module.'.graphql');
+  }
+  $info = module_invoke_all('graphql_api_info');
+  drupal_alter('graphql_api_info', $info);
+  return $info;
+}
+
+/**
+ * Get entity field query
+ *
+ * @param $entity_type
+ * @param array $conditions
+ * @return bool|\EntityFieldQuery
+ */
+function graphql_api_entity_get_query($entity_type, $conditions = []) {
+  $info = entity_get_info($entity_type);
+  $props = entity_get_property_info($entity_type);
+  if (!$info || !$props) {
+    return FALSE;
+  }
+
+  $all_fields = [];
+
+  // get all fields attached to this entity type
+  if (!empty($props['bundles'])) {
+    foreach ($props['bundles'] as $bundle => $bundle_info) {
+      foreach ($bundle_info['properties'] as $field => $field_info) {
+        $all_fields[] = $field;
+      }
+    }
+  }
+
+  $query = new EntityFieldQuery();
+
+  $deleted_key = isset($info['entity keys']['deleted']) ? $info['entity keys']['deleted'] : null;
+  if ($deleted_key && !isset($conditions[$deleted_key])) {
+    $query->propertyCondition($deleted_key, 0);
+  }
+
+  $query->entityCondition('entity_type', $entity_type);
+  foreach ($conditions as $prop => $val) {
+    if (in_array($prop, $info['schema_fields_sql']['base table'])) {
+      $query->propertyCondition($prop, $val);
+    }
+    else if (in_array($prop, $all_fields)) {
+      foreach ($val as $col => $f_val) {
+        $query->fieldCondition($prop, $col, $f_val);
+      }
+    }
+  }
+
+  return $query;
+}
+
+/**
+ * Execute query in file
+ */
+function graphql_api_query_file($file, $args = []) {
+  $query_task = file_get_contents($file);
+  $shema = graphql_api();
+  $schema_build = $shema->build();
+  $data = GraphQL::execute(
+    $schema_build,
+    $query_task,
+    null,
+    null,
+    $args
+  );
+  return $data;
+}
+
+/**
+ * Symfony VarDumper fallback
+ */
+if (!function_exists('dump')) {
+  function dump() {
+    return call_user_func_array('var_dump', func_get_args());
+  }
+}
+
+/**
+ * Get Schema builder
+ */
+function graphql_api() {
+  if (!$obj = &drupal_static(__FUNCTION__)) {
+    $obj = new DrupalSchema;
+  }
+  return $obj;
+}

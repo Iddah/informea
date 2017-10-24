@@ -123,19 +123,19 @@ function goal_strongarm() {
           'weight' => '-5',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'language' => array(
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '18',
+          'weight' => '19',
         ),
         'redirect' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'xmlsitemap' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
       ),
       'display' => array(),

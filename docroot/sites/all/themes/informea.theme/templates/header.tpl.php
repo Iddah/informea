@@ -10,7 +10,7 @@
   </div><!-- .modal-dialog .modal-lg -->
 </div><!-- .modal .fade #dialog-modal-ajax -->
 <?php if (!empty($page['above_nav'])): ?>
-<div class="secondary-nav">
+<div class="secondary-nav hidden-md hidden-sm hidden-xs">
   <div class="container">
       <?php print render($page['above_nav']); ?>
   </div>
@@ -37,6 +37,11 @@
       </button><!-- .navbar-toggle -->
     </div><!-- .navbar-header -->
     <nav class="navbar-collapse collapse navbar-left" role="navigation">
+        <div class="secondary-nav-mobile hidden-lg">
+            <div class="container">
+              <?php print render($page['above_nav']); ?>
+            </div>
+        </div>
       <ul class="nav navbar-nav">
         <li class="dropdown dropdown-full-width">
           <?php print l(t('Treaties') . ' <span class="caret"></span>', 'treaties', array('attributes' => array('class' => array('dropdown-toggle'), 'id' => 'treaties-menu-link'), 'absolute' => TRUE, 'html' => TRUE)); ?>

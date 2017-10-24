@@ -264,7 +264,7 @@ class EcolexTreatyMigration extends Migration {
   }
 
   public function validateRow($row) {
-    return !empty($row->trTitleOfText_en);
+    return !empty($row->trTitleOfText_en) && empty($row->trInformeaId);
   }
 
   /**
@@ -402,6 +402,7 @@ class EcolexTreatyMigrateSource extends MigrateSource {
       'docKeyword_en' => 'Keywords',
       'updatedDate' => 'Updated Date',
       'leoKeywords' => 'LEO tags computed from VocBench mappings to LEO',
+      'trInformeaId' => 'Informea node UUID',
     );
   }
 

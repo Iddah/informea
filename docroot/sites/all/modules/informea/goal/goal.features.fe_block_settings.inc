@@ -71,8 +71,8 @@ goal/target-20-0',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'informea_theme',
         'weight' => -36,
       ),

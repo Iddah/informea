@@ -41,6 +41,7 @@ function informea_search_views_pre_render(&$view) {
     case 'informea_search_court_decision':
     case 'informea_search_publications':
     case 'informea_search_bilateral_treaties':
+    case 'informea_search_goals_and_principles':
       $content = '';
       if (@$_GET['search_api_views_fulltext']) {
         $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['search_api_views_fulltext']);
@@ -77,7 +78,9 @@ search-court-decisions/*
 search-publications
 search-publications/*
 search-bilateral-treaties
-search-bilateral-treaties/*',
+search-bilateral-treaties/*
+search-goals-and-principles
+search-goals-and-principles/*',
     )
   );
 }
@@ -310,6 +313,9 @@ function informea_search_form($form, $form_state) {
     case 'informea_search_publications':
       $action = 'search-publications';
       break;
+    case 'informea_search_goals_and_principles':
+      $action = 'search-goals-and-principles';
+      break;
     default:
       $action = 'search';
   }
@@ -361,8 +367,14 @@ function _informea_search_get_topic_count($topic) {
     case 'search-court-decisions':
       $view_name = 'informea_search_court_decision';
       break;
+    case 'search-literature':
+      $view_name = 'informea_search_literature';
+      break;
     case 'search-publications':
       $view_name = 'informea_search_publications';
+      break;
+    case 'search-goals-and-principles':
+      $view_name = 'informea_search_goals_and_principles';
       break;
   }
   $view = views_get_view($view_name);
@@ -378,13 +390,6 @@ function _informea_search_get_topic_count($topic) {
 }
 
 function informea_search_block_switch_topic_view() {
-  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $include_count = true;
-  }
-  else {
-    $include_count = false;
-  }
-
   $url = check_plain(arg(0));
   $fulltext = '';
   if (!empty($_GET['search_api_views_fulltext'])) {
@@ -402,21 +407,18 @@ function informea_search_block_switch_topic_view() {
     'search-legislation' => t('Legislation'),
     'search-court-decisions' => t('Court decisions'),
     'search-publications' => t('Documents'),
+    'search-goals-and-principles' => t('Goals'),
   );
   $tabs = array();
-
   foreach($elements as $link_url => $title) {
     $link_options = array('html' => true);
     $link_options['query'] = array('search_api_views_fulltext' => $fulltext);
-    if ($include_count == true) {
+    if ($link_url == current_path()) {
       $count = _informea_search_get_topic_count($link_url);
-      $link_title = $title . ' <span class="badge">' . $count . '</span>';
-    }
-    else {
-      $link_title = $title;
+      $title .= ' <span class="badge">' . $count . '</span>';
     }
     $tabs[] = array(
-      'data' => l($link_title, $link_url, $link_options),
+      'data' => l($title, $link_url, $link_options),
       'class' => $link_url == $url ? array('active') : array(),
     );
   }
@@ -443,6 +445,7 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
       case 'views-exposed-form-informea-search-legislation-page':
       case 'views-exposed-form-informea-search-court-decision-page':
       case 'views-exposed-form-informea-search-publications-page':
+      case 'views-exposed-form-informea-search-goals-and-principles-page':
         if (isset($_GET['f'])) {
           foreach ($_GET['f'] as $key => $val) {
             $form["f[{$key}]"] = [
@@ -455,4 +458,35 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
         break;
     }
   }
+}
+
+/**
+ * Implements hook_facetapi_widgets().
+ */
+function informea_search_facetapi_widgets() {
+  return array(
+    'facetapi_checkbox_links_altered' => array(
+      'handler' => array(
+        'label' => t('Links with checkboxes (altered by informea)'),
+        'class' => 'FacetapiWidgetCheckboxLinksInformea',
+        'query types' => array('term', 'date'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function informea_search_entity_property_info_alter(&$info) {
+  $info['node']['properties']['title_index'] = array(
+    'type' => 'text',
+    'label' => t('Title - indexed as string (used for sorting)'),
+    'sanitized' => TRUE,
+    'getter callback' => '_informea_search_title_index_property_callback',
+  );
+}
+
+function _informea_search_title_index_property_callback($item) {
+  return $item->title;
 }

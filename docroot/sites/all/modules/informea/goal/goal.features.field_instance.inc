@@ -134,7 +134,7 @@ function goal_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -210,7 +210,7 @@ function goal_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -282,7 +282,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -342,7 +342,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -403,7 +403,7 @@ function goal_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 1,
     ),
   );
 
@@ -456,7 +456,7 @@ function goal_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -516,7 +516,7 @@ function goal_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -593,7 +593,7 @@ function goal_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 4,
+      'weight' => 8,
     ),
   );
 
@@ -669,7 +669,7 @@ function goal_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -690,6 +690,7 @@ function goal_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -855,7 +856,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -907,7 +908,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -928,7 +929,8 @@ function goal_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'bypass_access' => 0,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 3,
@@ -948,10 +950,18 @@ function goal_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_parent_goal',
-    'label' => 'Goal',
+    'label' => 'Parent',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
+      'select2_integration' => array(
+        'hide_id' => 0,
+        'styling' => array(
+          'dropdownAutoWidth' => 0,
+          'placeholder' => '',
+        ),
+        'use_select2' => 0,
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -963,7 +973,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 0,
+      'weight' => 3,
     ),
   );
 
@@ -984,6 +994,7 @@ function goal_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -1019,7 +1030,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -1073,6 +1084,59 @@ function goal_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'node-goal-field_summary'.
+  $field_instances['node-goal-field_summary'] = array(
+    'bundle' => 'goal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'ajax' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'treaty_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_summary',
+    'label' => 'Summary',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 2,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
     ),
   );
 
@@ -1212,7 +1276,7 @@ function goal_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1267,7 +1331,7 @@ function goal_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -1480,7 +1544,6 @@ function goal_field_default_field_instances() {
   t('GEG Tags');
   t('GEG Theme');
   t('Geographical scope');
-  t('Goal');
   t('Goal Type');
   t('Goal/Target/Indicator identifier (ex. 17, 17.1, 2.2.c etc.)');
   t('Identifier');
@@ -1492,6 +1555,7 @@ function goal_field_default_field_instances() {
   t('Link to work of the Environmental Management Group');
   t('Name');
   t('Official order');
+  t('Parent');
   t('Reference');
   t('Reference to a decision or decision paragraph');
   t('Referenced decisions');
@@ -1499,6 +1563,7 @@ function goal_field_default_field_instances() {
   t('Sort order');
   t('Source');
   t('Source of goal, ex. MDG, SDG, Aichi Biodiversity Targets etc.');
+  t('Summary');
   t('Title');
   t('Tools');
   t('Type of goal (Goal, Target or Indicator)');
