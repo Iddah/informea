@@ -38,7 +38,7 @@ class EcolexLiteratureMigration extends Migration {
     $this->addFieldMapping('field_volume_no', 'litVolumeNo');
     $this->addFieldMapping('field_collation', 'litCollation');
 
-    $this->addFieldMapping('field_url', 'litRelatedWebSite');
+    $this->addFieldMapping('field_full_text_url', 'litLinkToFullText');
 
 
     $this->addFieldMapping('field_sorting_date', 'litYearOfText');
