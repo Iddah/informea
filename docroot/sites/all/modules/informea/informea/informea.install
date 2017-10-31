@@ -134,3 +134,158 @@ function informea_update_7012() {
   features_revert_module('ecolex');
   features_revert_module('treaty');
 }
+
+/**
+ * Task 224: Usability survey - technical solution
+ */
+function informea_update_7013() {
+  module_enable(['webform_term_opts']);
+
+  informea_create_webform(
+    'STEP 1: Welcome to our testing program',
+    'START THE TEST NOW',
+    'start-test',
+    'http://e-learning.informea.org/'
+  );
+
+  $add_components = [
+    array(
+      'form_key' => 'when_did_you_run_the_test_date',
+      'name' => 'When did you run the test',
+      'type' => 'date',
+      'value' => 'now',
+      'pid' => 0,
+      'weight' => 15,
+      'extra' => array(
+        'exclude' => array(
+          'year',
+        ),
+        'title_display' => 'before',
+        'description_above' => 0,
+        'private' => 0,
+        'wrapper_classes' => '',
+        'datepicker' => 0,
+        'timezone' => 'user',
+        'start_date' => '-2 years',
+        'end_date' => '+2 years',
+        'year_textfield' => 0,
+        'description' => '',
+        'analysis' => FALSE,
+      ),
+      'required' => '1',
+      'page_num' => 1,
+    ),
+    array(
+      'form_key' => 'when_did_you_run_the_test_time',
+      'name' => '<none>',
+      'type' => 'time',
+      'value' => '',
+      'pid' => 0,
+      'weight' => 20,
+      'extra' => array(
+        'title_display' => 'before',
+        'description_above' => 0,
+        'private' => 0,
+        'wrapper_classes' => '',
+        'hourformat' => '24-hour',
+        'minuteincrements' => '1',
+        'timezone' => 'user',
+        'start_time' => '',
+        'end_time' => '',
+        'description' => '',
+        'analysis' => FALSE,
+      ),
+      'required' => '1',
+      'page_num' => 1,
+    ),
+  ];
+
+  informea_create_webform(
+    'STEP 2: Share your feedback about the test',
+    'SHARE FEEDBACK NOW',
+    'feedback',
+    '<confirmation>',
+    $add_components
+  );
+}
+
+function informea_create_webform($title, $submit_text, $alias, $redirect_url, $add_components = []) {
+  $node = new stdClass();
+  $node->type = 'webform';
+  node_object_prepare($node);
+  $node->title = $title;
+  $node->language = 'en';
+  $node->uid = 1;
+  $node->promote = 0;
+  $node->comment = 1;
+  $node->path = array(
+    'pid' => 0,
+    'alias' => $alias,
+    'pathauto' => 0,
+    'language' => 'en',
+  );
+
+  // Create the webform components.
+  $components = array(
+    array(
+      'name' => 'Name',
+      'form_key' => 'name',
+      'type' => 'textfield',
+      'mandatory' => 1,
+      'weight' => 5,
+      'pid' => 0,
+      'extra' => array(
+        'title_display' => 'inline',
+        'private' => 0,
+      ),
+      'required' => '1',
+    ),
+    array(
+      'name' => 'Field of work',
+      'form_key' => 'field_of_work',
+      'type' => 'select',
+      'mandatory' => 0,
+      'weight' => 10,
+      'pid' => 0,
+      'extra' => array(
+        'title_display' => 'inline',
+        'private' => 0,
+        'aslist' => 1,
+        'options_source' => 'vid_45',
+      ),
+      'required' => '1',
+    ),
+  );
+
+  if ($add_components) {
+    $components = array_merge($components, $add_components);
+  }
+
+  // Attach the webform to the node.
+  $node->webform = array(
+    'confirmation' => '',
+    'confirmation_format' => NULL,
+    'redirect_url' => $redirect_url,
+    'status' => '1',
+    'block' => '0',
+    'teaser' => '0',
+    'allow_draft' => '0',
+    'auto_save' => '0',
+    'submit_notice' => '1',
+    'submit_text' => $submit_text,
+    'submit_limit' => '-1', // User can submit more than once.
+    'submit_interval' => '-1',
+    'total_submit_limit' => '-1',
+    'total_submit_interval' => '-1',
+    'record_exists' => TRUE,
+    'roles' => array(
+      '1',
+      '2',
+    ),
+    'emails' => [],
+    'components' => $components,
+  );
+
+  // Save the node.
+  node_save($node);
+}
