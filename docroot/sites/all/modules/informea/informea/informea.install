@@ -289,3 +289,10 @@ function informea_create_webform($title, $submit_text, $alias, $redirect_url, $a
   // Save the node.
   node_save($node);
 }
+
+/**
+ * Task 224: Usability survey - technical solution
+ */
+function informea_update_7014() {
+  features_revert(array('informea' => ['taxonomy','field_base', 'field_instance']));
+}
