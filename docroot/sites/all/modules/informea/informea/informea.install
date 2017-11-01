@@ -144,7 +144,7 @@ function informea_update_7013() {
   informea_create_webform(
     'STEP 1: Welcome to our testing program',
     'START THE TEST NOW',
-    'start-test',
+    'survey-start',
     'http://e-learning.informea.org/'
   );
 
@@ -203,7 +203,7 @@ function informea_update_7013() {
   informea_create_webform(
     'STEP 2: Share your feedback about the test',
     'SHARE FEEDBACK NOW',
-    'feedback',
+    'survey-feedback',
     '<confirmation>',
     $add_components
   );
