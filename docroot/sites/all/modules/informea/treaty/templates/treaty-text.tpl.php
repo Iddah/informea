@@ -10,7 +10,6 @@ $node = $variables['node'];
 $node_wrapper = entity_metadata_wrapper('node', $node);
 $odata_identifier = $node_wrapper->field_odata_identifier->value();
 $print = sprintf('/treaties/%s/print', $odata_identifier);
-//$akoma = sprintf('/treaties/%s/export', $odata_identifier);
 ?>
 <?php if (isset($articles) && is_array($articles)): ?>
   <?php if (!empty($articles)): ?>
@@ -21,11 +20,7 @@ $print = sprintf('/treaties/%s/print', $odata_identifier);
       <a class="btn btn-primary" href="<?php print url($print); ?>" target="_blank">
         <i class="glyphicon glyphicon-print"></i>
         <?php print t('Print treaty text'); ?>
-      </a><?php if (0) { ?>
-      <a class="btn btn-default" href="<?php print url($akoma); ?>" target="_blank" onclick="return confirm('This feature is EXPERIMENTAL for reviewing purposes!');">
-        <img class="akoma-logo" style="width: 16px; height: 16px;" src="/sites/all/themes/informea.theme/img/akoma-logo.png">
-        <?php print t('Akoma Ntoso XML'); ?>
-      </a><?php } ?>
+      </a>
     </p>
   <?php endif; ?>
   <div class="panel-group tagged-content" id="treaty-text" role="tablist" aria-multiselectable="true">
