@@ -93,7 +93,7 @@ function informea_form_alter(&$form, $form_state, $form_id) {
     $form['#submit'][] = 'informea_form_survey_start_handler';
   }
   if ($form_id == ('webform_client_form_' . variable_get('survey_feedback_webform_id'))) {
-    if (!empty($form['submitted']['date_and_time']) && !empty($form['submitted']['date_and_time'])) {
+    if (!empty($form['submitted']['test_date']) && !empty($form['submitted']['test_time'])) {
       $form['submitted']['date_and_time'] = [
         '#type' => 'container',
         'test_date' => $form['submitted']['test_date'],
