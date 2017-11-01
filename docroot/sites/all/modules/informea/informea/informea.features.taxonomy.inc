@@ -9,6 +9,34 @@
  */
 function informea_taxonomy_default_vocabularies() {
   return array(
+    'field_of_work' => array(
+      'name' => 'Field of work',
+      'machine_name' => 'field_of_work',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'language' => 'und',
+      'i18n_mode' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+      'tes' => array(
+        'enable' => FALSE,
+      ),
+    ),
     'keywords' => array(
       'name' => 'Keywords',
       'machine_name' => 'keywords',

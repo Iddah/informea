@@ -72,10 +72,31 @@ function informea_get_treaty_options_in_use($form) {
   return $options;
 }
 
+function informea_form_start_test_handler(&$form, &$form_state) {
+  foreach($form_state['values']['submitted'] as $value) {
+    if (strpos($value, 'tid_') === 0) {
+      $term = taxonomy_term_load(str_replace('tid_','',$value));
+      $ew = entity_metadata_wrapper('taxonomy_term', $term);
+      $redirect = $ew->field_redirect_url->value();
+      if ($redirect) {
+        $form_state['redirect'] = $redirect['url'];
+      }
+    }
+  }
+}
+
 /**
  * Implements hook_form_alter().
  */
 function informea_form_alter(&$form, $form_state, $form_id) {
+  if (strpos($form_id, 'webform_client_form_') === 0) {
+    if (
+      (count($form['#node']->webform['components']) == 2) &&
+      ($form['#node']->webform['components'][2]['form_key'] == 'field_of_work')
+    ) {
+      $form['#submit'][] = 'informea_form_start_test_handler';
+    }
+  }
 
   if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'treaty_parties') {
     $form['treaty']['#options'] = informea_get_treaty_options_in_use($form);
