@@ -92,6 +92,18 @@ function informea_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == ('webform_client_form_' . variable_get('survey_start_webform_id'))) {
     $form['#submit'][] = 'informea_form_survey_start_handler';
   }
+  if ($form_id == ('webform_client_form_' . variable_get('survey_feedback_webform_id'))) {
+    if (!empty($form['submitted']['date_and_time']) && !empty($form['submitted']['date_and_time'])) {
+      $form['submitted']['date_and_time'] = [
+        '#type' => 'container',
+        'test_date' => $form['submitted']['test_date'],
+        'test_time' => $form['submitted']['test_time'],
+        '#weight' => $form['submitted']['test_time']['#weight'],
+      ];
+      unset($form['submitted']['test_date']);
+      unset($form['submitted']['test_time']);
+    }
+  }
 
   if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'treaty_parties') {
     $form['treaty']['#options'] = informea_get_treaty_options_in_use($form);
