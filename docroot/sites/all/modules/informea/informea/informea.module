@@ -89,13 +89,8 @@ function informea_form_survey_start_handler(&$form, &$form_state) {
  * Implements hook_form_alter().
  */
 function informea_form_alter(&$form, $form_state, $form_id) {
-  if (strpos($form_id, 'webform_client_form_') === 0) {
-    if (
-      (count($form['#node']->webform['components']) == 2) &&
-      ($form['#node']->webform['components'][2]['form_key'] == 'field_of_work')
-    ) {
-      $form['#submit'][] = 'informea_form_survey_start_handler';
-    }
+  if ($form_id == ('webform_client_form_' . variable_get('survey_start_webform_id'))) {
+    $form['#submit'][] = 'informea_form_survey_start_handler';
   }
 
   if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'treaty_parties') {

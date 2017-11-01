@@ -141,11 +141,13 @@ function informea_update_7012() {
 function informea_update_7013() {
   module_enable(['webform_term_opts']);
 
-  informea_create_webform(
+  _informea_create_survey_webform(
     'STEP 1: Welcome to our testing program',
     'START THE TEST NOW',
     'survey-start',
-    'http://e-learning.informea.org/'
+    'http://e-learning.informea.org/',
+    [],
+    'survey_start'
   );
 
   $add_components = [
@@ -200,16 +202,17 @@ function informea_update_7013() {
     ),
   ];
 
-  informea_create_webform(
+  _informea_create_survey_webform(
     'STEP 2: Share your feedback about the test',
     'SHARE FEEDBACK NOW',
     'survey-feedback',
     '<confirmation>',
-    $add_components
+    $add_components,
+    'survey_feedback'
   );
 }
 
-function informea_create_webform($title, $submit_text, $alias, $redirect_url, $add_components = []) {
+function _informea_create_survey_webform($title, $submit_text, $alias, $redirect_url, $add_components = [], $internal_id) {
   $node = new stdClass();
   $node->type = 'webform';
   node_object_prepare($node);
@@ -288,6 +291,9 @@ function informea_create_webform($title, $submit_text, $alias, $redirect_url, $a
 
   // Save the node.
   node_save($node);
+  if (!empty($node->nid)) {
+    variable_set("{$internal_id}_webform_id", $node->nid);
+  }
 }
 
 /**
