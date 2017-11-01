@@ -72,13 +72,13 @@ function informea_get_treaty_options_in_use($form) {
   return $options;
 }
 
-function informea_form_start_test_handler(&$form, &$form_state) {
+function informea_form_survey_start_handler(&$form, &$form_state) {
   foreach($form_state['values']['submitted'] as $value) {
     if (strpos($value, 'tid_') === 0) {
       $term = taxonomy_term_load(str_replace('tid_','',$value));
       $ew = entity_metadata_wrapper('taxonomy_term', $term);
       $redirect = $ew->field_redirect_url->value();
-      if ($redirect) {
+      if (!empty($redirect['url'])) {
         $form_state['redirect'] = $redirect['url'];
       }
     }
@@ -94,7 +94,7 @@ function informea_form_alter(&$form, $form_state, $form_id) {
       (count($form['#node']->webform['components']) == 2) &&
       ($form['#node']->webform['components'][2]['form_key'] == 'field_of_work')
     ) {
-      $form['#submit'][] = 'informea_form_start_test_handler';
+      $form['#submit'][] = 'informea_form_survey_start_handler';
     }
   }
 
