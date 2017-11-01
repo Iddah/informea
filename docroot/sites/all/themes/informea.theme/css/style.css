@@ -3352,3 +3352,17 @@ span.ecolex-logo {
 #webform-client-form-411454 #edit-submitted-date-and-time .form-item {
   display: inline-block;
 }
+
+#webform-client-form-411454 .webform-component-radios .form-type-radio {
+  display: inline-block;
+}
+
+#webform-client-form-411454 .webform-component-radios .form-type-radio input {
+  position: relative;
+  margin-left: 0;
+}
+
+#webform-client-form-411454 .webform-component-radios .form-type-radio label {
+  padding-left: 0;
+  margin-right: 10px;
+}
