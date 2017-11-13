@@ -3392,3 +3392,6 @@ span.ecolex-logo {
   padding-left: 0;
   margin-right: 10px;
 }
+.page-node-411454.page-node-done .webform-confirmation + .links {
+  display: none;
+}
