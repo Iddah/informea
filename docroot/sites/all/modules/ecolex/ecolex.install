@@ -22,6 +22,7 @@ function ecolex_update_7003() {
 
 /**
  * Revert literature fields
+ * Revert court_decisions node_view link url
  */
 function ecolex_update_7004() {
   features_revert_module('ecolex');
