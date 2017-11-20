@@ -42,17 +42,7 @@ function thesaurus_export_to_xls($source, $destination) {
       if ($term->status == 'Deprecated') {
         continue;
       }
-      $uri = '';
-      $drupal_term = thesaurus_term_load_by_uri($term->uri, 'thesaurus_informea');
-      if ($drupal_term) {
-        $uri = url(
-          taxonomy_term_uri($drupal_term)['path'],
-          ['absolute' => TRUE]
-        );
-      }
-      else {
-        drupal_set_message(t('Term not found in LEO: ') . $term->name, 'warning');
-      }
+      $uri = $term->uri;
       $altLabel = '';
       if (isset($term->altLabel['en'])) {
         foreach ($term->altLabel['en'] as $alt) {
@@ -75,9 +65,16 @@ function thesaurus_export_to_xls($source, $destination) {
       foreach ($term->related as $rel) {
         $related .= $terms[$rel]->prefLabel['en'] . ', ';
       }
+      // Try to get the term name in english or fallback to first language set.
+      if (!empty($term->prefLabel['en'])) {
+        $term_name = $term->prefLabel['en'];
+      }
+      else {
+        $term_name = current($term->prefLabel);
+      }
       $row = [
         $uri,
-        $term->prefLabel['en'],
+        $term_name,
         $altLabel,
         $definition1,
         $definition2,
