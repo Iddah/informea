@@ -41,6 +41,9 @@ function thesaurus_update_7002() {
 }
 
 
+/**
+ * Update VB export path to match EdW interim VB setup.
+ */
 function thesaurus_update_7003() {
   variable_set('thesaurus_rdf_export_dir', '/usr/share/nginx/html/export');
 }
