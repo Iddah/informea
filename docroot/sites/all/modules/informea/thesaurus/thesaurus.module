@@ -828,21 +828,21 @@ function thesaurus_vocbench_export_ontologies() {
     'informea', 'brs', 'brs-substances', 'cbd', 'cms', 'dtie', 'elr', 'unccd',
     'unfccc', 'faolex', 'ecolex', 'cites', 'ramsar'
   );
-    $st = new SemanticTurkey('http://vocbench.edw.ro');
-    foreach ($ontologies as $ontology) {
-      $rdf_filename = SemanticTurkey::slugify($ontology) . '.rdf';
-      $vocbench_export_file = variable_get('thesaurus_vocbench_rdf_export_dir') . '/' . $rdf_filename;
-      if ($st->exportRDF($ontology, $vocbench_export_file)) {
-        // Also generate the Excel file
-        $xls_filename = SemanticTurkey::slugify($ontology) . '.xls';
-        $xls_destination = variable_get('thesaurus_rdf_to_xls_export_dir') . '/' . $xls_filename;
-        $rdf_url = 'http://vocbench.edw.ro/export/' . $rdf_filename;
-        thesaurus_export_to_xls($rdf_url, $xls_destination);
-      }
-      else {
-        watchdog('thesaurus', 'Failed to export ontology ' . $ontology, [], WATCHDOG_ERROR);
-      }
+  $st = new SemanticTurkey('http://vocbench.edw.ro:8080');
+  foreach ($ontologies as $ontology) {
+    $rdf_filename = SemanticTurkey::slugify($ontology) . '.rdf';
+    $vocbench_export_file = variable_get('thesaurus_vocbench_rdf_export_dir') . '/' . $rdf_filename;
+    if ($st->exportRDF($ontology, $vocbench_export_file)) {
+      // Also generate the Excel file
+      $xls_filename = SemanticTurkey::slugify($ontology) . '.xls';
+      $xls_destination = variable_get('thesaurus_rdf_to_xls_export_dir') . '/' . $xls_filename;
+      $rdf_url = 'http://vocbench.edw.ro:8080/export/' . $rdf_filename;
+      thesaurus_export_to_xls($rdf_url, $xls_destination);
     }
+    else {
+      watchdog('thesaurus', 'Failed to export ontology ' . $ontology, [], WATCHDOG_ERROR);
+    }
+  }
 }
 
 function thesaurus_update_path_aliases() {
