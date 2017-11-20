@@ -45,5 +45,7 @@ function thesaurus_update_7002() {
  * Update VB export path to match EdW interim VB setup.
  */
 function thesaurus_update_7003() {
-  variable_set('thesaurus_rdf_export_dir', '/usr/share/nginx/html/export');
+  variable_set('thesaurus_vocbench_rdf_export_dir', '/usr/share/nginx/html/export');
+  variable_set('thesaurus_rdf_to_xls_export_dir', DRUPAL_ROOT . '/sites/default/files/export');
+  variable_delete('thesaurus_rdf_export_dir');
 }

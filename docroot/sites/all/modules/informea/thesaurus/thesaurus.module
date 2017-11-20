@@ -831,11 +831,11 @@ function thesaurus_vocbench_export_ontologies() {
     $st = new SemanticTurkey('http://vocbench.edw.ro');
     foreach ($ontologies as $ontology) {
       $rdf_filename = SemanticTurkey::slugify($ontology) . '.rdf';
-      $rdf_destination = variable_get('thesaurus_rdf_export_dir') . '/' . $rdf_filename;
-      if ($st->exportRDF($ontology, $rdf_destination)) {
+      $vocbench_export_file = variable_get('thesaurus_vocbench_rdf_export_dir') . '/' . $rdf_filename;
+      if ($st->exportRDF($ontology, $vocbench_export_file)) {
         // Also generate the Excel file
         $xls_filename = SemanticTurkey::slugify($ontology) . '.xls';
-        $xls_destination = variable_get('thesaurus_rdf_export_dir') . '/' . $xls_filename;
+        $xls_destination = variable_get('thesaurus_rdf_to_xls_export_dir') . '/' . $xls_filename;
         $rdf_url = 'http://vocbench.edw.ro/export/' . $rdf_filename;
         thesaurus_export_to_xls($rdf_url, $xls_destination);
       }
