@@ -302,3 +302,54 @@ function _informea_create_survey_webform($title, $submit_text, $alias, $redirect
 function informea_update_7014() {
   features_revert(array('informea' => ['taxonomy','field_base', 'field_instance']));
 }
+
+/**
+ * Task #251: Re-export feeds node processor mapping
+ */
+function informea_update_7015() {
+  features_revert_module('feeds_news');
+}
+
+/**
+ * Task #251: Update existing feed_item nodes
+ */
+function informea_update_7016() {
+  $importer = feeds_importer('feed');
+  /** @var \FeedsNodeProcessor $processor */
+  $processor = $importer->processor;
+  $config = $processor->getConfig();
+  $config['update_existing'] = FEEDS_UPDATE_EXISTING;
+  $processor->setConfig($config);
+  $processor->save();
+
+  $feeds = [
+    '31248',
+    '31575',
+    '31684',
+    '31732',
+    '33021',
+    '33247',
+    '33278',
+    '33370',
+    '33375',
+    '33383',
+    '33394',
+    '33404',
+    '70749',
+    '70760',
+    '70763',
+    '70765',
+    '236548',
+  ];
+
+  foreach ($feeds as $feed) {
+    /** @var \FeedsSource $sourceInstance */
+    $sourceInstance = feeds_source('feed', $feed);
+    $sourceInstance->getConfig();
+    $sourceInstance->import();
+  }
+
+  $config['update_existing'] = FEEDS_SKIP_EXISTING;
+  $processor->setConfig($config);
+  $processor->save();
+}
