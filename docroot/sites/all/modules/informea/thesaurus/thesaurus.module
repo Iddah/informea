@@ -824,12 +824,12 @@ function thesaurus_cronapi() {
 }
 
 function thesaurus_vocbench_export_ontologies() {
-  if ($vb_conn = Database::getConnection('default', 'vocbench')) {
-    $q = $vb_conn->select('ontology_info', 'a')->fields('a', array());
-    $rows = $q->execute()->fetchAll();
+  $ontologies = array(
+    'informea', 'brs', 'brs-substances', 'cbd', 'cms', 'dtie', 'elr', 'unccd',
+    'unfccc', 'faolex', 'ecolex', 'cites', 'ramsar'
+  );
     $st = new SemanticTurkey('http://vocbench.edw.ro');
-    foreach ($rows as $row) {
-      $ontology = $row->ontology_name;
+    foreach ($ontologies as $ontology) {
       $rdf_filename = SemanticTurkey::slugify($ontology) . '.rdf';
       $rdf_destination = variable_get('thesaurus_rdf_export_dir') . '/' . $rdf_filename;
       if ($st->exportRDF($ontology, $rdf_destination)) {
@@ -843,8 +843,6 @@ function thesaurus_vocbench_export_ontologies() {
         watchdog('thesaurus', 'Failed to export ontology ' . $ontology, [], WATCHDOG_ERROR);
       }
     }
-    $vb_conn->destroy();
-  }
 }
 
 function thesaurus_update_path_aliases() {
