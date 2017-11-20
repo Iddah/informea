@@ -2,8 +2,8 @@
 
 class SemanticTurkey {
 
-  public $server_url = 'http://localhost:1979';
-  public $servlet_url = 'http://localhost:1979/semanticturkey/resources/stserver/STServer';
+  public $server_url = 'http://vocbench.edw.ro';
+  public $servlet_url = 'http://vocbench.edw.ro/semanticturkey/resources/stserver/STServer';
 
   public function __construct($server_url) {
     $this->server_url = $server_url;

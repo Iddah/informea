@@ -827,7 +827,7 @@ function thesaurus_vocbench_export_ontologies() {
   if ($vb_conn = Database::getConnection('default', 'vocbench')) {
     $q = $vb_conn->select('ontology_info', 'a')->fields('a', array());
     $rows = $q->execute()->fetchAll();
-    $st = new SemanticTurkey('http://localhost:1979');
+    $st = new SemanticTurkey('http://vocbench.edw.ro');
     foreach ($rows as $row) {
       $ontology = $row->ontology_name;
       $rdf_filename = SemanticTurkey::slugify($ontology) . '.rdf';
@@ -836,7 +836,7 @@ function thesaurus_vocbench_export_ontologies() {
         // Also generate the Excel file
         $xls_filename = SemanticTurkey::slugify($ontology) . '.xls';
         $xls_destination = variable_get('thesaurus_rdf_export_dir') . '/' . $xls_filename;
-        $rdf_url = 'http://www.informea.org/sites/default/files/export/' . $rdf_filename;
+        $rdf_url = 'http://vocbench.edw.ro/export/' . $rdf_filename;
         thesaurus_export_to_xls($rdf_url, $xls_destination);
       }
       else {

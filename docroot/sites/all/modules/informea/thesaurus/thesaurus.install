@@ -39,3 +39,8 @@ function thesaurus_update_7002() {
     taxonomy_term_delete($tid);
   }
 }
+
+
+function thesaurus_update_7003() {
+  variable_set('thesaurus_rdf_export_dir', '/usr/share/nginx/html/export');
+}
