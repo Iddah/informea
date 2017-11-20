@@ -260,6 +260,7 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
   else {
     drush_log('Error data not array ', 'error');
   }
+
   foreach ($data as $key => $row) {
 
     if (empty($row['Permalink'])) {
@@ -268,6 +269,7 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
     if ($row['Permalink'] == '-') {
       continue;
     }
+
     $goal_no = rtrim(goal_get_row_value($row, ['SDG Goal', 'SDG Goal(s)']), ',. ');
     $goal_ids = _goal_parse_row_numbers($goal_no);
     $error = 0;
@@ -312,10 +314,11 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
       drush_log('Error SDG Target "' . $target_no . '", line: ' . ($key + 2), 'error');
       continue;
     }
-
-    $treaty_node = _goal_get_treaty_node($row['Permalink']);
-    if (!$treaty_node) {
-      drush_log('Wrong treaty paragraph permalink "' . $row['Permalink'] . '", line: ' . ($key + 2), 'error');
+    $line = $key + 2;
+    $result = _goal_get_treaty_node($row['Permalink']);
+    $treaty_node = $result['node'];
+    if ($result['error'] || !$result['node']) {
+      drush_log('Wrong treaty paragraph permalink "' . $row['Permalink'] . '", line: ' . $line . ' ' . $result['error'], 'error');
       continue;
     }
 
@@ -353,16 +356,43 @@ function _goal_parse_row_numbers($row) {
 }
 
 function _goal_get_treaty_node($url) {
+  $result = [
+    'node' => NULL,
+    'error' => '',
+  ];
   $url = drupal_parse_url($url);
   $nid = intval(@$url['query']['paragraph']);
-  if ($nid) {
-    return node_load($nid);
+  $anid = intval(@$url['query']['article']);
+  if ($anid) {
+    $result['article'] = node_load($anid);
+    if ($result['article']) {
+      $result['treaty_url'] = url('node/' . $result['article']->field_treaty[LANGUAGE_NONE][0]['target_id']);
+      if (!strpos($url['path'], $result['treaty_url'])) {
+        if (!strpos($url['path'], 'node/' . $result['article']->field_treaty[LANGUAGE_NONE][0]['target_id'])) {
+          $result['error'] = 'Error! wrong url article treaty ' . $result['treaty_url'];
+          return $result;
+        }
+      }
+    }
   }
-  $nid = intval(@$url['query']['article']);
+
   if ($nid) {
-    return node_load($nid);
+    $p = node_load($nid);
+    if ($p->field_parent_treaty_article[LANGUAGE_NONE][0]['target_id'] != $anid) {
+      $result['error'] = 'Error paragraph article nid ' . $p->field_parent_treaty_article[LANGUAGE_NONE][0]['target_id'] . ' and url article nid ' . $anid;
+      $p = NULL;
+    }
+    $result['node'] = $p;
+    return $result;
   }
-  return NULL;
+  
+  if ($anid) {
+    $result['node'] = $result['article'];
+    if (!$result['node']) {
+      $result['error'] = 'Article node ' . $anid . 'not found';
+    }
+  }
+  return $result;
 }
 
 function _goal_get_goal_original_ids() {
