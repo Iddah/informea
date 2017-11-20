@@ -10,7 +10,7 @@
   </div><!-- .modal-dialog .modal-lg -->
 </div><!-- .modal .fade #dialog-modal-ajax -->
 <?php if (!empty($page['above_nav'])): ?>
-<div class="secondary-nav hidden-md hidden-sm hidden-xs">
+<div class="secondary-nav visible-lg">
   <div class="container">
       <?php print render($page['above_nav']); ?>
   </div>
@@ -37,10 +37,10 @@
       </button><!-- .navbar-toggle -->
     </div><!-- .navbar-header -->
     <nav class="navbar-collapse collapse navbar-left" role="navigation">
-        <div class="secondary-nav-mobile hidden-lg">
-            <div class="container">
+        <div class="secondary-nav-mobile hidden-lg row container-fluid">
+            <!-- <div class="container"> -->
               <?php print render($page['above_nav']); ?>
-            </div>
+            <!-- </div> -->
         </div>
       <ul class="nav navbar-nav">
         <li class="dropdown dropdown-full-width">
