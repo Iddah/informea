@@ -286,6 +286,7 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
   else {
     drush_log('Error data not array ', 'error');
   }
+
   foreach ($data as $key => $row) {
 
     if (empty($row['Permalink'])) {
@@ -294,6 +295,7 @@ function drush_goal_import_treaty_goals_mappings($path = NULL) {
     if ($row['Permalink'] == '-') {
       continue;
     }
+
     $goal_no = rtrim(goal_get_row_value($row, ['SDG Goal', 'SDG Goal(s)']), ',. ');
     $goal_ids = _goal_parse_row_numbers($goal_no);
     $error = 0;
@@ -422,7 +424,7 @@ function _goal_get_treaty_node($url) {
     $result['node'] = $result['article'];
     if (!$result['node']) {
       $result['error'] = 'Article node ' . $anid . 'not found';
-  }
+    }
   }
   return $result;
 }
