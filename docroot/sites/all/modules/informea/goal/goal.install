@@ -14,3 +14,73 @@ function goal_update_7002() {
   features_revert_module('goal');
   features_revert_module('informea_search');
 }
+
+function _goal_treaty_paragraph_and_articles($nids, $xlsx_treay_only = TRUE) {
+  $filter_nids = 'not in';
+  $filter_aichi = '!=';
+  if ($xlsx_treay_only) {
+    $filter_nids = 'in';
+    $filter_aichi = NULL;
+  }
+
+  $q = db_select('field_data_field_treaty', 'n')->fields('n', array('bundle', 'entity_id', 'field_treaty_target_id'));
+  $q->condition('n.bundle', ['treaty_article', 'treaty_paragraph'], 'in');
+  $q->condition('n.field_treaty_target_id', $nids, $filter_nids);
+
+  $q->innerJoin('field_data_field_sdg_goals', 'g', 'g.entity_id = n.entity_id');
+  $q->fields('g',['field_sdg_goals_target_id']);
+
+  $q->innerJoin('field_data_field_goal_source', 's', 's.entity_id = g.field_sdg_goals_target_id');
+  $q->fields('s',['field_goal_source_tid']);
+  $q->condition('s.field_goal_source_tid', GOAL_SOURCE_AICHI, $filter_aichi);
+
+  $q->innerJoin('field_data_field_original_id', 'o', 'o.entity_id = g.field_sdg_goals_target_id');
+  $q->fields('o',['field_original_id_value']);
+
+  return $q->execute()->fetchAll();
+}
+
+function _goal_sdg_goal_map() {
+  $q = db_select('field_data_field_original_id', 'n')->fields('n', array('field_original_id_value', 'entity_id'));
+  $q->innerJoin('field_data_field_goal_source', 'gs', 'n.entity_id = gs.entity_id');
+  $q->condition('gs.field_goal_source_tid', GOAL_SOURCE_AICHI, '!=');
+  $q->condition('n.bundle', 'goal');
+  $q->condition('n.entity_type', 'node');
+  return $q->execute()->fetchAllKeyed(0, 1);
+}
+
+/**
+ * 225 Importing of MEA - SDG mapping fix.
+ */
+function goal_update_7003() {
+  $treaty_nids = [
+    //CBD.
+    255,
+    //The Cartagena Protocol on Biosafety.
+    262,
+    //Nagoya Protocol.
+    263,
+    //Plant Treaty.
+    268,
+    //UNFCCC.
+    269,
+    //Paris Agreement.
+    236208,
+  ];
+
+  $map = _goal_sdg_goal_map();
+  $errs = _goal_treaty_paragraph_and_articles($treaty_nids);
+  $replace = [];
+  foreach($errs as $row) {
+    $replace[$row->entity_id][$row->field_sdg_goals_target_id] = $map[$row->field_original_id_value];
+  }
+  foreach($replace as $nid => $items) {
+    $node = node_load($nid);
+    foreach($node->field_sdg_goals[LANGUAGE_NONE] as $idx => $row) {
+      if (isset($items[$row['target_id']])) {
+        $node->field_sdg_goals[LANGUAGE_NONE][$idx]['target_id'] = $items[$row['target_id']];
+      }
+    }
+    node_save($node);
+  }
+}
