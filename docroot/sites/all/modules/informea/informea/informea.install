@@ -314,42 +314,21 @@ function informea_update_7015() {
  * Task #251: Update existing feed_item nodes
  */
 function informea_update_7016() {
-  $importer = feeds_importer('feed');
-  /** @var \FeedsNodeProcessor $processor */
-  $processor = $importer->processor;
-  $config = $processor->getConfig();
-  $config['update_existing'] = FEEDS_UPDATE_EXISTING;
-  $processor->setConfig($config);
-  $processor->save();
+  $q = db_select('feeds_item', 'f');
+  $q->fields('f', ['entity_id', 'url']);
+  $q->leftJoin('field_data_field_url', 'u', 'f.entity_id = u.entity_id');
+  $q->condition('u.field_url_url', NULL);
+  $items = $q->execute()->fetchAllKeyed();
 
-  $feeds = [
-    '31248',
-    '31575',
-    '31684',
-    '31732',
-    '33021',
-    '33247',
-    '33278',
-    '33370',
-    '33375',
-    '33383',
-    '33394',
-    '33404',
-    '70749',
-    '70760',
-    '70763',
-    '70765',
-    '236548',
-  ];
-
-  foreach ($feeds as $feed) {
-    /** @var \FeedsSource $sourceInstance */
-    $sourceInstance = feeds_source('feed', $feed);
-    $sourceInstance->getConfig();
-    $sourceInstance->import();
+  foreach ($items as $nid => $url) {
+    $node = node_load($nid);
+    if (!empty($node->field_feed_item_description[LANGUAGE_NONE][0]['value'])) {
+      $node->field_feed_item_description[LANGUAGE_NONE][0]['format'] = 'full_html';
+    }
+    $node->field_url = array(LANGUAGE_NONE => array(0 => array('url' => $url)));
+    node_save($node);
+    if (function_exists('drush_log')) {
+      drush_log("Updated node {$nid}");
+    }
   }
-
-  $config['update_existing'] = FEEDS_SKIP_EXISTING;
-  $processor->setConfig($config);
-  $processor->save();
 }
