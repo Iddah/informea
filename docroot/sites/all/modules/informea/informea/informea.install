@@ -309,26 +309,3 @@ function informea_update_7014() {
 function informea_update_7015() {
   features_revert_module('feeds_news');
 }
-
-/**
- * Task #251: Update existing feed_item nodes
- */
-function informea_update_7016() {
-  $q = db_select('feeds_item', 'f');
-  $q->fields('f', ['entity_id', 'url']);
-  $q->leftJoin('field_data_field_url', 'u', 'f.entity_id = u.entity_id');
-  $q->condition('u.field_url_url', NULL);
-  $items = $q->execute()->fetchAllKeyed();
-
-  foreach ($items as $nid => $url) {
-    $node = node_load($nid);
-    if (!empty($node->field_feed_item_description[LANGUAGE_NONE][0]['value'])) {
-      $node->field_feed_item_description[LANGUAGE_NONE][0]['format'] = 'full_html';
-    }
-    $node->field_url = array(LANGUAGE_NONE => array(0 => array('url' => $url)));
-    node_save($node);
-    if (function_exists('drush_log')) {
-      drush_log("Updated node {$nid}");
-    }
-  }
-}
