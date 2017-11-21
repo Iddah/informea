@@ -36,8 +36,34 @@ function goal_drush_command() {
     'description' => 'Fix goals content',
   );
 
+  $items['informea-feeds-fix-url'] = array(
+    'description' => 'Copy the url from mappings table to field_url',
+    'aliases' => array('iffurl'),
+  );
+
   return $items;
 }
+
+function drush_goal_informea_feeds_fix_url() {
+  $q = db_select('feeds_item', 'f');
+  $q->fields('f', ['entity_id', 'url']);
+  $q->leftJoin('field_data_field_url', 'u', 'f.entity_id = u.entity_id');
+  $q->condition('u.field_url_url', NULL);
+  $items = $q->execute()->fetchAllKeyed();
+
+  foreach ($items as $nid => $url) {
+    $node = node_load($nid);
+    if (!empty($node->field_feed_item_description[LANGUAGE_NONE][0]['value'])) {
+      $node->field_feed_item_description[LANGUAGE_NONE][0]['format'] = 'full_html';
+    }
+    $node->field_url = array(LANGUAGE_NONE => array(0 => array('url' => $url)));
+    node_save($node);
+    if (function_exists('drush_log')) {
+      drush_log("Updated node {$nid}");
+    }
+  }
+}
+
 
 function _goal_sdg_get_tags(array $tags, array $thesaurus_informea) {
   foreach ($tags as $key => $tag) {
