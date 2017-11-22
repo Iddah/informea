@@ -36,6 +36,11 @@ function goal_drush_command() {
     'description' => 'Fix goals content',
   );
 
+  $items['sdg-aichi-goal-fix'] = array(
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+    'description' => 'Fix sdg aichi goal',
+  );
+
   $items['informea-feeds-fix-url'] = array(
     'description' => 'Copy the url from mappings table to field_url',
     'aliases' => array('iffurl'),
@@ -591,6 +596,74 @@ function drush_goal_fix_goals_content() {
     node_save($node);
     if (function_exists('drush_log')) {
       drush_log("Updated node $item->nid", 'success');
+    }
+  }
+}
+
+function _goal_treaty_paragraph_and_articles($nids, $xlsx_treay_only = TRUE) {
+  $filter_nids = 'not in';
+  $filter_aichi = '!=';
+  if ($xlsx_treay_only) {
+    $filter_nids = 'in';
+    $filter_aichi = NULL;
+  }
+
+  $q = db_select('field_data_field_treaty', 'n')->fields('n', array('bundle', 'entity_id', 'field_treaty_target_id'));
+  $q->condition('n.bundle', ['treaty_article', 'treaty_paragraph'], 'in');
+  $q->condition('n.field_treaty_target_id', $nids, $filter_nids);
+
+  $q->innerJoin('field_data_field_sdg_goals', 'g', 'g.entity_id = n.entity_id');
+  $q->fields('g',['field_sdg_goals_target_id']);
+
+  $q->innerJoin('field_data_field_goal_source', 's', 's.entity_id = g.field_sdg_goals_target_id');
+  $q->fields('s',['field_goal_source_tid']);
+  $q->condition('s.field_goal_source_tid', GOAL_SOURCE_AICHI, $filter_aichi);
+
+  $q->innerJoin('field_data_field_original_id', 'o', 'o.entity_id = g.field_sdg_goals_target_id');
+  $q->fields('o',['field_original_id_value']);
+
+  return $q->execute()->fetchAll();
+}
+
+function drush_goal_sdg_aichi_goal_fix() {
+  $updated = 0;
+  $treaty_nids = [
+    //CBD.
+    255,
+    //The Cartagena Protocol on Biosafety.
+    262,
+    //Nagoya Protocol.
+    263,
+    //Plant Treaty.
+    268,
+    //UNFCCC.
+    269,
+    //Paris Agreement.
+    236208,
+  ];
+
+  $map = _goal_get_goal_original_ids();
+  $errs = _goal_treaty_paragraph_and_articles($treaty_nids);
+  $replace = [];
+  foreach($errs as $row) {
+    $replace[$row->entity_id][$row->field_sdg_goals_target_id] = $map[$row->field_original_id_value];
+  }
+
+  if (function_exists('drush_log')) {
+    drush_log("Total nodes to update: " . count($replace), 'success');
+  }
+
+  foreach($replace as $nid => $items) {
+    $node = node_load($nid);
+    foreach($node->field_sdg_goals[LANGUAGE_NONE] as $idx => $row) {
+      if (isset($items[$row['target_id']])) {
+        $node->field_sdg_goals[LANGUAGE_NONE][$idx]['target_id'] = $items[$row['target_id']];
+      }
+    }
+    node_save($node);
+    $updated++;
+    if (function_exists('drush_log')) {
+      drush_log("Updated node $node->nid", 'success');
     }
   }
 }
