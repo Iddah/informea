@@ -165,8 +165,6 @@ function informea_theme_preprocess_page(&$variables) {
   }
 
   if ($variables['is_front']) {
-    // Adds the front page Survey JavaScript file to the page.
-    drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/survey.js');
     // Adds the front page JavaScript file to the page.
     drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/front.js');
     // Country block from the front page
