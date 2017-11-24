@@ -29,3 +29,10 @@ function document_update_7003() {
 function document_update_7004() {
   features_revert(array('document' => ['field_base', 'field_instance']));
 }
+
+/**
+ * 257 Document category should not be a link.
+ */
+function document_update_7005() {
+  features_revert_module('document');
+}
