@@ -155,6 +155,7 @@ class EcolexLegislationMigration extends Migration {
       return false; // ignore already synced file
     }
 
+    $row->legAbstract = ODataMigrationUtil::fix_unicode_characters($row->legAbstract);
     $row->updatedDate = substr($row->updatedDate, 0, 10);
 
     if (!empty($row->legYear) && strlen($row->legYear) == 4) {
@@ -246,7 +247,7 @@ class EcolexLegislationMigration extends Migration {
     }
     else if (is_array($row->{$field_name})) {
       $tids = array();
-      foreach ($row->{$field_name} as $delta => $term_name) {
+      foreach ($row->{$field_name} as $term_name) {
         if ($term = taxonomy_get_term_by_name($term_name, $vocabulary)) {
           $tids[] = reset($term)->tid;
         }
@@ -286,7 +287,7 @@ class EcolexLegislationMigration extends Migration {
     }
     else if (is_array($row->{$field_name_base . '_en'})) {
       $tids = array();
-      foreach ($row->{$field_name_base . '_en'} as $delta => $term_name) {
+      foreach ($row->{$field_name_base . '_en'} as $term_name) {
         if ($term = taxonomy_get_term_by_name($term_name, $vocabulary)) {
           $tids[] = reset($term)->tid;
         }
@@ -439,7 +440,8 @@ class EcolexLegislationMigrateSource extends MigrateSource {
       }
       if ($str) {
         if ($json = json_decode($str)) {
-          $this->found_rows = count($json); // before filter
+          // Before filter.
+          $this->found_rows = count($json);
 
           $mig_data = [];
 
