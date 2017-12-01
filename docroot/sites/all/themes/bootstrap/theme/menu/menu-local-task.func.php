@@ -27,5 +27,11 @@ function bootstrap_menu_local_task($variables) {
     $classes[] = 'active';
   }
 
+  // Filter the title if the "html" is set, otherwise l() will automatically
+  // sanitize using check_plain(), so no need to call that here.
+  if (!empty($link['localized_options']['html'])) {
+    $link_text = _bootstrap_filter_xss($link_text);
+  }
+
   return '<li class="' . implode(' ', $classes) . '">' . l($link_text, $link['href'], $link['localized_options']) . "</li>\n";
 }
