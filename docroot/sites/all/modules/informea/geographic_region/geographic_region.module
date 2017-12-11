@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Geographic region feature.
+ */
+
+include_once 'geographic_region.features.inc';
