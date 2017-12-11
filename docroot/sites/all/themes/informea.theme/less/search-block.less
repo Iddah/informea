@@ -1,0 +1,23 @@
+// Search block styling (including overrides of the old skin)
+.search-block {
+  background-color: #0A8FC6;
+  border-top: 1px solid #fff;
+  padding: 2.5em 0;
+  .region-navigation {
+    margin: 0 auto;
+    &, & > .block {
+      float: none;
+    }
+  }
+  #search-form {
+    margin: 0 auto;
+    @media (min-width: 768px) {
+      & { width: 80%; }
+    }
+
+    .form-text {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+  }
+}
