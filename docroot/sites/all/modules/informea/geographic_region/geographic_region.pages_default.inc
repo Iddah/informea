@@ -15,7 +15,7 @@ function geographic_region_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Geographic region page';
   $page->admin_description = '';
-  $page->path = 'regions/%region/!topic';
+  $page->path = 'regions/%region';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array(
@@ -27,19 +27,6 @@ function geographic_region_default_page_manager_pages() {
         'input_form' => 'term',
         'vocabularies' => array(
           'geographical_region' => 'geographical_region',
-        ),
-        'breadcrumb' => 1,
-        'transform' => 1,
-      ),
-    ),
-    'topic' => array(
-      'id' => 2,
-      'identifier' => 'Topic: ID',
-      'name' => 'term',
-      'settings' => array(
-        'input_form' => 'term',
-        'vocabularies' => array(
-          'mea_topic' => 'mea_topic',
         ),
         'breadcrumb' => 1,
         'transform' => 1,
@@ -408,6 +395,55 @@ function geographic_region_default_page_manager_pages() {
   $display->storage_id = 'page_region_page__panel';
   $display->content = array();
   $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-4252a8b2-a257-436e-b0a4-bee1f4537c94';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'geographic_region-region_switch_topic';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Browse by Environmental Topic',
+    'override_title_heading' => 'h4',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '4252a8b2-a257-436e-b0a4-bee1f4537c94';
+  $display->content['new-4252a8b2-a257-436e-b0a4-bee1f4537c94'] = $pane;
+  $display->panels['center'][0] = 'new-4252a8b2-a257-436e-b0a4-bee1f4537c94';
+  $pane = new stdClass();
+  $pane->pid = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
+  $pane->panel = 'title';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => 'Title',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<h2>Treaties and MEAs</h2>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '65913b9c-9240-4fcd-aae9-bac32e4d2255';
+  $display->content['new-65913b9c-9240-4fcd-aae9-bac32e4d2255'] = $pane;
+  $display->panels['title'][0] = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

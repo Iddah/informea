@@ -5,3 +5,37 @@
  */
 
 include_once 'geographic_region.features.inc';
+
+function geographic_region_block_info() {
+  return [
+    'region_switch_topic' => [
+      'info' => t('Browse by Environmental Topic'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function geographic_region_block_view($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'region_switch_topic':
+      $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+      $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+      $tabs = [];
+      foreach ($terms as $term) {
+        $tabs[] = [
+          'data' => l($term->name, current_path(), ['query' => ['topic' => $term->tid]]),
+          'class' => !empty($_GET['topic']) && $_GET['topic'] == $term->tid ? ['active'] : [],
+        ];
+      }
+      $block['content'] = [
+        '#theme' => 'item_list',
+        '#items' => $tabs,
+        '#attributes' => ['class' => ['nav nav-tabs']]
+      ];
+  }
+  return $block;
+}
