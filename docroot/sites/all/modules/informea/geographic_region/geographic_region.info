@@ -9,4 +9,5 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[page_manager_pages][] = region_page
+features[views_view][] = news_and_events
 features[views_view][] = regional_treaties
