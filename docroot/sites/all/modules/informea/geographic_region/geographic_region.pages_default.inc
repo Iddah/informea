@@ -15,18 +15,31 @@ function geographic_region_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Geographic region page';
   $page->admin_description = '';
-  $page->path = 'regions/%region';
+  $page->path = 'regions/%region/!topic';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array(
     'region' => array(
       'id' => 1,
-      'identifier' => 'Taxonomy term: ID',
+      'identifier' => 'Region: ID',
       'name' => 'term',
       'settings' => array(
         'input_form' => 'term',
         'vocabularies' => array(
           'geographical_region' => 'geographical_region',
+        ),
+        'breadcrumb' => 1,
+        'transform' => 1,
+      ),
+    ),
+    'topic' => array(
+      'id' => 2,
+      'identifier' => 'Topic: ID',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'term',
+        'vocabularies' => array(
+          'mea_topic' => 'mea_topic',
         ),
         'breadcrumb' => 1,
         'transform' => 1,
@@ -56,6 +69,10 @@ function geographic_region_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
     'name' => 'panel',
+    'access' => array(
+      'plugins' => array(),
+      'logic' => 'and',
+    ),
   );
   $display = new panels_display();
   $display->layout = 'flexible';
@@ -117,7 +134,7 @@ function geographic_region_default_page_manager_pages() {
         'width' => 100,
         'width_type' => '%',
         'parent' => '1',
-        'class' => '',
+        'class' => 'text-center',
         'hide_empty' => 0,
       ),
       2 => array(
@@ -128,7 +145,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 4,
         ),
         'parent' => 'main',
-        'class' => '',
+        'class' => 'row',
         'hide_empty' => 0,
       ),
       3 => array(
@@ -139,7 +156,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 5,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       4 => array(
@@ -150,7 +167,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 6,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       5 => array(
@@ -418,6 +435,83 @@ function geographic_region_default_page_manager_pages() {
   $pane->uuid = '4252a8b2-a257-436e-b0a4-bee1f4537c94';
   $display->content['new-4252a8b2-a257-436e-b0a4-bee1f4537c94'] = $pane;
   $display->panels['center'][0] = 'new-4252a8b2-a257-436e-b0a4-bee1f4537c94';
+  $pane = new stdClass();
+  $pane->pid = 'new-0ab26761-785e-40a2-8aee-2dc972624b41';
+  $pane->panel = 'content__left';
+  $pane->type = 'views';
+  $pane->subtype = 'regional_treaties';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '10',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_2.tid',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '0ab26761-785e-40a2-8aee-2dc972624b41';
+  $display->content['new-0ab26761-785e-40a2-8aee-2dc972624b41'] = $pane;
+  $display->panels['content__left'][0] = 'new-0ab26761-785e-40a2-8aee-2dc972624b41';
+  $pane = new stdClass();
+  $pane->pid = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
+  $pane->panel = 'content__right';
+  $pane->type = 'views';
+  $pane->subtype = 'regional_treaties';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '12',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block_1',
+    'context' => array(
+      0 => 'argument_term_2.tid',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '35a1fe01-4628-4865-a9bc-0a20450239d2';
+  $display->content['new-35a1fe01-4628-4865-a9bc-0a20450239d2'] = $pane;
+  $display->panels['content__right'][0] = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
   $pane = new stdClass();
   $pane->pid = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $pane->panel = 'title';
