@@ -149,7 +149,7 @@ function informea_taxonomy_default_vocabularies() {
         'enable' => TRUE,
         'plugin' => 'Drupal\\taxonomy_external_sync\\plugin\\source\\VocBenchRDFSource',
         'plugin_config' => array(
-          'url' => 'http://informea.org/sites/default/files/export/ecolex.rdf',
+          'url' => 'https://thesaurus.informea.org/export/ecolex.rdf',
           'id_field' => 'uri',
           'parent_field' => 'broader',
           'delete_deprecated_terms' => 0,
@@ -276,7 +276,7 @@ function informea_taxonomy_default_vocabularies() {
         'enable' => TRUE,
         'plugin' => 'Drupal\\taxonomy_external_sync\\plugin\\source\\VocBenchRDFSource',
         'plugin_config' => array(
-          'url' => 'http://thesaurus.informea.org/export/informea.rdf',
+          'url' => 'https://thesaurus.informea.org/export/informea.rdf',
           'id_field' => 'uri',
           'parent_field' => 'broader',
           'delete_deprecated_terms' => 1,
