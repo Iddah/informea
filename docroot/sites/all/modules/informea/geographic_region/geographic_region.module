@@ -19,7 +19,7 @@ function geographic_region_block_info() {
   ];
 }
 
-function _get_regional_treaties($region_id, $topic_id = null) {
+function _get_regional_treaties($region_id, $topic_id = NULL) {
   $treaties = [];
   /** @var \view $view */
   $view = views_get_view('regional_treaties');
@@ -36,7 +36,7 @@ function _get_regional_treaties($region_id, $topic_id = null) {
   return $treaties;
 }
 
-function _get_content_count_by_region($content_type, $region_id, $topic_id = null) {
+function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $content_type)
@@ -70,27 +70,27 @@ function _geographic_region_build_search_query($options) {
  * Implements hook_block_view().
  */
 function geographic_region_block_view($delta = '') {
-  $block = array();
-  switch($delta) {
+  $block = [];
+  switch ($delta) {
     case 'region_switch_topic':
       $page = page_manager_get_current_page();
       if (!empty($page['contexts']['argument_term_1']->argument)) {
         $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
-        $terms = entity_load('taxonomy_term', false, ['vid' => $vocabulary->vid]);
+        $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
         usort($terms, function ($a, $b) {
           return strcmp($a->name, $b->name);
         });
 
         $current_topic = !empty($page['contexts']['argument_term_2']->argument)
           ? $page['contexts']['argument_term_2']->argument
-          : null;
+          : NULL;
 
         $region_path = 'regions/' . $page['contexts']['argument_term_1']->original_argument;
         $tabs = [
           [
             'data' => l(t('All topics'), $region_path),
             'class' => empty($current_topic) ? ['active'] : [],
-          ]
+          ],
         ];
         foreach ($terms as $term) {
           $tabs[] = [
@@ -101,13 +101,12 @@ function geographic_region_block_view($delta = '') {
         $block['content'] = [
           '#theme' => 'item_list',
           '#items' => $tabs,
-          '#attributes' => ['class' => ['nav nav-tabs']]
+          '#attributes' => ['class' => ['nav nav-tabs']],
         ];
       }
       break;
 
     case 'region_downloadable_documents':
-      // @todo: Refactor this block
       $page = page_manager_get_current_page();
       if (!empty($page['contexts']['argument_term_1']->argument)) {
         $region = $page['contexts']['argument_term_1']->argument;
@@ -116,109 +115,58 @@ function geographic_region_block_view($delta = '') {
           'field_region' => $region,
           'field_topic' => $topic,
         ]);
-        $list = [
+        $sections = [
           [
-            'data' => t('Treaties documents'),
-            'class' => ['section-title']
+            'title' => t('Treaties documents'),
+            'items' => [
+              t('Meetings decisions') => ['type' => 'decision'],
+              t('COP Reports') => ['type' => '@todo'], // @todo
+            ],
           ],
           [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('Meetings decisions'),
-                _get_content_count_by_region('decision', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:decision'])]]
-            ),
+            'title' => t('National submissions'),
+            'items' => [
+              t('National Action Plans') => ['type' => 'action_plan'],
+              t('National Reports') => ['type' => 'national_report'],
+            ],
           ],
           [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('COP Reports'),
-                '@todo'), // @todo
-              'search',
-              ['query' => ['f' => array_merge($search_query)]]
-            ),
+            'title' => t('National legislation and cases'),
+            'items' => [
+              t('National Legislation') => ['type' => 'legislation'],
+              t('Court Decisions') => ['type' => 'court_decisions'],
+            ],
           ],
           [
-            'data' => t('National submissions'),
-            'class' => ['section-title']
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('National Action Plans'),
-                _get_content_count_by_region('action_plan', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:action_plan'])]]
-            ),
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('National Reports'),
-                _get_content_count_by_region('national_report', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:national_report'])]]
-            ),
-          ],
-          [
-            'data' => t('National legislation and cases'),
-            'class' => ['section-title']
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('National Legislation'),
-                _get_content_count_by_region('legislation', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:legislation'])]]
-            ),
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('Court Decisions'),
-                _get_content_count_by_region('court_decisions', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:court_decisions'])]]
-            ),
-          ],
-          [
-            'data' => t('Literature documents'),
-            'class' => ['section-title']
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('Publications'),
-                _get_content_count_by_region('literature', $region, $topic)),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:literature'])]]
-            ),
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('Manuals'),
-                '@todo'), // @todo
-              'search',
-              ['query' => ['f' => array_merge($search_query)]]
-            ),
-          ],
-          [
-            'data' => l(
-              sprintf('%s (%s)',
-                t('Tehnical Series'),
-                '@todo'), // @todo
-              'search',
-              ['query' => ['f' => array_merge($search_query)]]
-            ),
+            'title' => t('Literature documents'),
+            'items' => [
+              t('Publications') => ['type' => 'literature'],
+              t('Manuals') => ['type' => '@todo'], // @todo
+              t('Tehnical Series') => ['type' => '@todo'], // @todo
+            ],
           ],
         ];
+        $list = [];
+        foreach ($sections as $section) {
+          $subList = [['data' => $section['title'], 'class' => ['section-title']]];
+          foreach ($section['items'] as $title => $options) {
+            $count = _get_content_count_by_region($options['type'], $region, $topic);
+            if (!empty($count)) {
+              $subList[] = ['data' => l(
+                sprintf('%s (%s)', $title, $count),
+                'search',
+                ['query' => ['f' => array_merge($search_query, ['type:' . $options['type']])]]
+              )];
+            }
+          }
+          if (count($subList) > 1) {
+            $list = array_merge($list, $subList);
+          }
+        }
         $block['content'] = [
           '#theme' => 'item_list',
           '#items' => $list,
-          '#attributes' => ['class' => ['nav']]
+          '#attributes' => ['class' => ['nav']],
         ];
       }
       break;
