@@ -156,6 +156,10 @@ function ws_provider_views_default_views() {
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_treaty_target_id']['id'] = 'field_treaty_target_id';
+  $handler->display->display_options['relationships']['field_treaty_target_id']['table'] = 'field_data_field_treaty';
+  $handler->display->display_options['relationships']['field_treaty_target_id']['field'] = 'field_treaty_target_id';
   /* Field: Content: Content UUID */
   $handler->display->display_options['fields']['uuid']['id'] = 'uuid';
   $handler->display->display_options['fields']['uuid']['table'] = 'node';
@@ -182,6 +186,18 @@ function ws_provider_views_default_views() {
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: OData identifier */
+  $handler->display->display_options['fields']['field_odata_identifier']['id'] = 'field_odata_identifier';
+  $handler->display->display_options['fields']['field_odata_identifier']['table'] = 'field_data_field_odata_identifier';
+  $handler->display->display_options['fields']['field_odata_identifier']['field'] = 'field_odata_identifier';
+  $handler->display->display_options['fields']['field_odata_identifier']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['fields']['field_odata_identifier']['label'] = 'treaty';
+  /* Field: Content: Content UUID */
+  $handler->display->display_options['fields']['uuid_2']['id'] = 'uuid_2';
+  $handler->display->display_options['fields']['uuid_2']['table'] = 'node';
+  $handler->display->display_options['fields']['uuid_2']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid_2']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['fields']['uuid_2']['label'] = 'treaty_uuid';
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
@@ -241,9 +257,12 @@ function ws_provider_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Content entity referenced from field_treaty'),
     t('uuid'),
     t('data_url'),
     t('last_update'),
+    t('treaty'),
+    t('treaty_uuid'),
     t('Services'),
     t('Items per page'),
     t('- All -'),

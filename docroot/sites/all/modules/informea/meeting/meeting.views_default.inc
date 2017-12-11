@@ -496,7 +496,7 @@ function meeting_views_default_views() {
     'title_link' => 'content',
     'title_class' => '',
   );
-  /* Sort criterion: Indexed Content: Order */
+  /* Sort criterion: Indexed Content: Sorting order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
@@ -574,8 +574,6 @@ function meeting_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  $handler->display->display_options['filters']['field_informea_tags']['type'] = 'select';
-  $handler->display->display_options['filters']['field_informea_tags']['error_message'] = FALSE;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
