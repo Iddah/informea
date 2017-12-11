@@ -216,7 +216,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 8,
         ),
         'parent' => 'main',
-        'class' => '',
+        'class' => 'row',
         'hide_empty' => 0,
       ),
       8 => array(
@@ -227,7 +227,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 11,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       9 => array(
@@ -238,7 +238,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 10,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       10 => array(
@@ -435,6 +435,29 @@ function geographic_region_default_page_manager_pages() {
   $pane->uuid = '4252a8b2-a257-436e-b0a4-bee1f4537c94';
   $display->content['new-4252a8b2-a257-436e-b0a4-bee1f4537c94'] = $pane;
   $display->panels['center'][0] = 'new-4252a8b2-a257-436e-b0a4-bee1f4537c94';
+  $pane = new stdClass();
+  $pane->pid = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
+  $pane->panel = 'content__bottom_left';
+  $pane->type = 'block';
+  $pane->subtype = 'geographic_region-region_downloadable_documents';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Downloadable Documents',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'b1b9da07-be2d-4050-beca-eca11fc3d634';
+  $display->content['new-b1b9da07-be2d-4050-beca-eca11fc3d634'] = $pane;
+  $display->panels['content__bottom_left'][0] = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
   $pane = new stdClass();
   $pane->pid = 'new-0ab26761-785e-40a2-8aee-2dc972624b41';
   $pane->panel = 'content__left';

@@ -12,7 +12,58 @@ function geographic_region_block_info() {
       'info' => t('Browse by Environmental Topic'),
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ],
+    'region_downloadable_documents' => [
+      'info' => t('Downloadable documents'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
   ];
+}
+
+function _get_regional_treaties($region_id, $topic_id = null) {
+  $treaties = [];
+  /** @var \view $view */
+  $view = views_get_view('regional_treaties');
+  if (is_object($view)) {
+    $view->set_arguments([$region_id, $topic_id]);
+    $view->set_display('block');
+    $view->set_items_per_page(0);
+    $view->pre_execute();
+    $view->execute();
+    foreach ($view->result as $result) {
+      $treaties[] = $result->nid;
+    }
+  }
+  return $treaties;
+}
+
+function _get_content_count_by_region($content_type, $region_id, $topic_id = null) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $content_type)
+    ->propertyCondition('status', NODE_PUBLISHED);
+  switch ($content_type) {
+    case 'decision':
+      $regional_treaties = _get_regional_treaties($region_id, $topic_id) + [-1];
+      $query->fieldCondition('field_treaty', 'target_id', $regional_treaties, 'IN');
+      break;
+
+    default:
+      $query->fieldCondition('field_region', 'tid', $region_id);
+      if (!empty($topic_id)) {
+        $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
+      }
+  }
+  return $query->count()->execute();
+}
+
+function _geographic_region_build_search_query($options) {
+  $f = [];
+  foreach ($options as $key => $value) {
+    if (!empty($value)) {
+      $f[] = "$key:$value";
+    }
+  }
+  return $f;
 }
 
 /**
@@ -23,34 +74,154 @@ function geographic_region_block_view($delta = '') {
   switch($delta) {
     case 'region_switch_topic':
       $page = page_manager_get_current_page();
-      $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
-      $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
-      usort($terms, function($a, $b) {
-        return strcmp($a->name, $b->name);
-      });
+      if (!empty($page['contexts']['argument_term_1']->argument)) {
+        $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+        $terms = entity_load('taxonomy_term', false, ['vid' => $vocabulary->vid]);
+        usort($terms, function ($a, $b) {
+          return strcmp($a->name, $b->name);
+        });
 
-      $current_topic = !empty($page['contexts']['argument_term_2']->argument)
-        ? $page['contexts']['argument_term_2']->argument
-        : NULL;
+        $current_topic = !empty($page['contexts']['argument_term_2']->argument)
+          ? $page['contexts']['argument_term_2']->argument
+          : null;
 
-      $region_path = 'regions/' . $page['contexts']['argument_term_1']->original_argument;
-      $tabs = [
-        [
-          'data' => l(t('All topics'), $region_path),
-          'class' => empty($current_topic) ? ['active'] : [],
-        ]
-      ];
-      foreach ($terms as $term) {
-        $tabs[] = [
-          'data' => l($term->name, $region_path . '/' . $term->name),
-          'class' => !empty($current_topic) && $current_topic == $term->tid ? ['active'] : [],
+        $region_path = 'regions/' . $page['contexts']['argument_term_1']->original_argument;
+        $tabs = [
+          [
+            'data' => l(t('All topics'), $region_path),
+            'class' => empty($current_topic) ? ['active'] : [],
+          ]
+        ];
+        foreach ($terms as $term) {
+          $tabs[] = [
+            'data' => l($term->name, $region_path . '/' . $term->name),
+            'class' => !empty($current_topic) && $current_topic == $term->tid ? ['active'] : [],
+          ];
+        }
+        $block['content'] = [
+          '#theme' => 'item_list',
+          '#items' => $tabs,
+          '#attributes' => ['class' => ['nav nav-tabs']]
         ];
       }
-      $block['content'] = [
-        '#theme' => 'item_list',
-        '#items' => $tabs,
-        '#attributes' => ['class' => ['nav nav-tabs']]
-      ];
+      break;
+
+    case 'region_downloadable_documents':
+      // @todo: Refactor this block
+      $page = page_manager_get_current_page();
+      if (!empty($page['contexts']['argument_term_1']->argument)) {
+        $region = $page['contexts']['argument_term_1']->argument;
+        $topic = $page['contexts']['argument_term_2']->argument;
+        $search_query = _geographic_region_build_search_query([
+          'field_region' => $region,
+          'field_topic' => $topic,
+        ]);
+        $list = [
+          [
+            'data' => t('Treaties documents'),
+            'class' => ['section-title']
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('Meetings decisions'),
+                _get_content_count_by_region('decision', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:decision'])]]
+            ),
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('COP Reports'),
+                '@todo'), // @todo
+              'search',
+              ['query' => ['f' => array_merge($search_query)]]
+            ),
+          ],
+          [
+            'data' => t('National submissions'),
+            'class' => ['section-title']
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('National Action Plans'),
+                _get_content_count_by_region('action_plan', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:action_plan'])]]
+            ),
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('National Reports'),
+                _get_content_count_by_region('national_report', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:national_report'])]]
+            ),
+          ],
+          [
+            'data' => t('National legislation and cases'),
+            'class' => ['section-title']
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('National Legislation'),
+                _get_content_count_by_region('legislation', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:legislation'])]]
+            ),
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('Court Decisions'),
+                _get_content_count_by_region('court_decisions', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:court_decisions'])]]
+            ),
+          ],
+          [
+            'data' => t('Literature documents'),
+            'class' => ['section-title']
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('Publications'),
+                _get_content_count_by_region('literature', $region, $topic)),
+              'search',
+              ['query' => ['f' => array_merge($search_query, ['type:literature'])]]
+            ),
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('Manuals'),
+                '@todo'), // @todo
+              'search',
+              ['query' => ['f' => array_merge($search_query)]]
+            ),
+          ],
+          [
+            'data' => l(
+              sprintf('%s (%s)',
+                t('Tehnical Series'),
+                '@todo'), // @todo
+              'search',
+              ['query' => ['f' => array_merge($search_query)]]
+            ),
+          ],
+        ];
+        $block['content'] = [
+          '#theme' => 'item_list',
+          '#items' => $list,
+          '#attributes' => ['class' => ['nav']]
+        ];
+      }
+      break;
   }
   return $block;
 }
