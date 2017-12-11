@@ -26,9 +26,6 @@
       <?php endif; ?>
     </div><!-- .navbar-header -->
     <div class="navbar-header header-content">
-      <?php if (!empty($page['navigation'])): ?>
-        <?php print render($page['navigation']); ?>
-      <?php endif; ?>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -151,3 +148,10 @@
       </nav><!-- .navbar-collapse .collapse -->
   </div><!-- .container -->
 </header><!-- #navbar -->
+<div class="search-block">
+  <div class="container">
+    <?php if (!empty($page['navigation'])): ?>
+      <?php print render($page['navigation']); ?>
+    <?php endif; ?>
+  </div>
+</div>

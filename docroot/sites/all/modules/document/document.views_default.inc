@@ -90,7 +90,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['field_document_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_document_type']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_document_type']['alter']['text'] = '<dt>Category:&nbsp;&nbsp;</dt><dl>[field_document_type]</dl>';
-  $handler->display->display_options['fields']['field_document_type']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_document_type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_document_type']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_document_type']['bypass_access'] = 0;
   /* Field: Indexed Content: Treaty */

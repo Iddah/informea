@@ -271,7 +271,7 @@ function document_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'inline',
-    'formatter' => 'taxonomy_term_reference_link',
+    'formatter' => 'taxonomy_term_reference_plain',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
@@ -430,7 +430,7 @@ function document_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'label' => 'inline',
-    'formatter' => 'external_url',
+    'formatter' => 'file_default',
     'delta_limit' => '0',
     'delta_offset' => '0',
     'delta_reversed' => 0,
