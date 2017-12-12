@@ -2,6 +2,7 @@ name = Geographic region
 core = 7.x
 package = InforMEA
 version = 7.x-1.0
+dependencies[] = country
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = fe_block

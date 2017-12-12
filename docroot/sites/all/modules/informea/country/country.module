@@ -915,3 +915,9 @@ function country_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+function country_views_pre_execute(&$view){
+  if ($view->name == 'contacts_hubs') {
+    $view->build_info['query']->groupBy('node_field_data_field_country.nid');
+  }
+}

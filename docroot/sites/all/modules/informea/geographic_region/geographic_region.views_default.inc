@@ -104,7 +104,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['arguments']['field_region_tid_1']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_region_tid_1']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_region_tid_1']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Content: MEA topic (field_mea_topic) */
+  /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
@@ -246,7 +246,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Content: MEA topic (field_mea_topic) */
+  /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
@@ -307,7 +307,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: MEA topic (field_mea_topic) */
+  /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
