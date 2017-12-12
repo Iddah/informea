@@ -55,7 +55,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -54,
+        'weight' => -55,
       ),
       'seven' => array(
         'region' => '',
@@ -65,6 +65,34 @@ function geographic_region_default_fe_block_settings() {
       ),
     ),
     'title' => 'Get Involved',
+    'visibility' => 1,
+  );
+
+  $export['social_media_links-social-media-links'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'social-media-links',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'social_media_links',
+    'node_types' => array(),
+    'pages' => 'regions/*',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'involvement',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -53,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Follow our social media channels:',
     'visibility' => 1,
   );
 
@@ -83,7 +111,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -52,
       ),
       'seven' => array(
         'region' => '',
