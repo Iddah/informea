@@ -265,6 +265,8 @@ function geographic_region_views_default_views() {
 
   /* Display: Regional treaties */
   $handler = $view->new_display('block', 'Regional treaties', 'block');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Regional treaties';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
@@ -274,6 +276,8 @@ function geographic_region_views_default_views() {
 
   /* Display: Global treaties */
   $handler = $view->new_display('block', 'Global treaties', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Global treaties';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
