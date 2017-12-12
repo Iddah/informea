@@ -6,6 +6,9 @@
 
 include_once 'geographic_region.features.inc';
 
+/**
+ * Implements hook_block_info().
+ */
 function geographic_region_block_info() {
   return [
     'region_page_title' => [
@@ -28,6 +31,17 @@ function geographic_region_block_info() {
   ];
 }
 
+/**
+ * Retrieve treaties node ids filtered by region and (optional) by topic.
+ *
+ * @param int $region_id
+ *  Region term tid.
+ * @param null|int $topic_id
+ *  Topic term tid.
+ *
+ * @return array
+ *  Array containing node ids.
+ */
 function _get_regional_treaties($region_id, $topic_id = NULL) {
   $treaties = [];
   /** @var \view $view */
@@ -45,6 +59,27 @@ function _get_regional_treaties($region_id, $topic_id = NULL) {
   return $treaties;
 }
 
+/**
+ * Executes an entity field count query and returns the count of nodes filtered
+ * by region and other fields.
+ *
+ * @param string $content_type
+ *  The value of the bundle query condition.
+ * @param int $region_id
+ *  Region term tid.
+ * @param null|int $topic_id
+ *  Topic term tid.
+ * @param array $fieldConditions
+ *  Array of extra field conditions. Each item needs to be an array containing
+ * the following keys:
+ *    - field
+ *    - column (optional)
+ *    - value (optional)
+ *    - operator (optional)
+ *
+ * @return int
+ *  The count query result.
+ */
 function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL, $fieldConditions = []) {
   // @todo: refactor this function after all content types have field_region and field_mea_topic.
   $query = new EntityFieldQuery();
@@ -73,7 +108,16 @@ function _get_content_count_by_region($content_type, $region_id, $topic_id = NUL
   return $query->count()->execute();
 }
 
-function _geographic_region_build_search_query($options) {
+/**
+ * Builds the query for solr-based views.
+ *
+ * @param array $options
+ *  Array of query options.
+ *
+ * @return array
+ *  Array of query options as required by solr-based views.
+ */
+function _geographic_region_build_search_query(array $options) {
   $f = [];
   foreach ($options as $key => $value) {
     if (!empty($value)) {
@@ -83,6 +127,12 @@ function _geographic_region_build_search_query($options) {
   return $f;
 }
 
+/**
+ * Retrieves the region id contextual filter if available.
+ *
+ * @return null|int
+ *  Region term tid.
+ */
 function _geographic_region_page_get_region_argument() {
   $page = page_manager_get_current_page();
   if (!empty($page['contexts']['argument_term_1']->argument)) {
