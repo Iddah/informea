@@ -27,7 +27,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -56,
+        'weight' => -54,
       ),
       'seven' => array(
         'region' => '',
@@ -55,7 +55,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -57,
+        'weight' => -54,
       ),
       'seven' => array(
         'region' => '',
@@ -65,6 +65,34 @@ function geographic_region_default_fe_block_settings() {
       ),
     ),
     'title' => 'Get Involved',
+    'visibility' => 1,
+  );
+
+  $export['views-take_part_webform-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'take_part_webform-block',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'regions/*',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'involvement',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
     'visibility' => 1,
   );
 
