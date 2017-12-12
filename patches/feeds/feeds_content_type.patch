@@ -1,0 +1,988 @@
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_base.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_base.inc
+index 07e790b5..94a73936 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_base.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_base.inc
+@@ -10,21 +10,13 @@
+ function feeds_news_field_default_field_bases() {
+   $field_bases = array();
+ 
+-  // Exported field_base: 'field_feed_item_description'
++  // Exported field_base: 'field_feed_item_description'.
+   $field_bases['field_feed_item_description'] = array(
+     'active' => 1,
+     'cardinality' => 1,
+     'deleted' => 0,
+     'entity_types' => array(),
+     'field_name' => 'field_feed_item_description',
+-    'foreign keys' => array(
+-      'format' => array(
+-        'columns' => array(
+-          'format' => 'format',
+-        ),
+-        'table' => 'filter_format',
+-      ),
+-    ),
+     'indexes' => array(
+       'format' => array(
+         0 => 'format',
+@@ -32,10 +24,48 @@ function feeds_news_field_default_field_bases() {
+     ),
+     'locked' => 0,
+     'module' => 'text',
+-    'settings' => array(),
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++    ),
+     'translatable' => 1,
+     'type' => 'text_with_summary',
+   );
+ 
++  // Exported field_base: 'field_parent_feed'.
++  $field_bases['field_parent_feed'] = array(
++    'active' => 1,
++    'cardinality' => 1,
++    'deleted' => 0,
++    'entity_types' => array(),
++    'field_name' => 'field_parent_feed',
++    'indexes' => array(
++      'target_id' => array(
++        0 => 'target_id',
++      ),
++    ),
++    'locked' => 0,
++    'module' => 'entityreference',
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'handler' => 'base',
++      'handler_settings' => array(
++        'behaviors' => array(
++          'views-select-list' => array(
++            'status' => 0,
++          ),
++        ),
++        'sort' => array(
++          'type' => 'none',
++        ),
++        'target_bundles' => array(
++          'feed' => 'feed',
++        ),
++      ),
++      'target_type' => 'node',
++    ),
++    'translatable' => 0,
++    'type' => 'entityreference',
++  );
++
+   return $field_bases;
+ }
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
+index 1d9c3782..3dbbd04e 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
+@@ -10,13 +10,219 @@
+ function feeds_news_field_default_field_instances() {
+   $field_instances = array();
+ 
+-  // Exported field_instance: 'node-feed_item-field_feed_item_description'
++  // Exported field_instance: 'node-feed-field_image'.
++  $field_instances['node-feed-field_image'] = array(
++    'bundle' => 'feed',
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'above',
++        'module' => 'image',
++        'settings' => array(
++          'image_link' => '',
++          'image_style' => '',
++        ),
++        'type' => 'image',
++        'weight' => 0,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_image',
++    'label' => 'Default field featured image',
++    'required' => 1,
++    'settings' => array(
++      'alt_field' => 0,
++      'default_image' => 0,
++      'entity_translation_sync' => FALSE,
++      'file_directory' => '',
++      'file_extensions' => 'png gif jpg jpeg',
++      'max_filesize' => '',
++      'max_resolution' => '',
++      'min_resolution' => '',
++      'title_field' => 0,
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'image',
++      'settings' => array(
++        'filefield_sources' => array(
++          'filefield_sources' => array(),
++          'source_attach' => array(
++            'absolute' => 0,
++            'attach_mode' => 'move',
++            'path' => 'file_attach',
++          ),
++          'source_imce' => array(
++            'imce_mode' => 0,
++          ),
++          'source_reference' => array(
++            'autocomplete' => 0,
++          ),
++        ),
++        'preview_image_style' => 'thumbnail',
++        'progress_indicator' => 'throbber',
++      ),
++      'type' => 'image_image',
++      'weight' => 32,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed-field_mea_topic'.
++  $field_instances['node-feed-field_mea_topic'] = array(
++    'bundle' => 'feed',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'above',
++        'module' => 'i18n_taxonomy',
++        'settings' => array(),
++        'type' => 'i18n_taxonomy_term_reference_link',
++        'weight' => 1,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_mea_topic',
++    'label' => 'MEA topic',
++    'required' => 1,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'allow_add_onfly' => 0,
++        'show_voc_terms_page_link' => 0,
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 0,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 33,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed-field_treaty'.
++  $field_instances['node-feed-field_treaty'] = array(
++    'bundle' => 'feed',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'above',
++        'module' => 'entityreference',
++        'settings' => array(
++          'bypass_access' => FALSE,
++          'link' => FALSE,
++        ),
++        'type' => 'entityreference_label',
++        'weight' => 2,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_treaty',
++    'label' => 'Treaty',
++    'required' => 0,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 0,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 35,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed_item-field_feed_item_description'.
+   $field_instances['node-feed_item-field_feed_item_description'] = array(
+     'bundle' => 'feed_item',
+     'default_value' => NULL,
+     'deleted' => 0,
+     'description' => '',
+     'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
+       'default' => array(
+         'label' => 'hidden',
+         'module' => 'text',
+@@ -45,6 +251,12 @@ function feeds_news_field_default_field_instances() {
+         'type' => 'text_trimmed',
+         'weight' => 0,
+       ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
+     ),
+     'entity_type' => 'node',
+     'field_name' => 'field_feed_item_description',
+@@ -52,6 +264,7 @@ function feeds_news_field_default_field_instances() {
+     'required' => 0,
+     'settings' => array(
+       'display_summary' => 0,
++      'entity_translation_sync' => FALSE,
+       'text_processing' => 1,
+       'user_register_form' => FALSE,
+     ),
+@@ -67,9 +280,344 @@ function feeds_news_field_default_field_instances() {
+     ),
+   );
+ 
++  // Exported field_instance: 'node-feed_item-field_image'.
++  $field_instances['node-feed_item-field_image'] = array(
++    'bundle' => 'feed_item',
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'hidden',
++        'module' => 'image',
++        'settings' => array(
++          'image_link' => '',
++          'image_style' => '',
++        ),
++        'type' => 'image',
++        'weight' => 0,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_image',
++    'label' => 'Image',
++    'required' => 0,
++    'settings' => array(
++      'alt_field' => 0,
++      'default_image' => 0,
++      'entity_translation_sync' => FALSE,
++      'file_directory' => '',
++      'file_extensions' => 'png gif jpg jpeg',
++      'max_filesize' => '',
++      'max_resolution' => '',
++      'min_resolution' => '',
++      'title_field' => 0,
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'image',
++      'settings' => array(
++        'filefield_sources' => array(
++          'filefield_sources' => array(),
++          'source_attach' => array(
++            'absolute' => 0,
++            'attach_mode' => 'move',
++            'path' => 'file_attach',
++          ),
++          'source_imce' => array(
++            'imce_mode' => 0,
++          ),
++          'source_reference' => array(
++            'autocomplete' => 0,
++          ),
++        ),
++        'preview_image_style' => 'thumbnail',
++        'progress_indicator' => 'throbber',
++      ),
++      'type' => 'image_image',
++      'weight' => 39,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed_item-field_mea_topic'.
++  $field_instances['node-feed_item-field_mea_topic'] = array(
++    'bundle' => 'feed_item',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'inline',
++        'module' => 'i18n_taxonomy',
++        'settings' => array(),
++        'type' => 'i18n_taxonomy_term_reference_link',
++        'weight' => 6,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_mea_topic',
++    'label' => 'Tags',
++    'required' => 0,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'allow_add_onfly' => 0,
++        'show_voc_terms_page_link' => 0,
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 0,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 43,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed_item-field_parent_feed'.
++  $field_instances['node-feed_item-field_parent_feed'] = array(
++    'bundle' => 'feed_item',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'inline',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 4,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_parent_feed',
++    'label' => 'Parent feed',
++    'required' => 0,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 0,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 37,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed_item-field_treaty'.
++  $field_instances['node-feed_item-field_treaty'] = array(
++    'bundle' => 'feed_item',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'inline',
++        'module' => 'entityreference',
++        'settings' => array(
++          'bypass_access' => FALSE,
++          'link' => FALSE,
++        ),
++        'type' => 'entityreference_label',
++        'weight' => 5,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_treaty',
++    'label' => 'Treaty',
++    'required' => 0,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 0,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 41,
++    ),
++  );
++
++  // Exported field_instance: 'node-feed_item-field_url'.
++  $field_instances['node-feed_item-field_url'] = array(
++    'bundle' => 'feed_item',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'inline',
++        'module' => 'link',
++        'settings' => array(),
++        'type' => 'link_default',
++        'weight' => 3,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_url',
++    'label' => 'URL',
++    'required' => 0,
++    'settings' => array(
++      'absolute_url' => 1,
++      'attributes' => array(
++        'class' => '',
++        'configurable_class' => 0,
++        'configurable_title' => 0,
++        'rel' => '',
++        'target' => 'default',
++        'title' => '',
++      ),
++      'display' => array(
++        'url_cutoff' => 80,
++      ),
++      'enable_tokens' => 1,
++      'entity_translation_sync' => FALSE,
++      'rel_remove' => 'default',
++      'title' => 'optional',
++      'title_label_use_field_label' => 0,
++      'title_maxlength' => 128,
++      'title_value' => '',
++      'url' => 0,
++      'user_register_form' => FALSE,
++      'validate_url' => 1,
++    ),
++    'widget' => array(
++      'active' => 0,
++      'module' => 'link',
++      'settings' => array(),
++      'type' => 'link_field',
++      'weight' => 36,
++    ),
++  );
++
+   // Translatables
+   // Included for use with string extractors like potx.
++  t('Default field featured image');
+   t('Description');
++  t('Image');
++  t('MEA topic');
++  t('Parent feed');
++  t('Tags');
++  t('Treaty');
++  t('URL');
+ 
+   return $field_instances;
+ }
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.inc
+index 1b0a38dc..a970a3b8 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.inc
+@@ -11,6 +11,9 @@ function feeds_news_ctools_plugin_api($module = NULL, $api = NULL) {
+   if ($module == "feeds" && $api == "feeds_importer_default") {
+     return array("version" => "1");
+   }
++  if ($module == "strongarm" && $api == "strongarm") {
++    return array("version" => "1");
++  }
+ }
+ 
+ /**
+@@ -42,5 +45,6 @@ function feeds_news_node_info() {
+       'help' => '',
+     ),
+   );
++  drupal_alter('node_info', $items);
+   return $items;
+ }
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
+index 34eca86d..44c84342 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
+@@ -2,26 +2,51 @@ name = Feeds News
+ description = A news aggregator built with feeds, creates nodes from imported feed items. With OPML import.
+ core = 7.x
+ package = Feeds
++version = 7.x-2.0-beta2
++project = feeds
+ dependencies[] = ctools
+ dependencies[] = features
+ dependencies[] = feeds
++dependencies[] = informea
+ dependencies[] = views
++datestamp = 1456055647
+ features[ctools][] = feeds:feeds_importer_default:1
++features[ctools][] = strongarm:strongarm:1
+ features[ctools][] = views:views_default:3.0
+ features[features_api][] = api:2
+ features[feeds_importer][] = feed
+ features[feeds_importer][] = opml
+ features[field_base][] = field_feed_item_description
++features[field_base][] = field_parent_feed
++features[field_instance][] = node-feed-field_image
++features[field_instance][] = node-feed-field_mea_topic
++features[field_instance][] = node-feed-field_treaty
+ features[field_instance][] = node-feed_item-field_feed_item_description
++features[field_instance][] = node-feed_item-field_image
++features[field_instance][] = node-feed_item-field_mea_topic
++features[field_instance][] = node-feed_item-field_parent_feed
++features[field_instance][] = node-feed_item-field_treaty
++features[field_instance][] = node-feed_item-field_url
+ features[node][] = feed
+ features[node][] = feed_item
++features[variable][] = comment_anonymous_feed_item
++features[variable][] = comment_default_mode_feed_item
++features[variable][] = comment_default_per_page_feed_item
++features[variable][] = comment_feed_item
++features[variable][] = comment_form_location_feed_item
++features[variable][] = comment_preview_feed_item
++features[variable][] = comment_subject_field_feed_item
++features[variable][] = field_bundle_settings_node__feed
++features[variable][] = field_bundle_settings_node__feed_item
++features[variable][] = i18n_node_extended_feed_item
++features[variable][] = i18n_node_options_feed_item
++features[variable][] = language_content_type_feed_item
++features[variable][] = menu_options_feed_item
++features[variable][] = menu_parent_feed_item
++features[variable][] = node_options_feed_item
++features[variable][] = node_preview_feed_item
++features[variable][] = node_submitted_feed_item
++features[variable][] = xmlsitemap_settings_node_feed_item
+ features[views_view][] = feeds_defaults_feed_items
+ files[] = feeds_news.module
+ files[] = feeds_news.test
+-
+-; Information added by Drupal.org packaging script on 2016-02-21
+-version = "7.x-2.0-beta2"
+-core = "7.x"
+-project = "feeds"
+-datestamp = "1456055647"
+-
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc
+new file mode 100644
+index 00000000..86772a37
+--- /dev/null
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc
+@@ -0,0 +1,198 @@
++<?php
++/**
++ * @file
++ * feeds_news.strongarm.inc
++ */
++
++/**
++ * Implements hook_strongarm().
++ */
++function feeds_news_strongarm() {
++  $export = array();
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_anonymous_feed_item';
++  $strongarm->value = 0;
++  $export['comment_anonymous_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_default_mode_feed_item';
++  $strongarm->value = 1;
++  $export['comment_default_mode_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_default_per_page_feed_item';
++  $strongarm->value = '50';
++  $export['comment_default_per_page_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_feed_item';
++  $strongarm->value = '1';
++  $export['comment_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_form_location_feed_item';
++  $strongarm->value = 1;
++  $export['comment_form_location_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_preview_feed_item';
++  $strongarm->value = '1';
++  $export['comment_preview_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'comment_subject_field_feed_item';
++  $strongarm->value = 1;
++  $export['comment_subject_field_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'field_bundle_settings_node__feed';
++  $strongarm->value = array(
++    'view_modes' => array(),
++    'extra_fields' => array(
++      'form' => array(
++        'feeds' => array(
++          'weight' => '0',
++        ),
++        'title' => array(
++          'weight' => '-5',
++        ),
++        'path' => array(
++          'weight' => '30',
++        ),
++      ),
++      'display' => array(),
++    ),
++  );
++  $export['field_bundle_settings_node__feed'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'field_bundle_settings_node__feed_item';
++  $strongarm->value = array(
++    'view_modes' => array(
++      'teaser' => array(
++        'custom_settings' => TRUE,
++      ),
++      'ajax' => array(
++        'custom_settings' => TRUE,
++      ),
++      'treaty_listing' => array(
++        'custom_settings' => TRUE,
++      ),
++      'full' => array(
++        'custom_settings' => FALSE,
++      ),
++      'rss' => array(
++        'custom_settings' => FALSE,
++      ),
++      'diff_standard' => array(
++        'custom_settings' => FALSE,
++      ),
++      'token' => array(
++        'custom_settings' => FALSE,
++      ),
++    ),
++    'extra_fields' => array(
++      'form' => array(
++        'title' => array(
++          'weight' => '-5',
++        ),
++        'path' => array(
++          'weight' => '30',
++        ),
++      ),
++      'display' => array(),
++    ),
++  );
++  $export['field_bundle_settings_node__feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'i18n_node_extended_feed_item';
++  $strongarm->value = 1;
++  $export['i18n_node_extended_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'i18n_node_options_feed_item';
++  $strongarm->value = array();
++  $export['i18n_node_options_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'language_content_type_feed_item';
++  $strongarm->value = '0';
++  $export['language_content_type_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'menu_options_feed_item';
++  $strongarm->value = array(
++    0 => 'main-menu',
++  );
++  $export['menu_options_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'menu_parent_feed_item';
++  $strongarm->value = 'main-menu:0';
++  $export['menu_parent_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'node_options_feed_item';
++  $strongarm->value = array(
++    0 => 'status',
++  );
++  $export['node_options_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'node_preview_feed_item';
++  $strongarm->value = '0';
++  $export['node_preview_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'node_submitted_feed_item';
++  $strongarm->value = 0;
++  $export['node_submitted_feed_item'] = $strongarm;
++
++  $strongarm = new stdClass();
++  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
++  $strongarm->api_version = 1;
++  $strongarm->name = 'xmlsitemap_settings_node_feed_item';
++  $strongarm->value = array(
++    'status' => '1',
++    'priority' => '0.5',
++  );
++  $export['xmlsitemap_settings_node_feed_item'] = $strongarm;
++
++  return $export;
++}
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.views_default.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.views_default.inc
+index 6db6801c..75c64bc0 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.views_default.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.views_default.inc
+@@ -77,6 +77,27 @@ function feeds_news_views_default_views() {
+   $handler->display->display_options['menu']['type'] = 'tab';
+   $handler->display->display_options['menu']['title'] = 'View items';
+   $handler->display->display_options['menu']['weight'] = '-9';
++  $translatables['feeds_defaults_feed_items'] = array(
++    t('Defaults'),
++    t('more'),
++    t('Apply'),
++    t('Reset'),
++    t('Sort by'),
++    t('Asc'),
++    t('Desc'),
++    t('Items per page'),
++    t('- All -'),
++    t('Offset'),
++    t('« first'),
++    t('‹ previous'),
++    t('next ›'),
++    t('last »'),
++    t('There are no items for this feed at the moment.'),
++    t('Owner feed'),
++    t('All'),
++    t('Articles from %1'),
++    t('Page'),
++  );
+   $export['feeds_defaults_feed_items'] = $view;
+ 
+   return $export;

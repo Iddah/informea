@@ -216,7 +216,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 8,
         ),
         'parent' => 'main',
-        'class' => '',
+        'class' => 'row',
         'hide_empty' => 0,
       ),
       8 => array(
@@ -227,7 +227,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 11,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       9 => array(
@@ -238,7 +238,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 10,
         ),
-        'class' => '',
+        'class' => 'col-sm-6',
         'hide_empty' => 0,
       ),
       10 => array(
@@ -436,6 +436,68 @@ function geographic_region_default_page_manager_pages() {
   $display->content['new-4252a8b2-a257-436e-b0a4-bee1f4537c94'] = $pane;
   $display->panels['center'][0] = 'new-4252a8b2-a257-436e-b0a4-bee1f4537c94';
   $pane = new stdClass();
+  $pane->pid = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
+  $pane->panel = 'content__bottom_left';
+  $pane->type = 'block';
+  $pane->subtype = 'geographic_region-region_downloadable_documents';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Downloadable Documents',
+    'override_title_heading' => 'h3',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'b1b9da07-be2d-4050-beca-eca11fc3d634';
+  $display->content['new-b1b9da07-be2d-4050-beca-eca11fc3d634'] = $pane;
+  $display->panels['content__bottom_left'][0] = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
+  $pane = new stdClass();
+  $pane->pid = 'new-035981b1-8365-4985-8021-10b1aa5913a2';
+  $pane->panel = 'content__bottom_right';
+  $pane->type = 'views';
+  $pane->subtype = 'news_and_events';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '5',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_2.tid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '035981b1-8365-4985-8021-10b1aa5913a2';
+  $display->content['new-035981b1-8365-4985-8021-10b1aa5913a2'] = $pane;
+  $display->panels['content__bottom_right'][0] = 'new-035981b1-8365-4985-8021-10b1aa5913a2';
+  $pane = new stdClass();
   $pane->pid = 'new-0ab26761-785e-40a2-8aee-2dc972624b41';
   $pane->panel = 'content__left';
   $pane->type = 'views';
@@ -512,6 +574,45 @@ function geographic_region_default_page_manager_pages() {
   $pane->uuid = '35a1fe01-4628-4865-a9bc-0a20450239d2';
   $display->content['new-35a1fe01-4628-4865-a9bc-0a20450239d2'] = $pane;
   $display->panels['content__right'][0] = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
+  $pane = new stdClass();
+  $pane->pid = 'new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
+  $pane->panel = 'courses';
+  $pane->type = 'views';
+  $pane->subtype = 'learning_courses';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '4',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_2.tid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
+  $display->content['new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3'] = $pane;
+  $display->panels['courses'][0] = 'new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
   $pane = new stdClass();
   $pane->pid = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $pane->panel = 'title';

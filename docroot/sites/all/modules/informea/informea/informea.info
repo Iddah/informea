@@ -315,6 +315,7 @@ features[variable][] = views_ui_show_sql_query
 features[variable][] = views_ui_show_sql_query_where
 features[variable][] = xmlsitemap_settings_node_article
 features[variable][] = xmlsitemap_settings_node_page
+features[variable][] = xmlsitemap_settings_taxonomy_term_field_of_work
 features[variable][] = xmlsitemap_settings_taxonomy_term_thesaurus_informea
 features[views_view][] = list_of_all_treaties
 features[views_view][] = mea_contextual_events
