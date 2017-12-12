@@ -272,10 +272,10 @@ function decision_strongarm() {
           'weight' => '2',
         ),
         'metatags' => array(
-          'weight' => '21',
+          'weight' => '22',
         ),
         'xmlsitemap' => array(
-          'weight' => '20',
+          'weight' => '21',
         ),
       ),
       'display' => array(),

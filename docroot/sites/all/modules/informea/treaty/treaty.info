@@ -95,6 +95,7 @@ features[field_instance][] = node-organisation-field_address
 features[field_instance][] = node-organisation-field_city
 features[field_instance][] = node-organisation-field_country
 features[field_instance][] = node-organisation-field_informea_tags
+features[field_instance][] = node-organisation-field_mea_topic
 features[field_instance][] = node-organisation-field_region
 features[field_instance][] = node-organisation-field_url
 features[field_instance][] = node-organisation-title_field

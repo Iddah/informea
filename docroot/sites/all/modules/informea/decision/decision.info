@@ -28,6 +28,7 @@ features[field_instance][] = node-decision-field_decision_type
 features[field_instance][] = node-decision-field_files
 features[field_instance][] = node-decision-field_informea_tags
 features[field_instance][] = node-decision-field_last_update
+features[field_instance][] = node-decision-field_mea_topic
 features[field_instance][] = node-decision-field_meeting
 features[field_instance][] = node-decision-field_meeting_title_en
 features[field_instance][] = node-decision-field_meeting_url

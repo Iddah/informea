@@ -377,7 +377,16 @@ function declaration_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '3',
+          'weight' => '4',
+        ),
+        'metatags' => array(
+          'weight' => '7',
+        ),
+        'redirect' => array(
+          'weight' => '6',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(),

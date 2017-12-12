@@ -450,6 +450,15 @@ function treaty_strongarm() {
         'language' => array(
           'weight' => '1',
         ),
+        'metatags' => array(
+          'weight' => '13',
+        ),
+        'redirect' => array(
+          'weight' => '11',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
+        ),
       ),
       'display' => array(),
     ),
