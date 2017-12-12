@@ -1,6 +1,9 @@
 @topic-switcher-padding-top: 8px;
 @topic-switcher-padding-bottom: 5px;
 
+@regional-page-gray: #8F8F8F;
+@regional-page-light-blue: #1D7CA7;
+
 .regional-page-underlined-title() {
   border-bottom: 2px solid;
   display: inline-block;
@@ -8,12 +11,9 @@
   font-weight: 500;
   padding-bottom: 1em;
   text-transform: uppercase;
-  &.text-gray {
-    color: #8F8F8F;
-  }
 }
 .regional-page-view-item-title() {
-  color: #1D7CA7;
+  &, & a { color: @regional-page-light-blue; }
   font-size: 18px;
   font-weight: bold;
   line-height: 1.2;
@@ -77,7 +77,7 @@
     > li.active > a:hover,
     > li.active > a:focus {
       border: none;
-      color: #1D7CA7;
+      color: @regional-page-light-blue;
       padding-top: (10px + 8px);
     }
     > li.all-topics > a {
@@ -120,6 +120,13 @@
   .pane-view-global-treaties .views-field-title {
     font-weight: normal;
   }
+  .views-field-field-informea-tags {
+    color: @regional-page-gray;
+    > .views-label {
+      float: left;
+      margin-right: .5em;
+    }
+  }
 }
 
 .regional-page-panel-title h2 {
@@ -131,7 +138,7 @@
 .pane-regional-treaties > .pane-title,
 .pane-geographic-region-region-downloadable-documents .section-title {
   .regional-page-underlined-title();
-  .text-gray();
+  color: @regional-page-gray;
 }
 
 .pane-geographic-region-region-downloadable-documents,
