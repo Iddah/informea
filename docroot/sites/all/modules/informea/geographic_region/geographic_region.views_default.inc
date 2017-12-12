@@ -35,10 +35,6 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_treaty_target_id']['id'] = 'field_treaty_target_id';
-  $handler->display->display_options['relationships']['field_treaty_target_id']['table'] = 'field_data_field_treaty';
-  $handler->display->display_options['relationships']['field_treaty_target_id']['field'] = 'field_treaty_target_id';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -108,7 +104,6 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
-  $handler->display->display_options['arguments']['field_mea_topic_tid']['relationship'] = 'field_treaty_target_id';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
@@ -169,7 +164,6 @@ function geographic_region_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Content entity referenced from field_treaty'),
     t('[field_city], '),
     t('All'),
     t('Regional news and events'),
