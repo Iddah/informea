@@ -39,3 +39,17 @@ function treaty_update_7005() {
   features_revert_module('treaty');
   features_revert_module('informea_search');
 }
+
+/**
+ * Set the appropriate terms to published for MEA topics taxonomy.
+ */
+function treaty_update_7006() {
+  $term = taxonomy_term_load(850);
+  $term->field_published[LANGUAGE_NONE][0]['value'] = 1;
+
+  $term = taxonomy_term_load(851);
+  $term->field_published[LANGUAGE_NONE][0]['value'] = 1;
+
+  $term = taxonomy_term_load(852);
+  $term->field_published[LANGUAGE_NONE][0]['value'] = 1;
+}
