@@ -163,11 +163,13 @@ function geographic_region_block_view($delta = '') {
             $list = array_merge($list, $subList);
           }
         }
-        $block['content'] = [
-          '#theme' => 'item_list',
-          '#items' => $list,
-          '#attributes' => ['class' => ['nav']],
-        ];
+        if (!empty($list)) {
+          $block['content'] = [
+            '#theme' => 'item_list',
+            '#items' => $list,
+            '#attributes' => ['class' => ['nav']],
+          ];
+        }
       }
       break;
   }
