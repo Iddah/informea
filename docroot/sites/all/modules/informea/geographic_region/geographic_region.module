@@ -133,7 +133,7 @@ function geographic_region_block_view($delta = '') {
         $tabs = [
           [
             'data' => l(t('All topics'), $region_path),
-            'class' => empty($current_topic) ? ['active'] : [],
+            'class' => empty($current_topic) ? ['active', 'all-topics'] : ['all-topics'],
           ],
         ];
         foreach ($terms as $term) {

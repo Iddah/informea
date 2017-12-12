@@ -28,10 +28,10 @@
     }
   }
   .nav-tabs {
+    align-items: flex-end;
+    border: none;
     display: flex;
     margin-bottom: 0;
-    border: none;
-    align-items: flex-end;
     margin-top: -10px;
     // @todo: add scroll indicators, for now scroll can be achieved by holding shift
     overflow-x: scroll;
@@ -39,6 +39,7 @@
 
     > li { margin-bottom: 0; }
     > li > a {
+      font-weight: bold;
       padding: @topic-switcher-padding-top 18px @topic-switcher-padding-bottom;
       white-space: nowrap;
     }
@@ -56,18 +57,20 @@
       border: none;
       color: #1D7CA7;
       padding-top: (10px + 8px);
-      padding-left: 12px;
     }
-    > li.active > a:before {
-      .caret();
-      content: '';
-      color: #414141;
-      margin-left: 0;
-      margin-right: .3em;
-      margin-top: -.2em;
-      border-top: .5em dashed;
-      border-right: .5em solid transparent;
-      border-left: .5em solid transparent;
+    > li.all-topics > a {
+      padding-left: 12px;
+      &:before {
+        .caret();
+        content: '';
+        color: #414141;
+        margin-left: 0;
+        margin-right: .3em;
+        margin-top: -.2em;
+        border-top: .5em dashed;
+        border-right: .5em solid transparent;
+        border-left: .5em solid transparent;
+      }
     }
   }
 }
@@ -88,8 +91,8 @@
       padding-right: 0;
     }
   }
-}
-// @todo: remove this please
-.alert {
-  display: none;
+  .region-content {
+    > .block-block { .container(); }
+  }
+
 }
