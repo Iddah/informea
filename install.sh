@@ -10,4 +10,6 @@ drush devify -y
 
 drush updatedb -y
 
+drush upwd informea_admin --password=password
+
 drush cc all
