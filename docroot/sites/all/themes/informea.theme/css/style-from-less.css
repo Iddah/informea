@@ -110,7 +110,7 @@
 [dir=rtl] .search-block .block-geographic-region .select2-container {
   width: auto !important;
 }
-[dir] .pane-geographic-region-region-switch-topic {
+[dir] .pane-geographic-region-region-switch-topic, [dir] .topic-switcher-panel-container {
   background-color: #E7E7E7;
 }
 .pane-geographic-region-region-switch-topic {
@@ -248,10 +248,7 @@
   border-left: .5em solid transparent;
   border-right: .5em solid transparent;
 }
-[dir] .bg-dark-gray {
-  background-color: #E7E7E7;
-}
-[dir] .bg-light-gray {
+[dir] .regional-page-accent-panel-container {
   background-color: #F3F3F3;
 }
 .page-regions .panels-flexible-row {
@@ -358,4 +355,51 @@
     margin-left: 0;
     margin-right: 0;
   }
+}
+.page-regions .views-field-title {
+  color: #1D7CA7;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+[dir] .page-regions .views-field-title {
+  margin-bottom: .6em;
+  margin-top: 1.5em;
+}
+.page-regions .pane-view-global-treaties .views-field-title {
+  font-weight: normal;
+}
+.regional-page-panel-title h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+[dir] .regional-page-panel-title h2 {
+  margin-bottom: 2em;
+  margin-top: 3em;
+}
+.pane-regional-treaties > .pane-title,
+.pane-geographic-region-region-downloadable-documents .section-title {
+  display: inline-block;
+  font-size: .9em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #8F8F8F;
+}
+[dir] .pane-regional-treaties > .pane-title, [dir] .pane-geographic-region-region-downloadable-documents .section-title {
+  border-bottom: 2px solid;
+  padding-bottom: 1em;
+}
+.pane-regional-treaties > .pane-title.text-gray,
+.pane-geographic-region-region-downloadable-documents .section-title.text-gray {
+  color: #8F8F8F;
+}
+.pane-geographic-region-region-downloadable-documents > .pane-title,
+.pane-news-and-events > .pane-title {
+  color: #2B2B2B;
+  font-size: 23px;
+  font-weight: bold;
+}
+[dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title {
+  margin-bottom: 2em;
+  margin-top: 3em;
 }
