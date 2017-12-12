@@ -179,6 +179,7 @@ features[field_instance][] = taxonomy_term-data_source-name_field
 features[field_instance][] = taxonomy_term-field_of_application-description_field
 features[field_instance][] = taxonomy_term-field_of_application-name_field
 features[field_instance][] = taxonomy_term-geographical_region-description_field
+features[field_instance][] = taxonomy_term-geographical_region-field_published
 features[field_instance][] = taxonomy_term-geographical_region-field_un_region
 features[field_instance][] = taxonomy_term-geographical_region-name_field
 features[field_instance][] = taxonomy_term-jurisdiction-description_field
