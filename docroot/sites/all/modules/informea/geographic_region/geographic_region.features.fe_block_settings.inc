@@ -27,7 +27,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -54,
+        'weight' => -55,
       ),
       'seven' => array(
         'region' => '',
@@ -55,7 +55,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -55,
+        'weight' => -56,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +83,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -52,
+        'weight' => -53,
       ),
       'seven' => array(
         'region' => '',
@@ -111,7 +111,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -53,
+        'weight' => -54,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -51,
+        'weight' => -52,
       ),
       'seven' => array(
         'region' => '',

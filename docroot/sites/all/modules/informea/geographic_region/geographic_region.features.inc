@@ -27,7 +27,7 @@ function geographic_region_default_mailchimp_signup() {
   $items = array();
   $items['subscribe_to_newsletter'] = entity_import('mailchimp_signup', '{
     "name" : "subscribe_to_newsletter",
-    "mc_lists" : { "9c6ea5af55" : "9c6ea5af55" },
+    "mc_lists" : { "76e0751819" : "76e0751819" },
     "mode" : "1",
     "title" : "Subscribe to newsletter",
     "settings" : {
@@ -37,7 +37,6 @@ function geographic_region_default_mailchimp_signup() {
       "destination" : "",
       "mergefields" : {
         "EMAIL" : {"tag":"EMAIL","name":"Email Address","type":"email","required":true,"default_value":"","public":true,"display_order":1,"options":{"size":25}},
-        "BIRTHDAY" : 0,
         "FNAME" : 0,
         "LNAME" : 0
       },

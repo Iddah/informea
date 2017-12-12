@@ -16,7 +16,10 @@ function geographic_region_default_page_manager_pages() {
   $page->admin_title = 'Geographic region page';
   $page->admin_description = '';
   $page->path = 'regions/%region/!topic';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'region' => array(
