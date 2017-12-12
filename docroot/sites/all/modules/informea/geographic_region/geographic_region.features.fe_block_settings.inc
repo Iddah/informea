@@ -68,6 +68,34 @@ function geographic_region_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['mailchimp_signup-subscribe_to_newsletter'] = array(
+    'cache' => 5,
+    'custom' => 0,
+    'delta' => 'subscribe_to_newsletter',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'mailchimp_signup',
+    'node_types' => array(),
+    'pages' => 'regions/*',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'involvement',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -52,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   $export['social_media_links-social-media-links'] = array(
     'cache' => 1,
     'custom' => 0,
@@ -111,7 +139,7 @@ function geographic_region_default_fe_block_settings() {
         'region' => 'involvement',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -52,
+        'weight' => -51,
       ),
       'seven' => array(
         'region' => '',
