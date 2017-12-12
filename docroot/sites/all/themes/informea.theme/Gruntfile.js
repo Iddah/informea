@@ -90,6 +90,10 @@ module.exports = function (grunt) {
       print: {
         files: ['less/print-style.less'],
         tasks: 'less:print'
+      },
+      postcss: {
+        files: ['less/**/*.less', '!less/print-style.less', 'images/*.svg'],
+        tasks: ['less:screen', 'postcss']
       }
     },
     copy: {
@@ -104,12 +108,13 @@ module.exports = function (grunt) {
     },
   });
 
-  grunt.registerTask('default', ['less', 'watch']);
 
-  grunt.registerTask('css', ['clean:css', 'less', 'postcss', 'cssmin']);
+  grunt.registerTask('css', ['less', 'postcss', 'watch:postcss']);
 
   grunt.registerTask('libraries', ['clean:libraries', 'copy:libraries']);
 
   grunt.registerTask('build', ['libraries', 'css']);
+
+  grunt.registerTask('default', ['css']);
 
 };

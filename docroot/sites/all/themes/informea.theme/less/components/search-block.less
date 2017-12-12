@@ -1,12 +1,23 @@
 // Search block styling (including overrides of the old skin)
 .search-block {
   background-color: #0A8FC6;
+  color: #fff;
   border-top: 1px solid #fff;
   padding: 2.5em 0;
+  h1,
+  .block-geographic-region select {
+    font-size: 1.9em;
+    font-weight: normal;
+  }
   .region-navigation {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 0 auto;
-    &, & > .block {
+    > .block {
       float: none;
+      text-align: initial;
     }
   }
   #search-form {
@@ -19,5 +30,26 @@
       padding-left: 2em;
       padding-right: 2em;
     }
+  }
+}
+
+.block-informea-search { width: 100%; }
+
+.block-geographic-region {
+  .search-block & { margin-left: 1em; }
+  .search-block & select,
+  .search-block & .select2-container {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &::-ms-expand {
+        display: none;
+    }
+    background-color: transparent;
+    border: none;
+    color: #fc3;
+    font-style: italic;
+  }
+  .search-block & .select2-container {
+    width: auto !important;
   }
 }

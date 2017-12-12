@@ -108,6 +108,9 @@ function geographic_region_block_view($delta = '') {
             '#default_value' => url('/taxonomy/term/' . $region_id),
             '#prefix' => '<h1>' . $title . '</h1>',
             '#attributes' => ['onChange' => 'window.location.href=this.value'],
+            '#select2' => [
+              'width' => 'auto'
+            ],
           ];
         }
       }
