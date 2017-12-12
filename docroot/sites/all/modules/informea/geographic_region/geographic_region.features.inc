@@ -27,7 +27,7 @@ function geographic_region_default_mailchimp_signup() {
   $items = array();
   $items['subscribe_to_newsletter'] = entity_import('mailchimp_signup', '{
     "name" : "subscribe_to_newsletter",
-    "mc_lists" : { "76e0751819" : "76e0751819" },
+    "mc_lists" : { "b11dca30d3" : "b11dca30d3" },
     "mode" : "1",
     "title" : "Subscribe to newsletter",
     "settings" : {
