@@ -113,6 +113,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('libraries', ['clean:libraries', 'copy:libraries']);
 
+  grunt.registerTask('dev', ['less', 'watch:screen', 'watch:print']);
+
   grunt.registerTask('build', ['libraries', 'css']);
 
   grunt.registerTask('default', ['css']);
