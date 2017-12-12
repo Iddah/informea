@@ -4,6 +4,17 @@
  * footer.tpl.php
  */
 ?>
+
+<?php if (!empty($page['involvement'])): ?>
+    <div class="involvement">
+      <div class="container">
+          <div class="involvement-section">
+            <?php print render($page['involvement']); ?>
+          </div><!-- .involvement-section -->
+      </div>
+    </div>
+<?php endif; ?>
+
 <footer class="footer">
   <div class="container">
     <?php if (!empty($page['footer'])): ?>
