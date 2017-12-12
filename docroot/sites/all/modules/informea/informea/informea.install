@@ -309,3 +309,20 @@ function informea_update_7014() {
 function informea_update_7015() {
   features_revert_module('feeds_news');
 }
+
+/**
+ * Task #251: Re-export feeds node processor mapping
+ */
+function informea_update_7016() {
+  features_revert_module('feeds_news');
+  features_revert_module('document');
+  features_revert_module('ecolex');
+  features_revert_module('country');
+  features_revert_module('country_data');
+  features_revert_module('country_deliverable');
+  features_revert_module('decision');
+  features_revert_module('declaration');
+  features_revert_module('goal');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
+}
