@@ -5257,6 +5257,45 @@ function treaty_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'taxonomy_term-geographical_region-field_published'.
+  $field_instances['taxonomy_term-geographical_region-field_published'] = array(
+    'bundle' => 'geographical_region',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_published',
+    'label' => 'Published',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
   // 'taxonomy_term-geographical_region-field_un_region'.
   $field_instances['taxonomy_term-geographical_region-field_un_region'] = array(
     'bundle' => 'geographical_region',
