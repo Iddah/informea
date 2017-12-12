@@ -23,8 +23,8 @@ function ecolex_field_group_info() {
     'label' => 'Groups',
     'weight' => '33',
     'children' => array(
-      0 => 'group_references',
-      1 => 'group_links',
+      0 => 'group_links',
+      1 => 'group_references',
       2 => 'group_tagging',
     ),
     'format_type' => 'htabs',
@@ -146,6 +146,7 @@ function ecolex_field_group_info() {
       0 => 'field_ecolex_tags',
       1 => 'field_informea_tags',
       2 => 'field_ecolex_keywords',
+      3 => 'field_mea_topic',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

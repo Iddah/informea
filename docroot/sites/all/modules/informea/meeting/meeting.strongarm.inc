@@ -312,6 +312,15 @@ function meeting_strongarm() {
         'language' => array(
           'weight' => '0',
         ),
+        'metatags' => array(
+          'weight' => '12',
+        ),
+        'redirect' => array(
+          'weight' => '10',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '11',
+        ),
       ),
       'display' => array(),
     ),
