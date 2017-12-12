@@ -39,13 +39,6 @@ function document_views_default_views() {
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
-  /* Field: Indexed Content: URL */
-  $handler->display->display_options['fields']['url']['id'] = 'url';
-  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_informea_publications';
-  $handler->display->display_options['fields']['url']['field'] = 'url';
-  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
@@ -122,7 +115,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="[url]">[title_field]</a></h3>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="/node/[nid]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_treaty]
@@ -177,13 +170,6 @@ function document_views_default_views() {
   /* Display: Single MEA's documents */
   $handler = $view->new_display('page', 'Single MEA\'s documents', 'page_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: URL */
-  $handler->display->display_options['fields']['url']['id'] = 'url';
-  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_informea_publications';
-  $handler->display->display_options['fields']['url']['field'] = 'url';
-  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
@@ -261,7 +247,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="[url]">[title_field]</a></h3>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="/node/[nid]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_document_type]
@@ -297,7 +283,6 @@ function document_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Displaying @start - @end of @total'),
-    t('URL'),
     t('Title'),
     t('Node ID'),
     t('.'),
@@ -309,7 +294,7 @@ function document_views_default_views() {
     t('<dt>Instrument:&nbsp;&nbsp;</dt><dl>[field_treaty]</dl>'),
     t('Country'),
     t('<dt>Country:&nbsp;&nbsp;</dt><dl>[field_country]</dl>'),
-    t('<h3><a href="[url]">[title_field]</a></h3>
+    t('<h3><a href="/node/[nid]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_treaty]
@@ -320,7 +305,7 @@ function document_views_default_views() {
     t('Search'),
     t('Page'),
     t('Single MEA\'s documents'),
-    t('<h3><a href="[url]">[title_field]</a></h3>
+    t('<h3><a href="/node/[nid]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_document_type]
