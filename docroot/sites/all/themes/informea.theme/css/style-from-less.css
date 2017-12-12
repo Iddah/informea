@@ -401,6 +401,8 @@
 }
 [dir] .pane-regional-treaties > .pane-title, [dir] .pane-geographic-region-region-downloadable-documents .section-title {
   border-bottom: 2px solid;
+  margin-bottom: .6em;
+  margin-top: 2em;
   padding-bottom: 1em;
 }
 .pane-geographic-region-region-downloadable-documents > .pane-title,
@@ -412,4 +414,14 @@
 [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title {
   margin-bottom: 2em;
   margin-top: 3em;
+}
+[dir] .region-downloadable-documents-list > .section-title:first-child {
+  margin-top: 0;
+}
+.region-downloadable-documents-list > li > a {
+  color: #242424;
+  display: block;
+}
+[dir] .region-downloadable-documents-list > li > a {
+  padding: .2em 0;
 }

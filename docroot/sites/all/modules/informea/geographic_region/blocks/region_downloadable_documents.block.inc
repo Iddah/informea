@@ -37,7 +37,7 @@ function geographic_region_region_downloadable_documents_block_view() {
       $block['content'] = [
         '#theme' => 'item_list',
         '#items' => $list,
-        '#attributes' => ['class' => ['nav']],
+        '#attributes' => ['class' => ['list-unstyled', 'region-downloadable-documents-list']],
       ];
     }
   }
