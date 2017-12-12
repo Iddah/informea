@@ -503,6 +503,45 @@ function geographic_region_default_page_manager_pages() {
   $display->content['new-035981b1-8365-4985-8021-10b1aa5913a2'] = $pane;
   $display->panels['content__bottom_right'][0] = 'new-035981b1-8365-4985-8021-10b1aa5913a2';
   $pane = new stdClass();
+  $pane->pid = 'new-ff443f25-c59d-41b1-a677-38248aa98285';
+  $pane->panel = 'content__bottom_right';
+  $pane->type = 'views';
+  $pane->subtype = 'contacts_hubs';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '50',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_2.tid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'ff443f25-c59d-41b1-a677-38248aa98285';
+  $display->content['new-ff443f25-c59d-41b1-a677-38248aa98285'] = $pane;
+  $display->panels['content__bottom_right'][1] = 'new-ff443f25-c59d-41b1-a677-38248aa98285';
+  $pane = new stdClass();
   $pane->pid = 'new-0ab26761-785e-40a2-8aee-2dc972624b41';
   $pane->panel = 'content__left';
   $pane->type = 'views';

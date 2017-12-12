@@ -286,6 +286,67 @@ function treaty_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-organisation-field_mea_topic'.
+  $field_instances['node-organisation-field_mea_topic'] = array(
+    'bundle' => 'organisation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'ajax' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'treaty_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_mea_topic',
+    'label' => 'Topics',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'select2_integration' => array(
+        'allow_add_onfly' => 0,
+        'show_voc_terms_page_link' => 0,
+        'styling' => array(
+          'dropdownAutoWidth' => 0,
+          'placeholder' => '',
+        ),
+        'use_select2' => 1,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
+      'type' => 'options_select',
       'weight' => 9,
     ),
   );
@@ -347,7 +408,7 @@ function treaty_field_default_field_instances() {
         'use_select2' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 32,
+      'weight' => 10,
     ),
   );
 
@@ -416,7 +477,7 @@ function treaty_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -2022,7 +2083,7 @@ function treaty_field_default_field_instances() {
           'dropdownAutoWidth' => 0,
           'placeholder' => '',
         ),
-        'use_select2' => 0,
+        'use_select2' => 1,
       ),
       'user_register_form' => FALSE,
     ),
@@ -5196,6 +5257,45 @@ function treaty_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'taxonomy_term-geographical_region-field_published'.
+  $field_instances['taxonomy_term-geographical_region-field_published'] = array(
+    'bundle' => 'geographical_region',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_published',
+    'label' => 'Published',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
   // 'taxonomy_term-geographical_region-field_un_region'.
   $field_instances['taxonomy_term-geographical_region-field_un_region'] = array(
     'bundle' => 'geographical_region',
@@ -5651,6 +5751,7 @@ function treaty_field_default_field_instances() {
   t('Select the treaty from the list to which this paragraph belongs to');
   t('Title');
   t('Title abbreviation');
+  t('Topics');
   t('Treaty');
   t('Treaty decisions URL');
   t('Treaty parties URL');

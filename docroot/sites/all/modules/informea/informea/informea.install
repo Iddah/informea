@@ -311,9 +311,26 @@ function informea_update_7015() {
 }
 
 /**
- * Task #278: New content type - Learning Course
+ * Task #251: Re-export feeds node processor mapping
  */
 function informea_update_7016() {
+  features_revert_module('feeds_news');
+  features_revert_module('document');
+  features_revert_module('ecolex');
+  features_revert_module('country');
+  features_revert_module('country_data');
+  features_revert_module('country_deliverable');
+  features_revert_module('decision');
+  features_revert_module('declaration');
+  features_revert_module('goal');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
+}
+
+/**
+ * Task #278: New content type - Learning Course
+ */
+function informea_update_7017() {
   module_enable(['learning_course']);
   features_revert_module('learning_course');
 }
@@ -321,7 +338,7 @@ function informea_update_7016() {
 /**
  * Task #279: Implement the regional section page
  */
-function informea_update_7017() {
+function informea_update_7018() {
   module_enable(['geographic_region']);
   features_revert_module('geographic_region');
 }

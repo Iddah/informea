@@ -11,6 +11,126 @@ function country_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'contacts_hubs';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Contacts Hubs';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Contacts Hub';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_grid_plugin_style';
+  $handler->display->display_options['style_options']['columns'] = '3';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_treaty_target_id']['id'] = 'field_treaty_target_id';
+  $handler->display->display_options['relationships']['field_treaty_target_id']['table'] = 'field_data_field_treaty';
+  $handler->display->display_options['relationships']['field_treaty_target_id']['field'] = 'field_treaty_target_id';
+  $handler->display->display_options['relationships']['field_treaty_target_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_country_target_id']['id'] = 'field_country_target_id';
+  $handler->display->display_options['relationships']['field_country_target_id']['table'] = 'field_data_field_country';
+  $handler->display->display_options['relationships']['field_country_target_id']['field'] = 'field_country_target_id';
+  $handler->display->display_options['relationships']['field_country_target_id']['required'] = TRUE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Content: ISO alpha-2 code */
+  $handler->display->display_options['fields']['field_country_iso2']['id'] = 'field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['table'] = 'field_data_field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['field'] = 'field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['fields']['field_country_iso2']['label'] = '';
+  $handler->display->display_options['fields']['field_country_iso2']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_country_iso2']['alter']['path'] = '[path]/contacts-hub';
+  $handler->display->display_options['fields']['field_country_iso2']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[path]/contacts-hub';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'field_country_target_id';
+  /* Contextual filter: Content: Region (field_region) */
+  $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['arguments']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['relationship'] = 'field_country_target_id';
+  $handler->display->display_options['arguments']['field_region_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Topics (field_mea_topic) */
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['relationship'] = 'field_treaty_target_id';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'min' => '',
+    'max' => '',
+    'value' => '',
+    'contact_person' => 'contact_person',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['contacts_hubs'] = array(
+    t('Master'),
+    t('Contacts Hub'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Content entity referenced from field_treaty'),
+    t('Content entity referenced from field_country'),
+    t('All'),
+    t('Block'),
+  );
+  $export['contacts_hubs'] = $view;
+
+  $view = new view();
   $view->name = 'countries';
   $view->description = '';
   $view->tag = 'default';
@@ -63,6 +183,144 @@ function country_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'countries';
+
+  /* Display: Manage countries */
+  $handler = $view->new_display('page', 'Manage countries', 'page_admin');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Manage countries';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary with an additional token to change the items/page */
+  $handler->display->display_options['header']['webform_result']['id'] = 'webform_result';
+  $handler->display->display_options['header']['webform_result']['table'] = 'views';
+  $handler->display->display_options['header']['webform_result']['field'] = 'webform_result';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Field: Content: Official name */
+  $handler->display->display_options['fields']['field_country_official_name']['id'] = 'field_country_official_name';
+  $handler->display->display_options['fields']['field_country_official_name']['table'] = 'field_data_field_country_official_name';
+  $handler->display->display_options['fields']['field_country_official_name']['field'] = 'field_country_official_name';
+  /* Field: Content: ISO alpha-2 code */
+  $handler->display->display_options['fields']['field_country_iso2']['id'] = 'field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['table'] = 'field_data_field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['field'] = 'field_country_iso2';
+  $handler->display->display_options['fields']['field_country_iso2']['type'] = 'text_plain';
+  /* Field: Content: ISO alpha-3 code */
+  $handler->display->display_options['fields']['field_country_iso3']['id'] = 'field_country_iso3';
+  $handler->display->display_options['fields']['field_country_iso3']['table'] = 'field_data_field_country_iso3';
+  $handler->display->display_options['fields']['field_country_iso3']['field'] = 'field_country_iso3';
+  $handler->display->display_options['fields']['field_country_iso3']['type'] = 'text_plain';
+  /* Field: Content: Region */
+  $handler->display->display_options['fields']['field_region']['id'] = 'field_region';
+  $handler->display->display_options['fields']['field_region']['table'] = 'field_data_field_region';
+  $handler->display->display_options['fields']['field_region']['field'] = 'field_region';
+  $handler->display->display_options['fields']['field_region']['label'] = 'Region(s)';
+  $handler->display->display_options['fields']['field_region']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_region']['delta_offset'] = '0';
+  /* Field: Content: EU Member */
+  $handler->display->display_options['fields']['field_eu_member']['id'] = 'field_eu_member';
+  $handler->display->display_options['fields']['field_eu_member']['table'] = 'field_data_field_eu_member';
+  $handler->display->display_options['fields']['field_eu_member']['field'] = 'field_eu_member';
+  $handler->display->display_options['fields']['field_eu_member']['label'] = 'Is EU Member?';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'country' => 'country',
+  );
+  /* Filter criterion: Content: Region (field_region) */
+  $handler->display->display_options['filters']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['filters']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_region_tid']['expose']['operator_id'] = 'field_region_tid_op';
+  $handler->display->display_options['filters']['field_region_tid']['expose']['label'] = 'Region';
+  $handler->display->display_options['filters']['field_region_tid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_region_tid']['expose']['operator'] = 'field_region_tid_op';
+  $handler->display->display_options['filters']['field_region_tid']['expose']['identifier'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_region_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_region_tid']['vocabulary'] = 'geographical_region';
+  $handler->display->display_options['filters']['field_region_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: EU Member (field_eu_member) */
+  $handler->display->display_options['filters']['field_eu_member_value']['id'] = 'field_eu_member_value';
+  $handler->display->display_options['filters']['field_eu_member_value']['table'] = 'field_data_field_eu_member';
+  $handler->display->display_options['filters']['field_eu_member_value']['field'] = 'field_eu_member_value';
+  $handler->display->display_options['filters']['field_eu_member_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_eu_member_value']['expose']['operator_id'] = 'field_eu_member_value_op';
+  $handler->display->display_options['filters']['field_eu_member_value']['expose']['label'] = 'EU Member';
+  $handler->display->display_options['filters']['field_eu_member_value']['expose']['operator'] = 'field_eu_member_value_op';
+  $handler->display->display_options['filters']['field_eu_member_value']['expose']['identifier'] = 'field_eu_member_value';
+  $handler->display->display_options['filters']['field_eu_member_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['path'] = 'admin/content/countries';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Countries';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['countries'] = array(
     t('Master'),
     t('Parties'),
@@ -73,6 +331,17 @@ function country_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Page'),
+    t('Manage countries'),
+    t('Displaying @start - @end of @total. @items_per_page_links'),
+    t('Name'),
+    t('Official name'),
+    t('ISO alpha-2 code'),
+    t('ISO alpha-3 code'),
+    t('Region(s)'),
+    t('Is EU Member?'),
+    t('Edit'),
+    t('Region'),
+    t('EU Member'),
   );
   $export['countries'] = $view;
 

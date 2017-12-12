@@ -271,6 +271,12 @@ function decision_strongarm() {
         'redirect' => array(
           'weight' => '2',
         ),
+        'metatags' => array(
+          'weight' => '22',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '21',
+        ),
       ),
       'display' => array(),
     ),
