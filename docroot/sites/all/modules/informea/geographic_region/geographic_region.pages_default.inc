@@ -108,6 +108,8 @@ function geographic_region_default_page_manager_pages() {
           0 => 'center',
         ),
         'parent' => 'main',
+        'class' => 'bg-dark-gray',
+        'hide_empty' => 0,
       ),
       'center' => array(
         'type' => 'region',
@@ -145,7 +147,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 4,
         ),
         'parent' => 'main',
-        'class' => 'row',
+        'class' => '',
         'hide_empty' => 0,
       ),
       3 => array(
@@ -216,7 +218,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 8,
         ),
         'parent' => 'main',
-        'class' => 'row',
+        'class' => 'bg-light-gray',
         'hide_empty' => 0,
       ),
       8 => array(
@@ -403,6 +405,9 @@ function geographic_region_default_page_manager_pages() {
       'get_involved__title' => NULL,
       'get_involved__left' => NULL,
       'get_involved__right' => NULL,
+    ),
+    'center' => array(
+      'style' => '-1',
     ),
   );
   $display->cache = array();

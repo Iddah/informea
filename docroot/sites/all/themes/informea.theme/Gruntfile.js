@@ -13,9 +13,9 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
-      css: {
-        src: ['css']
-      },
+      // css: {
+      //   src: ['css']
+      // },
       libraries: {
         src: ['libraries']
       }
@@ -98,6 +98,7 @@ module.exports = function (grunt) {
         cwd: 'node_modules',
         dest: './libraries/',
         src: [
+          'bootstrap/less/**',
         ]
       }
     },

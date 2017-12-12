@@ -2,6 +2,7 @@
   "name": "inforMEA",
   "license": "MIT",
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-concat": "^1.0.1",
