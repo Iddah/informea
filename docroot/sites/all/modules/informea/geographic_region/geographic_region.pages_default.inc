@@ -471,10 +471,10 @@ function geographic_region_default_page_manager_pages() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
+    'override_pager_settings' => 1,
     'use_pager' => 1,
     'nodes_per_page' => '5',
-    'pager_id' => '0',
+    'pager_id' => '2',
     'offset' => '0',
     'more_link' => 0,
     'feed_icons' => 0,
@@ -549,10 +549,10 @@ function geographic_region_default_page_manager_pages() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 0,
+    'override_pager_settings' => 1,
     'use_pager' => 1,
     'nodes_per_page' => '12',
-    'pager_id' => '0',
+    'pager_id' => '1',
     'offset' => '0',
     'more_link' => 0,
     'feed_icons' => 0,

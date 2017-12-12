@@ -12,6 +12,7 @@ function geographic_region_block_info() {
       'info' => t('Page title for regional page'),
       'status' => 1,
       'region' => 'navigation',
+      'weight' => -56,
       'visibility' => BLOCK_VISIBILITY_LISTED,
       'pages' => 'regions/*',
       'cache' => DRUPAL_CACHE_PER_PAGE,
