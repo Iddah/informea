@@ -575,6 +575,45 @@ function geographic_region_default_page_manager_pages() {
   $display->content['new-35a1fe01-4628-4865-a9bc-0a20450239d2'] = $pane;
   $display->panels['content__right'][0] = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
   $pane = new stdClass();
+  $pane->pid = 'new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
+  $pane->panel = 'courses';
+  $pane->type = 'views';
+  $pane->subtype = 'learning_courses';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 1,
+    'nodes_per_page' => '4',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'block_1',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_2.tid',
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
+  $display->content['new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3'] = $pane;
+  $display->panels['courses'][0] = 'new-4aef750d-ac5f-4f5c-8ff8-716d52c23fc3';
+  $pane = new stdClass();
   $pane->pid = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $pane->panel = 'title';
   $pane->type = 'custom';
