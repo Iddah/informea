@@ -8,6 +8,14 @@ include_once 'geographic_region.features.inc';
 
 function geographic_region_block_info() {
   return [
+    'region_page_title' => [
+      'info' => t('Page title for regional page'),
+      'status' => 1,
+      'region' => 'navigation',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'regions/*',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
     'region_switch_topic' => [
       'info' => t('Browse by Environmental Topic'),
       'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -66,15 +74,46 @@ function _geographic_region_build_search_query($options) {
   return $f;
 }
 
+function _geographic_region_page_get_region_argument() {
+  $page = page_manager_get_current_page();
+  if (!empty($page['contexts']['argument_term_1']->argument)) {
+    return $page['contexts']['argument_term_1']->argument;
+  }
+  return NULL;
+}
+
 /**
  * Implements hook_block_view().
  */
 function geographic_region_block_view($delta = '') {
   $block = [];
   switch ($delta) {
+    case 'region_page_title':
+      $region_id = _geographic_region_page_get_region_argument();
+      if (!empty($region_id)) {
+        $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+        $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+        $options = [];
+        foreach ($terms as $term) {
+          if ($term->tid == $region_id) {
+            $title = sprintf('%s <span class="sr-only">%s</span>',t('Discover Environmental Information Concerning'), $term->name);
+          }
+          $options[drupal_get_path_alias('taxonomy/term/' . $term->tid)] = $term->name;
+        }
+        if (!empty($options)) {
+          $block['content'] = [
+            '#type' => 'select',
+            '#options' => $options,
+            '#default_value' => drupal_get_path_alias('taxonomy/term/' . $region_id),
+            '#prefix' => '<h1>' . $title . '</h1>',
+          ];
+        }
+      }
+      break;
     case 'region_switch_topic':
-      $page = page_manager_get_current_page();
-      if (!empty($page['contexts']['argument_term_1']->argument)) {
+      $region_id = _geographic_region_page_get_region_argument();
+      if (!empty($region_id)) {
+        $page = page_manager_get_current_page();
         $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
         $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
         usort($terms, function ($a, $b) {
@@ -98,21 +137,23 @@ function geographic_region_block_view($delta = '') {
             'class' => !empty($current_topic) && $current_topic == $term->tid ? ['active'] : [],
           ];
         }
-        $block['content'] = [
-          '#theme' => 'item_list',
-          '#items' => $tabs,
-          '#attributes' => ['class' => ['nav nav-tabs']],
-        ];
+        if (!empty($tabs) && count($tabs) > 1) {
+          $block['content'] = [
+            '#theme' => 'item_list',
+            '#items' => $tabs,
+            '#attributes' => ['class' => ['nav nav-tabs']],
+          ];
+        }
       }
       break;
 
     case 'region_downloadable_documents':
-      $page = page_manager_get_current_page();
-      if (!empty($page['contexts']['argument_term_1']->argument)) {
-        $region = $page['contexts']['argument_term_1']->argument;
+      $region_id = _geographic_region_page_get_region_argument();
+      if (!empty($region_id)) {
+        $page = page_manager_get_current_page();
         $topic = $page['contexts']['argument_term_2']->argument;
         $search_query = _geographic_region_build_search_query([
-          'field_region' => $region,
+          'field_region' => $region_id,
           'field_topic' => $topic,
         ]);
         $sections = [
@@ -150,7 +191,7 @@ function geographic_region_block_view($delta = '') {
         foreach ($sections as $section) {
           $subList = [['data' => $section['title'], 'class' => ['section-title']]];
           foreach ($section['items'] as $title => $options) {
-            $count = _get_content_count_by_region($options['type'], $region, $topic);
+            $count = _get_content_count_by_region($options['type'], $region_id, $topic);
             if (!empty($count)) {
               $subList[] = ['data' => l(
                 sprintf('%s (%s)', $title, $count),
