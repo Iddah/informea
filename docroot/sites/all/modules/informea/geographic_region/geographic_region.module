@@ -45,13 +45,15 @@ function _get_regional_treaties($region_id, $topic_id = NULL) {
   return $treaties;
 }
 
-function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL) {
+function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL, $fieldConditions = []) {
+  // @todo: refactor this function after all content types have field_region and field_mea_topic.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $content_type)
     ->propertyCondition('status', NODE_PUBLISHED);
   switch ($content_type) {
     case 'decision':
+    case 'document':
       $regional_treaties = _get_regional_treaties($region_id, $topic_id) + [-1];
       $query->fieldCondition('field_treaty', 'target_id', $regional_treaties, 'IN');
       break;
@@ -61,6 +63,12 @@ function _get_content_count_by_region($content_type, $region_id, $topic_id = NUL
       if (!empty($topic_id)) {
         $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
       }
+  }
+  foreach ($fieldConditions as $condition) {
+    $column = !empty($condition['column']) ? $condition['column'] : NULL;
+    $value = !empty($condition['value']) ? $condition['value'] : NULL;
+    $operator = !empty($condition['operator']) ? $condition['operator'] : NULL;
+    $query->fieldCondition($condition['field'], $column, $value, $operator);
   }
   return $query->count()->execute();
 }
@@ -97,7 +105,7 @@ function geographic_region_block_view($delta = '') {
         $options = [];
         foreach ($terms as $term) {
           if ($term->tid == $region_id) {
-            $title = sprintf('%s <span class="sr-only">%s</span>',t('Discover Environmental Information Concerning'), $term->name);
+            $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover Environmental Information Concerning'), $term->name);
           }
           $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
         }
@@ -109,12 +117,13 @@ function geographic_region_block_view($delta = '') {
             '#prefix' => '<h1>' . $title . '</h1>',
             '#attributes' => ['onChange' => 'window.location.href=this.value'],
             '#select2' => [
-              'width' => 'auto'
+              'width' => 'auto',
             ],
           ];
         }
       }
       break;
+
     case 'region_switch_topic':
       $region_id = _geographic_region_page_get_region_argument();
       if (!empty($region_id)) {
@@ -161,48 +170,20 @@ function geographic_region_block_view($delta = '') {
           'field_region' => $region_id,
           'field_topic' => $topic,
         ]);
-        $sections = [
-          [
-            'title' => t('Treaties documents'),
-            'items' => [
-              t('Meetings decisions') => ['type' => 'decision'],
-              t('COP Reports') => ['type' => '@todo'], // @todo
-            ],
-          ],
-          [
-            'title' => t('National submissions'),
-            'items' => [
-              t('National Action Plans') => ['type' => 'action_plan'],
-              t('National Reports') => ['type' => 'national_report'],
-            ],
-          ],
-          [
-            'title' => t('National legislation and cases'),
-            'items' => [
-              t('National Legislation') => ['type' => 'legislation'],
-              t('Court Decisions') => ['type' => 'court_decisions'],
-            ],
-          ],
-          [
-            'title' => t('Literature documents'),
-            'items' => [
-              t('Publications') => ['type' => 'literature'],
-              t('Manuals') => ['type' => '@todo'], // @todo
-              t('Tehnical Series') => ['type' => '@todo'], // @todo
-            ],
-          ],
-        ];
+        $sections = _region_downloadable_documents_block_get_sections();
         $list = [];
         foreach ($sections as $section) {
           $subList = [['data' => $section['title'], 'class' => ['section-title']]];
           foreach ($section['items'] as $title => $options) {
-            $count = _get_content_count_by_region($options['type'], $region_id, $topic);
+            $count = _get_content_count_by_region($options['type'], $region_id, $topic, !empty($options['fieldConditions']) ? $options['fieldConditions'] : []);
             if (!empty($count)) {
-              $subList[] = ['data' => l(
-                sprintf('%s (%s)', $title, $count),
-                'search',
-                ['query' => ['f' => array_merge($search_query, ['type:' . $options['type']])]]
-              )];
+              $subList[] = [
+                'data' => l(
+                  sprintf('%s (%s)', $title, $count),
+                  'search',
+                  ['query' => ['f' => array_merge($search_query, ['type:' . $options['type']])]]
+                ),
+              ];
             }
           }
           if (count($subList) > 1) {
@@ -233,4 +214,66 @@ function geographic_region_taxonomy_term_view($term, $view_mode, $langcode) {
       drupal_goto('regions/' . strtolower(str_replace(' ', '-', $term->name_original)));
     }
   }
+}
+
+function _region_downloadable_documents_block_get_sections() {
+  return [
+    [
+      'title' => t('Treaties documents'),
+      'items' => [
+        t('Meetings decisions') => ['type' => 'decision'],
+        t('COP Reports') => [
+          'type' => 'document',
+          'fieldConditions' => [
+            [
+              'field' => 'field_document_type',
+              'column' => 'tid',
+              'value' => [3131, 3132],
+              'operator' => 'IN',
+            ],
+          ],
+        ],
+      ],
+    ],
+    [
+      'title' => t('National submissions'),
+      'items' => [
+        t('National Action Plans') => ['type' => 'action_plan'],
+        t('National Reports') => ['type' => 'national_report'],
+      ],
+    ],
+    [
+      'title' => t('National legislation and cases'),
+      'items' => [
+        t('National Legislation') => ['type' => 'legislation'],
+        t('Court Decisions') => ['type' => 'court_decisions'],
+      ],
+    ],
+    [
+      'title' => t('Literature documents'),
+      'items' => [
+        t('Publications') => ['type' => 'literature'],
+        t('Manuals') => [
+          'type' => 'document',
+          'fieldConditions' => [
+            [
+              'field' => 'field_document_type',
+              'column' => 'tid',
+              'value' => 3178,
+            ],
+          ],
+        ],
+        t('Technical Series') => [
+          'type' => 'document',
+          'fieldConditions' => [
+            [
+              'field' => 'field_document_type',
+              'column' => 'tid',
+              'value' => 2817,
+            ],
+          ],
+        ],
+      ],
+    ],
+  ];
 }
