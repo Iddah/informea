@@ -98,14 +98,15 @@ function geographic_region_block_view($delta = '') {
           if ($term->tid == $region_id) {
             $title = sprintf('%s <span class="sr-only">%s</span>',t('Discover Environmental Information Concerning'), $term->name);
           }
-          $options[drupal_get_path_alias('taxonomy/term/' . $term->tid)] = $term->name;
+          $options[drupal_get_path_alias('/taxonomy/term/' . $term->tid)] = $term->name;
         }
         if (!empty($options)) {
           $block['content'] = [
             '#type' => 'select',
             '#options' => $options,
-            '#default_value' => drupal_get_path_alias('taxonomy/term/' . $region_id),
+            '#default_value' => drupal_get_path_alias('/taxonomy/term/' . $region_id),
             '#prefix' => '<h1>' . $title . '</h1>',
+            '#attributes' => ['onChange' => 'window.location.href=this.value'],
           ];
         }
       }
