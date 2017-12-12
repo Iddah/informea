@@ -11,6 +11,9 @@ function feeds_news_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => "1");
   }
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -42,5 +45,6 @@ function feeds_news_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

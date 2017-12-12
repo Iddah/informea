@@ -118,7 +118,19 @@ function ecolex_taxonomy_default_vocabularies() {
         ),
       ),
       'tes' => array(
-        'enable' => FALSE,
+        'enable' => TRUE,
+        'plugin' => 'Drupal\\taxonomy_external_sync\\plugin\\source\\VocBenchRDFSource',
+        'plugin_config' => array(
+          'url' => 'https://thesaurus.informea.org/export/ecolex.rdf',
+          'id_field' => 'uri',
+          'parent_field' => 'broader',
+          'delete_deprecated_terms' => 0,
+          'delete_missing_terms' => 0,
+        ),
+        'mappings' => array(
+          'description_field' => 'definition',
+          'name_field' => 'prefLabel',
+        ),
       ),
     ),
     'geographical_scope' => array(

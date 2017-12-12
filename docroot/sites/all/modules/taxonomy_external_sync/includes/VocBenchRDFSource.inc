@@ -106,7 +106,7 @@ class VocBenchRDFSource extends DefaultSource {
         if ($prefLabels = $resource->allResources('skosxl:prefLabel')) {
           foreach($prefLabels as $prefLabel) {
             $status = $prefLabel->get('vb:hasStatus');
-            if ($status->getValue() == 'Published') {
+            if ($status && $status->getValue() == 'Published') {
               $lit = $prefLabel->get('skosxl:literalForm');
               $term->prefLabel[$lit->getLang()] = $lit->getValue();
             }
