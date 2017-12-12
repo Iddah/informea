@@ -39,14 +39,18 @@ function document_views_default_views() {
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  /* Field: Indexed Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Indexed Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_publications';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
   /* Field: Indexed Content: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_informea_publications';
@@ -73,7 +77,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Documents */
+  /* Field: Indexed Content: Attached files */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -118,7 +122,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title]
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="[url]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_treaty]
@@ -132,7 +136,7 @@ function document_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
-  /* Sort criterion: Indexed Content: Sorting order */
+  /* Sort criterion: Indexed Content: Order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
@@ -173,14 +177,19 @@ function document_views_default_views() {
   /* Display: Single MEA's documents */
   $handler = $view->new_display('page', 'Single MEA\'s documents', 'page_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Indexed Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_publications';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   /* Field: Indexed Content: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_informea_publications';
@@ -207,7 +216,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Documents */
+  /* Field: Indexed Content: Attached files */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -252,7 +261,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title]
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="[url]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_document_type]
@@ -288,8 +297,8 @@ function document_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Displaying @start - @end of @total'),
+    t('URL'),
     t('Title'),
-    t('<h3>[title]</h3>'),
     t('Node ID'),
     t('.'),
     t('Body'),
@@ -300,7 +309,7 @@ function document_views_default_views() {
     t('<dt>Instrument:&nbsp;&nbsp;</dt><dl>[field_treaty]</dl>'),
     t('Country'),
     t('<dt>Country:&nbsp;&nbsp;</dt><dl>[field_country]</dl>'),
-    t('[title]
+    t('<h3><a href="[url]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_treaty]
@@ -311,7 +320,7 @@ function document_views_default_views() {
     t('Search'),
     t('Page'),
     t('Single MEA\'s documents'),
-    t('[title]
+    t('<h3><a href="[url]">[title_field]</a></h3>
 [body]
 <dl class="dl-horizontal">
 [field_document_type]
