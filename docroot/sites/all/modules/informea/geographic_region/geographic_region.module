@@ -217,3 +217,16 @@ function geographic_region_block_view($delta = '') {
   }
   return $block;
 }
+
+/**
+ * Implements hook_taxonomy_term_view().
+ */
+function geographic_region_taxonomy_term_view($term, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+    if ($term->vid == $vocabulary->vid) {
+      // Redirect the default term page to region panel page.
+      drupal_goto('regions/' . strtolower(str_replace(' ', '-', $term->name_original)));
+    }
+  }
+}
