@@ -182,9 +182,10 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
    */
   function getSupportedContentTypes() {
     // @TODO make configurable globally? Per node?
-    return array('action_plan', 'contact_person', 'decision', 'document',
-      'event_calendar', 'event_calendar_imported', 'feed_item',
-      'geographical_site', 'member_party', 'national_report');
+    return array('action_plan', 'contact_person', 'court_decisions', 'decision',
+      'document', 'event_calendar', 'event_calendar_imported', 'feed_item',
+      'geographical_site', 'legislation', 'literature', 'member_party',
+      'national_report');
   }
 
   /**
