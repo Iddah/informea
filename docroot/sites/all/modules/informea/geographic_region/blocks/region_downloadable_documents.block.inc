@@ -40,6 +40,9 @@ function geographic_region_region_downloadable_documents_block_view() {
         '#attributes' => ['class' => ['list-unstyled', 'region-downloadable-documents-list']],
       ];
     }
+    else {
+      $block['content'] = t('There are no downloadable documents for current filters.');
+    }
   }
   return $block;
 }
