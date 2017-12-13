@@ -13,3 +13,11 @@ function meeting_update_7001() {
   features_revert_module('decision');
   features_revert_module('informea_search');
 }
+
+/**
+ * Delete event calendar imported content type.
+ */
+function meeting_update_7002() {
+  features_revert_module('meeting');
+  node_type_delete('event_calendar_imported');
+}
