@@ -497,12 +497,13 @@
   padding-bottom: 1em;
 }
 .pane-geographic-region-region-downloadable-documents > .pane-title,
-.pane-news-and-events > .pane-title {
+.pane-news-and-events > .pane-title,
+.pane-contacts-hubs > .pane-title {
   color: #2B2B2B;
   font-size: 23px;
   font-weight: bold;
 }
-[dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title {
+[dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title {
   margin-bottom: 2em;
   margin-top: 0;
 }
