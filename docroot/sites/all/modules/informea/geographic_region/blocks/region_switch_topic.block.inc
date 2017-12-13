@@ -26,10 +26,12 @@ function geographic_region_region_switch_topic_block_view() {
       ],
     ];
     foreach ($terms as $term) {
-      $tabs[] = [
-        'data' => l($term->name, $region_path . '/' . $term->name),
-        'class' => !empty($current_topic) && $current_topic == $term->tid ? ['active'] : [],
-      ];
+      if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+        $tabs[] = [
+          'data' => l($term->name, $region_path . '/' . $term->name),
+          'class' => !empty($current_topic) && $current_topic == $term->tid ? ['active'] : [],
+        ];
+      }
     }
     if (!empty($tabs) && count($tabs) > 1) {
       $block['content'] = [
