@@ -1001,6 +1001,17 @@ function informea_form_node_form_alter(&$form, &$form_state, $form_id) {
       'data' => 'fieldset.filter-wrapper.form-wrapper { display: none; }',
       'type' => 'inline',
     );
+
+
+    $td = new TopicDenormalizedFieldHandler();
+    if (in_array($bundle, $td->getSupportedContentTypes())) {
+      $form['field_mea_topic']['#disabled'] = 1;
+    }
+
+    $rd = new RegionDenormalizedFieldHandler();
+    if (in_array($bundle, $rd->getSupportedContentTypes())) {
+      $form['field_region']['#disabled'] = 1;
+    }
   }
 
 
@@ -1123,4 +1134,15 @@ function informea_faolex_legislation_link($nid) {
     }
   } catch (Exception $e) {}
   return false;
+}
+
+
+/**
+ * Implements hook_node_presave().
+ */
+function informea_node_presave($node) {
+
+  $td = new TopicDenormalizedFieldHandler();
+  $td->computeField($node);
+
 }
