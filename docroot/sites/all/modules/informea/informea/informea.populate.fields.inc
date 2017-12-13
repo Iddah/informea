@@ -103,7 +103,7 @@ abstract class DenormalizedFieldHandler {
     $rows = $this->loadNodesField($nids, 'country', self::FIELD_REGION);
     $ret = array();
     foreach ($rows as $nid => $country) {
-      $regions = $this->getReferenceFieldValues($country, self::FIELD_MEA_TOPIC, 'tid');
+      $regions = $this->getReferenceFieldValues($country, self::FIELD_REGION, 'tid');
       $ret = array_merge($ret, $regions);
     }
     return array_unique($ret);
@@ -128,6 +128,15 @@ abstract class DenormalizedFieldHandler {
     return array_unique($ret);
   }
 
+  /**
+   * Compute the new denormalized field values based on existing field values.
+   *
+   * @param \stdClass $node
+   *   Node object.
+   *
+   * @return bool
+   *   Returns TRUE if object has changed, FALSE when left in original state.
+   */
   public function computeField($node) {
     if (empty($node) || !in_array($node->type, $this->getSupportedContentTypes())) {
       return FALSE;
@@ -136,7 +145,7 @@ abstract class DenormalizedFieldHandler {
   }
 
   /**
-   * Compute the new denormalized field values based on existing field values.
+   * Actual de-normalization function.
    *
    * @param \stdClass $node
    *   Node object.
@@ -147,7 +156,7 @@ abstract class DenormalizedFieldHandler {
   abstract function computeFieldImpl($node);
 
   /**
-   * Return an array of content types supported to de-normalise.
+   * Return an array of content types supported to de-normalize.
    *
    * @return mixed
    *   Array of strings.
