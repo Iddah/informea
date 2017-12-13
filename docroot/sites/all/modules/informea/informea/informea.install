@@ -309,3 +309,10 @@ function informea_update_7014() {
 function informea_update_7015() {
   features_revert_module('feeds_news');
 }
+
+/**
+ * 265 Enforce password policy.
+ */
+function informea_update_7016() {
+  module_enable(['xautoload', 'composer_manager', 'password_policy', 'password_strength', 'informea_password_policy']);
+}
