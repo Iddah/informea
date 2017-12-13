@@ -191,7 +191,7 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
    * {@inheritdoc}
    */
   public function computeFieldImpl($node, $reset = TRUE) {
-    $original = $this->getReferenceFieldValues($node, self::FIELD_REGION);
+    $original = $this->getReferenceFieldValues($node, self::FIELD_REGION, 'tid');
     $new_tids = array();
     switch ($node->type) {
       // Use only field_country as source for region.
