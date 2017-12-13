@@ -134,14 +134,17 @@ abstract class DenormalizedFieldHandler {
    * @param \stdClass $node
    *   Node object.
    *
+   * @param boolean $reset
+   *   If TRUE, reset existing field values.
+   *
    * @return bool
    *   Returns TRUE if object has changed, FALSE when left in original state.
    */
-  public function computeField($node) {
+  public function computeField($node, $reset = TRUE) {
     if (empty($node) || !in_array($node->type, $this->getSupportedContentTypes())) {
       return FALSE;
     }
-    return $this->computeFieldImpl($node);
+    return $this->computeFieldImpl($node, $reset);
   }
 
   /**
@@ -150,10 +153,13 @@ abstract class DenormalizedFieldHandler {
    * @param \stdClass $node
    *   Node object.
    *
+   * @param boolean $reset
+   *   If TRUE, reset existing field values.
+   *
    * @return bool
    *   Returns TRUE if object has changed, FALSE when left in original state.
    */
-  abstract function computeFieldImpl($node);
+  abstract function computeFieldImpl($node, $reset = TRUE);
 
   /**
    * Return an array of content types supported to de-normalize.
@@ -184,7 +190,7 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
   /**
    * {@inheritdoc}
    */
-  public function computeFieldImpl($node) {
+  public function computeFieldImpl($node, $reset = TRUE) {
     $original = $this->getReferenceFieldValues($node, self::FIELD_REGION);
     $new_tids = array();
     switch ($node->type) {
@@ -217,7 +223,7 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
         }
         break;
     }
-    $new_values = array_unique(array_merge($new_tids, $original));
+    $new_values = $reset ? $new_tids : array_unique(array_merge($new_tids, $original));
     $this->setNodeTermReferenceFieldValues($node, self::FIELD_REGION, $new_values);
     $changed = empty(array_diff($original, $new_tids)) && empty(array_diff($new_tids, $original));
 
@@ -242,7 +248,7 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
   /**
    * {@inheritdoc}
    */
-  public function computeFieldImpl($node) {
+  public function computeFieldImpl($node, $reset = TRUE) {
     $changed = FALSE;
     $original = $this->getReferenceFieldValues($node, self::FIELD_MEA_TOPIC);
     switch ($node->type) {
@@ -257,7 +263,7 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
       case 'national_report':
         $treaty_nids = $this->getReferenceFieldValues($node, self::FIELD_TREATY);
         $topic_tids = $this->getTreatiesTopics($treaty_nids);
-        $new_values = array_unique(array_merge($topic_tids, $original));
+        $new_values = $reset ? $topic_tids : array_unique(array_merge($topic_tids, $original));
         $this->setNodeTermReferenceFieldValues($node, self::FIELD_MEA_TOPIC, $new_values);
         $changed = empty(array_diff($original, $topic_tids)) && empty(array_diff($topic_tids, $original));
       break;
