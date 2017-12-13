@@ -318,8 +318,15 @@ class EcolexLegislationMigrateSource extends MigrateSource {
   public $pagination = 1000;
   protected $data = array();
 
+  public $per_migration_limit = 20000;
+  public $current_page = 0;
+  public $enable_partly_import = FALSE;
+
   public function __construct($source_url_pattern) {
     parent::__construct(array());
+    $this->enable_partly_import = variable_get('ecolex_legislation_enable_partly_import', FALSE);
+    $this->per_migration_limit = variable_get('ecolex_legislation_migration_limit', 20000);
+
     //$this->url_pattern = $source_url_pattern; - because of cache
     $this->url_pattern = 'http://www.ecolex.org/export/?type=legislation&format=json'; // todo cache
     $this->check_modify_date = variable_get('ecolex_legislation_check_modify_date', FALSE);
@@ -377,6 +384,26 @@ class EcolexLegislationMigrateSource extends MigrateSource {
         $this->totalCount = $json->count;
       }
     }
+    if ($this->totalCount && $this->enable_partly_import && $this->totalCount > $this->per_migration_limit) {
+      echo 'total count = ' . $this->totalCount . "\n";
+      $this->current_page = variable_get('ecolex_legislation_current_page', 0);
+      $pages = ceil($this->totalCount / $this->per_migration_limit);
+      // reset loop check
+      if ($this->current_page >= $pages) {
+        $this->current_page = 0;
+      }
+
+      if ($this->per_migration_limit * ($this->current_page + 1) > $this->totalCount) {
+        $this->totalCount -= $this->per_migration_limit * $this->current_page;
+      } else {
+        $this->totalCount = $this->per_migration_limit;
+      }
+      echo 'limit = ' . $this->per_migration_limit. "\n";
+      echo 'pages = ' . $pages . "\n";
+      echo 'curr page = ' . $this->current_page . "\n";
+      echo 'rows per migration = ' . $this->totalCount . "\n";
+      variable_set('ecolex_legislation_current_page', $this->current_page + 1);
+    }
     return $this->totalCount;
   }
 
@@ -421,7 +448,7 @@ class EcolexLegislationMigrateSource extends MigrateSource {
     }
     $this->found_rows = 0;
     if ($this->currentCount == $next_call_count && $next_call_count < $this->totalCount) {
-      $start = $this->currentPage * $this->pagination;
+      $start = $this->currentPage * $this->pagination + $this->per_migration_limit * $this->current_page;
 
       $destination = 'temporary://ecolex_legislation/' . $this->pagination . '-' . $start. '-' . $this->updated_after . '.json';
       file_prepare_directory(dirname($destination), FILE_CREATE_DIRECTORY);
