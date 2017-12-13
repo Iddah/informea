@@ -265,7 +265,7 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
         $topic_tids = $this->getTreatiesTopics($treaty_nids);
         $new_values = $reset ? $topic_tids : array_unique(array_merge($topic_tids, $original));
         $this->setNodeTermReferenceFieldValues($node, self::FIELD_MEA_TOPIC, $new_values);
-        $changed = empty(array_diff($original, $topic_tids)) && empty(array_diff($topic_tids, $original));
+        $changed = !(empty(array_diff($original, $topic_tids)) && empty(array_diff($topic_tids, $original)));
       break;
     }
     return $changed;
