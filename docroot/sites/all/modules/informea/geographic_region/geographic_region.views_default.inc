@@ -194,9 +194,11 @@ function geographic_region_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Global treaties';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
@@ -244,11 +246,10 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  /* Sort criterion: Content: Official name (field_official_name) */
+  $handler->display->display_options['sorts']['field_official_name_value']['id'] = 'field_official_name_value';
+  $handler->display->display_options['sorts']['field_official_name_value']['table'] = 'field_data_field_official_name';
+  $handler->display->display_options['sorts']['field_official_name_value']['field'] = 'field_official_name_value';
   /* Contextual filter: Content: Region (field_region) */
   $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
   $handler->display->display_options['arguments']['field_region_tid']['table'] = 'field_data_field_region';
@@ -280,6 +281,15 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'treaty' => 'treaty',
   );
+  /* Filter criterion: Content: Data source (field_data_source) */
+  $handler->display->display_options['filters']['field_data_source_tid']['id'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['table'] = 'field_data_field_data_source';
+  $handler->display->display_options['filters']['field_data_source_tid']['field'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['value'] = array(
+    815 => '815',
+  );
+  $handler->display->display_options['filters']['field_data_source_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_data_source_tid']['vocabulary'] = 'data_source';
 
   /* Display: Regional treaties */
   $handler = $view->new_display('block', 'Regional treaties', 'block');
@@ -364,6 +374,15 @@ function geographic_region_views_default_views() {
     0 => '1118',
   );
   $handler->display->display_options['filters']['field_region_tid']['vocabulary'] = 'geographical_region';
+  /* Filter criterion: Content: Data source (field_data_source) */
+  $handler->display->display_options['filters']['field_data_source_tid']['id'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['table'] = 'field_data_field_data_source';
+  $handler->display->display_options['filters']['field_data_source_tid']['field'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['value'] = array(
+    815 => '815',
+  );
+  $handler->display->display_options['filters']['field_data_source_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_data_source_tid']['vocabulary'] = 'data_source';
   $translatables['regional_treaties'] = array(
     t('Master'),
     t('Global treaties'),
