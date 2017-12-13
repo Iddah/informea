@@ -111,7 +111,7 @@ function geographic_region_default_page_manager_pages() {
           0 => 'center',
         ),
         'parent' => 'main',
-        'class' => 'bg-dark-gray',
+        'class' => 'topic-switcher-panel-container',
         'hide_empty' => 0,
       ),
       'center' => array(
@@ -221,7 +221,7 @@ function geographic_region_default_page_manager_pages() {
           1 => 8,
         ),
         'parent' => 'main',
-        'class' => 'bg-light-gray',
+        'class' => 'regional-page-accent-panel-container',
         'hide_empty' => 0,
       ),
       8 => array(
@@ -291,7 +291,7 @@ function geographic_region_default_page_manager_pages() {
           0 => 'courses',
         ),
         'parent' => 'main',
-        'class' => '',
+        'class' => 'regional-page-courses-panel-container',
         'hide_empty' => 0,
       ),
       'courses' => array(
@@ -679,7 +679,10 @@ function geographic_region_default_page_manager_pages() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'regional-page-panels-title',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
