@@ -301,6 +301,68 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '4';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Official name */
+  $handler->display->display_options['fields']['field_official_name']['id'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['table'] = 'field_data_field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['field'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['label'] = '';
+  $handler->display->display_options['fields']['field_official_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_official_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_official_name']['type'] = 'text_plain';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_official_name] ([title])';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: InforMEA tags */
+  $handler->display->display_options['fields']['field_informea_tags']['id'] = 'field_informea_tags';
+  $handler->display->display_options['fields']['field_informea_tags']['table'] = 'field_data_field_informea_tags';
+  $handler->display->display_options['fields']['field_informea_tags']['field'] = 'field_informea_tags';
+  $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_informea_tags']['settings'] = array(
+    'textformatter_type' => 'ul',
+    'textformatter_comma_and' => 0,
+    'textformatter_comma_full_stop' => 0,
+    'textformatter_comma_override' => 0,
+    'textformatter_separator_custom' => '',
+    'textformatter_separator_custom_tag' => 'span',
+    'textformatter_separator_custom_class' => 'textformatter-separator',
+    'textformatter_comma_tag' => 'div',
+    'textformatter_class' => 'textformatter-list',
+    'textformatter_term_plain' => 0,
+  );
+  $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
+  /* Field: Content: Treaty links */
+  $handler->display->display_options['fields']['treaty_links']['id'] = 'treaty_links';
+  $handler->display->display_options['fields']['treaty_links']['table'] = 'node';
+  $handler->display->display_options['fields']['treaty_links']['field'] = 'treaty_links';
+  $handler->display->display_options['fields']['treaty_links']['label'] = '';
+  $handler->display->display_options['fields']['treaty_links']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['treaty_links']['display_links'] = array(
+    'decisions' => 'decisions',
+    'parties' => 'parties',
+    'contacts-hub' => 'contacts-hub',
+    'default' => 0,
+    'protocols' => 0,
+    'text' => 0,
+    'national-reports' => 0,
+    'action-plans' => 0,
+    'documents' => 0,
+  );
+  $handler->display->display_options['fields']['treaty_links']['decisions_link_title'] = 'Meeting Decisions';
 
   /* Display: Global treaties */
   $handler = $view->new_display('block', 'Global treaties', 'block_1');
