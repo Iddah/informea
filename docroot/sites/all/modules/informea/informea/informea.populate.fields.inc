@@ -225,7 +225,7 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
     }
     $new_values = $reset ? $new_tids : array_unique(array_merge($new_tids, $original));
     $this->setNodeTermReferenceFieldValues($node, self::FIELD_REGION, $new_values);
-    $changed = empty(array_diff($original, $new_tids)) && empty(array_diff($new_tids, $original));
+    $changed = !(empty(array_diff($original, $new_tids)) && empty(array_diff($new_tids, $original)));
 
     return $changed;
   }
