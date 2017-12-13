@@ -1145,4 +1145,6 @@ function informea_node_presave($node) {
   $td = new TopicDenormalizedFieldHandler();
   $td->computeField($node);
 
+  $rd = new RegionDenormalizedFieldHandler();
+  $rd->computeField($node);
 }
