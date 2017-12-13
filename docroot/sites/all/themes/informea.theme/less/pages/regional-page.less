@@ -23,6 +23,81 @@
   margin-top: 1.5em;
 }
 
+// Regional page specific styles
+.page-regions {
+  .panels-flexible-row {
+    width: 100%;
+    &.row { margin-left: 0; margin-right: 0; }
+    > .panels-flexible-row-inside {
+      .container();
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .region-content {
+    > .block-block { .container(); }
+  }
+
+  .views-field-title {
+    .regional-page-view-item-title();
+  }
+
+  .views-field-type {
+    background-color: #DADADA;
+    color: #fff;
+    display: inline-block;
+    font-weight: 300;
+    min-width: 6em;
+    padding: .2em .4em .1em;
+    text-align: center;
+    + .views-field {
+      margin-left: .5em;
+      ~ .views-field {
+        border-left: 1px solid;
+        margin-left: .2em;
+        padding-left: .5em;
+      }
+    }
+    ~ .views-field-field-city + .views-field-field-country,
+    ~ .views-field-field-country + .views-field-field-city {
+      border-left: 0;
+      padding-left: 0;
+    }
+    ~ .views-field {
+      color: @regional-page-gray;
+      display: inline-block;
+    }
+  }
+
+  .view-regional-treaties {
+    .view-empty {
+      margin-top: 18px * 1.5;
+    }
+  }
+
+  .pane-view-global-treaties .views-field-title {
+    font-weight: normal;
+  }
+
+  .views-field-field-informea-tags {
+    color: @regional-page-gray;
+    > .views-label {
+      float: left;
+      margin-right: .5em;
+    }
+  }
+}
+
+// 'Treaties and MEAs'
+.regional-page-panels-title h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 2em;
+  margin-top: 3em;
+}
+
+// Topic switcher
 .pane-geographic-region-region-switch-topic,
 .topic-switcher-panel-container {
   background-color: #E7E7E7;
@@ -99,44 +174,7 @@
   }
 }
 
-.regional-page-accent-panel-container {
-  background-color: #F3F3F3;
-}
-
-.page-regions {
-  .panels-flexible-row {
-    width: 100%;
-    &.row { margin-left: 0; margin-right: 0; }
-    > .panels-flexible-row-inside {
-      .container();
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-  .region-content {
-    > .block-block { .container(); }
-  }
-  .views-field-title {
-    .regional-page-view-item-title();
-  }
-  .pane-view-global-treaties .views-field-title {
-    font-weight: normal;
-  }
-  .views-field-field-informea-tags {
-    color: @regional-page-gray;
-    > .views-label {
-      float: left;
-      margin-right: .5em;
-    }
-  }
-}
-
-.regional-page-panel-title h2 {
-  font-size: 1.6em;
-  font-weight: bold;
-  margin-bottom: 2em;
-  margin-top: 3em;
-}
+// Regional & global treaties
 .pane-regional-treaties > .pane-title,
 .pane-geographic-region-region-downloadable-documents .section-title {
   .regional-page-underlined-title();
@@ -154,8 +192,10 @@
   }
 }
 
-.pane-geographic-region-region-downloadable-documents {
-
+// Gray bg panel group
+.regional-page-accent-panel-container {
+  background-color: #F3F3F3;
+  margin-top: 7em;
 }
 .region-downloadable-documents-list {
   > .section-title:first-child { margin-top: 0; }
