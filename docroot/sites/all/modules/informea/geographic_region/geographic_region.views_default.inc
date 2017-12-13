@@ -51,11 +51,12 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
-  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_type']['id'] = 'field_event_type';
+  $handler->display->display_options['fields']['field_event_type']['table'] = 'field_data_field_event_type';
+  $handler->display->display_options['fields']['field_event_type']['field'] = 'field_event_type';
+  $handler->display->display_options['fields']['field_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_type']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['event_calendar_date']['id'] = 'event_calendar_date';
   $handler->display->display_options['fields']['event_calendar_date']['table'] = 'field_data_event_calendar_date';
@@ -328,6 +329,14 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Topics */
+  $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'field_data_field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mea_topic']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_mea_topic']['delta_offset'] = '0';
   /* Field: Content: InforMEA tags */
   $handler->display->display_options['fields']['field_informea_tags']['id'] = 'field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['table'] = 'field_data_field_informea_tags';
