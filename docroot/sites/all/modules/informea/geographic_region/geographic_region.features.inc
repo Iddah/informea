@@ -21,6 +21,31 @@ function geographic_region_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function geographic_region_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: medium_wide.
+  $styles['medium_wide'] = array(
+    'label' => 'Medium wide (260x150)',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 260,
+          'height' => 150,
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_default_mailchimp_signup().
  */
 function geographic_region_default_mailchimp_signup() {
