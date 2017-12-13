@@ -228,22 +228,19 @@
 .page-regions .views-field-title a {
   color: #1D7CA7;
 }
-.page-regions .views-field-type {
+[dir] .page-regions .views-field-type {
+  margin-bottom: .2em;
+}
+.page-regions .views-field-type > .field-content {
   color: #fff;
   display: inline-block;
   font-weight: 300;
   min-width: 6em;
 }
-[dir] .page-regions .views-field-type {
+[dir] .page-regions .views-field-type > .field-content {
   background-color: #DADADA;
   padding: .2em .4em .1em;
   text-align: center;
-}
-[dir=ltr] .page-regions .views-field-type + .views-field {
-  margin-left: .5em;
-}
-[dir=rtl] .page-regions .views-field-type + .views-field {
-  margin-right: .5em;
 }
 [dir=ltr] .page-regions .views-field-type + .views-field ~ .views-field {
   border-left: 1px solid;
@@ -267,6 +264,20 @@
   color: #8F8F8F;
   display: inline-block;
 }
+@media (min-width: 992px) {
+  .page-regions .views-field-type {
+    display: inline-block;
+  }
+  [dir] .page-regions .views-field-type {
+    margin-bottom: 0;
+  }
+  [dir=ltr] .page-regions .views-field-type + .views-field {
+    margin-left: .5em;
+  }
+  [dir=rtl] .page-regions .views-field-type + .views-field {
+    margin-right: .5em;
+  }
+}
 [dir] .page-regions .view-regional-treaties .view-empty {
   margin-top: 27px;
 }
@@ -283,6 +294,47 @@
 [dir=rtl] .page-regions .views-field-field-informea-tags > .views-label {
   float: right;
   margin-left: .5em;
+}
+.view-contacts-hubs .views-field-title {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: inherit;
+}
+[dir] .view-contacts-hubs .views-field-title {
+  margin: 0;
+}
+.view-contacts-hubs .views-field-title,
+.view-contacts-hubs .views-field-title a {
+  color: inherit;
+}
+.view-contacts-hubs .views-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] .view-contacts-hubs .views-row {
+  margin-top: .5em;
+}
+.views-field-field-country-iso2 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 1.3em;
+          flex: 0 0 1.3em;
+  width: 1.3em;
+}
+.views-field-field-country-iso2 .img-thumbnail {
+  max-width: 100%;
+}
+[dir] .views-field-field-country-iso2 .img-thumbnail {
+  border-radius: 0;
+  border: 0;
+  padding: 0;
+}
+[dir=ltr] .views-field-field-country-iso2 + .views-field {
+  margin-left: .5em;
+}
+[dir=rtl] .views-field-field-country-iso2 + .views-field {
+  margin-right: .5em;
 }
 .regional-page-panels-title h2 {
   font-size: 1.6em;
@@ -452,11 +504,12 @@
 }
 [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title {
   margin-bottom: 2em;
-  margin-top: 3em;
+  margin-top: 0;
 }
 [dir] .regional-page-accent-panel-container {
   background-color: #F3F3F3;
   margin-top: 7em;
+  padding: 4em 0;
 }
 [dir] .region-downloadable-documents-list > .section-title:first-child {
   margin-top: 0;
