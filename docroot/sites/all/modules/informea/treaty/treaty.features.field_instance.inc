@@ -2072,7 +2072,7 @@ function treaty_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_mea_topic',
-    'label' => 'MEA topic',
+    'label' => 'Topics',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -5715,7 +5715,6 @@ function treaty_field_default_field_instances() {
   t('Is protocol');
   t('Jurisdiction');
   t('Logo');
-  t('MEA topic');
   t('Name');
   t('Number of pages');
   t('OData identifier');
