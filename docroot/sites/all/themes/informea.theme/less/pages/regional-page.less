@@ -40,6 +40,27 @@
     > .block-block { .container(); }
   }
 
+  .views-field-treaty-links {
+    ul {
+      .list-unstyled();
+      display: flex;
+      margin-left: -1em;
+    }
+    li {
+      margin-left: 1em;
+      + li {
+        &:before {
+          color: @regional-page-gray;
+          content: '|';
+          margin-right: 1em;
+        }
+      }
+    }
+    a {
+      color: #0A8FC6;
+    }
+  }
+
   .views-field-title {
     .regional-page-view-item-title();
   }
