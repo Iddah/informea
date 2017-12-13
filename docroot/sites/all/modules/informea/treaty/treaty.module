@@ -40,6 +40,21 @@ function treaty_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_views_data().
+ */
+function treaty_views_data() {
+  $data['node']['treaty_links'] = array(
+    'title' => t('Treaty links'),
+    'help' => t('Display links to treaty sections: text, decisions, etc.'),
+    'field' => array(
+      'handler' => 'views_handler_treaty_links',
+      'click sortable' => FALSE,
+    ),
+  );
+
+  return $data;
+}
 
 /**
  * Implements hook_ctools_plugin_directory().
