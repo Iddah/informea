@@ -70,12 +70,6 @@ function geographic_region_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['label'] = '';
-  $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
