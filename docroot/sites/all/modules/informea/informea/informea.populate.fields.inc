@@ -4,6 +4,8 @@ abstract class DenormalizedFieldHandler {
 
   const FIELD_TREATY = 'field_treaty';
   const FIELD_MEA_TOPIC = 'field_mea_topic';
+  const FIELD_REGION = 'field_region';
+  const FIELD_COUNTRY = 'field_country';
 
   /**
    * Retrieve the values for entity reference fields to a given node.
@@ -89,6 +91,51 @@ abstract class DenormalizedFieldHandler {
   }
 
   /**
+   * Retrieve the list of unique regions for a given list of countries.
+   *
+   * @param array $nids
+   *   Array of node IDs of the same type.
+   *
+   * @return array
+   *   Array of term IDs.
+   */
+  public function getCountriesRegions(array $nids) {
+    $rows = $this->loadNodesField($nids, 'country', self::FIELD_REGION);
+    $ret = array();
+    foreach ($rows as $nid => $country) {
+      $regions = $this->getReferenceFieldValues($country, self::FIELD_MEA_TOPIC, 'tid');
+      $ret = array_merge($ret, $regions);
+    }
+    return array_unique($ret);
+  }
+
+  /**
+   * Retrieve the list of unique regions for a given list of countries.
+   *
+   * @param array $nids
+   *   Array of node IDs of the same type.
+   *
+   * @return array
+   *   Array of term IDs.
+   */
+  public function getTreatiesRegions(array $nids) {
+    $rows = $this->loadNodesField($nids, 'treaty', self::FIELD_REGION);
+    $ret = array();
+    foreach ($rows as $nid => $treaty) {
+      $regions = $this->getReferenceFieldValues($treaty, self::FIELD_REGION, 'tid');
+      $ret = array_merge($ret, $regions);
+    }
+    return array_unique($ret);
+  }
+
+  public function computeField($node) {
+    if (empty($node) || !in_array($node->type, $this->getSupportedContentTypes())) {
+      return FALSE;
+    }
+    return $this->computeFieldImpl($node);
+  }
+
+  /**
    * Compute the new denormalized field values based on existing field values.
    *
    * @param \stdClass $node
@@ -97,7 +144,7 @@ abstract class DenormalizedFieldHandler {
    * @return bool
    *   Returns TRUE if object has changed, FALSE when left in original state.
    */
-  abstract function computeField($node);
+  abstract function computeFieldImpl($node);
 
   /**
    * Return an array of content types supported to de-normalise.
@@ -108,9 +155,16 @@ abstract class DenormalizedFieldHandler {
   abstract function getSupportedContentTypes();
 }
 
-
+/**
+ * Class RegionDenormalizedFieldHandler sets the field_region redundantly.
+ *
+ * This field is computed based on the existing field_country or field_treaty.
+ */
 class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
 
+  /**
+   * {@inheritdoc}
+   */
   function getSupportedContentTypes() {
     // @TODO make configurable globally? Per node?
     return array('action_plan', 'contact_person', 'decision', 'document',
@@ -118,11 +172,47 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
       'geographical_site', 'member_party', 'national_report');
   }
 
-  public function computeField($node) {
-    if (empty($node) || !in_array($node->type, $this->getSupportedContentTypes())) {
-      return FALSE;
+  /**
+   * {@inheritdoc}
+   */
+  public function computeFieldImpl($node) {
+    $original = $this->getReferenceFieldValues($node, self::FIELD_REGION);
+    $new_tids = array();
+    switch ($node->type) {
+      // Use only field_country as source for region.
+      case 'action_plan':
+      case 'contact_person':
+      case 'geographical_site':
+      case 'national_report':
+        $country_nids = $this->getReferenceFieldValues($node, self::FIELD_COUNTRY);
+        $new_tids = $this->getCountriesRegions($country_nids);
+        break;
+      // Use only field_treaty as source for region.
+      case 'decision':
+      case 'event_calendar_imported':
+      case 'feed_item':
+        $treaty_nids = $this->getReferenceFieldValues($node, self::FIELD_TREATY);
+        $new_tids = $this->getTreatiesRegions($treaty_nids);
+
+        break;
+      // Use field_country and if empty fall back to field_treaty
+      case 'document':
+      case 'event_calendar':
+        $country_nids = $this->getReferenceFieldValues($node, self::FIELD_COUNTRY);
+        if (!empty($country_nids)) {
+          $new_tids = $this->getCountriesRegions($country_nids);
+        }
+        else {
+          $treaty_nids = $this->getReferenceFieldValues($node, self::FIELD_TREATY);
+          $new_tids = $this->getTreatiesRegions($treaty_nids);
+        }
+        break;
     }
-    $ret = FALSE;
+    $new_values = array_unique(array_merge($new_tids, $original));
+    $this->setNodeTermReferenceFieldValues($node, self::FIELD_REGION, $new_values);
+    $changed = empty(array_diff($original, $new_tids)) && empty(array_diff($new_tids, $original));
+
+    return $changed;
   }
 }
 
@@ -143,13 +233,9 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
   /**
    * {@inheritdoc}
    */
-  public function computeField($node) {
-    if (empty($node) || !in_array($node->type, $this->getSupportedContentTypes())) {
-      return FALSE;
-    }
+  public function computeFieldImpl($node) {
     $changed = FALSE;
     $original = $this->getReferenceFieldValues($node, self::FIELD_MEA_TOPIC);
-    $source_field = NULL;
     switch ($node->type) {
       case 'action_plan':
       case 'contact_person':
