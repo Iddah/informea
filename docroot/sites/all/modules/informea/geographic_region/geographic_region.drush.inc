@@ -27,7 +27,13 @@ function drush_geographic_region_informea_populate_fields() {
       foreach ($nodes as $node) {
         if ($instance->computeField($node)) {
           try {
-            field_attach_update('node', $node);
+            $nodeUpdate = (object) [
+              'nid' => $node->nid,
+              'vid' => NULL,
+              'type' => $contentType,
+              $field => $node->{$field},
+            ];
+            field_attach_update('node', $nodeUpdate);
             drush_log("Updated {$field} for node {$node->nid}");
           }
           catch (\Exception $e) {
