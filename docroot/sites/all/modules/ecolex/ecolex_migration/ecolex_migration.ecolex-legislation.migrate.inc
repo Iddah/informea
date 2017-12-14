@@ -2,6 +2,17 @@
 
 class EcolexLegislationMigration extends Migration {
 
+  protected function postImport() {
+    $current_page = variable_get('ecolex_legislation_current_page', 0);
+    variable_set('ecolex_legislation_current_page', $current_page + 1);
+    echo 'New page: ' . ($current_page + 1) . "\n";
+    echo '[' . date('H:i:s') . '] ___________________________________________________' . "\n\n\n";
+  }
+
+  protected function preImport() {
+    echo '[' . date('H:i:s') . '] ___________________________________________________' . "\n";
+  }
+
   public function __construct($arguments) {
     parent::__construct($arguments);
     $this->map = new MigrateSQLMap($this->machineName,
@@ -325,7 +336,14 @@ class EcolexLegislationMigrateSource extends MigrateSource {
   public function __construct($source_url_pattern) {
     parent::__construct(array());
     $this->enable_partly_import = variable_get('ecolex_legislation_enable_partly_import', FALSE);
+    echo "enable_partly_import = " . $this->enable_partly_import . "\n";
     $this->per_migration_limit = variable_get('ecolex_legislation_migration_limit', 20000);
+    echo 'limit = ' . $this->per_migration_limit. "\n";
+    $pagination = variable_get('ecolex_legislation_pagination', 0);
+    if ($pagination) {
+      $this->pagination = $pagination;
+    }
+    echo 'pagination = ' . $this->pagination. "\n";
 
     //$this->url_pattern = $source_url_pattern; - because of cache
     $this->url_pattern = 'http://www.ecolex.org/export/?type=legislation&format=json'; // todo cache
@@ -402,7 +420,6 @@ class EcolexLegislationMigrateSource extends MigrateSource {
       echo 'pages = ' . $pages . "\n";
       echo 'curr page = ' . $this->current_page . "\n";
       echo 'rows per migration = ' . $this->totalCount . "\n";
-      variable_set('ecolex_legislation_current_page', $this->current_page + 1);
     }
     return $this->totalCount;
   }
