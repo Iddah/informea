@@ -467,8 +467,20 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
  * Theme function implementation for bootstrap_search_form_wrapper.
  */
 function informea_theme_informea_search_form_wrapper($variables) {
+  $category_select = '';
+  if (!empty($variables['element']['#category-options'])) {
+    $category_select = '<select id="edit-search-category" name="category" class="use-select-2">';
+    foreach($variables['element']['#category-options'] as $k => $v) {
+      $category_select .= sprintf('<option value="%s">%s</option>', check_plain($k), check_plain($v));
+    }
+    $category_select .= '</select>';
+  }
+
   $output = '<div class="input-group">';
   $output .= $variables['element']['#children'];
+  #$output .= '<select name="category" class="use-select-2"><option>LONG OPTION</option></select>';
+  $output .= '<span id="edit-search-in">' . t('in:') . '</span>';
+  $output .= $category_select;
   $output .= '<span class="input-group-btn">';
   $output .= '<button type="submit" class="btn btn-default">';
   $output .= _bootstrap_icon('search');

@@ -165,6 +165,11 @@ function informea_search_menu() {
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
+  $items['prepare-search'] = array(
+    'page callback' => 'informea_search_prepare_search',
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
 
   return $items;
 }
@@ -317,9 +322,24 @@ function informea_search_form($form, $form_state) {
       $action = 'search-goals-and-principles';
       break;
     default:
-      $action = 'search';
+      $action = 'prepare-search';
   }
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
+  $variant = variable_get('select2_compression_type', 'minified');
+  $search_category_options = array(
+    '' => t('All Categories'),
+    'decision' => t('Decisions'),
+    'national_plan' => t('National Plans'),
+    'national_report' => t('National Reports'),
+    'legislation' => t('Legislation'),
+    'court_decisions' => t('Court Decisions'),
+    'document|publication' => t('Publications'),
+    'document|manual' => t('Manuals'),
+    'document|technical' => t('Technical Series'),
+    'news' => t('News and Events'),
+    'contact_person|nfp' => t('News and Events'),
+  );
+
   return [
     '#id' => 'search-form',
     '#action' =>  url($action),
@@ -335,7 +355,9 @@ function informea_search_form($form, $form_state) {
       '#maxlength' => 255,
       '#attributes' => array(
         'placeholder' => t('Search by keyword(s)'),
-      )
+      ),
+      '#attached' => array('libraries_load' => array(array('select2', $variant))),
+      '#category-options' => $search_category_options,
     ],
     'actions' => [
       'submit' => [
@@ -351,6 +373,15 @@ function informea_search_form($form, $form_state) {
 function informea_search_external_search() {
   $input = isset($_GET['keys']) ? check_plain($_GET['keys']) : '';
   drupal_goto('search/' . $input);
+}
+
+function informea_search_prepare_search() {
+  $search_category = !empty($_GET['category']) ? check_plain($_GET['category']) : '';
+  // TODO: Do the redirect logic here based on category.
+  $q = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
+  $options = array('query' => array());
+  $options['query']['search_api_views_fulltext'] = $q;
+  drupal_goto('search', $options);
 }
 
 function _informea_search_get_topic_count($topic) {
