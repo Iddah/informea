@@ -832,7 +832,9 @@ function informea_page_alter(&$page) {
     analytics_integration_google_analytics_send_hit(ANALYTICS_INTEGRATION_UNEP, $current_path, 'unep', drupal_get_title());
   }
   else {
-    drupal_set_message('Google Analytics is not configured correctly', 'error');
+    if (variable_get('environment') != 'dev') {
+      drupal_set_message('Google Analytics is not configured correctly', 'error');
+    }
   }
 }
 
