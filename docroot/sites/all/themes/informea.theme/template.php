@@ -469,9 +469,29 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
 function informea_theme_informea_search_form_wrapper($variables) {
   $category_select = '';
   if (!empty($variables['element']['#category-options'])) {
-    $category_select = '<select id="edit-search-category" name="category" class="use-select-2">';
+    $category_select = '<select id="edit-search-category" name="category">';
+    $optgroup_open = false;
+
     foreach($variables['element']['#category-options'] as $k => $v) {
-      $category_select .= sprintf('<option value="%s">%s</option>', check_plain($k), check_plain($v));
+      if($v['is_group_label'] === true) {
+        // if one optgroup is already open, close it
+        if($optgroup_open) {
+          $category_select .= sprintf('</optgroup>');
+          $optgroup_open = false;
+        }
+        // open new optgroup
+        $category_select .= sprintf('<optgroup label="%s">', check_plain($v['label']));
+        $optgroup_open = true;
+      }
+      $category_select .= sprintf('<option value="%s" data-optgroup="%s" selected="%s">%s</option>',
+        check_plain($k),
+        !empty($v['is_group_label']) ? check_plain($v['is_group_label']) : false,
+        !empty($v['selected']) ? check_plain($v['selected']) : '',
+        check_plain($v['label']));
+    }
+    if($optgroup_open) {
+      $category_select .= sprintf('</optgroup>');
+      $optgroup_open = false;
     }
     $category_select .= '</select>';
   }
@@ -479,8 +499,11 @@ function informea_theme_informea_search_form_wrapper($variables) {
   $output = '<div class="input-group">';
   $output .= $variables['element']['#children'];
   #$output .= '<select name="category" class="use-select-2"><option>LONG OPTION</option></select>';
-  $output .= '<span id="edit-search-in">' . t('in:') . '</span>';
+  $output .= '<span class="edit-search-in">' . t('in:') . '</span>';
   $output .= $category_select;
+//   $output .= <<<EOT
+//     <div>sth</div>
+// EOT;
   $output .= '<span class="input-group-btn">';
   $output .= '<button type="submit" class="btn btn-default">';
   $output .= _bootstrap_icon('search');

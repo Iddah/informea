@@ -5,9 +5,11 @@
   border-top: 1px solid #fff;
   padding: 2.5em 0;
   h1,
-  .block-geographic-region select {
+  .block-geographic-region select,
+  .block-geographic-region .select2-container {
     font-size: 1.9em;
     font-weight: normal;
+    text-align: center;
   }
   .region-navigation {
     align-items: center;
@@ -22,13 +24,92 @@
   }
   #search-form {
     margin: 0 auto;
-    @media (min-width: 768px) {
-      & { width: 80%; }
+    width: 80%;
+    .input-group {
+      display: flex;
     }
-
+    .input-group-btn {
+      width: auto;
+    }
+    .edit-search-in {
+      align-items: center;
+      background-color: #fff;
+      border-bottom: 1px solid #fc3;
+      border-top: 1px solid #fc3;
+      color: @text-color;
+      display: inline-flex;
+      padding: 0 .3em;
+    }
     .form-text {
+      border-radius: 2px 0 0 2px;
+      border-right: none;
+      box-shadow: none;
       padding-left: 2em;
       padding-right: 2em;
+    }
+    select,
+    .select2-container {
+      align-items: center;
+      background-color: #E7E7E7;
+      border-bottom: 1px solid #fc3;
+      border-top: 1px solid #fc3;
+      border-radius: 0;
+      color: #424242;
+      display: inline-flex;
+      padding: 0 .3em;
+      &.select2-container-active:not(.select2-dropdown-open) {
+        background-color: darken(#E7E7E7, 3%);
+        box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+      }
+      .select2-chosen {
+        padding-right: 1.5em;
+      }
+      .select2-arrow {
+        order: -1;
+        padding-left: 0;
+      }
+    }
+  }
+  // General styling for select2 in search block
+  .select2-container {
+    align-items: center;
+    display: inline-flex;
+    width: auto !important;
+  }
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &::-ms-expand {
+      display: none;
+    }
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+  }
+  .select2-choice {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+    display: flex;
+     > .select2-chosen {
+      margin-right: 0;
+     }
+    .select2-arrow {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0 .3em;
+      position: static;
+      width: auto;
+    }
+    .select2-arrow b {
+      .caret();
+      background: none;
+      border-top: .4em dashed;
+      border-right: .4em solid transparent;
+      border-left: .4em solid transparent;
     }
   }
 }
@@ -36,20 +117,35 @@
 .block-informea-search { width: 100%; }
 
 .block-geographic-region {
-  .search-block & { margin-left: 1em; }
+  .search-block & {
+    align-items: center;
+    display: inline-flex;
+    margin-left: .5em;
+    margin-bottom: .5em;
+  }
   .search-block & select,
   .search-block & .select2-container {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    &::-ms-expand {
-        display: none;
-    }
-    background-color: transparent;
-    border: none;
     color: #fc3;
     font-style: italic;
   }
-  .search-block & .select2-container {
-    width: auto !important;
+}
+// Styling related to select2 dropdowns on regional pages
+.page-regions {
+  .use-select-2 {
+    .sr-only();
+    width: 0;
+  }
+  .select2-drop-mask {
+    background-color: fade(#000, 30%);
+    opacity: 1;
+    z-index: @zindex-navbar + 1;
+  }
+  // @todo: only apply this when select2 drop mask is active
+  .search-block {
+    position: relative;
+    &.select2-open {
+      pointer-events: none;
+      z-index: @zindex-navbar + 2;
+    }
   }
 }

@@ -327,17 +327,68 @@ function informea_search_form($form, $form_state) {
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
   $variant = variable_get('select2_compression_type', 'minified');
   $search_category_options = array(
-    '' => t('All Categories'),
-    'decision' => t('Decisions'),
-    'national_plan' => t('National Plans'),
-    'national_report' => t('National Reports'),
-    'legislation' => t('Legislation'),
-    'court_decisions' => t('Court Decisions'),
-    'document|publication' => t('Publications'),
-    'document|manual' => t('Manuals'),
-    'document|technical' => t('Technical Series'),
-    'news' => t('News and Events'),
-    'contact_person|nfp' => t('News and Events'),
+    'decision' => array(
+      'label' => t('Decisions'),
+      'is_group_label' => true
+    ),
+
+    'national_submissions' => array(
+      'label' => t('National Submissions'),
+      'is_group_label' => true
+    ),
+    'national_plan' => array(
+      'label' => t('National Plans'),
+      'is_group_label' => false
+    ),
+    'national_report' => array(
+      'label' => t('National Reports'),
+      'is_group_label' => false
+    ),
+
+    'national_legislation_cases' => array(
+      'label' => t('National Legislation and Cases'),
+      'is_group_label' => true
+    ),
+    'legislation' => array(
+      'label' => t('Legislation'),
+      'is_group_label' => false
+    ),
+    'court_decisions' => array(
+      'label' => t('Court Decisions'),
+      'is_group_label' => false
+    ),
+
+    'documents_literature' => array(
+      'label' => t('Documents and Literature'),
+      'is_group_label' => true
+    ),
+    'publication' => array(
+      'label' => t('Publications'),
+      'is_group_label' => false
+    ),
+    'manual' => array(
+      'label' => t('Manuals'),
+      'is_group_label' => false
+    ),
+    'technical' => array(
+      'label' => t('Technical Series'),
+      'is_group_label' => false
+    ),
+
+    'news' => array(
+      'label' => t('News and Events'),
+      'is_group_label' => true
+    ),
+
+    'contacts_hub' => array(
+      'label' => t('Contacts Hub'),
+      'is_group_label' => false
+    ),
+    'all' => array(
+      'label' => t('All Categories'),
+      'is_group_label' => true,
+      'selected' => 'selected'
+    ),
   );
 
   return [

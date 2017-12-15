@@ -1,0 +1,62 @@
+// General select2 styling
+.select2-drop-active {
+  border: 1px solid #fc3;
+  margin-left: -1.5em;
+  margin-top: -2px;
+}
+.select2-results .select2-highlighted {
+  background-color: #098FC5;
+  color: #fff;
+}
+.select2-results {
+  padding: 0;
+  margin: 0;
+  li {
+    color: #424242;
+  }
+  > li {
+    // padding: .2em 1.5em;
+    padding: 0;
+
+    + li {
+      border-top: 1px solid #ccc;
+    }
+  }
+}
+
+.edit-search-category-drop {
+  .select2-result-sub {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .select2-result-label { overflow: hidden; }
+  .category-group-title {
+    // force wrap
+    width: 1000px;
+  }
+  .select2-result-unselectable:hover,
+  .select2-result-unselectable:focus {
+    background-color: #098FC5;
+    color: #fff;
+    li { color: #fff; }
+    .select2-highlighted {
+      color: #fc3;
+    }
+  }
+  .select2-result-unselectable > .select2-result-label {
+    display: none;
+  }
+  .select2-results ul.select2-result-sub > li .select2-result-label {
+    padding-left: 7px;
+  }
+}
+
+.category-group-title {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.category-group-inner {
+  font-size: 12px;
+  font-style: italic;
+}

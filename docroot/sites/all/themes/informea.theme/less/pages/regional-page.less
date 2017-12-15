@@ -44,15 +44,17 @@
     ul {
       .list-unstyled();
       display: flex;
-      margin-left: -1em;
+      flex-wrap: wrap;
+      margin-left: -.2em;
+      margin-top: .5em;
     }
     li {
-      margin-left: 1em;
+      margin-left: .2em;
       + li {
         &:before {
           color: @regional-page-gray;
           content: '|';
-          margin-right: 1em;
+          margin-right: .2em;
         }
       }
     }
@@ -64,8 +66,20 @@
   .views-field-title {
     .regional-page-view-item-title();
   }
-
-  .views-field-type {
+  .view-news-and-events {
+    .views-field {
+      color: @regional-page-gray;
+    }
+    .views-field-field-event-type ~ .views-field {
+      display: inline-block;
+    }
+    @media (min-width: @screen-md-min) {
+      .views-field-field-event-type {
+        display: inline-block;
+      }
+    }
+  }
+  .views-field-field-event-type {
     margin-bottom: .2em;
     > .field-content {
       background-color: #DADADA;
@@ -88,19 +102,32 @@
       border-left: 0;
       padding-left: 0;
     }
-    ~ .views-field {
-      color: @regional-page-gray;
+
+  }
+  .views-field-field-mea-topic {
+    > .field-content {
+      background-color: #DADADA;
+      color: #fff;
       display: inline-block;
+      font-weight: 300;
+      min-width: 6em;
+      padding: .2em .4em .1em;
+      text-align: center;
     }
   }
 
   // Unwrapped version
   @media (min-width: @screen-md-min) {
-    .views-field-type {
+    .views-field-field-mea-topic,
+    .views-field-field-event-type {
       display: inline-block;
       margin-bottom: 0;
     }
-    .views-field-type + .views-field { margin-left: .5em; }
+    .views-field-field-event-type + .views-field { margin-left: .5em; }
+    .views-field-field-mea-topic + .views-field-field-informea-tags {
+      display: inline-block;
+      margin-left: .5em;
+    }
   }
 
   .view-regional-treaties {
@@ -115,9 +142,10 @@
 
   .views-field-field-informea-tags {
     color: @regional-page-gray;
-    > .views-label {
-      float: left;
-      margin-right: .5em;
+    margin-top: .5em;
+    > .views-label,
+    > .field-content {
+      display: inline-block;
     }
   }
 
@@ -128,6 +156,7 @@
 }
 // Contact hub
 .view-contacts-hubs {
+  .row();
   .views-field-title {
     margin: 0;
     font-size: 1em;
@@ -138,6 +167,16 @@
   .views-row {
     display: flex;
     margin-top: .5em;
+    @media (max-width: @screen-xs-max) {
+      &.col-xs-6:nth-child(2n + 1) {
+        clear: left;
+      }
+    }
+    @media (min-width: @screen-sm-min) {
+      &.col-sm-4:nth-child(3n + 1) {
+        clear: left;
+      }
+    }
   }
 }
 .views-field-field-country-iso2 {
@@ -171,6 +210,10 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  flex-wrap: wrap;
+  @media (min-width: @screen-md-min) {
+    flex-wrap: nowrap;
+  }
   .pane-content {
     overflow: hidden;
     margin-top: -10px;
@@ -195,11 +238,15 @@
     align-items: flex-end;
     border: none;
     display: flex;
-    margin-bottom: 0;
-    margin-top: -10px;
+    margin-left: .5em;
+    margin-right: .5em;
     // @todo: add scroll indicators, for now scroll can be achieved by holding shift
     overflow-x: scroll;
     margin-bottom: -15px;
+    @media (min-width: @screen-md-min) {
+      margin-top: -10px;
+    }
+
 
     > li { margin-bottom: 0; }
     > li > a {
@@ -264,6 +311,9 @@
   margin-top: 7em;
   padding: 4em 0;
 }
+.regional-page-contacts-panel-container {
+  padding: 4em 0;
+}
 .region-downloadable-documents-list {
   > .section-title:first-child { margin-top: 0; }
   > li > a {
@@ -300,13 +350,31 @@
 // Involvement
 .involvement {
   background-color: #1B7DA7;
-  &, & a { color: #fff; }
   padding: 3em 0;
+  &, & a { color: #fff; }
+  + .footer {
+    margin-top: 0;
+  }
+}
+.region-involvement {
+  @media (max-width: @screen-xs-max) {
+    display: flex;
+    flex-flow: column;
+  }
   a {
     text-decoration: underline;
   }
+  input {
+    border-radius: 4px;
+    border: none;
+    @media (max-width: @screen-xs-max) {
+      width: 100%;
+    }
+  }
   .form-text {
     height: 50px;
+  }
+  .form-item {
     @media (min-width: @screen-sm-min) {
       max-width: 300px;
     }
@@ -315,41 +383,62 @@
     padding: 1em 2em;
     text-transform: uppercase;
     &, &:hover, &:focus, &:active {
-      background-color: transparent;
+      background: transparent;
       border: 1px solid;
       color: #fff;
     }
   }
   .block {
-    &:nth-child(1) {
-      font-size: 1.2em;
-      text-align: center;
+    margin-top: 1em;
+    text-align: left;
+    @media (min-width: @screen-sm-min) {
+      float: left;
+      width: 45%;
     }
-    &:nth-child(2) > .block-title {
-      .regional-page-underlined-title();
+  }
+  // Title block
+  #block-block-24 {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 1em;
+    @media (min-width: @screen-sm-min) {
+      float: none;
+      width: 100%;
     }
-    &:nth-child(3) > .block-title {
+  }
+  #block-block-23 + .block {
+    border-top: 1px solid fade(#FFFFFF, 20%);
+    margin-top: 3em;
+    padding-top: 2em;
+  }
+  #block-views-take-part-webform-block,
+  #block-block-23 {
+    > .block-title { .regional-page-underlined-title(); }
+  }
+  // Take part block
+  #block-views-take-part-webform-block {
+    @media (max-width: @screen-xs-max) {
+      border-top: 1px solid fade(#FFFFFF, 20%);
+      margin-top: 3em;
+      order: 1;
+      padding-top: 2em;
+    }
+    @media (min-width: @screen-sm-min) {
+      float: right;
+    }
+    label {
+      font-weight: normal;
+      display: block;
+    }
+  }
+  // Subscribe block
+  #block-mailchimp-signup-subscribe-to-newsletter {
+    & > .block-title {
       font-size: 1.3em;
       font-weight: normal;
       margin-bottom: 1em;
       text-transform: uppercase;
     }
-    &:nth-child(2),
-    &:nth-child(2) ~ .block {
-      margin-top: 1em;
-      text-align: left;
-      @media (min-width: @screen-sm-min) {
-        width: 50%;
-      }
-    }
-    &:nth-child(2) + .block {
-      border-top: 1px solid fade(#FFFFFF, 20%);
-      margin-top: 3em;
-      padding-top: 2em;
-    }
-  }
-  + .footer {
-    margin-top: 0;
   }
 }
 

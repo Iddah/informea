@@ -26,7 +26,7 @@ function geographic_region_region_page_title_block_view() {
         '#prefix' => '<h1>' . $title . '</h1>',
         '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2']],
         '#select2' => [
-          'width' => 'auto',
+          'width' => 'auto'
         ],
       ];
     }

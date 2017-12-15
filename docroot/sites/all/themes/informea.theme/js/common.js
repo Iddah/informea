@@ -129,6 +129,39 @@ jQuery(document).ready(function ($) {
       }, 300);
     }
   });
+
+  function format(state) {
+     var originalOption = state.element;
+      if (!state.id) return state.text; // optgroup
+
+      if($(originalOption).data('optgroup')) {
+        return "<div class='category-group-title'>" + state.text + "</h5>";
+
+      }
+      return "<div class='category-group-inner'>" + state.text + "</div>";
+  }
+
+  var $categorySelect = $('#edit-search-category');
+  var $searchBlock = $categorySelect.closest('.search-block');
+
+  $categorySelect.select2({
+      dropdownCssClass: 'edit-search-category-drop',
+      formatResult: format,
+      escapeMarkup: function(m) { return m; }
+  });
+
+  $categorySelect
+    .on('select2-open', function(e) {
+      $searchBlock.addClass('select2-open');
+    })
+    .on('select2-close', function(e) {
+      $searchBlock.removeClass('select2-open');
+    })
+    .on('select2-highlight', function(e) {
+      console.log(e);
+      // $(this).closest('.select2-result-with-children').addClass('select2-result-unselectable-active');
+    });
+
 });
 
 jQuery(window).load(function() {
