@@ -334,6 +334,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mea_topic']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_mea_topic']['delta_offset'] = '0';
