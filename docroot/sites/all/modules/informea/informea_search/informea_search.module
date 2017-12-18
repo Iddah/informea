@@ -322,7 +322,7 @@ function informea_search_form($form, $form_state) {
       $action = 'search-goals-and-principles';
       break;
     default:
-      $action = 'prepare-search';
+      $action = 'search';
   }
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
   $variant = variable_get('select2_compression_type', 'minified');
@@ -393,7 +393,7 @@ function informea_search_form($form, $form_state) {
 
   return [
     '#id' => 'search-form',
-    '#action' =>  url($action),
+    '#action' =>  url('prepare-search'),
     '#method' => 'get',
     '#always_process' => true,
     '#token' => false,
@@ -408,7 +408,11 @@ function informea_search_form($form, $form_state) {
         'placeholder' => t('Search by keyword(s)'),
       ),
       '#attached' => array('libraries_load' => array(array('select2', $variant))),
-      '#category-options' => $search_category_options,
+      '#category-options' => $action == 'search' ? $search_category_options : [],
+    ],
+    'action' => [
+      '#type' => 'hidden',
+      '#value' => $action,
     ],
     'actions' => [
       'submit' => [
@@ -427,12 +431,13 @@ function informea_search_external_search() {
 }
 
 function informea_search_prepare_search() {
+  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
   $search_category = !empty($_GET['category']) ? check_plain($_GET['category']) : '';
-  // TODO: Do the redirect logic here based on category.
-  $q = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
-  $options = array('query' => array());
-  $options['query']['search_api_views_fulltext'] = $q;
-  drupal_goto('search', $options);
+  $options = [];
+  if (!empty($_GET['search_api_views_fulltext'])) {
+    $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
+  }
+  drupal_goto($action, $options);
 }
 
 function _informea_search_get_topic_count($topic) {
