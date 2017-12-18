@@ -12,4 +12,6 @@ drush updatedb -y
 
 drush upwd informea_admin --password=password
 
+drush vset environment dev
+
 drush cc all
