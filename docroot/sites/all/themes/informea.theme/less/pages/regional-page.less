@@ -149,6 +149,16 @@
     }
   }
 
+  .views-field-field-mea-topic {
+    > .field-content {
+      .loop-mea-topics({
+        &.topic-@{mea-topic-class} {
+          background-color: @mea-topic-color;
+        }
+      });
+    }
+  }
+
   .panel-separator {
     margin-bottom: 3em;
   }

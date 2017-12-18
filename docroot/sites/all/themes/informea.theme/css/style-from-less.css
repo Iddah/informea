@@ -503,6 +503,15 @@
 .page-regions .views-field-field-informea-tags > .field-content {
   display: inline-block;
 }
+.page-regions .views-field-field-mea-topic > .field-content.topic-Climate-Change-and-Atmosphere {
+  background-color: #31a0ba;
+}
+.page-regions .views-field-field-mea-topic > .field-content.topic-Chemicals-and-Wastes {
+  background-color: #e03d0b;
+}
+.page-regions .views-field-field-mea-topic > .field-content.topic-Biodiversity {
+  background-color: #90bc2f;
+}
 .page-regions .panel-separator {
   margin-bottom: 3em;
 }
