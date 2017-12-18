@@ -392,7 +392,7 @@ function informea_search_form($form, $form_state) {
   );
 
   $current_category = _informea_search_get_current_category($viewName);
-  $search_category_options[$current_category]['selected'] = true;
+  $search_category_options[$current_category]['selected'] = 'selected';
 
   return [
     '#id' => 'search-form',
