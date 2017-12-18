@@ -469,7 +469,7 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
 function informea_theme_informea_search_form_wrapper($variables) {
   $category_select = '';
   if (!empty($variables['element']['#category-options'])) {
-    $category_select = '<select id="edit-search-category" name="category">';
+    $category_select = '<select id="edit-search-category" name="category" class="use-select-2">';
     $optgroup_open = false;
 
     foreach($variables['element']['#category-options'] as $k => $v) {

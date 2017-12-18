@@ -130,7 +130,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  function format(state) {
+  function categorySelectFormat(state) {
      var originalOption = state.element;
       if (!state.id) return state.text; // optgroup
 
@@ -142,24 +142,25 @@ jQuery(document).ready(function ($) {
   }
 
   var $categorySelect = $('#edit-search-category');
-  var $searchBlock = $categorySelect.closest('.search-block');
+  var $geographicRegionSelect= $('#edit-geographic-region');
+  var $body = $('body');
 
   $categorySelect.select2({
       dropdownCssClass: 'edit-search-category-drop',
-      formatResult: format,
+      formatResult: categorySelectFormat,
       escapeMarkup: function(m) { return m; }
   });
 
-  $categorySelect
+  $geographicRegionSelect.select2({
+    dropdownCssClass: 'edit-geographic-region-drop',
+  });
+
+  $('.use-select-2')
     .on('select2-open', function(e) {
-      $searchBlock.addClass('select2-open');
+      $body.addClass('select2-open');
     })
     .on('select2-close', function(e) {
-      $searchBlock.removeClass('select2-open');
-    })
-    .on('select2-highlight', function(e) {
-      console.log(e);
-      // $(this).closest('.select2-result-with-children').addClass('select2-result-unselectable-active');
+      $body.removeClass('select2-open');
     });
 
 });
