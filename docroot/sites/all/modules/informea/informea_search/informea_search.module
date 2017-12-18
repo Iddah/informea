@@ -336,7 +336,7 @@ function informea_search_form($form, $form_state) {
       'label' => t('National Submissions'),
       'is_group_label' => true
     ),
-    'national_plan' => array(
+    'action_plan' => array(
       'label' => t('National Plans'),
       'is_group_label' => false
     ),
@@ -391,6 +391,9 @@ function informea_search_form($form, $form_state) {
     ),
   );
 
+  $current_category = _informea_search_get_current_category($viewName);
+  $search_category_options[$current_category]['selected'] = 'selected';
+
   return [
     '#id' => 'search-form',
     '#action' =>  url('prepare-search'),
@@ -408,7 +411,7 @@ function informea_search_form($form, $form_state) {
         'placeholder' => t('Search by keyword(s)'),
       ),
       '#attached' => array('libraries_load' => array(array('select2', $variant))),
-      '#category-options' => $action == 'search' ? $search_category_options : [],
+      '#category-options' => $search_category_options,
     ],
     'action' => [
       '#type' => 'hidden',
@@ -430,10 +433,104 @@ function informea_search_external_search() {
   drupal_goto('search/' . $input);
 }
 
+function _informea_search_get_current_category($viewName) {
+  switch ($viewName) {
+    case 'informea_search':
+      switch ($_GET['f']) {
+        case ['type:action_plan', 'type:national_report']:
+          return 'national_submissions';
+
+        case ['type:action_plan']:
+          return 'action_plan';
+
+        case ['type:national_report']:
+          return 'national_report';
+      }
+      break;
+
+    case 'informea_search_legislation':
+      return 'legislation';
+
+    case 'informea_search_court_decision':
+      return 'court_decisions';
+
+    case 'informea_search_publications':
+      switch ($_GET['f']) {
+        case ['type:document', 'field_document_type:2805', 'field_document_type:3159']:
+          return 'publication';
+
+        case ['type:document', 'field_document_type:3178']:
+          return 'manual';
+
+        case ['type:document', 'field_document_type:2817']:
+          return 'technical';
+      }
+      break;
+
+    case 'news':
+      return 'news';
+  }
+  return 'all';
+}
+
 function informea_search_prepare_search() {
-  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
-  $search_category = !empty($_GET['category']) ? check_plain($_GET['category']) : '';
   $options = [];
+  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
+  if (!empty($_GET['category'])) {
+    $search_category = check_plain($_GET['category']);
+    switch ($search_category) {
+      case 'decision':
+      case 'action_plan':
+      case 'national_report':
+        $action = 'search';
+        $options['query']['f'][] = "type:{$search_category}";
+        break;
+
+      case 'national_submissions':
+        $action = 'search';
+        $options['query']['f'][] = "type:national_report";
+        $options['query']['f'][] = "type:action_plan";
+        break;
+
+      case 'national_legislation_cases':
+      case 'legislation':
+        $action = 'search-legislation';
+        break;
+
+      case 'court_decisions':
+        $action = 'search-court-decisions';
+        break;
+
+      case 'documents_literature':
+        $action = 'search-publications';
+        break;
+
+      case 'publication':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2805";
+        $options['query']['f'][] = "field_document_type:3159";
+        break;
+
+      case 'manual':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:3178";
+        break;
+
+      case 'technical':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2817";
+        break;
+
+
+      case 'news':
+        $action = 'news';
+        break;
+
+    }
+  }
   if (!empty($_GET['search_api_views_fulltext'])) {
     $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
   }
