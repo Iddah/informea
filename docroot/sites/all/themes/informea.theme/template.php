@@ -498,12 +498,11 @@ function informea_theme_informea_search_form_wrapper($variables) {
 
   $output = '<div class="input-group">';
   $output .= $variables['element']['#children'];
-  #$output .= '<select name="category" class="use-select-2"><option>LONG OPTION</option></select>';
-  $output .= '<span class="edit-search-in">' . t('in:') . '</span>';
-  $output .= $category_select;
-//   $output .= <<<EOT
-//     <div>sth</div>
-// EOT;
+
+  if (!empty($category_select)) {
+    $output .= '<span class="edit-search-in">' . t('in:') . '</span>';
+    $output .= $category_select;
+  }
   $output .= '<span class="input-group-btn">';
   $output .= '<button type="submit" class="btn btn-default">';
   $output .= _bootstrap_icon('search');
