@@ -391,6 +391,9 @@ function informea_search_form($form, $form_state) {
     ),
   );
 
+  $current_category = _informea_search_get_current_category($viewName);
+  $search_category_options[$current_category]['selected'] = true;
+
   return [
     '#id' => 'search-form',
     '#action' =>  url('prepare-search'),
@@ -430,6 +433,46 @@ function informea_search_external_search() {
   drupal_goto('search/' . $input);
 }
 
+function _informea_search_get_current_category($viewName) {
+  switch ($viewName) {
+    case 'informea_search':
+      switch ($_GET['f']) {
+        case ['type:action_plan', 'type:national_report']:
+          return 'national_submissions';
+
+        case ['type:action_plan']:
+          return 'action_plan';
+
+        case ['type:national_report']:
+          return 'national_report';
+      }
+      break;
+
+    case 'informea_search_legislation':
+      return 'legislation';
+
+    case 'informea_search_court_decision':
+      return 'court_decisions';
+
+    case 'informea_search_publications':
+      switch ($_GET['f']) {
+        case ['type:document', 'field_document_type:2805', 'field_document_type:3159']:
+          return 'publication';
+
+        case ['type:document', 'field_document_type:3178']:
+          return 'manual';
+
+        case ['type:document', 'field_document_type:2817']:
+          return 'technical';
+      }
+      break;
+
+    case 'news':
+      return 'news';
+  }
+  return 'all';
+}
+
 function informea_search_prepare_search() {
   $options = [];
   $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
@@ -439,10 +482,12 @@ function informea_search_prepare_search() {
       case 'decision':
       case 'action_plan':
       case 'national_report':
+        $action = 'search';
         $options['query']['f'][] = "type:{$search_category}";
         break;
 
       case 'national_submissions':
+        $action = 'search';
         $options['query']['f'][] = "type:national_report";
         $options['query']['f'][] = "type:action_plan";
         break;
