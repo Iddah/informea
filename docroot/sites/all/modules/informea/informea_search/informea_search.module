@@ -325,7 +325,6 @@ function informea_search_form($form, $form_state) {
       $action = 'prepare-search';
   }
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
-  $variant = variable_get('select2_compression_type', 'minified');
   $search_category_options = array(
     'decision' => array(
       'label' => t('Decisions'),
@@ -407,7 +406,6 @@ function informea_search_form($form, $form_state) {
       '#attributes' => array(
         'placeholder' => t('Search by keyword(s)'),
       ),
-      '#attached' => array('libraries_load' => array(array('select2', $variant))),
       '#category-options' => $search_category_options,
     ],
     'actions' => [

@@ -28,6 +28,7 @@ function geographic_region_region_page_title_block_view() {
         '#select2' => [
           'width' => 'auto'
         ],
+        '#attached' => array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified')))),
       ];
     }
   }
