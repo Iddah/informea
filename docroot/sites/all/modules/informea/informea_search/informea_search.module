@@ -447,6 +447,7 @@ function informea_search_prepare_search() {
         $options['query']['f'][] = "type:action_plan";
         break;
 
+      case 'national_legislation_cases':
       case 'legislation':
         $action = 'search-legislation';
         break;
