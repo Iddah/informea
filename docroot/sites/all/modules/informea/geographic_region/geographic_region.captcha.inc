@@ -14,8 +14,8 @@ function geographic_region_captcha_default_points() {
   $captcha->disabled = FALSE; /* Edit this to true to make a default captcha disabled initially */
   $captcha->api_version = 1;
   $captcha->form_id = 'mailchimp_signup_subscribe_block_subscribe_to_newsletter_form';
-  $captcha->module = 'recaptcha';
-  $captcha->captcha_type = 'reCAPTCHA';
+  $captcha->module = 'image_captcha';
+  $captcha->captcha_type = 'Image';
   $export['mailchimp_signup_subscribe_block_subscribe_to_newsletter_form'] = $captcha;
 
   $captcha = new stdClass();
