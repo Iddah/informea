@@ -486,7 +486,7 @@ function informea_theme_informea_search_form_wrapper($variables) {
       $category_select .= sprintf('<option value="%s" data-optgroup="%s" selected="%s">%s</option>',
         check_plain($k),
         !empty($v['is_group_label']) ? check_plain($v['is_group_label']) : false,
-        !empty($v['selected']) ? check_plain($v['selected']) : '',
+        (isset($v['selected']) && $v['selected'] === true) ? 'selected' : '',
         check_plain($v['label']));
     }
     if($optgroup_open) {
