@@ -336,7 +336,7 @@ function informea_search_form($form, $form_state) {
       'label' => t('National Submissions'),
       'is_group_label' => true
     ),
-    'national_plan' => array(
+    'action_plan' => array(
       'label' => t('National Plans'),
       'is_group_label' => false
     ),
@@ -408,7 +408,7 @@ function informea_search_form($form, $form_state) {
         'placeholder' => t('Search by keyword(s)'),
       ),
       '#attached' => array('libraries_load' => array(array('select2', $variant))),
-      '#category-options' => $action == 'search' ? $search_category_options : [],
+      '#category-options' => $search_category_options,
     ],
     'action' => [
       '#type' => 'hidden',
@@ -431,9 +431,60 @@ function informea_search_external_search() {
 }
 
 function informea_search_prepare_search() {
-  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
-  $search_category = !empty($_GET['category']) ? check_plain($_GET['category']) : '';
   $options = [];
+  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
+  if (!empty($_GET['category'])) {
+    $search_category = check_plain($_GET['category']);
+    switch ($search_category) {
+      case 'decision':
+      case 'action_plan':
+      case 'national_report':
+        $options['query']['f'][] = "type:{$search_category}";
+        break;
+
+      case 'national_submissions':
+        $options['query']['f'][] = "type:national_report";
+        $options['query']['f'][] = "type:action_plan";
+        break;
+
+      case 'legislation':
+        $action = 'search-legislation';
+        break;
+
+      case 'court_decisions':
+        $action = 'search-court-decisions';
+        break;
+
+      case 'documents_literature':
+        $action = 'search-publications';
+        break;
+
+      case 'publication':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2805";
+        $options['query']['f'][] = "field_document_type:3159";
+        break;
+
+      case 'manual':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:3178";
+        break;
+
+      case 'technical':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2817";
+        break;
+
+
+      case 'news':
+        $action = 'news';
+        break;
+
+    }
+  }
   if (!empty($_GET['search_api_views_fulltext'])) {
     $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
   }
