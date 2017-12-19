@@ -10,6 +10,8 @@ function informea_social_media_links_iconset_info() {
     'publisher url' => 'https://www.informea.org/',
     'styles' => array(
       '32' => '32x32',
+      '48' => '48x48',
+      '64' => '64x64',
       '128' => '128x128',
     ),
     'path callback' => 'informea_social_media_links_path_informeasocialicons',
