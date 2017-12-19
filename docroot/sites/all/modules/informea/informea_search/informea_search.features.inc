@@ -60,6 +60,10 @@ function informea_search_default_search_api_index() {
         "body:summary" : { "type" : "text" },
         "body:value" : { "type" : "text" },
         "field_action_plan_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_contact_roles" : {
+          "type" : "list\\u003Cinteger\\u003E",
+          "entity_type" : "field_collection_item"
+        },
         "field_country" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_country_official_name" : { "type" : "text" },
         "field_data_source" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -67,6 +71,7 @@ function informea_search_default_search_api_index() {
         "field_informea_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_informea_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_informea_tags:name_field" : { "type" : "list\\u003Ctext\\u003E", "boost" : "2.0" },
+        "field_mea_topic" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_meeting" : { "type" : "integer", "entity_type" : "node" },
         "field_official_name" : { "type" : "text", "boost" : "2.0" },
         "field_official_publication" : { "type" : "text" },
