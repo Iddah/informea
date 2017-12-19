@@ -262,14 +262,23 @@
       font-weight: bold;
       padding: @topic-switcher-padding-top 18px @topic-switcher-padding-bottom;
       white-space: nowrap;
+      border: none;
+      border-left: 1px solid #D6D6D6;
+      border-right: 1px solid #D6D6D6;
+      margin-right: 0;
+    }
+    > li:not(.active) + li > a {
+      border-left: none;
+    }
+    > li.first > a {
+      @media (max-width: @screen-sm-max) {
+        border-left: none;
+      }
     }
     > li > a,
     > li > a:hover,
     > li > a:focus {
-      border: none;
-      border-left: 1px solid #D6D6D6;
       color: #1C1C1C;
-      margin-right: 0;
     }
     > li.active > a,
     > li.active > a:hover,
