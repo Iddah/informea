@@ -249,6 +249,10 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Sort criterion: Content: Official name (field_official_name) */
   $handler->display->display_options['sorts']['field_official_name_value']['id'] = 'field_official_name_value';
   $handler->display->display_options['sorts']['field_official_name_value']['table'] = 'field_data_field_official_name';
