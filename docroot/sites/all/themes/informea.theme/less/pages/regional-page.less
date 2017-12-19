@@ -357,10 +357,70 @@
 .regional-page-courses-panel-container {
   background-color: #FFCB33;
   padding: 2em 0;
+  position: relative;
+  .loop-mea-topics({
+    .topic-@{mea-topic-class} & {
+      position: relative;
+      background-color: @mea-topic-color;
+      &, & a { color: #fff; }
+    }
+    });
+  .col-xs-12 { position: static; }
   .explore a {
     &, &:hover, &:focus, &:active {
       background-color: @regional-page-dark-blue;
       color: #fff;
+    }
+  }
+  .view-learning-courses {
+    .view-empty:after {
+      background: #FFCB33;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .view-empty .explore {
+      color: @text-color;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .pager li>a, .pager li>span {
+    background-color: transparent;
+    border: none;
+  }
+  .pager-current {
+    padding: 0 .5em;
+  }
+}
+.view-learning-courses {
+  .views-bootstrap-grid-plugin-style {
+    .views-field-title {
+      margin-bottom: 1.5em;
+      margin-top: 1em;
+    }
+    .views-field-field-image {
+      background-color: #fff;
+      min-height: 150px;
+    }
+    @media (min-width: @screen-xs-min) and (max-width: @screen-md-max) {
+      .col {
+        float: left;
+        width: 50%;
+      }
+    }
+  }
+  .view-content {
+    margin-top: 3em;
+  }
+  .view-footer {
+    a {
+      color: #fff;
+      font-weight: 300;
+      letter-spacing: 1px;
     }
   }
 }

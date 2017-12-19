@@ -773,6 +773,34 @@ fieldset[disabled] a.explore a {
 .regional-page-courses-panel-container {
   background-color: #FFCB33;
   padding: 2em 0;
+  position: relative;
+}
+.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container {
+  position: relative;
+  background-color: #31a0ba;
+}
+.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container,
+.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container a {
+  color: #fff;
+}
+.topic-Chemicals-and-Wastes .regional-page-courses-panel-container {
+  position: relative;
+  background-color: #e03d0b;
+}
+.topic-Chemicals-and-Wastes .regional-page-courses-panel-container,
+.topic-Chemicals-and-Wastes .regional-page-courses-panel-container a {
+  color: #fff;
+}
+.topic-Biodiversity .regional-page-courses-panel-container {
+  position: relative;
+  background-color: #90bc2f;
+}
+.topic-Biodiversity .regional-page-courses-panel-container,
+.topic-Biodiversity .regional-page-courses-panel-container a {
+  color: #fff;
+}
+.regional-page-courses-panel-container .col-xs-12 {
+  position: static;
 }
 .regional-page-courses-panel-container .explore a,
 .regional-page-courses-panel-container .explore a:hover,
@@ -780,6 +808,50 @@ fieldset[disabled] a.explore a {
 .regional-page-courses-panel-container .explore a:active {
   background-color: #1B7DA7;
   color: #fff;
+}
+.regional-page-courses-panel-container .view-learning-courses .view-empty:after {
+  background: #FFCB33;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.regional-page-courses-panel-container .view-learning-courses .view-empty .explore {
+  color: #333333;
+  position: relative;
+  z-index: 1;
+}
+.regional-page-courses-panel-container .pager li > a,
+.regional-page-courses-panel-container .pager li > span {
+  background-color: transparent;
+  border: none;
+}
+.regional-page-courses-panel-container .pager-current {
+  padding: 0 .5em;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
+  margin-bottom: 1.5em;
+  margin-top: 1em;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
+  background-color: #fff;
+  min-height: 150px;
+}
+@media (min-width: 480px) and (max-width: 1199px) {
+  .view-learning-courses .views-bootstrap-grid-plugin-style .col {
+    float: left;
+    width: 50%;
+  }
+}
+.view-learning-courses .view-content {
+  margin-top: 3em;
+}
+.view-learning-courses .view-footer a {
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 .involvement {
   background-color: #1B7DA7;
