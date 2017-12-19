@@ -887,11 +887,10 @@
   display: -ms-flexbox;
   -js-display: flex;
   display: flex;
-  overflow-x: scroll;
 }
 [dir] .pane-geographic-region-region-switch-topic .nav-tabs {
   border: none;
-  margin-bottom: -15px;
+  margin-bottom: 0;
 }
 [dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs {
   margin-left: .5em;
