@@ -405,6 +405,10 @@
     .views-field-field-image {
       background-color: #fff;
       min-height: 150px;
+      div, a { display: flex; width: 100%; }
+      img {
+        object-fit: cover;
+      }
     }
     @media (min-width: @screen-xs-min) and (max-width: @screen-md-max) {
       .col {

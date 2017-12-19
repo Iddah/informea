@@ -1196,6 +1196,18 @@ fieldset[disabled] a.explore a {
 [dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
   background-color: #fff;
 }
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image div,
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  width: 100%;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 @media (min-width: 480px) and (max-width: 1199px) {
   .view-learning-courses .views-bootstrap-grid-plugin-style .col {
     width: 50%;
