@@ -2,6 +2,17 @@
 
 class EcolexLegislationMigration extends Migration {
 
+  protected function postImport() {
+    $current_page = variable_get('ecolex_legislation_current_page', 0);
+    variable_set('ecolex_legislation_current_page', $current_page + 1);
+    echo 'New page: ' . ($current_page + 1) . "\n";
+    echo '[' . date('H:i:s') . '] ___________________________________________________' . "\n\n\n";
+  }
+
+  protected function preImport() {
+    echo '[' . date('H:i:s') . '] ___________________________________________________' . "\n";
+  }
+
   public function __construct($arguments) {
     parent::__construct($arguments);
     $this->map = new MigrateSQLMap($this->machineName,
@@ -155,6 +166,7 @@ class EcolexLegislationMigration extends Migration {
       return false; // ignore already synced file
     }
 
+    $row->legAbstract = ODataMigrationUtil::fix_unicode_characters($row->legAbstract);
     $row->updatedDate = substr($row->updatedDate, 0, 10);
 
     if (!empty($row->legYear) && strlen($row->legYear) == 4) {
@@ -246,7 +258,7 @@ class EcolexLegislationMigration extends Migration {
     }
     else if (is_array($row->{$field_name})) {
       $tids = array();
-      foreach ($row->{$field_name} as $delta => $term_name) {
+      foreach ($row->{$field_name} as $term_name) {
         if ($term = taxonomy_get_term_by_name($term_name, $vocabulary)) {
           $tids[] = reset($term)->tid;
         }
@@ -286,7 +298,7 @@ class EcolexLegislationMigration extends Migration {
     }
     else if (is_array($row->{$field_name_base . '_en'})) {
       $tids = array();
-      foreach ($row->{$field_name_base . '_en'} as $delta => $term_name) {
+      foreach ($row->{$field_name_base . '_en'} as $term_name) {
         if ($term = taxonomy_get_term_by_name($term_name, $vocabulary)) {
           $tids[] = reset($term)->tid;
         }
@@ -317,8 +329,22 @@ class EcolexLegislationMigrateSource extends MigrateSource {
   public $pagination = 1000;
   protected $data = array();
 
+  public $per_migration_limit = 20000;
+  public $current_page = 0;
+  public $enable_partly_import = FALSE;
+
   public function __construct($source_url_pattern) {
     parent::__construct(array());
+    $this->enable_partly_import = variable_get('ecolex_legislation_enable_partly_import', FALSE);
+    echo "enable_partly_import = " . $this->enable_partly_import . "\n";
+    $this->per_migration_limit = variable_get('ecolex_legislation_migration_limit', 20000);
+    echo 'limit = ' . $this->per_migration_limit. "\n";
+    $pagination = variable_get('ecolex_legislation_pagination', 0);
+    if ($pagination) {
+      $this->pagination = $pagination;
+    }
+    echo 'pagination = ' . $this->pagination. "\n";
+
     //$this->url_pattern = $source_url_pattern; - because of cache
     $this->url_pattern = 'http://www.ecolex.org/export/?type=legislation&format=json'; // todo cache
     $this->check_modify_date = variable_get('ecolex_legislation_check_modify_date', FALSE);
@@ -376,6 +402,25 @@ class EcolexLegislationMigrateSource extends MigrateSource {
         $this->totalCount = $json->count;
       }
     }
+    if ($this->totalCount && $this->enable_partly_import && $this->totalCount > $this->per_migration_limit) {
+      echo 'total count = ' . $this->totalCount . "\n";
+      $this->current_page = variable_get('ecolex_legislation_current_page', 0);
+      $pages = ceil($this->totalCount / $this->per_migration_limit);
+      // reset loop check
+      if ($this->current_page >= $pages) {
+        $this->current_page = 0;
+      }
+
+      if ($this->per_migration_limit * ($this->current_page + 1) > $this->totalCount) {
+        $this->totalCount -= $this->per_migration_limit * $this->current_page;
+      } else {
+        $this->totalCount = $this->per_migration_limit;
+      }
+      echo 'limit = ' . $this->per_migration_limit. "\n";
+      echo 'pages = ' . $pages . "\n";
+      echo 'curr page = ' . $this->current_page . "\n";
+      echo 'rows per migration = ' . $this->totalCount . "\n";
+    }
     return $this->totalCount;
   }
 
@@ -420,7 +465,7 @@ class EcolexLegislationMigrateSource extends MigrateSource {
     }
     $this->found_rows = 0;
     if ($this->currentCount == $next_call_count && $next_call_count < $this->totalCount) {
-      $start = $this->currentPage * $this->pagination;
+      $start = $this->currentPage * $this->pagination + $this->per_migration_limit * $this->current_page;
 
       $destination = 'temporary://ecolex_legislation/' . $this->pagination . '-' . $start. '-' . $this->updated_after . '.json';
       file_prepare_directory(dirname($destination), FILE_CREATE_DIRECTORY);
@@ -439,7 +484,8 @@ class EcolexLegislationMigrateSource extends MigrateSource {
       }
       if ($str) {
         if ($json = json_decode($str)) {
-          $this->found_rows = count($json); // before filter
+          // Before filter.
+          $this->found_rows = count($json);
 
           $mig_data = [];
 
