@@ -135,11 +135,7 @@
 .search-block .select2-container {
   align-items: center;
   display: inline-flex;
-}
-@media (min-width: 768px) {
-  .search-block .select2-container {
-    width: auto !important;
-  }
+  width: auto !important;
 }
 .search-block select {
   -moz-appearance: none;
