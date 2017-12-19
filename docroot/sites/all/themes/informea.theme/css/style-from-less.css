@@ -26,6 +26,17 @@
 [dir] .page-regions .panels-flexible-row > .panels-flexible-row-inside:after, [dir] .page-regions .region-content > .block-block:after, [dir] .view-contacts-hubs:after {
   clear: both;
 }
+.back-to-top {
+  z-index: 1050;
+}
+[dir=ltr] .back-to-top {
+  -webkit-box-shadow: 1px 1px 3px;
+  box-shadow: 1px 1px 3px;
+}
+[dir=rtl] .back-to-top {
+  -webkit-box-shadow: -1px 1px 3px;
+          box-shadow: -1px 1px 3px;
+}
 [dir=ltr] .resizable-textarea .grippie {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
