@@ -66,7 +66,7 @@ function geographic_region_default_page_manager_pages() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => ' topic-%topic:name',
+    'body_classes_to_add' => ' topic-%topic:tid',
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
