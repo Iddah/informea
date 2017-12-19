@@ -85,6 +85,8 @@
       <?php print render($page['header']); ?>
     </header><!-- #page-header -->
   <?php endif; ?>
+</div>
+<div class="system-container container">
   <?php print $messages; ?>
   <?php if (!empty($tabs)): ?>
     <?php
