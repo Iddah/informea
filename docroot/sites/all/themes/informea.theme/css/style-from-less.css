@@ -805,8 +805,9 @@ fieldset[disabled] a.explore a {
   height: 50px;
 }
 @media (min-width: 768px) {
-  .region-involvement .form-item {
-    max-width: 300px;
+  .region-involvement .form-item,
+  .region-involvement .form-wrapper {
+    max-width: 350px;
   }
 }
 .region-involvement .btn {
