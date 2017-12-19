@@ -803,10 +803,14 @@ fieldset[disabled] a.explore a {
 }
 .region-involvement input {
   border-radius: 4px;
+}
+.region-involvement input,
+.region-involvement textarea {
   border: none;
 }
 @media (max-width: 767px) {
-  .region-involvement input {
+  .region-involvement input,
+  .region-involvement textarea {
     width: 100%;
   }
 }
@@ -852,7 +856,7 @@ fieldset[disabled] a.explore a {
     width: 100%;
   }
 }
-.region-involvement #block-block-23 + .block {
+.region-involvement #block-block-23 ~ .block {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 3em;
   padding-top: 2em;
@@ -885,8 +889,13 @@ fieldset[disabled] a.explore a {
   font-weight: normal;
   display: block;
 }
+.region-involvement #block-social-media-links-social-media-links > .block-title {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
 .region-involvement #block-mailchimp-signup-subscribe-to-newsletter > .block-title {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: normal;
   margin-bottom: 1em;
   text-transform: uppercase;
