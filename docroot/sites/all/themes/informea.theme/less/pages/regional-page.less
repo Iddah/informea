@@ -50,6 +50,9 @@
     }
     li {
       margin-left: .3rem;
+      // emulate disabled behaviour
+      color: #777;
+      cursor: not-allowed;
       + li {
         &:before {
           color: @regional-page-gray;
@@ -60,6 +63,7 @@
     }
     a {
       color: #0A8FC6;
+      cursor: pointer;
     }
   }
 

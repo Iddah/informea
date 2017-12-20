@@ -616,6 +616,12 @@
   margin-right: -4.8px;
   margin-right: -0.3rem;
 }
+.page-regions .views-field-treaty-links li {
+  color: #777;
+}
+[dir] .page-regions .views-field-treaty-links li {
+  cursor: not-allowed;
+}
 [dir=ltr] .page-regions .views-field-treaty-links li {
   margin-left: 4.8px;
   margin-left: .3rem;
@@ -638,6 +644,9 @@
 }
 .page-regions .views-field-treaty-links a {
   color: #0A8FC6;
+}
+[dir] .page-regions .views-field-treaty-links a {
+  cursor: pointer;
 }
 .page-regions .views-field-title {
   font-size: 18px;
