@@ -328,6 +328,7 @@ function country_node_view($node, $view_mode, $langcode) {
         if (is_object($view)) {
           $view->set_display('page_1');
           $view->set_arguments([$node->nid, NULL]);
+          $view->pre_execute();
           $view->execute();
           $node->content['context']['hub'] = [
             '#type' => 'markup',
