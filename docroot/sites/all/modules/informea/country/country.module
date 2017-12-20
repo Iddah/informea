@@ -328,8 +328,8 @@ function country_node_view($node, $view_mode, $langcode) {
         if (is_object($view)) {
           $wrapper = entity_metadata_wrapper('node', $node);
           $iso2l = $wrapper->field_country_iso2->value();
-          $view->set_display('page_1');
-          $view->set_arguments([$node->nid, NULL]);
+          $view->set_display('country_contacts_hub');
+          $view->set_arguments([$node->nid]);
           $view->override_url = 'countries/' . $iso2l . '/' . $context;
           $view->pre_execute();
           $view->execute();

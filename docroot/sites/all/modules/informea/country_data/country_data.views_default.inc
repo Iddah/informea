@@ -147,9 +147,94 @@ function country_data_views_default_views() {
     12 => 0,
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  /* Display: Country contacts hub */
+  $handler = $view->new_display('page', 'Country contacts hub', 'country_contacts_hub');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Content: Country */
+  $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['arguments']['field_country']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_country']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_country']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_country']['not'] = 0;
   $handler->display->display_options['path'] = 'countries/%/contacts-hub';
+
+  /* Display: Treaty contacts hub */
+  $handler = $view->new_display('page', 'Treaty contacts hub', 'treaty_contacts_hub');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['label'] = '';
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
+  /* Field: Indexed Content: Position */
+  $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
+  $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_position']['field'] = 'field_person_position';
+  $handler->display->display_options['fields']['field_person_position']['label'] = '';
+  $handler->display->display_options['fields']['field_person_position']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_person_position']['type'] = 'text_plain';
+  /* Field: Indexed Content: Institution */
+  $handler->display->display_options['fields']['field_person_institution']['id'] = 'field_person_institution';
+  $handler->display->display_options['fields']['field_person_institution']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_institution']['field'] = 'field_person_institution';
+  $handler->display->display_options['fields']['field_person_institution']['label'] = '';
+  $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Indexed Content: Topics */
+  $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mea_topic']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_mea_topic']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_mea_topic']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_mea_topic']['bypass_access'] = 0;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="contact-link>Save In Libarry</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'Full Contact Profile';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="contact-link>Related Contacts</div>';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Content: Treaty */
+  $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_treaty']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_treaty']['not'] = 0;
+  $handler->display->display_options['path'] = 'treaties/%/contacts-hub';
   $translatables['contacts_hub'] = array(
     t('Master'),
     t('Contacts Hub'),
@@ -171,7 +256,8 @@ function country_data_views_default_views() {
     t('Full Contact Profile'),
     t('<div class="contact-link>Related Contacts</div>'),
     t('All'),
-    t('Page'),
+    t('Country contacts hub'),
+    t('Treaty contacts hub'),
   );
   $export['contacts_hub'] = $view;
 
