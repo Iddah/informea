@@ -333,6 +333,9 @@
 [dir] .search-block .block-geographic-region .select2-container.select2-container-active {
   border-bottom: 1px solid;
 }
+.select2-drop-active {
+  overflow: hidden;
+}
 [dir] .select2-drop-active {
   border: 1px solid #fc3;
 }
@@ -899,6 +902,8 @@
   display: -ms-flexbox;
   -js-display: flex;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 [dir] .pane-geographic-region-region-switch-topic .nav-tabs {
   border: none;
