@@ -224,6 +224,12 @@ function informea_theme_theme() {
         'type' => NULL,
       ),
     ),
+    'informea_treaties_menu_block' => array(
+      'render element' => 'element',
+      'template' => 'templates/informea-treaties-menu-block',
+      'variables' => array('treaties' => array(),  'attributes' => array()),
+      'path' => drupal_get_path('theme', 'informea_theme'),
+    ),
   );
 }
 
@@ -710,4 +716,44 @@ function informea_theme_facetapi_link_inactive($variables) {
     unset($variables['count']);
   }
   return theme_facetapi_link_inactive($variables);
+}
+
+function informea_theme_treaties_menu_block() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'treaty')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_data_source', 'tid', '815')
+    ->fieldCondition('field_primary', 'value', TRUE);
+  $results = $query->execute();
+
+  $treaties = [];
+
+  foreach ($results['node'] as $result) {
+    $node = node_load($result->nid);
+    $treaty['logo_uri'] = $node->field_logo['en'][0]['uri'];
+    $treaty['url'] = '/node/' . $result->nid;
+
+    $regions = $node->field_region['und'];
+    $topics = $node->field_mea_topic['und'];
+
+    foreach ($regions as $region) {
+      $region_label = taxonomy_term_load($region['tid'])->name;
+      foreach ($topics as $topic) {
+        $topic_label = taxonomy_term_load($topic['tid'])->name;
+        $treaties[$region_label][$topic_label][$node->title] = $treaty;
+      }
+    }
+  }
+
+  return theme(
+    'informea_treaties_menu_block',
+    array(
+      'treaties' => $treaties,
+      'attributes' => array(
+        'id' => 'treaties-menu',
+      )
+    )
+  );
+
 }

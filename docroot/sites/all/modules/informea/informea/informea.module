@@ -181,6 +181,11 @@ function informea_block_info() {
       'status' => 1,
       'visibility' => BLOCK_VISIBILITY_LISTED,
     ),
+    'informea_treaties_block' => array(
+      'info' => t('Informea treaties menu'),
+      'cache' => DRUPAL_NO_CACHE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    ),
   );
 }
 
@@ -227,6 +232,11 @@ function informea_block_view($delta = '') {
 
     case 'informea_subscribe_updates':
       $block['content'] = drupal_get_form('informea_subscribe_updates_form');
+      break;
+
+    case 'informea_treaties_block':
+      $block['subject'] = NULL;
+      $block['content'] = informea_theme_treaties_menu_block();
       break;
   }
   return $block;
