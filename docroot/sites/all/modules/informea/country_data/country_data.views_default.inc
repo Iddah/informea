@@ -28,9 +28,11 @@ function country_data_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Header: Global: Result summary */
@@ -50,6 +52,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_treaty']['field'] = 'field_treaty';
   $handler->display->display_options['fields']['field_treaty']['label'] = '';
   $handler->display->display_options['fields']['field_treaty']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_treaty']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_treaty']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
