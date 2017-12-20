@@ -29,25 +29,25 @@ $regions = [
 <?php
 foreach ($topics as $topic) {
 
-  print '<li class="treaties-menu-topic dropdown"><a>' . t('Treaties in <b><i>' . $topic . '</i></b></a>');
+  print '<li class="treaties-menu-topic dropdown"><a class="treaties-menu-title">' . t('Treaties in <b><i>' . $topic . '</i></b></a>');
   print '<ul class="treaties-menu-list">';
 
-  print '<li><a>' . t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
-  print '<ul>';
+  print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+  print '<ul class="treaties-menu-inside-list">';
   if (!empty($treaties['Global'][$topic])) {
     foreach ($treaties['Global'][$topic] as $title => $treaty) {
-      print '<li><img src="' . file_create_url($treaty['logo_uri']) . '">' .  l(t($title), $treaty['url']) . '</li>';
+      print '<li class="treaties-menu-insite-list-item"><img src="' . file_create_url($treaty['logo_uri']) . '">' .  l(t($title), $treaty['url']) . '</li>';
     }
   }
   print '</ul>';
   print '</li>';
 
-  print '<li><a>' . t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
-  print '<ul>';
+  print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+  print '<ul class="treaties-menu-inside-list">';
   foreach ($regions as $region) {
     if ($region != 'Global' && !empty($treaties[$region][$topic])) {
       foreach ($treaties[$region][$topic] as $title => $treaty) {
-        print '<li><img src="' . file_create_url($treaty['logo_uri']) . '">' .  l(t($title), $treaty['url']) . '</li>';
+        print '<li class="treaties-menu-insite-list-item"><img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .  l(t($title), $treaty['url']) . '</li>';
       }
     }
   }
@@ -65,16 +65,16 @@ foreach ($topics as $topic) {
 <?php
 foreach ($regions as $region) {
   if (!empty($treaties[$region])) {
-    print '<li class="treaties-menu-topic dropdown"><a>' . t('Treaties in <b><i>' . $region . '</i></b></a>');
+    print '<li class="treaties-menu-topic dropdown"><a class="treaties-menu-title">' . t('Treaties in <b><i>' . $region . '</i></b></a>');
     print '<ul class="treaties-menu-list">';
 
     foreach ($topics as $topic) {
       if (!empty($treaties[$region][$topic])) {
-        print '<li><a>' . t('<b>TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
-        print '<ul>';
+        print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+        print '<ul class="treaties-menu-inside-list">';
 
         foreach ($treaties[$region][$topic] as $title => $treaty) {
-          print '<li><img src="' . file_create_url($treaty['logo_uri']) . '">' . l(t($title), $treaty['url']) . '</li>';
+          print '<li class="treaties-menu-insite-list-item"><img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '">' . l(t($title), $treaty['url']) . '</li>';
         }
 
         print '</ul>';
