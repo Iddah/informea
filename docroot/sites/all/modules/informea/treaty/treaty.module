@@ -330,7 +330,7 @@ function treaty_custom_view_node($node, $context) {
       $other_members = country_data_treaty_get_membership($node->nid, $other = TRUE);
       if (empty($members) && empty($other_members)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       if (count($members)) {
         // Add map with parties.
