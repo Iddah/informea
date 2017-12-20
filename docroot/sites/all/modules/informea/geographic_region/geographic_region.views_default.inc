@@ -360,6 +360,7 @@ function geographic_region_views_default_views() {
     'textformatter_class' => 'textformatter-list',
     'textformatter_term_plain' => 0,
   );
+  $handler->display->display_options['fields']['field_informea_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
   /* Field: Content: Treaty links */
   $handler->display->display_options['fields']['treaty_links']['id'] = 'treaty_links';
