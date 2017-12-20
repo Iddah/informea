@@ -10,10 +10,10 @@ $regions = $variables['regions'];
 foreach ($topics as $topic) {
   if (!empty($treaties['Global'][$topic]) || !empty($treaties['Regional'][$topic])) {
     print '<li class="treaties-menu-topic dropdown"><a class="treaties-menu-title">' . t('Treaties in <b><i>' . $topic . '</i></b></a>');
-    print '<ul class="treaties-menu-list">';
+    print '<ul class="treaties-menu-list dropdown-menu">';
 
     if (!empty($treaties['Global'][$topic])) {
-      print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+      print '<li class="treaties-menu-list-item dropdown"><a class="treaties-menu-heading">' . t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
       print '<ul class="treaties-menu-inside-list">';
 
       foreach ($treaties['Global'][$topic] as $title => $treaty) {
@@ -25,7 +25,7 @@ foreach ($topics as $topic) {
     }
 
     if (!empty($treaties['Regional'][$topic])) {
-      print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+      print '<li class="treaties-menu-list-item dropdown"><a class="treaties-menu-heading">' . t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
       print '<ul class="treaties-menu-inside-list">';
       foreach ($regions as $region) {
         if ($region != 'Global' && !empty($treaties[$region][$topic])) {
@@ -50,11 +50,11 @@ foreach ($topics as $topic) {
 foreach ($regions as $region) {
   if (!empty($treaties[$region])) {
     print '<li class="treaties-menu-topic dropdown"><a class="treaties-menu-title">' . t('Treaties in <b><i>' . $region . '</i></b></a>');
-    print '<ul class="treaties-menu-list">';
+    print '<ul class="treaties-menu-list dropdown-menu">';
 
     foreach ($topics as $topic) {
       if (!empty($treaties[$region][$topic])) {
-        print '<li class="treaties-menu-list-item"><a class="treaties-menu-heading">' . t('<b>TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
+        print '<li class="treaties-menu-list-item dropdown"><a class="treaties-menu-heading">' . t('<b>TREATIES</b> in <i>' . $topic . '</i></a>') . '</a>';
         print '<ul class="treaties-menu-inside-list">';
 
         foreach ($treaties[$region][$topic] as $title => $treaty) {
