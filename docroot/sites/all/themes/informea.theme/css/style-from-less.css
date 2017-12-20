@@ -727,8 +727,19 @@
 [dir] .page-regions .view-regional-treaties .view-empty {
   margin-top: 27px;
 }
-.page-regions .pane-view-global-treaties .views-field-title {
+.page-regions .pane-view-global-treaties .views-field-view-node {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2;
   font-weight: normal;
+}
+[dir] .page-regions .pane-view-global-treaties .views-field-view-node {
+  margin-bottom: .6em;
+  margin-top: 1.5em;
+}
+.page-regions .pane-view-global-treaties .views-field-view-node,
+.page-regions .pane-view-global-treaties .views-field-view-node a {
+  color: #1D7CA7;
 }
 .page-regions .views-field-field-informea-tags {
   color: #8F8F8F;
