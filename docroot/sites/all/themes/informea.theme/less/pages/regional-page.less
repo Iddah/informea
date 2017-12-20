@@ -45,16 +45,16 @@
       .list-unstyled();
       display: flex;
       flex-wrap: wrap;
-      margin-left: -.2em;
+      margin-left: -.3rem;
       margin-top: .5em;
     }
     li {
-      margin-left: .2em;
+      margin-left: .3rem;
       + li {
         &:before {
           color: @regional-page-gray;
           content: '|';
-          margin-right: .2em;
+          margin-right: .3rem;
         }
       }
     }
@@ -123,10 +123,10 @@
       display: inline-block;
       margin-bottom: 0;
     }
-    .views-field-field-event-type + .views-field { margin-left: .5em; }
+    .views-field-field-event-type + .views-field { margin-left: .5rem; }
     .views-field-field-mea-topic + .views-field-field-informea-tags {
       display: inline-block;
-      margin-left: .5em;
+      margin-left: .5rem;
     }
   }
 
@@ -143,14 +143,16 @@
 
   .views-field-field-informea-tags {
     color: @regional-page-gray;
+    display: inline;
     margin-top: .5em;
     > .views-label,
     > .field-content {
-      display: inline-block;
+      display: inline;
     }
   }
 
   .views-field-field-mea-topic {
+    display: inline;
     > .field-content {
       .loop-mea-topics({
         &.topic-@{mea-topic-class} {
