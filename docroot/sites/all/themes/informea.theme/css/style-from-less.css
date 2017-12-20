@@ -899,6 +899,8 @@
   display: -ms-flexbox;
   -js-display: flex;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 [dir] .pane-geographic-region-region-switch-topic .nav-tabs {
   border: none;
