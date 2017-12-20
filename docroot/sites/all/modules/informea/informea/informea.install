@@ -344,9 +344,16 @@ function informea_update_7018() {
 }
 
 /**
- * Task #279: Social icons block configuration
+ * Task #279: Display "Take Part" webform
  */
 function informea_update_7019() {
+  features_revert_module('geographic_region');
+}
+
+/**
+ * Task #279: Social icons block configuration
+ */
+function informea_update_7020() {
   variable_set('social_media_links_platforms', [
     'facebook' => [
       'platform_value' => 'informea.org',
