@@ -737,13 +737,13 @@
 .page-regions .views-field-field-informea-tags > .field-content {
   display: inline-block;
 }
-[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-Climate-Change-and-Atmosphere {
+[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-852 {
   background-color: #31a0ba;
 }
-[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-Chemicals-and-Wastes {
+[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-851 {
   background-color: #e03d0b;
 }
-[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-Biodiversity {
+[dir] .page-regions .views-field-field-mea-topic > .field-content.topic-850 {
   background-color: #90bc2f;
 }
 [dir] .page-regions .panel-separator {
@@ -1125,34 +1125,34 @@ fieldset[disabled] a.explore a {
   background-color: #FFCB33;
   padding: 2em 0;
 }
-.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container {
+.topic-852 .regional-page-courses-panel-container {
   position: relative;
 }
-[dir] .topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container {
+[dir] .topic-852 .regional-page-courses-panel-container {
   background-color: #31a0ba;
 }
-.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container,
-.topic-Climate-Change-and-Atmosphere .regional-page-courses-panel-container a {
+.topic-852 .regional-page-courses-panel-container,
+.topic-852 .regional-page-courses-panel-container a {
   color: #fff;
 }
-.topic-Chemicals-and-Wastes .regional-page-courses-panel-container {
+.topic-851 .regional-page-courses-panel-container {
   position: relative;
 }
-[dir] .topic-Chemicals-and-Wastes .regional-page-courses-panel-container {
+[dir] .topic-851 .regional-page-courses-panel-container {
   background-color: #e03d0b;
 }
-.topic-Chemicals-and-Wastes .regional-page-courses-panel-container,
-.topic-Chemicals-and-Wastes .regional-page-courses-panel-container a {
+.topic-851 .regional-page-courses-panel-container,
+.topic-851 .regional-page-courses-panel-container a {
   color: #fff;
 }
-.topic-Biodiversity .regional-page-courses-panel-container {
+.topic-850 .regional-page-courses-panel-container {
   position: relative;
 }
-[dir] .topic-Biodiversity .regional-page-courses-panel-container {
+[dir] .topic-850 .regional-page-courses-panel-container {
   background-color: #90bc2f;
 }
-.topic-Biodiversity .regional-page-courses-panel-container,
-.topic-Biodiversity .regional-page-courses-panel-container a {
+.topic-850 .regional-page-courses-panel-container,
+.topic-850 .regional-page-courses-panel-container a {
   color: #fff;
 }
 .regional-page-courses-panel-container .col-xs-12 {
