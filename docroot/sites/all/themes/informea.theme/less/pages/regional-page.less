@@ -164,7 +164,7 @@
   }
 }
 // Contact hub
-.view-contacts-hubs {
+.view-contacts-hubs.view-display-id-block {
   .row();
   .views-field-title {
     margin: 0;
@@ -187,20 +187,21 @@
       }
     }
   }
-}
-.views-field-field-country-iso2 {
-  flex: 0 0 1.3em;
-  width: 1.3em;
-  .img-thumbnail {
-    border-radius: 0;
-    border: 0;
-    max-width: 100%;
-    padding: 0;
+  .views-field-field-country-iso2 {
+    flex: 0 0 1.3em;
+    width: 1.3em;
+    .img-thumbnail {
+      border-radius: 0;
+      border: 0;
+      max-width: 100%;
+      padding: 0;
+    }
+    + .views-field {
+      margin-left: .5em;
+    }
   }
-  + .views-field {
-    margin-left: .5em;
-  }
 }
+
 
 // 'Treaties and MEAs'
 .regional-page-panels-title h2 {
