@@ -43,7 +43,8 @@
         <li class="dropdown dropdown-full-width">
           <?php print l(t('Treaties') . ' <span class="caret"></span>', 'treaties', array('attributes' => array('class' => array('dropdown-toggle'), 'id' => 'treaties-menu-link'), 'absolute' => TRUE, 'html' => TRUE)); ?>
             <?php $block = block_load('informea', 'informea_treaties_block');
-            $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+            $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+            $output = drupal_render($block_array);
             print $output; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
