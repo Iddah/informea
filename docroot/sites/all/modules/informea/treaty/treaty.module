@@ -265,7 +265,7 @@ function treaty_custom_view_node($node, $context) {
       $data = treaty_get_child_protocols($node->nid);
       if (empty($data)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       $node->content['context'] = array(
         '#type' => 'item', '#weight' => 10, '#markup' => theme('treaty_protocols', array('protocols' => $data)),
@@ -277,7 +277,7 @@ function treaty_custom_view_node($node, $context) {
       $data = decision_get_treaty_decisions_group_by_meeting($node->nid);
       if (empty($data)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       drupal_add_library('informea', 'scrollto');
       if ($odata_identifier != 'cites') {
@@ -855,7 +855,6 @@ function treaty_views_pre_render(&$view) {
     $view->regions = $regions;
   }
 }
-
 
 function treaty_get_odata_identifier($treaty) {
   if(is_object($treaty)) {
