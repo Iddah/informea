@@ -856,7 +856,6 @@ function treaty_views_pre_render(&$view) {
   }
 }
 
-
 function treaty_get_odata_identifier($treaty) {
   if(is_object($treaty)) {
     $id = $treaty->nid;
