@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * This template is used to print a single field in a view.
+ *
+ * It is not actually used in default Views, as this is registered as a theme
+ * function which has better performance. For single overrides, the template is
+ * perfectly okay.
+ *
+ * Variables available:
+ * - $view: The view object
+ * - $field: The field handler object that can process the input
+ * - $row: The raw SQL result that can be used
+ * - $output: The processed output that will normally be used.
+ *
+ * When fetching output from the $row, this construct should be used:
+ * $data = $row->{$field->field_alias}
+ *
+ * The above will guarantee that you'll always get the correct data,
+ * regardless of any changes in the aliasing that might happen if
+ * the view is modified.
+ */
+?>
+<?php
+
+if (!empty($row->{'_entity_properties'}[$field->field_alias])) {
+  print '<ul>';
+  foreach ($row->{'_entity_properties'}[$field->field_alias] as $nid) {
+    print '<li>';
+    $country = node_load($nid);
+    if (!empty($country->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
+      $iso2 = $country->field_country_iso2[LANGUAGE_NONE][0]['value'];
+      $img = theme('image', array(
+        'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($iso2) . '.png',
+        'attributes' => array('class' => array('img-thumbnail'))
+      ));
+      print $img;
+
+    }
+    $title = field_view_field('node', $country, 'title_field', [
+      'label' => 'hidden',
+    ]);
+    print render($title);
+    print '</li>';
+  }
+  print '</ul>';
+}
+else {
+  print $output;
+}
+?>

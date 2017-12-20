@@ -137,6 +137,7 @@ function _treaty_url_get_custom_node_view_types() {
     'national-reports',
     'action-plans',
     'documents',
+    'contacts-hub'
   );
 }
 
@@ -435,6 +436,20 @@ function treaty_custom_view_node($node, $context) {
       }
       $node->content['context'] = country_deliverable_render_action_plans($rows);
       break;
+
+    case 'contacts-hub':
+      $view = views_get_view('contacts_hub');
+      if (is_object($view)) {
+        $view->set_display('treaty_contacts_hub');
+        $view->set_arguments([$node->nid]);
+        $view->pre_execute();
+        $view->execute();
+        $node->content['context']['hub'] = [
+          '#type' => 'markup',
+          '#markup' => $view->render(),
+        ];
+      }
+      break;
   }
 
   return $node->content;
@@ -701,6 +716,9 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
         'title' => t('Documents'),
         'count' => $doc_count > 0 ? $doc_count : t('n/a'),
         'disabled' => $doc_count <= 0,
+      ),
+      'contacts-hub' => array(
+        'title' => t('Contacts HUB'),
       ),
     );
 
