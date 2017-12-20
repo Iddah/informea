@@ -227,7 +227,7 @@ function informea_theme_theme() {
     'informea_treaties_menu_block' => array(
       'render element' => 'element',
       'template' => 'templates/informea-treaties-menu-block',
-      'variables' => array('treaties' => array(),  'attributes' => array()),
+      'variables' => array('treaties' => array(), 'topics' => array(), 'regions' => array()),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
   );
@@ -728,6 +728,8 @@ function informea_theme_treaties_menu_block() {
   $results = $query->execute();
 
   $treaties = [];
+  $topics_list = [];
+  $regions_list = [];
 
   foreach ($results['node'] as $result) {
     $node = node_load($result->nid);
@@ -739,9 +741,18 @@ function informea_theme_treaties_menu_block() {
 
     foreach ($regions as $region) {
       $region_label = taxonomy_term_load($region['tid'])->name;
+      if (!in_array($region_label, $regions_list)) {
+        $regions_list[] = $region_label;
+      }
       foreach ($topics as $topic) {
         $topic_label = taxonomy_term_load($topic['tid'])->name;
+        if (!in_array($topic_label, $topics_list)) {
+          $topics_list[] = $topic_label;
+        }
         $treaties[$region_label][$topic_label][$node->title] = $treaty;
+        if ($region_label != 'Global') {
+          $treaties['Regional'][$topic_label]['show'] = 1;
+        }
       }
     }
   }
@@ -749,10 +760,9 @@ function informea_theme_treaties_menu_block() {
   return theme(
     'informea_treaties_menu_block',
     array(
+      'regions' => $regions_list,
+      'topics' => $topics_list,
       'treaties' => $treaties,
-      'attributes' => array(
-        'id' => 'treaties-menu',
-      )
     )
   );
 
