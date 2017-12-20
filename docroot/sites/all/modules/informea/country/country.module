@@ -322,6 +322,19 @@ function country_node_view($node, $view_mode, $langcode) {
           '#type' => 'item', '#weight' => 10, '#markup' => theme('table', $table)
         );
         break;
+
+      case 'contacts-hub':
+        $view = views_get_view('contacts_hub');
+        if (is_object($view)) {
+          $view->set_display('page_1');
+          $view->set_arguments([$node->nid, NULL]);
+          $view->execute();
+          $node->content['context']['hub'] = [
+            '#type' => 'markup',
+            '#markup' => $view->render(),
+          ];
+        }
+        break;
     }
     informea_theme_set_page_breadcrumb($breadcrumbs);
   }
@@ -352,6 +365,7 @@ function country_page_alter(&$page) {
           case 'map':
           case 'national-reports':
           case 'parties':
+          case 'contacts-hub':
             foreach(element_children($node) as $element_id) {
               hide($node[$element_id]);
             }
@@ -397,6 +411,9 @@ function country_country_contextual_menu_alter(&$contextual_menu, $node) {
       'court-decisions' => array(
         'title' => t('Court Decisions'),
         'count' => country_get_court_decision_count($node->nid)
+      ),
+      'contacts-hub' => array(
+        'title' => t('Contacts HUB'),
       ),
       'summary' => array(
         'title' => t('Summary'),
@@ -473,46 +490,6 @@ function country_get_stats() {
   }
   return $stats;
 }
-
-//function country_level1_page() {
-//  edw_amcharts_add_map('high');
-//  // Format stats for balloon
-//
-//  $stats = country_get_stats();
-//  $html_stats = array();
-//  foreach ($stats as $iso2 => $stat) {
-//    $arr = array();
-//    if ($stat['geographical_site']) {
-//      $arr[] = t('!count WHC and Ramsar sites', array('!count' => $stat['geographical_site']));
-//    }
-//    if ($stat['action_plan']) {
-//      $arr[] = t('!count action plans', array('!count' => $stat['action_plan']));
-//    }
-//    if ($stat['national_report']) {
-//      $arr[] = t('!count national reports', array('!count' => $stat['national_report']));
-//    }
-//    $w = entity_metadata_wrapper('node', $stat['nid']);
-//    $label = $w->label();
-//    if ($iso2 == 'GL') {
-//      $label = t('Denmark');
-//    }
-//    if ($iso2 == 'TW') {
-//      $label = t('China');
-//    }
-//    $html_stats[$iso2] = sprintf('<strong>%s</strong><br>%s', $label, implode(', ', $arr));
-//  }
-//  drupal_add_js(array('country' => array('stats' => $html_stats)), array('type' => 'setting'));
-//  drupal_add_js(drupal_get_path('module', 'country') . '/js/countries.js');
-//  drupal_add_js(drupal_get_path('module', 'country') . '/js/country.js');
-//  $ret = array(
-//    'map' => array(
-//      '#type' => 'item',
-//      '#markup' => '<div id="ammap_div" style="width: 100%; height: 600px"></div>',
-//    )
-//  );
-//  return $ret;
-//}
-
 
 /**
  * Implements hook_views_query_alter().

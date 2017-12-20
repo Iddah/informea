@@ -28,6 +28,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -93,6 +94,22 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="contact-link>Related Contacts</div>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Contextual filter: Indexed Content: Country */
+  $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['arguments']['field_country']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_country']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_country']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_country']['not'] = 0;
+  /* Contextual filter: Indexed Content: Treaty */
+  $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_treaty']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_treaty']['not'] = 0;
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -124,7 +141,7 @@ function country_data_views_default_views() {
   );
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'page_1');
   $handler->display->display_options['path'] = 'countries/%/contacts-hub';
   $translatables['contacts_hub'] = array(
     t('Master'),
@@ -145,6 +162,7 @@ function country_data_views_default_views() {
     t('<div class="contact-link>Save In Libarry</div>'),
     t('Full Contact Profile'),
     t('<div class="contact-link>Related Contacts</div>'),
+    t('All'),
     t('Page'),
   );
   $export['contacts_hub'] = $view;
@@ -245,28 +263,28 @@ function country_data_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-      'min' => '',
-      'max' => '',
-      'value' => '',
-      'contact_person' => 'contact_person',
-    );
+    'min' => '',
+    'max' => '',
+    'value' => '',
+    'contact_person' => 'contact_person',
+  );
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['contacts_hubs'] = array(
-      t('Master'),
-      t('Contacts Hub'),
-      t('more'),
-      t('Apply'),
-      t('Reset'),
-      t('Sort by'),
-      t('Asc'),
-      t('Desc'),
-      t('Content entity referenced from field_treaty'),
-      t('Content entity referenced from field_country'),
-      t('All'),
-      t('Block'),
-    );
+    t('Master'),
+    t('Contacts Hub'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Content entity referenced from field_treaty'),
+    t('Content entity referenced from field_country'),
+    t('All'),
+    t('Block'),
+  );
   $export['contacts_hubs'] = $view;
 
   return $export;
