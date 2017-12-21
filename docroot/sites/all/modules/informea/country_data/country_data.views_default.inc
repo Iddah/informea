@@ -35,6 +35,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
@@ -70,11 +71,23 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '<div class="separator"></div>';
+  $handler->display->display_options['fields']['nothing_2']['element_type'] = '0';
+  $handler->display->display_options['fields']['nothing_2']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_2']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['nothing_2']['element_default_classes'] = FALSE;
   /* Field: Indexed Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mea_topic']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_mea_topic']['link_to_entity'] = 0;
@@ -85,7 +98,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="contact-link>Save In Libarry</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<span class="contact-link>Save In Library</span>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
@@ -99,7 +112,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="contact-link>Related Contacts</div>';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<span class="contact-link>Related Contacts</span>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Contextual filter: Indexed Content: Country */
   $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
@@ -194,6 +207,16 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '<div class="separator"></div>';
+  $handler->display->display_options['fields']['nothing_2']['element_type'] = '0';
+  $handler->display->display_options['fields']['nothing_2']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_2']['element_wrapper_type'] = '0';
   /* Field: Indexed Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -209,7 +232,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="contact-link>Save In Libarry</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<span class="contact-link>Save In Library</span>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
@@ -223,7 +246,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="contact-link>Related Contacts</div>';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<span class="contact-link>Related Contacts</span>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Treaty */
@@ -252,9 +275,10 @@ function country_data_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Displaying @start - @end of @total'),
-    t('<div class="contact-link>Save In Libarry</div>'),
+    t('<div class="separator"></div>'),
+    t('<span class="contact-link>Save In Library</span>'),
     t('Full Contact Profile'),
-    t('<div class="contact-link>Related Contacts</div>'),
+    t('<span class="contact-link>Related Contacts</span>'),
     t('All'),
     t('Country contacts hub'),
     t('Treaty contacts hub'),

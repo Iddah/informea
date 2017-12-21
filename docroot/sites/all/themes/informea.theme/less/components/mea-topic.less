@@ -1,0 +1,19 @@
+.views-field-field-mea-topic {
+  display: inline;
+  > .field-content {
+    background-color: #DADADA;
+    color: #fff;
+    display: inline-block;
+    font-weight: 300;
+    min-width: 6em;
+    padding: .2em .4em .1em;
+    text-align: center;
+  }
+  > .field-content {
+    .loop-mea-topics({
+      &.topic-@{mea-topic-class} {
+        background-color: @mea-topic-color;
+      }
+    });
+  }
+}
