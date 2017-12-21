@@ -730,7 +730,7 @@
     margin-right: .5rem;
   }
   .page-regions .views-field-field-mea-topic + .views-field-field-informea-tags {
-    display: inline-block;
+    display: inline;
   }
   [dir=ltr] .page-regions .views-field-field-mea-topic + .views-field-field-informea-tags {
     margin-left: .5rem;
