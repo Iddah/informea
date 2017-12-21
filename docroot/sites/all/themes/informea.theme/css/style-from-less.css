@@ -622,6 +622,15 @@
   border: none;
   padding: 0;
 }
+[dir=ltr] .view-contacts-hub .views-field-field-treaty .img-thumbnail + .field, [dir=ltr] .view-contacts-hub .views-field-field-country .img-thumbnail + .field {
+  margin-left: .3em;
+}
+[dir=rtl] .view-contacts-hub .views-field-field-treaty .img-thumbnail + .field, [dir=rtl] .view-contacts-hub .views-field-field-country .img-thumbnail + .field {
+  margin-right: .3em;
+}
+.view-contacts-hub .views-field-field-country img {
+  max-height: 1.5em;
+}
 [dir=ltr] .view-contacts-hub .views-field-field-mea-topic + .views-field {
   margin-left: 8px;
   margin-left: .5rem;
