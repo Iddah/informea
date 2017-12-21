@@ -5,7 +5,7 @@ $topics = $variables['topics'];
 $regions = $variables['regions'];
 
 ?>
-<ul class="dropdown-menu">
+<ul class="treaties-menu dropdown-menu">
 <?php
 foreach ($topics as $topic) {
   if (!empty($treaties['Global'][$topic]) || !empty($treaties['Regional'][$topic])) {
