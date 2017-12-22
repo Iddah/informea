@@ -102,6 +102,15 @@ function treaty_get_treaties() {
   return array();
 }
 
+function treaty_get_url_by_odata_name($odata_name) {
+  $menu_object = menu_get_object();
+  $path = 'treaties/' . check_plain($odata_name);
+  if (isset($menu_object->context)) {
+    $path .= '/' . $menu_object->context;
+  }
+  return url($path, array('absolute' => TRUE));
+}
+
 function treaty_get_treaties_as_select_options() {
   $ret = array();
   $query = new EntityFieldQuery();
@@ -120,7 +129,7 @@ function treaty_get_treaties_as_select_options() {
     foreach ($rows as $nid => $node) {
       $label = field_get_items('node', $node, 'title_field');
       $label = isset($label[0]['value']) ? $label[0]['value'] : $node->title;
-      $path = 'treaties/' . $node->field_odata_identifier[LANGUAGE_NONE][0]['value'];
+      $path = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
       if (!empty($menu_object->context)) {
         switch ($menu_object->context) {
           case 'text':
@@ -149,7 +158,7 @@ function treaty_get_treaties_as_select_options() {
           $path .= '/' . $menu_object->context;
         }
       }
-      $ret[url($path, array('absolute' => TRUE))] = $label;
+      $ret[$path] = $label;
     }
   }
   return $ret;

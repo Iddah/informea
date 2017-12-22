@@ -257,6 +257,15 @@ function country_get_countries() {
   return array();
 }
 
+function country_get_url_by_iso2($iso2) {
+  $menu_object = menu_get_object();
+  $path = 'countries/' . check_plain($iso2);
+  if (isset($menu_object->context)) {
+    $path .= '/' . $menu_object->context;
+  }
+  return url($path, array('absolute' => TRUE));
+}
+
 function country_get_countries_select_options() {
   $ret = array();
   $query = new EntityFieldQuery();
@@ -269,15 +278,11 @@ function country_get_countries_select_options() {
     $fields = field_info_instances('node', 'country');
     field_attach_load('node', $rows, FIELD_LOAD_CURRENT, array('field_id' => $fields['field_country_iso2']['field_id']));
     field_attach_load('node', $rows, FIELD_LOAD_CURRENT, array('field_id' => $fields['title_field']['field_id']));
-    $menu_object = menu_get_object();
     foreach ($rows as $nid => $node) {
       $label = field_get_items('node', $node, 'title_field');
       $label = isset($label[0]['value']) ? $label[0]['value'] : $node->title;
-      $path = 'countries/' . $node->field_country_iso2[LANGUAGE_NONE][0]['value'];
-      if (isset($menu_object->context)) {
-        $path .= '/' . $menu_object->context;
-      }
-      $ret[url($path, array('absolute' => TRUE))] = $label;
+      $path = country_get_url_by_iso2($node->field_country_iso2[LANGUAGE_NONE][0]['value']);
+      $ret[$path] = $label;
     }
   }
   return $ret;

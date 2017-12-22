@@ -83,13 +83,15 @@ function informea_theme_preprocess_page(&$variables) {
       case 'country':
         $countries = country_get_countries_select_options();
         $countries1 = $countries;
-        array_unshift($countries1, t('View another party'));
+        // array_unshift($countries1, t('View another party'));
         $variables['content_column_class'] = ' class="col-sm-9"';
         $variables['countries'] = $countries;
+
         $variables['select-switch-countries'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'country-switcher')),
+          '#attributes' => array('class' => array('form-control', 'node-switcher', 'country-switcher', 'use-select-2'), 'id'=> 'country-switcher'),
           '#options' => $countries1,
-          '#type' => 'select'
+          '#type' => 'select',
+          '#value' => country_get_url_by_iso2($node->field_country_iso2[LANGUAGE_NONE][0]['value'])
         );
         array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         break;
@@ -102,11 +104,12 @@ function informea_theme_preprocess_page(&$variables) {
         $treaties = treaty_get_treaties_as_select_options();
         $variables['treaties'] = $treaties;
         $treaties1 = $treaties;
-        array_unshift($treaties1, t('View another treaty'));
+        // array_unshift($treaties1, t('View another treaty'));
         $variables['select-switch-treaties'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher')),
+          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
           '#options' => $treaties1,
-          '#type' => 'select'
+          '#type' => 'select',
+          '#value' => treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value'])
         );
         break;
 
