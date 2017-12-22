@@ -535,8 +535,8 @@
   color: #8F8F8F;
 }
 [dir] .view-contacts-hub .views-field {
-  margin-top: 3.2px;
-  margin-top: .2rem;
+  margin-top: 8px;
+  margin-top: .5rem;
 }
 .view-contacts-hub .views-field,
 .view-contacts-hub .views-field * {
