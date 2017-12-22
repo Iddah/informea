@@ -245,91 +245,6 @@
 [dir=rtl] .search-block #search-form select .select2-arrow, [dir=rtl] .search-block #search-form .select2-container .select2-arrow {
   padding-right: 0;
 }
-.search-block .select2-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  -js-display: inline-flex;
-  display: inline-flex;
-}
-[dir=ltr] .search-block .select2-container {
-  width: auto !important;
-}
-[dir=rtl] .search-block .select2-container {
-  width: auto !important;
-}
-.search-block select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-box-shadow: none;
-  color: inherit;
-}
-[dir] .search-block select {
-  background: transparent;
-  border: none;
-          box-shadow: none;
-}
-.search-block select::-ms-expand {
-  display: none;
-}
-.search-block .select2-choice {
-  -webkit-box-shadow: none;
-  color: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-}
-[dir] .search-block .select2-choice {
-  background: transparent;
-  border: none;
-          box-shadow: none;
-}
-[dir=ltr] .search-block .select2-choice > .select2-chosen {
-  margin-right: 0;
-}
-[dir=rtl] .search-block .select2-choice > .select2-chosen {
-  margin-left: 0;
-}
-.search-block .select2-choice .select2-arrow {
-  -webkit-box-shadow: none;
-  position: static;
-  width: auto;
-}
-[dir] .search-block .select2-choice .select2-arrow {
-  background: none;
-  border: none;
-          box-shadow: none;
-  padding: 0 .3em;
-}
-.search-block .select2-choice .select2-arrow b {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-}
-[dir] .search-block .select2-choice .select2-arrow b {
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  background: none;
-  border-top: .4em dashed;
-}
-[dir=ltr] .search-block .select2-choice .select2-arrow b {
-  margin-left: 2px;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  border-right: .4em solid transparent;
-  border-left: .4em solid transparent;
-}
-[dir=rtl] .search-block .select2-choice .select2-arrow b {
-  margin-right: 2px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-left: .4em solid transparent;
-  border-right: .4em solid transparent;
-}
 .block-informea-search {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
@@ -367,6 +282,94 @@
 }
 [dir] .search-block .block-geographic-region .select2-container.select2-container-active {
   border-bottom: 1px solid;
+}
+.use-select-2 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  color: inherit;
+}
+[dir] .use-select-2 {
+  background: transparent;
+  border: none;
+          box-shadow: none;
+}
+.use-select-2::-ms-expand {
+  display: none;
+}
+.select2-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -js-display: inline-flex;
+  display: inline-flex;
+}
+[dir=ltr] .select2-container {
+  width: auto !important;
+}
+[dir=rtl] .select2-container {
+  width: auto !important;
+}
+.select2-container .select2-choice {
+  -webkit-box-shadow: none;
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] .select2-container .select2-choice {
+  background: transparent;
+  border: none;
+          box-shadow: none;
+}
+[dir=ltr] .select2-container .select2-choice > .select2-chosen {
+  margin-right: 0;
+}
+[dir=rtl] .select2-container .select2-choice > .select2-chosen {
+  margin-left: 0;
+}
+.select2-container .select2-choice .select2-arrow {
+  -webkit-box-shadow: none;
+  position: static;
+  width: auto;
+}
+[dir] .select2-container .select2-choice .select2-arrow {
+  background: none;
+  border: none;
+          box-shadow: none;
+  padding: 0 .3em;
+}
+.select2-container .select2-choice .select2-arrow b {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+}
+[dir] .select2-container .select2-choice .select2-arrow b {
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  background: none;
+  border-top: .4em dashed;
+}
+[dir=ltr] .select2-container .select2-choice .select2-arrow b {
+  margin-left: 2px;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: .4em solid transparent;
+  border-left: .4em solid transparent;
+}
+[dir=rtl] .select2-container .select2-choice .select2-arrow b {
+  margin-right: 2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-left: .4em solid transparent;
+  border-right: .4em solid transparent;
+}
+[dir] .select2-drop-auto-width .select2-search {
+  padding-bottom: 4px;
 }
 .select2-drop-active {
   overflow: hidden;
@@ -524,6 +527,21 @@
 .select2-open {
   overflow: hidden;
 }
+.node-header-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.node-header-container .select-switcher-form {
+  overflow: hidden;
+}
+[dir] .node-header-container .form-group {
+  margin-bottom: 0;
+}
 [dir] .view-contacts-hub .views-row {
   padding-bottom: 1.5em;
   padding-top: 1.5em;
@@ -657,6 +675,27 @@
 }
 [dir] .view-contacts-hub .views-field-nothing a, [dir] .view-contacts-hub .views-field-view-node a, [dir] .view-contacts-hub .views-field-nothing-1 a {
   cursor: pointer;
+}
+.treaty-switcher,
+.country-switcher,
+#s2id_treaty-switcher .select2-choice,
+#s2id_country-switcher .select2-choice {
+  font-size: 2.2em;
+  height: auto;
+  font-weight: 500;
+}
+#s2id_country-switcher .select2-choice,
+#s2id_treaty-switcher .select2-choice {
+  line-height: 1.42857143;
+}
+#s2id_country-switcher .select2-choice > .select2-chosen,
+#s2id_treaty-switcher .select2-choice > .select2-chosen {
+  font-size: inherit;
+  font-weight: 500;
+}
+#s2id_country-switcher .select2-arrow,
+#s2id_treaty-switcher .select2-arrow {
+  color: #fc3;
 }
 .page-regions .panels-flexible-row {
   width: 100%;

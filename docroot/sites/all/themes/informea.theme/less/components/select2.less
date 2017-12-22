@@ -1,4 +1,48 @@
 // General select2 styling
+.use-select-2 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &::-ms-expand {
+    display: none;
+  }
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+}
+.select2-container {
+  align-items: center;
+  display: inline-flex;
+  width: auto !important;
+  .select2-choice {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+    display: flex;
+     > .select2-chosen {
+      margin-right: 0;
+     }
+    .select2-arrow {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0 .3em;
+      position: static;
+      width: auto;
+    }
+    .select2-arrow b {
+      .caret();
+      background: none;
+      border-top: .4em dashed;
+      border-right: .4em solid transparent;
+      border-left: .4em solid transparent;
+    }
+  }
+}
+.select2-drop-auto-width .select2-search {
+  padding-bottom: 4px;
+}
 .select2-drop-active {
   border: 1px solid #fc3;
   overflow: hidden;
