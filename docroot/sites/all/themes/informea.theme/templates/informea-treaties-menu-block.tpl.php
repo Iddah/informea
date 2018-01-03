@@ -12,15 +12,15 @@ $regions = $variables['regions'];
       </a>
       <ul class="treaties-menu-list dropdown-menu">
         <?php if (!empty($treaties['Global'])): ?>
-          <li class="treaties-menu-list-item dropdown"><a class="treaties-menu-heading">
-              <?php print t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i>'); ?>
-            </a>
-            <ul class="treaties-menu-inside-list">
-
+          <li class="treaties-menu-heading dropdown-header">
+            <?php print t('<b>GLOBAL TREATIES</b> in <i>' . $topic . '</i>'); ?>
+          </li>
+          <li class="treaties-menu-list-item dropdown">
+            <ul class="treaties-menu-inside-list list-unstyled">
               <?php foreach ($treaties['Global'] as $title => $treaty): ?>
                 <?php if (in_array($topic, $treaty['topics'])): ?>
-                  <li class="treaties-menu-insite-list-item">
-                    <?php print '<img src="' . file_create_url($treaty['logo_uri']) . '">' . l(t($title), $treaty['url']); ?>
+                  <li class="treaties-menu-inside-list-item">
+                    <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
                   </li>
                 <?php endif ?>
               <?php endforeach; ?>
@@ -29,21 +29,16 @@ $regions = $variables['regions'];
         <?php endif ?>
 
         <?php if (!empty($treaties['Regional'])): ?>
+          <li class="treaties-menu-heading dropdown-header">
+            <?php print t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>'); ?>
+          </li>
           <li class="treaties-menu-list-item dropdown">
-            <a class="treaties-menu-heading">
-              <?php print t('<b>REGIONAL TREATIES</b> in <i>' . $topic . '</i></a>'); ?>
-            </a>
-            <ul class="treaties-menu-inside-list">
+            <ul class="treaties-menu-inside-list list-unstyled">
               <?php foreach ($treaties['Regional'] as $title => $treaty): ?>
                 <?php if (in_array($topic, $treaty['topics'])): ?>
-                  <li class="treaties-menu-insite-list-item">
-                    <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '">' . l(t($title), $treaty['url']); ?>
-                    <?php foreach ($treaty['regions'] as $idx => $region): ?>
-                      <?php if ($idx != 0): ?>
-                        <?php print ", "; ?>
-                      <?php endif ?>
-                      <?php print ($region); ?>
-                    <?php endforeach; ?>
+                  <li class="treaties-menu-inside-list-item">
+                    <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
+                    <?php foreach ($treaty['regions'] as $idx => $region): ?><?php if ($idx != 0): ?><?php print ", "; ?><?php endif ?><?php print trim($region); ?><?php endforeach; ?>
                   </li>
                 <?php endif ?>
               <?php endforeach; ?>
@@ -57,25 +52,20 @@ $regions = $variables['regions'];
   <?php endforeach; ?>
   <li role="separator" class="divider"></li>
   <?php foreach ($regions as $region): ?>
-    <li class="treaties-menu-topic dropdown">
+    <li class="treaties-menu-region dropdown">
       <a class="treaties-menu-title">
-        <?php print t('Treaties in <b><i>' . $region . '</i></b>'); ?>
+        <?php print t('Treaties in <i>' . $region . '</i>'); ?>
       </a>
       <ul class="treaties-menu-list dropdown-menu">
+        <li class="treaties-menu-heading dropdown-header">
+          <?php print t('<b>TREATIES</b> in <i>' . $region . '</i>'); ?>
+        </li>
         <li class="treaties-menu-list-item dropdown">
-          <a class="treaties-menu-heading">
-            <?php print t('<b>TREATIES</b> in <i>' . $region . '</i>'); ?>
-          </a>
-          <ul class="treaties-menu-inside-list">
+          <ul class="treaties-menu-inside-list list-unstyled">
           <?php foreach ($treaties[$region] as $title => $treaty): ?>
-            <li class="treaties-menu-insite-list-item">
-              <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '">' . l(t($title), $treaty['url']); ?>
-              <?php foreach ($treaty['topics'] as $idx => $topic): ?>
-                <?php if ($idx != 0): ?>
-                  <?php print ", "; ?>
-                <?php endif ?>
-                <?php print ($topic); ?>
-              <?php endforeach; ?>
+            <li class="treaties-menu-inside-list-item list-unstyled">
+              <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
+              <?php foreach ($treaty['topics'] as $idx => $topic): ?><?php if ($idx != 0): ?><?php print ", "; ?><?php endif ?><?php print trim($topic); ?><?php endforeach; ?>
             </li>
           <?php endforeach; ?>
           </ul>
