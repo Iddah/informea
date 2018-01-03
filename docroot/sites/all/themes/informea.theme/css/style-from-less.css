@@ -475,6 +475,9 @@
 .select2-open {
   overflow: hidden;
 }
+.treaties-menu {
+  min-height: 30em;
+}
 [dir] .treaties-menu {
   border-width: 1px;
 }
@@ -486,6 +489,11 @@
 }
 [dir] .dropdown-full-width > .treaties-menu {
   padding: 0;
+}
+.treaties-menu-title {
+  position: relative;
+  z-index: 1;
+  white-space: normal;
 }
 [dir] .treaties-menu-title {
   cursor: pointer;
@@ -514,11 +522,50 @@
 .treaties-menu > li:active > .treaties-menu-title i {
   color: #fff;
 }
+.treaties-menu > li:hover > .treaties-menu-title::before,
+.treaties-menu > li:focus > .treaties-menu-title::before,
+.treaties-menu > li:active > .treaties-menu-title::before,
+.treaties-menu > li:hover > .treaties-menu-title::after,
+.treaties-menu > li:focus > .treaties-menu-title::after,
+.treaties-menu > li:active > .treaties-menu-title::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  vertical-align: middle;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+[dir] .treaties-menu > li:hover > .treaties-menu-title::before, [dir] .treaties-menu > li:focus > .treaties-menu-title::before, [dir] .treaties-menu > li:active > .treaties-menu-title::before, [dir] .treaties-menu > li:hover > .treaties-menu-title::after, [dir] .treaties-menu > li:focus > .treaties-menu-title::after, [dir] .treaties-menu > li:active > .treaties-menu-title::after {
+  border-top: .8em solid transparent;
+  border-bottom: .8em solid transparent;
+          transform: translateY(-50%);
+}
+[dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::before, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::before, [dir=ltr] .treaties-menu > li:active > .treaties-menu-title::before, [dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:active > .treaties-menu-title::after {
+  border-left: .8em solid;
+  left: .5em;
+}
+[dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::before, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::before, [dir=rtl] .treaties-menu > li:active > .treaties-menu-title::before, [dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:active > .treaties-menu-title::after {
+  border-right: .8em solid;
+  right: .5em;
+}
+[dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:active > .treaties-menu-title::after {
+  border-left-color: #0099d5;
+  left: 100%;
+  margin-left: .5em;
+}
+[dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:active > .treaties-menu-title::after {
+  border-right-color: #0099d5;
+  right: 100%;
+  margin-right: .5em;
+}
 .treaties-menu-list {
   bottom: 0;
   -webkit-box-shadow: none;
   overflow: auto;
   top: 0;
+  z-index: 0;
 }
 [dir] .treaties-menu-list {
   border: none;

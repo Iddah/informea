@@ -2,6 +2,7 @@
 
 .treaties-menu {
   border-width: 1px;
+  min-height: 30em;
 
   .divider {
     margin: 1em 1.5em;
@@ -14,6 +15,9 @@
 
   &-title {
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+    white-space: normal;
     // Override bootstrap styles
     .dropdown-menu > li > & {
       color: @regional-page-gray;
@@ -33,6 +37,26 @@
       > .treaties-menu-title {
         background-color: #0099d5;
         &, & i { color: #fff; }
+        &::before,
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-top: .8em solid transparent;
+          border-bottom: .8em solid transparent;
+          border-left: .8em solid;
+          position: absolute;
+          vertical-align: middle;
+          left: .5em;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &::after {
+          border-left-color: #0099d5;
+          left: 100%;
+          margin-left: .5em;
+        }
       }
     }
   }
@@ -50,6 +74,7 @@
     padding-right: 2.5em;
     right: 0;
     top: 0;
+    z-index: 0;
   }
 
   &-heading {
