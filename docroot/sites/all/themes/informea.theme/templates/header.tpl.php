@@ -39,19 +39,20 @@
               <?php print render($page['above_nav']); ?>
             <!-- </div> -->
         </div>
-      <ul class="nav navbar-nav">
-        <li class="dropdown dropdown-full-width">
-          <?php print l(t('Treaties') . ' <span class="caret"></span>', 'treaties', array('attributes' => array('class' => array('dropdown-toggle'), 'id' => 'treaties-menu-link'), 'absolute' => TRUE, 'html' => TRUE)); ?>
-            <?php $block = block_load('informea', 'informea_treaties_block');
-            $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
-            $output = drupal_render($block_array);
-            print $output; ?>
+      <ul class="nav navbar-nav" role="menu" aria-hidden="true">
+        <li class="dropdown dropdown-full-width" role="menuitem">
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <?php print '<a>' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
+          <?php $block = block_load('informea', 'informea_treaties_block');
+          $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+          $output = drupal_render($block_array);
+          print $output; ?>
         </li><!-- .dropdown -->
-        <li><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
-        <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('id' => 'glossary-menu-link'))); ?></li>
-        <li><?php print l(t('Documents'), 'documents', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
-        <li><?php print l(t('Goals'), 'goals', array('attributes' => array('id' => 'goals-menu-link'))); ?></li>
-        <li><?php print l(t('Learning'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'learning-menu-link'))); ?></li>
+        <li role="menuitem"><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
+        <li role="menuitem"><?php print l(t('Glossary'), 'terms', array('attributes' => array('id' => 'glossary-menu-link'))); ?></li>
+        <li role="menuitem"><?php print l(t('Documents'), 'documents', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
+        <li role="menuitem"><?php print l(t('Goals'), 'goals', array('attributes' => array('id' => 'goals-menu-link'))); ?></li>
+        <li role="menuitem"><?php print l(t('Learning'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'learning-menu-link'))); ?></li>
       </ul><!-- .nav .navbar-nav -->
       </nav><!-- .navbar-collapse .collapse -->
   </div><!-- .container -->
