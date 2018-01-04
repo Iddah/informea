@@ -20,7 +20,10 @@ $regions = $variables['regions'];
               <?php foreach ($treaties['Global'] as $title => $treaty): ?>
                 <?php if (in_array($topic, $treaty['topics'])): ?>
                   <li class="treaties-menu-inside-list-item">
-                    <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
+                    <?php print l(
+                      '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
+                      '<span class="treaties-menu-treaty-name">' . t($title) . '</span>',
+                      $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)); ?>
                   </li>
                 <?php endif ?>
               <?php endforeach; ?>
@@ -37,8 +40,13 @@ $regions = $variables['regions'];
               <?php foreach ($treaties['Regional'] as $title => $treaty): ?>
                 <?php if (in_array($topic, $treaty['topics'])): ?>
                   <li class="treaties-menu-inside-list-item">
-                    <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
-                    <?php foreach ($treaty['regions'] as $idx => $region): ?><?php if ($idx != 0): ?><?php print ", "; ?><?php endif ?><?php print trim($region); ?><?php endforeach; ?>
+                    <?php $treatyRegions = ''; ?>
+                    <?php foreach ($treaty['regions'] as $idx => $region): ?><?php if ($idx != 0): ?><?php $treatyRegions .= ", "; ?><?php endif ?><?php $treatyRegions .= trim($region); ?><?php endforeach; ?>
+                    <?php print l(
+                      '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
+                      '<span class="treaties-menu-treaty-name">' . t($title) . '</span>'.
+                      '<span class="treaties-menu-treaty-info">' . $treatyRegions . '</span>',
+                      $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)); ?>
                   </li>
                 <?php endif ?>
               <?php endforeach; ?>
@@ -64,8 +72,14 @@ $regions = $variables['regions'];
           <ul class="treaties-menu-inside-list list-unstyled">
           <?php foreach ($treaties[$region] as $title => $treaty): ?>
             <li class="treaties-menu-inside-list-item list-unstyled">
-              <?php print '<img class="treaties-menu-logo" src="' . file_create_url($treaty['logo_uri']) . '"><div class="treaties-menu-treaty-link">' . l(t($title), $treaty['url']) . '</div>'; ?>
-              <?php foreach ($treaty['topics'] as $idx => $topic): ?><?php if ($idx != 0): ?><?php print ", "; ?><?php endif ?><?php print trim($topic); ?><?php endforeach; ?>
+              <?php $treatyTopics = ''; ?>
+              <?php foreach ($treaty['topics'] as $idx => $topic): ?><?php if ($idx != 0): ?><?php $treatyTopics .= ", "; ?><?php endif ?><?php $treatyTopics .= trim($topic); ?><?php endforeach; ?>
+              <?php print l(
+                '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
+                '<span class="treaties-menu-treaty-name">' . t($title) . '</span>' .
+                '<span class="treaties-menu-treaty-info">' . $treatyTopics . '</span>',
+                $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)
+                ); ?>
             </li>
           <?php endforeach; ?>
           </ul>
@@ -73,4 +87,7 @@ $regions = $variables['regions'];
       </ul>
     </li>
   <?php endforeach; ?>
+  <li class="treaties-menu-all">
+    <?php print l(t('See all treaties'), 'treaties', array('attributes' => array('class' => array('treaties-menu-title', 'treaties-menu-all-link')), 'absolute' => TRUE)); ?>
+  </li>
 </ul>

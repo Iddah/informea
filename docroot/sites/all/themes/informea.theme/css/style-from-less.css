@@ -476,10 +476,36 @@
   overflow: hidden;
 }
 .treaties-menu {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   min-height: 30em;
 }
 [dir] .treaties-menu {
   border-width: 1px;
+}
+@media (min-width: 1200px) {
+  .nav .dropdown:hover > .treaties-menu.dropdown-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+  }
+}
+.treaties-menu::before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 100%;
+}
+[dir=ltr] .treaties-menu::before {
+  border-right: 1px solid #ddd;
+  left: 30%;
+}
+[dir=rtl] .treaties-menu::before {
+  border-left: 1px solid #ddd;
+  right: 30%;
 }
 .treaties-menu .divider {
   width: calc(30% - 3em);
@@ -489,23 +515,6 @@
 }
 [dir] .dropdown-full-width > .treaties-menu {
   padding: 0;
-}
-.treaties-menu-title {
-  position: relative;
-  z-index: 1;
-  white-space: normal;
-}
-[dir] .treaties-menu-title {
-  cursor: pointer;
-}
-.dropdown-menu > li > .treaties-menu-title {
-  color: #8F8F8F;
-}
-[dir] .dropdown-menu > li > .treaties-menu-title {
-  padding: .5em 2em;
-}
-.treaties-menu-title i {
-  color: #333333;
 }
 .treaties-menu > li {
   position: static;
@@ -560,6 +569,39 @@
   right: 100%;
   margin-right: .5em;
 }
+.treaties-menu > li:hover > .treaties-menu-title.treaties-menu-all-link::before,
+.treaties-menu > li:focus > .treaties-menu-title.treaties-menu-all-link::before,
+.treaties-menu > li:active > .treaties-menu-title.treaties-menu-all-link::before,
+.treaties-menu > li:hover > .treaties-menu-title.treaties-menu-all-link::after,
+.treaties-menu > li:focus > .treaties-menu-title.treaties-menu-all-link::after,
+.treaties-menu > li:active > .treaties-menu-title.treaties-menu-all-link::after {
+  display: none;
+}
+.treaties-menu-title {
+  position: relative;
+  z-index: 1;
+  white-space: normal;
+}
+[dir] .treaties-menu-title {
+  cursor: pointer;
+}
+.dropdown-menu > li > .treaties-menu-title {
+  color: #8F8F8F;
+}
+[dir] .dropdown-menu > li > .treaties-menu-title {
+  padding: .6em 2em;
+}
+.dropdown-menu > li > .treaties-menu-title.treaties-menu-all-link {
+  color: #333333;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+[dir] .dropdown-menu > li > .treaties-menu-title.treaties-menu-all-link {
+  background-color: #ddd;
+}
+.treaties-menu-title i {
+  color: #333333;
+}
 .treaties-menu-list {
   bottom: 0;
   -webkit-box-shadow: none;
@@ -601,51 +643,63 @@
 [dir] .treaties-menu-list-item + .treaties-menu-heading {
   margin-top: 1em;
 }
-.treaties-menu-inside-list-item {
+[dir] .treaties-menu-inside-list-item + .treaties-menu-inside-list-item {
+  margin-top: .3em;
+}
+.treaties-menu-treaty {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #8F8F8F;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -js-display: inline-flex;
+  display: inline-flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: 2.5em;
   position: relative;
 }
-[dir] .treaties-menu-inside-list-item {
+[dir] .treaties-menu-treaty {
   padding: .2em 0;
 }
-[dir=ltr] .treaties-menu-inside-list-item {
-  padding-left: 4em;
+[dir=ltr] .treaties-menu-treaty {
+  padding-left: 4.5em;
 }
-[dir=rtl] .treaties-menu-inside-list-item {
-  padding-right: 4em;
+[dir=rtl] .treaties-menu-treaty {
+  padding-right: 4.5em;
 }
-[dir] .treaties-menu-inside-list-item + .treaties-menu-inside-list-item {
-  margin-top: .3em;
+.treaties-menu-treaty:hover,
+.treaties-menu-treaty:focus {
+  text-decoration: none;
 }
-.treaties-menu-inside-list-item .treaties-menu-logo {
+.treaties-menu-treaty:hover .treaties-menu-treaty-name,
+.treaties-menu-treaty:focus .treaties-menu-treaty-name {
+  text-decoration: underline;
+}
+.treaties-menu-treaty-logo {
   height: 2.5em;
   -o-object-fit: contain;
      object-fit: contain;
   position: absolute;
   width: 2.5em;
 }
-[dir=ltr] .treaties-menu-inside-list-item .treaties-menu-logo {
+[dir=ltr] .treaties-menu-treaty-logo {
   left: 0;
 }
-[dir=rtl] .treaties-menu-inside-list-item .treaties-menu-logo {
+[dir=rtl] .treaties-menu-treaty-logo {
   right: 0;
 }
-.treaties-menu-inside-list-item .treaties-menu-treaty-link {
+.treaties-menu-treaty-name {
+  color: #0A8FC6;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
 }
-.treaties-menu-inside-list-item .treaties-menu-treaty-link a {
-  color: #0A8FC6;
+.treaties-menu-treaty-info {
+  color: #8F8F8F;
+  font-size: .9em;
+}
+[dir] .treaties-menu-all {
+  margin-top: auto;
 }
 .page-regions .panels-flexible-row {
   width: 100%;

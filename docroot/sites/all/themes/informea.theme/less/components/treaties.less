@@ -2,7 +2,21 @@
 
 .treaties-menu {
   border-width: 1px;
+  flex-direction: column;
   min-height: 30em;
+  @media (min-width: 1200px) {
+    .nav .dropdown:hover > &.dropdown-menu {
+      display: flex;
+    }
+  }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    left: 30%;
+  }
 
   .divider {
     margin: 1em 1.5em;
@@ -11,20 +25,6 @@
 
   .dropdown-full-width > & {
     padding: 0;
-  }
-
-  &-title {
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-    white-space: normal;
-    // Override bootstrap styles
-    .dropdown-menu > li > & {
-      color: @regional-page-gray;
-      padding: .5em 2em;
-    }
-
-    i { color: @text-color; }
   }
 
   > li {
@@ -57,8 +57,33 @@
           left: 100%;
           margin-left: .5em;
         }
+        &.treaties-menu-all-link {
+          &::before, &::after { display: none; }
+        }
       }
     }
+  }
+
+
+  &-title {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    white-space: normal;
+    // Override bootstrap styles
+    .dropdown-menu > li > & {
+      color: @regional-page-gray;
+      padding: .6em 2em;
+      &.treaties-menu-all-link {
+        background-color: #ddd;
+        color: @text-color;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+
+    i { color: @text-color; }
+
   }
 
   &-list {
@@ -92,18 +117,23 @@
   }
 
   &-inside-list-item {
+    & + & { margin-top: .3em; }
+  }
+
+  &-treaty {
     align-items: center;
-    color: @regional-page-gray;
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     min-height: @treaties-logo-width;
     padding: .2em 0;
-    padding-left: @treaties-logo-width + 1.5em;
+    padding-left: @treaties-logo-width + 2em;
     position: relative;
-
-    & + & { margin-top: .3em; }
-
-    .treaties-menu-logo {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      .treaties-menu-treaty-name { text-decoration: underline; }
+    }
+    &-logo {
       height: @treaties-logo-width;
       left: 0;
       object-fit: contain;
@@ -111,12 +141,17 @@
       width: @treaties-logo-width;
     }
 
-    .treaties-menu-treaty-link {
+    &-name {
+      color: #0A8FC6;
       flex-basis: 100%;
-      a {
-        color: #0A8FC6;
-      }
     }
+    &-info {
+      color: @regional-page-gray;
+      font-size: .9em;
+    }
+  }
 
+  &-all {
+    margin-top: auto;
   }
 }
