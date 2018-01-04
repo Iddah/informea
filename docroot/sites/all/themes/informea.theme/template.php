@@ -742,7 +742,7 @@ function informea_theme_treaties_menu_block() {
 
     foreach ($regions as $region) {
       $region_label = taxonomy_term_load($region['tid'])->name;
-      if (!in_array($region_label, $regions_list)) {
+      if (!in_array($region_label, $regions_list) && $region_label != 'Global') {
         $regions_list[] = $region_label;
       }
       if (!in_array($region_label, $individual_regions_list)) {
@@ -765,6 +765,8 @@ function informea_theme_treaties_menu_block() {
       }
     }
   }
+  asort($regions_list);
+  asort($topics_list);
 
   return theme(
     'informea_treaties_menu_block',
