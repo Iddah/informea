@@ -479,13 +479,15 @@
   font-weight: 500;
 }
 .navbar-default .navbar-nav > li:hover > a,
+.navbar-default .navbar-nav > li.open > a,
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > .dropdown-toggle:focus + a {
   color: #0099d5;
 }
-[dir] .navbar-default .navbar-nav > li:hover > a, [dir] .navbar-default .navbar-nav > li > a:hover, [dir] .navbar-default .navbar-nav > li > a:focus, [dir] .navbar-default .navbar-nav > li > .dropdown-toggle:focus + a {
+[dir] .navbar-default .navbar-nav > li:hover > a, [dir] .navbar-default .navbar-nav > li.open > a, [dir] .navbar-default .navbar-nav > li > a:hover, [dir] .navbar-default .navbar-nav > li > a:focus, [dir] .navbar-default .navbar-nav > li > .dropdown-toggle:focus + a {
   background-color: #fff;
+  border-color: transparent;
 }
 .navbar-nav .dropdown-menu {
   visibility: hidden;
@@ -593,6 +595,12 @@
 [dir] .dropdown-menu > li > .treaties-menu-title.treaties-menu-all-link {
   background-color: #ddd;
 }
+.dropdown-menu > li > .treaties-menu-title.treaties-menu-all-link:focus {
+  color: #fff;
+}
+[dir] .dropdown-menu > li > .treaties-menu-title.treaties-menu-all-link:focus {
+  background-color: #0099d5;
+}
 .treaties-menu-title i {
   color: #333333;
 }
@@ -676,6 +684,11 @@
      object-fit: contain;
   position: absolute;
   width: 2.5em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+[dir] .treaties-menu-treaty-logo {
+          transform: translateY(-50%);
 }
 [dir=ltr] .treaties-menu-treaty-logo {
   left: 0;
@@ -695,6 +708,54 @@
 [dir] .treaties-menu-all {
   margin-top: auto;
 }
+.treaties-menu > li > .treaties-menu-title,
+.treaties-menu > li > .treaties-menu-title *,
+.treaties-menu > li > .treaties-menu-title::before,
+.treaties-menu > li > .treaties-menu-title::after {
+  -webkit-transition-property: background-color, color;
+  -webkit-transition-delay: .1s;
+}
+[dir] .treaties-menu > li > .treaties-menu-title, [dir] .treaties-menu > li > .treaties-menu-title *, [dir] .treaties-menu > li > .treaties-menu-title::before, [dir] .treaties-menu > li > .treaties-menu-title::after {
+  transition-property: background-color, color;
+          transition-delay: .1s;
+}
+.treaties-menu > li > .treaties-menu-title::before,
+.treaties-menu > li > .treaties-menu-title::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  vertical-align: middle;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -webkit-transition-property: visibility;
+  visibility: hidden;
+}
+[dir] .treaties-menu > li > .treaties-menu-title::before, [dir] .treaties-menu > li > .treaties-menu-title::after {
+  border-top: .8em solid transparent;
+  border-bottom: .8em solid transparent;
+          transform: translateY(-50%);
+  transition-property: visibility;
+}
+[dir=ltr] .treaties-menu > li > .treaties-menu-title::before, [dir=ltr] .treaties-menu > li > .treaties-menu-title::after {
+  border-left: .8em solid;
+  left: .5em;
+}
+[dir=rtl] .treaties-menu > li > .treaties-menu-title::before, [dir=rtl] .treaties-menu > li > .treaties-menu-title::after {
+  border-right: .8em solid;
+  right: .5em;
+}
+[dir=ltr] .treaties-menu > li > .treaties-menu-title::after {
+  border-left-color: #0099d5;
+  left: 100%;
+  margin-left: .5em;
+}
+[dir=rtl] .treaties-menu > li > .treaties-menu-title::after {
+  border-right-color: #0099d5;
+  right: 100%;
+  margin-right: .5em;
+}
 [dir] .treaties-menu > li:hover > .treaties-menu-title, [dir] .treaties-menu > li:focus > .treaties-menu-title, [dir] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title {
   background-color: #0099d5;
 }
@@ -712,37 +773,7 @@
 .treaties-menu > li:hover > .treaties-menu-title::after,
 .treaties-menu > li:focus > .treaties-menu-title::after,
 .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  vertical-align: middle;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-}
-[dir] .treaties-menu > li:hover > .treaties-menu-title::before, [dir] .treaties-menu > li:focus > .treaties-menu-title::before, [dir] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::before, [dir] .treaties-menu > li:hover > .treaties-menu-title::after, [dir] .treaties-menu > li:focus > .treaties-menu-title::after, [dir] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  border-top: .8em solid transparent;
-  border-bottom: .8em solid transparent;
-          transform: translateY(-50%);
-}
-[dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::before, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::before, [dir=ltr] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::before, [dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=ltr] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  border-left: .8em solid;
-  left: .5em;
-}
-[dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::before, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::before, [dir=rtl] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::before, [dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=rtl] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  border-right: .8em solid;
-  right: .5em;
-}
-[dir=ltr] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=ltr] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=ltr] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  border-left-color: #0099d5;
-  left: 100%;
-  margin-left: .5em;
-}
-[dir=rtl] .treaties-menu > li:hover > .treaties-menu-title::after, [dir=rtl] .treaties-menu > li:focus > .treaties-menu-title::after, [dir=rtl] .treaties-menu .dropdown-toggle:focus + .treaties-menu-title::after {
-  border-right-color: #0099d5;
-  right: 100%;
-  margin-right: .5em;
+  visibility: visible;
 }
 .treaties-menu > li:hover > .treaties-menu-title.treaties-menu-all-link::before,
 .treaties-menu > li:focus > .treaties-menu-title.treaties-menu-all-link::before,
