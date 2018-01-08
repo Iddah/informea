@@ -111,7 +111,6 @@
 
   // Unwrapped version
   @media (min-width: @screen-md-min) {
-    .views-field-field-mea-topic,
     .views-field-field-event-type {
       display: inline-block;
       margin-bottom: 0;
@@ -141,17 +140,6 @@
     > .views-label,
     > .field-content {
       display: inline;
-    }
-  }
-
-  .views-field-field-mea-topic {
-    display: inline;
-    > .field-content {
-      .loop-mea-topics({
-        &.topic-@{mea-topic-class} {
-          background-color: @mea-topic-color;
-        }
-      });
     }
   }
 
