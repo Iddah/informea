@@ -297,10 +297,23 @@ class ODataMigrationUtil {
     $values = array();
     if (!empty($data) && is_array($data)) {
       foreach ($data as $value) {
+        if (strtolower($value->language) == 'und') {
+          continue;
+        }
         $language = self::fixLanguage($value->language);
         if (!empty($value->value) && !in_array($language, $languages)) {
           $languages[] = $language;
           $values[] = $value->value;
+        }
+      }
+      // No English translation, but there is one 'und', set it to English.
+      if (!in_array('en', $languages)) {
+        foreach ($data as $value) {
+          if (!empty($value->value) && strtolower($value->language) == 'und') {
+            $languages = array_unshift($languages, 'en');
+            $values = array_unshift($values, $value->value);
+            break;
+          }
         }
       }
     }

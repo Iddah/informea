@@ -36,14 +36,6 @@ function meeting_node_info() {
       'title_label' => t('Event Title'),
       'help' => '',
     ),
-    'event_calendar_imported' => array(
-      'name' => t('Event Calendar Imported'),
-      'base' => 'node_content',
-      'description' => t('Events imported from external sources'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
   );
   drupal_alter('node_info', $items);
   return $items;

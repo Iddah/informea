@@ -37,7 +37,6 @@ function graphql_config_strongarm() {
     'node_declaration' => NULL,
     'node_declaration_section' => NULL,
     'node_declaration_paragraph' => NULL,
-    'node_event_calendar_imported' => NULL,
     'node_feed' => NULL,
     'node_feed_item' => NULL,
     'node_geographical_site' => NULL,
