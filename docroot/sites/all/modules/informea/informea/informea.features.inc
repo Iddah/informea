@@ -443,6 +443,7 @@ function informea_default_search_api_index() {
         "field_implements" : { "type" : "integer", "entity_type" : "node" },
         "field_informea_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_isis_number" : { "type" : "text" },
+        "field_mea_topic" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_notes" : { "type" : "text" },
         "field_original_id" : { "type" : "text" },
         "field_reference_number" : { "type" : "text" },
