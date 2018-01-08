@@ -140,9 +140,11 @@ function country_get_regions_from_country($country_ids) {
 }
 
 function country_url_context($path) {
-  $path = preg_replace('/([A-Za-z]{2})?\/?countries\/[A-Za-z]{2}\/?/', '', $path);
-  $parts = explode('/', $path);
-  return $parts[0];
+  if (preg_match('/([A-Za-z]{2})?\/?countries\/[A-Za-z]{2}\/?(.*)/', $path, $matches)
+      || preg_match('/([A-Za-z]{2})?\/?node\/\d+\/?(.*)/', $path, $matches)) {
+    return $matches[2];
+  }
+  return '';
 }
 
 function country_load_by_iso2($iso2) {
