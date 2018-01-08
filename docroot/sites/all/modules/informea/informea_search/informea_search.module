@@ -435,15 +435,17 @@ function informea_search_external_search() {
 function _informea_search_get_current_category($viewName) {
   switch ($viewName) {
     case 'informea_search':
-      switch ($_GET['f']) {
-        case ['type:action_plan', 'type:national_report']:
-          return 'national_submissions';
+      if (!empty($_GET['f'])) {
+        switch ($_GET['f']) {
+          case ['type:action_plan', 'type:national_report']:
+            return 'national_submissions';
 
-        case ['type:action_plan']:
-          return 'action_plan';
+          case ['type:action_plan']:
+            return 'action_plan';
 
-        case ['type:national_report']:
-          return 'national_report';
+          case ['type:national_report']:
+            return 'national_report';
+        }
       }
       break;
 
@@ -454,15 +456,21 @@ function _informea_search_get_current_category($viewName) {
       return 'court_decisions';
 
     case 'informea_search_publications':
-      switch ($_GET['f']) {
-        case ['type:document', 'field_document_type:2805', 'field_document_type:3159']:
-          return 'publication';
+      if (!empty($_GET['f'])) {
+        switch ($_GET['f']) {
+          case [
+            'type:document',
+            'field_document_type:2805',
+            'field_document_type:3159'
+          ]:
+            return 'publication';
 
-        case ['type:document', 'field_document_type:3178']:
-          return 'manual';
+          case ['type:document', 'field_document_type:3178']:
+            return 'manual';
 
-        case ['type:document', 'field_document_type:2817']:
-          return 'technical';
+          case ['type:document', 'field_document_type:2817']:
+            return 'technical';
+        }
       }
       break;
 
