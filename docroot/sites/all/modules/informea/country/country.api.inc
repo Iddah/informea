@@ -393,3 +393,10 @@ function country_get_site_count($id_country) {
     ->condition('field_country_target_id', $id_country)
     ->countQuery()->execute()->fetchField();
 }
+
+function country_get_contacts_count($id_country) {
+  return db_select('field_data_field_country')
+    ->condition('bundle', 'contact_person')
+    ->condition('field_country_target_id', $id_country)
+    ->countQuery()->execute()->fetchField();
+}

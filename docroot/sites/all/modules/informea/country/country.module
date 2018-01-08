@@ -418,6 +418,7 @@ function country_country_contextual_menu_alter(&$contextual_menu, $node) {
       ),
       'contacts-hub' => array(
         'title' => t('Contacts HUB'),
+        'count' => country_get_contacts_count($node->nid)
       ),
       'summary' => array(
         'title' => t('Summary'),
