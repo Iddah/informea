@@ -192,6 +192,7 @@ function informea_default_search_api_index() {
         "field_isis_number" : { "type" : "text" },
         "field_jurisdiction" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_justices" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_mea_topic" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_notes" : { "type" : "text" },
         "field_number_of_pages" : { "type" : "integer" },
         "field_official_publication" : { "type" : "text" },

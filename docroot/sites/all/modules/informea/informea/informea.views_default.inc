@@ -343,7 +343,7 @@ function informea_views_default_views() {
     'image_style' => 'logo',
     'image_link' => '',
   );
-  /* Field: Indexed Content: Piwik URL */
+  /* Field: Indexed Content: URL */
   $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
   $handler->display->display_options['fields']['field_url']['table'] = 'search_api_index_news_search_index';
   $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
@@ -378,7 +378,7 @@ function informea_views_default_views() {
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['fields']['created']['link_to_entity'] = 0;
-  /* Field: Indexed Content: MEA topic */
+  /* Field: Indexed Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_news_search_index';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
@@ -418,7 +418,7 @@ function informea_views_default_views() {
     4 => 0,
     5 => 0,
   );
-  /* Filter criterion: Indexed Content: MEA topic */
+  /* Filter criterion: Indexed Content: Topics */
   $handler->display->display_options['filters']['field_mea_topic']['id'] = 'field_mea_topic';
   $handler->display->display_options['filters']['field_mea_topic']['table'] = 'search_api_index_news_search_index';
   $handler->display->display_options['filters']['field_mea_topic']['field'] = 'field_mea_topic';
@@ -473,7 +473,7 @@ function informea_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Piwik URL */
+  /* Field: Indexed Content: URL */
   $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
   $handler->display->display_options['fields']['field_url']['table'] = 'search_api_index_news_search_index';
   $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
