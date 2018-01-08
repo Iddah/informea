@@ -105,6 +105,11 @@ function _geographic_region_build_search_link($region_id, $topic_id, $item, $lin
       $path = 'search-legislation';
       break;
 
+    case 'literature':
+      $path = 'search-publications';
+      $f = array_merge($f, ['type:' . $item['type']]);
+      break;
+
     default:
       $path = 'search';
       $f = array_merge($f, ['type:' . $item['type']]);
