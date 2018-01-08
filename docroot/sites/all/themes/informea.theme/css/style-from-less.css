@@ -753,8 +753,8 @@
 [dir] .view-contacts-hub #edit-submit-contacts-hub {
   margin-top: 0;
 }
-.treaty-switcher,
-.country-switcher,
+.node-header-container .treaty-switcher,
+.node-header-container .country-switcher,
 #s2id_treaty-switcher .select2-choice,
 #s2id_country-switcher .select2-choice {
   font-size: 2.2em;
