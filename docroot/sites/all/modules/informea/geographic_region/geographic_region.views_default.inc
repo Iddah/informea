@@ -341,7 +341,21 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mea_topic']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_mea_topic']['settings'] = array(
+    'textformatter_type' => 'ul',
+    'textformatter_comma_and' => 0,
+    'textformatter_comma_full_stop' => 0,
+    'textformatter_comma_override' => 0,
+    'textformatter_separator_custom' => '',
+    'textformatter_separator_custom_tag' => 'span',
+    'textformatter_separator_custom_class' => 'textformatter-separator',
+    'textformatter_comma_tag' => 'div',
+    'textformatter_class' => 'textformatter-list',
+    'textformatter_term_plain' => 0,
+  );
+  $handler->display->display_options['fields']['field_mea_topic']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_mea_topic']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_mea_topic']['multi_type'] = 'ul';
   /* Field: Content: InforMEA tags */
   $handler->display->display_options['fields']['field_informea_tags']['id'] = 'field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['table'] = 'field_data_field_informea_tags';
