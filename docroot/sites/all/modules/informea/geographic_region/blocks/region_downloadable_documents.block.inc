@@ -9,10 +9,6 @@ function geographic_region_region_downloadable_documents_block_view() {
   if (!empty($region_id)) {
     $page = page_manager_get_current_page();
     $topic = $page['contexts']['argument_term_2']->argument;
-    $search_query = _geographic_region_build_search_query([
-      'field_region' => $region_id,
-      'field_topic' => $topic,
-    ]);
     $sections = _region_downloadable_documents_block_get_sections();
     $list = [];
     foreach ($sections as $section) {
@@ -20,13 +16,7 @@ function geographic_region_region_downloadable_documents_block_view() {
       foreach ($section['items'] as $title => $options) {
         $count = _get_content_count_by_region($options['type'], $region_id, $topic, !empty($options['fieldConditions']) ? $options['fieldConditions'] : []);
         if (!empty($count)) {
-          $subList[] = [
-            'data' => l(
-              sprintf('%s (%s)', $title, $count),
-              'search',
-              ['query' => ['f' => array_merge($search_query, ['type:' . $options['type']])]]
-            ),
-          ];
+          $subList[] = ['data' => _geographic_region_build_search_link($region_id, $topic, $options, $title, $count)];
         }
       }
       if (count($subList) > 1) {
@@ -37,7 +27,12 @@ function geographic_region_region_downloadable_documents_block_view() {
       $block['content'] = [
         '#theme' => 'item_list',
         '#items' => $list,
-        '#attributes' => ['class' => ['list-unstyled', 'region-downloadable-documents-list']],
+        '#attributes' => [
+          'class' => [
+            'list-unstyled',
+            'region-downloadable-documents-list',
+          ],
+        ],
       ];
     }
     else {
@@ -98,21 +93,29 @@ function _get_content_count_by_region($content_type, $region_id, $topic_id = NUL
 
 /**
  * Builds the query for solr-based views.
- *
- * @param array $options
- *  Array of query options.
- *
- * @return array
- *  Array of query options as required by solr-based views.
  */
-function _geographic_region_build_search_query(array $options) {
-  $f = [];
-  foreach ($options as $key => $value) {
-    if (!empty($value)) {
-      $f[] = "$key:$value";
-    }
+function _geographic_region_build_search_link($region_id, $topic_id, $item, $link_title, $count) {
+  $f = [
+    "field_region:{$region_id}",
+    "field_topic:{$topic_id}",
+  ];
+
+  switch ($item['type']) {
+    case 'legislation':
+      $path = 'search-legislation';
+      break;
+
+    default:
+      $path = 'search';
+      $f = array_merge($f, ['type:' . $item['type']]);
   }
-  return $f;
+
+  return l(
+    sprintf('%s (%s)', $link_title, $count),
+    $path,
+    ['query' => ['f' => $f]]
+  );
+
 }
 
 function _region_downloadable_documents_block_get_sections() {
