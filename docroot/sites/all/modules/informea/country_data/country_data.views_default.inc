@@ -40,6 +40,7 @@ function country_data_views_default_views() {
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Displaying @total result(s)';
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -274,7 +275,7 @@ function country_data_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Displaying @start - @end of @total'),
+    t('Displaying @total result(s)'),
     t('<div class="separator"></div>'),
     t('<span class="contact-link>Save In Library</span>'),
     t('Full Contact Profile'),

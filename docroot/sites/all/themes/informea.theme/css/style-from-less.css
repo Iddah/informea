@@ -572,6 +572,9 @@
 .select2-open {
   overflow: hidden;
 }
+[dir] .page-node-contacts-hub .page-header {
+  margin-bottom: 0;
+}
 .node-header-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -586,6 +589,9 @@
 }
 [dir] .node-header-container .form-group {
   margin-bottom: 0;
+}
+[dir] .view-contacts-hub {
+  margin-top: 2em;
 }
 [dir] .view-contacts-hub .views-row {
   padding-bottom: 1.5em;
@@ -720,6 +726,35 @@
 }
 [dir] .view-contacts-hub .views-field-nothing a, [dir] .view-contacts-hub .views-field-view-node a, [dir] .view-contacts-hub .views-field-nothing-1 a {
   cursor: pointer;
+}
+.view-contacts-hub .view-header {
+  color: #8F8F8F;
+  font-size: .9em;
+}
+[dir] .view-contacts-hub .view-header {
+  margin-top: 8px;
+  margin-top: .5rem;
+}
+[dir=ltr] .view-contacts-hub .view-header {
+  float: right;
+}
+[dir=rtl] .view-contacts-hub .view-header {
+  float: left;
+}
+[dir] .view-contacts-hub .views-exposed-widgets {
+  margin-top: -8px;
+  margin-top: -0.5rem;
+}
+[dir] .view-contacts-hub .views-exposed-widgets > .views-exposed-widget {
+  margin-top: 8px;
+  margin-top: .5rem;
+  padding-top: 0;
+}
+.view-contacts-hub #edit-search-api-views-fulltext-wrapper {
+  display: block;
+}
+[dir] .view-contacts-hub #edit-submit-contacts-hub {
+  margin-top: 0;
 }
 .treaty-switcher,
 .country-switcher,
