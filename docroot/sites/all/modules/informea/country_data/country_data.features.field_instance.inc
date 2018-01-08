@@ -19,10 +19,10 @@ function country_data_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 1,
       ),
     ),
@@ -63,14 +63,14 @@ function country_data_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -116,12 +116,9 @@ function country_data_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -175,7 +172,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -228,7 +225,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -285,7 +282,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -340,10 +337,10 @@ function country_data_field_default_field_instances() {
         'weight' => 18,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -393,7 +390,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -449,7 +446,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -514,7 +511,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -572,10 +569,11 @@ function country_data_field_default_field_instances() {
         'weight' => 20,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 3,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -635,7 +633,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -688,7 +686,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -741,7 +739,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -793,7 +791,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -846,7 +844,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -893,10 +891,11 @@ function country_data_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -949,7 +948,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -999,10 +998,11 @@ function country_data_field_default_field_instances() {
         'weight' => 5,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1055,7 +1055,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1108,7 +1108,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1169,7 +1169,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1230,9 +1230,13 @@ function country_data_field_default_field_instances() {
         'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'bypass_access' => FALSE,
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
       'treaty_listing' => array(

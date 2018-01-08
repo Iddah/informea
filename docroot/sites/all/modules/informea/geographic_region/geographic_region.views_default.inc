@@ -249,6 +249,10 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Sort criterion: Content: Official name (field_official_name) */
   $handler->display->display_options['sorts']['field_official_name_value']['id'] = 'field_official_name_value';
   $handler->display->display_options['sorts']['field_official_name_value']['table'] = 'field_data_field_official_name';
@@ -334,6 +338,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_mea_topic']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_mea_topic']['delta_offset'] = '0';
@@ -355,6 +360,7 @@ function geographic_region_views_default_views() {
     'textformatter_class' => 'textformatter-list',
     'textformatter_term_plain' => 0,
   );
+  $handler->display->display_options['fields']['field_informea_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
   /* Field: Content: Treaty links */
   $handler->display->display_options['fields']['treaty_links']['id'] = 'treaty_links';
@@ -404,16 +410,32 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_official_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_official_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_official_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_official_name']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => 'content',
+    'title_class' => '',
+  );
+  $handler->display->display_options['fields']['field_official_name']['group_column'] = 'entity_id';
   /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_official_name] ([title])';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['alter']['text'] = '([title_field])';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['title_field']['group_column'] = 'entity_id';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['text'] = '[field_official_name] [title_field]';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
@@ -479,6 +501,8 @@ function geographic_region_views_default_views() {
     t('All'),
     t('Regional treaties'),
     t('There are no global treaties for current filters.'),
+    t('([title_field])'),
+    t('[field_official_name] [title_field]'),
   );
   $export['regional_treaties'] = $view;
 

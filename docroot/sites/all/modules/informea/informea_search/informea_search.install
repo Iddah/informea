@@ -35,3 +35,10 @@ function informea_search_update_7005() {
   features_revert(array('informea' => ['path_breadcrumbs']));
   features_revert(array('informea_search' => ['path_breadcrumbs']));
 }
+
+/**
+ * Refs #285 - index contact person fields
+ */
+function informea_search_update_7006() {
+  features_revert_module('informea_search');
+}

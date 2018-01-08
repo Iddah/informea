@@ -115,7 +115,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('dev', ['less', 'watch:screen', 'watch:print']);
 
-  grunt.registerTask('build', ['libraries', 'css']);
+  grunt.registerTask('build', ['libraries', 'less', 'postcss', 'clean:libraries']);
 
   grunt.registerTask('default', ['css']);
 

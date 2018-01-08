@@ -129,6 +129,40 @@ jQuery(document).ready(function ($) {
       }, 300);
     }
   });
+
+  function categorySelectFormat(state) {
+     var originalOption = state.element;
+      if (!state.id) return state.text; // optgroup
+
+      if($(originalOption).data('optgroup')) {
+        return "<div class='category-group-title'>" + state.text + "</h5>";
+
+      }
+      return "<div class='category-group-inner'>" + state.text + "</div>";
+  }
+
+  var $categorySelect = $('#edit-search-category');
+  var $geographicRegionSelect= $('#edit-geographic-region');
+  var $body = $('body');
+
+  $categorySelect.select2({
+      dropdownCssClass: 'edit-search-category-drop',
+      formatResult: categorySelectFormat,
+      escapeMarkup: function(m) { return m; }
+  });
+
+  $geographicRegionSelect.select2({
+    dropdownCssClass: 'edit-geographic-region-drop',
+  });
+
+  $('.use-select-2')
+    .on('select2-open', function(e) {
+      $body.addClass('select2-open');
+    })
+    .on('select2-close', function(e) {
+      $body.removeClass('select2-open');
+    });
+
 });
 
 jQuery(window).load(function() {

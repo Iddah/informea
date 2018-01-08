@@ -165,6 +165,11 @@ function informea_search_menu() {
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
+  $items['prepare-search'] = array(
+    'page callback' => 'informea_search_prepare_search',
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
 
   return $items;
 }
@@ -320,9 +325,77 @@ function informea_search_form($form, $form_state) {
       $action = 'search';
   }
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
+  $variant = variable_get('select2_compression_type', 'minified');
+  $search_category_options = array(
+    'decision' => array(
+      'label' => t('Decisions'),
+      'is_group_label' => true
+    ),
+
+    'national_submissions' => array(
+      'label' => t('National Submissions'),
+      'is_group_label' => true
+    ),
+    'action_plan' => array(
+      'label' => t('National Plans'),
+      'is_group_label' => false
+    ),
+    'national_report' => array(
+      'label' => t('National Reports'),
+      'is_group_label' => false
+    ),
+
+    'national_legislation_cases' => array(
+      'label' => t('National Legislation and Cases'),
+      'is_group_label' => true
+    ),
+    'legislation' => array(
+      'label' => t('Legislation'),
+      'is_group_label' => false
+    ),
+    'court_decisions' => array(
+      'label' => t('Court Decisions'),
+      'is_group_label' => false
+    ),
+
+    'documents_literature' => array(
+      'label' => t('Documents and Literature'),
+      'is_group_label' => true
+    ),
+    'publication' => array(
+      'label' => t('Publications'),
+      'is_group_label' => false
+    ),
+    'manual' => array(
+      'label' => t('Manuals'),
+      'is_group_label' => false
+    ),
+    'technical' => array(
+      'label' => t('Technical Series'),
+      'is_group_label' => false
+    ),
+
+    'news' => array(
+      'label' => t('News and Events'),
+      'is_group_label' => true
+    ),
+
+    'contacts_hub' => array(
+      'label' => t('Contacts Hub'),
+      'is_group_label' => false
+    ),
+    'all' => array(
+      'label' => t('All Categories'),
+      'is_group_label' => true,
+    ),
+  );
+
+  $current_category = _informea_search_get_current_category($viewName);
+  $search_category_options[$current_category]['selected'] = true;
+
   return [
     '#id' => 'search-form',
-    '#action' =>  url($action),
+    '#action' =>  url('prepare-search'),
     '#method' => 'get',
     '#always_process' => true,
     '#token' => false,
@@ -335,7 +408,13 @@ function informea_search_form($form, $form_state) {
       '#maxlength' => 255,
       '#attributes' => array(
         'placeholder' => t('Search by keyword(s)'),
-      )
+      ),
+      '#attached' => array('libraries_load' => array(array('select2', $variant))),
+      '#category-options' => $search_category_options,
+    ],
+    'action' => [
+      '#type' => 'hidden',
+      '#value' => $action,
     ],
     'actions' => [
       'submit' => [
@@ -351,6 +430,110 @@ function informea_search_form($form, $form_state) {
 function informea_search_external_search() {
   $input = isset($_GET['keys']) ? check_plain($_GET['keys']) : '';
   drupal_goto('search/' . $input);
+}
+
+function _informea_search_get_current_category($viewName) {
+  switch ($viewName) {
+    case 'informea_search':
+      switch ($_GET['f']) {
+        case ['type:action_plan', 'type:national_report']:
+          return 'national_submissions';
+
+        case ['type:action_plan']:
+          return 'action_plan';
+
+        case ['type:national_report']:
+          return 'national_report';
+      }
+      break;
+
+    case 'informea_search_legislation':
+      return 'legislation';
+
+    case 'informea_search_court_decision':
+      return 'court_decisions';
+
+    case 'informea_search_publications':
+      switch ($_GET['f']) {
+        case ['type:document', 'field_document_type:2805', 'field_document_type:3159']:
+          return 'publication';
+
+        case ['type:document', 'field_document_type:3178']:
+          return 'manual';
+
+        case ['type:document', 'field_document_type:2817']:
+          return 'technical';
+      }
+      break;
+
+    case 'news':
+      return 'news';
+  }
+  return 'all';
+}
+
+function informea_search_prepare_search() {
+  $options = [];
+  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
+  if (!empty($_GET['category'])) {
+    $search_category = check_plain($_GET['category']);
+    switch ($search_category) {
+      case 'decision':
+      case 'action_plan':
+      case 'national_report':
+        $action = 'search';
+        $options['query']['f'][] = "type:{$search_category}";
+        break;
+
+      case 'national_submissions':
+        $action = 'search';
+        $options['query']['f'][] = "type:national_report";
+        $options['query']['f'][] = "type:action_plan";
+        break;
+
+      case 'national_legislation_cases':
+      case 'legislation':
+        $action = 'search-legislation';
+        break;
+
+      case 'court_decisions':
+        $action = 'search-court-decisions';
+        break;
+
+      case 'documents_literature':
+        $action = 'search-publications';
+        break;
+
+      case 'publication':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2805";
+        $options['query']['f'][] = "field_document_type:3159";
+        break;
+
+      case 'manual':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:3178";
+        break;
+
+      case 'technical':
+        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "field_document_type:2817";
+        break;
+
+
+      case 'news':
+        $action = 'news';
+        break;
+
+    }
+  }
+  if (!empty($_GET['search_api_views_fulltext'])) {
+    $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
+  }
+  drupal_goto($action, $options);
 }
 
 function _informea_search_get_topic_count($topic) {

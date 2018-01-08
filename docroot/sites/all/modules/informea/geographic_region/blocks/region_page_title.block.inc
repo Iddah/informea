@@ -24,10 +24,11 @@ function geographic_region_region_page_title_block_view() {
         '#options' => $options,
         '#default_value' => url('/taxonomy/term/' . $region_id),
         '#prefix' => '<h1>' . $title . '</h1>',
-        '#attributes' => ['onChange' => 'window.location.href=this.value'],
+        '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-geographic-region'],
         '#select2' => [
-          'width' => 'auto',
+          'width' => 'auto'
         ],
+        '#attached' => array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified')))),
       ];
     }
   }
