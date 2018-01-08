@@ -449,6 +449,7 @@ function _informea_search_get_current_category($viewName) {
       if (!empty($_GET['f'])) {
         switch ($_GET['f']) {
           case ['type:action_plan', 'type:national_report']:
+          case ['type:national_report', 'type:action_plan']:
             return 'national_submissions';
 
           case ['type:action_plan']:
@@ -456,6 +457,9 @@ function _informea_search_get_current_category($viewName) {
 
           case ['type:national_report']:
             return 'national_report';
+
+          case ['type:decision']:
+            return 'decision';
         }
       }
       break;
@@ -483,7 +487,7 @@ function _informea_search_get_current_category($viewName) {
             return 'technical';
         }
       }
-      break;
+      return 'documents_literature';
 
     case 'news':
       return 'news';
