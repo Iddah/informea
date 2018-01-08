@@ -681,6 +681,7 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
     $ap_count = country_deliverable_count_treaty_action_plans($node->nid);
     $p_count = country_data_treaty_count_membership($node->nid);
     $doc_count = country_deliverable_count_treaty_documents($node->nid);
+    $contacts_count = treaty_get_contacts_count($node->nid);
     $menu_items = array(
       '' => array(
         'title' => t('Summary')
@@ -719,6 +720,8 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
       ),
       'contacts-hub' => array(
         'title' => t('Contacts HUB'),
+        'count' => $contacts_count > 0 ? $contacts_count : t('n/a') ,
+        'disabled' => $contacts_count <= 0,
       ),
     );
 

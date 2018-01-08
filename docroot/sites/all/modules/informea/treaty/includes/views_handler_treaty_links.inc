@@ -8,6 +8,7 @@
 class views_handler_treaty_links extends views_handler_field {
 
   public function __construct() {
+    module_load_include('api.inc', 'treaty');
     module_load_include('api.inc', 'decision');
     module_load_include('api.inc', 'country_data');
     module_load_include('api.inc', 'country_deliverable');
@@ -47,6 +48,9 @@ class views_handler_treaty_links extends views_handler_field {
 
       case 'documents':
         return 'country_deliverable_count_treaty_documents';
+
+      case 'contacts-hub':
+        return 'treaty_get_contacts_count';
     }
     return NULL;
   }

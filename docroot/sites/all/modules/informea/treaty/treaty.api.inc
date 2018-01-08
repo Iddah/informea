@@ -231,3 +231,10 @@ function treaty_format_meeting_description($meeting) {
   }
   return drupal_render($description);
 }
+
+function treaty_get_contacts_count($id_treaty) {
+  return db_select('field_data_field_treaty')
+    ->condition('bundle', 'contact_person')
+    ->condition('field_treaty_target_id', $id_treaty)
+    ->countQuery()->execute()->fetchField();
+}
