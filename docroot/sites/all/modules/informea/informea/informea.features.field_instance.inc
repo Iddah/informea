@@ -601,6 +601,61 @@ function informea_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-treaty-field_show_in_main_menu'.
+  $field_instances['node-treaty-field_show_in_main_menu'] = array(
+    'bundle' => 'treaty',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'ajax' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'treaty_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_show_in_main_menu',
+    'label' => 'Show in main menu',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-field_of_work-field_redirect_url'.
   $field_instances['taxonomy_term-field_of_work-field_redirect_url'] = array(
     'bundle' => 'field_of_work',
@@ -2020,6 +2075,7 @@ function informea_field_default_field_instances() {
   t('Redirect url');
   t('Reference URL');
   t('Related terms');
+  t('Show in main menu');
   t('Substantive');
   t('Synonyms');
   t('Tag');

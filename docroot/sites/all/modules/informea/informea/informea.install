@@ -399,3 +399,10 @@ function informea_update_7019() {
   ]);
   variable_set('social_media_links_icon_style', 'informea_social_icons:48');
 }
+
+/**
+ * Task 277: Treaties menu - show items in menu based on a new field 'field_show_in_main_menu'
+ */
+function informea_update_7020() {
+  features_revert(array('informea' => ['field_base', 'field_instance']));
+}

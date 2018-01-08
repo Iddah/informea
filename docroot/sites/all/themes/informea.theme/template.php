@@ -724,49 +724,53 @@ function informea_theme_treaties_menu_block() {
     ->entityCondition('bundle', 'treaty')
     ->propertyCondition('status', NODE_PUBLISHED)
     ->fieldCondition('field_data_source', 'tid', '815')
-    ->fieldCondition('field_primary', 'value', TRUE);
+    ->fieldCondition('field_show_in_main_menu', 'value', TRUE);
   $results = $query->execute();
+
 
   $treaties = [];
   $topics_list = [];
   $regions_list = [];
   $global_label = t('Global');
-  foreach ($results['node'] as $result) {
-    $individual_topics_list = [];
-    $individual_regions_list = [];
-    $node = node_load($result->nid);
-    $treaty['logo_uri'] = $node->field_logo['en'][0]['uri'];
-    $treaty['url'] = '/node/' . $result->nid;
+  $show_global = FALSE;
+  if (!empty($results['node'])) {
+    foreach ($results['node'] as $result) {
+      $individual_topics_list = [];
+      $individual_regions_list = [];
+      $node = node_load($result->nid);
+      $treaty['logo_uri'] = $node->field_logo['en'][0]['uri'];
+      $treaty['url'] = '/node/' . $result->nid;
 
-    $regions = $node->field_region['und'];
-    $topics = $node->field_mea_topic['und'];
-    foreach ($regions as $region) {
-      $region_label = taxonomy_term_load($region['tid'])->name;
-      if (!in_array($region_label, $regions_list)) {
-        if ($region_label != $global_label) {
-          $regions_list[] = $region_label;
+      $regions = $node->field_region['und'];
+      $topics = $node->field_mea_topic['und'];
+      foreach ($regions as $region) {
+        $region_label = taxonomy_term_load($region['tid'])->name;
+        if (!in_array($region_label, $regions_list)) {
+          if ($region_label != $global_label) {
+            $regions_list[] = $region_label;
+          } else {
+            $region_label = mb_strtoupper($global_label);
+            $show_global = TRUE;
+          }
         }
-        else {
-          $region_label = mb_strtoupper($global_label);
+        if (!in_array($region_label, $individual_regions_list)) {
+          $individual_regions_list[] = $region_label;
         }
-      }
-      if (!in_array($region_label, $individual_regions_list)) {
-        $individual_regions_list[] = $region_label;
-      }
-      foreach ($topics as $topic) {
-        $topic_label = taxonomy_term_load($topic['tid'])->name;
-        if (!in_array($topic_label, $topics_list)) {
-          $topics_list[] = $topic_label;
+        foreach ($topics as $topic) {
+          $topic_label = taxonomy_term_load($topic['tid'])->name;
+          if (!in_array($topic_label, $topics_list)) {
+            $topics_list[] = $topic_label;
+          }
+          if (!in_array($topic_label, $individual_topics_list)) {
+            $individual_topics_list[] = $topic_label;
+          }
         }
-        if (!in_array($topic_label, $individual_topics_list)) {
-          $individual_topics_list[] = $topic_label;
+        $treaty['topics'] = $individual_topics_list;
+        $treaty['regions'] = $individual_regions_list;
+        $treaties[$region_label][$node->title] = $treaty;
+        if ($region_label != 'Global') {
+          $treaties['Regional'][$node->title] = $treaty;
         }
-      }
-      $treaty['topics'] = $individual_topics_list;
-      $treaty['regions'] = $individual_regions_list;
-      $treaties[$region_label][$node->title] = $treaty;
-      if ($region_label != 'Global') {
-        $treaties['Regional'][$node->title] = $treaty;
       }
     }
   }
@@ -774,7 +778,9 @@ function informea_theme_treaties_menu_block() {
   asort($regions_list);
   asort($topics_list);
 
-  $regions_list[] = mb_strtoupper($global_label);
+  if ($show_global) {
+    $regions_list[] = mb_strtoupper($global_label);
+  }
 
   return theme(
     'informea_treaties_menu_block',
