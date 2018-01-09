@@ -53,11 +53,25 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_treaty']['field'] = 'field_treaty';
   $handler->display->display_options['fields']['field_treaty']['label'] = '';
+  $handler->display->display_options['fields']['field_treaty']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_treaty']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_treaty']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_treaty']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_treaty']['display'] = 'view';
+  $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
+  /* Field: Indexed Content: Roles */
+  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
+  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_roles']['empty'] = '[field_treaty]';
+  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
+  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -184,6 +198,17 @@ function country_data_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Content: Roles */
+  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
+  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
+  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Indexed Content: Country */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -276,6 +301,7 @@ function country_data_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Displaying @total result(s)'),
+    t('[field_treaty]'),
     t('<div class="separator"></div>'),
     t('<span class="contact-link>Save In Library</span>'),
     t('Full Contact Profile'),

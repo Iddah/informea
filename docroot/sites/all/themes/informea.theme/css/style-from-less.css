@@ -572,6 +572,16 @@
 .select2-open {
   overflow: hidden;
 }
+[dir=ltr] .field-name-field-contact-treaty .node.node-treaty .field-name-field-logo, [dir=ltr] .field-name-field-contact-treaty .node.node-treaty .field-name-title-field {
+  float: left;
+}
+[dir=rtl] .field-name-field-contact-treaty .node.node-treaty .field-name-field-logo, [dir=rtl] .field-name-field-contact-treaty .node.node-treaty .field-name-title-field {
+  float: right;
+}
+.field-name-field-contact-treaty .node.node-treaty .field-name-field-logo .field-item,
+.field-name-field-contact-treaty .node.node-treaty .field-name-title-field .field-item {
+  line-height: 40px;
+}
 .node-header-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
