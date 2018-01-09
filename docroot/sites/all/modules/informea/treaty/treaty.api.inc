@@ -148,6 +148,9 @@ function treaty_get_treaties_as_select_options() {
           case 'documents':
             $count = country_deliverable_count_treaty_documents($nid);
             break;
+          case 'contacts-hub':
+            $count = treaty_get_contacts_count($nid);
+            break;
         }
         if (!empty($count)) {
           $path .= '/' . $menu_object->context;
