@@ -64,23 +64,13 @@ function geographic_region_region_downloadable_documents_block_view() {
  *  The count query result.
  */
 function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL, $fieldConditions = []) {
-  // @todo: refactor this function after all content types have field_region and field_mea_topic.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $content_type)
-    ->propertyCondition('status', NODE_PUBLISHED);
-  switch ($content_type) {
-    case 'decision':
-    case 'document':
-      $regional_treaties = _get_regional_treaties($region_id, $topic_id) + [-1];
-      $query->fieldCondition('field_treaty', 'target_id', $regional_treaties, 'IN');
-      break;
-
-    default:
-      $query->fieldCondition('field_region', 'tid', $region_id);
-      if (!empty($topic_id)) {
-        $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
-      }
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_region', 'tid', $region_id);
+  if (!empty($topic_id)) {
+    $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
   }
   foreach ($fieldConditions as $condition) {
     $column = !empty($condition['column']) ? $condition['column'] : NULL;
