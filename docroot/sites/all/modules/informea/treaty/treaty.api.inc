@@ -103,12 +103,7 @@ function treaty_get_treaties() {
 }
 
 function treaty_get_url_by_odata_name($odata_name) {
-  $menu_object = menu_get_object();
-  $path = 'treaties/' . check_plain($odata_name);
-  if (isset($menu_object->context)) {
-    $path .= '/' . $menu_object->context;
-  }
-  return url($path, array('absolute' => TRUE));
+  return url('treaties/' . check_plain($odata_name), array('absolute' => TRUE));
 }
 
 function treaty_get_treaties_as_select_options() {

@@ -104,12 +104,17 @@ function informea_theme_preprocess_page(&$variables) {
         $treaties = treaty_get_treaties_as_select_options();
         $variables['treaties'] = $treaties;
         $treaties1 = $treaties;
-        // array_unshift($treaties1, t('View another treaty'));
+        $menu_object = menu_get_object();
+        $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
+        if (!empty($menu_object->context)) {
+          $selected_treaty .= '/' . $menu_object->context;
+        }
+
         $variables['select-switch-treaties'] = array(
           '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
           '#options' => $treaties1,
           '#type' => 'select',
-          '#value' => treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value'])
+          '#value' => $selected_treaty,
         );
         break;
 
