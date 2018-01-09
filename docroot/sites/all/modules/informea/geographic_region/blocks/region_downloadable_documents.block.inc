@@ -8,7 +8,9 @@ function geographic_region_region_downloadable_documents_block_view() {
   $region_id = _geographic_region_page_get_region_argument();
   if (!empty($region_id)) {
     $page = page_manager_get_current_page();
-    $topic = $page['contexts']['argument_term_2']->argument;
+    $topic = !empty($page['contexts']['argument_term_2']->argument)
+      ? $page['contexts']['argument_term_2']->argument
+      : NULL;
     $sections = _region_downloadable_documents_block_get_sections();
     $list = [];
     foreach ($sections as $section) {
@@ -84,11 +86,11 @@ function _get_content_count_by_region($content_type, $region_id, $topic_id = NUL
 /**
  * Builds the query for solr-based views.
  */
-function _geographic_region_build_search_link($region_id, $topic_id, $item, $link_title, $count) {
-  $f = [
-    "field_region:{$region_id}",
-    "field_topic:{$topic_id}",
-  ];
+function _geographic_region_build_search_link($region_id, $topic_id = NULL, $item, $link_title, $count) {
+  $f = ["field_region:{$region_id}"];
+  if (!empty($topic_id)) {
+    $f[] = "field_topic:{$topic_id}";
+  }
 
   $path = !empty($item['path']) ? $item['path'] : 'search';
 
