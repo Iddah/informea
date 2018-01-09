@@ -442,6 +442,7 @@ function treaty_custom_view_node($node, $context) {
       if (is_object($view)) {
         $view->set_display('treaty_contacts_hub');
         $view->set_arguments([$node->nid]);
+        $view->override_url = 'node/' . $node->nid . '/' . $context;
         $view->pre_execute();
         $view->execute();
         $node->content['context']['hub'] = [
