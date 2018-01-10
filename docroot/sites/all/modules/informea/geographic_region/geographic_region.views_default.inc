@@ -246,7 +246,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['id'] = 'field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['table'] = 'field_data_field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['field'] = 'field_informea_tags';
-  $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Glossary term(s)';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
   /* Sort criterion: Content: Official name (field_official_name) */
@@ -360,7 +360,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['id'] = 'field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['table'] = 'field_data_field_informea_tags';
   $handler->display->display_options['fields']['field_informea_tags']['field'] = 'field_informea_tags';
-  $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Tags';
+  $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Glossary term(s)';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['settings'] = array(
     'textformatter_type' => 'ul',
@@ -521,7 +521,7 @@ function geographic_region_views_default_views() {
     t('No results text'),
     t('There are no regional treaties for current filters.'),
     t('[field_official_name] ([title])'),
-    t('Tags'),
+    t('Glossary term(s)'),
     t('All'),
     t('Regional treaties'),
     t('There are no global treaties for current filters.'),
