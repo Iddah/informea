@@ -168,7 +168,10 @@ search-court-decisions/*',
     'pages' => 'search
 search/*
 search-bilateral-treaties
-search-bilateral-treaties/*',
+search-bilateral-treaties/*
+node/*/contacts-hub
+treaties/*/contacts-hub
+countries/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -199,7 +202,10 @@ search-bilateral-treaties/*',
     'pages' => 'search
 search/*
 search-bilateral-treaties
-search-bilateral-treaties/*',
+search-bilateral-treaties/*
+node/*/contacts-hub
+treaties/*/contacts-hub
+countries/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -821,7 +827,10 @@ search-publications/*',
     'pages' => 'search
 search/*
 search-bilateral-treaties
-search-bilateral-treaties/*',
+search-bilateral-treaties/*
+node/*/contacts-hub
+treaties/*/contacts-hub
+countries/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
