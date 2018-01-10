@@ -4,6 +4,7 @@ core = 7.x
 package = InforMEA
 version = 7.x-1.5
 project = country_data
+dependencies[] = better_exposed_filters
 dependencies[] = country_deliverable
 dependencies[] = ctools
 dependencies[] = date
