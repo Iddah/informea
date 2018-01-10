@@ -87,6 +87,7 @@ function informea_search_default_search_api_index() {
         "status" : { "type" : "integer" },
         "title" : { "type" : "text", "boost" : "21.0" },
         "title_field" : { "type" : "text", "boost" : "21.0" },
+        "title_index" : { "type" : "string" },
         "type" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
