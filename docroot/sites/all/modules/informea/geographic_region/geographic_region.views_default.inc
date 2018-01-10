@@ -249,6 +249,10 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_informea_tags']['label'] = 'Glossary term(s)';
   $handler->display->display_options['fields']['field_informea_tags']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
+  /* Sort criterion: Field: Order (field_sorting_order) */
+  $handler->display->display_options['sorts']['field_sorting_order_value']['id'] = 'field_sorting_order_value';
+  $handler->display->display_options['sorts']['field_sorting_order_value']['table'] = 'field_data_field_sorting_order';
+  $handler->display->display_options['sorts']['field_sorting_order_value']['field'] = 'field_sorting_order_value';
   /* Sort criterion: Content: Official name (field_official_name) */
   $handler->display->display_options['sorts']['field_official_name_value']['id'] = 'field_official_name_value';
   $handler->display->display_options['sorts']['field_official_name_value']['table'] = 'field_data_field_official_name';
