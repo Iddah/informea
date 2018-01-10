@@ -17,7 +17,10 @@ function geographic_region_drush_command() {
 }
 
 function drush_geographic_region_informea_populate_fields() {
-  $ids = explode(',', drush_get_option('ids', ''));
+  $ids = drush_get_option('ids', []);
+  if (!is_array($ids)) {
+    $ids = explode(',', $ids);
+  }
 
   $fields = [
     DenormalizedFieldHandler::FIELD_REGION => 'RegionDenormalizedFieldHandler',
