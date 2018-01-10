@@ -8,21 +8,26 @@ function geographic_region_drush_command() {
 
   $items['informea-populate-fields'] = array(
     'description' => 'Populate field_region and field_topic.',
+    'options' => array(
+      'ids' => 'List of node ids to update.',
+    ),
   );
 
   return $items;
 }
 
 function drush_geographic_region_informea_populate_fields() {
+  $ids = explode(',', drush_get_option('ids', ''));
+
   $fields = [
-    'field_region' => 'RegionDenormalizedFieldHandler',
-    'field_topic' => 'TopicDenormalizedFieldHandler',
+    DenormalizedFieldHandler::FIELD_REGION => 'RegionDenormalizedFieldHandler',
+    DenormalizedFieldHandler::FIELD_MEA_TOPIC => 'TopicDenormalizedFieldHandler',
   ];
   foreach ($fields as $field => $handlerClassName) {
     /** @var \DenormalizedFieldHandler $instance */
     $instance = new $handlerClassName();
     foreach ($instance->getSupportedContentTypes() as $contentType) {
-      $nodes = node_load_multiple(array(), array('type' => $contentType));
+      $nodes = node_load_multiple($ids, array('type' => $contentType));
 
       foreach ($nodes as $node) {
         if ($instance->computeField($node)) {
