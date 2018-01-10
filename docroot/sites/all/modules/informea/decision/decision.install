@@ -60,3 +60,23 @@ function decision_update_7003() {
 function decision_update_7004() {
   features_revert_module('decision');
 }
+
+function decision_update_7005() {
+  $type = 'node';
+  $q = db_select('node', 'n')->fields('n', array('nid'));
+  $q->leftJoin('search_api_item', 'sai', 'n.nid = sai.item_id');
+  $q->condition('sai.item_id', NULL);
+  $q->condition('n.status', '1');
+  $q->condition('n.type', 'decision');
+
+  $result = $q->execute()->fetchAllKeyed(0, 0);
+  foreach ($result as $nid) {
+    $entity = node_load($nid);
+    list($id) = entity_extract_ids($type, $entity);
+    if (isset($id)) {
+      search_api_track_item_insert($type, array($id));
+      $combined_id = $type . '/' . $id;
+      search_api_track_item_insert('multiple', array($combined_id));
+    }
+  }
+}
