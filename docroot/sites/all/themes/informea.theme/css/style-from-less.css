@@ -658,17 +658,17 @@
   display: inline-flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-height: 2.5em;
+  min-height: 3em;
   position: relative;
 }
 [dir] .treaties-menu-treaty {
-  padding: .2em 0;
+  padding: .5em 0;
 }
 [dir=ltr] .treaties-menu-treaty {
-  padding-left: 4.5em;
+  padding-left: 5em;
 }
 [dir=rtl] .treaties-menu-treaty {
-  padding-right: 4.5em;
+  padding-right: 5em;
 }
 .treaties-menu-treaty:hover,
 .treaties-menu-treaty:focus {
@@ -679,13 +679,13 @@
   text-decoration: underline;
 }
 .treaties-menu-treaty-logo {
-  height: 2.5em;
+  height: 3em;
   -o-object-fit: contain;
      object-fit: contain;
   position: absolute;
-  width: 2.5em;
   top: 50%;
   -webkit-transform: translateY(-50%);
+  width: 3em;
 }
 [dir] .treaties-menu-treaty-logo {
           transform: translateY(-50%);
@@ -733,8 +733,8 @@
   visibility: hidden;
 }
 [dir] .treaties-menu > li > .treaties-menu-title::before, [dir] .treaties-menu > li > .treaties-menu-title::after {
-  border-top: .8em solid transparent;
-  border-bottom: .8em solid transparent;
+  border-top: .7em solid transparent;
+  border-bottom: .7em solid transparent;
           transform: translateY(-50%);
   transition-property: visibility;
 }
