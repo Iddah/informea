@@ -310,7 +310,7 @@ class ODataMigrationUtil {
       if (!in_array('en', $languages)) {
         foreach ($data as $value) {
           if (!empty($value->value) && strtolower($value->language) == 'und') {
-            $languages = array_unshift($languages, 'en');
+            array_unshift($languages, 'en');
             $values = array_unshift($values, $value->value);
             break;
           }
