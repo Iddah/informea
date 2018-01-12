@@ -333,6 +333,8 @@ class ODataMigrationUtil {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
     if (!empty($username) && !empty($password)) {
       curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
     }
@@ -341,7 +343,7 @@ class ODataMigrationUtil {
     curl_setopt($ch, CURLOPT_NOBODY, 0);
     $ret = curl_exec($ch);
     $info = curl_getinfo($ch);
-    if ($info['http_code'] != 200) {
+    if ($info['http_code'] != 200 || $info['http_code'] != 301 || $info['http_code'] != 302) {
       $code = $info['http_code'];
       ws_consumer_odata_log(__METHOD__ . ": HTTP request failure ({$code}) for URL: $url", MigrationBase::MESSAGE_ERROR);
       $ret = NULL;
