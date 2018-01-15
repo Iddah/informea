@@ -20,7 +20,8 @@ function geographic_region_default_fe_block_settings() {
     'machine_name' => 'engage_with_informea',
     'module' => 'block',
     'node_types' => array(),
-    'pages' => 'regions/*',
+    'pages' => 'regions/*
+topics/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -48,7 +49,8 @@ function geographic_region_default_fe_block_settings() {
     'machine_name' => 'involvement_region_title',
     'module' => 'block',
     'node_types' => array(),
-    'pages' => 'regions/*',
+    'pages' => 'regions/*
+topics/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -76,7 +78,8 @@ function geographic_region_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'mailchimp_signup',
     'node_types' => array(),
-    'pages' => 'regions/*',
+    'pages' => 'regions/*
+topics/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -104,7 +107,8 @@ function geographic_region_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'social_media_links',
     'node_types' => array(),
-    'pages' => 'regions/*',
+    'pages' => 'regions/*
+topics/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -132,7 +136,8 @@ function geographic_region_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'regions/*',
+    'pages' => 'regions/*
+topics/*',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
