@@ -360,6 +360,29 @@ function informea_topics_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
+  $pane->pid = 'new-9be4dc6c-a2c2-4ee2-843d-3071bd768314';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'informea_topics-topic_switch_region';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Browse by Region',
+    'override_title_heading' => 'h4',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '9be4dc6c-a2c2-4ee2-843d-3071bd768314';
+  $display->content['new-9be4dc6c-a2c2-4ee2-843d-3071bd768314'] = $pane;
+  $display->panels['center'][0] = 'new-9be4dc6c-a2c2-4ee2-843d-3071bd768314';
+  $pane = new stdClass();
   $pane->pid = 'new-6db009e5-6343-414e-89f6-bd0d0b32b99e';
   $pane->panel = 'contacts_hub';
   $pane->type = 'views';

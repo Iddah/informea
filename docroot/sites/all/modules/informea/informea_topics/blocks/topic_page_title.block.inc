@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Page title for regional page.
+ * Page title for topic page.
  */
-function geographic_region_region_page_title_block_view() {
+function informea_topics_topic_page_title_block_view() {
   $block = [];
-  $region_id = _geographic_region_page_get_region_argument();
-  if (!empty($region_id)) {
-    $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+  $topic_id = _geographic_region_page_get_argument('topic');
+  if (!empty($topic_id)) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
     $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
     $options = [];
     $title = '';
     foreach ($terms as $term) {
-      if ($term->tid != 1118) { // Exclude "Global" region
-        if ($term->tid == $region_id) {
-          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
+      if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+        if ($term->tid == $topic_id) {
+          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information in'), $term->name);
         }
         $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
       }
@@ -23,7 +23,7 @@ function geographic_region_region_page_title_block_view() {
       $block['content'] = [
         '#type' => 'select',
         '#options' => $options,
-        '#default_value' => url('/taxonomy/term/' . $region_id),
+        '#default_value' => url('/taxonomy/term/' . $topic_id),
         '#prefix' => '<h1>' . $title . '</h1>',
         '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-geographic-region'],
         '#select2' => [
