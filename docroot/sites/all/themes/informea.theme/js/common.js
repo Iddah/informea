@@ -153,7 +153,7 @@ jQuery(document).ready(function ($) {
   });
 
   $geographicRegionSelect.select2({
-    dropdownCssClass: 'edit-geographic-region-drop',
+    dropdownCssClass: 'edit-geographic-region-drop'
   });
 
   $('.use-select-2')
