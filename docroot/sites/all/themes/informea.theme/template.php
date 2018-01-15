@@ -481,7 +481,7 @@ function informea_theme_informea_search_form_wrapper($variables) {
     $optgroup_open = false;
 
     foreach($variables['element']['#category-options'] as $k => $v) {
-      if($v['is_group_label'] === true) {
+      if(!empty($v['is_group_label'])) {
         // if one optgroup is already open, close it
         if($optgroup_open) {
           $category_select .= sprintf('</optgroup>');
