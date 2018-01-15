@@ -183,7 +183,7 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
   function getSupportedContentTypes() {
     // @TODO make configurable globally? Per node?
     return array('action_plan', 'contact_person', 'court_decisions', 'decision',
-      'document', 'event_calendar', 'event_calendar_imported', 'feed_item',
+      'document', 'event_calendar', 'feed_item',
       'geographical_site', 'legislation', 'literature', 'member_party',
       'national_report');
   }
@@ -205,7 +205,6 @@ class RegionDenormalizedFieldHandler extends DenormalizedFieldHandler {
         break;
       // Use only field_treaty as source for region.
       case 'decision':
-      case 'event_calendar_imported':
       case 'feed_item':
         $treaty_nids = $this->getReferenceFieldValues($node, self::FIELD_TREATY);
         $new_tids = $this->getTreatiesRegions($treaty_nids);
@@ -242,7 +241,7 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
   function getSupportedContentTypes() {
     // @TODO make configurable globally? Per node?
     return array('action_plan', 'contact_person', 'decision',
-      'document', 'event_calendar', 'event_calendar_imported', 'feed_item',
+      'document', 'event_calendar', 'feed_item',
       'geographical_site', 'national_report');
   }
 
@@ -258,7 +257,6 @@ class TopicDenormalizedFieldHandler extends DenormalizedFieldHandler  {
       case 'decision':
       case 'document':
       case 'event_calendar':
-      case 'event_calendar_imported':
       case 'feed_item':
       case 'geographical_site':
       case 'national_report':
