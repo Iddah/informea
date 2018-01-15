@@ -14,9 +14,7 @@ function geographic_region_region_switch_topic_block_view() {
       return strcmp($a->name, $b->name);
     });
 
-    $current_topic = !empty($page['contexts']['argument_term_2']->argument)
-      ? $page['contexts']['argument_term_2']->argument
-      : NULL;
+    $current_topic = _geographic_region_page_get_argument('topic');
 
     $region_path = 'regions/' . $page['contexts']['argument_term_1']->original_argument;
     $tabs = [

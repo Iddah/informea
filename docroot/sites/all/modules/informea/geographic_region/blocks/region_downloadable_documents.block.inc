@@ -5,41 +5,34 @@
  */
 function geographic_region_region_downloadable_documents_block_view() {
   $block = [];
+  $block['content'] = t('There are no downloadable documents for current filters.');
   $region_id = _geographic_region_page_get_region_argument();
-  if (!empty($region_id)) {
-    $page = page_manager_get_current_page();
-    $topic = !empty($page['contexts']['argument_term_2']->argument)
-      ? $page['contexts']['argument_term_2']->argument
-      : NULL;
-    $sections = _region_downloadable_documents_block_get_sections();
-    $list = [];
-    foreach ($sections as $section) {
-      $subList = [['data' => $section['title'], 'class' => ['section-title']]];
-      foreach ($section['items'] as $title => $options) {
-        $count = _get_content_count_by_region($options['type'], $region_id, $topic, !empty($options['fieldConditions']) ? $options['fieldConditions'] : []);
-        if (!empty($count)) {
-          $subList[] = ['data' => _geographic_region_build_search_link($region_id, $topic, $options, $title, $count)];
-        }
-      }
-      if (count($subList) > 1) {
-        $list = array_merge($list, $subList);
+  $topic = _geographic_region_page_get_argument('topic');
+  $sections = _region_downloadable_documents_block_get_sections();
+  $list = [];
+  foreach ($sections as $section) {
+    $subList = [['data' => $section['title'], 'class' => ['section-title']]];
+    foreach ($section['items'] as $title => $options) {
+      $count = _get_content_count_by_region($options['type'], $region_id, $topic, !empty($options['fieldConditions']) ? $options['fieldConditions'] : []);
+      if (!empty($count)) {
+        $subList[] = ['data' => _geographic_region_build_search_link($region_id, $topic, $options, $title, $count)];
       }
     }
-    if (!empty($list)) {
-      $block['content'] = [
-        '#theme' => 'item_list',
-        '#items' => $list,
-        '#attributes' => [
-          'class' => [
-            'list-unstyled',
-            'region-downloadable-documents-list',
-          ],
+    if (count($subList) > 1) {
+      $list = array_merge($list, $subList);
+    }
+  }
+  if (!empty($list)) {
+    $block['content'] = [
+      '#theme' => 'item_list',
+      '#items' => $list,
+      '#attributes' => [
+        'class' => [
+          'list-unstyled',
+          'region-downloadable-documents-list',
         ],
-      ];
-    }
-    else {
-      $block['content'] = t('There are no downloadable documents for current filters.');
-    }
+      ],
+    ];
   }
   return $block;
 }
@@ -65,12 +58,14 @@ function geographic_region_region_downloadable_documents_block_view() {
  * @return int
  *  The count query result.
  */
-function _get_content_count_by_region($content_type, $region_id, $topic_id = NULL, $fieldConditions = []) {
+function _get_content_count_by_region($content_type, $region_id = NULL, $topic_id = NULL, $fieldConditions = []) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $content_type)
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->fieldCondition('field_region', 'tid', $region_id);
+    ->propertyCondition('status', NODE_PUBLISHED);
+  if (!empty($region_id)) {
+    $query->fieldCondition('field_region', 'tid', $region_id);
+  }
   if (!empty($topic_id)) {
     $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
   }
@@ -86,8 +81,11 @@ function _get_content_count_by_region($content_type, $region_id, $topic_id = NUL
 /**
  * Builds the query for solr-based views.
  */
-function _geographic_region_build_search_link($region_id, $topic_id = NULL, $item, $link_title, $count) {
-  $f = ["field_region:{$region_id}"];
+function _geographic_region_build_search_link($region_id = NULL, $topic_id = NULL, $item, $link_title, $count) {
+  $f = [];
+  if (!empty($region_id)) {
+    $f[] = "field_region:{$region_id}";
+  }
   if (!empty($topic_id)) {
     $f[] = "field_topic:{$topic_id}";
   }

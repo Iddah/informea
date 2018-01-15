@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the InforMEA Topics feature.
+ */
+
+include_once 'informea_topics.features.inc';

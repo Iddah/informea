@@ -1,0 +1,10 @@
+name = InforMEA Topics
+core = 7.x
+package = InforMEA
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = geographic_region
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_pages][] = topic_page
