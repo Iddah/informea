@@ -60,7 +60,6 @@ features[variable][] = pathauto_node_country_und_pattern
 features[variable][] = pathauto_node_country_zh-hans_pattern
 features[variable][] = xmlsitemap_settings_node_country
 features[variable][] = xmlsitemap_settings_node_national_report
-features[views_view][] = contacts_hubs
 features[views_view][] = countries
 features[views_view][] = country_related_content
 files[] = country.api.inc

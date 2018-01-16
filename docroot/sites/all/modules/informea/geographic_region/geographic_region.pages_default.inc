@@ -66,7 +66,7 @@ function geographic_region_default_page_manager_pages() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => ' topic-%topic:name',
+    'body_classes_to_add' => ' topic-%topic:tid',
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
@@ -430,7 +430,7 @@ function geographic_region_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Downloadable Documents',
+    'override_title_text' => 'Documents and files',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();

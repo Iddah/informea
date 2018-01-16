@@ -28,7 +28,7 @@ function geographic_region_block_info() {
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ],
     'region_downloadable_documents' => [
-      'info' => t('Downloadable documents'),
+      'info' => t('Documents and files'),
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ],
   ];
@@ -69,9 +69,23 @@ function _get_regional_treaties($region_id, $topic_id = NULL) {
  *  Region term tid.
  */
 function _geographic_region_page_get_region_argument() {
+  return _geographic_region_page_get_argument('region');
+}
+
+/**
+ * Retrieves the region id contextual filter if available.
+ *
+ * @return null|int
+ *  Region term tid.
+ */
+function _geographic_region_page_get_argument($name) {
   $page = page_manager_get_current_page();
-  if (!empty($page['contexts']['argument_term_1']->argument)) {
-    return $page['contexts']['argument_term_1']->argument;
+  if (is_array($page) && !empty($page['contexts']) && is_array(($page['contexts']))) {
+    foreach ($page['contexts'] as $context) {
+      if (!empty($context->keyword) && $context->keyword == $name) {
+        return $context->argument;
+      }
+    }
   }
   return NULL;
 }

@@ -13,7 +13,9 @@
 
   h1,
   .block-geographic-region select,
-  .block-geographic-region .select2-container {
+  .block-informea-topics select,
+  .block-geographic-region .select2-container,
+  .block-informea-topics .select2-container {
     font-size: 1.9em;
     font-weight: normal;
     text-align: center;
@@ -92,48 +94,6 @@
       }
     }
   }
-  // General styling for select2 in search block
-  .select2-container {
-    align-items: center;
-    display: inline-flex;
-    width: auto !important;
-  }
-  select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    &::-ms-expand {
-      display: none;
-    }
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    color: inherit;
-  }
-  .select2-choice {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    color: inherit;
-    display: flex;
-     > .select2-chosen {
-      margin-right: 0;
-     }
-    .select2-arrow {
-      background: none;
-      border: none;
-      box-shadow: none;
-      padding: 0 .3em;
-      position: static;
-      width: auto;
-    }
-    .select2-arrow b {
-      .caret();
-      background: none;
-      border-top: .4em dashed;
-      border-right: .4em solid transparent;
-      border-left: .4em solid transparent;
-    }
-  }
 }
 
 .block-informea-search {
@@ -141,7 +101,7 @@
   width: 100%;
 }
 
-.block-geographic-region {
+.block-geographic-region, .block-informea-topics {
   .search-block & {
     align-items: center;
     display: inline-flex;

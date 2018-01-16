@@ -224,6 +224,9 @@ function country_data_strongarm() {
       'treaty_listing' => array(
         'custom_settings' => TRUE,
       ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

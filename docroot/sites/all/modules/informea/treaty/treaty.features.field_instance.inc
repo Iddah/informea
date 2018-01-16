@@ -558,12 +558,9 @@ function treaty_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -617,7 +614,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 59,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -669,7 +666,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 42,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -721,7 +718,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -782,7 +779,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 41,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -834,7 +831,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 43,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -886,7 +883,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -948,7 +945,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 44,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -996,7 +993,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1055,7 +1052,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1116,7 +1113,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 45,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1169,7 +1166,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 22,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1229,7 +1226,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 40,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1289,7 +1286,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1365,7 +1362,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
       'treaty_listing' => array(
         'label' => 'hidden',
@@ -1433,7 +1430,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1502,7 +1499,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1569,7 +1566,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1624,7 +1621,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1679,7 +1676,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1738,7 +1735,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'treaty_listing' => array(
         'label' => 'inline',
@@ -1806,7 +1803,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 36,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1862,7 +1859,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 38,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1913,7 +1910,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1972,9 +1969,13 @@ function treaty_field_default_field_instances() {
         'weight' => 36,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'logo',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'treaty_listing' => array(
@@ -2061,7 +2062,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 27,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2121,7 +2122,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 46,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2178,7 +2179,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 55,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2229,7 +2230,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 54,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2281,7 +2282,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 56,
       ),
       'treaty_listing' => array(
         'label' => 'hidden',
@@ -2338,7 +2339,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2391,7 +2392,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2460,7 +2461,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2516,7 +2517,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 57,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2569,7 +2570,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 58,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2625,7 +2626,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 53,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2676,7 +2677,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 52,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2739,7 +2740,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 48,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2808,7 +2809,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'treaty_listing' => array(
         'label' => 'hidden',
@@ -2879,7 +2880,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2947,7 +2948,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 47,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -2999,7 +3000,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 49,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3069,7 +3070,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3129,7 +3130,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3182,7 +3183,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 50,
       ),
       'treaty_listing' => array(
         'label' => 'hidden',
@@ -3235,7 +3236,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3296,7 +3297,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3357,7 +3358,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3430,7 +3431,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3481,7 +3482,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 51,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3550,7 +3551,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3619,7 +3620,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3688,7 +3689,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3757,7 +3758,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 32,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3827,7 +3828,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3896,7 +3897,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -3959,7 +3960,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 26,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -4028,7 +4029,7 @@ function treaty_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 23,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -4083,10 +4084,11 @@ function treaty_field_default_field_instances() {
         'weight' => 56,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'treaty_listing' => array(
         'label' => 'above',

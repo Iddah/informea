@@ -34,3 +34,10 @@ function ecolex_update_7004() {
 function ecolex_update_7005() {
   features_revert_module('ecolex');
 }
+
+/**
+ * 261 Court decisions - minimum allowed date.
+ */
+function ecolex_update_7006() {
+  features_revert(array('ecolex' => ['field_instance']));
+}

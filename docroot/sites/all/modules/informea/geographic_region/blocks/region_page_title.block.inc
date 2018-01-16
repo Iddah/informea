@@ -10,10 +10,11 @@ function geographic_region_region_page_title_block_view() {
     $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
     $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
     $options = [];
+    $title = '';
     foreach ($terms as $term) {
       if ($term->tid != 1118) { // Exclude "Global" region
         if ($term->tid == $region_id) {
-          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover Environmental Information Concerning'), $term->name);
+          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
         }
         $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
       }

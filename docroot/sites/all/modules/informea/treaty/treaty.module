@@ -137,6 +137,7 @@ function _treaty_url_get_custom_node_view_types() {
     'national-reports',
     'action-plans',
     'documents',
+    'contacts-hub'
   );
 }
 
@@ -264,7 +265,7 @@ function treaty_custom_view_node($node, $context) {
       $data = treaty_get_child_protocols($node->nid);
       if (empty($data)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       $node->content['context'] = array(
         '#type' => 'item', '#weight' => 10, '#markup' => theme('treaty_protocols', array('protocols' => $data)),
@@ -276,7 +277,7 @@ function treaty_custom_view_node($node, $context) {
       $data = decision_get_treaty_decisions_group_by_meeting($node->nid);
       if (empty($data)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       drupal_add_library('informea', 'scrollto');
       if ($odata_identifier != 'cites') {
@@ -329,7 +330,7 @@ function treaty_custom_view_node($node, $context) {
       $other_members = country_data_treaty_get_membership($node->nid, $other = TRUE);
       if (empty($members) && empty($other_members)) {
         $node->content['context'] = informea_no_content_available_block();
-        return;
+        break;
       }
       if (count($members)) {
         // Add map with parties.
@@ -434,6 +435,21 @@ function treaty_custom_view_node($node, $context) {
         return;
       }
       $node->content['context'] = country_deliverable_render_action_plans($rows);
+      break;
+
+    case 'contacts-hub':
+      $view = views_get_view('contacts_hub');
+      if (is_object($view)) {
+        $view->set_display('treaty_contacts_hub');
+        $view->set_arguments([$node->nid]);
+        $view->override_url = 'node/' . $node->nid . '/' . $context;
+        $view->pre_execute();
+        $view->execute();
+        $node->content['context']['hub'] = [
+          '#type' => 'markup',
+          '#markup' => $view->render(),
+        ];
+      }
       break;
   }
 
@@ -666,6 +682,7 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
     $ap_count = country_deliverable_count_treaty_action_plans($node->nid);
     $p_count = country_data_treaty_count_membership($node->nid);
     $doc_count = country_deliverable_count_treaty_documents($node->nid);
+    $contacts_count = treaty_get_contacts_count($node->nid);
     $menu_items = array(
       '' => array(
         'title' => t('Summary')
@@ -701,6 +718,11 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
         'title' => t('Documents'),
         'count' => $doc_count > 0 ? $doc_count : t('n/a'),
         'disabled' => $doc_count <= 0,
+      ),
+      'contacts-hub' => array(
+        'title' => t('Contacts HUB'),
+        'count' => $contacts_count > 0 ? $contacts_count : t('n/a') ,
+        'disabled' => $contacts_count <= 0,
       ),
     );
 
@@ -837,7 +859,6 @@ function treaty_views_pre_render(&$view) {
     $view->regions = $regions;
   }
 }
-
 
 function treaty_get_odata_identifier($treaty) {
   if(is_object($treaty)) {

@@ -83,7 +83,7 @@ function informea_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -34,
+        'weight' => -36,
       ),
       'seven' => array(
         'region' => '',
@@ -113,7 +113,7 @@ function informea_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -35,
+        'weight' => -37,
       ),
       'seven' => array(
         'region' => '',

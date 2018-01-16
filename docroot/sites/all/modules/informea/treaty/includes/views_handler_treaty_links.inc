@@ -8,6 +8,10 @@
 class views_handler_treaty_links extends views_handler_field {
 
   public function __construct() {
+    module_load_include('api.inc', 'treaty');
+    module_load_include('api.inc', 'decision');
+    module_load_include('api.inc', 'country_data');
+    module_load_include('api.inc', 'country_deliverable');
     $this->real_field = 'nid';
   }
 
@@ -44,6 +48,9 @@ class views_handler_treaty_links extends views_handler_field {
 
       case 'documents':
         return 'country_deliverable_count_treaty_documents';
+
+      case 'contacts-hub':
+        return 'treaty_get_contacts_count';
     }
     return NULL;
   }
@@ -53,6 +60,7 @@ class views_handler_treaty_links extends views_handler_field {
    */
   function option_definition() {
     $options = parent::option_definition();
+    $options['unavailable_links_options'] = ['default' => 'disable'];
     $options['display_links'] = ['default' => []];
     foreach ($this->getSections() as $menu_context => $title) {
       $options["{$menu_context}_link_title"] = ['default' => $title];
@@ -65,6 +73,16 @@ class views_handler_treaty_links extends views_handler_field {
    */
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
+    $form['unavailable_links_options'] = [
+      '#title' => t('Unavailable links action'),
+      '#type' => 'select',
+      '#options' => [
+        'disable' => 'Disable',
+        'hide' => 'Hide',
+      ],
+      '#default_value' => $this->options['unavailable_links_options'],
+      '#required' => TRUE,
+    ];
     $form['display_links'] = [
       '#title' => t('Display links'),
       '#type' => 'checkboxes',
@@ -90,14 +108,18 @@ class views_handler_treaty_links extends views_handler_field {
       $node_url = url(drupal_get_path_alias('node/' . $nid), ['absolute' => TRUE]);
       foreach ($this->options['display_links'] as $menu_context => $enabled) {
         if ($enabled && !empty($this->options["{$menu_context}_link_title"])) {
-//          $count_function = $this->getSectionCountFunction($menu_context);
+          $count_function = $this->getSectionCountFunction($menu_context);
 
-//          dpm(function_exists($count_function), $count_function);
-//          if (!empty($count_function) && $this->{$count_function}($nid) <= 0) {
-//            continue;
-//          }
+          if (!empty($count_function) && function_exists($count_function) && $count_function($nid) <= 0) {
+            if ($this->options['unavailable_links_options'] == 'hide') {
+              continue;
+            }
+            $link = t($this->options["{$menu_context}_link_title"]);
+          }
+          else {
+            $link = l(t($this->options["{$menu_context}_link_title"]), $node_url . '/' . $menu_context);
+          }
 
-          $link = l(t($this->options["{$menu_context}_link_title"]), $node_url . '/' . $menu_context);
           $contextual_menu['#items'][$menu_context] = $link;
         }
       }

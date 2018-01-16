@@ -1,0 +1,152 @@
+.page-node-contacts-hub {
+  .page-header {
+    // margin-bottom: 0;
+  }
+}
+.node-header-container {
+  align-items: center;
+  display: flex;
+  .select-switcher-form {
+    overflow: hidden;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+}
+.view-contacts-hub {
+  margin-top: 2em;
+  .views-row {
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+    + .views-row {
+      border-top: 1px solid fade(#000, 10%);
+    }
+  }
+  .views-field {
+    color: @regional-page-gray;
+    margin-top: .5rem;
+    &, & * { display: inline; }
+    + .views-field {
+      > .field-content:not(:empty):before {
+        content: '|';
+        margin-right: .3rem;
+      }
+    }
+    ul {
+      .list-unstyled();
+      margin-bottom: 0;
+    }
+  }
+  .separator {
+    padding-top: .5rem;
+  }
+  .views-field-title {
+    display: block;
+    flex-basis: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    &, a { color: @regional-page-dark-blue; }
+    + .views-field > .field-content:before { display: none; }
+  }
+
+  .views-field-field-treaty,
+  .views-field-field-country {
+    .field-items { display: inline-flex; flex-wrap: wrap; }
+    .field + .field,
+    .field-item + .field-item {
+      margin-left: .3em;
+    }
+    li {
+      align-items: center;
+      display: inline-flex;
+      flex-wrap: wrap;
+      vertical-align: middle;
+    }
+    img {
+      max-height: 2em;
+      width: auto;
+    }
+    .img-thumbnail {
+      border-radius: 0;
+      border: none;
+      padding: 0;
+      + .field {
+        margin-left: .3em;
+      }
+    }
+  }
+  .views-field-field-country img {
+    max-height: 1.5em;
+  }
+  .views-field-field-mea-topic + .views-field {
+    margin-left: .5rem;
+    > .field-content:before {
+      display: none;
+    }
+  }
+  // emulate disabled behaviour
+  .views-field-nothing,
+  .views-field-view-node,
+  .views-field-nothing-1 {
+    > .field-content {
+      color: #777;
+      cursor: not-allowed;
+    }
+    a {
+      color: #0A8FC6;
+      cursor: pointer;
+    }
+  }
+
+  .view-header {
+    color: @regional-page-gray;
+    float: right;
+    font-size: .9em;
+    margin-top: .5rem;
+  }
+
+  .views-exposed-widgets {
+    margin-top: -.5rem;
+    > .views-exposed-widget {
+      margin-top: .5rem;
+      padding-top: 0;
+    }
+  }
+  #edit-search-api-views-fulltext-wrapper {
+    display: block;
+  }
+  #edit-submit-contacts-hub {
+    margin-top: 0;
+  }
+}
+
+// .view-contacts-hub.view-display-id-country_contacts_hub {
+
+// }
+// .view-contacts-hub.view-display-id-treaty_contacts_hub {
+
+// }
+
+.node-header-container .treaty-switcher,
+.node-header-container .country-switcher,
+#s2id_treaty-switcher .select2-choice,
+#s2id_country-switcher .select2-choice {
+  font-size: 2.2em;
+  height: auto;
+  font-weight: 500;
+
+}
+#s2id_country-switcher,
+#s2id_treaty-switcher {
+  .select2-choice {
+    line-height: @line-height-base;
+  }
+  .select2-choice > .select2-chosen {
+    font-size: inherit;
+    font-weight: 500;
+  }
+  .select2-arrow {
+    color: #fc3;
+  }
+}

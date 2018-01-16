@@ -102,6 +102,10 @@ function treaty_get_treaties() {
   return array();
 }
 
+function treaty_get_url_by_odata_name($odata_name) {
+  return url('treaties/' . check_plain($odata_name), array('absolute' => TRUE));
+}
+
 function treaty_get_treaties_as_select_options() {
   $ret = array();
   $query = new EntityFieldQuery();
@@ -120,7 +124,7 @@ function treaty_get_treaties_as_select_options() {
     foreach ($rows as $nid => $node) {
       $label = field_get_items('node', $node, 'title_field');
       $label = isset($label[0]['value']) ? $label[0]['value'] : $node->title;
-      $path = 'treaties/' . $node->field_odata_identifier[LANGUAGE_NONE][0]['value'];
+      $path = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
       if (!empty($menu_object->context)) {
         switch ($menu_object->context) {
           case 'text':
@@ -144,12 +148,15 @@ function treaty_get_treaties_as_select_options() {
           case 'documents':
             $count = country_deliverable_count_treaty_documents($nid);
             break;
+          case 'contacts-hub':
+            $count = treaty_get_contacts_count($nid);
+            break;
         }
         if (!empty($count)) {
           $path .= '/' . $menu_object->context;
         }
       }
-      $ret[url($path, array('absolute' => TRUE))] = $label;
+      $ret[$path] = $label;
     }
   }
   return $ret;
@@ -221,4 +228,11 @@ function treaty_format_meeting_description($meeting) {
     $description['#items'][] = format_plural(count($meeting->decisions), 'one decision', '@count decisions');
   }
   return drupal_render($description);
+}
+
+function treaty_get_contacts_count($id_treaty) {
+  return db_select('field_data_field_treaty')
+    ->condition('bundle', 'contact_person')
+    ->condition('field_treaty_target_id', $id_treaty)
+    ->countQuery()->execute()->fetchField();
 }

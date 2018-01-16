@@ -25,7 +25,8 @@
 }
 
 // Regional page specific styles
-.page-regions {
+.page-regions,
+.page-topics {
   .panels-flexible-row {
     width: 100%;
     &.row { margin-left: 0; margin-right: 0; }
@@ -45,21 +46,25 @@
       .list-unstyled();
       display: flex;
       flex-wrap: wrap;
-      margin-left: -.2em;
+      margin-left: -.3rem;
       margin-top: .5em;
     }
     li {
-      margin-left: .2em;
+      margin-left: .3rem;
+      // emulate disabled behaviour
+      color: #777;
+      cursor: not-allowed;
       + li {
         &:before {
           color: @regional-page-gray;
           content: '|';
-          margin-right: .2em;
+          margin-right: .3rem;
         }
       }
     }
     a {
       color: #0A8FC6;
+      cursor: pointer;
     }
   }
 
@@ -104,29 +109,17 @@
     }
 
   }
-  .views-field-field-mea-topic {
-    > .field-content {
-      background-color: #DADADA;
-      color: #fff;
-      display: inline-block;
-      font-weight: 300;
-      min-width: 6em;
-      padding: .2em .4em .1em;
-      text-align: center;
-    }
-  }
 
   // Unwrapped version
   @media (min-width: @screen-md-min) {
-    .views-field-field-mea-topic,
     .views-field-field-event-type {
       display: inline-block;
       margin-bottom: 0;
     }
-    .views-field-field-event-type + .views-field { margin-left: .5em; }
+    .views-field-field-event-type + .views-field { margin-left: .5rem; }
     .views-field-field-mea-topic + .views-field-field-informea-tags {
-      display: inline-block;
-      margin-left: .5em;
+      display: inline;
+      margin-left: .5rem;
     }
   }
 
@@ -136,26 +129,18 @@
     }
   }
 
-  .pane-view-global-treaties .views-field-title {
+  .pane-view-global-treaties .views-field-view-node {
+    .regional-page-view-item-title();
     font-weight: normal;
   }
 
   .views-field-field-informea-tags {
     color: @regional-page-gray;
+    display: inline;
     margin-top: .5em;
     > .views-label,
     > .field-content {
-      display: inline-block;
-    }
-  }
-
-  .views-field-field-mea-topic {
-    > .field-content {
-      .loop-mea-topics({
-        &.topic-@{mea-topic-class} {
-          background-color: @mea-topic-color;
-        }
-      });
+      display: inline;
     }
   }
 
@@ -164,7 +149,7 @@
   }
 }
 // Contact hub
-.view-contacts-hubs {
+.view-contacts-hubs.view-display-id-block {
   .row();
   .views-field-title {
     margin: 0;
@@ -187,20 +172,21 @@
       }
     }
   }
-}
-.views-field-field-country-iso2 {
-  flex: 0 0 1.3em;
-  width: 1.3em;
-  .img-thumbnail {
-    border-radius: 0;
-    border: 0;
-    max-width: 100%;
-    padding: 0;
+  .views-field-field-country-iso2 {
+    flex: 0 0 1.3em;
+    width: 1.3em;
+    .img-thumbnail {
+      border-radius: 0;
+      border: 0;
+      max-width: 100%;
+      padding: 0;
+    }
+    + .views-field {
+      margin-left: .5em;
+    }
   }
-  + .views-field {
-    margin-left: .5em;
-  }
 }
+
 
 // 'Treaties and MEAs'
 .regional-page-panels-title h2 {
@@ -212,10 +198,12 @@
 
 // Topic switcher
 .pane-geographic-region-region-switch-topic,
+.pane-informea-topics-topic-switch-region,
 .topic-switcher-panel-container {
   background-color: #E7E7E7;
 }
-.pane-geographic-region-region-switch-topic {
+.pane-geographic-region-region-switch-topic,
+.pane-informea-topics-topic-switch-region {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -247,11 +235,12 @@
     align-items: flex-end;
     border: none;
     display: flex;
+    flex-wrap: wrap;
     margin-left: .5em;
     margin-right: .5em;
     // @todo: add scroll indicators, for now scroll can be achieved by holding shift
-    overflow-x: scroll;
-    margin-bottom: -15px;
+    // overflow-x: scroll;
+    margin-bottom: 0;
     @media (min-width: @screen-md-min) {
       margin-top: -10px;
     }
@@ -357,10 +346,76 @@
 .regional-page-courses-panel-container {
   background-color: #FFCB33;
   padding: 2em 0;
+  position: relative;
+  .loop-mea-topics({
+    .topic-@{mea-topic-class} & {
+      position: relative;
+      background-color: @mea-topic-color;
+      &, & a { color: #fff; }
+    }
+    });
+  .col-xs-12 { position: static; }
   .explore a {
     &, &:hover, &:focus, &:active {
       background-color: @regional-page-dark-blue;
       color: #fff;
+    }
+  }
+  .view-learning-courses {
+    .view-empty:after {
+      background: #FFCB33;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .view-empty .explore {
+      color: @text-color;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .pager {
+    li > a, li > span {
+      background-color: transparent;
+      border: none;
+    }
+    &-current {
+      padding: 0 .5em;
+    }
+  }
+}
+.view-learning-courses {
+  .views-bootstrap-grid-plugin-style {
+    .views-field-title {
+      margin-bottom: 1.5em;
+      margin-top: 1em;
+    }
+    .views-field-field-image {
+      background-color: #fff;
+      min-height: 150px;
+      div, a { display: flex; width: 100%; }
+      img {
+        object-fit: cover;
+      }
+    }
+    @media (min-width: @screen-xs-min) and (max-width: @screen-md-max) {
+      .col {
+        float: left;
+        width: 50%;
+      }
+    }
+  }
+  .view-content {
+    margin-top: 3em;
+  }
+  .view-footer {
+    a {
+      color: #fff;
+      font-weight: 300;
+      letter-spacing: 1px;
     }
   }
 }
@@ -382,8 +437,11 @@
   a {
     text-decoration: underline;
   }
-  input {
-    border-radius: 4px;
+
+  input { border-radius: 4px; }
+
+  input,
+  textarea {
     border: none;
     @media (max-width: @screen-xs-max) {
       width: 100%;
@@ -425,7 +483,7 @@
       width: 100%;
     }
   }
-  #block-block-23 + .block {
+  #block-block-23 ~ .block {
     border-top: 1px solid fade(#FFFFFF, 20%);
     margin-top: 3em;
     padding-top: 2em;
@@ -450,10 +508,17 @@
       display: block;
     }
   }
+  #block-social-media-links-social-media-links {
+    & > .block-title {
+      font-size: 1.2em;
+      font-weight: normal;
+      margin-bottom: 1em;
+    }
+  }
   // Subscribe block
   #block-mailchimp-signup-subscribe-to-newsletter {
     & > .block-title {
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: normal;
       margin-bottom: 1em;
       text-transform: uppercase;

@@ -17,10 +17,11 @@ function informea_search_facet_items_alter(&$build, &$settings) {
       t('Treaty paragraph') => t('Treaty Text'),
       t('Decision Paragraph') => t('Decision Text'),
     ];
-    foreach($build as $key => $item) {
+    foreach ($build as $key => $item) {
       if (isset($map[$item["#markup"]])) {
         $build[$key]["#markup"] = $map[$item["#markup"]];
-      } else {
+      }
+      else {
         $build[$key]["#markup"] = ucwords($build[$key]["#markup"]);
       }
     }
@@ -36,7 +37,7 @@ function informea_search_views_pre_render(&$view) {
       drupal_add_library('informea', 'smallipop');
       drupal_add_js(drupal_get_path('module', 'informea_search') . '/js/informea_search.js');
 
-      // do not break here
+    // do not break here
     case 'informea_search_legislation':
     case 'informea_search_court_decision':
     case 'informea_search_publications':
@@ -52,8 +53,8 @@ function informea_search_views_pre_render(&$view) {
 }
 
 function informea_search_block_info() {
-  return array(
-    'search_informea' => array(
+  return [
+    'search_informea' => [
       'info' => t('InforMEA search box'),
       'cache' => DRUPAL_NO_CACHE,
       'weight' => 10,
@@ -61,8 +62,8 @@ function informea_search_block_info() {
       'region' => 'navigation',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
-    ),
-    'search_informea_switch_topic' => array(
+    ],
+    'search_informea_switch_topic' => [
       'info' => t('Switch search topic'),
       'cache' => DRUPAL_NO_CACHE,
       'weight' => -50,
@@ -81,16 +82,16 @@ search-bilateral-treaties
 search-bilateral-treaties/*
 search-goals-and-principles
 search-goals-and-principles/*',
-    )
-  );
+    ],
+  ];
 }
 
 /**
  * Implements hook_block_view().
  */
 function informea_search_block_view($delta = '') {
-  $block = array();
-  switch($delta) {
+  $block = [];
+  switch ($delta) {
     case 'search_informea':
       $form = drupal_get_form('informea_search_form');
       unset($form['form_id']);
@@ -108,7 +109,7 @@ function informea_search_block_view($delta = '') {
  */
 function informea_search_search_api_views_query_alter(view &$view, SearchApiViewsQuery &$query) {
   if ($view->name == 'informea_search') {
-    $multilateral_treaties = _informea_search_get_treaties_by_data_source(DATA_SOURCE_ECOLEX, true);
+    $multilateral_treaties = _informea_search_get_treaties_by_data_source(DATA_SOURCE_ECOLEX, TRUE);
     if (empty($multilateral_treaties)) {
       $multilateral_treaties = [-1];
     }
@@ -132,12 +133,12 @@ function informea_search_search_api_solr_query_alter(array &$call_args, SearchAp
   }
 }
 
-function _informea_search_get_treaties_by_data_source($source_tid, $negate_condition = false) {
+function _informea_search_get_treaties_by_data_source($source_tid, $negate_condition = FALSE) {
   $query = db_select('node', 'n');
   $query->leftJoin('field_data_field_data_source', 'ds', 'n.nid = ds.entity_id');
   $query->fields('n', ['nid']);
   $query->condition('n.type', 'treaty');
-  if ($negate_condition == true) {
+  if ($negate_condition == TRUE) {
     $or = db_or();
     $or->condition('ds.field_data_source_tid', $source_tid, '!=');
     $or->isNull('ds.field_data_source_tid');
@@ -150,26 +151,26 @@ function _informea_search_get_treaties_by_data_source($source_tid, $negate_condi
 }
 
 /**
-* Implementation of hook_menu().
-*/
+ * Implementation of hook_menu().
+ */
 function informea_search_menu() {
-  $items['ajax/search/%'] = array(
+  $items['ajax/search/%'] = [
     'page callback' => 'informea_search_ajax_get_ajax',
-    'page arguments' => array(2),
+    'page arguments' => [2],
     'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
+    'access arguments' => ['access content'],
     'delivery callback' => 'informea_search_ajax_callback',
-  );
-  $items['external-search'] = array(
+  ];
+  $items['external-search'] = [
     'page callback' => 'informea_search_external_search',
     'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-  );
-  $items['prepare-search'] = array(
+    'access arguments' => ['access content'],
+  ];
+  $items['prepare-search'] = [
     'page callback' => 'informea_search_prepare_search',
     'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-  );
+    'access arguments' => ['access content'],
+  ];
 
   return $items;
 }
@@ -183,7 +184,7 @@ function informea_search_ajax_get_ajax_treaties($term, &$data) {
   $query = db_select('node', 'n')
     ->condition('n.type', 'treaty')
     ->condition('n.status', NODE_PUBLISHED)
-    ->fields('n', array('nid'));
+    ->fields('n', ['nid']);
 
   $query->leftJoin('field_data_field_title_abbreviation', 'fa', 'fa.entity_id = n.nid');
   $query->leftJoin('field_data_field_official_name', 'fn', 'fn.entity_id = n.nid');
@@ -206,12 +207,12 @@ function informea_search_ajax_get_ajax_treaties($term, &$data) {
         $label = $img . ' ' . $label;
       }
 
-      $data[] = array(
+      $data[] = [
         'category' => t('Treaties'),
         'label' => $label,
         'link' => url('node/' . $wrapper->getIdentifier()),
-        'value' => $wrapper->label()
-      );
+        'value' => $wrapper->label(),
+      ];
     }
   }
 }
@@ -235,14 +236,14 @@ function informea_search_ajax_get_ajax_countries($term, &$data) {
       $wrapper = entity_metadata_wrapper('node', $node);
 
       $iso2 = strtolower($wrapper->field_country_iso2->value());
-      $img = theme('image', array('path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . $iso2 . '.png'));
+      $img = theme('image', ['path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . $iso2 . '.png']);
 
-      $data[] = array(
+      $data[] = [
         'category' => t('Countries'),
         'label' => $img . ' ' . $wrapper->label(),
         'link' => url('countries/' . $iso2),
-        'value' => $wrapper->label()
-      );
+        'value' => $wrapper->label(),
+      ];
     }
   }
 }
@@ -264,27 +265,30 @@ function informea_search_ajax_get_ajax_terms($term, &$data) {
     foreach ($terms as $term) {
       $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
 
-      $img = theme('image', array('path' => drupal_get_path('theme', 'informea_theme') . '/img/logo-leo.png', 'attributes' => array('class' => 'leo-logo-search-image')));
+      $img = theme('image', [
+        'path' => drupal_get_path('theme', 'informea_theme') . '/img/logo-leo.png',
+        'attributes' => ['class' => 'leo-logo-search-image'],
+      ]);
 
-      $data[] = array(
+      $data[] = [
         'category' => t('Terms'),
         'label' => $img . ' ' . $wrapper->label(),
         'link' => url('taxonomy/term/' . $term->tid),
-        'value' => $wrapper->label()
-      );
+        'value' => $wrapper->label(),
+      ];
     }
   }
 }
 
 function informea_search_ajax_get_ajax($term) {
-  $data = array(
-    array(
+  $data = [
+    [
       'category' => '',
-      'label' => t('Search for: <strong>@term</strong>', array('@term' => $term)),
+      'label' => t('Search for: <strong>@term</strong>', ['@term' => $term]),
       'link' => url('search/' . $term),
-      'value' => $term
-    )
-  );
+      'value' => $term,
+    ],
+  ];
 
   informea_search_ajax_get_ajax_treaties($term, $data);
   informea_search_ajax_get_ajax_countries($term, $data);
@@ -326,90 +330,88 @@ function informea_search_form($form, $form_state) {
   }
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
   $variant = variable_get('select2_compression_type', 'minified');
-  $search_category_options = array(
-    'decision' => array(
-      'label' => t('Decisions'),
-      'is_group_label' => true
-    ),
-
-    'national_submissions' => array(
+  $search_category_options = [
+    'treaties' => [
+      'label' => t('Treaties'),
+      'is_group_label' => TRUE,
+    ],
+    'treaty_texts' => [
+      'label' => t('Treaty texts'),
+    ],
+    'decisions_texts' => [
+      'label' => t('Decisions texts'),
+    ],
+    'national_submissions' => [
       'label' => t('National Submissions'),
-      'is_group_label' => true
-    ),
-    'action_plan' => array(
+      'is_group_label' => TRUE,
+    ],
+    'action_plan' => [
       'label' => t('National Plans'),
-      'is_group_label' => false
-    ),
-    'national_report' => array(
+    ],
+    'national_report' => [
       'label' => t('National Reports'),
-      'is_group_label' => false
-    ),
-
-    'national_legislation_cases' => array(
+    ],
+    'national_legislation_cases' => [
       'label' => t('National Legislation and Cases'),
-      'is_group_label' => true
-    ),
-    'legislation' => array(
+      'is_group_label' => TRUE,
+    ],
+    'legislation' => [
       'label' => t('Legislation'),
-      'is_group_label' => false
-    ),
-    'court_decisions' => array(
+    ],
+    'court_decisions' => [
       'label' => t('Court Decisions'),
-      'is_group_label' => false
-    ),
-
-    'documents_literature' => array(
+    ],
+    'documents_literature' => [
       'label' => t('Documents and Literature'),
-      'is_group_label' => true
-    ),
-    'publication' => array(
+      'is_group_label' => TRUE,
+    ],
+    'publication' => [
       'label' => t('Publications'),
-      'is_group_label' => false
-    ),
-    'manual' => array(
+    ],
+    'manual' => [
       'label' => t('Manuals'),
-      'is_group_label' => false
-    ),
-    'technical' => array(
+    ],
+    'technical' => [
       'label' => t('Technical Series'),
-      'is_group_label' => false
-    ),
-
-    'news' => array(
+    ],
+    'news' => [
       'label' => t('News and Events'),
-      'is_group_label' => true
-    ),
-
-    'contacts_hub' => array(
+      'is_group_label' => TRUE,
+    ],
+    'goals_and_declarations' => [
+      'label' => t('Goals and declarations'),
+      'is_group_label' => TRUE,
+    ],
+    'contacts_hub' => [
       'label' => t('Contacts Hub'),
-      'is_group_label' => false
-    ),
-    'all' => array(
+      'is_group_label' => TRUE,
+    ],
+    'all' => [
       'label' => t('All Categories'),
-      'is_group_label' => true,
-    ),
-  );
+      'is_group_label' => TRUE,
+    ],
+  ];
 
   $current_category = _informea_search_get_current_category($viewName);
-  $search_category_options[$current_category]['selected'] = true;
+  $search_category_options[$current_category]['selected'] = TRUE;
 
-  return [
+  $form = [
     '#id' => 'search-form',
-    '#action' =>  url('prepare-search'),
+    '#action' => url('prepare-search'),
     '#method' => 'get',
-    '#always_process' => true,
-    '#token' => false,
+    '#always_process' => TRUE,
+    '#token' => FALSE,
     '#attributes' => ['class' => ['search-form']],
     'search_api_views_fulltext' => [
-      '#theme_wrappers' => array('informea_search_form_wrapper'),
+      '#theme_wrappers' => ['informea_search_form_wrapper'],
       '#type' => 'textfield',
       '#default_value' => html_entity_decode($search_query),
       '#size' => 25,
       '#maxlength' => 255,
-      '#attributes' => array(
+      '#attributes' => [
         'placeholder' => t('Search by keyword(s)'),
-      ),
-      '#attached' => array('libraries_load' => array(array('select2', $variant))),
+      ],
+      '#attached' => ['libraries_load' => [['select2', $variant]]],
       '#category-options' => $search_category_options,
     ],
     'action' => [
@@ -425,6 +427,17 @@ function informea_search_form($form, $form_state) {
       ],
     ],
   ];
+
+
+  $page = page_manager_get_current_page();
+  if (!empty($page) && $page['name'] == 'page-region_page' && !empty($page['contexts']['argument_term_1'])) {
+    $form['field_region'] = [
+      '#type' => 'hidden',
+      '#value' => $page['contexts']['argument_term_1']->argument,
+    ];
+  }
+
+  return $form;
 }
 
 function informea_search_external_search() {
@@ -433,17 +446,39 @@ function informea_search_external_search() {
 }
 
 function _informea_search_get_current_category($viewName) {
+  $types = [];
+  $document_types = [];
+  if (!empty($_GET['f']) && is_array($_GET['f'])) {
+    foreach ($_GET['f'] as $filter) {
+      if (preg_match('/^type:(.+)$/', $filter, $matches)) {
+        $types[] = $matches[1];
+      }
+      elseif (preg_match('/^field_document_type:(.+)$/', $filter, $matches)) {
+        $document_types[] = $matches[1];
+      }
+    }
+  }
   switch ($viewName) {
     case 'informea_search':
-      switch ($_GET['f']) {
-        case ['type:action_plan', 'type:national_report']:
+      switch ($types) {
+        case ['action_plan', 'national_report']:
+        case ['national_report', 'action_plan']:
           return 'national_submissions';
 
-        case ['type:action_plan']:
+        case ['action_plan']:
           return 'action_plan';
 
-        case ['type:national_report']:
+        case ['national_report']:
           return 'national_report';
+
+        case ['decision']:
+          return 'decisions_texts';
+
+        case ['treaty']:
+          return 'treaties';
+
+        case ['contact_person']:
+          return 'contacts_hub';
       }
       break;
 
@@ -454,20 +489,26 @@ function _informea_search_get_current_category($viewName) {
       return 'court_decisions';
 
     case 'informea_search_publications':
-      switch ($_GET['f']) {
-        case ['type:document', 'field_document_type:2805', 'field_document_type:3159']:
-          return 'publication';
+      if ($types == ['document']) {
+        switch ($document_types) {
+          case ['2805', '3159']:
+          case ['3159', '2805']:
+            return 'publication';
 
-        case ['type:document', 'field_document_type:3178']:
-          return 'manual';
+          case ['3178']:
+            return 'manual';
 
-        case ['type:document', 'field_document_type:2817']:
-          return 'technical';
+          case ['2817']:
+            return 'technical';
+        }
       }
-      break;
+      return 'documents_literature';
 
     case 'news':
       return 'news';
+
+    case 'informea_search_goals_and_principles':
+      return 'goals_and_declarations';
   }
   return 'all';
 }
@@ -478,7 +519,17 @@ function informea_search_prepare_search() {
   if (!empty($_GET['category'])) {
     $search_category = check_plain($_GET['category']);
     switch ($search_category) {
-      case 'decision':
+      case 'treaties':
+      case 'treaty_texts':
+        $action = 'search';
+        $options['query']['f'][] = "type:treaty";
+        break;
+
+      case 'decisions_texts':
+        $action = 'search';
+        $options['query']['f'][] = "type:decision";
+        break;
+
       case 'action_plan':
       case 'national_report':
         $action = 'search';
@@ -523,12 +574,23 @@ function informea_search_prepare_search() {
         $options['query']['f'][] = "field_document_type:2817";
         break;
 
-
       case 'news':
         $action = 'news';
         break;
 
+      case 'informea_search_goals_and_principles':
+        $action = 'search-goals-and-principles';
+        break;
+
+      case 'contacts_hub':
+        $action = 'search';
+        $options['query']['f'][] = "type:contact_person";
+        break;
+
     }
+  }
+  if (!empty($_GET['field_region'])) {
+    $options['query']['f'][] = "field_region:{$_GET['field_region']}";
   }
   if (!empty($_GET['search_api_views_fulltext'])) {
     $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
@@ -564,7 +626,7 @@ function _informea_search_get_topic_count($topic) {
   if (is_object($view)) {
     $view->set_display($display_name);
     $view->set_arguments($current_view->args);
-    $view->get_total_rows = true;
+    $view->get_total_rows = TRUE;
     $view->pre_execute();
     $view->execute($display_name);
     return $view->total_rows;
@@ -578,39 +640,41 @@ function informea_search_block_switch_topic_view() {
   if (!empty($_GET['search_api_views_fulltext'])) {
     $fulltext = $_GET['search_api_views_fulltext'];
   }
-  else if (!empty(arg(1))) {
-    $fulltext = arg(1);
+  else {
+    if (!empty(arg(1))) {
+      $fulltext = arg(1);
+    }
   }
 
   $fulltext = htmlspecialchars($fulltext, ENT_NOQUOTES, 'UTF-8');
 
-  $elements = array(
+  $elements = [
     'search' => t('Multilateral treaties'),
     'search-bilateral-treaties' => t('Bilateral treaties'),
     'search-legislation' => t('Legislation'),
     'search-court-decisions' => t('Court decisions'),
     'search-publications' => t('Documents'),
     'search-goals-and-principles' => t('Goals'),
-  );
-  $tabs = array();
-  foreach($elements as $link_url => $title) {
-    $link_options = array('html' => true);
-    $link_options['query'] = array('search_api_views_fulltext' => $fulltext);
+  ];
+  $tabs = [];
+  foreach ($elements as $link_url => $title) {
+    $link_options = ['html' => TRUE];
+    $link_options['query'] = ['search_api_views_fulltext' => $fulltext];
     if ($link_url == current_path()) {
       $count = _informea_search_get_topic_count($link_url);
       $title .= ' <span class="badge">' . $count . '</span>';
     }
-    $tabs[] = array(
+    $tabs[] = [
       'data' => l($title, $link_url, $link_options),
-      'class' => $link_url == $url ? array('active') : array(),
-    );
+      'class' => $link_url == $url ? ['active'] : [],
+    ];
   }
 
-  $ret = array(
+  $ret = [
     '#theme' => 'item_list',
     '#items' => $tabs,
-    '#attributes' => array('class' => array('nav nav-tabs'))
-  );
+    '#attributes' => ['class' => ['nav nav-tabs']],
+  ];
   return $ret;
 }
 
@@ -647,27 +711,27 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_facetapi_widgets().
  */
 function informea_search_facetapi_widgets() {
-  return array(
-    'facetapi_checkbox_links_altered' => array(
-      'handler' => array(
+  return [
+    'facetapi_checkbox_links_altered' => [
+      'handler' => [
         'label' => t('Links with checkboxes (altered by informea)'),
         'class' => 'FacetapiWidgetCheckboxLinksInformea',
-        'query types' => array('term', 'date'),
-      ),
-    ),
-  );
+        'query types' => ['term', 'date'],
+      ],
+    ],
+  ];
 }
 
 /**
  * Implements hook_entity_property_info_alter().
  */
 function informea_search_entity_property_info_alter(&$info) {
-  $info['node']['properties']['title_index'] = array(
+  $info['node']['properties']['title_index'] = [
     'type' => 'text',
     'label' => t('Title - indexed as string (used for sorting)'),
     'sanitized' => TRUE,
     'getter callback' => '_informea_search_title_index_property_callback',
-  );
+  ];
 }
 
 function _informea_search_title_index_property_callback($item) {

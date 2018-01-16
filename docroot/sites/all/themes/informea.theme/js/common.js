@@ -148,11 +148,12 @@ jQuery(document).ready(function ($) {
   $categorySelect.select2({
       dropdownCssClass: 'edit-search-category-drop',
       formatResult: categorySelectFormat,
+      minimumResultsForSearch: -1,
       escapeMarkup: function(m) { return m; }
   });
 
   $geographicRegionSelect.select2({
-    dropdownCssClass: 'edit-geographic-region-drop',
+    dropdownCssClass: 'edit-geographic-region-drop'
   });
 
   $('.use-select-2')
