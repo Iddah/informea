@@ -187,7 +187,7 @@ function informea_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     ),
     'frontpage_topics' => array(
-      'info' => t('Frontpage content'),
+      'info' => t('Frontpage topics'),
       'status' => 1,
       'region' => 'front_page_content',
       'weight' => 0,
