@@ -1049,6 +1049,11 @@ function treaty_can_have_national_reports($id_treaty) {
   return $ret;
 }
 
+function treaty_update_secure_base_url(&$attached) {
+  if (substr($attached['js'][0]['data']['passwordStrength']['secure_base_url'], 0, -1) != '/') {
+    $attached['js'][0]['data']['passwordStrength']['secure_base_url'] .= '/';
+  }
+}
 
 /**
  * Implements hook_form_alter().
@@ -1056,6 +1061,13 @@ function treaty_can_have_national_reports($id_treaty) {
  * In the decision reorder screen show a drop-down instead of the text input.
  */
 function treaty_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_profile_form') {
+    treaty_update_secure_base_url($form['account']['pass']['#attached']);
+  }
+  if ($form_id == 'password_strength_settings') {
+    treaty_update_secure_base_url($form['test']['password']['#attached']);
+  }
+
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-decision-ordering-page-reorder') {
     $view = $form_state['view'];
     $id_treaty = $view->args[0];
