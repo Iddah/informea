@@ -427,9 +427,17 @@ function informea_update_7021() {
 }
 
 /**
- * Task #313 - disable current frontpage blocks.
+ * Task #313 - topics image field.
  */
 function informea_update_7022() {
+  features_revert(array('treaty' => ['field_base', 'field_instance']));
+}
+
+
+/**
+ * Task #313 - disable current frontpage blocks.
+ */
+function informea_update_7023() {
   db_update('block')
     ->fields(['status' => 0])
     ->condition('bid', [110, 112, 120, 122, 124], 'IN')
