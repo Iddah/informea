@@ -406,3 +406,20 @@ function informea_update_7020() {
   ]);
   variable_set('social_media_links_icon_style', 'informea_social_icons:48');
 }
+
+/**
+ * Task 277: Treaties menu - show items in menu based on a new field 'field_show_in_main_menu'
+ */
+function informea_update_7020() {
+  features_revert(array('informea' => ['field_base', 'field_instance']));
+
+  $treaties_in_menu = [264, 304, 255, 262, 263, 257, 258, 305, 268, 272, 270, 256, 274, 259,
+    303, 273, 269, 271, 236208, 260, 261, 283, 298, 285, 288, 299, 284, 287, 286, 289, 295, 294,
+    275, 276, 281, 278, 277, 279, 297, 292, 293, 291, 296, 300, 290];
+
+  foreach ($treaties_in_menu as $nid) {
+    $node = node_load($nid);
+    $node->field_show_in_main_menu[LANGUAGE_NONE][0]['value'] = 1;
+    node_save($node);
+  }
+}

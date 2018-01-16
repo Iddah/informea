@@ -232,6 +232,12 @@ function informea_theme_theme() {
         'type' => NULL,
       ),
     ),
+    'informea_treaties_menu_block' => array(
+      'render element' => 'element',
+      'template' => 'templates/informea-treaties-menu-block',
+      'variables' => array('treaties' => array(), 'topics' => array(), 'regions' => array()),
+      'path' => drupal_get_path('theme', 'informea_theme'),
+    ),
   );
 }
 
@@ -718,4 +724,79 @@ function informea_theme_facetapi_link_inactive($variables) {
     unset($variables['count']);
   }
   return theme_facetapi_link_inactive($variables);
+}
+
+function informea_theme_treaties_menu_block() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'treaty')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_data_source', 'tid', '815')
+    ->fieldCondition('field_show_in_main_menu', 'value', TRUE);
+  $results = $query->execute();
+
+
+  $treaties = [];
+  $topics_list = [];
+  $regions_list = [];
+  $global_label = t('Global');
+  $show_global = FALSE;
+  if (!empty($results['node'])) {
+    foreach ($results['node'] as $result) {
+      $individual_topics_list = [];
+      $individual_regions_list = [];
+      $node = node_load($result->nid);
+      $treaty['logo_uri'] = $node->field_logo['en'][0]['uri'];
+      $treaty['url'] = '/node/' . $result->nid;
+
+      $regions = $node->field_region['und'];
+      $topics = $node->field_mea_topic['und'];
+      foreach ($regions as $region) {
+        $region_label = taxonomy_term_load($region['tid'])->name;
+        if (!in_array($region_label, $regions_list)) {
+          if ($region_label != $global_label) {
+            $regions_list[] = $region_label;
+          } else {
+            $region_label = mb_strtoupper($global_label);
+            $show_global = TRUE;
+          }
+        }
+        if (!in_array($region_label, $individual_regions_list)) {
+          $individual_regions_list[] = $region_label;
+        }
+        foreach ($topics as $topic) {
+          $topic_label = taxonomy_term_load($topic['tid'])->name;
+          if (!in_array($topic_label, $topics_list)) {
+            $topics_list[] = $topic_label;
+          }
+          if (!in_array($topic_label, $individual_topics_list)) {
+            $individual_topics_list[] = $topic_label;
+          }
+        }
+        $treaty['topics'] = $individual_topics_list;
+        $treaty['regions'] = $individual_regions_list;
+        $treaties[$region_label][$node->title] = $treaty;
+        if ($region_label != 'Global') {
+          $treaties['Regional'][$node->title] = $treaty;
+        }
+      }
+    }
+  }
+
+  asort($regions_list);
+  asort($topics_list);
+
+  if ($show_global) {
+    $regions_list[] = mb_strtoupper($global_label);
+  }
+
+  return theme(
+    'informea_treaties_menu_block',
+    array(
+      'regions' => $regions_list,
+      'topics' => $topics_list,
+      'treaties' => $treaties,
+    )
+  );
+
 }
