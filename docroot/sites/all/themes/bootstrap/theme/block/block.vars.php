@@ -20,5 +20,5 @@ function bootstrap_preprocess_block(&$variables) {
  */
 function bootstrap_process_block(&$variables) {
   // Drupal 7 should use a $title variable instead of $block->subject.
-  $variables['title'] = $variables['block']->subject;
+  $variables['title'] = _bootstrap_filter_xss($variables['block']->subject);
 }

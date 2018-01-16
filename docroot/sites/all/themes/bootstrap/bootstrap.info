@@ -140,7 +140,8 @@ exclude[css][] = 'modules/user/user.css'
 simplytest_dependencies[] = jquery_update
 
 ; Information added by  packaging script on 2013-11-17
-version = "7.x-3.0"
+; Actual 3.0 + security fix
+version = "7.x-3.8"
 core = "7.x"
 project = "bootstrap"
 datestamp = "1384678107"

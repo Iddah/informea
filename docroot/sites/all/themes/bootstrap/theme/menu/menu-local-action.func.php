@@ -17,6 +17,12 @@ function bootstrap_menu_local_action($variables) {
     $link['title'] = check_plain($link['title']);
   }
 
+  // Filter the title if the "html" is set, otherwise l() will automatically
+  // sanitize using check_plain(), so no need to call that here.
+  if (!empty($options['html'])) {
+    $link['title'] = _bootstrap_filter_xss($link['title']);
+  }
+
   $icon = _bootstrap_iconize_button($link['title']);
 
   // Format the action link.
