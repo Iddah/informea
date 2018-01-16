@@ -259,9 +259,23 @@ function informea_block_view($delta = '') {
       $topics = informea_topics_get_published_topics();
       $links = [];
       foreach ($topics as $topic) {
+        $title = $topic->name;
+        if (!empty($topic->field_image[LANGUAGE_NONE][0])) {
+          $image = $topic->field_image[LANGUAGE_NONE][0];
+          $hero_image = array(
+            'style_name' => 'thumbnail',
+            'path' => $image['uri'],
+            'width' => '',
+            'height' => '',
+            'alt' => $image['alt'],
+            'title' => $image['title'],
+          );
+          $title = theme('image_style', $hero_image) . $title;
+        }
         $links[$topic->tid] = [
-          'title' => $topic->name,
-          'href' => url('/taxonomy/term/' . $topic->tid),
+          'title' => $title,
+          'html' => TRUE,
+          'href' => url('taxonomy/term/' . $topic->tid),
         ];
       }
       $block['content'] = sprintf('<h4>%s</h4> %s', t('Browse information by Environmental Topic:'), theme('links', ['links' => $links]));
@@ -272,7 +286,9 @@ function informea_block_view($delta = '') {
       $regions = entity_load('taxonomy_term', FALSE, ['vid' => taxonomy_vocabulary_machine_name_load('geographical_region')->vid]);
       $region_options = [NULL => t('All regions')];
       foreach ($regions as $region) {
-        $region_options[url('/taxonomy/term/' . $region->tid)] = $region->name;
+        if ($region->tid != 1118) {
+          $region_options[url('/taxonomy/term/' . $region->tid)] = $region->name;
+        }
       }
 
       $country_options = [NULL => t('Select a party')] + country_get_countries_select_options();

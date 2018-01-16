@@ -1109,6 +1109,10 @@
 #s2id_treaty-switcher .select2-arrow {
   color: #fc3;
 }
+[dir] #block-informea-frontpage-topics li a img {
+  background-color: #000;
+  border-radius: 100%;
+}
 .page-regions .panels-flexible-row,
 .page-topics .panels-flexible-row {
   width: 100%;
