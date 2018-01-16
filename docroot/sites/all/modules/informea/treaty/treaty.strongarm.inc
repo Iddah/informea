@@ -450,6 +450,15 @@ function treaty_strongarm() {
         'language' => array(
           'weight' => '1',
         ),
+        'metatags' => array(
+          'weight' => '13',
+        ),
+        'redirect' => array(
+          'weight' => '11',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
+        ),
       ),
       'display' => array(),
     ),
@@ -516,6 +525,10 @@ function treaty_strongarm() {
           'default' => array(
             'weight' => '9',
             'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '3',
+            'visible' => FALSE,
           ),
         ),
       ),
@@ -615,7 +628,7 @@ function treaty_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'name' => array(
           'weight' => '-5',
@@ -624,7 +637,13 @@ function treaty_strongarm() {
           'weight' => '0',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '4',
+        ),
+        'metatags' => array(
+          'weight' => '7',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '6',
         ),
       ),
       'display' => array(),

@@ -129,13 +129,13 @@ function goal_strongarm() {
           'weight' => '0',
         ),
         'metatags' => array(
-          'weight' => '19',
+          'weight' => '20',
         ),
         'redirect' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'xmlsitemap' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
       ),
       'display' => array(),

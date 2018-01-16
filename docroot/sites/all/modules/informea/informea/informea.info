@@ -325,6 +325,6 @@ features[views_view][] = term_related_content
 features[views_view][] = the_content
 features[wysiwyg][] = full_html
 files[] = informea.translation.inc
-files[] = informea.api.inc
 files[] = informea.admin.inc
+files[] = informea.populate.fields.inc
 project path = sites/all/modules/informea

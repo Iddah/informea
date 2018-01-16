@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Code for the InforMEA Topics feature.
+ */
+
+include_once 'informea_topics.features.inc';
+include_once 'blocks/topic_page_title.block.inc';
+include_once 'blocks/topic_switch_region.block.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function informea_topics_block_info() {
+  return [
+    'topic_page_title' => [
+      'info' => t('Page title for topical page'),
+      'status' => 1,
+      'region' => 'navigation',
+      'weight' => -56,
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'topics/*',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+    'topic_switch_region' => [
+      'info' => t('Browse by Region'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function informea_topics_block_view($delta = '') {
+  $block = [];
+  switch ($delta) {
+    case 'topic_page_title':
+      return informea_topics_topic_page_title_block_view();
+      break;
+
+    case 'topic_switch_region':
+      return informea_topics_topic_switch_region_block_view();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_taxonomy_term_view().
+ */
+function informea_topics_taxonomy_term_view($term, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+    if ($term->vid == $vocabulary->vid) {
+      // Redirect the default term page to topic panel page.
+      drupal_goto('topics/' . strtolower(str_replace(' ', '-', $term->name_original)));
+    }
+  }
+}

@@ -83,13 +83,15 @@ function informea_theme_preprocess_page(&$variables) {
       case 'country':
         $countries = country_get_countries_select_options();
         $countries1 = $countries;
-        array_unshift($countries1, t('View another party'));
+        // array_unshift($countries1, t('View another party'));
         $variables['content_column_class'] = ' class="col-sm-9"';
         $variables['countries'] = $countries;
+
         $variables['select-switch-countries'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'country-switcher')),
+          '#attributes' => array('class' => array('form-control', 'node-switcher', 'country-switcher', 'use-select-2'), 'id'=> 'country-switcher'),
           '#options' => $countries1,
-          '#type' => 'select'
+          '#type' => 'select',
+          '#value' => country_get_url_by_iso2($node->field_country_iso2[LANGUAGE_NONE][0]['value'])
         );
         array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         break;
@@ -102,11 +104,17 @@ function informea_theme_preprocess_page(&$variables) {
         $treaties = treaty_get_treaties_as_select_options();
         $variables['treaties'] = $treaties;
         $treaties1 = $treaties;
-        array_unshift($treaties1, t('View another treaty'));
+        $menu_object = menu_get_object();
+        $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
+        if (!empty($menu_object->context)) {
+          $selected_treaty .= '/' . $menu_object->context;
+        }
+
         $variables['select-switch-treaties'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher')),
+          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
           '#options' => $treaties1,
-          '#type' => 'select'
+          '#type' => 'select',
+          '#value' => $selected_treaty,
         );
         break;
 
@@ -467,8 +475,42 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
  * Theme function implementation for bootstrap_search_form_wrapper.
  */
 function informea_theme_informea_search_form_wrapper($variables) {
+  $category_select = '';
+  if (!empty($variables['element']['#category-options'])) {
+    $category_select = '<select id="edit-search-category" name="category" class="use-select-2">';
+    $optgroup_open = false;
+
+    foreach($variables['element']['#category-options'] as $k => $v) {
+      if(!empty($v['is_group_label'])) {
+        // if one optgroup is already open, close it
+        if($optgroup_open) {
+          $category_select .= sprintf('</optgroup>');
+          $optgroup_open = false;
+        }
+        // open new optgroup
+        $category_select .= sprintf('<optgroup label="%s">', check_plain($v['label']));
+        $optgroup_open = true;
+      }
+      $category_select .= sprintf('<option value="%s" data-optgroup="%s" %s>%s</option>',
+        check_plain($k),
+        !empty($v['is_group_label']) ? check_plain($v['is_group_label']) : false,
+        (isset($v['selected']) && $v['selected'] === true) ? 'selected' : '',
+        check_plain($v['label']));
+    }
+    if($optgroup_open) {
+      $category_select .= sprintf('</optgroup>');
+      $optgroup_open = false;
+    }
+    $category_select .= '</select>';
+  }
+
   $output = '<div class="input-group">';
   $output .= $variables['element']['#children'];
+
+  if (!empty($category_select)) {
+    $output .= '<span class="edit-search-in">' . t('in:') . '</span>';
+    $output .= $category_select;
+  }
   $output .= '<span class="input-group-btn">';
   $output .= '<button type="submit" class="btn btn-default">';
   $output .= _bootstrap_icon('search');

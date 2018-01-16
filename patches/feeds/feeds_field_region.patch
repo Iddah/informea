@@ -1,0 +1,112 @@
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
+index 3dbbd04e..5ecb9923 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.features.field_instance.inc
+@@ -476,6 +476,67 @@ function feeds_news_field_default_field_instances() {
+     ),
+   );
+ 
++  // Exported field_instance: 'node-feed_item-field_region'.
++  $field_instances['node-feed_item-field_region'] = array(
++    'bundle' => 'feed_item',
++    'default_value' => NULL,
++    'deleted' => 0,
++    'description' => '',
++    'display' => array(
++      'ajax' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'default' => array(
++        'label' => 'above',
++        'module' => 'i18n_taxonomy',
++        'settings' => array(),
++        'type' => 'i18n_taxonomy_term_reference_link',
++        'weight' => 7,
++      ),
++      'teaser' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++      'treaty_listing' => array(
++        'label' => 'above',
++        'settings' => array(),
++        'type' => 'hidden',
++        'weight' => 0,
++      ),
++    ),
++    'entity_type' => 'node',
++    'field_name' => 'field_region',
++    'label' => 'Region',
++    'required' => 0,
++    'settings' => array(
++      'entity_translation_sync' => FALSE,
++      'select2_integration' => array(
++        'allow_add_onfly' => 0,
++        'show_voc_terms_page_link' => 0,
++        'styling' => array(
++          'dropdownAutoWidth' => 0,
++          'placeholder' => '',
++        ),
++        'use_select2' => 1,
++      ),
++      'user_register_form' => FALSE,
++    ),
++    'widget' => array(
++      'active' => 1,
++      'module' => 'options',
++      'settings' => array(
++        'use_select2' => FALSE,
++      ),
++      'type' => 'options_select',
++      'weight' => 45,
++    ),
++  );
++
+   // Exported field_instance: 'node-feed_item-field_treaty'.
+   $field_instances['node-feed_item-field_treaty'] = array(
+     'bundle' => 'feed_item',
+@@ -615,6 +676,7 @@ function feeds_news_field_default_field_instances() {
+   t('Image');
+   t('MEA topic');
+   t('Parent feed');
++  t('Region');
+   t('Tags');
+   t('Treaty');
+   t('URL');
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
+index 44c84342..ec6de8c8 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.info
+@@ -25,6 +25,7 @@ features[field_instance][] = node-feed_item-field_feed_item_description
+ features[field_instance][] = node-feed_item-field_image
+ features[field_instance][] = node-feed_item-field_mea_topic
+ features[field_instance][] = node-feed_item-field_parent_feed
++features[field_instance][] = node-feed_item-field_region
+ features[field_instance][] = node-feed_item-field_treaty
+ features[field_instance][] = node-feed_item-field_url
+ features[node][] = feed
+diff --git a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc
+index 86772a37..eabdadfd 100644
+--- a/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc
++++ b/docroot/sites/all/modules/contrib/feeds/feeds_news/feeds_news.strongarm.inc
+@@ -118,6 +118,15 @@ function feeds_news_strongarm() {
+         'path' => array(
+           'weight' => '30',
+         ),
++        'metatags' => array(
++          'weight' => '40',
++        ),
++        'redirect' => array(
++          'weight' => '30',
++        ),
++        'xmlsitemap' => array(
++          'weight' => '30',
++        ),
+       ),
+       'display' => array(),
+     ),

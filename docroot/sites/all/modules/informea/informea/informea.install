@@ -309,3 +309,100 @@ function informea_update_7014() {
 function informea_update_7015() {
   features_revert_module('feeds_news');
 }
+
+/**
+ * Task #251: Re-export feeds node processor mapping
+ */
+function informea_update_7016() {
+  features_revert_module('feeds_news');
+  features_revert_module('document');
+  features_revert_module('ecolex');
+  features_revert_module('country');
+  features_revert_module('country_data');
+  features_revert_module('country_deliverable');
+  features_revert_module('decision');
+  features_revert_module('declaration');
+  features_revert_module('goal');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
+}
+
+/**
+ * Task #278: New content type - Learning Course
+ */
+function informea_update_7017() {
+  module_enable(['learning_course']);
+  features_revert_module('learning_course');
+}
+
+/**
+ * Task #279: Implement the regional section page
+ */
+function informea_update_7018() {
+  module_enable(['geographic_region']);
+  features_revert_module('geographic_region');
+}
+
+/**
+ * Task #279: Display "Take Part" webform
+ */
+function informea_update_7019() {
+  features_revert_module('geographic_region');
+}
+
+/**
+ * Task #279: Social icons block configuration
+ */
+function informea_update_7020() {
+  variable_set('social_media_links_platforms', [
+    'facebook' => [
+      'platform_value' => 'informea.org',
+      'weight' => '-9',
+    ],
+    'twitter' => [
+      'platform_value' => 'informeaportal',
+      'weight' => '-8',
+    ],
+    'googleplus' => [
+      'platform_value' => '',
+      'weight' => '-7',
+    ],
+    'instagram' => [
+      'platform_value' => '',
+      'weight' => '-6',
+    ],
+    'linkedin' => [
+      'platform_value' => '',
+      'weight' => '-5',
+    ],
+    'pinterest' => [
+      'platform_value' => '',
+      'weight' => '-4',
+    ],
+    'vimeo' => [
+      'platform_value' => '',
+      'weight' => '-3',
+    ],
+    'youtube' => [
+      'platform_value' => '',
+      'weight' => '-2',
+    ],
+    'youtube_channel' => [
+      'platform_value' => '',
+      'weight' => '-1',
+    ],
+    'rss' => [
+      'platform_value' => '',
+      'weight' => '0',
+    ],
+    'contact' => [
+      'platform_value' => '',
+      'weight' => '1',
+    ],
+    'email' => [
+      'platform_value' => '',
+      'weight' => '2',
+    ],
+  ]);
+  variable_set('social_media_links_icon_style', 'informea_social_icons:48');
+}

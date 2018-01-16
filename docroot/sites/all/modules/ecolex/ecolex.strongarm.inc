@@ -271,13 +271,13 @@ function ecolex_strongarm() {
           'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '33',
+          'weight' => '34',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '41',
         ),
         'xmlsitemap' => array(
-          'weight' => '32',
+          'weight' => '33',
         ),
       ),
       'display' => array(),

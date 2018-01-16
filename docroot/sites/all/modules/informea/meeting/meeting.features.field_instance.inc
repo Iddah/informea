@@ -994,6 +994,67 @@ function meeting_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event_calendar-field_mea_topic'.
+  $field_instances['node-event_calendar-field_mea_topic'] = array(
+    'bundle' => 'event_calendar',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'ajax' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'treaty_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_mea_topic',
+    'label' => 'Topics',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'select2_integration' => array(
+        'allow_add_onfly' => 0,
+        'show_voc_terms_page_link' => 0,
+        'styling' => array(
+          'dropdownAutoWidth' => 0,
+          'placeholder' => '',
+        ),
+        'use_select2' => 1,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'use_select2' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 25,
+    ),
+  );
+
   // Exported field_instance: 'node-event_calendar-field_original_id'.
   $field_instances['node-event_calendar-field_original_id'] = array(
     'bundle' => 'event_calendar',
@@ -1771,6 +1832,7 @@ function meeting_field_default_field_instances() {
   t('Select the start and end dates for this event.');
   t('Status');
   t('Title');
+  t('Topics');
   t('Treaty');
   t('Type');
   t('URL');

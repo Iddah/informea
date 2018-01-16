@@ -1,0 +1,125 @@
+<?php
+/**
+ * @file
+ * Code for the Geographic region feature.
+ */
+
+include_once 'geographic_region.features.inc';
+include_once 'blocks/region_downloadable_documents.block.inc';
+include_once 'blocks/region_page_title.block.inc';
+include_once 'blocks/region_switch_topic.block.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function geographic_region_block_info() {
+  return [
+    'region_page_title' => [
+      'info' => t('Page title for regional page'),
+      'status' => 1,
+      'region' => 'navigation',
+      'weight' => -56,
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'regions/*',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+    'region_switch_topic' => [
+      'info' => t('Browse by Environmental Topic'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+    'region_downloadable_documents' => [
+      'info' => t('Documents and files'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ],
+  ];
+}
+
+/**
+ * Retrieve treaties node ids filtered by region and (optional) by topic.
+ *
+ * @param int $region_id
+ *  Region term tid.
+ * @param null|int $topic_id
+ *  Topic term tid.
+ *
+ * @return array
+ *  Array containing node ids.
+ */
+function _get_regional_treaties($region_id, $topic_id = NULL) {
+  $treaties = [];
+  /** @var \view $view */
+  $view = views_get_view('regional_treaties');
+  if (is_object($view)) {
+    $view->set_arguments([$region_id, $topic_id]);
+    $view->set_display('block');
+    $view->set_items_per_page(0);
+    $view->pre_execute();
+    $view->execute();
+    foreach ($view->result as $result) {
+      $treaties[] = $result->nid;
+    }
+  }
+  return $treaties;
+}
+
+/**
+ * Retrieves the region id contextual filter if available.
+ *
+ * @return null|int
+ *  Region term tid.
+ */
+function _geographic_region_page_get_region_argument() {
+  return _geographic_region_page_get_argument('region');
+}
+
+/**
+ * Retrieves the region id contextual filter if available.
+ *
+ * @return null|int
+ *  Region term tid.
+ */
+function _geographic_region_page_get_argument($name) {
+  $page = page_manager_get_current_page();
+  if (is_array($page) && !empty($page['contexts']) && is_array(($page['contexts']))) {
+    foreach ($page['contexts'] as $context) {
+      if (!empty($context->keyword) && $context->keyword == $name) {
+        return $context->argument;
+      }
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function geographic_region_block_view($delta = '') {
+  $block = [];
+  switch ($delta) {
+    case 'region_page_title':
+      return geographic_region_region_page_title_block_view();
+      break;
+
+    case 'region_switch_topic':
+      return geographic_region_region_switch_topic_block_view();
+      break;
+
+    case 'region_downloadable_documents':
+      return geographic_region_region_downloadable_documents_block_view();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_taxonomy_term_view().
+ */
+function geographic_region_taxonomy_term_view($term, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+    if ($term->vid == $vocabulary->vid) {
+      // Redirect the default term page to region panel page.
+      drupal_goto('regions/' . strtolower(str_replace(' ', '-', $term->name_original)));
+    }
+  }
+}

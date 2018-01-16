@@ -1,0 +1,125 @@
+// Search block styling (including overrides of the old skin)
+.search-block {
+  background-color: #0A8FC6;
+  color: #fff;
+  border-top: 1px solid #fff;
+  padding: 2.5em 0;
+  position: relative;
+  // search block isn't covered by select2 overlay
+  .select2-open & {
+    pointer-events: none;
+    z-index: @zindex-navbar + 2;
+  }
+
+  h1,
+  .block-geographic-region select,
+  .block-informea-topics select,
+  .block-geographic-region .select2-container,
+  .block-informea-topics .select2-container {
+    font-size: 1.9em;
+    font-weight: normal;
+    text-align: center;
+  }
+  .region-navigation {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    > .block {
+      float: none;
+      max-width: 100%;
+      text-align: initial;
+    }
+  }
+  #search-form {
+    margin: 0 auto;
+    width: auto;
+    @media (min-width: @screen-sm-min) {
+      width: 80%;
+    }
+    .input-group {
+      display: flex;
+    }
+    .input-group-btn {
+      width: auto;
+      button {
+        padding: 0;
+        @media (max-width: @screen-xs-max) {
+          width: 30px;
+        }
+
+      }
+    }
+    .edit-search-in {
+      align-items: center;
+      background-color: #fff;
+      border-bottom: 1px solid #fc3;
+      border-top: 1px solid #fc3;
+      color: @text-color;
+      display: inline-flex;
+      padding: 0 .3em;
+    }
+    .form-text {
+      border-radius: 2px 0 0 2px;
+      border-right: none;
+      box-shadow: none;
+      padding-left: 2em;
+      padding-right: 2em;
+      @media (max-width: @screen-xs-max) {
+        padding-left: .5em;
+        padding-right: .5em;
+      }
+    }
+    select,
+    .select2-container {
+      align-items: center;
+      background-color: #E7E7E7;
+      border-bottom: 1px solid #fc3;
+      border-top: 1px solid #fc3;
+      border-radius: 0;
+      color: #424242;
+      display: inline-flex;
+      padding: 0 .3em;
+      &.select2-container-active:not(.select2-dropdown-open) {
+        background-color: darken(#E7E7E7, 3%);
+        text-decoration: underline;
+      }
+      .select2-chosen {
+        padding-right: 1.5em;
+      }
+      .select2-arrow {
+        order: -1;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.block-informea-search {
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.block-geographic-region, .block-informea-topics {
+  .search-block & {
+    align-items: center;
+    display: inline-flex;
+    margin-left: .5em;
+    margin-bottom: .5em;
+  }
+  .search-block & select,
+  .search-block & .select2-container {
+    color: #fc3;
+    font-style: italic;
+    padding: 0px 0.4em;
+  }
+  .search-block & .select2-container,
+  .search-block & .select2-container.select2-container-active.select2-dropdown-open {
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+  }
+  .search-block & .select2-container.select2-container-active {
+    border-bottom: 1px solid;
+  }
+}
