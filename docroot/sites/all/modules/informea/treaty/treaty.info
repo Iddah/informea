@@ -186,6 +186,7 @@ features[field_instance][] = taxonomy_term-jurisdiction-description_field
 features[field_instance][] = taxonomy_term-jurisdiction-field_abbreviation
 features[field_instance][] = taxonomy_term-jurisdiction-name_field
 features[field_instance][] = taxonomy_term-mea_topic-description_field
+features[field_instance][] = taxonomy_term-mea_topic-field_image
 features[field_instance][] = taxonomy_term-mea_topic-field_published
 features[field_instance][] = taxonomy_term-mea_topic-name_field
 features[field_instance][] = taxonomy_term-type_of_text-description_field

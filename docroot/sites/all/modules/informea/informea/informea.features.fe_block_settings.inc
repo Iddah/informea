@@ -52,8 +52,8 @@ function informea_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'front_page_hero',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'informea_theme',
         'weight' => 10,
       ),
