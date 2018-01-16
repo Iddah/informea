@@ -235,7 +235,12 @@ function informea_theme_theme() {
     'informea_treaties_menu_block' => array(
       'render element' => 'element',
       'template' => 'templates/informea-treaties-menu-block',
-      'variables' => array('treaties' => array(), 'topics' => array(), 'regions' => array()),
+      'variables' => array(
+        'treaties' => array(),
+        'topics' => array(),
+        'regions' => array(),
+        'global_region_tid' => 0,
+      ),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
   );
@@ -735,60 +740,64 @@ function informea_theme_treaties_menu_block() {
     ->fieldCondition('field_show_in_main_menu', 'value', TRUE);
   $results = $query->execute();
 
-
   $treaties = [];
   $topics_list = [];
   $regions_list = [];
-  $global_label = t('Global');
-  $show_global = FALSE;
+
+  $global_region_tid = 1118;
+  $global_region = taxonomy_term_load($global_region_tid);
+
   if (!empty($results['node'])) {
     foreach ($results['node'] as $result) {
-      $individual_topics_list = [];
-      $individual_regions_list = [];
       $node = node_load($result->nid);
-      $treaty['logo_uri'] = $node->field_logo['en'][0]['uri'];
-      $treaty['url'] = '/node/' . $result->nid;
+      $treaty = [
+        'title' => $node->title,
+        'logo_uri' => !empty($node->field_logo['en'][0]['uri']) ? $node->field_logo['en'][0]['uri'] : '',
+        'url' => '/node/' . $result->nid,
+        'is_global' => FALSE,
+        'regions' => [],
+        'topics' => [],
+      ];
 
-      $regions = $node->field_region['und'];
-      $topics = $node->field_mea_topic['und'];
-      foreach ($regions as $region) {
-        $region_label = taxonomy_term_load($region['tid'])->name;
-        if (!in_array($region_label, $regions_list)) {
-          if ($region_label != $global_label) {
-            $regions_list[] = $region_label;
-          } else {
-            $region_label = mb_strtoupper($global_label);
-            $show_global = TRUE;
+      if (!empty($node->field_region['und'])) {
+        foreach ($node->field_region['und'] as $region) {
+          $term = taxonomy_term_load($region['tid']);
+          $regions_list[$term->tid] = $term->name;
+          if ($term->tid == $global_region_tid) {
+            $treaty['is_global'] = TRUE;
           }
+          $treaty['regions'][$term->tid] = $term->name;
         }
-        if (!in_array($region_label, $individual_regions_list)) {
-          $individual_regions_list[] = $region_label;
+      }
+
+      if (!empty($node->field_mea_topic['und'])) {
+        foreach ($node->field_mea_topic['und'] as $topic) {
+          $term = taxonomy_term_load($topic['tid']);
+          $topics_list[$term->tid] = $term->name;
+          $treaty['topics'][$term->tid] = $term->name;
         }
-        foreach ($topics as $topic) {
-          $topic_label = taxonomy_term_load($topic['tid'])->name;
-          if (!in_array($topic_label, $topics_list)) {
-            $topics_list[] = $topic_label;
-          }
-          if (!in_array($topic_label, $individual_topics_list)) {
-            $individual_topics_list[] = $topic_label;
-          }
-        }
-        $treaty['topics'] = $individual_topics_list;
-        $treaty['regions'] = $individual_regions_list;
-        $treaties[$region_label][$node->title] = $treaty;
-        if ($region_label != 'Global') {
-          $treaties['Regional'][$node->title] = $treaty;
-        }
+      }
+
+      foreach ($treaty['regions'] as $tid => $name) {
+        $treaties[$tid][$node->nid] = $treaty;
+      }
+      foreach ($treaty['topics'] as $tid => $name) {
+        $segment = $treaty['is_global'] ? 'global' : 'regional';
+        $treaties[$tid][$segment][$node->nid] = $treaty;
       }
     }
   }
 
-  asort($regions_list);
+  uasort($regions_list, function ($a, $b) use ($global_region) {
+    if ($a == $global_region->name) {
+      return 1;
+    }
+    elseif ($b == $global_region->name) {
+      return -1;
+    }
+    return ($a < $b) ? -1 : 1;
+  });
   asort($topics_list);
-
-  if ($show_global) {
-    $regions_list[] = mb_strtoupper($global_label);
-  }
 
   return theme(
     'informea_treaties_menu_block',
@@ -796,6 +805,7 @@ function informea_theme_treaties_menu_block() {
       'regions' => $regions_list,
       'topics' => $topics_list,
       'treaties' => $treaties,
+      'global_region_tid' => $global_region_tid,
     )
   );
 
