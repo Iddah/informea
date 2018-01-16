@@ -30,10 +30,11 @@ function informea_search_update_7004() {
 
 /**
  * Update breadcrumbs.
+ * 220 Hide the # of GEG Goals.
  */
 function informea_search_update_7005() {
   features_revert(array('informea' => ['path_breadcrumbs']));
-  features_revert(array('informea_search' => ['path_breadcrumbs']));
+  features_revert(array('informea_search' => ['path_breadcrumbs', 'views_view']));
 }
 
 /**

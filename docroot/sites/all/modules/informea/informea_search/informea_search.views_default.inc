@@ -112,7 +112,7 @@ function informea_search_views_default_views() {
 [search_api_excerpt]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Attached files */
+  /* Field: Indexed Content: Documents */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -173,7 +173,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_treaty']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
-  /* Field: Indexed Content: Jurisdiction */
+  /* Field: Indexed Content: Court jurisdiction */
   $handler->display->display_options['fields']['field_jurisdiction']['id'] = 'field_jurisdiction';
   $handler->display->display_options['fields']['field_jurisdiction']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_jurisdiction']['field'] = 'field_jurisdiction';
@@ -185,7 +185,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_jurisdiction']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_jurisdiction']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_jurisdiction']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of text */
+  /* Field: Indexed Content: Type of document */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -246,7 +246,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -315,7 +315,7 @@ function informea_search_views_default_views() {
     t('<div class="meta search-index">
 [search_api_excerpt]
 </div>'),
-    t('Attached files'),
+    t('Documents'),
     t('<span class="meta content-type">[type]</span>'),
     t('<span class="meta"> · <span class="glyphicon glyphicon-share"></span>[field_data_source]</span> '),
     t('<span class="meta"> · <span class="glyphicon glyphicon-globe"></span>[field_country]</span>'),
@@ -391,7 +391,7 @@ function informea_search_views_default_views() {
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -419,7 +419,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_place_of_adoption']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_place_of_adoption']['alter']['text'] = '<span class="meta"><span class="glyphicon glyphicon-globe"></span>[field_place_of_adoption]</span>';
   $handler->display->display_options['fields']['field_place_of_adoption']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Jurisdiction */
+  /* Field: Indexed Content: Court jurisdiction */
   $handler->display->display_options['fields']['field_jurisdiction']['id'] = 'field_jurisdiction';
   $handler->display->display_options['fields']['field_jurisdiction']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_jurisdiction']['field'] = 'field_jurisdiction';
@@ -431,7 +431,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_jurisdiction']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_jurisdiction']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_jurisdiction']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of text */
+  /* Field: Indexed Content: Type of document */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -474,7 +474,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -616,7 +616,7 @@ function informea_search_views_default_views() {
     'title_link' => '',
     'title_class' => 'country-flag',
   );
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -647,7 +647,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of text */
+  /* Field: Indexed Content: Type of document */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -676,7 +676,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -1006,6 +1006,12 @@ function informea_search_views_default_views() {
   $handler->display->display_options['filters']['field_goal_source']['value'] = array(
     1740 => '1740',
   );
+  /* Filter criterion: Indexed Content: Node ID */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'search_api_index_informea_goals_and_principles';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['operator'] = '<>';
+  $handler->display->display_options['filters']['nid']['value'] = '86217';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -1099,7 +1105,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country_iso2']['label'] = '';
   $handler->display->display_options['fields']['field_country_iso2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_country_iso2']['element_default_classes'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -1130,7 +1136,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
-  /* Field: Indexed Content: Type of text */
+  /* Field: Indexed Content: Type of document */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
@@ -1190,7 +1196,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -1336,7 +1342,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'LOGO';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -1428,7 +1434,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Date */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
