@@ -186,6 +186,22 @@ function informea_block_info() {
       'cache' => DRUPAL_NO_CACHE,
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     ),
+    'frontpage_topics' => array(
+      'info' => t('Frontpage content'),
+      'status' => 1,
+      'region' => 'front_page_content',
+      'weight' => 0,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
+    'frontpage_regions_and_parties' => array(
+      'info' => t('Frontpage regions and parties'),
+      'status' => 1,
+      'region' => 'front_page_content',
+      'weight' => 0,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
   );
 }
 
@@ -237,6 +253,50 @@ function informea_block_view($delta = '') {
     case 'informea_treaties_block':
       $block['subject'] = NULL;
       $block['content'] = informea_theme_treaties_menu_block();
+      break;
+
+    case 'frontpage_topics':
+      $topics = informea_topics_get_published_topics();
+      $links = [];
+      foreach ($topics as $topic) {
+        $links[$topic->tid] = [
+          'title' => $topic->name,
+          'href' => url('/taxonomy/term/' . $topic->tid),
+        ];
+      }
+      $block['content'] = sprintf('<h4>%s</h4> %s', t('Browse information by Environmental Topic:'), theme('links', ['links' => $links]));
+
+      break;
+
+    case 'frontpage_regions_and_parties':
+      $regions = entity_load('taxonomy_term', FALSE, ['vid' => taxonomy_vocabulary_machine_name_load('geographical_region')->vid]);
+      $region_options = [NULL => t('All regions')];
+      foreach ($regions as $region) {
+        $region_options[url('/taxonomy/term/' . $region->tid)] = $region->name;
+      }
+
+      $country_options = [NULL => t('Select a party')] + country_get_countries_select_options();
+
+      $raw_content['#attached'] = array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified'))));
+      $raw_content['regions'] = [
+        '#type' => 'select',
+        '#options' => $region_options,
+        '#default_value' => NULL,
+        '#prefix' => '<h4>' . t('Browse by Region:') . '</h4>',
+        '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-frontpage-regions'],
+      ];
+      $raw_content['or'] = [
+        '#type' => 'item',
+        '#markup' => 'or'
+      ];
+      $raw_content['countries'] = [
+        '#type' => 'select',
+        '#options' => $country_options,
+        '#default_value' => NULL,
+        '#prefix' => '<h4>' . t('Browse by Party:') . '</h4>',
+        '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-frontpage-parties'],
+      ];
+      $block['content'] = render($raw_content);
       break;
   }
   return $block;

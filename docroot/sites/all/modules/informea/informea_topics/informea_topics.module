@@ -58,3 +58,20 @@ function informea_topics_taxonomy_term_view($term, $view_mode, $langcode) {
     }
   }
 }
+
+/**
+ * Retrieve published topics.
+ */
+function informea_topics_get_published_topics() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+  $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+  usort($terms, function ($a, $b) {
+    return strcmp($a->name, $b->name);
+  });
+  foreach ($terms as $key => $term) {
+    if (empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+      unset($terms[$key]);
+    }
+  }
+  return $terms;
+}
