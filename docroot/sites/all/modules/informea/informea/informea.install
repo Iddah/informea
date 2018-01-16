@@ -425,3 +425,13 @@ function informea_update_7021() {
     node_save($node);
   }
 }
+
+/**
+ * Task #313 - disable current frontpage blocks.
+ */
+function informea_update_7022() {
+  db_update('block')
+    ->fields(['status' => 0])
+    ->condition('bid', [110, 112, 114, 120, 122, 124], 'IN')
+    ->execute();
+}
