@@ -16,22 +16,24 @@
  */
 ?>
 <?php include 'header.tpl.php'; ?>
-<div class="hero-unit">
-  <div class="container">
-    <?php if(!empty($page['front_page_announcements'])): ?>
-    <div class="broadcast">
-      <div class="broadcast-body">
-      <?php print render($page['front_page_announcements']); ?>
-      </div><!-- .broadcast-body -->
-    </div><!-- .broadcast -->
-    <?php endif; ?>
-    <div class="row">
-      <?php if (!empty($page['front_page_hero'])): ?>
-        <?php print render($page['front_page_hero']); ?>
+<?php if(!empty($page['front_page_announcements']) || !empty($page['front_page_hero'])): ?>
+  <div class="hero-unit">
+    <div class="container">
+      <?php if(!empty($page['front_page_announcements'])): ?>
+      <div class="broadcast">
+        <div class="broadcast-body">
+        <?php print render($page['front_page_announcements']); ?>
+        </div><!-- .broadcast-body -->
+      </div><!-- .broadcast -->
       <?php endif; ?>
-    </div><!-- .row -->
-  </div><!-- .container -->
-</div><!-- .hero-unit -->
+      <div class="row">
+        <?php if (!empty($page['front_page_hero'])): ?>
+          <?php print render($page['front_page_hero']); ?>
+        <?php endif; ?>
+      </div><!-- .row -->
+    </div><!-- .container -->
+  </div><!-- .hero-unit -->
+<?php endif; ?>
 <div class="container">
   <?php if (!user_is_anonymous()) { print $messages; } ?>
   <div class="row" id="row-features">
