@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Task #313 - Set topics images.
+ */
+function informea_topics_update_7001() {
+  $images = [
+    850 => 'biodiversity.png',
+    851 => 'chemicals.png',
+    852 => 'climate.png',
+    4417 => 'water.png',
+  ];
+  $module_path = drupal_get_path('module', 'informea_topics');
+  foreach ($images as $tid => $filename) {
+    $image_object = file_get_contents($module_path . '/images/' . $filename);
+    $file = file_save_data($image_object, 'public://' . $filename, FILE_EXISTS_RENAME);
+    $term = taxonomy_term_load($tid);
+    $term->field_image[LANGUAGE_NONE][0] = (array)$file;
+    taxonomy_term_save($term);
+  }
+}
