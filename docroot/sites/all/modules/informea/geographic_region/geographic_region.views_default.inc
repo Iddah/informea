@@ -549,6 +549,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['fields']['field_region']['label'] = '';
   $handler->display->display_options['fields']['field_region']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_region']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_region']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_region']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_region']['multi_type'] = 'ul';
   /* Field: Content: InforMEA tags */
@@ -607,6 +608,41 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'treaty' => 'treaty',
+  );
+  /* Filter criterion: Content: Data source (field_data_source) */
+  $handler->display->display_options['filters']['field_data_source_tid']['id'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['table'] = 'field_data_field_data_source';
+  $handler->display->display_options['filters']['field_data_source_tid']['field'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['value'] = array(
+    815 => '815',
+  );
+  $handler->display->display_options['filters']['field_data_source_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_data_source_tid']['vocabulary'] = 'data_source';
+  /* Filter criterion: Content: Region (field_region) */
+  $handler->display->display_options['filters']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['filters']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_region_tid']['value'] = array(
+    1118 => '1118',
+  );
+  $handler->display->display_options['filters']['field_region_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_region_tid']['vocabulary'] = 'geographical_region';
   $translatables['regional_treaties'] = array(
     t('Master'),
     t('Global treaties'),
