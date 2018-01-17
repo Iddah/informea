@@ -202,6 +202,14 @@ function informea_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
+    'informea_page_title' => array(
+      'info' => t('Header page title'),
+      'status' => 1,
+      'region' => 'navigation',
+      'weight' => -56,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
   );
 }
 
@@ -253,6 +261,20 @@ function informea_block_view($delta = '') {
     case 'informea_treaties_block':
       $block['subject'] = NULL;
       $block['content'] = informea_theme_treaties_menu_block();
+      break;
+
+    case 'informea_page_title':
+      $title = sprintf('<h1>%s</h1>', t('Access information on Multilateral Environmental Agreements'));
+      $page = page_manager_get_current_page();
+      if (!empty($page['name'])) {
+        if ($page['name'] == 'page-topic_page') {
+          $title = informea_topics_page_title() ?: $title;
+        }
+        elseif ($page['name'] == 'page-region_page') {
+          $title = geographic_region_page_title() ?: $title;
+        }
+      }
+      $block['content'] = $title;
       break;
 
     case 'frontpage_topics':

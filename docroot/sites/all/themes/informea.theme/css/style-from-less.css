@@ -147,14 +147,12 @@
   z-index: 1002;
 }
 .search-block h1,
-.search-block .block-geographic-region select,
-.search-block .block-informea-topics select,
-.search-block .block-geographic-region .select2-container,
-.search-block .block-informea-topics .select2-container {
+.search-block #block-informea-informea-page-title select,
+.search-block #block-informea-informea-page-title .select2-container {
   font-size: 1.9em;
   font-weight: normal;
 }
-[dir] .search-block h1, [dir] .search-block .block-geographic-region select, [dir] .search-block .block-informea-topics select, [dir] .search-block .block-geographic-region .select2-container, [dir] .search-block .block-informea-topics .select2-container {
+[dir] .search-block h1, [dir] .search-block #block-informea-informea-page-title select, [dir] .search-block #block-informea-informea-page-title .select2-container {
   text-align: center;
 }
 .search-block .region-navigation {
@@ -305,8 +303,7 @@
       flex-basis: 100%;
   width: 100%;
 }
-.search-block .block-geographic-region,
-.search-block .block-informea-topics {
+.search-block #block-informea-informea-page-title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -315,30 +312,28 @@
   -js-display: inline-flex;
   display: inline-flex;
 }
-[dir] .search-block .block-geographic-region, [dir] .search-block .block-informea-topics {
+[dir] .search-block #block-informea-informea-page-title {
   margin-bottom: .5em;
 }
-[dir=ltr] .search-block .block-geographic-region, [dir=ltr] .search-block .block-informea-topics {
+[dir=ltr] .search-block #block-informea-informea-page-title {
   margin-left: .5em;
 }
-[dir=rtl] .search-block .block-geographic-region, [dir=rtl] .search-block .block-informea-topics {
+[dir=rtl] .search-block #block-informea-informea-page-title {
   margin-right: .5em;
 }
-.search-block .block-geographic-region select,
-.search-block .block-informea-topics select,
-.search-block .block-geographic-region .select2-container,
-.search-block .block-informea-topics .select2-container {
+.search-block #block-informea-informea-page-title select,
+.search-block #block-informea-informea-page-title .select2-container {
   color: #fc3;
   font-style: italic;
 }
-[dir] .search-block .block-geographic-region select, [dir] .search-block .block-informea-topics select, [dir] .search-block .block-geographic-region .select2-container, [dir] .search-block .block-informea-topics .select2-container {
+[dir] .search-block #block-informea-informea-page-title select, [dir] .search-block #block-informea-informea-page-title .select2-container {
   padding: 0px 0.4em;
 }
-[dir] .search-block .block-geographic-region .select2-container, [dir] .search-block .block-informea-topics .select2-container, [dir] .search-block .block-geographic-region .select2-container.select2-container-active.select2-dropdown-open, [dir] .search-block .block-informea-topics .select2-container.select2-container-active.select2-dropdown-open {
+[dir] .search-block #block-informea-informea-page-title .select2-container, [dir] .search-block #block-informea-informea-page-title .select2-container.select2-container-active.select2-dropdown-open {
   border-bottom: 1px solid transparent;
   margin-bottom: -1px;
 }
-[dir] .search-block .block-geographic-region .select2-container.select2-container-active, [dir] .search-block .block-informea-topics .select2-container.select2-container-active {
+[dir] .search-block #block-informea-informea-page-title .select2-container.select2-container-active {
   border-bottom: 1px solid;
 }
 .use-select-2 {

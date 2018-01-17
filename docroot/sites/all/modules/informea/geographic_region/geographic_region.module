@@ -6,7 +6,6 @@
 
 include_once 'geographic_region.features.inc';
 include_once 'blocks/region_downloadable_documents.block.inc';
-include_once 'blocks/region_page_title.block.inc';
 include_once 'blocks/region_switch_topic.block.inc';
 
 /**
@@ -14,15 +13,6 @@ include_once 'blocks/region_switch_topic.block.inc';
  */
 function geographic_region_block_info() {
   return [
-    'region_page_title' => [
-      'info' => t('Page title for regional page'),
-      'status' => 1,
-      'region' => 'navigation',
-      'weight' => -56,
-      'visibility' => BLOCK_VISIBILITY_LISTED,
-      'pages' => 'regions/*',
-      'cache' => DRUPAL_CACHE_PER_PAGE,
-    ],
     'region_switch_topic' => [
       'info' => t('Browse by Environmental Topic'),
       'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -96,10 +86,6 @@ function _geographic_region_page_get_argument($name) {
 function geographic_region_block_view($delta = '') {
   $block = [];
   switch ($delta) {
-    case 'region_page_title':
-      return geographic_region_region_page_title_block_view();
-      break;
-
     case 'region_switch_topic':
       return geographic_region_region_switch_topic_block_view();
       break;
@@ -122,4 +108,39 @@ function geographic_region_taxonomy_term_view($term, $view_mode, $langcode) {
       drupal_goto('regions/' . strtolower(str_replace(' ', '-', $term->name_original)));
     }
   }
+}
+
+/**
+ * Page title for regional page.
+ */
+function geographic_region_page_title() {
+  $region_id = _geographic_region_page_get_region_argument();
+  if (!empty($region_id)) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+    $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+    $options = [];
+    $title = '';
+    foreach ($terms as $term) {
+      if ($term->tid != 1118) { // Exclude "Global" region
+        if ($term->tid == $region_id) {
+          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
+        }
+        $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
+      }
+    }
+    if (!empty($options)) {
+      return [
+        '#type' => 'select',
+        '#options' => $options,
+        '#default_value' => url('/taxonomy/term/' . $region_id),
+        '#prefix' => '<h1>' . $title . '</h1>',
+        '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-geographic-region'],
+        '#select2' => [
+          'width' => 'auto'
+        ],
+        '#attached' => array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified')))),
+      ];
+    }
+  }
+  return NULL;
 }
