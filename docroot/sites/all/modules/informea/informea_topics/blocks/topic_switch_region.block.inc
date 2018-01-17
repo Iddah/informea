@@ -9,7 +9,7 @@ function informea_topics_topic_switch_region_block_view() {
   if (!empty($topic_id)) {
     $page = page_manager_get_current_page();
     $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
-    $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+    $terms = informea_get_published_taxonomy_terms($vocabulary->vid);
     usort($terms, function ($a, $b) {
       return strcmp($a->name, $b->name);
     });

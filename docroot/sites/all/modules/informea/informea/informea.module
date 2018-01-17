@@ -278,7 +278,8 @@ function informea_block_view($delta = '') {
       break;
 
     case 'frontpage_topics':
-      $topics = informea_topics_get_published_topics();
+      $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+      $topics = informea_get_published_taxonomy_terms($vocabulary->vid);
       $links = [];
       foreach ($topics as $topic) {
         $title = $topic->name;
@@ -305,7 +306,8 @@ function informea_block_view($delta = '') {
       break;
 
     case 'frontpage_regions_and_parties':
-      $regions = entity_load('taxonomy_term', FALSE, ['vid' => taxonomy_vocabulary_machine_name_load('geographical_region')->vid]);
+      $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+      $regions = informea_get_published_taxonomy_terms($vocabulary->vid);
       $region_options = [NULL => t('All regions')];
       foreach ($regions as $region) {
         if ($region->tid != 1118) {
@@ -1257,4 +1259,21 @@ function informea_node_presave($node) {
 
   $rd = new RegionDenormalizedFieldHandler();
   $rd->computeField($node);
+}
+
+
+/**
+ * Retrieve terms that have field_published = 1.
+ */
+function informea_get_published_taxonomy_terms($vocabulary) {
+  $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary]);
+  usort($terms, function ($a, $b) {
+    return strcmp($a->name, $b->name);
+  });
+  foreach ($terms as $key => $term) {
+    if (empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+      unset($terms[$key]);
+    }
+  }
+  return $terms;
 }

@@ -762,19 +762,23 @@ function informea_theme_treaties_menu_block() {
       if (!empty($node->field_region['und'])) {
         foreach ($node->field_region['und'] as $region) {
           $term = taxonomy_term_load($region['tid']);
-          $regions_list[$term->tid] = $term->name;
-          if ($term->tid == $global_region_tid) {
-            $treaty['is_global'] = TRUE;
+          if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+            $regions_list[$term->tid] = $term->name;
+            if ($term->tid == $global_region_tid) {
+              $treaty['is_global'] = TRUE;
+            }
+            $treaty['regions'][$term->tid] = $term->name;
           }
-          $treaty['regions'][$term->tid] = $term->name;
         }
       }
 
       if (!empty($node->field_mea_topic['und'])) {
         foreach ($node->field_mea_topic['und'] as $topic) {
           $term = taxonomy_term_load($topic['tid']);
-          $topics_list[$term->tid] = $term->name;
-          $treaty['topics'][$term->tid] = $term->name;
+          if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+            $topics_list[$term->tid] = $term->name;
+            $treaty['topics'][$term->tid] = $term->name;
+          }
         }
       }
 

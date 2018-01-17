@@ -447,3 +447,15 @@ function informea_update_7023() {
     ->condition('bid', 114)
     ->execute();
 }
+
+/**
+ * Publish all regions.
+ */
+function informea_update_7024() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+  $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+  foreach ($terms as $term) {
+    $term->field_published = [LANGUAGE_NONE => [ 0 => ['value' => 1]]];
+    taxonomy_term_save($term);
+  }
+}
