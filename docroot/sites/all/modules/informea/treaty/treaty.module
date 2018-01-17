@@ -1225,7 +1225,7 @@ function treaty_node_access($node, $op, $account) {
   global $user;
   // 220 Hide the # of GEG Goals
   if ($node && (!$user->uid)) {
-    if ($node->nid == 86217) {
+    if (!empty($node->nid) && $node->nid == 86217) {
       return NODE_ACCESS_DENY;
     }
   }
