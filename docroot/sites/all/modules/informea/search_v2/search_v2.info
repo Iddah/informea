@@ -1,0 +1,8 @@
+name = Search V2
+core = 7.x
+package = InforMEA
+version = 7.x-1.0
+dependencies[] = entity
+dependencies[] = search_api
+features[features_api][] = api:2
+features[search_api_index][] = default_index
