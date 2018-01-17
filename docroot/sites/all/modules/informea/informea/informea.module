@@ -275,7 +275,7 @@ function informea_block_view($delta = '') {
         $links[$topic->tid] = [
           'title' => $title,
           'html' => TRUE,
-          'href' => url('taxonomy/term/' . $topic->tid),
+          'href' => 'taxonomy/term/' . $topic->tid,
         ];
       }
       $block['content'] = sprintf('<h4>%s</h4> %s', t('Browse information by Environmental Topic:'), theme('links', ['links' => $links]));
