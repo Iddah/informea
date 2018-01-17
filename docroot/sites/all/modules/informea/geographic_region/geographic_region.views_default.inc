@@ -637,12 +637,22 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['filters']['field_region_tid']['id'] = 'field_region_tid';
   $handler->display->display_options['filters']['field_region_tid']['table'] = 'field_data_field_region';
   $handler->display->display_options['filters']['field_region_tid']['field'] = 'field_region_tid';
-  $handler->display->display_options['filters']['field_region_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_region_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_region_tid']['value'] = array(
     1118 => '1118',
   );
   $handler->display->display_options['filters']['field_region_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_region_tid']['vocabulary'] = 'geographical_region';
+  /* Filter criterion: Content: Region (field_region) */
+  $handler->display->display_options['filters']['field_region_tid_1']['id'] = 'field_region_tid_1';
+  $handler->display->display_options['filters']['field_region_tid_1']['table'] = 'field_data_field_region';
+  $handler->display->display_options['filters']['field_region_tid_1']['field'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_region_tid_1']['value'] = array(
+    1118 => '1118',
+  );
+  $handler->display->display_options['filters']['field_region_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_region_tid_1']['vocabulary'] = 'geographical_region';
   $translatables['regional_treaties'] = array(
     t('Master'),
     t('Global treaties'),
