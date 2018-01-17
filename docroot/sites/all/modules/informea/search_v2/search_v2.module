@@ -5,3 +5,13 @@
  */
 
 include_once 'search_v2.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function search_v2_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['search_item'] = array(
+    'label' => t('Search item'),
+    'custom settings' => TRUE,
+  );
+}
