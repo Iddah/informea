@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Task #312
+ */
+function search_v2_install() {
+  features_revert(array('treaty' => ['field_instance', 'strongarm']));
+}
