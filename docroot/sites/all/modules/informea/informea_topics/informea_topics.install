@@ -3,7 +3,7 @@
 /**
  * Task #313 - Set topics images.
  */
-function informea_topics_update_7001() {
+function informea_topics_install() {
   $images = [
     850 => 'biodiversity.png',
     851 => 'chemicals.png',

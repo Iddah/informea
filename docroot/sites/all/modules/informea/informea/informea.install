@@ -459,3 +459,11 @@ function informea_update_7024() {
     taxonomy_term_save($term);
   }
 }
+
+/**
+ * Enable InforMEA Topics module.
+ */
+function informea_update_7025() {
+  module_enable(['informea_topics']);
+  features_revert_module('informea_topics');
+}

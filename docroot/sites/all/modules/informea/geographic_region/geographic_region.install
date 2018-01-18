@@ -1,9 +1,0 @@
-<?php
-
-/**
- * Enable InforMEA Topics module.
- */
-function geographic_region_update_7001() {
-  module_enable(['informea_topics']);
-  features_revert_module('informea_topics');
-}
