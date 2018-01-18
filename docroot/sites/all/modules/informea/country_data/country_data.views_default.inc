@@ -114,18 +114,6 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['field_treaty']['display'] = 'view';
   $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
-  /* Field: Indexed Content: Roles */
-  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
-  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
-  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_contact_roles']['empty'] = '[field_treaty]';
-  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
-  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
-  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
-  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -140,6 +128,18 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Indexed Content: Roles */
+  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
+  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_roles']['empty'] = '[field_treaty]';
+  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
+  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';

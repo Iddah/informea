@@ -28,16 +28,50 @@
   .views-field {
     color: @regional-page-gray;
     margin-top: .5rem;
-    &, & * { display: inline; }
-    + .views-field {
-      > .field-content:not(:empty):before {
-        content: '|';
-        margin-right: .3rem;
-      }
-    }
+    // &, & * { display: inline; }
+
     ul {
       .list-unstyled();
       margin-bottom: 0;
+    }
+  }
+  .views-field-field-person-position,
+  .views-field-field-person-institution {
+    float: left;
+  }
+  .views-field-field-person-position + .views-field-field-person-institution {
+    > .field-content:not(:empty):before {
+      content: '|';
+      margin-left: .3rem;
+      margin-right: .3rem;
+    }
+  }
+  .views-field-field-contact-roles {
+    clear: both;
+    margin-top: 3rem;
+    .field-name-field-logo.field-type-image {
+      flex-shrink: 0;
+      img {
+        max-height: 2em;
+        width: auto;
+      }
+    }
+    .node-treaty.node-teaser,
+    .field-collection-item-field-contact-roles {
+       > .content {
+        align-items: center;
+        display: flex;
+      }
+    }
+    .field-collection-item-field-contact-roles > .content {
+      > .field + .field {
+        display: flex;
+        &:before {
+          content: '|';
+          margin-left: .3rem;
+          margin-right: .3rem;
+        }
+      }
     }
   }
   .separator {
@@ -83,7 +117,7 @@
     max-height: 1.5em;
   }
   .views-field-field-mea-topic + .views-field {
-    margin-left: .5rem;
+    display: inline-block;
     > .field-content:before {
       display: none;
     }

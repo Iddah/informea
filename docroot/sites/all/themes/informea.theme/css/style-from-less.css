@@ -589,16 +589,6 @@
 .select2-open {
   overflow: hidden;
 }
-[dir=ltr] .field-name-field-contact-treaty .node.node-treaty .field-name-field-logo, [dir=ltr] .field-name-field-contact-treaty .node.node-treaty .field-name-title-field {
-  float: left;
-}
-[dir=rtl] .field-name-field-contact-treaty .node.node-treaty .field-name-field-logo, [dir=rtl] .field-name-field-contact-treaty .node.node-treaty .field-name-title-field {
-  float: right;
-}
-.field-name-field-contact-treaty .node.node-treaty .field-name-field-logo .field-item,
-.field-name-field-contact-treaty .node.node-treaty .field-name-title-field .field-item {
-  line-height: 40px;
-}
 [dir] .page-node-contacts-hub .page-header {
   margin-bottom: 0;
 }
@@ -638,21 +628,6 @@
   margin-top: 8px;
   margin-top: .5rem;
 }
-.view-contacts-hub .views-field,
-.view-contacts-hub .views-field * {
-  display: inline;
-}
-.view-contacts-hub .views-field + .views-field > .field-content:not(:empty):before {
-  content: '|';
-}
-[dir=ltr] .view-contacts-hub .views-field + .views-field > .field-content:not(:empty):before {
-  margin-right: 4.8px;
-  margin-right: .3rem;
-}
-[dir=rtl] .view-contacts-hub .views-field + .views-field > .field-content:not(:empty):before {
-  margin-left: 4.8px;
-  margin-left: .3rem;
-}
 .view-contacts-hub .views-field ul {
   list-style: none;
 }
@@ -664,6 +639,71 @@
 }
 [dir=rtl] .view-contacts-hub .views-field ul {
   padding-right: 0;
+}
+[dir=ltr] .view-contacts-hub .views-field-field-person-position, [dir=ltr] .view-contacts-hub .views-field-field-person-institution {
+  float: left;
+}
+[dir=rtl] .view-contacts-hub .views-field-field-person-position, [dir=rtl] .view-contacts-hub .views-field-field-person-institution {
+  float: right;
+}
+.view-contacts-hub .views-field-field-person-position + .views-field-field-person-institution > .field-content:not(:empty):before {
+  content: '|';
+}
+[dir=ltr] .view-contacts-hub .views-field-field-person-position + .views-field-field-person-institution > .field-content:not(:empty):before {
+  margin-left: 4.8px;
+  margin-left: .3rem;
+  margin-right: 4.8px;
+  margin-right: .3rem;
+}
+[dir=rtl] .view-contacts-hub .views-field-field-person-position + .views-field-field-person-institution > .field-content:not(:empty):before {
+  margin-right: 4.8px;
+  margin-right: .3rem;
+  margin-left: 4.8px;
+  margin-left: .3rem;
+}
+[dir] .view-contacts-hub .views-field-field-contact-roles {
+  clear: both;
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+.view-contacts-hub .views-field-field-contact-roles .field-name-field-logo.field-type-image {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.view-contacts-hub .views-field-field-contact-roles .field-name-field-logo.field-type-image img {
+  max-height: 2em;
+  width: auto;
+}
+.view-contacts-hub .views-field-field-contact-roles .node-treaty.node-teaser > .content,
+.view-contacts-hub .views-field-field-contact-roles .field-collection-item-field-contact-roles > .content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.view-contacts-hub .views-field-field-contact-roles .field-collection-item-field-contact-roles > .content > .field + .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.view-contacts-hub .views-field-field-contact-roles .field-collection-item-field-contact-roles > .content > .field + .field:before {
+  content: '|';
+}
+[dir=ltr] .view-contacts-hub .views-field-field-contact-roles .field-collection-item-field-contact-roles > .content > .field + .field:before {
+  margin-left: 4.8px;
+  margin-left: .3rem;
+  margin-right: 4.8px;
+  margin-right: .3rem;
+}
+[dir=rtl] .view-contacts-hub .views-field-field-contact-roles .field-collection-item-field-contact-roles > .content > .field + .field:before {
+  margin-right: 4.8px;
+  margin-right: .3rem;
+  margin-left: 4.8px;
+  margin-left: .3rem;
 }
 [dir] .view-contacts-hub .separator {
   padding-top: 8px;
@@ -731,13 +771,8 @@
 .view-contacts-hub .views-field-field-country img {
   max-height: 1.5em;
 }
-[dir=ltr] .view-contacts-hub .views-field-field-mea-topic + .views-field {
-  margin-left: 8px;
-  margin-left: .5rem;
-}
-[dir=rtl] .view-contacts-hub .views-field-field-mea-topic + .views-field {
-  margin-right: 8px;
-  margin-right: .5rem;
+.view-contacts-hub .views-field-field-mea-topic + .views-field {
+  display: inline-block;
 }
 .view-contacts-hub .views-field-field-mea-topic + .views-field > .field-content:before {
   display: none;
