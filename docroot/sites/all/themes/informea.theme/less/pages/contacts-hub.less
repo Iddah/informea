@@ -1,6 +1,9 @@
 .page-node-contacts-hub {
   .page-header {
-    // margin-bottom: 0;
+    margin-bottom: 0;
+  }
+  .region-sidebar-first {
+    margin-top: -1px;
   }
 }
 .node-header-container {
@@ -101,9 +104,11 @@
 
   .view-header {
     color: @regional-page-gray;
-    float: right;
+    position: absolute;
+    right: @grid-gutter-width / 2;
     font-size: .9em;
     margin-top: .5rem;
+    white-space: nowrap;
   }
 
   .views-exposed-widgets {
@@ -115,9 +120,82 @@
   }
   #edit-search-api-views-fulltext-wrapper {
     display: block;
+    padding-right: 0;
+    .form-control {
+      border-bottom-right-radius: 0;
+      border-right: 0;
+      border-top-right-radius: 0;
+    }
   }
   #edit-submit-contacts-hub {
-    margin-top: 0;
+    background-color: #0A8FC7;
+    background-image: none;
+    border-bottom-left-radius: 0;
+    border-color: #0A8FC7;
+    border-top-left-radius: 0;
+    color: #fff;
+    display: block; // Explicitly set display to prevent button being hidden
+  }
+  .views-exposed-widgets {
+    .form-submit {
+      margin-top: 0;
+    }
+    > .views-widget-sort-sort_bef_combine {
+      float: right;
+      margin-top: 2em;
+      padding-right: 0;
+    }
+  }
+  .form-item-sort-bef-combine {
+    font-size: .9em;
+    &.form-type-select {
+      align-items: center;
+      display: flex;
+    }
+    label {
+      color: @regional-page-gray;
+      font-weight: normal;
+      white-space: nowrap;
+      margin: 0;
+    }
+    select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      border: none;
+      box-shadow: none;
+      color: @regional-page-light-blue;
+      cursor: pointer;
+      font-size: 1em;
+      height: auto;
+      margin-left: .3em;
+      padding: 0;
+    }
+    .form-radios { display: inline-block; }
+    .bef-select-as-links > .form-item {
+      display: flex;
+      > .form-item {
+        font-size: 0;
+        > a {
+          color: @regional-page-gray;
+          font-size: @font-size-base;
+          &.active,
+          &:hover,
+          &:focus {
+            color: @link-color;
+          }
+        }
+      }
+
+      > .form-item + .form-item > a {
+        &:before {
+          content: '|';
+          margin-left: .3em;
+          margin-right: .3em;
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 
@@ -150,3 +228,4 @@
     color: #fc3;
   }
 }
+

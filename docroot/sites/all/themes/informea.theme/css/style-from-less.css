@@ -599,6 +599,12 @@
 .field-name-field-contact-treaty .node.node-treaty .field-name-title-field .field-item {
   line-height: 40px;
 }
+[dir] .page-node-contacts-hub .page-header {
+  margin-bottom: 0;
+}
+[dir] .page-node-contacts-hub .region-sidebar-first {
+  margin-top: -1px;
+}
 .node-header-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -753,17 +759,19 @@
 }
 .view-contacts-hub .view-header {
   color: #8F8F8F;
+  position: absolute;
   font-size: .9em;
+  white-space: nowrap;
 }
 [dir] .view-contacts-hub .view-header {
   margin-top: 8px;
   margin-top: .5rem;
 }
 [dir=ltr] .view-contacts-hub .view-header {
-  float: right;
+  right: 15px;
 }
 [dir=rtl] .view-contacts-hub .view-header {
-  float: left;
+  left: 15px;
 }
 [dir] .view-contacts-hub .views-exposed-widgets {
   margin-top: -8px;
@@ -777,8 +785,126 @@
 .view-contacts-hub #edit-search-api-views-fulltext-wrapper {
   display: block;
 }
+[dir=ltr] .view-contacts-hub #edit-search-api-views-fulltext-wrapper {
+  padding-right: 0;
+}
+[dir=rtl] .view-contacts-hub #edit-search-api-views-fulltext-wrapper {
+  padding-left: 0;
+}
+[dir=ltr] .view-contacts-hub #edit-search-api-views-fulltext-wrapper .form-control {
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  border-top-right-radius: 0;
+}
+[dir=rtl] .view-contacts-hub #edit-search-api-views-fulltext-wrapper .form-control {
+  border-bottom-left-radius: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+}
+.view-contacts-hub #edit-submit-contacts-hub {
+  color: #fff;
+  display: block;
+}
 [dir] .view-contacts-hub #edit-submit-contacts-hub {
+  background-color: #0A8FC7;
+  background-image: none;
+  border-color: #0A8FC7;
+}
+[dir=ltr] .view-contacts-hub #edit-submit-contacts-hub {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+[dir=rtl] .view-contacts-hub #edit-submit-contacts-hub {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+[dir] .view-contacts-hub .views-exposed-widgets .form-submit {
   margin-top: 0;
+}
+[dir] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
+  margin-top: 2em;
+}
+[dir=ltr] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
+  float: right;
+  padding-right: 0;
+}
+[dir=rtl] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
+  float: left;
+  padding-left: 0;
+}
+.view-contacts-hub .form-item-sort-bef-combine {
+  font-size: .9em;
+}
+.view-contacts-hub .form-item-sort-bef-combine.form-type-select {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.view-contacts-hub .form-item-sort-bef-combine label {
+  color: #8F8F8F;
+  font-weight: normal;
+  white-space: nowrap;
+}
+[dir] .view-contacts-hub .form-item-sort-bef-combine label {
+  margin: 0;
+}
+.view-contacts-hub .form-item-sort-bef-combine select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  color: #1D7CA7;
+  font-size: 1em;
+  height: auto;
+}
+[dir] .view-contacts-hub .form-item-sort-bef-combine select {
+  border: none;
+          box-shadow: none;
+  cursor: pointer;
+  padding: 0;
+}
+[dir=ltr] .view-contacts-hub .form-item-sort-bef-combine select {
+  margin-left: .3em;
+}
+[dir=rtl] .view-contacts-hub .form-item-sort-bef-combine select {
+  margin-right: .3em;
+}
+.view-contacts-hub .form-item-sort-bef-combine .form-radios {
+  display: inline-block;
+}
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item {
+  font-size: 0;
+}
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item > a {
+  color: #8F8F8F;
+  font-size: 14px;
+}
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item > a.active,
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item > a:hover,
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item > a:focus {
+  color: #337ab7;
+}
+.view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item + .form-item > a:before {
+  content: '|';
+  text-decoration: none;
+}
+[dir=ltr] .view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item + .form-item > a:before {
+  margin-left: .3em;
+  margin-right: .3em;
+}
+[dir=rtl] .view-contacts-hub .form-item-sort-bef-combine .bef-select-as-links > .form-item > .form-item + .form-item > a:before {
+  margin-right: .3em;
+  margin-left: .3em;
 }
 .node-header-container .treaty-switcher,
 .node-header-container .country-switcher,

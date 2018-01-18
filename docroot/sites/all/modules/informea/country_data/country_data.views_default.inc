@@ -29,6 +29,8 @@ function country_data_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Contacts sorted';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'input_required' => 0,
@@ -43,14 +45,14 @@ function country_data_views_default_views() {
       'secondary_collapse_override' => '0',
     ),
     'sort' => array(
-      'bef_format' => 'bef_links',
+      'bef_format' => 'default',
       'advanced' => array(
         'collapsible' => 0,
         'collapsible_label' => 'Sort options',
         'combine' => 1,
         'combine_param' => 'sort_bef_combine',
-        'combine_rewrite' => 'Title Asc|Sort from A to Z
-Title Desc|Sort from Z to A',
+        'combine_rewrite' => 'Title Asc|from A to Z
+Title Desc|from Z to A',
         'reset' => 0,
         'reset_label' => '',
         'is_secondary' => 0,
@@ -87,6 +89,7 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = 'Displaying @total result(s)';
   /* Relationship: Indexed Content: Treaty */
   $handler->display->display_options['relationships']['field_treaty']['id'] = 'field_treaty';
@@ -236,6 +239,57 @@ Title Desc|Sort from Z to A',
 
   /* Display: Country contacts hub */
   $handler = $view->new_display('page', 'Country contacts hub', 'country_contacts_hub');
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Contacts sorted';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'sort' => array(
+      'bef_format' => 'default',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 1,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => 'Title Asc|from A to Z
+Title Desc|from Z to A',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'autosubmit' => 0,
+      ),
+    ),
+    'search_api_views_fulltext' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Country */
   $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
@@ -351,14 +405,14 @@ Title Desc|Sort from Z to A',
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Contacts sorted'),
     t('Asc'),
     t('Desc'),
     t('Select any filter and click on Apply to see results'),
     t('Advanced options'),
     t('Sort options'),
-    t('Title Asc|Sort from A to Z
-Title Desc|Sort from Z to A'),
+    t('Title Asc|from A to Z
+Title Desc|from Z to A'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
