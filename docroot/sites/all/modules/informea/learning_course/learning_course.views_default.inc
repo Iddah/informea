@@ -65,7 +65,7 @@ function learning_course_views_default_views() {
   $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_url']['type'] = 'link_absolute';
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -89,7 +89,7 @@ function learning_course_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: MEA topic */
+  /* Field: Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
@@ -112,7 +112,7 @@ function learning_course_views_default_views() {
   $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Content: MEA topic (field_mea_topic) */
+  /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
@@ -138,6 +138,27 @@ function learning_course_views_default_views() {
 
   /* Display: Regional learning courses */
   $handler = $view->new_display('block', 'Regional learning courses', 'block_1');
+
+  /* Display: Learning courses by topic */
+  $handler = $view->new_display('block', 'Learning courses by topic', 'block_2');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Region (field_region) */
+  $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['arguments']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Topics (field_mea_topic) */
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary_options']['items_per_page'] = '25';
   $translatables['learning_courses'] = array(
     t('Master'),
     t('more'),
@@ -161,6 +182,7 @@ function learning_course_views_default_views() {
     t('<a href="[field_url]">[title]</a>'),
     t('All'),
     t('Regional learning courses'),
+    t('Learning courses by topic'),
   );
   $export['learning_courses'] = $view;
 
