@@ -17,7 +17,7 @@
   }
 }
 .view-contacts-hub {
-  margin-top: 2em;
+  margin-top: 3rem;
   .views-row {
     padding-bottom: 1.5em;
     padding-top: 1.5em;
@@ -107,7 +107,7 @@
     position: absolute;
     right: @grid-gutter-width / 2;
     font-size: .9em;
-    margin-top: .5rem;
+    top: 5rem;
     white-space: nowrap;
   }
 
@@ -142,8 +142,17 @@
     }
     > .views-widget-sort-sort_bef_combine {
       float: right;
-      margin-top: 2em;
       padding-right: 0;
+    }
+    .views-reset-button {
+      clear: right;
+      float: right;
+      margin-top: 2rem;
+      padding-right: 0;
+      > .btn {
+        font-size: 1em;
+        padding: 0;
+      }
     }
   }
   .form-item-sort-bef-combine {
@@ -170,6 +179,9 @@
       height: auto;
       margin-left: .3em;
       padding: 0;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     .form-radios { display: inline-block; }
     .bef-select-as-links > .form-item {

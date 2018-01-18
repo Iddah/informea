@@ -621,7 +621,8 @@
   margin-bottom: 0;
 }
 [dir] .view-contacts-hub {
-  margin-top: 2em;
+  margin-top: 48px;
+  margin-top: 3rem;
 }
 [dir] .view-contacts-hub .views-row {
   padding-bottom: 1.5em;
@@ -761,11 +762,9 @@
   color: #8F8F8F;
   position: absolute;
   font-size: .9em;
+  top: 80px;
+  top: 5rem;
   white-space: nowrap;
-}
-[dir] .view-contacts-hub .view-header {
-  margin-top: 8px;
-  margin-top: .5rem;
 }
 [dir=ltr] .view-contacts-hub .view-header {
   right: 15px;
@@ -821,9 +820,6 @@
 [dir] .view-contacts-hub .views-exposed-widgets .form-submit {
   margin-top: 0;
 }
-[dir] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
-  margin-top: 2em;
-}
 [dir=ltr] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
   float: right;
   padding-right: 0;
@@ -831,6 +827,26 @@
 [dir=rtl] .view-contacts-hub .views-exposed-widgets > .views-widget-sort-sort_bef_combine {
   float: left;
   padding-left: 0;
+}
+[dir] .view-contacts-hub .views-exposed-widgets .views-reset-button {
+  margin-top: 32px;
+  margin-top: 2rem;
+}
+[dir=ltr] .view-contacts-hub .views-exposed-widgets .views-reset-button {
+  clear: right;
+  float: right;
+  padding-right: 0;
+}
+[dir=rtl] .view-contacts-hub .views-exposed-widgets .views-reset-button {
+  clear: left;
+  float: left;
+  padding-left: 0;
+}
+.view-contacts-hub .views-exposed-widgets .views-reset-button > .btn {
+  font-size: 1em;
+}
+[dir] .view-contacts-hub .views-exposed-widgets .views-reset-button > .btn {
+  padding: 0;
 }
 .view-contacts-hub .form-item-sort-bef-combine {
   font-size: .9em;
@@ -872,6 +888,9 @@
 }
 [dir=rtl] .view-contacts-hub .form-item-sort-bef-combine select {
   margin-right: .3em;
+}
+.view-contacts-hub .form-item-sort-bef-combine select:hover {
+  text-decoration: underline;
 }
 .view-contacts-hub .form-item-sort-bef-combine .form-radios {
   display: inline-block;
