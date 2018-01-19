@@ -158,6 +158,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
   $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mea_topic']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_mea_topic']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_mea_topic']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_mea_topic']['view_mode'] = 'full';
