@@ -1356,16 +1356,6 @@
   [dir=rtl] .page-regions .views-field-field-event-type + .views-field, [dir=rtl] .page-topics .views-field-field-event-type + .views-field {
     margin-right: .5rem;
   }
-  .page-regions .views-field-field-mea-topic + .views-field-field-informea-tags,
-  .page-topics .views-field-field-mea-topic + .views-field-field-informea-tags {
-    display: inline;
-  }
-  [dir=ltr] .page-regions .views-field-field-mea-topic + .views-field-field-informea-tags, [dir=ltr] .page-topics .views-field-field-mea-topic + .views-field-field-informea-tags {
-    margin-left: .5rem;
-  }
-  [dir=rtl] .page-regions .views-field-field-mea-topic + .views-field-field-informea-tags, [dir=rtl] .page-topics .views-field-field-mea-topic + .views-field-field-informea-tags {
-    margin-right: .5rem;
-  }
 }
 [dir] .page-regions .view-regional-treaties .view-empty, [dir] .page-topics .view-regional-treaties .view-empty {
   margin-top: 27px;
@@ -1390,10 +1380,10 @@
 .page-regions .views-field-field-informea-tags,
 .page-topics .views-field-field-informea-tags {
   color: #8F8F8F;
-  display: inline;
 }
 [dir] .page-regions .views-field-field-informea-tags, [dir] .page-topics .views-field-field-informea-tags {
-  margin-top: .5em;
+  margin-top: 4.8px;
+  margin-top: .3rem;
 }
 .page-regions .views-field-field-informea-tags > .views-label,
 .page-topics .views-field-field-informea-tags > .views-label,
