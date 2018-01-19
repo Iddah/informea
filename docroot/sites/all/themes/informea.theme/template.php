@@ -81,6 +81,18 @@ function informea_theme_preprocess_page(&$variables) {
         break;
 
       case 'country':
+        // see #285 hide party block on country contacts hub page
+        if(!empty($variables['page']['sidebar_first'])) {
+          foreach ($variables['page']['sidebar_first'] as $key => $value) {
+            if($value['#settings']->facet == 'field_country') {
+              $remove = $key;
+              break;
+            }
+          }
+          if(!empty($remove)) {
+            unset($variables['page']['sidebar_first'][$remove]);
+          }
+        }
         $countries = country_get_countries_select_options();
         $countries1 = $countries;
         // array_unshift($countries1, t('View another party'));
@@ -98,6 +110,18 @@ function informea_theme_preprocess_page(&$variables) {
         break;
 
       case 'treaty':
+        // see #285 hide treaty block on treaty contacts hub page
+        if(!empty($variables['page']['sidebar_first'])) {
+          foreach ($variables['page']['sidebar_first'] as $key => $value) {
+            if($value['#settings']->facet == 'field_treaty') {
+              $remove = $key;
+              break;
+            }
+          }
+          if(!empty($remove)) {
+            unset($variables['page']['sidebar_first'][$remove]);
+          }
+        }
         if ($local_tasks = menu_secondary_local_tasks()) {
           array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         }
