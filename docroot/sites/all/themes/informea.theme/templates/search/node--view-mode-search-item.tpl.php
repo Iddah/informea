@@ -82,11 +82,11 @@
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-    <div class="col-1">
-        <?php print render($content['field_logo']); ?>
-
+    <div class="left-column">
+        <?php print render($content['left_column']); ?>
     </div>
-    <div class="col-2">
+
+    <div class="right-column">
       <?php print render($title_prefix); ?>
       <?php if (!$page): ?>
           <h4<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h4>
@@ -96,7 +96,7 @@
         <div class="content"<?php print $content_attributes; ?>>
           <?php
           hide($content['links']);
-          hide($content['field_logo']);
+          hide($content['left_column']);
           print render($content);
           ?>
         </div>

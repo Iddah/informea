@@ -73,22 +73,33 @@ function search_v2_facet_items_alter(&$build, &$settings) {
  */
 function search_v2_node_view($node, $view_mode, $langcode) {
   if ($view_mode == 'search_item') {
-    if ($node->nid == 255) {
-      $meta = [
-        'content_type' => node_type_get_name($node),
-      ];
-    }
+    $content = &$node->content;
+    $left_column = [];
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $meta = [
+      'content_type' => node_type_get_name($node),
+    ];
     switch ($node->type) {
       case 'treaty':
-        $meta['content_type'] = t('Treaty');
+        if (!empty($content['field_logo'])) {
+          $left_column['field_logo'] = $content['field_logo'];
+          unset($content['field_logo']);
+        }
+        $meta['full_treaty_text_link'] = l(t('Full Treaty Text'), 'node/'. $node->nid .'/text');
+        $meta['parties_link'] = l(t('Parties'), 'node/'. $node->nid .'/parties');
+        if (!empty($wrapper->field_online_course_link->value())) {
+          $meta['related_online_course_link'] = l(t('Related Online Course'), $wrapper->field_online_course_link->value()['url']);
+        }
+        if (!empty($wrapper->field_treaty_text_url->value())) {
+          $meta['original_source_link'] = l(t('Link to Original Source'), $wrapper->field_treaty_text_url->value()['url']);
+        }
         break;
     }
-    if (!empty($meta)) {
-      $node->content['meta'] = array(
-        '#theme' => 'informea_node_metadata',
-        '#meta' => $meta,
-        '#weight' => 10,
-      );
-    }
+    $content['left_column'] = $left_column;
+    $content['meta'] = array(
+      '#theme' => 'informea_node_metadata',
+      '#meta' => $meta,
+      '#weight' => 10,
+    );
   }
 }
