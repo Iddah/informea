@@ -1913,9 +1913,8 @@ input.facetapi-checkbox { margin-right: 5px; }
 }
 
 
-#edit-search-api-views-fulltext-wrapper { display: none; }
-#views-exposed-form-documents-page #edit-search-api-views-fulltext-wrapper,
-#views-exposed-form-documents-page-1 #edit-search-api-views-fulltext-wrapper{ display: block }
+.form-item-search-api-views-fulltext { display: none; }
+.view-documents .form-item-search-api-views-fulltext { display: block }
 
 /*
 body[class*='page-search'] .block-facetapi a {

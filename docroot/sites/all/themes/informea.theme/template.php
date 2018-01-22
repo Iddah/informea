@@ -81,6 +81,18 @@ function informea_theme_preprocess_page(&$variables) {
         break;
 
       case 'country':
+        // see #285 hide party block on country contacts hub page
+        if(!empty($variables['page']['sidebar_first'])) {
+          foreach ($variables['page']['sidebar_first'] as $key => $value) {
+            if($value['#settings']->facet == 'field_country') {
+              $remove = $key;
+              break;
+            }
+          }
+          if(!empty($remove)) {
+            unset($variables['page']['sidebar_first'][$remove]);
+          }
+        }
         $countries = country_get_countries_select_options();
         $countries1 = $countries;
         // array_unshift($countries1, t('View another party'));
@@ -93,10 +105,23 @@ function informea_theme_preprocess_page(&$variables) {
           '#type' => 'select',
           '#value' => country_get_url_by_iso2($node->field_country_iso2[LANGUAGE_NONE][0]['value'])
         );
+        $variables['page']['sidebar_first']['#no_well'] = TRUE;
         array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         break;
 
       case 'treaty':
+        // see #285 hide treaty block on treaty contacts hub page
+        if(!empty($variables['page']['sidebar_first'])) {
+          foreach ($variables['page']['sidebar_first'] as $key => $value) {
+            if($value['#settings']->facet == 'field_treaty') {
+              $remove = $key;
+              break;
+            }
+          }
+          if(!empty($remove)) {
+            unset($variables['page']['sidebar_first'][$remove]);
+          }
+        }
         if ($local_tasks = menu_secondary_local_tasks()) {
           array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         }
@@ -116,6 +141,7 @@ function informea_theme_preprocess_page(&$variables) {
           '#type' => 'select',
           '#value' => $selected_treaty,
         );
+        $variables['page']['sidebar_first']['#no_well'] = TRUE;
         break;
 
       case 'decision':
@@ -200,6 +226,18 @@ function informea_theme_preprocess_page(&$variables) {
     $variables['node'] = $node;
     $variables['theme_hook_suggestions'][] = 'page__node__treaty';
     drupal_set_title($node->title);
+  }
+}
+
+function informea_theme_preprocess_region(&$variables) {
+  // Removes bootstrap well classes from region
+  if(!empty($variables['elements']['#no_well']) && $variables['elements']['#no_well'] == TRUE) {
+    $classes_to_remove = ['well', 'well well-sm', 'well well-lg'];
+    foreach ($classes_to_remove as $class) {
+      if (($key = array_search($class, $variables['classes_array'])) !== false) {
+        unset($variables['classes_array'][$key]);
+      }
+    }
   }
 }
 
@@ -457,6 +495,10 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
     if (isset($form['submit'])) {
       $form['submit']['#attributes']['class'][] = 'btn-primary';
       $form['submit']['#value'] = t('Filter');
+      $exposed_form_id = $form['#id'];
+      if($exposed_form_id == 'views-exposed-form-contacts-hub-country-contacts-hub' || $exposed_form_id == 'views-exposed-form-contacts-hub-treaty-contacts-hub') {
+        $form['submit']['#value'] = '<i class="icon glyphicon glyphicon-search" aria-hidden="true"></i>' . '<span class="sr-only">' . t('Filter') . '</span>';
+      }
     }
 
     if (isset($form['reset'])) {

@@ -29,6 +29,8 @@ function country_data_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Contacts sorted';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'input_required' => 0,
@@ -43,14 +45,14 @@ function country_data_views_default_views() {
       'secondary_collapse_override' => '0',
     ),
     'sort' => array(
-      'bef_format' => 'bef_links',
+      'bef_format' => 'default',
       'advanced' => array(
         'collapsible' => 0,
         'collapsible_label' => 'Sort options',
         'combine' => 1,
         'combine_param' => 'sort_bef_combine',
-        'combine_rewrite' => 'Title Asc|Sort from A to Z
-Title Desc|Sort from Z to A',
+        'combine_rewrite' => 'Title Asc|from A to Z
+Title Desc|from Z to A',
         'reset' => 0,
         'reset_label' => '',
         'is_secondary' => 0,
@@ -87,6 +89,7 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = 'Displaying @total result(s)';
   /* Relationship: Indexed Content: Treaty */
   $handler->display->display_options['relationships']['field_treaty']['id'] = 'field_treaty';
@@ -111,18 +114,6 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['fields']['field_treaty']['display'] = 'view';
   $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
-  /* Field: Indexed Content: Roles */
-  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
-  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
-  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_contact_roles']['empty'] = '[field_treaty]';
-  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
-  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
-  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
-  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -137,6 +128,18 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Indexed Content: Roles */
+  $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
+  $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
+  $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_roles']['empty'] = '[field_treaty]';
+  $handler->display->display_options['fields']['field_contact_roles']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_contact_roles']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
+  $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
@@ -155,6 +158,7 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
   $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mea_topic']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_mea_topic']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_mea_topic']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_mea_topic']['view_mode'] = 'full';
@@ -236,6 +240,57 @@ Title Desc|Sort from Z to A',
 
   /* Display: Country contacts hub */
   $handler = $view->new_display('page', 'Country contacts hub', 'country_contacts_hub');
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Contacts sorted';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'sort' => array(
+      'bef_format' => 'default',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 1,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => 'Title Asc|from A to Z
+Title Desc|from Z to A',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'autosubmit' => 0,
+      ),
+    ),
+    'search_api_views_fulltext' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Country */
   $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
@@ -268,16 +323,6 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['fields']['field_contact_roles']['display'] = 'view';
   $handler->display->display_options['fields']['field_contact_roles']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
-  /* Field: Indexed Content: Country */
-  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
-  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['label'] = '';
-  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_country']['list']['mode'] = 'list';
-  $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
-  $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
@@ -292,6 +337,16 @@ Title Desc|Sort from Z to A',
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
+  /* Field: Indexed Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['label'] = '';
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_country']['bypass_access'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
@@ -351,14 +406,14 @@ Title Desc|Sort from Z to A',
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Contacts sorted'),
     t('Asc'),
     t('Desc'),
     t('Select any filter and click on Apply to see results'),
     t('Advanced options'),
     t('Sort options'),
-    t('Title Asc|Sort from A to Z
-Title Desc|Sort from Z to A'),
+    t('Title Asc|from A to Z
+Title Desc|from Z to A'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
