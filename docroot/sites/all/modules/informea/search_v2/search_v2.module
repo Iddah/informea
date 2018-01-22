@@ -93,6 +93,10 @@ function search_v2_node_view($node, $view_mode, $langcode) {
         if (!empty($wrapper->field_treaty_text_url->value())) {
           $meta['original_source_link'] = l(t('Link to Original Source'), $wrapper->field_treaty_text_url->value()['url']);
         }
+        if (!empty($content['field_entry_into_force'])) {
+          $meta['field_entry_into_force'] = $content['field_entry_into_force'];
+          unset($content['field_entry_into_force']);
+        }
         break;
     }
     $content['left_column'] = $left_column;
