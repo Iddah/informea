@@ -15,3 +15,22 @@ function search_v2_entity_info_alter(&$entity_info) {
     'custom settings' => TRUE,
   );
 }
+
+/**
+ * Implements hook_facet_items_alter().
+ */
+function search_v2_facet_items_alter(&$build, &$settings) {
+  switch ($settings->name) {
+    case 'search_api@default_index:block:field_region':
+      foreach ($build as $key => $item) {
+        if ($key == '!') {
+          $build[$key]['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('In'), t('All Regions'));
+        }
+        else {
+          $build[$key]['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $build[$key]['#markup']);
+        }
+        $build[$key]['#html'] = TRUE;
+      }
+      break;
+  }
+}
