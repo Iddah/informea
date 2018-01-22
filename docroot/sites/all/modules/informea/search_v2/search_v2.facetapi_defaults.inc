@@ -79,13 +79,14 @@ function search_v2_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
-    'facet_missing' => '0',
+    'facet_missing' => '1',
     'flatten' => '0',
     'individual_parent' => '0',
     'query_type' => 'term',
-    'limit_active_items' => 0,
+    'limit_active_items' => 1,
     'default_true' => TRUE,
     'facet_search_ids' => array(),
     'exclude' => 0,
@@ -109,11 +110,11 @@ function search_v2_facetapi_default_facet_settings() {
       'roles' => array(),
     ),
     'facet_mincount' => '1',
-    'facet_missing' => '0',
+    'facet_missing' => '1',
     'flatten' => '0',
     'individual_parent' => '0',
     'query_type' => 'term',
-    'limit_active_items' => 0,
+    'limit_active_items' => 1,
     'default_true' => TRUE,
     'facet_search_ids' => array(),
     'exclude' => 0,
@@ -134,6 +135,7 @@ function search_v2_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -143,7 +145,7 @@ function search_v2_facetapi_default_facet_settings() {
     'limit_active_items' => 0,
     'default_true' => TRUE,
     'facet_search_ids' => array(),
-    'date_granularity' => 'MINUTE',
+    'date_granularity' => 'YEAR',
   );
   $export['search_api@default_index::field_sorting_date'] = $facet;
 
@@ -301,7 +303,7 @@ function search_v2_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'facetapi_links',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
@@ -324,13 +326,17 @@ function search_v2_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '5',
+    'soft_limit' => '10',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
       'value' => '',
       'format' => 'full_html',
     ),
+    'default_option_label' => '--Choose--',
+    'reset_option_label' => '--Reset--',
+    'submit_page' => '',
+    'hide_facet_count' => 0,
   );
   $export['search_api@default_index:block:field_mea_topic'] = $facet;
 
@@ -391,7 +397,7 @@ function search_v2_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'facetapi_links',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
@@ -421,6 +427,16 @@ function search_v2_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'auto-submit-delay' => '1500',
+    'range_simple' => 10,
+    'range_advanced' => '',
+    'default_option_label' => '--Choose--',
+    'reset_option_label' => '--Reset--',
+    'submit_page' => '',
+    'hide_facet_count' => 0,
   );
   $export['search_api@default_index:block:field_sorting_date'] = $facet;
 

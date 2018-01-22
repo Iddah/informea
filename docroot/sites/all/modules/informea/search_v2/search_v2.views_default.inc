@@ -42,13 +42,16 @@ function search_v2_views_default_views() {
       'secondary_collapse_override' => '0',
     ),
     'sort' => array(
-      'bef_format' => 'default',
+      'bef_format' => 'bef_links',
       'advanced' => array(
         'collapsible' => 0,
         'collapsible_label' => 'Sort options',
         'combine' => 1,
         'combine_param' => 'sort_bef_combine',
-        'combine_rewrite' => '',
+        'combine_rewrite' => 'Relevance Asc|
+Relevance Desc|Sort by Relevance
+Date of text Desc|Sort by Most Recent
+Date of text Asc|Sort by Least Recent',
         'reset' => 0,
         'reset_label' => '',
         'is_secondary' => 0,
@@ -78,6 +81,11 @@ function search_v2_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'search_item';
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Fount @total results';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -158,6 +166,10 @@ function search_v2_views_default_views() {
     t('Select any filter and click on Apply to see results'),
     t('Advanced options'),
     t('Sort options'),
+    t('Relevance Asc|
+Relevance Desc|Sort by Relevance
+Date of text Desc|Sort by Most Recent
+Date of text Asc|Sort by Least Recent'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -165,6 +177,7 @@ function search_v2_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('Fount @total results'),
     t('No results text'),
     t('Sorry, there are no results for this search...'),
     t('Node ID'),

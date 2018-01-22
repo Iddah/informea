@@ -120,7 +120,7 @@ function search_v2_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Topic',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
