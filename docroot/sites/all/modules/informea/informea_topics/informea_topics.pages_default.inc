@@ -383,7 +383,7 @@ function informea_topics_default_page_manager_pages() {
   $display->content['new-9be4dc6c-a2c2-4ee2-843d-3071bd768314'] = $pane;
   $display->panels['center'][0] = 'new-9be4dc6c-a2c2-4ee2-843d-3071bd768314';
   $pane = new stdClass();
-  $pane->pid = 'new-6db009e5-6343-414e-89f6-bd0d0b32b99e';
+  $pane->pid = 'new-5d293b25-d2b0-4cc8-aab2-8817096375e4';
   $pane->panel = 'contacts_hub';
   $pane->type = 'views';
   $pane->subtype = 'learning_courses';
@@ -418,9 +418,9 @@ function informea_topics_default_page_manager_pages() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '6db009e5-6343-414e-89f6-bd0d0b32b99e';
-  $display->content['new-6db009e5-6343-414e-89f6-bd0d0b32b99e'] = $pane;
-  $display->panels['contacts_hub'][0] = 'new-6db009e5-6343-414e-89f6-bd0d0b32b99e';
+  $pane->uuid = '5d293b25-d2b0-4cc8-aab2-8817096375e4';
+  $display->content['new-5d293b25-d2b0-4cc8-aab2-8817096375e4'] = $pane;
+  $display->panels['contacts_hub'][0] = 'new-5d293b25-d2b0-4cc8-aab2-8817096375e4';
   $pane = new stdClass();
   $pane->pid = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
   $pane->panel = 'content__bottom_left';
