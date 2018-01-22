@@ -22,15 +22,38 @@ function search_v2_entity_info_alter(&$entity_info) {
 function search_v2_facet_items_alter(&$build, &$settings) {
   switch ($settings->name) {
     case 'search_api@default_index:block:field_region':
-      foreach ($build as $key => $item) {
-        if ($key == '!') {
-          $build[$key]['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('In'), t('All Regions'));
+    case 'search_api@default_index:block:field_mea_topic':
+      $text = $settings->facet == 'field_region' ? t('All Regions') : t('All Topics');
+      $select_all = [
+        '#html' => TRUE,
+        '#active' => TRUE,
+        '#markup' =>  sprintf('%s <span class="item-label">%s</span>', t('In'), $text),
+        '#query' => ['f' => []],
+        '#count' => NULL,
+      ];
+      foreach ($build as &$item) {
+        $item['#html'] = TRUE;
+        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $item['#markup']);
+
+        $select_all['#path'] = $item['#path'];
+        if (!empty($item['#active'])) {
+          $select_all['#active'] = FALSE;
         }
-        else {
-          $build[$key]['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $build[$key]['#markup']);
+        if (!empty($item['#query']['f'])) {
+          $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
         }
-        $build[$key]['#html'] = TRUE;
       }
+      if (!empty($select_all['#path'])) {
+        // Display "In All Regions" / "In All Topics" option.
+        foreach ($select_all['#query']['f'] as $key => $value) {
+          if (preg_match('/^' . $settings->facet . ':/', $value)) {
+            unset($select_all['#query']['f'][$key]);
+          }
+        }
+        array_unshift($build, $select_all);
+      }
+      break;
+
       break;
   }
 }
