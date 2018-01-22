@@ -27,7 +27,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 62,
+        'weight' => 60,
       ),
       'seven' => array(
         'region' => '',
@@ -36,7 +36,7 @@ function search_v2_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Party',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -52,8 +52,8 @@ function search_v2_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'informea_theme',
         'weight' => 60,
       ),
@@ -83,7 +83,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 61,
+        'weight' => 58,
       ),
       'seven' => array(
         'region' => '',
@@ -92,7 +92,7 @@ function search_v2_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Geographical region',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -176,7 +176,7 @@ function search_v2_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Treaty / Organisation',
+    'title' => '<none>',
     'visibility' => 0,
   );
 

@@ -2,6 +2,7 @@ name = Search V2
 core = 7.x
 package = InforMEA
 version = 7.x-1.0
+dependencies[] = better_exposed_filters
 dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = fe_block
