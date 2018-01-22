@@ -79,6 +79,7 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'search_item';
   /* Header: Global: Result summary */
@@ -94,10 +95,13 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Sorry, there are no results for this search...';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: Indexed Content: Node ID */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_default_index';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  /* Field: Search: Excerpt */
+  $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
   /* Sort criterion: Search: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_default_index';
@@ -180,9 +184,6 @@ Date of text Asc|Sort by Least Recent'),
     t('Fount @total results'),
     t('No results text'),
     t('Sorry, there are no results for this search...'),
-    t('Node ID'),
-    t('.'),
-    t(','),
     t('Relevance'),
     t('Date of text'),
     t('Fulltext search'),

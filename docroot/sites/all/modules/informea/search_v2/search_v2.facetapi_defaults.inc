@@ -192,10 +192,13 @@ function search_v2_facetapi_default_facet_settings() {
   $facet->facet = 'type';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'roles' => array(),
+      'facets' => array(),
+      'force_deactivation' => TRUE,
+      'regex' => FALSE,
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -581,18 +584,21 @@ function search_v2_facetapi_default_facet_settings() {
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
+      'natural' => 0,
       'indexed' => 0,
     ),
     'sort_weight' => array(
       'active' => '-50',
       'count' => '-49',
       'display' => '-48',
+      'natural' => '0',
       'indexed' => '0',
     ),
     'sort_order' => array(
       'active' => '3',
       'count' => '3',
       'display' => '4',
+      'natural' => '4',
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
@@ -605,6 +611,10 @@ function search_v2_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'default_option_label' => '--Choose--',
+    'reset_option_label' => '--Reset--',
+    'submit_page' => '',
+    'hide_facet_count' => 0,
   );
   $export['search_api@default_index:block:type'] = $facet;
 

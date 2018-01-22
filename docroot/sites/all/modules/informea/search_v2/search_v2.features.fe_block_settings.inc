@@ -27,7 +27,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 60,
+        'weight' => -27,
       ),
       'seven' => array(
         'region' => '',
@@ -52,10 +52,10 @@ function search_v2_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'sidebar_first',
+        'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 60,
+        'weight' => -30,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +83,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 58,
+        'weight' => -29,
       ),
       'seven' => array(
         'region' => '',
@@ -111,7 +111,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 63,
+        'weight' => -26,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 65,
+        'weight' => -24,
       ),
       'seven' => array(
         'region' => '',
@@ -167,7 +167,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 59,
+        'weight' => -28,
       ),
       'seven' => array(
         'region' => '',
@@ -195,7 +195,7 @@ function search_v2_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 64,
+        'weight' => -25,
       ),
       'seven' => array(
         'region' => '',

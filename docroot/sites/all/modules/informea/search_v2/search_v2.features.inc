@@ -68,7 +68,6 @@ function search_v2_default_search_api_index() {
         "attachments_field_files" : { "type" : "text" },
         "event_calendar_status" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_abbreviation" : { "type" : "text" },
-        "field_abstract" : { "type" : "text" },
         "field_action_plan_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_address" : { "type" : "text" },
         "field_alternative_record_id" : { "type" : "text" },
