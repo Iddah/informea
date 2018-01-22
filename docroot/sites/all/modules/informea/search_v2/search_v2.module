@@ -16,6 +16,18 @@ function search_v2_entity_info_alter(&$entity_info) {
   );
 }
 
+function search_v2_theme() {
+  return array(
+    'informea_node_metadata' => array(
+      'template' => 'informea_node_metadata',
+      'variables' => array(
+        'meta' => [],
+      ),
+      'path' => drupal_get_path('module', 'search_v2') . '/templates',
+    ),
+  );
+}
+
 /**
  * Implements hook_facet_items_alter().
  */
@@ -53,7 +65,30 @@ function search_v2_facet_items_alter(&$build, &$settings) {
         array_unshift($build, $select_all);
       }
       break;
+  }
+}
 
-      break;
+/**
+ * Implements hook_node_view().
+ */
+function search_v2_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'search_item') {
+    if ($node->nid == 255) {
+      $meta = [
+        'content_type' => node_type_get_name($node),
+      ];
+    }
+    switch ($node->type) {
+      case 'treaty':
+        $meta['content_type'] = t('Treaty');
+        break;
+    }
+    if (!empty($meta)) {
+      $node->content['meta'] = array(
+        '#theme' => 'informea_node_metadata',
+        '#meta' => $meta,
+        '#weight' => 10,
+      );
+    }
   }
 }
