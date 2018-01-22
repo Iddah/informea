@@ -4,5 +4,6 @@
  * Task #312
  */
 function search_v2_install() {
+  module_enable(['facetapi_select']);
   features_revert(array('treaty' => ['field_instance', 'strongarm']));
 }
