@@ -164,11 +164,9 @@ function search_v2_node_view($node, $view_mode, $langcode) {
         break;
 
       case 'event_calendar':
-        foreach (['field_location', 'field_city', 'field_country', 'event_calendar_date'] as $field) {
-          if (!empty($content[$field])) {
-            $meta[$field] = $content[$field];
-            unset($content[$field]);
-          }
+        if (!empty($content['event_calendar_date'])) {
+          $left_column['event_calendar_date'] = $content['event_calendar_date'];
+          unset($content['event_calendar_date']);
         }
         break;
 
