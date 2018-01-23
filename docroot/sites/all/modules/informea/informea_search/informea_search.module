@@ -352,7 +352,7 @@ function informea_search_form($form, $form_state) {
       'label' => t('National Reports'),
     ],
     'national_legislation_cases' => [
-      'label' => t('National Legislation and Cases'),
+      'label' => t('Law and Cases'),
       'is_group_label' => TRUE,
     ],
     'legislation' => [
