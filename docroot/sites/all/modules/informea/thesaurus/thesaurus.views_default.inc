@@ -14,7 +14,7 @@ function thesaurus_views_default_views() {
   $view->name = 'taxonomy_term_related_bilateral_treaties';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_informea_fulltext_solr_index';
+  $view->base_table = 'search_api_index_default';
   $view->human_name = 'Taxonomy term related bilateral treaties';
   $view->core = 7;
   $view->api_version = '3.0';
@@ -34,7 +34,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Indexed Content: Country */
   $handler->display->display_options['relationships']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['relationships']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['relationships']['field_country']['table'] = 'search_api_index_default';
   $handler->display->display_options['relationships']['field_country']['field'] = 'field_country';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -47,7 +47,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
-  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
@@ -59,7 +59,7 @@ function thesaurus_views_default_views() {
   );
   /* Field: Indexed Content: Jurisdiction */
   $handler->display->display_options['fields']['field_jurisdiction']['id'] = 'field_jurisdiction';
-  $handler->display->display_options['fields']['field_jurisdiction']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_jurisdiction']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['field_jurisdiction']['field'] = 'field_jurisdiction';
   $handler->display->display_options['fields']['field_jurisdiction']['label'] = '';
   $handler->display->display_options['fields']['field_jurisdiction']['exclude'] = TRUE;
@@ -71,7 +71,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['field_jurisdiction']['bypass_access'] = 0;
   /* Field: Indexed Content: Type of text */
   $handler->display->display_options['fields']['field_type_of_text']['id'] = 'field_type_of_text';
-  $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_type_of_text']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['field_type_of_text']['field'] = 'field_type_of_text';
   $handler->display->display_options['fields']['field_type_of_text']['label'] = '';
   $handler->display->display_options['fields']['field_type_of_text']['exclude'] = TRUE;
@@ -83,7 +83,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['field_type_of_text']['bypass_access'] = 0;
   /* Field: Indexed Content: Place of adoption */
   $handler->display->display_options['fields']['field_place_of_adoption']['id'] = 'field_place_of_adoption';
-  $handler->display->display_options['fields']['field_place_of_adoption']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_place_of_adoption']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['field_place_of_adoption']['field'] = 'field_place_of_adoption';
   $handler->display->display_options['fields']['field_place_of_adoption']['label'] = '';
   $handler->display->display_options['fields']['field_place_of_adoption']['exclude'] = TRUE;
@@ -92,7 +92,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['field_place_of_adoption']['element_label_colon'] = FALSE;
   /* Field: Indexed Content: ECOLEX URL */
   $handler->display->display_options['fields']['field_ecolex_url']['id'] = 'field_ecolex_url';
-  $handler->display->display_options['fields']['field_ecolex_url']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_ecolex_url']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['field_ecolex_url']['field'] = 'field_ecolex_url';
   $handler->display->display_options['fields']['field_ecolex_url']['label'] = '';
   $handler->display->display_options['fields']['field_ecolex_url']['exclude'] = TRUE;
@@ -103,7 +103,7 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['field_ecolex_url']['type'] = 'link_absolute';
   /* Field: Indexed Content: Content type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_default';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
@@ -124,12 +124,12 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Sort criterion: Indexed Content: Date of text */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
-  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_default';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['order'] = 'DESC';
   /* Contextual filter: Indexed Content: InforMEA Tags */
   $handler->display->display_options['arguments']['field_informea_tags']['id'] = 'field_informea_tags';
-  $handler->display->display_options['arguments']['field_informea_tags']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_informea_tags']['table'] = 'search_api_index_default';
   $handler->display->display_options['arguments']['field_informea_tags']['field'] = 'field_informea_tags';
   $handler->display->display_options['arguments']['field_informea_tags']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['field_informea_tags']['default_argument_type'] = 'fixed';
@@ -138,14 +138,14 @@ function thesaurus_views_default_views() {
   $handler->display->display_options['arguments']['field_informea_tags']['not'] = 0;
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'treaty' => 'treaty',
   );
   /* Filter criterion: Indexed Content: Data source */
   $handler->display->display_options['filters']['field_data_source']['id'] = 'field_data_source';
-  $handler->display->display_options['filters']['field_data_source']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['field_data_source']['table'] = 'search_api_index_default';
   $handler->display->display_options['filters']['field_data_source']['field'] = 'field_data_source';
   $handler->display->display_options['filters']['field_data_source']['value'] = array(
     2767 => '2767',
