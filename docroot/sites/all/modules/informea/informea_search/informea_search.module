@@ -63,26 +63,6 @@ function informea_search_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
     ],
-    'search_informea_switch_topic' => [
-      'info' => t('Switch search topic'),
-      'cache' => DRUPAL_NO_CACHE,
-      'weight' => -50,
-      'status' => 1,
-      'region' => 'header',
-      'visibility' => BLOCK_VISIBILITY_LISTED,
-      'pages' => 'search
-search/*
-search-legislation
-search-legislation/*
-search-court-decisions
-search-court-decisions/*
-search-publications
-search-publications/*
-search-bilateral-treaties
-search-bilateral-treaties/*
-search-goals-and-principles
-search-goals-and-principles/*',
-    ],
   ];
 }
 
@@ -98,8 +78,6 @@ function informea_search_block_view($delta = '') {
       unset($form['form_build_id']);
       $block['content'] = $form;
       break;
-    case 'search_informea_switch_topic':
-      $block['content'] = informea_search_block_switch_topic_view();
   }
   return $block;
 }
@@ -632,50 +610,6 @@ function _informea_search_get_topic_count($topic) {
     return $view->total_rows;
   }
   return 0;
-}
-
-function informea_search_block_switch_topic_view() {
-  $url = check_plain(arg(0));
-  $fulltext = '';
-  if (!empty($_GET['search_api_views_fulltext'])) {
-    $fulltext = $_GET['search_api_views_fulltext'];
-  }
-  else {
-    if (!empty(arg(1))) {
-      $fulltext = arg(1);
-    }
-  }
-
-  $fulltext = htmlspecialchars($fulltext, ENT_NOQUOTES, 'UTF-8');
-
-  $elements = [
-    'search' => t('Multilateral treaties'),
-    'search-bilateral-treaties' => t('Bilateral treaties'),
-    'search-legislation' => t('Legislation'),
-    'search-court-decisions' => t('Court decisions'),
-    'search-publications' => t('Documents'),
-    'search-goals-and-principles' => t('Goals'),
-  ];
-  $tabs = [];
-  foreach ($elements as $link_url => $title) {
-    $link_options = ['html' => TRUE];
-    $link_options['query'] = ['search_api_views_fulltext' => $fulltext];
-    if ($link_url == current_path()) {
-      $count = _informea_search_get_topic_count($link_url);
-      $title .= ' <span class="badge">' . $count . '</span>';
-    }
-    $tabs[] = [
-      'data' => l($title, $link_url, $link_options),
-      'class' => $link_url == $url ? ['active'] : [],
-    ];
-  }
-
-  $ret = [
-    '#theme' => 'item_list',
-    '#items' => $tabs,
-    '#attributes' => ['class' => ['nav nav-tabs']],
-  ];
-  return $ret;
 }
 
 /**
