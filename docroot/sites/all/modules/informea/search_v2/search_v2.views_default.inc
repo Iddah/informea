@@ -157,7 +157,7 @@ Date of text Asc|Sort by Least Recent',
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'search-v2';
+  $handler->display->display_options['path'] = 'search';
   $translatables['search'] = array(
     t('Master'),
     t('Search InforMEA'),
