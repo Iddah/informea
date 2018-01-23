@@ -183,6 +183,14 @@ function search_v2_node_view($node, $view_mode, $langcode) {
             date('j M Y', $node->created)
         )];
         break;
+
+      case 'contact_person':
+        // Move treaty field to left column.
+        if (!empty($content['field_treaty'])) {
+          $left_column['field_treaty'] = $content['field_treaty'];
+          unset($content['field_treaty']);
+        }
+        break;
     }
     $content['left_column'] = $left_column;
     $content['meta'] = [

@@ -581,9 +581,9 @@ function search_v2_facetapi_default_facet_settings() {
     'widget' => 'facetapi_checkbox_links',
     'filters' => array(),
     'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
       'display' => 'display',
+      'active' => 0,
+      'count' => 0,
       'natural' => 0,
       'indexed' => 0,
     ),
@@ -604,7 +604,7 @@ function search_v2_facetapi_default_facet_settings() {
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '5',
+    'soft_limit' => '0',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
