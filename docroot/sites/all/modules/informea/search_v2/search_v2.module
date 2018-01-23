@@ -191,6 +191,15 @@ function search_v2_node_view($node, $view_mode, $langcode) {
           unset($content['field_treaty']);
         }
         break;
+
+      case 'country':
+        if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
+          $left_column['flag'] = ['#markup' => theme('image', array(
+            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($node->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+            'attributes' => array('class' => array('flag', 'flag-medium'))
+          ))];
+        }
+        break;
     }
     $content['left_column'] = $left_column;
     $content['meta'] = [
