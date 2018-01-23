@@ -203,6 +203,35 @@ function search_v2_node_view($node, $view_mode, $langcode) {
         }
         break;
 
+      case 'goal':
+        $wrapper = entity_metadata_wrapper('node', $node);
+        $goal_type = $wrapper->field_goal_type->value();
+        $goal_source = $wrapper->field_goal_source->value();
+        if (!empty($goal_type->name)) {
+          $meta['content_type'] = $goal_type->name;
+        }
+
+        // Prepend the source and append the summary to title
+        if (!empty($goal_source) && is_object($goal_source)) {
+          $goal_source_wrapper = entity_metadata_wrapper('taxonomy_term', $goal_source);
+          if (!empty($goal_source_wrapper->field_abbreviation->value())) {
+            $node->title = $goal_source_wrapper->field_abbreviation->value() . ' ' . $node->title;
+          }
+        }
+        if (!empty($content['field_summary'][0]['#markup'])) {
+          $node->title .= ': ' . $content['field_summary'][0]['#markup'];
+        }
+        unset ($content['field_summary']);
+
+        unset($content['search_api_excerpt']);
+
+        // Move image field to left column.
+        if (!empty($content['field_images'])) {
+          $left_column['field_images'] = $content['field_images'];
+          unset($content['field_images']);
+        }
+        break;
+
     }
     $content['left_column'] = $left_column;
     $content['meta'] = [
