@@ -76,7 +76,6 @@ function search_v2_node_view($node, $view_mode, $langcode) {
     $view = views_get_current_view();
     $content = &$node->content;
     $left_column = [];
-    $wrapper = entity_metadata_wrapper('node', $node);
     $meta = [
       'content_type' => node_type_get_name($node),
     ];
@@ -101,32 +100,22 @@ function search_v2_node_view($node, $view_mode, $langcode) {
           $left_column['field_logo'] = $content['field_logo'];
           unset($content['field_logo']);
         }
+
         $meta['full_treaty_text_link'] = l(t('Full Treaty Text'), 'node/' . $node->nid . '/text');
         $meta['parties_link'] = l(t('Parties'), 'node/' . $node->nid . '/parties');
-
-        // Move "Related Online Course" link to metadata container.
-        if (!empty($content['field_online_course_link'])) {
-          if (!empty($content['field_online_course_link']['0']['#element']['title'])) {
-            $content['field_online_course_link']['0']['#element']['title'] = t('Related Online Course');
-          }
-          $meta['field_online_course_link'] = $content['field_online_course_link'];
-          unset($content['field_online_course_link']);
+        if (!empty($content['field_online_course_link']['0']['#element']['title'])) {
+          $content['field_online_course_link']['0']['#element']['title'] = t('Related Online Course');
         }
-
-        // Move "Link to Original Source" link to metadata container.
-        if (!empty($content['field_treaty_text_url'])) {
-          if (!empty($content['field_treaty_text_url']['0']['#element']['title'])) {
-            $content['field_treaty_text_url']['0']['#element']['title'] = t('Link to Original Source');
-          }
-          $meta['field_treaty_text_url'] = $content['field_treaty_text_url'];
-          unset($content['field_treaty_text_url']);
+        if (!empty($content['field_treaty_text_url']['0']['#element']['title'])) {
+          $content['field_treaty_text_url']['0']['#element']['title'] = t('Link to Original Source');
         }
+        $content['field_entry_into_force']['#title'] = t('Date of text');
 
-        // Move "Date of text" to metadata container.
-        if (!empty($content['field_entry_into_force'])) {
-          $content['field_entry_into_force']['#title'] = t('Date of text');
-          $meta['field_entry_into_force'] = $content['field_entry_into_force'];
-          unset($content['field_entry_into_force']);
+        foreach (['field_online_course_link', 'field_treaty_text_url', 'field_entry_into_force'] as $field) {
+          if (!empty($content[$field])) {
+            $meta[$field] = $content[$field];
+            unset($content[$field]);
+          }
         }
         break;
 
@@ -146,25 +135,15 @@ function search_v2_node_view($node, $view_mode, $langcode) {
         break;
 
       case 'court_decisions':
-        // Move "Link to Original Source" link to metadata container.
-        if (!empty($content['field_url'])) {
-          if (!empty($content['field_url']['0']['#element']['title'])) {
-            $content['field_url']['0']['#element']['title'] = t('Link to Original Source');
+        if (!empty($content['field_url']['0']['#element']['title'])) {
+          $content['field_url']['0']['#element']['title'] = t('Link to Original Source');
+        }
+
+        foreach (['field_url', 'field_files', 'field_sorting_date'] as $field) {
+          if (!empty($content[$field])) {
+            $meta[$field] = $content[$field];
+            unset($content[$field]);
           }
-          $meta['field_url'] = $content['field_url'];
-          unset($content['field_url']);
-        }
-
-        // Move files to metadata container.
-        if (!empty($content['field_files'])) {
-          $meta['field_files'] = $content['field_files'];
-          unset($content['field_files']);
-        }
-
-        // Move "Date of text" to metadata container.
-        if (!empty($content['field_sorting_date'])) {
-          $meta['field_sorting_date'] = $content['field_sorting_date'];
-          unset($content['field_sorting_date']);
         }
         break;
 
@@ -182,6 +161,29 @@ function search_v2_node_view($node, $view_mode, $langcode) {
           $meta['field_sorting_date'] = $content['field_sorting_date'];
           unset($content['field_sorting_date']);
         }
+        break;
+
+      case 'event_calendar':
+        foreach (['field_location', 'field_city', 'field_country', 'event_calendar_date'] as $field) {
+          if (!empty($content[$field])) {
+            $meta[$field] = $content[$field];
+            unset($content[$field]);
+          }
+        }
+        break;
+
+      case 'feed_item':
+        // Move treaty field to left column.
+        if (!empty($content['field_treaty'])) {
+          $left_column['field_treaty'] = $content['field_treaty'];
+          unset($content['field_treaty']);
+        }
+
+        $meta['published'] = [
+          '#markup' => sprintf('<div class="field field-label-inline"><div class="field-label">%s:</div><div class="field-item">%s</div></div>',
+            t('Published'),
+            date('j M Y', $node->created)
+        )];
         break;
     }
     $content['left_column'] = $left_column;
