@@ -39,12 +39,12 @@ function document_views_default_views() {
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
-  /* Field: Indexed Content: Image */
+  /* Field: Indexed Content: Thumbnail */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -70,7 +70,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Attached files */
+  /* Field: Indexed Content: Documents */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -129,7 +129,7 @@ function document_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
-  /* Sort criterion: Indexed Content: Order */
+  /* Sort criterion: Indexed Content: Sorting order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
@@ -170,13 +170,13 @@ function document_views_default_views() {
   /* Display: Single MEA's documents */
   $handler = $view->new_display('page', 'Single MEA\'s documents', 'page_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
-  /* Field: Indexed Content: Image */
+  /* Field: Indexed Content: Thumbnail */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -202,7 +202,7 @@ function document_views_default_views() {
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<p>[body]</p>';
-  /* Field: Indexed Content: Attached files */
+  /* Field: Indexed Content: Documents */
   $handler->display->display_options['fields']['field_files']['id'] = 'field_files';
   $handler->display->display_options['fields']['field_files']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['field_files']['field'] = 'field_files';
@@ -283,7 +283,7 @@ function document_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Displaying @start - @end of @total'),
-    t('Title'),
+    t('Name'),
     t('Node ID'),
     t('.'),
     t('Body'),
