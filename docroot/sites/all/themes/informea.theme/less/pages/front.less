@@ -26,10 +26,15 @@
 
     @media @grid-mobile {
       font-size: .9em;
+      flex-wrap: wrap;
     }
 
     > li {
       flex: 1;
+      @media @grid-mobile {
+        flex: 0 1;
+      }
+
     }
 
     > li > a {
