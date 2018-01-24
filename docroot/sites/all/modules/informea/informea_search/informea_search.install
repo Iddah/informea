@@ -50,15 +50,16 @@ function informea_search_update_7006() {
 function informea_search_update_7007() {
   module_enable(['facetapi_bonus', 'facetapi_select']);
 
+  features_revert(array('informea_search' => ['fe_block_settings', 'search_api_index']));
   features_revert(array('country_data' => ['field_instance', 'variable']));
   features_revert(array('country_deliverable' => ['field_instance']));
   features_revert(array('decision' => ['field_instance', 'variable']));
   features_revert(array('declaration' => ['field_instance', 'variable']));
-  features_revert(array('document' => ['field_instance']));
+  features_revert(array('document' => ['field_instance', 'views_view']));
   features_revert(array('feeds_news' => ['field_instance', 'variable']));
   features_revert(array('goal' => ['fe_block_settings', 'field_instance', 'variable']));
   features_revert(array('informea' => ['taxonomy', 'field_instance', 'views_view']));
   features_revert(array('meeting' => ['field_instance']));
   features_revert(array('treaty' => ['field_instance', 'variable', 'strongarm']));
-  features_revert(array('informea_search' => ['fe_block_settings', 'search_api_index']));
+  features_revert(array('thesaurus' => ['views_view']));
 }
