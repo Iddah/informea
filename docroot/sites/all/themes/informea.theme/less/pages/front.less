@@ -44,6 +44,7 @@
       max-width: 150px;
       padding: .9em 1.5em;
       text-align: center;
+      text-decoration: none;
     }
 
     > li > a > img {
@@ -54,8 +55,14 @@
     }
 
     .loop-mea-topics({
-      > .topic-@{mea-topic-class} > a > img {
-        background-color: @mea-topic-color;
+      > .topic-@{mea-topic-class} > a {
+        &:hover,
+        &:focus {
+          color: @mea-topic-color;
+        }
+        > img {
+          background-color: @mea-topic-color;
+        }
       }
     });
 

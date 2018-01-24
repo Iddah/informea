@@ -1481,6 +1481,7 @@
   color: #333333;
   display: block;
   max-width: 150px;
+  text-decoration: none;
 }
 [dir] #block-informea-frontpage-topics .links > li > a {
   margin: 0 auto;
@@ -1493,26 +1494,58 @@
   margin: 0 auto;
   margin-bottom: .5em;
 }
+#block-informea-frontpage-topics .links > .topic-Water > a:hover,
+#block-informea-frontpage-topics .links > .topic-Water > a:focus {
+  color: #044170;
+}
 [dir] #block-informea-frontpage-topics .links > .topic-Water > a > img {
   background-color: #044170;
+}
+#block-informea-frontpage-topics .links > .topic-Climate-Change-and-Atmosphere > a:hover,
+#block-informea-frontpage-topics .links > .topic-Climate-Change-and-Atmosphere > a:focus {
+  color: #31a0ba;
 }
 [dir] #block-informea-frontpage-topics .links > .topic-Climate-Change-and-Atmosphere > a > img {
   background-color: #31a0ba;
 }
+#block-informea-frontpage-topics .links > .topic-Chemicals-and-Wastes > a:hover,
+#block-informea-frontpage-topics .links > .topic-Chemicals-and-Wastes > a:focus {
+  color: #e03d0b;
+}
 [dir] #block-informea-frontpage-topics .links > .topic-Chemicals-and-Wastes > a > img {
   background-color: #e03d0b;
+}
+#block-informea-frontpage-topics .links > .topic-Biodiversity > a:hover,
+#block-informea-frontpage-topics .links > .topic-Biodiversity > a:focus {
+  color: #90bc2f;
 }
 [dir] #block-informea-frontpage-topics .links > .topic-Biodiversity > a > img {
   background-color: #90bc2f;
 }
+#block-informea-frontpage-topics .links > .topic-4417 > a:hover,
+#block-informea-frontpage-topics .links > .topic-4417 > a:focus {
+  color: #044170;
+}
 [dir] #block-informea-frontpage-topics .links > .topic-4417 > a > img {
   background-color: #044170;
+}
+#block-informea-frontpage-topics .links > .topic-852 > a:hover,
+#block-informea-frontpage-topics .links > .topic-852 > a:focus {
+  color: #31a0ba;
 }
 [dir] #block-informea-frontpage-topics .links > .topic-852 > a > img {
   background-color: #31a0ba;
 }
+#block-informea-frontpage-topics .links > .topic-851 > a:hover,
+#block-informea-frontpage-topics .links > .topic-851 > a:focus {
+  color: #e03d0b;
+}
 [dir] #block-informea-frontpage-topics .links > .topic-851 > a > img {
   background-color: #e03d0b;
+}
+#block-informea-frontpage-topics .links > .topic-850 > a:hover,
+#block-informea-frontpage-topics .links > .topic-850 > a:focus {
+  color: #90bc2f;
 }
 [dir] #block-informea-frontpage-topics .links > .topic-850 > a > img {
   background-color: #90bc2f;
