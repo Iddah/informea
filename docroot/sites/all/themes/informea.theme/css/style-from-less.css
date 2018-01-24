@@ -130,6 +130,110 @@
   border-top: 1px solid #fff;
   padding: 2.5em 0;
 }
+[dir] .page-topics.topic-Water .search-block {
+  background-color: #044170;
+}
+.page-topics.topic-Water .search-block,
+.page-topics.topic-Water .search-block a,
+.page-topics.topic-Water .search-block #block-informea-informea-page-title select,
+.page-topics.topic-Water .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-Water .search-block #search-form .select,
+.page-topics.topic-Water .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-Climate-Change-and-Atmosphere .search-block {
+  background-color: #31a0ba;
+}
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block,
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block a,
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block #block-informea-informea-page-title select,
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block #search-form .select,
+.page-topics.topic-Climate-Change-and-Atmosphere .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-Chemicals-and-Wastes .search-block {
+  background-color: #e03d0b;
+}
+.page-topics.topic-Chemicals-and-Wastes .search-block,
+.page-topics.topic-Chemicals-and-Wastes .search-block a,
+.page-topics.topic-Chemicals-and-Wastes .search-block #block-informea-informea-page-title select,
+.page-topics.topic-Chemicals-and-Wastes .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-Chemicals-and-Wastes .search-block #search-form .select,
+.page-topics.topic-Chemicals-and-Wastes .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-Biodiversity .search-block {
+  background-color: #90bc2f;
+}
+.page-topics.topic-Biodiversity .search-block,
+.page-topics.topic-Biodiversity .search-block a,
+.page-topics.topic-Biodiversity .search-block #block-informea-informea-page-title select,
+.page-topics.topic-Biodiversity .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-Biodiversity .search-block #search-form .select,
+.page-topics.topic-Biodiversity .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-4417 .search-block {
+  background-color: #044170;
+}
+.page-topics.topic-4417 .search-block,
+.page-topics.topic-4417 .search-block a,
+.page-topics.topic-4417 .search-block #block-informea-informea-page-title select,
+.page-topics.topic-4417 .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-4417 .search-block #search-form .select,
+.page-topics.topic-4417 .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-852 .search-block {
+  background-color: #31a0ba;
+}
+.page-topics.topic-852 .search-block,
+.page-topics.topic-852 .search-block a,
+.page-topics.topic-852 .search-block #block-informea-informea-page-title select,
+.page-topics.topic-852 .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-852 .search-block #search-form .select,
+.page-topics.topic-852 .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-851 .search-block {
+  background-color: #e03d0b;
+}
+.page-topics.topic-851 .search-block,
+.page-topics.topic-851 .search-block a,
+.page-topics.topic-851 .search-block #block-informea-informea-page-title select,
+.page-topics.topic-851 .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-851 .search-block #search-form .select,
+.page-topics.topic-851 .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
+[dir] .page-topics.topic-850 .search-block {
+  background-color: #90bc2f;
+}
+.page-topics.topic-850 .search-block,
+.page-topics.topic-850 .search-block a,
+.page-topics.topic-850 .search-block #block-informea-informea-page-title select,
+.page-topics.topic-850 .search-block #block-informea-informea-page-title .select2-container {
+  color: #fff;
+}
+.page-topics.topic-850 .search-block #search-form .select,
+.page-topics.topic-850 .search-block #search-form .select2-container .select2-choice {
+  color: #333333;
+}
 .select2-open .search-block {
   pointer-events: none;
   z-index: 1002;
