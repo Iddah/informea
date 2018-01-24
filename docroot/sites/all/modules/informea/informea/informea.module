@@ -288,20 +288,20 @@ function informea_block_view($delta = '') {
           $hero_image = array(
             'style_name' => 'thumbnail',
             'path' => $image['uri'],
-            'width' => '',
-            'height' => '',
+            'width' => '100',
+            'height' => '100',
             'alt' => $image['alt'],
             'title' => $image['title'],
           );
           $title = theme('image_style', $hero_image) . $title;
         }
-        $links[$topic->tid] = [
+        $links['topic-' . $topic->tid] = [
           'title' => $title,
           'html' => TRUE,
           'href' => 'taxonomy/term/' . $topic->tid,
         ];
       }
-      $block['content'] = sprintf('<h4>%s</h4> %s', t('Browse information by Environmental Topic:'), theme('links', ['links' => $links]));
+      $block['content'] = sprintf('<h2 class="h4 block-title">%s</h2> %s', t('Browse information by Environmental Topic:'), theme('links', ['links' => $links]));
 
       break;
 
@@ -322,18 +322,20 @@ function informea_block_view($delta = '') {
         '#type' => 'select',
         '#options' => $region_options,
         '#default_value' => NULL,
-        '#prefix' => '<h4>' . t('Browse by Region:') . '</h4>',
+        '#prefix' => '<div class="frontpage-browse frontpage-browse--regions">' . '<h2 class="h4 block-title">' . t('Browse by Region:') . '</h2>',
+        '#suffix' => '</div>',
         '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-frontpage-regions'],
       ];
       $raw_content['or'] = [
         '#type' => 'item',
-        '#markup' => 'or'
+        '#markup' => 'or,'
       ];
       $raw_content['countries'] = [
         '#type' => 'select',
         '#options' => $country_options,
         '#default_value' => NULL,
-        '#prefix' => '<h4>' . t('Browse by Party:') . '</h4>',
+        '#prefix' => '<div class="frontpage-browse frontpage-browse--parties">' . '<h2 class="h4 block-title">' . t('Browse by Party:') . '</h2>',
+        '#suffix' => '</div>',
         '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-frontpage-parties'],
       ];
       $block['content'] = render($raw_content);

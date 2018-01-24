@@ -286,6 +286,10 @@
 [dir=rtl] .search-block #search-form select .select2-arrow, [dir=rtl] .search-block #search-form .select2-container .select2-arrow {
   padding-right: 0;
 }
+[dir] .search-block #search-form .select2-container .select2-choice {
+  background: transparent;
+  border: none;
+}
 .block-informea-search {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
@@ -316,6 +320,10 @@
 }
 [dir] .search-block #block-informea-informea-page-title select, [dir] .search-block #block-informea-informea-page-title .select2-container {
   padding: 0px 0.4em;
+}
+[dir] #block-informea-informea-page-title .select2-container .select2-choice {
+  background: transparent;
+  border: none;
 }
 [dir] .search-block #block-informea-informea-page-title .select2-container, [dir] .search-block #block-informea-informea-page-title .select2-container.select2-container-active.select2-dropdown-open {
   border-bottom: 1px solid transparent;
@@ -360,10 +368,12 @@
   display: -ms-flexbox;
   -js-display: flex;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 [dir] .select2-container .select2-choice {
-  background: transparent;
-  border: none;
+  background: #fff;
           box-shadow: none;
 }
 [dir=ltr] .select2-container .select2-choice > .select2-chosen {
@@ -568,9 +578,6 @@
 .category-group-inner {
   font-size: 12px;
   font-style: italic;
-}
-.select2-open {
-  overflow: hidden;
 }
 .navbar-default .navbar-nav > li > a {
   font-weight: 500;
@@ -1412,9 +1419,201 @@
 #s2id_treaty-switcher .select2-arrow {
   color: #fc3;
 }
-[dir] #block-informea-frontpage-topics li a img {
-  background-color: #000;
-  border-radius: 100%;
+.informea-frontpage-italic-heading,
+.region-front-page-content .block-title {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+.region-front-page-content .block-title,
+.region-front-page-content .block:first-child h2.block-title {
+  line-height: inherit;
+}
+[dir] .region-front-page-content .block-title, [dir] .region-front-page-content .block:first-child h2.block-title {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+@media screen and (max-width: 767px) {
+  [dir] .region-front-page-content .block-title, [dir] .region-front-page-content .block:first-child h2.block-title {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+}
+[dir] #block-informea-frontpage-topics {
+  text-align: center;
+}
+#block-informea-frontpage-topics .links {
+  list-style: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -js-display: inline-flex;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+[dir=ltr] #block-informea-frontpage-topics .links {
+  padding-left: 0;
+}
+[dir=rtl] #block-informea-frontpage-topics .links {
+  padding-right: 0;
+}
+@media screen and (max-width: 767px) {
+  #block-informea-frontpage-topics .links {
+    font-size: .9em;
+  }
+}
+#block-informea-frontpage-topics .links > li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+#block-informea-frontpage-topics .links > li > a {
+  color: #333333;
+  display: block;
+  max-width: 150px;
+}
+[dir] #block-informea-frontpage-topics .links > li > a {
+  margin: 0 auto;
+  padding: .9em 1.5em;
+  text-align: center;
+}
+[dir] #block-informea-frontpage-topics .links > li > a > img {
+  background-color: #8F8F8F;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: .5em;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-Water > a > img {
+  background-color: #044170;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-Climate-Change-and-Atmosphere > a > img {
+  background-color: #31a0ba;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-Chemicals-and-Wastes > a > img {
+  background-color: #e03d0b;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-Biodiversity > a > img {
+  background-color: #90bc2f;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-4417 > a > img {
+  background-color: #044170;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-852 > a > img {
+  background-color: #31a0ba;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-851 > a > img {
+  background-color: #e03d0b;
+}
+[dir] #block-informea-frontpage-topics .links > .topic-850 > a > img {
+  background-color: #90bc2f;
+}
+#block-informea-frontpage-regions-and-parties {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 15em;
+}
+[dir] #block-informea-frontpage-regions-and-parties {
+  background-image: url('../img/world-map.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-bottom: 6em;
+}
+#block-informea-frontpage-regions-and-parties .block-title {
+  -webkit-box-shadow: 0px 0px 7px 1px #ffffff;
+  white-space: nowrap;
+}
+[dir] #block-informea-frontpage-regions-and-parties .block-title {
+  background-color: #fff;
+          box-shadow: 0px 0px 7px 1px #ffffff;
+}
+[dir] #block-informea-frontpage-regions-and-parties .form-group {
+  margin-bottom: 0;
+}
+#block-informea-frontpage-regions-and-parties > .form-type-item {
+  font-style: italic;
+  line-height: 26px;
+}
+[dir] #block-informea-frontpage-regions-and-parties > .form-type-item {
+  padding: 1em 0;
+}
+@media screen and (max-width: 767px) {
+  [dir] #block-informea-frontpage-regions-and-parties > .form-type-item {
+    text-align: center;
+  }
+}
+.frontpage-browse {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 40%;
+}
+[dir] .frontpage-browse {
+  padding: 1em;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+}
+@media screen and (min-width: 768px) {
+  .frontpage-browse {
+    min-width: 20em;
+  }
+}
+.frontpage-browse .form-type-select,
+.frontpage-browse .select2-choice {
+  width: 100%;
+}
+[dir=ltr] .frontpage-browse .select2-container {
+  width: 100% !important;
+}
+[dir=rtl] .frontpage-browse .select2-container {
+  width: 100% !important;
+}
+[dir=ltr] .frontpage-browse .select2-container .select2-arrow {
+  margin-left: auto;
+}
+[dir=rtl] .frontpage-browse .select2-container .select2-arrow {
+  margin-right: auto;
+}
+.frontpage-browse .select2-container .select2-arrow b {
+  display: block;
+}
+[dir=ltr] .frontpage-browse .select2-default {
+  color: #333333 !important;
+}
+[dir=rtl] .frontpage-browse .select2-default {
+  color: #333333 !important;
+}
+.frontpage-browse .select2-choice {
+  height: auto;
+}
+[dir] .frontpage-browse .select2-choice {
+  border-color: #8F8F8F;
+  border-radius: 0;
+}
+[dir] #col-about {
+  text-align: center;
+}
+#col-about .lead {
+  font-size: 14px;
+  font-weight: bold;
 }
 .page-regions .panels-flexible-row,
 .page-topics .panels-flexible-row {
