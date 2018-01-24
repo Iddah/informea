@@ -1,0 +1,154 @@
+.informea-switcher {
+  // Switcher wrapper
+  &_wrapper {
+    padding: 0 11px;
+    position: relative;
+    @media @grid-desktop {
+      margin-top: -10px;
+    }
+  }
+
+  & {
+    /* Make this scrollable when needed */
+    overflow-x: auto;
+    /* We don't want vertical scrolling */
+    overflow-y: hidden;
+    /* For WebKit implementations, provide inertia scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* We don't want internal inline elements to wrap */
+    white-space: nowrap;
+    /* If JS present, let's hide the default scrollbar */
+    .js & {
+        /* Make an auto-hiding scroller for the 3 people using a IE */
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        /* Remove the default scrollbar for WebKit implementations */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    /* positioning context for advancers */
+    position: relative;
+    // Crush the whitespace here
+    font-size: 0;
+  }
+
+  // Switcher item
+  &_link {
+    align-items: flex-end;
+    display: inline-flex;
+    font-size: @font-size-base;
+    margin-bottom: 0;
+    min-height: 44px;
+  }
+  &_link > a {
+    border-left: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+    border: none;
+    display: block;
+    font-weight: bold;
+    margin-right: 0;
+    padding: @topic-switcher-padding-top 18px @topic-switcher-padding-bottom;
+    white-space: nowrap;
+  }
+  &_link:not(.active) + &_link > a {
+    border-left: none;
+  }
+  &_link.first > a {
+    @media (max-width: @screen-sm-max) {
+      border-left: none;
+    }
+  }
+  &_link > a,
+  &_link > a:hover,
+  &_link > a:focus {
+    color: #1C1C1C;
+  }
+  &_link.active > a,
+  &_link.active > a:hover,
+  &_link.active > a:focus {
+    border: none;
+    background-color: #fff;
+    color: @regional-page-light-blue;
+    padding-top: (10px + 8px);
+  }
+  &_link.all-options > a {
+    padding-left: 12px;
+    &:before {
+      .caret();
+      content: '';
+      color: #414141;
+      margin-left: 0;
+      margin-right: .3em;
+      margin-top: -.2em;
+      border-top: .5em dashed;
+      border-right: .5em solid transparent;
+      border-left: .5em solid transparent;
+    }
+  }
+
+  &_contents {
+    float: left;
+    transition: transform .2s ease-in-out;
+  }
+
+  &_contents-no-transition {
+    transition: none;
+  }
+
+  &_advancer {
+    /* Reset the button */
+    align-items: flex-end;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    display: flex;
+    padding: 0;
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    /* Now style it as needed */
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    /* Set the buttons invisible by default */
+    opacity: 0;
+    transition: opacity .2s;
+
+  }
+
+  &_advancer--left {
+    left: 0;
+    [data-overflowing="both"] ~ &,
+    [data-overflowing="left"] ~ & {
+      opacity: 1;
+    }
+  }
+
+  &_advancer--right {
+    right: 0;
+    [data-overflowing="both"]  ~ &,
+    [data-overflowing="right"] ~ & {
+      opacity: 1;
+    }
+  }
+
+  &_advancer-icon {
+    fill: @regional-page-gray;
+    height: 2em;
+    transition: fill .2s;
+    width: 1.5em;
+
+    .informea-switcher_advancer:hover &,
+    .informea-switcher_advancer:focus & {
+      fill: @regional-page-light-blue;
+      // darken(@regional-page-gray, 10%);
+    }
+
+  }
+
+}
+
+

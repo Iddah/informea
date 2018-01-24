@@ -572,6 +572,218 @@
 .select2-open {
   overflow: hidden;
 }
+.informea-switcher {
+  /* Make this scrollable when needed */
+  overflow-x: auto;
+  /* We don't want vertical scrolling */
+  overflow-y: hidden;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* We don't want internal inline elements to wrap */
+  white-space: nowrap;
+  /* If JS present, let's hide the default scrollbar */
+  /* positioning context for advancers */
+  position: relative;
+  font-size: 0;
+}
+.informea-switcher_wrapper {
+  position: relative;
+}
+[dir] .informea-switcher_wrapper {
+  padding: 0 11px;
+}
+@media screen and (min-width: 768px) {
+  [dir] .informea-switcher_wrapper {
+    margin-top: -10px;
+  }
+}
+.js .informea-switcher {
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* Remove the default scrollbar for WebKit implementations */
+}
+.js .informea-switcher::-webkit-scrollbar {
+  display: none;
+}
+.informea-switcher_link {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -js-display: inline-flex;
+  display: inline-flex;
+  font-size: 14px;
+  min-height: 44px;
+}
+[dir] .informea-switcher_link {
+  margin-bottom: 0;
+}
+.informea-switcher_link > a {
+  display: block;
+  font-weight: bold;
+  white-space: nowrap;
+}
+[dir] .informea-switcher_link > a {
+  border: none;
+  padding: 8px 18px 5px;
+}
+[dir=ltr] .informea-switcher_link > a {
+  border-left: 1px solid #D6D6D6;
+  border-right: 1px solid #D6D6D6;
+  margin-right: 0;
+}
+[dir=rtl] .informea-switcher_link > a {
+  border-right: 1px solid #D6D6D6;
+  border-left: 1px solid #D6D6D6;
+  margin-left: 0;
+}
+[dir=ltr] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
+  border-left: none;
+}
+[dir=rtl] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
+  border-right: none;
+}
+@media (max-width: 991px) {
+  [dir=ltr] .informea-switcher_link.first > a {
+    border-left: none;
+  }
+  [dir=rtl] .informea-switcher_link.first > a {
+    border-right: none;
+  }
+}
+.informea-switcher_link > a,
+.informea-switcher_link > a:hover,
+.informea-switcher_link > a:focus {
+  color: #1C1C1C;
+}
+.informea-switcher_link.active > a,
+.informea-switcher_link.active > a:hover,
+.informea-switcher_link.active > a:focus {
+  color: #1D7CA7;
+}
+[dir] .informea-switcher_link.active > a, [dir] .informea-switcher_link.active > a:hover, [dir] .informea-switcher_link.active > a:focus {
+  border: none;
+  background-color: #fff;
+  padding-top: 18px;
+}
+[dir=ltr] .informea-switcher_link.all-options > a {
+  padding-left: 12px;
+}
+[dir=rtl] .informea-switcher_link.all-options > a {
+  padding-right: 12px;
+}
+.informea-switcher_link.all-options > a:before {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: '';
+  color: #414141;
+}
+[dir] .informea-switcher_link.all-options > a:before {
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  margin-top: -0.2em;
+  border-top: .5em dashed;
+}
+[dir=ltr] .informea-switcher_link.all-options > a:before {
+  margin-left: 2px;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  margin-left: 0;
+  margin-right: .3em;
+  border-right: .5em solid transparent;
+  border-left: .5em solid transparent;
+}
+[dir=rtl] .informea-switcher_link.all-options > a:before {
+  margin-right: 2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  margin-right: 0;
+  margin-left: .3em;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+}
+.informea-switcher_contents {
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+[dir=ltr] .informea-switcher_contents {
+  float: left;
+}
+[dir=rtl] .informea-switcher_contents {
+  float: right;
+}
+.informea-switcher_contents-no-transition {
+  -webkit-transition: none;
+  transition: none;
+}
+.informea-switcher_advancer {
+  /* Reset the button */
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  /* Now style it as needed */
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  /* Set the buttons invisible by default */
+  opacity: 0;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+[dir] .informea-switcher_advancer {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.informea-switcher_advancer:focus {
+  outline: 0;
+}
+[dir] .informea-switcher_advancer:hover {
+  cursor: pointer;
+}
+[dir=ltr] .informea-switcher_advancer--left {
+  left: 0;
+}
+[dir=rtl] .informea-switcher_advancer--left {
+  right: 0;
+}
+[data-overflowing="both"] ~ .informea-switcher_advancer--left,
+[data-overflowing="left"] ~ .informea-switcher_advancer--left {
+  opacity: 1;
+}
+[dir=ltr] .informea-switcher_advancer--right {
+  right: 0;
+}
+[dir=rtl] .informea-switcher_advancer--right {
+  left: 0;
+}
+[data-overflowing="both"] ~ .informea-switcher_advancer--right,
+[data-overflowing="right"] ~ .informea-switcher_advancer--right {
+  opacity: 1;
+}
+.informea-switcher_advancer-icon {
+  fill: #8F8F8F;
+  height: 2em;
+  -webkit-transition: fill .2s;
+  transition: fill .2s;
+  width: 1.5em;
+}
+.informea-switcher_advancer:hover .informea-switcher_advancer-icon,
+.informea-switcher_advancer:focus .informea-switcher_advancer-icon {
+  fill: #1D7CA7;
+}
 .navbar-default .navbar-nav > li > a {
   font-weight: 500;
 }
@@ -1835,130 +2047,6 @@
 .pane-geographic-region-region-switch-topic .pane-title:after,
 .pane-informea-topics-topic-switch-region .pane-title:after {
   content: ':';
-}
-.pane-geographic-region-region-switch-topic .nav-tabs,
-.pane-informea-topics-topic-switch-region .nav-tabs {
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-[dir] .pane-geographic-region-region-switch-topic .nav-tabs, [dir] .pane-informea-topics-topic-switch-region .nav-tabs {
-  border: none;
-  margin-bottom: 0;
-}
-[dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs {
-  margin-left: .5em;
-  margin-right: .5em;
-}
-[dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs {
-  margin-right: .5em;
-  margin-left: .5em;
-}
-@media (min-width: 992px) {
-  [dir] .pane-geographic-region-region-switch-topic .nav-tabs, [dir] .pane-informea-topics-topic-switch-region .nav-tabs {
-    margin-top: -10px;
-  }
-}
-[dir] .pane-geographic-region-region-switch-topic .nav-tabs > li, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li {
-  margin-bottom: 0;
-}
-.pane-geographic-region-region-switch-topic .nav-tabs > li > a,
-.pane-informea-topics-topic-switch-region .nav-tabs > li > a {
-  font-weight: bold;
-  white-space: nowrap;
-}
-[dir] .pane-geographic-region-region-switch-topic .nav-tabs > li > a, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li > a {
-  padding: 8px 18px 5px;
-  border: none;
-}
-[dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs > li > a, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs > li > a {
-  border-left: 1px solid #D6D6D6;
-  border-right: 1px solid #D6D6D6;
-  margin-right: 0;
-}
-[dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs > li > a, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs > li > a {
-  border-right: 1px solid #D6D6D6;
-  border-left: 1px solid #D6D6D6;
-  margin-left: 0;
-}
-[dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs > li:not(.active) + li > a, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs > li:not(.active) + li > a {
-  border-left: none;
-}
-[dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs > li:not(.active) + li > a, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs > li:not(.active) + li > a {
-  border-right: none;
-}
-@media (max-width: 991px) {
-  [dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs > li.first > a, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs > li.first > a {
-    border-left: none;
-  }
-  [dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs > li.first > a, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs > li.first > a {
-    border-right: none;
-  }
-}
-.pane-geographic-region-region-switch-topic .nav-tabs > li > a,
-.pane-informea-topics-topic-switch-region .nav-tabs > li > a,
-.pane-geographic-region-region-switch-topic .nav-tabs > li > a:hover,
-.pane-informea-topics-topic-switch-region .nav-tabs > li > a:hover,
-.pane-geographic-region-region-switch-topic .nav-tabs > li > a:focus,
-.pane-informea-topics-topic-switch-region .nav-tabs > li > a:focus {
-  color: #1C1C1C;
-}
-.pane-geographic-region-region-switch-topic .nav-tabs > li.active > a,
-.pane-informea-topics-topic-switch-region .nav-tabs > li.active > a,
-.pane-geographic-region-region-switch-topic .nav-tabs > li.active > a:hover,
-.pane-informea-topics-topic-switch-region .nav-tabs > li.active > a:hover,
-.pane-geographic-region-region-switch-topic .nav-tabs > li.active > a:focus,
-.pane-informea-topics-topic-switch-region .nav-tabs > li.active > a:focus {
-  color: #1D7CA7;
-}
-[dir] .pane-geographic-region-region-switch-topic .nav-tabs > li.active > a, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li.active > a, [dir] .pane-geographic-region-region-switch-topic .nav-tabs > li.active > a:hover, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li.active > a:hover, [dir] .pane-geographic-region-region-switch-topic .nav-tabs > li.active > a:focus, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li.active > a:focus {
-  border: none;
-  padding-top: 18px;
-}
-[dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a {
-  padding-left: 12px;
-}
-[dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a {
-  padding-right: 12px;
-}
-.pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a:before,
-.pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a:before {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-  content: '';
-  color: #414141;
-}
-[dir] .pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a:before, [dir] .pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a:before {
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  margin-top: -0.2em;
-  border-top: .5em dashed;
-}
-[dir=ltr] .pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a:before, [dir=ltr] .pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a:before {
-  margin-left: 2px;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  margin-left: 0;
-  margin-right: .3em;
-  border-right: .5em solid transparent;
-  border-left: .5em solid transparent;
-}
-[dir=rtl] .pane-geographic-region-region-switch-topic .nav-tabs > li.all-topics > a:before, [dir=rtl] .pane-informea-topics-topic-switch-region .nav-tabs > li.all-topics > a:before {
-  margin-right: 2px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  margin-right: 0;
-  margin-left: .3em;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
 }
 .pane-regional-treaties > .pane-title,
 .pane-geographic-region-region-downloadable-documents .section-title {
