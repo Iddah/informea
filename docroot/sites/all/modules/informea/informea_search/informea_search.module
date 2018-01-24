@@ -7,24 +7,68 @@
 include_once 'informea_search.features.inc';
 
 /**
+ * Implements hook_entity_info_alter().
+ */
+function informea_search_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['search_item'] = [
+    'label' => t('Search item'),
+    'custom settings' => TRUE,
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function informea_search_theme($existing, $type, $theme, $path) {
+  return [
+    'informea_node_metadata' => [
+      'template' => 'informea_node_metadata',
+      'variables' => [
+        'meta' => [],
+      ],
+      'path' => drupal_get_path('module', 'informea_search') . '/templates',
+    ],
+  ];
+}
+
+
+/**
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
 function informea_search_facet_items_alter(&$build, &$settings) {
-  if ($settings->facet == "type") {
-    $map = [
-      t('Action Plan') => t('National Plan'),
-      t('Event Calendar') => t('Events'),
-      t('Treaty paragraph') => t('Treaty Text'),
-      t('Decision Paragraph') => t('Decision Text'),
-    ];
-    foreach ($build as $key => $item) {
-      if (isset($map[$item["#markup"]])) {
-        $build[$key]["#markup"] = $map[$item["#markup"]];
+  switch ($settings->name) {
+    case 'search_api@default_index:block:field_region':
+    case 'search_api@default_index:block:field_mea_topic':
+      $text = $settings->facet == 'field_region' ? t('All Regions') : t('All Topics');
+      $select_all = [
+        '#html' => TRUE,
+        '#active' => TRUE,
+        '#markup' => sprintf('%s <span class="item-label">%s</span>', t('In'), $text),
+        '#query' => ['f' => []],
+        '#count' => NULL,
+      ];
+      foreach ($build as &$item) {
+        $item['#html'] = TRUE;
+        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $item['#markup']);
+
+        $select_all['#path'] = $item['#path'];
+        if (!empty($item['#active'])) {
+          $select_all['#active'] = FALSE;
+        }
+        if (!empty($item['#query']['f'])) {
+          $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
+        }
       }
-      else {
-        $build[$key]["#markup"] = ucwords($build[$key]["#markup"]);
+      if (!empty($select_all['#path'])) {
+        // Display "In All Regions" / "In All Topics" option.
+        foreach ($select_all['#query']['f'] as $key => $value) {
+          if (preg_match('/^' . $settings->facet . ':/', $value)) {
+            unset($select_all['#query']['f'][$key]);
+          }
+        }
+        array_unshift($build, $select_all);
       }
-    }
+      break;
   }
 }
 
@@ -282,30 +326,7 @@ function informea_search_ajax_callback($data) {
 }
 
 function informea_search_form($form, $form_state) {
-  $view = views_get_page_view();
-  $viewName = !empty($view) ? $view->name : '';
-  switch ($viewName) {
-    case 'informea_search':
-      $action = 'search';
-      break;
-    case 'informea_search_bilateral_treaties':
-      $action = 'search-bilateral-treaties';
-      break;
-    case 'informea_search_legislation':
-      $action = 'search-legislation';
-      break;
-    case 'informea_search_court_decision':
-      $action = 'search-court-decisions';
-      break;
-    case 'informea_search_publications':
-      $action = 'search-publications';
-      break;
-    case 'informea_search_goals_and_principles':
-      $action = 'search-goals-and-principles';
-      break;
-    default:
-      $action = 'search';
-  }
+  $action = 'search';
   $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
   $variant = variable_get('select2_compression_type', 'minified');
   $search_category_options = [
@@ -370,7 +391,7 @@ function informea_search_form($form, $form_state) {
     ],
   ];
 
-  $current_category = _informea_search_get_current_category($viewName);
+  $current_category = _informea_search_get_current_category();
   $search_category_options[$current_category]['selected'] = TRUE;
 
   $form = [
@@ -423,7 +444,7 @@ function informea_search_external_search() {
   drupal_goto('search/' . $input);
 }
 
-function _informea_search_get_current_category($viewName) {
+function _informea_search_get_current_category() {
   $types = [];
   $document_types = [];
   if (!empty($_GET['f']) && is_array($_GET['f'])) {
@@ -436,6 +457,7 @@ function _informea_search_get_current_category($viewName) {
       }
     }
   }
+  $viewName = '@Todo';
   switch ($viewName) {
     case 'informea_search':
       switch ($types) {
@@ -492,6 +514,7 @@ function _informea_search_get_current_category($viewName) {
 }
 
 function informea_search_prepare_search() {
+  // @todo
   $options = [];
   $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
   if (!empty($_GET['category'])) {
@@ -576,41 +599,6 @@ function informea_search_prepare_search() {
   drupal_goto($action, $options);
 }
 
-function _informea_search_get_topic_count($topic) {
-  $current_view = views_get_page_view();
-  $view_name = 'informea_search';
-  $display_name = 'page';
-  switch ($topic) {
-    case 'search-bilateral-treaties':
-      $view_name = 'informea_search_bilateral_treaties';
-      break;
-    case 'search-legislation':
-      $view_name = 'informea_search_legislation';
-      break;
-    case 'search-court-decisions':
-      $view_name = 'informea_search_court_decision';
-      break;
-    case 'search-literature':
-      $view_name = 'informea_search_literature';
-      break;
-    case 'search-publications':
-      $view_name = 'informea_search_publications';
-      break;
-    case 'search-goals-and-principles':
-      $view_name = 'informea_search_goals_and_principles';
-      break;
-  }
-  $view = views_get_view($view_name);
-  if (is_object($view)) {
-    $view->set_display($display_name);
-    $view->set_arguments($current_view->args);
-    $view->get_total_rows = TRUE;
-    $view->pre_execute();
-    $view->execute($display_name);
-    return $view->total_rows;
-  }
-  return 0;
-}
 
 /**
  * Implements hook_form_alter().
@@ -619,24 +607,13 @@ function _informea_search_get_topic_count($topic) {
  * added to allow passing search_api_views_fulltext parameter
  */
 function informea_search_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'views_exposed_form') {
-    switch ($form['#id']) {
-      case 'views-exposed-form-informea-search-page':
-      case 'views-exposed-form-informea-search-bilateral-treaties-page':
-      case 'views-exposed-form-informea-search-legislation-page':
-      case 'views-exposed-form-informea-search-court-decision-page':
-      case 'views-exposed-form-informea-search-publications-page':
-      case 'views-exposed-form-informea-search-goals-and-principles-page':
-        if (isset($_GET['f'])) {
-          foreach ($_GET['f'] as $key => $val) {
-            $form["f[{$key}]"] = [
-              '#type' => 'hidden',
-              '#weight' => '50',
-              '#value' => $val,
-            ];
-          }
-        }
-        break;
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-page' && !empty($_GET['f'])) {
+    foreach ($_GET['f'] as $key => $val) {
+      $form["f[{$key}]"] = [
+        '#type' => 'hidden',
+        '#weight' => '50',
+        '#value' => $val,
+      ];
     }
   }
 }
@@ -670,4 +647,178 @@ function informea_search_entity_property_info_alter(&$info) {
 
 function _informea_search_title_index_property_callback($item) {
   return $item->title;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function informea_search_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'search_item') {
+    $view = views_get_current_view();
+    $content = &$node->content;
+    $left_column = [];
+    $meta = [
+      'content_type' => node_type_get_name($node),
+    ];
+
+    if (!empty($view->result)) {
+      foreach ($view->result as $result) {
+        if (!empty($result->_entity_properties['nid']) && ($result->_entity_properties['nid'] == $node->nid) && !empty($result->_entity_properties['search_api_excerpt'])) {
+          // Provide the excerpt to 'Search Item' view-mode template.
+          $content['search_api_excerpt'] = [
+            '#markup' => $result->_entity_properties['search_api_excerpt'],
+            '#weight' => 50,
+          ];
+        }
+      }
+    }
+
+    switch ($node->type) {
+      // Move some node fields to the left column or to the metadata container.
+      case 'treaty':
+        // Move logo to left column.
+        if (!empty($content['field_logo'])) {
+          $left_column['field_logo'] = $content['field_logo'];
+          unset($content['field_logo']);
+        }
+
+        $meta['full_treaty_text_link'] = l(t('Full Treaty Text'), 'node/' . $node->nid . '/text');
+        $meta['parties_link'] = l(t('Parties'), 'node/' . $node->nid . '/parties');
+        if (!empty($content['field_online_course_link']['0']['#element']['title'])) {
+          $content['field_online_course_link']['0']['#element']['title'] = t('Related Online Course');
+        }
+        if (!empty($content['field_treaty_text_url']['0']['#element']['title'])) {
+          $content['field_treaty_text_url']['0']['#element']['title'] = t('Link to Original Source');
+        }
+        $content['field_entry_into_force']['#title'] = t('Date of text');
+
+        foreach (['field_online_course_link', 'field_treaty_text_url', 'field_entry_into_force'] as $field) {
+          if (!empty($content[$field])) {
+            $meta[$field] = $content[$field];
+            unset($content[$field]);
+          }
+        }
+        break;
+
+      case 'action_plan':
+      case 'national_report':
+        // Move treaty field to left column.
+        if (!empty($content['field_treaty'])) {
+          $left_column['field_treaty'] = $content['field_treaty'];
+          unset($content['field_treaty']);
+        }
+
+        // Move files to metadata container.
+        if (!empty($content['field_files'])) {
+          $meta['field_files'] = $content['field_files'];
+          unset($content['field_files']);
+        }
+        break;
+
+      case 'court_decisions':
+        if (!empty($content['field_url']['0']['#element']['title'])) {
+          $content['field_url']['0']['#element']['title'] = t('Link to Original Source');
+        }
+
+        foreach (['field_url', 'field_files', 'field_sorting_date'] as $field) {
+          if (!empty($content[$field])) {
+            $meta[$field] = $content[$field];
+            unset($content[$field]);
+          }
+        }
+        break;
+
+      case 'legislation':
+        $meta['full_text_link'] = l(t('Link to Full Text'), 'node/' . $node->nid);
+
+        // Move files to metadata container.
+        if (!empty($content['field_files'])) {
+          $meta['field_files'] = $content['field_files'];
+          unset($content['field_files']);
+        }
+
+        // Move "Date of text" to metadata container.
+        if (!empty($content['field_sorting_date'])) {
+          $meta['field_sorting_date'] = $content['field_sorting_date'];
+          unset($content['field_sorting_date']);
+        }
+        break;
+
+      case 'event_calendar':
+        if (!empty($content['event_calendar_date'])) {
+          $left_column['event_calendar_date'] = $content['event_calendar_date'];
+          unset($content['event_calendar_date']);
+        }
+        break;
+
+      case 'feed_item':
+        // Move treaty field to left column.
+        if (!empty($content['field_treaty'])) {
+          $left_column['field_treaty'] = $content['field_treaty'];
+          unset($content['field_treaty']);
+        }
+
+        $meta['published'] = [
+          '#markup' => sprintf('<div class="field field-label-inline"><div class="field-label">%s:</div><div class="field-item">%s</div></div>',
+            t('Published'),
+            date('j M Y', $node->created)
+          )];
+        break;
+
+      case 'contact_person':
+      case 'decision':
+      case 'document':
+        // Move treaty field to left column.
+        if (!empty($content['field_treaty'])) {
+          $left_column['field_treaty'] = $content['field_treaty'];
+          unset($content['field_treaty']);
+        }
+        break;
+
+      case 'country':
+        if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
+          $left_column['flag'] = ['#markup' => theme('image', array(
+            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($node->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+            'attributes' => array('class' => array('flag', 'flag-medium'))
+          ))];
+        }
+        break;
+
+      case 'goal':
+        $wrapper = entity_metadata_wrapper('node', $node);
+        $goal_type = $wrapper->field_goal_type->value();
+        $goal_source = $wrapper->field_goal_source->value();
+        if (!empty($goal_type->name)) {
+          $meta['content_type'] = $goal_type->name;
+        }
+
+        // Prepend the source and append the summary to title
+        if (!empty($goal_source) && is_object($goal_source)) {
+          $goal_source_wrapper = entity_metadata_wrapper('taxonomy_term', $goal_source);
+          if (!empty($goal_source_wrapper->field_abbreviation->value())) {
+            $node->title = $goal_source_wrapper->field_abbreviation->value() . ' ' . $node->title;
+          }
+        }
+        if (!empty($content['field_summary'][0]['#markup'])) {
+          $node->title .= ': ' . $content['field_summary'][0]['#markup'];
+        }
+        unset ($content['field_summary']);
+
+        unset($content['search_api_excerpt']);
+
+        // Move image field to left column.
+        if (!empty($content['field_images'])) {
+          $left_column['field_images'] = $content['field_images'];
+          unset($content['field_images']);
+        }
+        break;
+
+    }
+    $content['left_column'] = $left_column;
+    $content['meta'] = [
+      '#theme' => 'informea_node_metadata',
+      '#meta' => $meta,
+      '#weight' => 100,
+    ];
+  }
 }

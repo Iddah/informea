@@ -43,3 +43,11 @@ function informea_search_update_7005() {
 function informea_search_update_7006() {
   features_revert_module('informea_search');
 }
+
+/**
+ * #321 - Search V2
+ */
+function informea_search_update_7007() {
+  module_enable(['facetapi_bonus', 'facetapi_select']);
+  features_revert(array('treaty' => ['field_instance', 'strongarm']));
+}
