@@ -334,10 +334,10 @@ function informea_search_form($form, $form_state) {
       'label' => t('Treaties'),
       'is_group_label' => TRUE,
     ],
-    'treaty_texts' => [
+    'treaty' => [
       'label' => t('Treaty texts'),
     ],
-    'decisions_texts' => [
+    'decision' => [
       'label' => t('Decisions texts'),
     ],
     'national_submissions' => [
@@ -373,7 +373,7 @@ function informea_search_form($form, $form_state) {
     'technical' => [
       'label' => t('Technical Series'),
     ],
-    'news' => [
+    'news_events' => [
       'label' => t('News and Events'),
       'is_group_label' => TRUE,
     ],
@@ -381,7 +381,7 @@ function informea_search_form($form, $form_state) {
       'label' => t('Goals and declarations'),
       'is_group_label' => TRUE,
     ],
-    'contacts_hub' => [
+    'contact_person' => [
       'label' => t('Contacts Hub'),
       'is_group_label' => TRUE,
     ],
@@ -457,135 +457,110 @@ function _informea_search_get_current_category() {
       }
     }
   }
-  $viewName = '@Todo';
-  switch ($viewName) {
-    case 'informea_search':
-      switch ($types) {
-        case ['action_plan', 'national_report']:
-        case ['national_report', 'action_plan']:
-          return 'national_submissions';
+  switch ($types) {
+    case ['treaty', 'decision']:
+    case ['decision', 'treaty']:
+      return 'treaties';
 
-        case ['action_plan']:
-          return 'action_plan';
+    case ['action_plan', 'national_report']:
+    case ['national_report', 'action_plan']:
+      return 'national_submissions';
 
-        case ['national_report']:
-          return 'national_report';
+    case ['court_decisions', 'legislation']:
+    case ['legislation', 'court_decisions']:
+      return 'national_legislation_cases';
 
-        case ['decision']:
-          return 'decisions_texts';
+    case ['literature', 'document']:
+    case ['document', 'literature']:
+    case ['document']:
+      switch ($document_types) {
+        case ['2805', '3159']:
+        case ['3159', '2805']:
+          return 'publication';
 
-        case ['treaty']:
-          return 'treaties';
+        case ['3178']:
+          return 'manual';
 
-        case ['contact_person']:
-          return 'contacts_hub';
-      }
-      break;
-
-    case 'informea_search_legislation':
-      return 'legislation';
-
-    case 'informea_search_court_decision':
-      return 'court_decisions';
-
-    case 'informea_search_publications':
-      if ($types == ['document']) {
-        switch ($document_types) {
-          case ['2805', '3159']:
-          case ['3159', '2805']:
-            return 'publication';
-
-          case ['3178']:
-            return 'manual';
-
-          case ['2817']:
-            return 'technical';
-        }
+        case ['2817']:
+          return 'technical';
       }
       return 'documents_literature';
 
-    case 'news':
-      return 'news';
+    case ['feed_item', 'event_calendar']:
+    case ['event_calendar', 'feed_item']:
+      return 'news_events';
 
-    case 'informea_search_goals_and_principles':
+    case ['goal', 'declaration']:
+    case ['declaration', 'goal']:
       return 'goals_and_declarations';
+
+    default:
+      if (count($types) == 1) {
+        return reset($types);
+      }
   }
   return 'all';
 }
 
 function informea_search_prepare_search() {
-  // @todo
   $options = [];
-  $action = !empty($_GET['action']) ? $_GET['action'] : 'search';
   if (!empty($_GET['category'])) {
     $search_category = check_plain($_GET['category']);
     switch ($search_category) {
       case 'treaties':
-      case 'treaty_texts':
-        $action = 'search';
         $options['query']['f'][] = "type:treaty";
-        break;
-
-      case 'decisions_texts':
-        $action = 'search';
         $options['query']['f'][] = "type:decision";
         break;
 
-      case 'action_plan':
-      case 'national_report':
-        $action = 'search';
-        $options['query']['f'][] = "type:{$search_category}";
-        break;
-
       case 'national_submissions':
-        $action = 'search';
         $options['query']['f'][] = "type:national_report";
         $options['query']['f'][] = "type:action_plan";
         break;
 
       case 'national_legislation_cases':
-      case 'legislation':
-        $action = 'search-legislation';
-        break;
-
-      case 'court_decisions':
-        $action = 'search-court-decisions';
+        $options['query']['f'][] = "type:court_decisions";
+        $options['query']['f'][] = "type:legislation";
         break;
 
       case 'documents_literature':
-        $action = 'search-publications';
+        $options['query']['f'][] = "type:document";
+        $options['query']['f'][] = "type:literature";
         break;
 
       case 'publication':
-        $action = 'search-publications';
         $options['query']['f'][] = "type:document";
         $options['query']['f'][] = "field_document_type:2805";
         $options['query']['f'][] = "field_document_type:3159";
         break;
 
       case 'manual':
-        $action = 'search-publications';
         $options['query']['f'][] = "type:document";
         $options['query']['f'][] = "field_document_type:3178";
         break;
 
       case 'technical':
-        $action = 'search-publications';
         $options['query']['f'][] = "type:document";
         $options['query']['f'][] = "field_document_type:2817";
         break;
 
-      case 'news':
-        $action = 'news';
+      case 'news_events':
+        $options['query']['f'][] = "type:feed_item";
+        $options['query']['f'][] = "type:event_calendar";
         break;
 
-      case 'informea_search_goals_and_principles':
-        $action = 'search-goals-and-principles';
+      case 'goals_and_declarations':
+        $options['query']['f'][] = "type:goal";
+        $options['query']['f'][] = "type:declaration";
         break;
 
-      case 'contacts_hub':
-        $action = 'search';
-        $options['query']['f'][] = "type:contact_person";
+      case 'treaty':
+      case 'decision':
+      case 'legislation':
+      case 'court_decisions':
+      case 'action_plan':
+      case 'national_report':
+      case 'contact_person':
+        $options['query']['f'][] = "type:{$search_category}";
         break;
 
     }
@@ -596,7 +571,7 @@ function informea_search_prepare_search() {
   if (!empty($_GET['search_api_views_fulltext'])) {
     $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
   }
-  drupal_goto($action, $options);
+  drupal_goto('search', $options);
 }
 
 
