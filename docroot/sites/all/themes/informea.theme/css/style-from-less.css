@@ -1651,7 +1651,7 @@
   height: auto;
 }
 [dir] .frontpage-browse .select2-choice {
-  border-color: #8F8F8F;
+  border-color: #ccc;
   border-radius: 0;
 }
 [dir] #col-about {
