@@ -1486,6 +1486,8 @@
   display: block;
   max-width: 150px;
   text-decoration: none;
+  -webkit-transition: color .2s;
+  transition: color .2s;
 }
 [dir] #block-informea-frontpage-topics .links > li > a {
   margin: 0 auto;
