@@ -467,3 +467,27 @@ function informea_update_7025() {
   module_enable(['informea_topics']);
   features_revert_module('informea_topics');
 }
+
+/**
+ * #252 Create frontpage learning courses view.
+ */
+function informea_update_7026() {
+  features_revert_module('learning_course');
+  features_revert_module('meeting');
+}
+
+/**
+ * #252 Place the promoted events / learning courses view in frontpage content region.
+ */
+function informea_update_7027() {
+  db_update('block')
+    ->fields(['status' => 1, 'weight' => 9, 'region' => 'front_page_content'])
+    ->condition('module', 'views')
+    ->condition('delta', 'events-homepage_events')
+    ->execute();
+  db_update('block')
+    ->fields(['status' => 1, 'weight' => 10, 'region' => 'front_page_content'])
+    ->condition('module', 'views')
+    ->condition('delta', 'learning_courses-promoted_block')
+    ->execute();
+}

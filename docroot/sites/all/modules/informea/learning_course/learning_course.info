@@ -21,6 +21,7 @@ features[field_instance][] = node-learning_course-body
 features[field_instance][] = node-learning_course-field_image
 features[field_instance][] = node-learning_course-field_mea_topic
 features[field_instance][] = node-learning_course-field_region
+features[field_instance][] = node-learning_course-field_tags
 features[field_instance][] = node-learning_course-field_url
 features[node][] = learning_course
 features[variable][] = comment_anonymous_learning_course

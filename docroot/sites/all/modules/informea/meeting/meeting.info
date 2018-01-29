@@ -25,6 +25,7 @@ dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = treaty
 dependencies[] = views
+dependencies[] = views_bootstrap
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
