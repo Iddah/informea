@@ -253,8 +253,8 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
-    'default_option_label' => 'in All Countries',
-    'reset_option_label' => 'in All Countries',
+    'default_option_label' => 'in All Parties',
+    'reset_option_label' => 'in All Parties',
     'submit_page' => '',
     'hide_facet_count' => 0,
   );
