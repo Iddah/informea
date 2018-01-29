@@ -429,11 +429,25 @@ function informea_search_form($form, $form_state) {
 
 
   $page = page_manager_get_current_page();
-  if (!empty($page) && $page['name'] == 'page-region_page' && !empty($page['contexts']['argument_term_1'])) {
-    $form['field_region'] = [
-      '#type' => 'hidden',
-      '#value' => $page['contexts']['argument_term_1']->argument,
-    ];
+  if (!empty($page['name'])) {
+    if ($page['name'] == 'page-region_page' || $page['name'] == 'page-topic_page' && !empty($page['contexts'])) {
+      foreach ($page['contexts'] as $context) {
+        if (!empty($context->keyword) && !empty($context->argument)) {
+          if ($context->keyword == 'region') {
+            $form['field_region'] = [
+              '#type' => 'hidden',
+              '#value' => $context->argument,
+            ];
+          }
+          elseif ($context->keyword == 'topic') {
+            $form['field_mea_topic'] = [
+              '#type' => 'hidden',
+              '#value' => $context->argument,
+            ];
+          }
+        }
+      }
+    }
   }
 
   return $form;
@@ -567,6 +581,9 @@ function informea_search_prepare_search() {
   }
   if (!empty($_GET['field_region'])) {
     $options['query']['f'][] = "field_region:{$_GET['field_region']}";
+  }
+  if (!empty($_GET['field_mea_topic'])) {
+    $options['query']['f'][] = "field_mea_topic:{$_GET['field_mea_topic']}";
   }
   if (!empty($_GET['search_api_views_fulltext'])) {
     $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
