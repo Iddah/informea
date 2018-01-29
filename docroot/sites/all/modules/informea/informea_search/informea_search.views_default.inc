@@ -86,7 +86,7 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
-  $handler->display->display_options['header']['result']['content'] = 'Fount @total results';
+  $handler->display->display_options['header']['result']['content'] = 'Found @total results';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -181,7 +181,7 @@ Date of text Asc|Sort by Least Recent'),
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Fount @total results'),
+    t('Found @total results'),
     t('No results text'),
     t('Sorry, there are no results for this search...'),
     t('Relevance'),
