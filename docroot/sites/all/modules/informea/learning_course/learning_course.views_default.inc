@@ -228,6 +228,17 @@ function learning_course_views_default_views() {
   $handler->display->display_options['fields']['field_tags']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_tags']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $translatables['learning_courses'] = array(
     t('Master'),
