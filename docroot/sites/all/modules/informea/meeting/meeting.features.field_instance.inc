@@ -30,6 +30,12 @@ function meeting_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -93,6 +99,20 @@ function meeting_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 3,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'calendar_display',
+          'fromto' => 'value',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -159,6 +179,12 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -205,6 +231,12 @@ function meeting_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'search_item' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 16,
@@ -262,6 +294,13 @@ function meeting_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -318,6 +357,17 @@ function meeting_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 21,
       ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -370,6 +420,12 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 14,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -421,6 +477,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 20,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -475,6 +537,12 @@ function meeting_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 0,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -551,6 +619,12 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 13,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -603,6 +677,12 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 12,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -654,6 +734,13 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 5,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -715,6 +802,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 2,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -783,6 +876,12 @@ function meeting_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 22,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -848,6 +947,12 @@ function meeting_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 10,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -901,6 +1006,13 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 7,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -960,6 +1072,12 @@ function meeting_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 11,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1013,6 +1131,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 25,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1074,6 +1198,12 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1126,6 +1256,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 23,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1187,6 +1323,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 24,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1261,6 +1403,12 @@ function meeting_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 4,
       ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1315,6 +1463,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 6,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1384,6 +1538,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 18,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1817,7 +1977,6 @@ function meeting_field_default_field_instances() {
   t('Event images');
   t('Event status');
   t('IISD page');
-  t('If the imported item is associated with a treaty');
   t('InforMEA Tags');
   t('Kind');
   t('Last update');

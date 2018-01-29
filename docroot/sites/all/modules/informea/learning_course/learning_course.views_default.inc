@@ -139,8 +139,8 @@ function learning_course_views_default_views() {
   /* Display: Regional learning courses */
   $handler = $view->new_display('block', 'Regional learning courses', 'block_1');
 
-  /* Display: Learning courses by topic */
-  $handler = $view->new_display('block', 'Learning courses by topic', 'block_2');
+  /* Display: Courses by topic */
+  $handler = $view->new_display('block', 'Courses by topic', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Region (field_region) */
   $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
@@ -182,7 +182,7 @@ function learning_course_views_default_views() {
     t('<a href="[field_url]">[title]</a>'),
     t('All'),
     t('Regional learning courses'),
-    t('Learning courses by topic'),
+    t('Courses by topic'),
   );
   $export['learning_courses'] = $view;
 

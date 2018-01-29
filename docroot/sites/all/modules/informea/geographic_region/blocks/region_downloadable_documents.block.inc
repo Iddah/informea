@@ -145,7 +145,7 @@ function _region_downloadable_documents_block_get_sections() {
       ],
     ],
     [
-      'title' => t('National legislation and cases'),
+      'title' => t('Law and cases'),
       'items' => [
         t('National Legislation') => [
           'type' => 'legislation',

@@ -30,6 +30,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -87,6 +93,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -139,6 +151,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -196,6 +214,12 @@ function treaty_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 7,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -248,6 +272,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 5,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -310,6 +340,12 @@ function treaty_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 9,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -371,6 +407,12 @@ function treaty_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 8,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -431,6 +473,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 4,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -500,6 +548,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -556,6 +610,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -610,6 +670,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -662,6 +728,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -713,6 +785,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 44,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -775,6 +853,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 53,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -827,6 +911,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 25,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -878,6 +968,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 38,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -941,6 +1037,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 47,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -988,6 +1090,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 40,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1047,6 +1155,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 41,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1109,6 +1223,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1161,6 +1281,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 60,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1222,6 +1348,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 39,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1281,6 +1413,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1358,6 +1496,20 @@ function treaty_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 3,
       ),
+      'search_item' => array(
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1425,6 +1577,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 37,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1495,6 +1653,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 21,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1562,6 +1726,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1617,6 +1787,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 58,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1671,6 +1847,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 17,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1730,6 +1912,12 @@ function treaty_field_default_field_instances() {
         ),
         'type' => 'taxonomy_term_reference_csv',
         'weight' => 1,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1799,6 +1987,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 54,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1855,6 +2049,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1905,6 +2105,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 50,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1967,6 +2173,16 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -2058,6 +2274,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 15,
       ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2118,6 +2340,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 22,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2175,6 +2403,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 52,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2225,6 +2459,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2277,6 +2517,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2335,6 +2581,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 42,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2387,6 +2639,13 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 8,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2457,6 +2716,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 57,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2513,6 +2778,12 @@ function treaty_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 6,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2565,6 +2836,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 51,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2622,6 +2899,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 31,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2672,6 +2955,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 34,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2735,6 +3024,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2804,6 +3099,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 7,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2876,6 +3177,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 43,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2944,6 +3251,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 55,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2995,6 +3308,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 35,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3066,6 +3385,12 @@ function treaty_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 10,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3126,6 +3451,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3179,6 +3510,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 48,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3231,6 +3568,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 45,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3293,6 +3636,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 46,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3353,6 +3702,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 12,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3427,6 +3782,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 18,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3477,6 +3838,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 28,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3547,6 +3914,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3615,6 +3988,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3685,6 +4064,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3753,6 +4138,13 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 27,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3824,6 +4216,12 @@ function treaty_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 4,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3893,6 +4291,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 49,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3955,6 +4359,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 19,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4025,6 +4435,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 59,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4083,6 +4499,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 56,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -4140,6 +4562,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -4196,6 +4624,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'file_default',
         'weight' => 6,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4267,6 +4701,12 @@ function treaty_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 3,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4328,6 +4768,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4383,6 +4829,12 @@ function treaty_field_default_field_instances() {
         ),
         'type' => 'entityreference_label',
         'weight' => 7,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4445,6 +4897,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4502,6 +4960,12 @@ function treaty_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 2,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4556,6 +5020,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4612,6 +5082,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 1,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -4670,6 +5146,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 6,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4734,6 +5216,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4786,6 +5274,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 3,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4840,6 +5334,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4905,6 +5405,12 @@ function treaty_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 7,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4966,6 +5472,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5022,6 +5534,12 @@ function treaty_field_default_field_instances() {
         ),
         'type' => 'entityreference_label',
         'weight' => 5,
+      ),
+      'search_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

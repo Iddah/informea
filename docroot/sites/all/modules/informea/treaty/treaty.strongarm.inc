@@ -501,6 +501,12 @@ function treaty_strongarm() {
       'treaty_summary' => array(
         'custom_settings' => TRUE,
       ),
+      'search_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -528,6 +534,10 @@ function treaty_strongarm() {
           ),
           'teaser' => array(
             'weight' => '3',
+            'visible' => FALSE,
+          ),
+          'search_item' => array(
+            'weight' => '6',
             'visible' => FALSE,
           ),
         ),

@@ -74,7 +74,7 @@ goal/target-20-0',
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -21,
+        'weight' => -29,
       ),
       'seven' => array(
         'region' => '',

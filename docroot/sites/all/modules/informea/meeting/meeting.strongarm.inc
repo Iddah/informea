@@ -17,7 +17,6 @@ function meeting_strongarm() {
   $strongarm->value = 0;
   $export['comment_anonymous_event_calendar'] = $strongarm;
 
-
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

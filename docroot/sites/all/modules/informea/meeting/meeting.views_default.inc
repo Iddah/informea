@@ -450,7 +450,7 @@ function meeting_views_default_views() {
   $view->name = 'meeting_decisions';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_informea_fulltext_solr_index';
+  $view->base_table = 'search_api_index_default_index';
   $view->human_name = 'Meeting decisions';
   $view->core = 7;
   $view->api_version = '3.0';
@@ -480,13 +480,13 @@ function meeting_views_default_views() {
   $handler->display->display_options['row_options']['view_mode'] = 'treaty_listing';
   /* Field: Indexed Content: Decision number */
   $handler->display->display_options['fields']['field_decision_number']['id'] = 'field_decision_number';
-  $handler->display->display_options['fields']['field_decision_number']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_decision_number']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_decision_number']['field'] = 'field_decision_number';
   $handler->display->display_options['fields']['field_decision_number']['label'] = '';
   $handler->display->display_options['fields']['field_decision_number']['element_label_colon'] = FALSE;
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
-  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
@@ -498,11 +498,11 @@ function meeting_views_default_views() {
   );
   /* Sort criterion: Indexed Content: Order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
-  $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
   /* Contextual filter: Indexed Content: Meeting */
   $handler->display->display_options['arguments']['field_meeting']['id'] = 'field_meeting';
-  $handler->display->display_options['arguments']['field_meeting']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_meeting']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['arguments']['field_meeting']['field'] = 'field_meeting';
   $handler->display->display_options['arguments']['field_meeting']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_meeting']['default_argument_type'] = 'node';
@@ -511,7 +511,7 @@ function meeting_views_default_views() {
   $handler->display->display_options['arguments']['field_meeting']['not'] = 0;
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'decision' => 'decision',
@@ -519,7 +519,7 @@ function meeting_views_default_views() {
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
   $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
@@ -552,7 +552,7 @@ function meeting_views_default_views() {
   );
   /* Filter criterion: Indexed Content: InforMEA Tags */
   $handler->display->display_options['filters']['field_informea_tags']['id'] = 'field_informea_tags';
-  $handler->display->display_options['filters']['field_informea_tags']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['field_informea_tags']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['field_informea_tags']['field'] = 'field_informea_tags';
   $handler->display->display_options['filters']['field_informea_tags']['value'] = array();
   $handler->display->display_options['filters']['field_informea_tags']['group'] = 1;
