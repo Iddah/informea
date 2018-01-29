@@ -1791,12 +1791,14 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  min-width: 150px;
 }
 @media screen and (max-width: 767px) {
   #block-informea-frontpage-topics .links > li {
     -webkit-box-flex: 0;
         -ms-flex: 0 1;
             flex: 0 1;
+    min-width: 100px;
   }
 }
 #block-informea-frontpage-topics .links > li > a {
