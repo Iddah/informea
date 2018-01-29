@@ -5,6 +5,21 @@
   border-top: 1px solid #fff;
   padding: 2.5em 0;
   position: relative;
+  .loop-mea-topics({
+    .page-topics.topic-@{mea-topic-class} & {
+      // position: relative;
+      background-color: @mea-topic-color;
+      &,
+      & a,
+      & #block-informea-informea-page-title select,
+      & #block-informea-informea-page-title .select2-container { color: #fff; }
+
+      & #search-form .select,
+      & #search-form .select2-container .select2-choice {
+        color: @text-color;
+      }
+    }
+  });
   // search block isn't covered by select2 overlay
   .select2-open & {
     pointer-events: none;
