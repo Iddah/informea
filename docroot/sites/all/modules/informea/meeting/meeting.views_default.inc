@@ -599,7 +599,7 @@ function meeting_views_default_views() {
     'title_link' => 'content',
     'title_class' => '',
   );
-  /* Sort criterion: Indexed Content: Sorting order */
+  /* Sort criterion: Indexed Content: Order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
