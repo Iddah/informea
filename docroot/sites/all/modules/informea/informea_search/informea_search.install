@@ -50,7 +50,7 @@ function informea_search_update_7006() {
 function informea_search_update_7007() {
   module_enable(['facetapi_bonus', 'facetapi_select']);
 
-  features_revert(array('informea_search' => ['fe_block_settings', 'search_api_index']));
+  features_revert_module('informea_search');
   features_revert(array('country_data' => ['field_instance', 'variable']));
   features_revert(array('country_deliverable' => ['field_instance']));
   features_revert(array('decision' => ['field_instance', 'variable']));
