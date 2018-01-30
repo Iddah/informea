@@ -109,7 +109,7 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Date of text */
+  /* Sort criterion: Indexed Content: Published */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
