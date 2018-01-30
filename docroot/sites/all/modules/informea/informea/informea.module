@@ -328,7 +328,7 @@ function informea_block_view($delta = '') {
       ];
       $raw_content['or'] = [
         '#type' => 'item',
-        '#markup' => 'or,'
+        '#markup' => 'or'
       ];
       $raw_content['countries'] = [
         '#type' => 'select',
