@@ -589,14 +589,14 @@ function informea_theme_links__locale_block(&$variables) {
   $variables1['attributes']['class'][] = 'dropdown-menu';
   $variables1['attributes']['class'][] = 'dropdown-menu-right';
   $variables1['attributes']['aria-labelledby'] = 'dLanguage';
-  $output = '';
-  $output = '<div class="dropdown">';
-  $output .= '<button type="button" id="dLanguage" class="btn btn-default navbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-  $output .= $language->native;
-  $output .= '</button>';
+
+  $output = '<li class="dropdown">';
+  $output .= '<a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>';
+  $output .= '<a class="menu-title">';
+  $output .= $language->language;
+  $output .= ' <span class="caret"></span></a>';
   $output .= theme_links($variables1);
-  $output .= '</div>';
-  $output .= theme_links($variables);
+  $output .= '</li>';
 
   return $output;
 }
