@@ -2434,7 +2434,7 @@
   margin-top: 7em;
   padding: 4em 0;
 }
-[dir] .regional-page-contacts-panel-container {
+[dir] .regional-page-contacts-panel-container .pane-contacts-hubs {
   padding: 4em 0;
 }
 [dir] .region-downloadable-documents-list > .section-title:first-child {
