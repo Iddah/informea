@@ -76,6 +76,7 @@
           $output = drupal_render($block_array);
           print $output; ?>
         </li><!-- .dropdown -->
+        <?php print render($page['inside_nav']); ?>
       </ul><!-- .nav .navbar-nav -->
       </nav><!-- .navbar-collapse .collapse -->
   </div><!-- .container -->
