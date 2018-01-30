@@ -5,7 +5,16 @@
 
 .navbar-default .navbar-nav > li > a {
   font-weight: 500;
-  // padding: 20px 6px;
+  @media @grid-desktop {
+    height: 100%;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0;
+    > span {
+      margin-left: .2em;
+    }
+  }
 }
 
 .navbar-default .navbar-nav > li:hover > a,
@@ -19,18 +28,38 @@
 }
 
 @media @grid-desktop {
-  .navbar-default .dropdown-menu {
+  .navbar,
+  .navbar > .container {
+    display: flex;
+  }
+  .navbar {
+    min-height: 4em;
+  }
+  .navbar-header,
+  .navbar-collapse.collapse {
+    align-items: center;
+    display: flex;
+  }
+  .navbar-nav {
+    display: flex;
+    height: 100%;
+  }
+  .navbar .logo {
+    margin-top: auto; margin-bottom: auto;
+    img { max-height: 3em; }
+  }
+  .navbar-nav .dropdown-menu {
     visibility: hidden;
     transition: 0.2s 0s;
     display: block;
   }
-  .navbar-default .dropdown:hover > .dropdown-menu,
-  .navbar-default .dropdown.open > .dropdown-menu {
+  .navbar-nav .dropdown:hover > .dropdown-menu,
+  .navbar-nav .dropdown.open > .dropdown-menu {
     transition-delay: .3s;
     visibility: visible;
   }
-  .navbar-default .dropdown:hover > .treaties-menu,
-  .navbar-default .dropdown.open > .treaties-menu {
+  .navbar-nav .dropdown:hover > .treaties-menu,
+  .navbar-nav .dropdown.open > .treaties-menu {
     display: flex;
   }
   .dropdown-menu {
@@ -42,10 +71,13 @@
   }
 }
 .navbar-default .navbar-nav .dropdown-toggle {
+  opacity: 0;
   padding: 0;
   vertical-align: middle;
   width: 0;
-  opacity: 0;
+  @media @grid-desktop {
+    height: 0;
+  }
 }
 
 .navbar-default .dropdown-header:extend(.informea-heading--gray-underline) {
