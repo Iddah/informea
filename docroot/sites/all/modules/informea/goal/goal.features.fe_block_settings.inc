@@ -27,7 +27,7 @@ function goal_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -50,
+        'weight' => -49,
       ),
       'seven' => array(
         'region' => '',
@@ -74,7 +74,7 @@ goal/target-20-0',
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -29,
+        'weight' => -18,
       ),
       'seven' => array(
         'region' => '',
