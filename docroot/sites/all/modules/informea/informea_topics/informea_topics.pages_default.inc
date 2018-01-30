@@ -403,8 +403,8 @@ function informea_topics_default_page_manager_pages() {
     'url' => '',
     'display' => 'block_2',
     'context' => array(
-      0 => 'argument_term_1.tid',
-      1 => 'argument_term_2.tid',
+      0 => 'argument_term_2.tid',
+      1 => 'argument_term_1.tid',
     ),
     'override_title' => 0,
     'override_title_text' => '',

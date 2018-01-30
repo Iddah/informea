@@ -12,6 +12,34 @@ function informea_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['block-homepage_need_help'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'machine_name' => 'homepage_need_help',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'front_page_content',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -48,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['block-map_disclaimer'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -27,7 +55,7 @@ function informea_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -11,
+        'weight' => -30,
       ),
       'seven' => array(
         'region' => '',
@@ -55,7 +83,7 @@ function informea_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => 10,
+        'weight' => -38,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +111,7 @@ function informea_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -36,
+        'weight' => -61,
       ),
       'seven' => array(
         'region' => '',
@@ -113,7 +141,7 @@ function informea_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -37,
+        'weight' => -62,
       ),
       'seven' => array(
         'region' => '',

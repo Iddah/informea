@@ -12,16 +12,15 @@ function informea_search_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['facetapi-3KWtmCIzHfDw1AIpfhJ6xCbHm5eyrM1x'] = array(
+  $export['facetapi-0Fv8Yf7yPH1f1s19610XqH66cbXO0IbH'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => '3KWtmCIzHfDw1AIpfhJ6xCbHm5eyrM1x',
+    'delta' => '0Fv8Yf7yPH1f1s19610XqH66cbXO0IbH',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -37,502 +36,19 @@ search-publications/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Geographical Region',
-    'visibility' => 1,
+    'title' => 'Decision type',
+    'visibility' => 0,
   );
 
-  $export['facetapi-3mJm1W4dfmvVJwQU6Fwa1UYCADF630r5'] = array(
+  $export['facetapi-0Zc331B9jGDF3c2WiWkg3fJ10DgXAor0'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => '3mJm1W4dfmvVJwQU6Fwa1UYCADF630r5',
+    'delta' => '0Zc331B9jGDF3c2WiWkg3fJ10DgXAor0',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -39,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Type',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-9UfL6v17J1ac0SOIBMyAwsAdPCUnPKK9'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '9UfL6v17J1ac0SOIBMyAwsAdPCUnPKK9',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-legislation
-search-legislation/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -44,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Topic',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-9aVkcoz0geJU0833RchnRqxpLdLQQJ1o'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '9aVkcoz0geJU0833RchnRqxpLdLQQJ1o',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -45,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Region',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-ABol1qBh79jsfGqF27usDpaBznEzCn7M'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'ABol1qBh79jsfGqF27usDpaBznEzCn7M',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -49,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Type of Decision',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-B2VTC12xNZJeXezFONG3MJdzpc519OiO'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'B2VTC12xNZJeXezFONG3MJdzpc519OiO',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*
-search-bilateral-treaties
-search-bilateral-treaties/*
-node/*/contacts-hub
-treaties/*/contacts-hub
-countries/*/contacts-hub',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -56,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Topic',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-C0KfOYe1CTJW1tlSyl3brJVVT4qQLzy0'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'C0KfOYe1CTJW1tlSyl3brJVVT4qQLzy0',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*
-search-bilateral-treaties
-search-bilateral-treaties/*
-node/*/contacts-hub
-treaties/*/contacts-hub
-countries/*/contacts-hub',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -61,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Treaty/Organisation',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-EBe4nF0bWIclTeTpPk5EfoKyGT3EgxZw'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'EBe4nF0bWIclTeTpPk5EfoKyGT3EgxZw',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-legislation
-search-legislation/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -47,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Geographical Region',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-EPopgYUIPRwLmsNXr9X8D1FoiB4vdkPG'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'EPopgYUIPRwLmsNXr9X8D1FoiB4vdkPG',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*
-documents
-node/*/documents
-treaties/*/documents',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -38,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Country',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-EeqfYRvf4OeayxrDPBXmxh0uLs695r1S'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'EeqfYRvf4OeayxrDPBXmxh0uLs695r1S',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*
-search-bilateral-treaties
-search-bilateral-treaties/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -59,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Geographical Region',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-I6RVf55CR0muKADP1zTBRoXexXDd7LN4'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'I6RVf55CR0muKADP1zTBRoXexXDd7LN4',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*
-search-bilateral-treaties
-search-bilateral-treaties/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -54,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Term Concepts',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-IhbpziRRQ04ohXLVPOH1pzkj01ySLvut'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'IhbpziRRQ04ohXLVPOH1pzkj01ySLvut',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-legislation
-search-legislation/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -46,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Country',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-IyeCKCprQMtwZlPzlV9rNi3D01lK0oqY'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'IyeCKCprQMtwZlPzlV9rNi3D01lK0oqY',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -34,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Geographical Scope',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-MUHxSD3x10zHyFQcS35tlieqaaL37KaU'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'MUHxSD3x10zHyFQcS35tlieqaaL37KaU',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -42,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Topic',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-O1SxmXX8M8WxQY0H1ovKh0bHXdiFF6ao'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'O1SxmXX8M8WxQY0H1ovKh0bHXdiFF6ao',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*
-documents',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -40,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Treaty',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-OpgMbCZOkFkccfINy31pwWl2rj4FLDML'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'OpgMbCZOkFkccfINy31pwWl2rj4FLDML',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-goals-and-principles
-search-goals-and-principles/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -25,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Geographical scope',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-PZuhBg01koGyA351EUqvNPlmU0kaUpR7'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'PZuhBg01koGyA351EUqvNPlmU0kaUpR7',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -30,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Topic',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-W2YCUd5NB1p1Gf54RG0Rhl01CPHftg2r'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'W2YCUd5NB1p1Gf54RG0Rhl01CPHftg2r',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -548,107 +64,19 @@ search-court-decisions/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'InforMEA Tags',
-    'visibility' => 1,
+    'title' => 'Geographical scope',
+    'visibility' => 0,
   );
 
-  $export['facetapi-bhF7dlwZfRYrATVWsYC6eOvTl9pFOHHh'] = array(
+  $export['facetapi-0faEepcyWgbiJ2byxWHum0bHgu6XcrI8'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'bhF7dlwZfRYrATVWsYC6eOvTl9pFOHHh',
+    'delta' => '0faEepcyWgbiJ2byxWHum0bHgu6XcrI8',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-legislation
-search-legislation/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -52,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Type of Legislation',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-fdq04xNUyxSV1CkoyeTHIwwlufwxjcFK'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'fdq04xNUyxSV1CkoyeTHIwwlufwxjcFK',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -50,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Geographical Region',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-jX6n57R09128yKk8mDTq4yM84f6PAh5a'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'jX6n57R09128yKk8mDTq4yM84f6PAh5a',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-court-decisions
-search-court-decisions/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -43,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Country',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-lFTDOmrsVmQmRqG1yhvhkLE1HBeKji6v'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'lFTDOmrsVmQmRqG1yhvhkLE1HBeKji6v',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -664,27 +92,26 @@ search-publications/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Type of Literature',
-    'visibility' => 1,
+    'title' => 'Type',
+    'visibility' => 0,
   );
 
-  $export['facetapi-mMWjFpAxojLqkHPLTkVRmv1cZ3AJHpAx'] = array(
+  $export['facetapi-13ydV0i4Udr7KTwe85M05fQXGpthlfVI'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'mMWjFpAxojLqkHPLTkVRmv1cZ3AJHpAx',
+    'delta' => '13ydV0i4Udr7KTwe85M05fQXGpthlfVI',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-goals-and-principles
-search-goals-and-principles/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -24,
+        'weight' => -55,
       ),
       'seven' => array(
         'region' => '',
@@ -693,20 +120,327 @@ search-goals-and-principles/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'InforMEA tags',
-    'visibility' => 1,
+    'title' => '<none>',
+    'visibility' => 0,
   );
 
-  $export['facetapi-nH0H81P3pdN1dfvkdvCD5VKkmHgsDC6W'] = array(
+  $export['facetapi-18bE3j8zhJo80qxLPcnj5t1bNCQ3uXbt'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'nH0H81P3pdN1dfvkdvCD5VKkmHgsDC6W',
+    'delta' => '18bE3j8zhJo80qxLPcnj5t1bNCQ3uXbt',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -51,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Authors',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-1eJjUfjaQzB2kcDDuczwhpFt4oxmrpO2'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '1eJjUfjaQzB2kcDDuczwhpFt4oxmrpO2',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'informea_theme',
+        'weight' => -56,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-1wXV1njeL6I1brfjc2OlIuMhhhOfDhn0'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '1wXV1njeL6I1brfjc2OlIuMhhhOfDhn0',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -44,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Lead Institution',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-31Rw85UkyaDcz6GAwbNinJuzmfNuGM0q'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '31Rw85UkyaDcz6GAwbNinJuzmfNuGM0q',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -46,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-6S6Nx0Zd7h0gisYT18V8BvcC0Q1k5rhm'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '6S6Nx0Zd7h0gisYT18V8BvcC0Q1k5rhm',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -34,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-9wrQU80gNrEzbw1Ie31YkCYHc2sJOz02'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '9wrQU80gNrEzbw1Ie31YkCYHc2sJOz02',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -57,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-DBLWZd0b52LHo0MvO8WwLIfu2wKT4jVd'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'DBLWZd0b52LHo0MvO8WwLIfu2wKT4jVd',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -53,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Date of text',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-DDJOxOKhaPZkMK1hcpYUc1sQMHdOXWOJ'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'DDJOxOKhaPZkMK1hcpYUc1sQMHdOXWOJ',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -35,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-FhggtFZUQXw7XRePgNuXg1p9x7vgBSwG'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'FhggtFZUQXw7XRePgNuXg1p9x7vgBSwG',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -54,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-LWJWj4tpuIqEkT4y81zNVtf1iWZxryOt'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'LWJWj4tpuIqEkT4y81zNVtf1iWZxryOt',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -36,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Status',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-Lf1UodtmgEv6QpBb0FJQS6GtNsXVqBat'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'Lf1UodtmgEv6QpBb0FJQS6GtNsXVqBat',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -50,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Data source',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-PKmIxEaqDpK0PbGDdRV52A7jtupTOImx'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'PKmIxEaqDpK0PbGDdRV52A7jtupTOImx',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -722,20 +456,271 @@ search-publications/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Publication Place',
-    'visibility' => 1,
+    'title' => 'Type',
+    'visibility' => 0,
   );
 
-  $export['facetapi-nY6tuVLZOW4TVNhZR18BPiJUCXU0NcoL'] = array(
+  $export['facetapi-PWq6fh33hqvAZzO5pGxs8RsAmjTxWVM0'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'nY6tuVLZOW4TVNhZR18BPiJUCXU0NcoL',
+    'delta' => 'PWq6fh33hqvAZzO5pGxs8RsAmjTxWVM0',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-legislation
-search-legislation/*',
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -49,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Field of application',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-UqhCTE3MjCqowbOaw2O2fSYBGezSv1VZ'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'UqhCTE3MjCqowbOaw2O2fSYBGezSv1VZ',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -37,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Parent',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-VzVADfHll1Di4dJ0NTJ2fvj7JjCVvcF5'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'VzVADfHll1Di4dJ0NTJ2fvj7JjCVvcF5',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -47,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Document Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-W1Sc0UqAaNsAxM01kwyS03BnpbbBtNUH'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'W1Sc0UqAaNsAxM01kwyS03BnpbbBtNUH',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -42,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'GEG Theme',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-b01M97N8OapCER3mxeFQvYWX9aRdHkkT'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'b01M97N8OapCER3mxeFQvYWX9aRdHkkT',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -56,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-lU0kkFRnzyJwsn07slk30R16Sy1xsgyf'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'lU0kkFRnzyJwsn07slk30R16Sy1xsgyf',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -52,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Glossary terms',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-pY6nQrARjEae1htfVD1sR1Rz0es9Sj2l'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'pY6nQrARjEae1htfVD1sR1Rz0es9Sj2l',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -30,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Kind',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-q1q1IaIhHLNp0RNuu5q553Ys9RNsdvdq'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'q1q1IaIhHLNp0RNuu5q553Ys9RNsdvdq',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -40,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Status',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-sNWAkwDKbo6AMe8WfxK9HaDMjxg7LWWD'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'sNWAkwDKbo6AMe8WfxK9HaDMjxg7LWWD',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -43,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Literature Type',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -751,52 +736,19 @@ search-legislation/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'InforMEA Tags',
-    'visibility' => 1,
+    'title' => 'Role',
+    'visibility' => 0,
   );
 
-  $export['facetapi-ngjcSTHvKkM3YrCBeABMwT0nTaX6fC4t'] = array(
+  $export['facetapi-v41eJbSwkglIqPnH3Ny5ME63BDlFKzyC'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'ngjcSTHvKkM3YrCBeABMwT0nTaX6fC4t',
+    'delta' => 'v41eJbSwkglIqPnH3Ny5ME63BDlFKzyC',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*
-documents
-node/*/documents
-treaties/*/documents',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -28,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'InforMEA tags',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-p9FlWiab4gZsEGaV8liVtKqUrzwmczuq'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'p9FlWiab4gZsEGaV8liVtKqUrzwmczuq',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-publications
-search-publications/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -812,77 +764,14 @@ search-publications/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Territorial Subdivision',
-    'visibility' => 1,
+    'title' => 'Type of text',
+    'visibility' => 0,
   );
 
-  $export['facetapi-qTurWYUYYufA4n4p1OFoxmFTW0m9G81J'] = array(
+  $export['facetapi-vS0iz2hKycgOtcX26OSG7x0gpn1kwjKI'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'qTurWYUYYufA4n4p1OFoxmFTW0m9G81J',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*
-search-bilateral-treaties
-search-bilateral-treaties/*
-node/*/contacts-hub
-treaties/*/contacts-hub
-countries/*/contacts-hub',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -58,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Party',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-rm0orTI2PzmJnpZ1x07XLj097DSEjQQJ'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'rm0orTI2PzmJnpZ1x07XLj097DSEjQQJ',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search
-search/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => -60,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Type',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-sNdnHZ9tEwU574CRGjjcpEylZVw53rTR'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'sNdnHZ9tEwU574CRGjjcpEylZVw53rTR',
+    'delta' => 'vS0iz2hKycgOtcX26OSG7x0gpn1kwjKI',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
@@ -894,7 +783,7 @@ search/*',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -27,
+        'weight' => -38,
       ),
       'seven' => array(
         'region' => '',
@@ -903,56 +792,26 @@ search/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Type',
+    'title' => 'SDG Goals',
     'visibility' => 0,
   );
 
-  $export['facetapi-wVKiNP1SAsYAATxmhganCmTF53XyZSa4'] = array(
+  $export['facetapi-ypESKm0EYw6ifS0RNyizmzoFDbTH6rZf'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'wVKiNP1SAsYAATxmhganCmTF53XyZSa4',
+    'delta' => 'ypESKm0EYw6ifS0RNyizmzoFDbTH6rZf',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search-goals-and-principles
-search-goals-and-principles/*',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'informea_theme',
-        'weight' => -41,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Type',
-    'visibility' => 1,
-  );
-
-  $export['facetapi-x6qthNG10R5lpI4ajlUQ11DGwlsmdHRM'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'x6qthNG10R5lpI4ajlUQ11DGwlsmdHRM',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => 'search-goals-and-principles
-search-goals-and-principles/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -26,
+        'weight' => -45,
       ),
       'seven' => array(
         'region' => '',
@@ -961,47 +820,36 @@ search-goals-and-principles/*',
         'weight' => 0,
       ),
     ),
-    'title' => 'Filter',
-    'visibility' => 1,
+    'title' => 'Jurisdiction',
+    'visibility' => 0,
   );
 
-  $export['informea_search-search_informea_switch_topic'] = array(
+  $export['facetapi-zjNTmpdt4IOvmxve1cQtB8i5B3CCWToQ'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'search_informea_switch_topic',
+    'delta' => 'zjNTmpdt4IOvmxve1cQtB8i5B3CCWToQ',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
-    'module' => 'informea_search',
+    'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search
-search/*
-search-legislation
-search-legislation/*
-search-court-decisions
-search-court-decisions/*
-search-publications
-search-publications/*
-search-bilateral-treaties
-search-bilateral-treaties/*
-search-goals-and-principles
-search-goals-and-principles/*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'header',
+        'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -49,
+        'weight' => -39,
       ),
       'seven' => array(
         'region' => '',
         'status' => 0,
         'theme' => 'seven',
-        'weight' => -50,
+        'weight' => 0,
       ),
     ),
-    'title' => '',
-    'visibility' => 1,
+    'title' => 'Territorial subdivision',
+    'visibility' => 0,
   );
 
   return $export;

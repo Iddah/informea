@@ -14,7 +14,7 @@ function country_data_views_default_views() {
   $view->name = 'contacts_hub';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_informea_fulltext_solr_index';
+  $view->base_table = 'search_api_index_default_index';
   $view->human_name = 'Contacts Hub';
   $view->core = 7;
   $view->api_version = '3.0';
@@ -93,18 +93,18 @@ Title Desc|from Z to A',
   $handler->display->display_options['header']['result']['content'] = 'Displaying @total result(s)';
   /* Relationship: Indexed Content: Treaty */
   $handler->display->display_options['relationships']['field_treaty']['id'] = 'field_treaty';
-  $handler->display->display_options['relationships']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['relationships']['field_treaty']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['relationships']['field_treaty']['field'] = 'field_treaty';
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Indexed Content: Treaty */
   $handler->display->display_options['fields']['field_treaty']['id'] = 'field_treaty';
-  $handler->display->display_options['fields']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_treaty']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_treaty']['field'] = 'field_treaty';
   $handler->display->display_options['fields']['field_treaty']['label'] = '';
   $handler->display->display_options['fields']['field_treaty']['exclude'] = TRUE;
@@ -116,21 +116,21 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
-  $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_person_position']['field'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['label'] = '';
   $handler->display->display_options['fields']['field_person_position']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_position']['type'] = 'text_plain';
   /* Field: Indexed Content: Institution */
   $handler->display->display_options['fields']['field_person_institution']['id'] = 'field_person_institution';
-  $handler->display->display_options['fields']['field_person_institution']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_institution']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_person_institution']['field'] = 'field_person_institution';
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
   /* Field: Indexed Content: Roles */
   $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
   $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
   $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
@@ -153,7 +153,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['nothing_2']['element_default_classes'] = FALSE;
   /* Field: Indexed Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
-  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
   $handler->display->display_options['fields']['field_mea_topic']['element_class'] = 'topic-[field_mea_topic]';
@@ -188,13 +188,13 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Sort criterion: Indexed Content: Title - indexed as string (used for sorting) */
   $handler->display->display_options['sorts']['title_index']['id'] = 'title_index';
-  $handler->display->display_options['sorts']['title_index']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['sorts']['title_index']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['title_index']['field'] = 'title_index';
   $handler->display->display_options['sorts']['title_index']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['title_index']['expose']['label'] = 'Title';
   /* Contextual filter: Indexed Content: Country */
   $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['arguments']['field_country']['field'] = 'field_country';
   $handler->display->display_options['arguments']['field_country']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_country']['summary']['format'] = 'default_summary';
@@ -202,7 +202,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['arguments']['field_country']['not'] = 0;
   /* Contextual filter: Indexed Content: Treaty */
   $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
-  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
   $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';
@@ -210,14 +210,14 @@ Title Desc|from Z to A',
   $handler->display->display_options['arguments']['field_treaty']['not'] = 0;
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'contact_person' => 'contact_person',
   );
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
@@ -294,7 +294,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Country */
   $handler->display->display_options['arguments']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_country']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['arguments']['field_country']['field'] = 'field_country';
   $handler->display->display_options['arguments']['field_country']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_country']['summary']['format'] = 'default_summary';
@@ -307,14 +307,14 @@ Title Desc|from Z to A',
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Indexed Content: Roles */
   $handler->display->display_options['fields']['field_contact_roles']['id'] = 'field_contact_roles';
-  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_contact_roles']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_contact_roles']['field'] = 'field_contact_roles';
   $handler->display->display_options['fields']['field_contact_roles']['label'] = '';
   $handler->display->display_options['fields']['field_contact_roles']['element_label_colon'] = FALSE;
@@ -325,21 +325,21 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['field_contact_roles']['bypass_access'] = 0;
   /* Field: Indexed Content: Position */
   $handler->display->display_options['fields']['field_person_position']['id'] = 'field_person_position';
-  $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_position']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_person_position']['field'] = 'field_person_position';
   $handler->display->display_options['fields']['field_person_position']['label'] = '';
   $handler->display->display_options['fields']['field_person_position']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_position']['type'] = 'text_plain';
   /* Field: Indexed Content: Institution */
   $handler->display->display_options['fields']['field_person_institution']['id'] = 'field_person_institution';
-  $handler->display->display_options['fields']['field_person_institution']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_person_institution']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_person_institution']['field'] = 'field_person_institution';
   $handler->display->display_options['fields']['field_person_institution']['label'] = '';
   $handler->display->display_options['fields']['field_person_institution']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_person_institution']['type'] = 'text_plain';
   /* Field: Indexed Content: Country */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['label'] = '';
   $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
@@ -359,7 +359,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['fields']['nothing_2']['element_wrapper_type'] = '0';
   /* Field: Indexed Content: Topics */
   $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
-  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
   $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
   $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
@@ -393,7 +393,7 @@ Title Desc|from Z to A',
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Indexed Content: Treaty */
   $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
-  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_informea_fulltext_solr_index';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
   $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';

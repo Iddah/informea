@@ -37,7 +37,7 @@ function feeds_news_node_info() {
       'help' => '',
     ),
     'feed_item' => array(
-      'name' => t('Feed item'),
+      'name' => t('News'),
       'base' => 'node_content',
       'description' => t('This content type is being used for automatically aggregated content from feeds.'),
       'has_title' => '1',

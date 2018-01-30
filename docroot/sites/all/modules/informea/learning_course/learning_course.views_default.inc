@@ -135,21 +135,18 @@ function learning_course_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'learning_course' => 'learning_course',
   );
+  /* Filter criterion: Content: Promoted to front page */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['value'] = '1';
 
   /* Display: Regional learning courses */
   $handler = $view->new_display('block', 'Regional learning courses', 'block_1');
 
-  /* Display: Learning courses by topic */
-  $handler = $view->new_display('block', 'Learning courses by topic', 'block_2');
+  /* Display: Courses by topic */
+  $handler = $view->new_display('block', 'Courses by topic', 'block_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Region (field_region) */
-  $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
-  $handler->display->display_options['arguments']['field_region_tid']['table'] = 'field_data_field_region';
-  $handler->display->display_options['arguments']['field_region_tid']['field'] = 'field_region_tid';
-  $handler->display->display_options['arguments']['field_region_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
   /* Contextual filter: Content: Topics (field_mea_topic) */
   $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
@@ -159,6 +156,90 @@ function learning_course_views_default_views() {
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_mea_topic_tid']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: Content: Region (field_region) */
+  $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['arguments']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['arguments']['field_region_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_region_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_region_tid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Promoted courses */
+  $handler = $view->new_display('block', 'Promoted courses', 'promoted_block');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h3 class="description text-center">Explore our FREE online courses</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: URL */
+  $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['table'] = 'field_data_field_url';
+  $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['label'] = '';
+  $handler->display->display_options['fields']['field_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_url']['type'] = 'link_absolute';
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<a href="[field_url]">[field_image]</a>';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'medium_wide',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<a href="[field_url]">[title]</a>';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Topics */
+  $handler->display->display_options['fields']['field_mea_topic']['id'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['table'] = 'field_data_field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['field'] = 'field_mea_topic';
+  $handler->display->display_options['fields']['field_mea_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_mea_topic']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_mea_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_mea_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_mea_topic']['delta_offset'] = '0';
+  /* Field: Content: Tags */
+  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['label'] = '';
+  $handler->display->display_options['fields']['field_tags']['element_class'] = 'tag-[field_tags-tid]';
+  $handler->display->display_options['fields']['field_tags']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tags']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_tags']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $translatables['learning_courses'] = array(
     t('Master'),
     t('more'),
@@ -182,7 +263,9 @@ function learning_course_views_default_views() {
     t('<a href="[field_url]">[title]</a>'),
     t('All'),
     t('Regional learning courses'),
-    t('Learning courses by topic'),
+    t('Courses by topic'),
+    t('Promoted courses'),
+    t('<h3 class="description text-center">Explore our FREE online courses</h3>'),
   );
   $export['learning_courses'] = $view;
 

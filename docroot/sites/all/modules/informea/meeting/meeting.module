@@ -35,28 +35,6 @@ function meeting_form_alter(&$form, &$form_state, $form_id) {
     }
     $options = $any + array_intersect_key($form['field_informea_tags']['#options'], array_flip($tids));
     $form['field_informea_tags']['#options'] = $options;
-//    $searchers_info = facetapi_get_searcher_info();
-//    if (!empty($searchers_info['search_api@informea_fulltext_solr_index'])) {
-//      $searcher = $searchers_info['search_api@informea_fulltext_solr_index'];
-//      $adapter = new SearchApiFacetapiAdapter($searcher);
-//      $search = $adapter->getCurrentSearch();
-//      if (!empty($search[1]['search_api_facets']['field_informea_tags'])) {
-//        $facet_results = $search[1]['search_api_facets']['field_informea_tags'];
-//        $tids = array();
-//        $counts = array();
-//        foreach ($facet_results as $filter) {
-//          $tid = str_replace('"', '', $filter['filter']);
-//          $counts[$tid] = $filter['count'];
-//          $tids[$tid] = $tid;
-//        }
-//        $terms = taxonomy_term_load_multiple($tids);
-//        $options = array('All' => '- Any -');
-//        foreach ($terms as $term) {
-//          $options[$term->tid] = $term->name . ' (' . $counts[$term->tid] . ')';
-//        }
-//        $form['field_informea_tags']['#options'] = $options;
-//      }
-//    }
   }
 }
 
