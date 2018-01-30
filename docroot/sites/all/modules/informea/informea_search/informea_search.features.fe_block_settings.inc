@@ -540,7 +540,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Type',
+    'title' => 'Document Type',
     'visibility' => 0,
   );
 
@@ -708,7 +708,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Type',
+    'title' => 'Literature Type',
     'visibility' => 0,
   );
 
