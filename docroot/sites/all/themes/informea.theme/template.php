@@ -281,6 +281,16 @@ function informea_theme_theme() {
       ),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
+    'informea_browse_all_menu_block' => array(
+      'render element' => 'element',
+      'template' => 'templates/informea-browse-all-menu-block',
+      'variables' => array(
+        'topics' => array(),
+        'regions' => array(),
+        'global_region_url' => 0,
+      ),
+      'path' => drupal_get_path('theme', 'informea_theme'),
+    ),
   );
 }
 
