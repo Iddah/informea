@@ -10,7 +10,7 @@ $global_region_url = $variables['global_region_url'];
     <li class="browse-all-menu-topic">
       <?php print l(
         '<b><i>' . $topic['title'] . '</i></b>',
-        $topic['url'], array('attributes' => array('class' => ['browse-all-menu-title', 'menu-title']), 'html' => TRUE)); ?>
+        $topic['url'], array('attributes' => array('class' => array('browse-all-menu-title', 'menu-title')), 'html' => TRUE)); ?>
     </li>
   <?php endforeach; ?>
   <li class="dropdown-header"><?php print t('BROWSE ALL by <b><i>Regions</i></b>'); ?></li>
@@ -18,14 +18,14 @@ $global_region_url = $variables['global_region_url'];
     <li class="browse-all-menu-region">
       <?php print l(
         '<i>' . $region['title'] . '</i>',
-        $region['url'], array('attributes' => array('class' => ['browse-all-menu-title', 'menu-title']), 'html' => TRUE)); ?>
+        $region['url'], array('attributes' => array('class' => array('browse-all-menu-title', 'menu-title')), 'html' => TRUE)); ?>
     </li>
   <?php endforeach; ?>
   <?php if ($global_region_url != ''): ?>
   <li class="browse-all-menu-region">
     <?php print l(
       '<i>' . t('GLOBAL') . '</i>',
-      $global_region_url, array('attributes' => array('class' => ['browse-all-menu-title', 'menu-title']), 'html' => TRUE)); ?>
+      $global_region_url, array('attributes' => array('class' => array('browse-all-menu-title', 'menu-title')), 'html' => TRUE)); ?>
   </li>
   <?php endif; ?>
 </ul>

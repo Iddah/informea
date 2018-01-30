@@ -22,7 +22,7 @@ $regions = $variables['regions'];
                   <?php print l(
                     '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
                     '<span class="treaties-menu-treaty-name">' . $treaty['title'] . '</span>',
-                    $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)); ?>
+                    $treaty['url'], array('attributes' => array('class' => array('treaties-menu-treaty')), 'html' => TRUE)); ?>
                 </li>
               <?php endforeach; ?>
             </ul>
@@ -42,7 +42,7 @@ $regions = $variables['regions'];
                       '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
                       '<span class="treaties-menu-treaty-name">' . $treaty['title'] . '</span>'.
                       '<span class="treaties-menu-treaty-info">' . implode(', ', $treaty['regions']) . '</span>',
-                      $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)); ?>
+                      $treaty['url'], array('attributes' => array('class' => array('treaties-menu-treaty')), 'html' => TRUE)); ?>
                   </li>
                 <?php endif ?>
               <?php endforeach; ?>
@@ -86,7 +86,7 @@ $regions = $variables['regions'];
                 '<img class="treaties-menu-treaty-logo" src="' . file_create_url($treaty['logo_uri']) . '">' .
                 '<span class="treaties-menu-treaty-name">' . $treaty['title'] . '</span>' .
                 '<span class="treaties-menu-treaty-info">' . implode(', ', $treaty['topics']) . '</span>',
-                $treaty['url'], array('attributes' => array('class' => 'treaties-menu-treaty'), 'html' => TRUE)
+                $treaty['url'], array('attributes' => array('class' => array('treaties-menu-treaty')), 'html' => TRUE)
                 ); ?>
             </li>
           <?php endforeach; ?>
