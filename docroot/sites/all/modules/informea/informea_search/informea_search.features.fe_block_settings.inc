@@ -714,16 +714,18 @@ function informea_search_default_fe_block_settings() {
 
   $export['facetapi-tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt'] = array(
     'cache' => -1,
+    'custom' => 0,
     'delta' => 'tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt',
     'i18n_block_language' => array(),
+    'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
     'pages' => '',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'sidebar_first',
+        'status' => 1,
         'theme' => 'informea_theme',
         'weight' => 0,
       ),
@@ -734,6 +736,8 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
+    'title' => 'Role',
+    'visibility' => 0,
   );
 
   $export['facetapi-v41eJbSwkglIqPnH3Ny5ME63BDlFKzyC'] = array(
