@@ -487,7 +487,7 @@ function informea_update_7027() {
  */
 function informea_update_7028() {
   db_update('block')
-    ->fields(['status' => 1, 'weight' => 2, 'region' => 'inside_nav'])
+    ->fields(['status' => 1, 'weight' => 1, 'region' => 'inside_nav'])
     ->condition('bid', 55)
     ->execute();
 }
