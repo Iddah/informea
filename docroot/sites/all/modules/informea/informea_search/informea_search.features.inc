@@ -91,6 +91,7 @@ function informea_search_default_search_api_index() {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
         },
+        "field_contact_roles:field_contact_role" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_contact_telephone" : { "type" : "text" },
         "field_country" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_country_iso2" : { "type" : "text" },
