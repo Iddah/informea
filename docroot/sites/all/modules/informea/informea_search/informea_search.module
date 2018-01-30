@@ -361,7 +361,7 @@ function informea_search_form($form, $form_state) {
       'label' => t('Court Decisions'),
     ],
     'documents_literature' => [
-      'label' => t('Documents and Literature'),
+      'label' => t('Documents and Files'),
       'is_group_label' => TRUE,
     ],
     'publication' => [
