@@ -491,3 +491,13 @@ function informea_update_7028() {
     ->condition('bid', 55)
     ->execute();
 }
+
+/**
+ * Task #328 - Disable secondary menu block
+ */
+function informea_update_7029() {
+  db_update('block')
+    ->fields(['status' => 0])
+    ->condition('bid', 156)
+    ->execute();
+}
