@@ -404,34 +404,6 @@ function informea_search_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['facetapi-P2xgF1N41JagqQzadtPEkQZIKHeCxn03'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'P2xgF1N41JagqQzadtPEkQZIKHeCxn03',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'informea_theme',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['facetapi-PKmIxEaqDpK0PbGDdRV52A7jtupTOImx'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -737,6 +709,34 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Role',
     'visibility' => 0,
   );
 
