@@ -49,20 +49,20 @@
           print $output; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => 'menu-title', 'id' => 'parties-menu-link'))); ?></li>
-        <li><?php print l(t('Laws and Cases'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'laws-and-cases-menu-link'))); ?></li>
-        <li><?php print l(t('Events'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'events-menu-link'))); ?></li>
+        <li><?php print l(t('Laws and Cases'), 'search?f%5B0%5D=type%3Acourt_decisions&f%5B1%5D=type%3Alegislation', array('attributes' => array('class' => 'menu-title', 'id' => 'laws-and-cases-menu-link'))); ?></li>
+        <li><?php print l(t('Events'), 'events', array('attributes' => array('class' => 'menu-title', 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'goals-menu-link'))); ?></li>
         <li class="dropdown">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
           <?php print '<a class="menu-title">' . t('More') . ' <span>+</span></a>'; ?>
           <ul class="dropdown-menu more-menu">
-            <li><?php print l(t('Documents and Literature'), 'documents', array('attributes' => array('class' => 'menu-title', 'id' => 'parties-menu-link'))); ?></li>
-            <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => 'menu-title', 'id' => 'glossary-menu-link'))); ?></li>
-            <li><?php print l(t('Contacts Hub'), 'documents', array('attributes' => array('class' => 'menu-title', 'id' => 'documents-menu-link'))); ?></li>
+            <li><?php print l(t('Documents and Literature'), 'documents', array('attributes' => array('class' => 'menu-title', 'id' => 'documents-menu-link'))); ?></li>
+            <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => 'menu-title', 'id' => 'terms-menu-link'))); ?></li>
+            <li><?php print l(t('Contacts Hub'), '', array('attributes' => array('class' => 'menu-title', 'id' => 'contacts-hub-menu-link'))); ?></li>
             <li class="divider" role="separator"></li>
-            <li><?php print l(t('About InforMEA'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'about-informea-menu-link'))); ?></li>
-            <li><?php print l(t('Contact'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'contact-menu-link'))); ?></li>
-            <li><?php print l(t('Get Involved'), 'goals', array('attributes' => array('class' => 'menu-title', 'id' => 'get-involved-menu-link'))); ?></li>
+            <li><?php print l(t('About InforMEA'), 'about', array('attributes' => array('class' => 'menu-title', 'id' => 'about-menu-link'))); ?></li>
+            <li><?php print l(t('Contact'), 'contact', array('attributes' => array('class' => 'menu-title', 'id' => 'contact-menu-link'))); ?></li>
+            <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => 'menu-title', 'id' => 'get-involved-menu-link'))); ?></li>
           </ul>
         </li><!-- .dropdown -->
         <li><?php print l(t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'))); ?>
