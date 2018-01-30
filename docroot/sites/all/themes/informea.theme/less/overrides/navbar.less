@@ -1,0 +1,117 @@
+// Modifications to main menu according to new design
+.navbar-default {
+  background: #1C7DA8;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-weight: 500;
+  // padding: 20px 6px;
+}
+
+.navbar-default .navbar-nav > li:hover > a,
+.navbar-default .navbar-nav > li.open > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > .dropdown-toggle:focus + a {
+  background-color: #fff;
+  color: #0099d5;
+  border-color: transparent;
+}
+
+@media @grid-desktop {
+  .navbar-default .dropdown-menu {
+    visibility: hidden;
+    transition: 0.2s 0s;
+    display: block;
+  }
+  .navbar-default .dropdown:hover > .dropdown-menu,
+  .navbar-default .dropdown.open > .dropdown-menu {
+    transition-delay: .3s;
+    visibility: visible;
+  }
+  .navbar-default .dropdown:hover > .treaties-menu,
+  .navbar-default .dropdown.open > .treaties-menu {
+    display: flex;
+  }
+  .dropdown-menu {
+    left: -2em;
+  }
+  .dropdown-menu-right {
+    left: auto;
+    right: -2em;
+  }
+}
+.navbar-default .navbar-nav .dropdown-toggle {
+  padding: 0;
+  vertical-align: middle;
+  width: 0;
+  opacity: 0;
+}
+
+.navbar-default .dropdown-header:extend(.informea-heading--gray-underline) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// fix specificity
+.dropdown-menu > li > a {
+  padding: .5rem 2.8rem;
+}
+
+
+.navbar-nav > .dropdown > .dropdown-menu > li > .menu-title {
+  position: relative;
+  &,
+  *,
+  &::before,
+  &::after {
+    transition-property: background-color, color;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: .7em solid transparent;
+    border-bottom: .7em solid transparent;
+    border-left: .8em solid;
+    position: absolute;
+    vertical-align: middle;
+    left: .7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition-property: visibility;
+    visibility: hidden;
+    outline: none;
+  }
+
+  &::after {
+    border-left-color: #0099d5;
+    left: 100%;
+    margin-left: .5em;
+  }
+
+}
+
+.navbar-nav > .dropdown > .dropdown-menu > li:hover > .menu-title,
+.navbar-nav > .dropdown > .dropdown-menu > li.open > .menu-title,
+.navbar-nav > .dropdown > .dropdown-menu > li > .menu-title:focus,
+.navbar-nav > .dropdown > .dropdown-menu .dropdown-toggle:focus + .menu-title {
+  background-color: #0099d5;
+
+  &, & i { color: #fff; }
+
+  &::before { visibility: visible; }
+
+  &::after { display: none; }
+
+}
+
+#free-online-courses-menu-link {
+  background-color: #fc3;
+  border: none;
+  color: @text-color;
+  font-weight: bold;
+}

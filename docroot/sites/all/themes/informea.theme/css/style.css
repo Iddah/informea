@@ -135,7 +135,7 @@ h1 {
 .dropdown-menu {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
   border-radius: 0;
-  border: 2px solid #ffcc66;
+  border: 1px solid #ffcc66;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
 }
 
