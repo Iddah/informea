@@ -27,7 +27,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -31,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +83,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -33,
       ),
       'seven' => array(
         'region' => '',
@@ -92,7 +92,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Type',
     'visibility' => 0,
   );
 
@@ -111,7 +111,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -27,
+        'weight' => -55,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -52,
+        'weight' => -51,
       ),
       'seven' => array(
         'region' => '',
@@ -195,7 +195,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -46,
+        'weight' => -44,
       ),
       'seven' => array(
         'region' => '',
@@ -223,7 +223,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -46,
       ),
       'seven' => array(
         'region' => '',
@@ -251,7 +251,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -34,
       ),
       'seven' => array(
         'region' => '',
@@ -279,7 +279,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -29,
+        'weight' => -57,
       ),
       'seven' => array(
         'region' => '',
@@ -307,7 +307,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -35,
       ),
       'seven' => array(
         'region' => '',
@@ -335,7 +335,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -26,
+        'weight' => -54,
       ),
       'seven' => array(
         'region' => '',
@@ -363,7 +363,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -43,
+        'weight' => -36,
       ),
       'seven' => array(
         'region' => '',
@@ -391,7 +391,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -51,
+        'weight' => -50,
       ),
       'seven' => array(
         'region' => '',
@@ -419,7 +419,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -32,
       ),
       'seven' => array(
         'region' => '',
@@ -447,7 +447,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -50,
+        'weight' => -49,
       ),
       'seven' => array(
         'region' => '',
@@ -475,7 +475,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -24,
+        'weight' => -53,
       ),
       'seven' => array(
         'region' => '',
@@ -503,7 +503,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -45,
+        'weight' => -37,
       ),
       'seven' => array(
         'region' => '',
@@ -531,7 +531,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -47,
       ),
       'seven' => array(
         'region' => '',
@@ -559,7 +559,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -49,
+        'weight' => -42,
       ),
       'seven' => array(
         'region' => '',
@@ -587,7 +587,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -28,
+        'weight' => -56,
       ),
       'seven' => array(
         'region' => '',
@@ -615,7 +615,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -25,
+        'weight' => -52,
       ),
       'seven' => array(
         'region' => '',
@@ -643,7 +643,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -47,
+        'weight' => -30,
       ),
       'seven' => array(
         'region' => '',
@@ -671,7 +671,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -40,
       ),
       'seven' => array(
         'region' => '',
@@ -699,7 +699,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -43,
       ),
       'seven' => array(
         'region' => '',
@@ -727,7 +727,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -41,
       ),
       'seven' => array(
         'region' => '',
@@ -755,7 +755,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -29,
       ),
       'seven' => array(
         'region' => '',
@@ -783,7 +783,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -44,
+        'weight' => -38,
       ),
       'seven' => array(
         'region' => '',
@@ -811,7 +811,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -45,
       ),
       'seven' => array(
         'region' => '',
@@ -839,7 +839,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -39,
       ),
       'seven' => array(
         'region' => '',
