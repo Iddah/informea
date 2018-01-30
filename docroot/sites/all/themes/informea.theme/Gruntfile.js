@@ -31,6 +31,7 @@ module.exports = function (grunt) {
       },
       screen: {
         files: {
+          'css/bootstrap.css': 'less/bootstrap.less',
           'css/style-from-less.css': 'less/style.less'
         }
       },
@@ -70,10 +71,14 @@ module.exports = function (grunt) {
           require('postcss-cssnext'),
           require('postcss-flexibility'),
           require('postcss-rtl')
-        ]
+        ],
+        map: {
+          inline: false, // save all sourcemaps as separate files...
+          annotation: 'css/' // ...to the specified directory
+        },
       },
       dist: {
-        src: ['css/style-from-less.css', '!css/print-style.css']
+        src: ['css/bootstrap.css', 'css/style.css', 'css/style-from-less.css', '!css/print-style.css']
       }
     },
     watch: {
@@ -112,8 +117,6 @@ module.exports = function (grunt) {
   grunt.registerTask('css', ['less', 'postcss', 'watch:postcss']);
 
   grunt.registerTask('libraries', ['clean:libraries', 'copy:libraries']);
-
-  grunt.registerTask('dev', ['less', 'watch:screen', 'watch:print']);
 
   grunt.registerTask('build', ['libraries', 'less', 'postcss']);
 

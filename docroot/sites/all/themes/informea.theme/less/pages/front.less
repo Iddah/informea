@@ -25,16 +25,16 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    @media (min-width: @screen-xs-min) {
+    @media (max-width: @screen-xs-max) {
       font-size: .9em;
     }
 
     > li {
-      flex: 0 1;
-      min-width: 100px;
-      @media (min-width: @screen-xs-min) {
-        flex: 1;
-        min-width: 130px;
+      flex: 1;
+      min-width: 130px;
+      @media (max-width: @screen-xs-max) {
+        flex: 0 1;
+        min-width: 100px;
       }
 
     }
