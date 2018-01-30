@@ -232,7 +232,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Type',
     'visibility' => 0,
   );
 
@@ -316,7 +316,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Type',
     'visibility' => 0,
   );
 
@@ -540,7 +540,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Type',
     'visibility' => 0,
   );
 
@@ -708,7 +708,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Type',
     'visibility' => 0,
   );
 
