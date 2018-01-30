@@ -48,9 +48,9 @@ function informea_search_update_7006() {
  * #321 - Search V2
  */
 function informea_search_update_7007() {
-  module_enable(['facetapi_bonus', 'facetapi_select']);
+  module_enable(['facetapi_bonus', 'facetapi_select', 'search_api_ranges']);
 
-  features_revert(array('informea_search' => ['fe_block_settings', 'search_api_index']));
+  features_revert_module('informea_search');
   features_revert(array('country_data' => ['field_instance', 'variable']));
   features_revert(array('country_deliverable' => ['field_instance']));
   features_revert(array('decision' => ['field_instance', 'variable']));

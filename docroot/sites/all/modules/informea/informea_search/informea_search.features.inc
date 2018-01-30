@@ -229,7 +229,8 @@ function informea_search_default_search_api_index() {
         "title" : { "type" : "text" },
         "title_field" : { "type" : "text" },
         "title_index" : { "type" : "string" },
-        "type" : { "type" : "string" }
+        "type" : { "type" : "string" },
+        "year_of_text" : { "type" : "integer" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

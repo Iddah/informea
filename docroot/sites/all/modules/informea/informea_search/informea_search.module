@@ -635,10 +635,28 @@ function informea_search_entity_property_info_alter(&$info) {
     'sanitized' => TRUE,
     'getter callback' => '_informea_search_title_index_property_callback',
   ];
+  $info['node']['properties']['year_of_text'] = [
+    'type' => 'integer',
+    'label' => t('Year of text'),
+    'description' => t("Extracted year from Date of text"),
+    'sanitized' => TRUE,
+    'getter callback' => 'informea_search_year_of_text_callback',
+  ];
 }
 
 function _informea_search_title_index_property_callback($item) {
   return $item->title;
+}
+
+/**
+ * Extract the year from the date of text field.
+ */
+function informea_search_year_of_text_callback($item) {
+  if (!empty($item->field_sorting_date[LANGUAGE_NONE][0]['value'])
+    && preg_match('/^(\d{4})\-.+/', $item->field_sorting_date[LANGUAGE_NONE][0]['value'], $matches)) {
+    return $matches[1];
+  }
+  return NULL;
 }
 
 /**
@@ -684,7 +702,11 @@ function informea_search_node_view($node, $view_mode, $langcode) {
         }
         $content['field_entry_into_force']['#title'] = t('Date of text');
 
-        foreach (['field_online_course_link', 'field_treaty_text_url', 'field_entry_into_force'] as $field) {
+        foreach ([
+                   'field_online_course_link',
+                   'field_treaty_text_url',
+                   'field_entry_into_force',
+                 ] as $field) {
           if (!empty($content[$field])) {
             $meta[$field] = $content[$field];
             unset($content[$field]);
@@ -754,7 +776,8 @@ function informea_search_node_view($node, $view_mode, $langcode) {
           '#markup' => sprintf('<div class="field field-label-inline"><div class="field-label">%s:</div><div class="field-item">%s</div></div>',
             t('Published'),
             date('j M Y', $node->created)
-          )];
+          ),
+        ];
         break;
 
       case 'contact_person':
@@ -769,10 +792,12 @@ function informea_search_node_view($node, $view_mode, $langcode) {
 
       case 'country':
         if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
-          $left_column['flag'] = ['#markup' => theme('image', array(
-            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($node->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
-            'attributes' => array('class' => array('flag', 'flag-medium'))
-          ))];
+          $left_column['flag'] = [
+            '#markup' => theme('image', [
+              'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($node->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+              'attributes' => ['class' => ['flag', 'flag-medium']],
+            ]),
+          ];
         }
         break;
 
