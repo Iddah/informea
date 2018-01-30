@@ -481,3 +481,13 @@ function informea_update_7026() {
 function informea_update_7027() {
   features_revert_module('meeting');
 }
+
+/**
+ * Task #328 - Place language switcher block in inside_nav region
+ */
+function informea_update_7028() {
+  db_update('block')
+    ->fields(['status' => 1, 'weight' => 2, 'region' => 'inside_nav'])
+    ->condition('bid', 55)
+    ->execute();
+}
