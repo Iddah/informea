@@ -2971,19 +2971,21 @@ fieldset[disabled] a.explore a {
 }
 .region-involvement .btn {
   text-transform: uppercase;
+  color: #fff;
 }
 [dir] .region-involvement .btn {
   padding: 1em 2em;
+  background: transparent;
+  border: 1px solid;
 }
-.region-involvement .btn,
 .region-involvement .btn:hover,
 .region-involvement .btn:focus,
 .region-involvement .btn:active {
-  color: #fff;
+  color: #1B7DA7;
 }
-[dir] .region-involvement .btn, [dir] .region-involvement .btn:hover, [dir] .region-involvement .btn:focus, [dir] .region-involvement .btn:active {
-  background: transparent;
-  border: 1px solid;
+[dir] .region-involvement .btn:hover, [dir] .region-involvement .btn:focus, [dir] .region-involvement .btn:active {
+  background: #fff;
+  border-color: #fff;
 }
 [dir] .region-involvement .block {
   margin-top: 1em;

@@ -357,7 +357,7 @@
 
 // Involvement
 .involvement {
-  background-color: #1B7DA7;
+  background-color: @regional-page-dark-blue;
   padding: 3em 0;
   &, & a { color: #fff; }
   + .footer {
@@ -394,10 +394,15 @@
   .btn {
     padding: 1em 2em;
     text-transform: uppercase;
-    &, &:hover, &:focus, &:active {
+    & {
       background: transparent;
       border: 1px solid;
       color: #fff;
+    }
+    &:hover, &:focus, &:active {
+      background: #fff;
+      border-color: #fff;
+      color: @regional-page-dark-blue;
     }
   }
   .block {
