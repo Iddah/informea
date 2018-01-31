@@ -178,6 +178,8 @@
       }
     }
     .views-submit-button {
+      // Task #337 hide fulltext search elements
+      display: none;
       @media @grid-mobile { padding-right: 0; }
       > .form-submit {
         background-color: #0A8FC7;
@@ -213,7 +215,7 @@
         font-size: .9em;
         clear: right;
         float: right;
-        margin-top: 2rem;
+        margin-top: 0;
       }
       > .btn {
         font-size: 1em;
@@ -221,6 +223,11 @@
       }
     }
   }
+
+  .view-header + .view-filters .views-reset-button {
+    margin-top: 2rem;
+  }
+
   .views-exposed-widget {
     margin-top: .5rem;
     padding-top: 0;
@@ -229,8 +236,8 @@
   .views-widget-filter-search_api_views_fulltext {
     padding-right: 0;
     @media @grid-mobile { flex: 1; }
-
-    .form-item-search-api-views-fulltext { display: block; }
+    // Task #337 hide fulltext search elements
+    // .form-item-search-api-views-fulltext { display: block; }
     .form-control {
       border-bottom-right-radius: 0;
       border-right: 0;
@@ -239,7 +246,9 @@
   }
 
   .form-item-sort-bef-combine {
+
     @media @grid-desktop { font-size: .9em; }
+    &.form-group { margin-bottom: 0; }
     &.form-type-select {
       align-items: center;
       display: flex;

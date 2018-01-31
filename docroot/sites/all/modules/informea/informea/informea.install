@@ -501,3 +501,10 @@ function informea_update_7029() {
     ->condition('bid', 156)
     ->execute();
 }
+
+/**
+ * Task #293 - Set orientation of social media icons to horizontal.
+ */
+function informea_update_7030() {
+  variable_set('social_media_links_appearance', array('orientation' => 'h', 'show_name' => 0));
+}

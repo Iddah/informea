@@ -78,7 +78,14 @@ module.exports = function (grunt) {
         },
       },
       dist: {
-        src: ['css/bootstrap.css', 'css/style.css', 'css/style-from-less.css', '!css/print-style.css']
+        src: [
+          'css/bootstrap.css',
+          '../bootstrap/css/overrides.css',
+          'css/style.css',
+          'css/style-from-less.css',
+          '!css/print-style.css'
+
+        ]
       }
     },
     watch: {
