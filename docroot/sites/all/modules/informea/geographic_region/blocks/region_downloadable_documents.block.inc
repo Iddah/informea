@@ -107,12 +107,6 @@ function _geographic_region_build_search_link($region_id = NULL, $topic_id = NUL
     $f[] = "field_topic:{$topic_id}";
   }
 
-  $path = !empty($item['path']) ? $item['path'] : 'search';
-
-  if (empty($item['exclude_type_filter'])) {
-    $f = array_merge($f, ['type:' . $item['type']]);
-  }
-
   if (!empty($item['fieldConditions'])) {
     foreach ($item['fieldConditions'] as $condition) {
       if (is_array($condition['value'])) {
@@ -128,7 +122,7 @@ function _geographic_region_build_search_link($region_id = NULL, $topic_id = NUL
 
   return l(
     sprintf('%s (%s)', $link_title, $count),
-    $path,
+    'search',
     ['query' => ['f' => $f]]
   );
 
@@ -142,7 +136,6 @@ function _region_downloadable_documents_block_get_sections() {
         t('Meetings decisions') => ['type' => 'decision'],
         t('COP Reports') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
@@ -166,8 +159,6 @@ function _region_downloadable_documents_block_get_sections() {
       'items' => [
         t('National Legislation') => [
           'type' => 'legislation',
-          'path' => 'search-legislation',
-          'exclude_type_filter' => TRUE,
         ],
         t('Court Decisions') => ['type' => 'court_decisions'],
       ],
@@ -177,11 +168,9 @@ function _region_downloadable_documents_block_get_sections() {
       'items' => [
         t('Publications') => [
           'type' => 'literature',
-          'path' => 'search-publications',
         ],
         t('Manuals') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
@@ -192,7 +181,6 @@ function _region_downloadable_documents_block_get_sections() {
         ],
         t('Technical Series') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
