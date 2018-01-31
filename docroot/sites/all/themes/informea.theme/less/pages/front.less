@@ -22,17 +22,19 @@
   .links {
     .list-unstyled();
     display: inline-flex;
+    flex-wrap: wrap;
     justify-content: center;
 
-    @media @grid-mobile {
+    @media (max-width: @screen-xs-max) {
       font-size: .9em;
-      flex-wrap: wrap;
     }
 
     > li {
       flex: 1;
-      @media @grid-mobile {
+      min-width: 130px;
+      @media (max-width: @screen-xs-max) {
         flex: 0 1;
+        min-width: 100px;
       }
 
     }

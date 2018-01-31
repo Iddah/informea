@@ -1,0 +1,172 @@
+@treaties-logo-width: 3em; // in em
+
+.treaties-menu {
+  flex-direction: column;
+  left: 0;
+  min-height: 30em;
+  right: 0;
+  @media @grid-desktop {
+    .navbar-nav & { display: flex; }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    left: 30%;
+  }
+
+  .divider {
+    margin: 1em 1.5em;
+    width: calc(~'30% - 3em');
+  }
+
+  .dropdown-full-width > & {
+    padding: 0;
+  }
+
+  > li {
+    position: static;
+    width: 30%;
+  }
+
+  &-title {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    white-space: normal;
+    // Override bootstrap styles
+    .dropdown-menu > li > & {
+      color: @regional-page-gray;
+      padding-top: .6em;
+      padding-bottom: .6em;
+      &.treaties-menu-all-link {
+        background-color: #ddd;
+        color: @text-color;
+        font-weight: bold;
+        text-transform: uppercase;
+        &:focus {
+          background-color: #0099d5;
+          color: #fff;
+        }
+      }
+    }
+
+    i { color: @text-color; }
+
+  }
+
+  &-list {
+    border: none;
+    border-left: 1px solid #ddd;
+    bottom: 0;
+    box-shadow: none;
+    left: 30%;
+    margin-top: 0;
+    overflow: auto;
+    padding-bottom: 2.5em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    right: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  &-heading {
+    padding: 1em 0;
+
+   .treaties-menu-list-item + & {
+      margin-top: 1em;
+    }
+  }
+
+  &-inside-list-item {
+    & + & { margin-top: .3em; }
+  }
+
+  &-treaty {
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    min-height: @treaties-logo-width;
+    padding: .5em 0;
+    padding-left: @treaties-logo-width + 2em;
+    position: relative;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      .treaties-menu-treaty-name { text-decoration: underline; }
+    }
+    &-logo {
+      height: @treaties-logo-width;
+      left: 0;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: @treaties-logo-width;
+    }
+
+    &-name {
+      color: #0A8FC6;
+      flex-basis: 100%;
+    }
+    &-info {
+      color: @regional-page-gray;
+      font-size: .9em;
+    }
+  }
+
+  &-all {
+    margin-top: auto;
+  }
+}
+
+.navbar-nav > .dropdown > .treaties-menu > li:hover > .menu-title,
+.navbar-nav > .dropdown > .treaties-menu > li.open > .menu-title,
+.navbar-nav > .dropdown > .treaties-menu > li > .menu-title:focus,
+.navbar-nav > .dropdown > .treaties-menu .dropdown-toggle:focus + .menu-title {
+
+  &::before,
+  &::after {
+    display: inline-block;
+    visibility: visible;
+  }
+
+  &.treaties-menu-all-link {
+    &::before, &::after { display: none; }
+  }
+
+}
+
+.browse-all-menu,
+.more-menu {
+  padding-left: 2.8rem;
+  padding-right: 2.8rem;
+  > li {
+    margin-left: -2.8rem;
+    margin-right: -2.8rem;
+  }
+  > .dropdown-header {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  > .divider {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+}
+
+.browse-all-menu {
+  padding-bottom: 1.5em;
+  .navbar-nav & > li > a {
+    padding-left: 4.8rem;
+  }
+  .navbar-nav > .dropdown > & > li > .menu-title {
+    &:before {
+      left: 2.8rem;
+    }
+  }
+}
