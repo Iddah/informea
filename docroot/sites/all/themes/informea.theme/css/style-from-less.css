@@ -2204,6 +2204,9 @@ body {
   font-size: 14px;
   font-weight: bold;
 }
+.node-type-country .facetapi-facet-field-region {
+  display: none;
+}
 .page-regions .panels-flexible-row,
 .page-topics .panels-flexible-row {
   width: 100%;

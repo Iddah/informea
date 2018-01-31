@@ -58,6 +58,9 @@ function informea_search_facet_items_alter(&$build, &$settings) {
         if (!empty($item['#query']['f'])) {
           $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
         }
+        if (!empty($item['#query']['search_api_views_fulltext'])) {
+          $select_all['#query']['search_api_views_fulltext'] = $item['#query']['search_api_views_fulltext'];
+        }
       }
       if (!empty($select_all['#path'])) {
         // Display "In All Regions" / "In All Topics" option.
