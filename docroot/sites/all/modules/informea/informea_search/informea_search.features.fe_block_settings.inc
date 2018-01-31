@@ -516,6 +516,34 @@ function informea_search_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['facetapi-VfaF3l86oox2DNvznoftN4Hw7Kxq40cZ'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'VfaF3l86oox2DNvznoftN4Hw7Kxq40cZ',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'informea_theme',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['facetapi-VzVADfHll1Di4dJ0NTJ2fvj7JjCVvcF5'] = array(
     'cache' => -1,
     'custom' => 0,
