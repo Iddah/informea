@@ -59,41 +59,56 @@ function geographic_region_region_downloadable_documents_block_view() {
  *  The count query result.
  */
 function _get_content_count_by_region($content_type, $region_id = NULL, $topic_id = NULL, $fieldConditions = []) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $content_type)
-    ->propertyCondition('status', NODE_PUBLISHED);
+  $fieldConditions['type'] = [
+    'field' => 'type',
+    'value' => $content_type,
+  ];
   if (!empty($region_id)) {
-    $query->fieldCondition('field_region', 'tid', $region_id);
+    $fieldConditions['field_region'] = [
+      'field' => 'field_region',
+      'value' => $region_id,
+    ];
   }
   if (!empty($topic_id)) {
-    $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
+    $fieldConditions['field_mea_topic'] = [
+      'field' => 'field_mea_topic',
+      'value' => $topic_id,
+    ];
   }
+  $view = views_get_view('search');
+  $view->set_display('page');
+  $view->init_query();
+  /** @var \SearchApiViewsQuery $query */
+  $query = $view->query;
   foreach ($fieldConditions as $condition) {
-    $column = !empty($condition['column']) ? $condition['column'] : NULL;
-    $value = !empty($condition['value']) ? $condition['value'] : NULL;
-    $operator = !empty($condition['operator']) ? $condition['operator'] : NULL;
-    $query->fieldCondition($condition['field'], $column, $value, $operator);
+    if (!empty($condition['field']) && !empty($condition['value'])) {
+      $filter = $query->createFilter('AND', ['facet:' . $condition['field']]);
+      if (is_array($condition['value'])) {
+        foreach ($condition['value'] as $value) {
+          $filter->condition($condition['field'], $value);
+        }
+      }
+      else {
+        $filter->condition($condition['field'], $condition['value']);
+      }
+      $query->filter($filter);
+    }
   }
-  return $query->count()->execute();
+  $view->query = $query;
+  $view->execute();
+  return $view->total_rows;
 }
 
 /**
  * Builds the query for solr-based views.
  */
 function _geographic_region_build_search_link($region_id = NULL, $topic_id = NULL, $item, $link_title, $count) {
-  $f = [];
+  $f = ['type:' . $item['type']];
   if (!empty($region_id)) {
     $f[] = "field_region:{$region_id}";
   }
   if (!empty($topic_id)) {
     $f[] = "field_topic:{$topic_id}";
-  }
-
-  $path = !empty($item['path']) ? $item['path'] : 'search';
-
-  if (empty($item['exclude_type_filter'])) {
-    $f = array_merge($f, ['type:' . $item['type']]);
   }
 
   if (!empty($item['fieldConditions'])) {
@@ -111,7 +126,7 @@ function _geographic_region_build_search_link($region_id = NULL, $topic_id = NUL
 
   return l(
     sprintf('%s (%s)', $link_title, $count),
-    $path,
+    'search',
     ['query' => ['f' => $f]]
   );
 
@@ -125,7 +140,6 @@ function _region_downloadable_documents_block_get_sections() {
         t('Meetings decisions') => ['type' => 'decision'],
         t('COP Reports') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
@@ -149,8 +163,6 @@ function _region_downloadable_documents_block_get_sections() {
       'items' => [
         t('National Legislation') => [
           'type' => 'legislation',
-          'path' => 'search-legislation',
-          'exclude_type_filter' => TRUE,
         ],
         t('Court Decisions') => ['type' => 'court_decisions'],
       ],
@@ -160,11 +172,9 @@ function _region_downloadable_documents_block_get_sections() {
       'items' => [
         t('Publications') => [
           'type' => 'literature',
-          'path' => 'search-publications',
         ],
         t('Manuals') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
@@ -175,7 +185,6 @@ function _region_downloadable_documents_block_get_sections() {
         ],
         t('Technical Series') => [
           'type' => 'document',
-          'path' => 'search-publications',
           'fieldConditions' => [
             [
               'field' => 'field_document_type',
