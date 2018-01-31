@@ -45,7 +45,12 @@ function informea_node_view($node, $view_mode, $langcode) {
       elseif (is_array($value)) {
         $nid = $value[0]->nid;
       }
-
+      if ($node->type == 'national_report_paragraph') {
+        $pw = entity_metadata_wrapper('node', $value->nid);
+        $arr = $pw->field_country->value();
+        $country = array_pop($arr);
+        $nid = $country->nid;
+      }
       if (!$nid) {
         return;
       }
@@ -55,7 +60,10 @@ function informea_node_view($node, $view_mode, $langcode) {
       if ($node->type == 'member_party') {
         $alias .= '/parties';
       }
-      if (($node->type == 'treaty_paragraph') || ($node->type == 'treaty_article')) {
+      else if ($node->type == 'national_report_paragraph') {
+        $alias .= '/national-reports';
+      }
+      else if (($node->type == 'treaty_paragraph') || ($node->type == 'treaty_article')) {
         $options = [];
         $article_nid = $node->nid;
         if ($node->type == 'treaty_paragraph') {
