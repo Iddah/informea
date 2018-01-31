@@ -13,6 +13,7 @@ regions[front_page_announcements] = 'Front page announcements'
 regions[front_page_hero]          = 'Front page hero unit'
 regions[front_page_content]       = 'Front page content'
 regions[header]                   = 'Top Bar'
+regions[inside_nav]               = 'Inside Main Menu'
 regions[highlighted]              = 'Highlighted'
 regions[help]                     = 'Help'
 regions[content]                  = 'Content'
@@ -26,7 +27,7 @@ regions[page_bottom]              = 'Page bottom'
 
 ; Stylesheets
 
-stylesheets[all][] = 'bootstrap/css/bootstrap.min.css'
+stylesheets[all][] = 'css/bootstrap.css'
 stylesheets[all][] = '../bootstrap/css/overrides.css'
 stylesheets[all][] = 'css/style.css'
 stylesheets[all][] = 'css/style-from-less.css'

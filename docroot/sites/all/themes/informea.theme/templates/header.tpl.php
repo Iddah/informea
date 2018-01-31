@@ -39,20 +39,44 @@
               <?php print render($page['above_nav']); ?>
             <!-- </div> -->
         </div>
-      <ul class="nav navbar-nav" role="menu" aria-hidden="true">
-        <li class="dropdown dropdown-full-width" role="menuitem">
+      <ul class="nav navbar-nav" aria-hidden="true">
+        <li class="dropdown dropdown-full-width">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-          <?php print '<a>' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
+          <?php print '<a href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
           <?php $block = block_load('informea', 'informea_treaties_block');
           $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
           $output = drupal_render($block_array);
           print $output; ?>
         </li><!-- .dropdown -->
-        <li role="menuitem"><?php print l(t('Parties'), 'countries', array('attributes' => array('id' => 'parties-menu-link'))); ?></li>
-        <li role="menuitem"><?php print l(t('Glossary'), 'terms', array('attributes' => array('id' => 'glossary-menu-link'))); ?></li>
-        <li role="menuitem"><?php print l(t('Documents'), 'documents', array('attributes' => array('id' => 'documents-menu-link'))); ?></li>
-        <li role="menuitem"><?php print l(t('Goals'), 'goals', array('attributes' => array('id' => 'goals-menu-link'))); ?></li>
-        <li role="menuitem"><?php print l(t('Learning'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'learning-menu-link'))); ?></li>
+        <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
+        <li><?php print l(t('Laws and Cases'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-link'))); ?></li>
+        <li><?php print l(t('Events'), 'events', array('attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
+        <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
+        <li class="dropdown">
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <?php print '<a class="menu-title">' . t('More') . ' <span>+</span></a>'; ?>
+          <ul class="dropdown-menu more-menu">
+            <li><?php print l(t('Documents and Literature'), 'documents', array('attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
+            <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => array('menu-title'), 'id' => 'terms-menu-link'))); ?></li>
+            <li><?php print l(t('Contacts Hub'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'contacts-hub-menu-link'))); ?></li>
+            <li class="divider" role="separator"></li>
+            <li><?php print l(t('About InforMEA'), 'about', array('attributes' => array('class' => array('menu-title'), 'id' => 'about-menu-link'))); ?></li>
+            <li><?php print l(t('Contact'), 'contact', array('attributes' => array('class' => array('menu-title'), 'id' => 'contact-menu-link'))); ?></li>
+            <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'get-involved-menu-link'))); ?></li>
+          </ul>
+        </li><!-- .dropdown -->
+        <li><?php print l(t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'))); ?>
+        </li>
+        <li class="dropdown">
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <?php print '<a class="menu-title">' . t('Browse all …') . ' <span class="caret"></span></a>'; ?>
+
+          <?php $block = block_load('informea', 'informea_browse_all_block');
+          $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+          $output = drupal_render($block_array);
+          print $output; ?>
+        </li><!-- .dropdown -->
+        <?php print render($page['inside_nav']); ?>
       </ul><!-- .nav .navbar-nav -->
       </nav><!-- .navbar-collapse .collapse -->
   </div><!-- .container -->

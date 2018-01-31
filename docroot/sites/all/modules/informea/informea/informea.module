@@ -186,6 +186,11 @@ function informea_block_info() {
       'cache' => DRUPAL_NO_CACHE,
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     ),
+    'informea_browse_all_block' => array(
+      'info' => t('Informea browse all menu'),
+      'cache' => DRUPAL_NO_CACHE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    ),
     'frontpage_topics' => array(
       'info' => t('Frontpage topics'),
       'status' => 1,
@@ -263,6 +268,44 @@ function informea_block_view($delta = '') {
       $block['content'] = informea_theme_treaties_menu_block();
       break;
 
+    case 'informea_browse_all_block':
+      $block['subject'] = NULL;
+      $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
+      $topics = informea_get_published_taxonomy_terms($vocabulary->vid);
+
+      foreach ($topics as $topic) {
+        $topic_links['topic-' . $topic->tid] = [
+          'title' => $topic->name,
+          'url' => 'taxonomy/term/' . $topic->tid,
+        ];
+      }
+
+      $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+      $regions = informea_get_published_taxonomy_terms($vocabulary->vid);
+      $global_region_url = '';
+
+      foreach ($regions as $region) {
+        if ($region->tid != 1118) {
+          $region_links['region-' . $region->tid] = [
+            'title' => $region->name,
+            'url' => 'taxonomy/term/' . $region->tid,
+          ];
+        }
+        else {
+          $global_region_url = 'taxonomy/term/' . $region->tid;
+        }
+      }
+
+      $block['content'] = theme(
+        'informea_browse_all_menu_block',
+        array(
+          'topics' => $topic_links,
+          'regions' => $region_links,
+          'global_region_url' => $global_region_url
+        )
+      );
+      break;
+
     case 'informea_page_title':
       $title = sprintf('<h1>%s</h1>', t('Access information on Multilateral Environmental Agreements'));
       $page = page_manager_get_current_page();
@@ -328,7 +371,7 @@ function informea_block_view($delta = '') {
       ];
       $raw_content['or'] = [
         '#type' => 'item',
-        '#markup' => 'or,'
+        '#markup' => 'or'
       ];
       $raw_content['countries'] = [
         '#type' => 'select',
@@ -1279,3 +1322,4 @@ function informea_get_published_taxonomy_terms($vocabulary) {
   }
   return $terms;
 }
+
