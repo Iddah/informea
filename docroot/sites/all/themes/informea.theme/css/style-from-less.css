@@ -1700,6 +1700,9 @@ body {
     margin-top: 1rem;
   }
 }
+.view-contacts-hub .views-exposed-widgets .views-submit-button {
+  display: none;
+}
 @media screen and (max-width: 1199px) {
   [dir=ltr] .view-contacts-hub .views-exposed-widgets .views-submit-button {
     padding-right: 0;
@@ -1811,9 +1814,6 @@ body {
         -ms-flex: 1;
             flex: 1;
   }
-}
-.view-contacts-hub .views-widget-filter-search_api_views_fulltext .form-item-search-api-views-fulltext {
-  display: block;
 }
 [dir=ltr] .view-contacts-hub .views-widget-filter-search_api_views_fulltext .form-control {
   border-bottom-right-radius: 0;
