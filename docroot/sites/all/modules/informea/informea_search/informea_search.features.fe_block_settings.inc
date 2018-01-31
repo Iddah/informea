@@ -528,8 +528,8 @@ function informea_search_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'sidebar_first',
+        'status' => 1,
         'theme' => 'informea_theme',
         'weight' => 0,
       ),
@@ -540,7 +540,7 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => 'Status',
     'visibility' => 0,
   );
 
