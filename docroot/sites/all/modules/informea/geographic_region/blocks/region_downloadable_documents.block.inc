@@ -59,6 +59,10 @@ function geographic_region_region_downloadable_documents_block_view() {
  *  The count query result.
  */
 function _get_content_count_by_region($content_type, $region_id = NULL, $topic_id = NULL, $fieldConditions = []) {
+  $fieldConditions['type'] = [
+    'field' => 'type',
+    'value' => $content_type,
+  ];
   if (!empty($region_id)) {
     $fieldConditions['field_region'] = [
       'field' => 'field_region',
@@ -99,7 +103,7 @@ function _get_content_count_by_region($content_type, $region_id = NULL, $topic_i
  * Builds the query for solr-based views.
  */
 function _geographic_region_build_search_link($region_id = NULL, $topic_id = NULL, $item, $link_title, $count) {
-  $f = [];
+  $f = ['type:' . $item['type']];
   if (!empty($region_id)) {
     $f[] = "field_region:{$region_id}";
   }
