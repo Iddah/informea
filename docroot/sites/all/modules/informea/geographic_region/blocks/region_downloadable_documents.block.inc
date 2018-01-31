@@ -59,23 +59,40 @@ function geographic_region_region_downloadable_documents_block_view() {
  *  The count query result.
  */
 function _get_content_count_by_region($content_type, $region_id = NULL, $topic_id = NULL, $fieldConditions = []) {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $content_type)
-    ->propertyCondition('status', NODE_PUBLISHED);
   if (!empty($region_id)) {
-    $query->fieldCondition('field_region', 'tid', $region_id);
+    $fieldConditions['field_region'] = [
+      'field' => 'field_region',
+      'value' => $region_id,
+    ];
   }
   if (!empty($topic_id)) {
-    $query->fieldCondition('field_mea_topic', 'tid', $topic_id);
+    $fieldConditions['field_mea_topic'] = [
+      'field' => 'field_mea_topic',
+      'value' => $topic_id,
+    ];
   }
+  $view = views_get_view('search');
+  $view->set_display('page');
+  $view->init_query();
+  /** @var \SearchApiViewsQuery $query */
+  $query = $view->query;
   foreach ($fieldConditions as $condition) {
-    $column = !empty($condition['column']) ? $condition['column'] : NULL;
-    $value = !empty($condition['value']) ? $condition['value'] : NULL;
-    $operator = !empty($condition['operator']) ? $condition['operator'] : NULL;
-    $query->fieldCondition($condition['field'], $column, $value, $operator);
+    if (!empty($condition['field']) && !empty($condition['value'])) {
+      $filter = $query->createFilter('AND', ['facet:' . $condition['field']]);
+      if (is_array($condition['value'])) {
+        foreach ($condition['value'] as $value) {
+          $filter->condition($condition['field'], $value);
+        }
+      }
+      else {
+        $filter->condition($condition['field'], $condition['value']);
+      }
+      $query->filter($filter);
+    }
   }
-  return $query->count()->execute();
+  $view->query = $query;
+  $view->execute();
+  return $view->total_rows;
 }
 
 /**
