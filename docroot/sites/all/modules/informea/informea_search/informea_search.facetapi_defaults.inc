@@ -862,7 +862,7 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->facet = 'field_document_type';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'roles' => array(
@@ -4924,6 +4924,12 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'auto-submit-delay' => '1500',
+    'range_simple' => 10,
+    'range_advanced' => '',
   );
   $export['search_api@default_index:block:field_document_type'] = $facet;
 
