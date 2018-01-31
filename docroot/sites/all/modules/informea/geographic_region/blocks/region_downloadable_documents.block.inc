@@ -108,7 +108,7 @@ function _geographic_region_build_search_link($region_id = NULL, $topic_id = NUL
     $f[] = "field_region:{$region_id}";
   }
   if (!empty($topic_id)) {
-    $f[] = "field_topic:{$topic_id}";
+    $f[] = "field_mea_topic:{$topic_id}";
   }
 
   if (!empty($item['fieldConditions'])) {
