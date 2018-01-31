@@ -61,7 +61,7 @@ function geographic_region_region_switch_topic_block_view() {
         if(!empty($current_topic) && $current_topic == $term->tid) {
           $tab_classes[] = 'active';
         }
-        $tab_content = l($term->name, $region_path . '/' . $term->name);
+        $tab_content = l($term->name, $region_path . '/' . strtolower(str_replace(' ', '-', $term->name)));
 
         $block['content'][] = [
           '#markup' => $tab_content,
