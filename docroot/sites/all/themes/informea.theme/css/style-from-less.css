@@ -1780,7 +1780,7 @@ body {
     font-size: .9em;
   }
   [dir] .view-contacts-hub .views-exposed-widgets .views-reset-button {
-    margin-top: 2rem;
+    margin-top: 0;
   }
   [dir=ltr] .view-contacts-hub .views-exposed-widgets .views-reset-button {
     clear: right;
@@ -1796,6 +1796,10 @@ body {
 }
 [dir] .view-contacts-hub .views-exposed-widgets .views-reset-button > .btn {
   padding: 0;
+}
+[dir] .view-contacts-hub .view-header + .view-filters .views-reset-button {
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 [dir] .view-contacts-hub .views-exposed-widget {
   margin-top: 8px;
@@ -1829,6 +1833,9 @@ body {
   .view-contacts-hub .form-item-sort-bef-combine {
     font-size: .9em;
   }
+}
+[dir] .view-contacts-hub .form-item-sort-bef-combine.form-group {
+  margin-bottom: 0;
 }
 .view-contacts-hub .form-item-sort-bef-combine.form-type-select {
   -webkit-box-align: center;

@@ -215,7 +215,7 @@
         font-size: .9em;
         clear: right;
         float: right;
-        margin-top: 2rem;
+        margin-top: 0;
       }
       > .btn {
         font-size: 1em;
@@ -223,6 +223,11 @@
       }
     }
   }
+
+  .view-header + .view-filters .views-reset-button {
+    margin-top: 2rem;
+  }
+
   .views-exposed-widget {
     margin-top: .5rem;
     padding-top: 0;
@@ -241,7 +246,9 @@
   }
 
   .form-item-sort-bef-combine {
+
     @media @grid-desktop { font-size: .9em; }
+    &.form-group { margin-bottom: 0; }
     &.form-type-select {
       align-items: center;
       display: flex;
