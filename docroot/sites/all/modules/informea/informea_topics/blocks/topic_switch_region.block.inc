@@ -61,7 +61,7 @@ function informea_topics_topic_switch_region_block_view() {
         if(!empty($current_region) && $current_region == $term->tid) {
           $tab_classes[] = 'active';
         }
-        $tab_content = l($term->name, $topic_path . '/' . $term->name);
+        $tab_content = l($term->name, $topic_path . '/' . strtolower(str_replace(' ', '-', $term->name)));
 
         $block['content'][] = [
           '#markup' => $tab_content,
