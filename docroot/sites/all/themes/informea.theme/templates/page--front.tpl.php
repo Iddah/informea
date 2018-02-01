@@ -34,9 +34,9 @@
     </div><!-- .container -->
   </div><!-- .hero-unit -->
 <?php endif; ?>
-<div class="container">
+<div>
   <?php if (!user_is_anonymous()) { print $messages; } ?>
-  <div class="row" id="row-features">
+  <div id="row-features">
     <?php if (!empty($page['content'])): ?>
       <?php print render($page['front_page_content']); ?>
     <?php endif; ?>
