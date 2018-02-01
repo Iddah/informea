@@ -430,9 +430,9 @@ function meeting_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_bootstrap_carousel_plugin_style';
   $handler->display->display_options['style_options']['interval'] = '5000';
-  $handler->display->display_options['style_options']['navigation'] = 1;
+  $handler->display->display_options['style_options']['navigation'] = 0;
   $handler->display->display_options['style_options']['indicators'] = 1;
-  $handler->display->display_options['style_options']['pause'] = 0;
+  $handler->display->display_options['style_options']['pause'] = 1;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -454,8 +454,8 @@ function meeting_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_url]';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<a class="event-title" href="[field_url]" title="[title]"><span>[title]</span><span class="more-link">Read More</span></a>';
   $handler->display->display_options['fields']['title']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -546,6 +546,7 @@ function meeting_views_default_views() {
     t('Type (field_event_type)'),
     t('Page'),
     t('Homepage events'),
+    t('<a class="event-title" href="[field_url]" title="[title]"><span>[title]</span><span class="more-link">Read More</span></a>'),
   );
   $export['events'] = $view;
 
@@ -587,7 +588,7 @@ function meeting_views_default_views() {
   $handler->display->display_options['fields']['field_decision_number']['field'] = 'field_decision_number';
   $handler->display->display_options['fields']['field_decision_number']['label'] = '';
   $handler->display->display_options['fields']['field_decision_number']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Indexed Content: Name */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -599,7 +600,7 @@ function meeting_views_default_views() {
     'title_link' => 'content',
     'title_class' => '',
   );
-  /* Sort criterion: Indexed Content: Order */
+  /* Sort criterion: Indexed Content: Sorting order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';

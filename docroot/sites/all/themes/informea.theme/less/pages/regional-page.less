@@ -15,13 +15,18 @@
   padding-bottom: 1.3em;
   text-transform: uppercase;
 }
-.regional-page-view-item-title() {
-  &, & a { color: @regional-page-light-blue; }
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.2;
+
+.emphasis-title() {
+  font-size: 1.8rem;
+  line-height: 1.3;
   margin-bottom: .6em;
   margin-top: 1.5em;
+}
+
+.regional-page-view-item-title() {
+  .emphasis-title();
+  font-weight: bold;
+  &, & a { color: @regional-page-light-blue; }
 }
 
 // Regional page specific styles
@@ -243,7 +248,9 @@
     font-size: 23px;
     font-weight: bold;
     margin-bottom: 2em;
-    margin-top: 0;
+    @media (min-width: @screen-sm-min) {
+      margin-top: 0;
+    }
   }
 }
 
@@ -325,6 +332,8 @@
 .view-learning-courses {
   .views-bootstrap-grid-plugin-style {
     .views-field-title {
+      .emphasis-title();
+      font-weight: normal;
       margin-bottom: 1.5em;
       margin-top: 1em;
     }
@@ -339,7 +348,10 @@
     @media (min-width: @screen-xs-min) and (max-width: @screen-md-max) {
       .col {
         float: left;
-        width: 50%;
+        .col-xs-6();
+        &:nth-child(3n + 3) {
+          clear: left;
+        }
       }
     }
   }

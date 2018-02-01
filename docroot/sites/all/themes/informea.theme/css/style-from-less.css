@@ -1972,14 +1972,15 @@ body {
   line-height: inherit;
 }
 [dir] .region-front-page-content .block-title, [dir] .region-front-page-content .block:first-child h2.block-title {
-  margin-top: 3em;
   margin-bottom: 2em;
 }
 @media screen and (max-width: 1199px) {
   [dir] .region-front-page-content .block-title, [dir] .region-front-page-content .block:first-child h2.block-title {
-    margin-top: 2em;
     margin-bottom: 1em;
   }
+}
+[dir] .frontpage-block {
+  padding: 2em 0;
 }
 [dir] #block-informea-frontpage-topics {
   text-align: center;
@@ -2096,7 +2097,10 @@ body {
 [dir] #block-informea-frontpage-topics .links > .topic-850 > a > img {
   background-color: #90bc2f;
 }
-#block-informea-frontpage-regions-and-parties {
+[dir] #block-informea-frontpage-regions-and-parties {
+  margin-top: -2em;
+}
+#block-informea-frontpage-regions-and-parties > .container {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -2109,13 +2113,12 @@ body {
           justify-content: center;
   min-height: 15em;
 }
-[dir] #block-informea-frontpage-regions-and-parties {
+[dir] #block-informea-frontpage-regions-and-parties > .container {
   background-image: url('../img/world-map.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   padding-bottom: 6em;
-  margin-top: 2em;
 }
 #block-informea-frontpage-regions-and-parties .block-title {
   -webkit-box-shadow: 0px 0px 7px 1px #ffffff;
@@ -2203,6 +2206,126 @@ body {
 #col-about .lead {
   font-size: 14px;
   font-weight: bold;
+}
+#block-block-25 {
+  font-weight: bold;
+}
+[dir] #block-block-25 {
+  margin-top: -2em;
+  text-align: center;
+}
+[dir] #block-views-events-homepage-events {
+  background-color: #fc3;
+  text-align: center;
+}
+#block-views-events-homepage-events,
+#block-views-events-homepage-events a {
+  color: #333333;
+}
+[dir] #block-views-events-homepage-events .carousel {
+  padding-bottom: 2em;
+}
+#block-views-events-homepage-events .carousel-indicators {
+  bottom: 0;
+  top: auto;
+}
+[dir=ltr] #block-views-events-homepage-events .carousel-indicators {
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+[dir=rtl] #block-views-events-homepage-events .carousel-indicators {
+  right: 50%;
+  left: auto;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+}
+[dir] #block-views-events-homepage-events .carousel-indicators li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#block-views-events-homepage-events .carousel-control {
+  display: none;
+}
+#block-views-events-homepage-events .carousel .views-field-title {
+  font-size: 28.8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+#block-views-events-homepage-events .carousel .event-title {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+}
+#block-views-events-homepage-events .carousel .event-title > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#block-views-events-homepage-events .carousel .more-link {
+  color: #1B7DA7;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+[dir=ltr] #block-views-events-homepage-events .carousel .more-link {
+  margin-left: .5em;
+}
+[dir=rtl] #block-views-events-homepage-events .carousel .more-link {
+  margin-right: .5em;
+}
+[dir] #block-views-learning-courses-promoted-block {
+  background-color: #0A8FC7;
+}
+#block-views-learning-courses-promoted-block,
+#block-views-learning-courses-promoted-block a {
+  color: #fff;
+}
+#block-views-learning-courses-promoted-block .views-field-field-tags {
+  position: absolute;
+}
+#block-views-learning-courses-promoted-block .views-field-field-tags li {
+  color: #fff;
+  text-transform: uppercase;
+}
+[dir] #block-views-learning-courses-promoted-block .views-field-field-tags li {
+  background-color: #16222E;
+  padding: .5em 1.5em;
+}
+#block-views-learning-courses-promoted-block .views-field-field-tags ul {
+  list-style: none;
+}
+[dir=ltr] #block-views-learning-courses-promoted-block .views-field-field-tags ul {
+  padding-left: 0;
+}
+[dir=rtl] #block-views-learning-courses-promoted-block .views-field-field-tags ul {
+  padding-right: 0;
+}
+[dir] #block-block-7 {
+  background-color: #E7E7E7;
+}
+[dir] #block-views-events-homepage-events + #block-block-7, [dir] #block-views-learning-courses-promoted-block + #block-block-7 {
+  background-color: #fff;
+}
+[dir] #block-block-7 #col-about {
+  padding-top: 0;
+}
+@media (max-width: 991px) {
+  [dir] #block-block-7 #col-about {
+    margin-bottom: 0;
+  }
+}
+[dir] .front .footer {
+  border-top: none;
+  margin-top: 0;
 }
 .node-type-country .facetapi-facet-field-region {
   display: none;
@@ -2379,9 +2502,10 @@ body {
 }
 .page-regions .views-field-title,
 .page-topics .views-field-title {
-  font-size: 18px;
+  font-size: 28.8px;
+  font-size: 1.8rem;
+  line-height: 1.3;
   font-weight: bold;
-  line-height: 1.2;
 }
 [dir] .page-regions .views-field-title, [dir] .page-topics .views-field-title {
   margin-bottom: .6em;
@@ -2460,9 +2584,10 @@ body {
 }
 .page-regions .pane-view-global-treaties .views-field-view-node,
 .page-topics .pane-view-global-treaties .views-field-view-node {
-  font-size: 18px;
+  font-size: 28.8px;
+  font-size: 1.8rem;
+  line-height: 1.3;
   font-weight: bold;
-  line-height: 1.2;
   font-weight: normal;
 }
 [dir] .page-regions .pane-view-global-treaties .views-field-view-node, [dir] .page-topics .pane-view-global-treaties .views-field-view-node {
@@ -2650,7 +2775,11 @@ body {
 }
 [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title {
   margin-bottom: 2em;
-  margin-top: 0;
+}
+@media (min-width: 768px) {
+  [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title {
+    margin-top: 0;
+  }
 }
 [dir] .regional-page-accent-panel-container {
   background-color: #F3F3F3;
@@ -2881,7 +3010,15 @@ fieldset[disabled] a.explore a {
 [dir] .regional-page-courses-panel-container .pager-current {
   padding: 0 .5em;
 }
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
+  font-size: 28.8px;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  font-weight: normal;
+}
 [dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
+  margin-bottom: .6em;
+  margin-top: 1.5em;
   margin-bottom: 1.5em;
   margin-top: 1em;
 }
@@ -2912,6 +3049,12 @@ fieldset[disabled] a.explore a {
   }
   [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col {
     float: right;
+  }
+  [dir=ltr] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
+    clear: left;
+  }
+  [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
+    clear: right;
   }
 }
 [dir] .view-learning-courses .view-content {
