@@ -55,6 +55,9 @@ function informea_theme_preprocess_page(&$variables) {
     case 'about/api':
       $breadcrumbs[] = t('API documentation');
       break;
+    case 'search':
+      $variables['page']['sidebar_first']['#no_well'] = TRUE;
+      break;
   }
   if(isset($variables['node'])) {
     $node = $variables['node'];
