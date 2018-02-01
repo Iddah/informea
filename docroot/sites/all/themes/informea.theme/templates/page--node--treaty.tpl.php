@@ -84,8 +84,12 @@
     <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
     <div class="node-header-container">
       <?php print render($title_prefix); ?>
-      <?php print informea_theme_treaty_logo_link($node); ?><h1 class="sr-only"><?php print $title; ?></h1>
-      <form class="select-switcher-form" role="form"><?php print drupal_render($variables['select-switch-treaties']); ?></form>
+      <?php print informea_theme_treaty_logo_link($node); ?>
+      <form class="select-switcher-form" role="form">
+        <div title="<?php print $title; ?>">
+          <?php print drupal_render($variables['select-switch-treaties']); ?>
+        </div>
+      </form>
     </div>
   </div>
 </div><!-- .page-header -->
