@@ -1,0 +1,46 @@
+.block-facetapi {
+  padding: 1.5em 0;
+
+  .block-title {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  & + .block-facetapi { border-top: 1px solid #ddd; }
+
+  .form-group { margin-bottom: 0; }
+
+  .well &:first-child {
+    padding-top: 0;
+  }
+
+}
+
+ul.facetapi-facetapi-links {
+  margin: 0;
+
+  li { padding: .2em 0; }
+
+  &.facetapi-facet-field-region,
+  &.facetapi-facet-field-mea-topic {
+    li { color: #8F8F8F; }
+  }
+
+  .item-label {
+    color: @text-color;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .facetapi-inactive {
+    color: inherit;
+  }
+
+  .facetapi-active {
+    display: none;
+    + .item-label {
+      color: #0099d5;
+    }
+  }
+
+}

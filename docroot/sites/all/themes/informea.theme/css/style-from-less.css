@@ -812,6 +812,46 @@ body {
   right: 28px;
   right: 2.8rem;
 }
+[dir] .block-facetapi {
+  padding: 1.5em 0;
+}
+[dir] .block-facetapi .block-title {
+  margin-top: 0;
+  padding-top: 0;
+}
+[dir] .block-facetapi + .block-facetapi {
+  border-top: 1px solid #ddd;
+}
+[dir] .block-facetapi .form-group {
+  margin-bottom: 0;
+}
+[dir] .well .block-facetapi:first-child {
+  padding-top: 0;
+}
+[dir] ul.facetapi-facetapi-links {
+  margin: 0;
+}
+[dir] ul.facetapi-facetapi-links li {
+  padding: .2em 0;
+}
+ul.facetapi-facetapi-links.facetapi-facet-field-region li,
+ul.facetapi-facetapi-links.facetapi-facet-field-mea-topic li {
+  color: #8F8F8F;
+}
+ul.facetapi-facetapi-links .item-label {
+  color: #333333;
+  font-style: italic;
+  font-weight: bold;
+}
+ul.facetapi-facetapi-links .facetapi-inactive {
+  color: inherit;
+}
+ul.facetapi-facetapi-links .facetapi-active {
+  display: none;
+}
+ul.facetapi-facetapi-links .facetapi-active + .item-label {
+  color: #0099d5;
+}
 .views-field-field-mea-topic,
 .page-topics .views-field-field-region,
 .views-field-field-mea-topic > .field-content,
