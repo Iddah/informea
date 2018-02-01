@@ -27,8 +27,13 @@ function informea_theme_preprocess_page(&$variables) {
     unset($variables['page']['content']['system_main']['pager']);
     unset($variables['page']['content']['system_main']['no_content']);
   }
+
+  // Handle language prefix in urls
+  global $language;
   $path = request_path();
-  switch ($path) {
+  $path_no_language_prefix = language_url_split_prefix($path, array($language))[1];
+
+  switch ($path_no_language_prefix) {
     case 'countries':
       $breadcrumbs[] = t('Parties');
       break;
