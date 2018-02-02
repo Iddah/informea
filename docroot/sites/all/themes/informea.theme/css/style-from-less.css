@@ -2180,15 +2180,15 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir] #block-informea-frontpage-regions-and-parties .form-group {
   margin-bottom: 0;
 }
-#block-informea-frontpage-regions-and-parties > .form-type-item {
+#block-informea-frontpage-regions-and-parties .form-type-item {
   font-style: italic;
   line-height: 26px;
 }
-[dir] #block-informea-frontpage-regions-and-parties > .form-type-item {
+[dir] #block-informea-frontpage-regions-and-parties .form-type-item {
   padding: 1em 0;
 }
 @media screen and (max-width: 1199px) {
-  [dir] #block-informea-frontpage-regions-and-parties > .form-type-item {
+  [dir] #block-informea-frontpage-regions-and-parties .form-type-item {
     text-align: center;
   }
 }
