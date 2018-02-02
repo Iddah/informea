@@ -121,6 +121,10 @@ body {
   .navbar {
     min-height: 4em;
   }
+  .navbar:before {
+    content: '';
+    height: 4em;
+  }
   .navbar-header,
   .navbar-collapse.collapse {
     -webkit-box-align: center;
@@ -672,10 +676,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  -js-display: inline-flex;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: 3em;
@@ -1122,6 +1126,12 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   border-top: 1px solid #fc3;
   padding: 0 .3em;
 }
+[dir=ltr] .search-block #search-form .edit-search-in {
+  margin-left: -1px;
+}
+[dir=rtl] .search-block #search-form .edit-search-in {
+  margin-right: -1px;
+}
 .search-block #search-form .form-text {
   -webkit-box-shadow: none;
 }
@@ -1160,12 +1170,14 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   display: -ms-inline-flexbox;
   -js-display: inline-flex;
   display: inline-flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 [dir] .search-block #search-form select, [dir] .search-block #search-form .select2-container {
   background-color: #E7E7E7;
   border-bottom: 1px solid #fc3;
-  border-top: 1px solid #fc3;
   border-radius: 0;
+  border-top: 1px solid #fc3;
   padding: 0 .3em;
 }
 .search-block #search-form select.select2-container-active:not(.select2-dropdown-open),
@@ -1268,7 +1280,9 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .js .informea-switcher {
   /* Make an auto-hiding scroller for the 3 people using a IE */
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
+  /* Hide overflow since the JS handles the scroll via translate */
+  overflow: hidden;
   /* Remove the default scrollbar for WebKit implementations */
 }
 .js .informea-switcher::-webkit-scrollbar {
@@ -1283,7 +1297,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   -js-display: inline-flex;
   display: inline-flex;
   font-size: 14px;
-  min-height: 44px;
 }
 [dir] .informea-switcher_link {
   margin-bottom: 0;
