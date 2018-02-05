@@ -27,8 +27,13 @@ function informea_theme_preprocess_page(&$variables) {
     unset($variables['page']['content']['system_main']['pager']);
     unset($variables['page']['content']['system_main']['no_content']);
   }
+
+  // Handle language prefix in urls
+  global $language;
   $path = request_path();
-  switch ($path) {
+  $path_no_language_prefix = language_url_split_prefix($path, array($language))[1];
+
+  switch ($path_no_language_prefix) {
     case 'countries':
       $breadcrumbs[] = t('Parties');
       break;
@@ -49,6 +54,9 @@ function informea_theme_preprocess_page(&$variables) {
       break;
     case 'about/api':
       $breadcrumbs[] = t('API documentation');
+      break;
+    case 'search':
+      $variables['page']['sidebar_first']['#no_well'] = TRUE;
       break;
   }
   if(isset($variables['node'])) {

@@ -79,8 +79,13 @@
     <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
     <div class="node-header-container">
       <?php print render($title_prefix); ?>
-      <?php print informea_theme_country_flag($node); ?><h1 class="sr-only"><?php print $title; ?></h1>
-      <form class="select-switcher-form" role="form"><?php print drupal_render($variables['select-switch-countries']); ?></form>
+      <?php print informea_theme_country_flag($node); ?>
+      <form class="select-switcher-form" role="form">
+        <div title="<?php print $title; ?>">
+          <?php print drupal_render($variables['select-switch-countries']); ?>
+        </div>
+      </form>
+
     </div>
   </div>
 </div><!-- .page-header -->

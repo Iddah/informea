@@ -22,10 +22,12 @@
     /* If JS present, let's hide the default scrollbar */
     .js & {
         /* Make an auto-hiding scroller for the 3 people using a IE */
-        -ms-overflow-style: -ms-autohiding-scrollbar;
+        -ms-overflow-style: none;
+        /* Hide overflow since the JS handles the scroll via translate */
+        overflow: hidden;
         /* Remove the default scrollbar for WebKit implementations */
         &::-webkit-scrollbar {
-            display: none;
+          display: none;
         }
     }
     /* positioning context for advancers */
@@ -40,7 +42,7 @@
     display: inline-flex;
     font-size: @font-size-base;
     margin-bottom: 0;
-    min-height: 44px;
+    // min-height: 44px;
   }
   &_link > a {
     border-left: 1px solid #D6D6D6;

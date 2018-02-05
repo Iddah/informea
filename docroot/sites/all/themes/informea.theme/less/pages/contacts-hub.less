@@ -154,9 +154,13 @@
       font-size: .9em;
       position: absolute;
       right: 0;
-      top: ~'calc(.5rem + 1.4em)';
+      top: ~'calc(.5rem + 1.4rem)';
       white-space: nowrap;
     }
+  }
+
+  .views-exposed-form {
+    @media @grid-desktop { float: right; }
   }
 
   .views-exposed-widgets {
@@ -225,7 +229,9 @@
   }
 
   .view-header + .view-filters .views-reset-button {
-    margin-top: 2rem;
+    @media @grid-desktop {
+      margin-top: 2rem;
+    }
   }
 
   .views-exposed-widget {

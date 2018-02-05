@@ -68,7 +68,13 @@ module.exports = function (grunt) {
     postcss: {
       options: {
         processors: [
-          require('postcss-cssnext'),
+          require('postcss-cssnext')({
+            features: {
+              rem: {
+                rootValue: 10
+              }
+            }
+          }),
           require('postcss-flexibility'),
           require('postcss-rtl')
         ],

@@ -34,6 +34,11 @@
   }
   .navbar {
     min-height: 4em;
+    // Bug #341: IE fix. See https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+    &:before {
+      content: '';
+      height: 4em;
+    }
   }
   .navbar-header,
   .navbar-collapse.collapse {
