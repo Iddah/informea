@@ -122,6 +122,10 @@ function informea_form_alter(&$form, $form_state, $form_id) {
       ),
     );
   };
+  if (strpos($form_id, 'facetapi_select_facet_form_') === 0) {
+    $form['facets']['#attributes']['class'][] = 'use-select-2';
+    $form['facets']['#attached'][] = array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified'))));
+  }
 }
 
 /**
