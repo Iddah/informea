@@ -1,16 +1,20 @@
 .block-facetapi {
-  padding: 1.5em 0;
+  margin: 1.5em 0;
 
   .block-title {
     margin-top: 0;
     padding-top: 0;
   }
 
-  & + .block-facetapi { border-top: 1px solid #ddd; }
+  & + .block-facetapi {
+    // border-top: 1px solid #ddd;
+    // padding-top: 1.5em;
+  }
 
   .form-group { margin-bottom: 0; }
 
-  .well &:first-child {
+  &:first-child {
+    margin-top: 0;
     padding-top: 0;
   }
 
