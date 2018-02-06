@@ -86,7 +86,7 @@ function informea_node_view($node, $view_mode, $langcode) {
  * Implements hook_node_access().
  */
 function informea_node_access($node, $op, $account) {
-  $deny_types = ['analytics_key', 'book'];
+  $deny_types = ['analytics_key', 'book', 'feed'];
   if (($op == 'view') && (in_array($node->type, $deny_types))) {
     if (user_is_anonymous()) {
       return NODE_ACCESS_DENY;
