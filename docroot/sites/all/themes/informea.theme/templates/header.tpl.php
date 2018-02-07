@@ -62,7 +62,8 @@
             <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'get-involved-menu-link'))); ?></li>
           </ul>
         </li><!-- .dropdown -->
-        <li><?php print l(t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'))); ?>
+        <li><?php print l($elearning_icon . t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'), 'html' => TRUE)); ?>
+        </li>
         </li>
         <li class="dropdown">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>

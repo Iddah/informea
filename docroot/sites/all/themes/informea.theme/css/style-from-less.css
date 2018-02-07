@@ -295,6 +295,12 @@ body {
   background-color: #fc3;
   border: none;
 }
+[dir=ltr] #free-online-courses-menu-link img {
+  margin-right: .5em;
+}
+[dir=rtl] #free-online-courses-menu-link img {
+  margin-left: .5em;
+}
 .use-select-2,
 .informea-select-2 {
   -moz-appearance: none;

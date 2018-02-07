@@ -15,6 +15,11 @@
  */
 function informea_theme_preprocess_page(&$variables) {
 
+  global $base_url;
+  // Add elearning SVG icon
+  $elearning_icon_path = $base_url . '/' . drupal_get_path('theme', 'informea_theme') . '/img/elearning.svg';
+  $variables['elearning_icon'] = theme('image', array('path' => $elearning_icon_path, 'attributes' => array('class' => array('elearning-icon'), 'height' => '20', 'width' => '27')));
+
   // Add Informea Treaties Block
   $block = block_load('informea', 'informea_treaties_block');
   $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
