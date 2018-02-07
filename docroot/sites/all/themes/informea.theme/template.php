@@ -14,6 +14,10 @@
  *   Nothing.
  */
 function informea_theme_preprocess_page(&$variables) {
+
+  $variant = variable_get('select2_compression_type', 'minified');
+  libraries_load('select2', $variant);
+
   $breadcrumbs = array();
   // Add the autocomplete library.
  drupal_add_library('system', 'ui.autocomplete');
