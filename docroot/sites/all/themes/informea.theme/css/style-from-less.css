@@ -295,19 +295,30 @@ body {
   background-color: #fc3;
   border: none;
 }
-.use-select-2 {
+.use-select-2,
+.informea-select-2 {
   -moz-appearance: none;
   -webkit-appearance: none;
   -webkit-box-shadow: none;
   color: inherit;
+  line-height: 26px;
 }
-[dir] .use-select-2 {
+[dir] .use-select-2, [dir] .informea-select-2 {
   background: transparent;
   border: none;
+  border-radius: 0;
           box-shadow: none;
   padding: 0;
+  border: 1px solid transparent;
 }
-.use-select-2::-ms-expand {
+[dir=ltr] .use-select-2, [dir=ltr] .informea-select-2 {
+  padding: 0 0 0 4px;
+}
+[dir=rtl] .use-select-2, [dir=rtl] .informea-select-2 {
+  padding: 0 4px 0 0;
+}
+.use-select-2::-ms-expand,
+.informea-select-2::-ms-expand {
   display: none;
 }
 .form-type-select {
@@ -334,7 +345,8 @@ body {
 [dir=rtl] .region-sidebar-first .select2-container, [dir=rtl] .region-sidebar-second .select2-container {
   width: 100% !important;
 }
-.select2-container .select2-choice {
+.select2-container .select2-choice,
+.facetapi-select {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -346,7 +358,7 @@ body {
   display: flex;
   width: 100%;
 }
-[dir] .select2-container .select2-choice {
+[dir] .select2-container .select2-choice, [dir] .facetapi-select {
   background: #fff;
           box-shadow: none;
 }
@@ -434,10 +446,11 @@ body {
 [dir] .select2-drop-mask {
   background-color: rgba(0, 0, 0, .3);
 }
-.select2-container .select2-choice {
+.select2-container .select2-choice,
+.facetapi-select {
   height: auto;
 }
-[dir] .select2-container .select2-choice {
+[dir] .select2-container .select2-choice, [dir] .facetapi-select {
   border-color: #ccc;
   border-radius: 0;
 }
@@ -756,7 +769,6 @@ ul.facetapi-facetapi-links.facetapi-facet-field-mea-topic li {
 ul.facetapi-facetapi-links .item-label {
   color: #333333;
   font-style: italic;
-  font-weight: bold;
 }
 ul.facetapi-facetapi-links .facetapi-inactive {
   color: inherit;
@@ -766,6 +778,15 @@ ul.facetapi-facetapi-links .facetapi-active {
 }
 ul.facetapi-facetapi-links .facetapi-active + .item-label {
   color: #0099d5;
+}
+.facetapi-facetapi-select-dropdowns .facetapi-select-submit {
+  display: none;
+}
+[dir=ltr] .facetapi-select {
+  padding: 0 0 0 4px;
+}
+[dir=rtl] .facetapi-select {
+  padding: 0 4px 0 0;
 }
 .views-field-field-mea-topic,
 .page-topics .views-field-field-region,

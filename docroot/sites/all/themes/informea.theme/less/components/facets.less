@@ -33,7 +33,7 @@ ul.facetapi-facetapi-links {
   .item-label {
     color: @text-color;
     font-style: italic;
-    font-weight: bold;
+    // font-weight: bold;
   }
 
   .facetapi-inactive {
@@ -47,4 +47,12 @@ ul.facetapi-facetapi-links {
     }
   }
 
+}
+
+.facetapi-facetapi-select-dropdowns {
+  .facetapi-select-submit { display: none; }
+}
+
+.facetapi-select:extend(.select2-container .select2-choice) {
+  padding: 0 0 0 4px;
 }

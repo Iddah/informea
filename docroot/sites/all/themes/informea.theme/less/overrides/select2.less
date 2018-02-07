@@ -1,5 +1,6 @@
 // General select2 styling
-.use-select-2 {
+.use-select-2,
+.informea-select-2 {
   -moz-appearance: none;
   -webkit-appearance: none;
   &::-ms-expand {
@@ -7,9 +8,15 @@
   }
   background: transparent;
   border: none;
+  border-radius: 0;
   box-shadow: none;
   color: inherit;
   padding: 0;
+
+  // Grab some of select2's styling
+  border: 1px solid transparent;
+  line-height: 26px;
+  padding: 0 0 0 4px;
 }
 
 .form-type-select {
