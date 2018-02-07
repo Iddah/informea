@@ -1,34 +1,3 @@
-@topic-switcher-padding-top: 8px;
-@topic-switcher-padding-bottom: 5px;
-
-@regional-page-gray: #8F8F8F;
-@regional-page-light-blue: #1D7CA7;
-@regional-page-dark-blue: #1B7DA7;
-
-.regional-page-underlined-title() {
-  border-bottom: 2px solid;
-  display: inline-block;
-  font-size: .9em;
-  font-weight: 500;
-  margin-bottom: .8em;
-  margin-top: 2em;
-  padding-bottom: 1.3em;
-  text-transform: uppercase;
-}
-
-.emphasis-title() {
-  font-size: 1.8rem;
-  line-height: 1.3;
-  margin-bottom: .6em;
-  margin-top: 1.5em;
-}
-
-.regional-page-view-item-title() {
-  .emphasis-title();
-  font-weight: bold;
-  &, & a { color: @regional-page-light-blue; }
-}
-
 // Regional page specific styles
 .page-regions,
 .page-topics {
@@ -73,9 +42,8 @@
     }
   }
 
-  .views-field-title {
-    .regional-page-view-item-title();
-  }
+  .views-field-title:extend(.view__title--strong all) {}
+
   .view-news-and-events {
     .views-field {
       color: @regional-page-gray;
@@ -130,8 +98,7 @@
     }
   }
 
-  .pane-view-global-treaties .views-field-view-node {
-    .regional-page-view-item-title();
+  .pane-view-global-treaties .views-field-view-node:extend(.view__title--strong all) {
     font-weight: normal;
   }
 
@@ -236,7 +203,7 @@
 // Regional & global treaties
 .pane-regional-treaties > .pane-title,
 .pane-geographic-region-region-downloadable-documents .section-title {
-  .regional-page-underlined-title();
+  &:extend(.section__title--underlined);
   color: @regional-page-gray;
 }
 
@@ -405,7 +372,7 @@
   }
   #block-views-take-part-webform-block,
   #block-block-23 {
-    > .block-title { .regional-page-underlined-title(); }
+    > .block-title:extend(.section__title--underlined) {}
   }
   // Take part block
   #block-views-take-part-webform-block {
