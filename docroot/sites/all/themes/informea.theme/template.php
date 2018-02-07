@@ -15,6 +15,19 @@
  */
 function informea_theme_preprocess_page(&$variables) {
 
+  // Add Informea Treaties Block
+  $block = block_load('informea', 'informea_treaties_block');
+  $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $informea_treaties_block = drupal_render($block_array);
+  $variables['informea_treaties_block'] = $informea_treaties_block;
+
+
+  // Add Informea Browse All Block
+  $block = block_load('informea', 'informea_browse_all_block');
+  $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $informea_browse_all_block = drupal_render($block_array);
+  $variables['informea_browse_all_block'] = $informea_browse_all_block;
+
   $variant = variable_get('select2_compression_type', 'minified');
   libraries_load('select2', $variant);
 
