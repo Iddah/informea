@@ -1,0 +1,54 @@
+.view-learning-courses {
+  .views-bootstrap-grid-plugin-style {
+    .views-field-title {
+      .emphasis-title();
+      font-weight: normal;
+      margin-bottom: 1.5em;
+      margin-top: 1em;
+    }
+    .views-field-field-image {
+      background-color: #fff;
+      display: flex;
+      height: 15rem;
+      overflow: hidden;
+      div, a { display: flex; width: 100%; }
+      img {
+        object-fit: cover;
+      }
+    }
+    @media (min-width: @screen-xs-min) and (max-width: @screen-md-max) {
+      .col {
+        float: left;
+        .col-xs-6();
+        &:nth-child(3n + 3) {
+          clear: left;
+        }
+      }
+    }
+  }
+  .view-content {
+    margin-top: 3em;
+  }
+  .view-footer {
+    a {
+      color: #fff;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+  }
+  .views-field-field-tags {
+    position: absolute;
+    li {
+      background-color: #16222E;
+      color: #fff;
+      padding: .5em 1.5em;
+      text-transform: uppercase;
+    }
+    ul { .list-unstyled(); }
+
+    .tag-New li {
+      background-color: #fc3;
+      color: @text-color;
+    }
+  }
+}

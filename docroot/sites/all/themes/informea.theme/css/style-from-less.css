@@ -1529,6 +1529,93 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .informea-switcher_advancer:focus .informea-switcher_advancer-icon {
   fill: #1D7CA7;
 }
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  font-weight: normal;
+}
+[dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
+  margin-bottom: .6em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-top: 1em;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  height: 150px;
+  height: 15rem;
+  overflow: hidden;
+}
+[dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
+  background-color: #fff;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image div,
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  width: 100%;
+}
+.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 480px) and (max-width: 1199px) {
+  .view-learning-courses .views-bootstrap-grid-plugin-style .col {
+    width: 50%;
+  }
+  [dir=ltr] .view-learning-courses .views-bootstrap-grid-plugin-style .col {
+    float: left;
+  }
+  [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col {
+    float: right;
+  }
+  [dir=ltr] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
+    clear: left;
+  }
+  [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
+    clear: right;
+  }
+}
+[dir] .view-learning-courses .view-content {
+  margin-top: 3em;
+}
+.view-learning-courses .view-footer a {
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.view-learning-courses .views-field-field-tags {
+  position: absolute;
+}
+.view-learning-courses .views-field-field-tags li {
+  color: #fff;
+  text-transform: uppercase;
+}
+[dir] .view-learning-courses .views-field-field-tags li {
+  background-color: #16222E;
+  padding: .5em 1.5em;
+}
+.view-learning-courses .views-field-field-tags ul {
+  list-style: none;
+}
+[dir=ltr] .view-learning-courses .views-field-field-tags ul {
+  padding-left: 0;
+}
+[dir=rtl] .view-learning-courses .views-field-field-tags ul {
+  padding-right: 0;
+}
+.view-learning-courses .views-field-field-tags .tag-New li {
+  color: #333333;
+}
+[dir] .view-learning-courses .views-field-field-tags .tag-New li {
+  background-color: #fc3;
+}
 [dir] .page-node-contacts-hub .page-header {
   margin-bottom: 0;
 }
@@ -2383,26 +2470,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 #block-views-learning-courses-promoted-block a {
   color: #fff;
 }
-#block-views-learning-courses-promoted-block .views-field-field-tags {
-  position: absolute;
-}
-#block-views-learning-courses-promoted-block .views-field-field-tags li {
-  color: #fff;
-  text-transform: uppercase;
-}
-[dir] #block-views-learning-courses-promoted-block .views-field-field-tags li {
-  background-color: #16222E;
-  padding: .5em 1.5em;
-}
-#block-views-learning-courses-promoted-block .views-field-field-tags ul {
-  list-style: none;
-}
-[dir=ltr] #block-views-learning-courses-promoted-block .views-field-field-tags ul {
-  padding-left: 0;
-}
-[dir=rtl] #block-views-learning-courses-promoted-block .views-field-field-tags ul {
-  padding-right: 0;
-}
 [dir] #block-block-7 {
   background-color: #E7E7E7;
 }
@@ -3103,61 +3170,6 @@ fieldset[disabled] a.explore a {
 }
 [dir] .regional-page-courses-panel-container .pager-current {
   padding: 0 .5em;
-}
-.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 1.3;
-  font-weight: normal;
-}
-[dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
-  margin-bottom: .6em;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  margin-top: 1em;
-}
-.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
-  min-height: 150px;
-}
-[dir] .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image {
-  background-color: #fff;
-}
-.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image div,
-.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  width: 100%;
-}
-.view-learning-courses .views-bootstrap-grid-plugin-style .views-field-field-image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-@media (min-width: 480px) and (max-width: 1199px) {
-  .view-learning-courses .views-bootstrap-grid-plugin-style .col {
-    width: 50%;
-  }
-  [dir=ltr] .view-learning-courses .views-bootstrap-grid-plugin-style .col {
-    float: left;
-  }
-  [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col {
-    float: right;
-  }
-  [dir=ltr] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
-    clear: left;
-  }
-  [dir=rtl] .view-learning-courses .views-bootstrap-grid-plugin-style .col:nth-child(3n + 3) {
-    clear: right;
-  }
-}
-[dir] .view-learning-courses .view-content {
-  margin-top: 3em;
-}
-.view-learning-courses .view-footer a {
-  color: #fff;
-  font-weight: 300;
-  letter-spacing: 1px;
 }
 [dir] .involvement {
   background-color: #1B7DA7;
