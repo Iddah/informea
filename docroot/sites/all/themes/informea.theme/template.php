@@ -81,6 +81,7 @@ function informea_theme_preprocess_page(&$variables) {
       $variables['page']['sidebar_first']['#no_well'] = TRUE;
       break;
   }
+
   if(isset($variables['node'])) {
     $node = $variables['node'];
     switch ($node->type) {
@@ -251,11 +252,28 @@ function informea_theme_preprocess_page(&$variables) {
   }
 
   $view = views_get_page_view();
-  if (!empty($view) && $view->name == 'documents' && $view->current_display == 'page_1') {
+  if (!empty($view) && $view->name == 'search' && $view->current_display == 'search_documents') {
     $node = node_load(arg(1));
     $variables['node'] = $node;
     $variables['theme_hook_suggestions'][] = 'page__node__treaty';
     drupal_set_title($node->title);
+
+      $variables['content_column_class'] = ' class="col-sm-9"';
+      $treaties = treaty_get_treaties_as_select_options();
+      $variables['treaties'] = $treaties;
+      $treaties1 = $treaties;
+      $menu_object = menu_get_object();
+      $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
+      if (!empty($menu_object->context)) {
+          $selected_treaty .= '/' . $menu_object->context;
+      }
+
+      $variables['select-switch-treaties'] = array(
+          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
+          '#options' => $treaties1,
+          '#type' => 'select',
+          '#value' => $selected_treaty,
+      );
   }
 }
 

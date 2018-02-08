@@ -58,8 +58,8 @@ function informea_search_facet_items_alter(&$build, &$settings) {
         if (!empty($item['#query']['f'])) {
           $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
         }
-        if (!empty($item['#query']['search_api_views_fulltext'])) {
-          $select_all['#query']['search_api_views_fulltext'] = $item['#query']['search_api_views_fulltext'];
+        if (!empty($item['#query']['text'])) {
+          $select_all['#query']['text'] = $item['#query']['text'];
         }
       }
       if (!empty($select_all['#path'])) {
@@ -91,8 +91,8 @@ function informea_search_views_pre_render(&$view) {
     case 'informea_search_bilateral_treaties':
     case 'informea_search_goals_and_principles':
       $content = '';
-      if (@$_GET['search_api_views_fulltext']) {
-        $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['search_api_views_fulltext']);
+      if (@$_GET['text']) {
+        $content = sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), @$_GET['text']);
       }
       $view->attachment_before = $content;
       break;
@@ -330,7 +330,8 @@ function informea_search_ajax_callback($data) {
 
 function informea_search_form($form, $form_state) {
   $action = 'search';
-  $search_query = !empty($_GET['search_api_views_fulltext']) ? check_plain($_GET['search_api_views_fulltext']) : '';
+  $search_query = !empty($_GET['text']) ? check_plain($_GET['text']) : '';
+  $variant = variable_get('select2_compression_type', 'minified');
   $search_category_options = [
     'treaties' => [
       'label' => t('Treaties'),
@@ -403,7 +404,7 @@ function informea_search_form($form, $form_state) {
     '#always_process' => TRUE,
     '#token' => FALSE,
     '#attributes' => ['class' => ['search-form']],
-    'search_api_views_fulltext' => [
+    'text' => [
       '#theme_wrappers' => ['informea_search_form_wrapper'],
       '#type' => 'textfield',
       '#default_value' => html_entity_decode($search_query),
@@ -586,8 +587,8 @@ function informea_search_prepare_search() {
   if (!empty($_GET['field_mea_topic'])) {
     $options['query']['f'][] = "field_mea_topic:{$_GET['field_mea_topic']}";
   }
-  if (!empty($_GET['search_api_views_fulltext'])) {
-    $options['query']['search_api_views_fulltext'] = check_plain($_GET['search_api_views_fulltext']);
+  if (!empty($_GET['text'])) {
+    $options['query']['text'] = check_plain($_GET['text']);
   }
   drupal_goto('search', $options);
 }
@@ -597,17 +598,34 @@ function informea_search_prepare_search() {
  * Implements hook_form_alter().
  *
  * Hide the form full-text search field to the users. The field is
- * added to allow passing search_api_views_fulltext parameter
+ * added to allow passing text parameter
  */
 function informea_search_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-page' && !empty($_GET['f'])) {
-    foreach ($_GET['f'] as $key => $val) {
-      $form["f[{$key}]"] = [
-        '#type' => 'hidden',
-        '#weight' => '50',
-        '#value' => $val,
-      ];
-    }
+
+  if ($form_id == 'views_exposed_form'){
+      switch ($form['#id']) {
+          case 'views-exposed-form-search-search':
+              if(!empty($_GET['f'])) {
+                  foreach ($_GET['f'] as $key => $val) {
+                      $form["f[{$key}]"] = [
+                          '#type' => 'hidden',
+                          '#weight' => '50',
+                          '#value' => $val,
+                      ];
+                  }
+              }
+              hide($form['submit']);
+              hide($form['text']);
+              unset($form['#info']['filter-search_api_views_fulltext']['label']);
+              break;
+          case 'views-exposed-form-search-search-documents':
+              hide($form['submit']);
+              hide($form['text_documents']);
+              unset($form['#info']['filter-search_api_views_fulltext']['label']);
+          default:
+              break;
+      }
+
   }
 }
 

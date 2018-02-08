@@ -2271,12 +2271,6 @@ ul[class*="facetapi"] a {
 [dir] .taxonomy-term-related-content-facets .panel-pane:first-child h2.pane-title {
   margin-top: 0;
 }
-.form-item-search-api-views-fulltext {
-  display: none;
-}
-.view-documents .form-item-search-api-views-fulltext {
-  display: block;
-}
 /*
 body[class*='page-search'] .block-facetapi a {
   color: #444;

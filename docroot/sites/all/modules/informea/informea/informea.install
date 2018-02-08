@@ -508,3 +508,13 @@ function informea_update_7029() {
 function informea_update_7030() {
   variable_set('social_media_links_appearance', array('orientation' => 'h', 'show_name' => 0));
 }
+
+/**
+ * Task #344 - Documents search view
+ */
+function informea_update_7031() {
+  features_revert_module('document');
+  features_revert_module('informea_search');
+  features_revert_module('informea');
+  features_revert_module('goal');
+}
