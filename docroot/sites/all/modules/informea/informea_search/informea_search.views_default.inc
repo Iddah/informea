@@ -123,9 +123,9 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Fulltext search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'text';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -156,8 +156,112 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
+  $handler = $view->new_display('page', 'Page', 'search');
   $handler->display->display_options['path'] = 'search';
+
+  /* Display: Single MEA's documents */
+  $handler = $view->new_display('page', 'Single MEA\'s documents', 'search_documents');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Documents';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Search: Excerpt */
+  $handler->display->display_options['fields']['search_api_excerpt']['id'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['fields']['search_api_excerpt']['field'] = 'search_api_excerpt';
+  $handler->display->display_options['fields']['search_api_excerpt']['label'] = '';
+  $handler->display->display_options['fields']['search_api_excerpt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_excerpt']['link_to_entity'] = 0;
+  /* Field: Indexed Content: Abstract document » The file. */
+  $handler->display->display_options['fields']['field_document_abstract_file']['id'] = 'field_document_abstract_file';
+  $handler->display->display_options['fields']['field_document_abstract_file']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['fields']['field_document_abstract_file']['field'] = 'field_document_abstract_file';
+  $handler->display->display_options['fields']['field_document_abstract_file']['label'] = '';
+  $handler->display->display_options['fields']['field_document_abstract_file']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_document_abstract_file']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_document_abstract_file']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_document_abstract_file']['bypass_access'] = 0;
+  /* Field: Indexed Content: Treaty */
+  $handler->display->display_options['fields']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['fields']['field_treaty']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['fields']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['fields']['field_treaty']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_treaty']['alter']['text'] = '<dt>Instrument:&nbsp;&nbsp;</dt><dl>[field_treaty]</dl>';
+  $handler->display->display_options['fields']['field_treaty']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_treaty']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_treaty']['bypass_access'] = 0;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Content: Treaty */
+  $handler->display->display_options['arguments']['field_treaty']['id'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['arguments']['field_treaty']['field'] = 'field_treaty';
+  $handler->display->display_options['arguments']['field_treaty']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_treaty']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_treaty']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_treaty']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_treaty']['not'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'text_documents';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'document' => 'document',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
+  $handler->display->display_options['filters']['type']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['type']['group_info']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['group_info']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['type']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['path'] = 'node/%/documents';
   $translatables['search'] = array(
     t('Master'),
     t('Search InforMEA'),
@@ -186,8 +290,14 @@ Date of text Asc|Sort by Least Recent'),
     t('Sorry, there are no results for this search...'),
     t('Relevance'),
     t('Date of text'),
-    t('Fulltext search'),
+    t('Search'),
     t('Page'),
+    t('Single MEA\'s documents'),
+    t('Documents'),
+    t('Treaty'),
+    t('<dt>Instrument:&nbsp;&nbsp;</dt><dl>[field_treaty]</dl>'),
+    t('All'),
+    t('Content type'),
   );
   $export['search'] = $view;
 
