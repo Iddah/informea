@@ -43,10 +43,7 @@
         <li class="dropdown dropdown-full-width">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
           <?php print '<a href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
-          <?php $block = block_load('informea', 'informea_treaties_block');
-          $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
-          $output = drupal_render($block_array);
-          print $output; ?>
+          <?php print $informea_treaties_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
         <li><?php print l(t('Laws and Cases'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-link'))); ?></li>
@@ -65,16 +62,13 @@
             <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'get-involved-menu-link'))); ?></li>
           </ul>
         </li><!-- .dropdown -->
-        <li><?php print l(t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'))); ?>
+        <li><?php print l($elearning_icon . t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'), 'html' => TRUE)); ?>
+        </li>
         </li>
         <li class="dropdown">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
           <?php print '<a class="menu-title">' . t('Browse all …') . ' <span class="caret"></span></a>'; ?>
-
-          <?php $block = block_load('informea', 'informea_browse_all_block');
-          $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
-          $output = drupal_render($block_array);
-          print $output; ?>
+          <?php print $informea_browse_all_block; ?>
         </li><!-- .dropdown -->
         <?php print render($page['inside_nav']); ?>
       </ul><!-- .nav .navbar-nav -->

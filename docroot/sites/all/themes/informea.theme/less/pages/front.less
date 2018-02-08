@@ -1,11 +1,5 @@
-.informea-frontpage-italic-heading {
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-}
-
 .region-front-page-content {
-  .block-title:extend(.informea-frontpage-italic-heading),
+  .block-title:extend(.heading--italic),
   .block:first-child h2.block-title {
     margin-bottom: 2em;
     line-height: inherit;
@@ -121,24 +115,8 @@
     min-width: 20em;
   }
 
-  .form-type-select,
-  .select2-choice {
-    width: 100%;
-  }
   .select2-container {
     width: 100% !important;
-    .select2-arrow {
-      margin-left: auto;
-      b { display: block; }
-    }
-  }
-
-  .select2-default { color: @text-color !important; }
-
-  .select2-choice {
-    border-color: #ccc;
-    border-radius: 0;
-    height: auto;
   }
 
 }
@@ -207,17 +185,6 @@
 #block-views-learning-courses-promoted-block {
   background-color: #0A8FC7;
   &, & a { color: #fff; }
-  .views-field-field-tags {
-    position: absolute;
-    li {
-      background-color: #16222E;
-      color: #fff;
-      padding: .5em 1.5em;
-      text-transform: uppercase;
-    }
-    ul { .list-unstyled(); }
-
-  }
 }
 
 // 'United Nations Information Portal...' section

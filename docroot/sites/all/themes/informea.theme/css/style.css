@@ -1,4 +1,4 @@
-/* Scaffolding */
+Scaffolding */
 /* ----------- */
 /* Links */
 a {
@@ -3781,24 +3781,24 @@ body.page-search-publications div.region-sidebar-first ul,
 body.page-search-bilateral-treaties div.region-sidebar-first ul {
   list-style-type: none;
 }
-[dir] body[class*="page-search"] div.region-sidebar-first ul,
-[dir] body.page-search div.region-sidebar-first ul,
+/* [dir] body[class*="page-search"] div.region-sidebar-first ul,
+[dir] body.page-search div.region-sidebar-first ul, */
 [dir] body.page-search-legislation div.region-sidebar-first ul,
 [dir] body.page-search-court-decisions div.region-sidebar-first ul,
 [dir] body.page-search-publications div.region-sidebar-first ul,
 [dir] body.page-search-bilateral-treaties div.region-sidebar-first ul {
   padding: 0;
 }
-[dir=ltr] body[class*="page-search"] div.region-sidebar-first ul,
-[dir=ltr] body.page-search div.region-sidebar-first ul,
+/* [dir=ltr] body[class*="page-search"] div.region-sidebar-first ul, */
+/* [dir=ltr] body.page-search div.region-sidebar-first ul, */
 [dir=ltr] body.page-search-legislation div.region-sidebar-first ul,
 [dir=ltr] body.page-search-court-decisions div.region-sidebar-first ul,
 [dir=ltr] body.page-search-publications div.region-sidebar-first ul,
 [dir=ltr] body.page-search-bilateral-treaties div.region-sidebar-first ul {
   margin: 0 0 0 5px;
 }
-[dir=rtl] body[class*="page-search"] div.region-sidebar-first ul,
-[dir=rtl] body.page-search div.region-sidebar-first ul,
+/* [dir=rtl] body[class*="page-search"] div.region-sidebar-first ul,
+[dir=rtl] body.page-search div.region-sidebar-first ul, */
 [dir=rtl] body.page-search-legislation div.region-sidebar-first ul,
 [dir=rtl] body.page-search-court-decisions div.region-sidebar-first ul,
 [dir=rtl] body.page-search-publications div.region-sidebar-first ul,

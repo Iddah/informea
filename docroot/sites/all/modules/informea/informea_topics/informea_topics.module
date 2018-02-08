@@ -70,10 +70,6 @@ function informea_topics_page_title() {
         '#default_value' => url('/taxonomy/term/' . $topic_id),
         '#prefix' => '<h1>' . $title . '</h1>',
         '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-geographic-region'],
-        '#select2' => [
-          'width' => 'auto'
-        ],
-        '#attached' => array('libraries_load' => array(array('select2', variable_get('select2_compression_type', 'minified')))),
       ];
     }
   }
