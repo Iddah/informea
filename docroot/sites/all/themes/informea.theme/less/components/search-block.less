@@ -57,6 +57,7 @@
     .input-group-btn {
       width: auto;
       button {
+        height: 100%;
         padding: 0;
         @media (max-width: @screen-xs-max) {
           width: 30px;
@@ -81,6 +82,7 @@
       box-shadow: none;
       padding-left: 2em;
       padding-right: 2em;
+      height: auto;
       @media (max-width: @screen-xs-max) {
         padding-left: .5em;
         padding-right: .5em;
@@ -146,4 +148,98 @@
   .search-block & .select2-container.select2-container-active {
     border-bottom: 1px solid;
   }
+}
+
+
+// Custom select2 styling for search block
+.edit-search-category-drop,
+.edit-geographic-region-drop {
+  .select2-results {
+    max-height: 100vh;
+  }
+}
+.edit-search-category-drop {
+  .select2-result-sub {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .select2-results-dept-0:last-child {
+    background-color: #E7E7E7;
+  }
+  .select2-results-dept-1 {
+    color: #8A8A8A;
+    display: flex;
+    &:before {
+      content: '\2022';
+    }
+    &:first-child {
+      color: #424242;
+      flex-basis: 100%;
+      &.select2-result > .select2-result-label { padding-left: 0; }
+      &:before { content: none; }
+    }
+    &:nth-child(2) {
+      &:before {
+        content: '\21B3';
+        float: left;
+        margin-right: .1em;
+        color: inherit;
+        [dir="rtl"] & {
+          content: '\21B5';
+        }
+      }
+    }
+  }
+  .select2-highlighted {
+    background-color: initial;
+    > .select2-result-label { text-decoration: underline; }
+  }
+  .select2-result-unselectable:hover,
+  .select2-result-unselectable:focus {
+    background-color: #098FC5;
+    &, .select2-result-selectable { color: #fff; }
+    .select2-highlighted > .select2-result-label {
+      color: #fc3;
+      text-decoration: none;
+    }
+  }
+  .select2-results-dept-0.select2-result-unselectable {
+    padding: .3em 1.5em;
+  }
+  .select2-result-unselectable > .select2-result-label {
+    display: none;
+  }
+  .select2-results ul.select2-result-sub > li .select2-result-label {
+    padding-left: 7px;
+  }
+}
+
+.edit-geographic-region-drop {
+  .select2-result-label {
+    padding: .5em 1.5em;
+  }
+  .select2-highlighted {
+    > .select2-result-label:before {
+      border-bottom: 8px solid transparent;
+      border-left: 10px solid;
+      border-top: 8px solid transparent;
+      content: '';
+      display: inline-block;
+      height: 0;
+      left: .5em;
+      position: absolute;
+      vertical-align: middle;
+      width: 0;
+    }
+  }
+}
+.category-group-title {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.category-group-inner {
+  font-size: 12px;
+  font-style: italic;
 }

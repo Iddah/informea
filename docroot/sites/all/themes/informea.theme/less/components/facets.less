@@ -1,16 +1,20 @@
 .block-facetapi {
-  padding: 1.5em 0;
+  margin: 1.5em 0;
 
   .block-title {
     margin-top: 0;
     padding-top: 0;
   }
 
-  & + .block-facetapi { border-top: 1px solid #ddd; }
+  & + .block-facetapi {
+    // border-top: 1px solid #ddd;
+    // padding-top: 1.5em;
+  }
 
   .form-group { margin-bottom: 0; }
 
-  .well &:first-child {
+  &:first-child {
+    margin-top: 0;
     padding-top: 0;
   }
 
@@ -29,7 +33,7 @@ ul.facetapi-facetapi-links {
   .item-label {
     color: @text-color;
     font-style: italic;
-    font-weight: bold;
+    // font-weight: bold;
   }
 
   .facetapi-inactive {
@@ -43,4 +47,16 @@ ul.facetapi-facetapi-links {
     }
   }
 
+}
+
+.facetapi-facetapi-select-dropdowns {
+  .informea-select-2,
+  .select2-container .select2-choice {
+    height: 2.5em;
+  }
+  .facetapi-select-submit { display: none; }
+}
+
+.facetapi-select:extend(.select2-container .select2-choice) {
+  padding: 0 0 0 4px;
 }

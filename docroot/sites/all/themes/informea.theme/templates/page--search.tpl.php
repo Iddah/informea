@@ -73,7 +73,7 @@
  * @ingroup themeable
  */
 if (!empty($page['sidebar_first'])) {
-  $content_column_class = ' class="col-sm-9 pull-right"';
+  $content_column_class = ' class="col-sm-9"';
 }
 ?>
 <?php include 'header.tpl.php'; ?>
@@ -91,7 +91,12 @@ if (!empty($page['sidebar_first'])) {
     </header><!-- #page-header -->
   <?php endif; ?>
   <div class="row">
-    <section<?php print $content_column_class; ?> class="pull-right">
+    <?php if (!empty($page['sidebar_first'])): ?>
+      <aside id="sidebar-first" class="col-sm-3" role="complementary">
+        <?php print render($page['sidebar_first']); ?>
+      </aside><!-- #sidebar-first .col-sm-3 -->
+    <?php endif; ?>
+    <section<?php print $content_column_class; ?>>
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted jumbotron">
           <?php print render($page['highlighted']); ?>
@@ -118,13 +123,8 @@ if (!empty($page['sidebar_first'])) {
       print $content;
       ?>
     </section>
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside id="sidebar-first" class="col-sm-3 pull-left" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside><!-- #sidebar-first .col-sm-3 -->
-    <?php endif; ?>
     <?php if (!empty($page['sidebar_second'])): ?>
-      <aside id="sidebar-second" class="col-sm-3 pull-right" role="complementary">
+      <aside id="sidebar-second" class="col-sm-3" role="complementary">
         <?php print render($page['sidebar_second']); ?>
       </aside><!-- #sidebar-second .col-sm-3 -->
     <?php endif; ?>

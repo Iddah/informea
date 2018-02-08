@@ -411,9 +411,8 @@ function informea_search_form($form, $form_state) {
       '#size' => 25,
       '#maxlength' => 255,
       '#attributes' => [
-        'placeholder' => t('Search by keyword(s)'),
+        'placeholder' => t('Search'),
       ],
-      '#attached' => ['libraries_load' => [['select2', $variant]]],
       '#category-options' => $search_category_options,
     ],
     'action' => [

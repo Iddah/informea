@@ -80,7 +80,7 @@
  * @ingroup themeable
  */
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<div id="node-<?php print $node->nid; ?>" class="node--search-item <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
     <div class="left-column">
         <?php print render($content['left_column']); ?>
