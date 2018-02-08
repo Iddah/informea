@@ -55,7 +55,7 @@ function informea_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -30,
+        'weight' => -38,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +83,7 @@ function informea_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -38,
+        'weight' => -47,
       ),
       'seven' => array(
         'region' => '',

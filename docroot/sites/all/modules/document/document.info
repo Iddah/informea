@@ -99,5 +99,4 @@ features[variable][] = xmlsitemap_settings_node_document
 features[variable][] = xmlsitemap_settings_taxonomy_term_document_author
 features[variable][] = xmlsitemap_settings_taxonomy_term_document_identifier_type
 features[variable][] = xmlsitemap_settings_taxonomy_term_document_type
-features[views_view][] = documents
 features_exclude[dependencies][page_manager] = page_manager
