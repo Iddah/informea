@@ -27,7 +27,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -31,
+        'weight' => -34,
       ),
       'seven' => array(
         'region' => '',
@@ -55,7 +55,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -48,
+        'weight' => -51,
       ),
       'seven' => array(
         'region' => '',
@@ -83,7 +83,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -33,
+        'weight' => -36,
       ),
       'seven' => array(
         'region' => '',
@@ -111,7 +111,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -55,
+        'weight' => -58,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -51,
+        'weight' => -54,
       ),
       'seven' => array(
         'region' => '',
@@ -167,7 +167,7 @@ function informea_search_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'informea_theme',
-        'weight' => -56,
+        'weight' => -53,
       ),
       'seven' => array(
         'region' => '',
@@ -195,7 +195,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -44,
+        'weight' => -47,
       ),
       'seven' => array(
         'region' => '',
@@ -223,7 +223,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -46,
+        'weight' => -49,
       ),
       'seven' => array(
         'region' => '',
@@ -251,7 +251,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -34,
+        'weight' => -37,
       ),
       'seven' => array(
         'region' => '',
@@ -279,7 +279,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -57,
+        'weight' => -60,
       ),
       'seven' => array(
         'region' => '',
@@ -307,7 +307,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -53,
+        'weight' => -56,
       ),
       'seven' => array(
         'region' => '',
@@ -335,7 +335,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -35,
+        'weight' => -38,
       ),
       'seven' => array(
         'region' => '',
@@ -363,7 +363,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -54,
+        'weight' => -57,
       ),
       'seven' => array(
         'region' => '',
@@ -391,7 +391,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -36,
+        'weight' => -39,
       ),
       'seven' => array(
         'region' => '',
@@ -419,7 +419,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -50,
+        'weight' => -53,
       ),
       'seven' => array(
         'region' => '',
@@ -447,7 +447,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -32,
+        'weight' => -35,
       ),
       'seven' => array(
         'region' => '',
@@ -475,7 +475,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -49,
+        'weight' => -52,
       ),
       'seven' => array(
         'region' => '',
@@ -503,7 +503,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -37,
+        'weight' => -40,
       ),
       'seven' => array(
         'region' => '',
@@ -531,7 +531,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => 0,
+        'weight' => -28,
       ),
       'seven' => array(
         'region' => '',
@@ -559,7 +559,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -47,
+        'weight' => -50,
       ),
       'seven' => array(
         'region' => '',
@@ -587,7 +587,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -42,
+        'weight' => -45,
       ),
       'seven' => array(
         'region' => '',
@@ -615,7 +615,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -56,
+        'weight' => -59,
       ),
       'seven' => array(
         'region' => '',
@@ -643,7 +643,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -52,
+        'weight' => -55,
       ),
       'seven' => array(
         'region' => '',
@@ -671,7 +671,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -30,
+        'weight' => -33,
       ),
       'seven' => array(
         'region' => '',
@@ -699,7 +699,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -40,
+        'weight' => -43,
       ),
       'seven' => array(
         'region' => '',
@@ -727,7 +727,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -43,
+        'weight' => -46,
       ),
       'seven' => array(
         'region' => '',
@@ -755,7 +755,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -41,
+        'weight' => -44,
       ),
       'seven' => array(
         'region' => '',
@@ -783,7 +783,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -29,
+        'weight' => -32,
       ),
       'seven' => array(
         'region' => '',
@@ -811,7 +811,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -38,
+        'weight' => -41,
       ),
       'seven' => array(
         'region' => '',
@@ -839,7 +839,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -45,
+        'weight' => -48,
       ),
       'seven' => array(
         'region' => '',
@@ -867,7 +867,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -39,
+        'weight' => -42,
       ),
       'seven' => array(
         'region' => '',
