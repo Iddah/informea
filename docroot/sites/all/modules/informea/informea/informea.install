@@ -526,3 +526,14 @@ function informea_update_7032() {
   features_revert_module('country_data');
   features_revert_module('informea_search');
 }
+
+/**
+ * Task #348 - Topical landing page
+ */
+function informea_update_7033() {
+  module_enable(array('ds'));
+  features_revert_module('treaty');
+  features_revert_module('geographic_region');
+  features_revert_module('informea_topics');
+  features_revert_module('informea');
+}

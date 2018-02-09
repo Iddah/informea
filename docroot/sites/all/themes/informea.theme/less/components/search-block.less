@@ -1,3 +1,14 @@
+h2.topic-title {
+  span{
+    .loop-mea-topics({
+      .page-topics.topic-@{mea-topic-class} & {
+        color: @mea-topic-color;
+        font-style: italic;
+      }
+    });
+  }
+}
+
 // Search block styling (including overrides of the old skin)
 .search-block {
   background-color: #0A8FC6;
@@ -5,6 +16,11 @@
   border-top: 1px solid #fff;
   padding: 2.5em 0;
   position: relative;
+  a.select2-choice{
+    span.select2-chosen{
+      line-height: 1.42857143;
+    }
+  }
   .loop-mea-topics({
     .page-topics.topic-@{mea-topic-class} & {
       // position: relative;

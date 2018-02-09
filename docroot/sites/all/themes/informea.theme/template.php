@@ -607,7 +607,8 @@ function informea_theme_informea_search_form_wrapper($variables) {
         check_plain($k),
         !empty($v['is_group_label']) ? check_plain($v['is_group_label']) : false,
         (isset($v['selected']) && $v['selected'] === true) ? 'selected' : '',
-        check_plain($v['label']));
+
+          (isset($v['label']) ? check_plain($v['label']) : ''));
     }
     if($optgroup_open) {
       $category_select .= sprintf('</optgroup>');

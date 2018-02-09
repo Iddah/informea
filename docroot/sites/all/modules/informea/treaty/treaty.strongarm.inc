@@ -537,7 +537,7 @@ function treaty_strongarm() {
             'visible' => FALSE,
           ),
           'search_item' => array(
-            'weight' => '6',
+            'weight' => '14',
             'visible' => FALSE,
           ),
         ),

@@ -982,6 +982,38 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir] .views-field-field-mea-topic > .field-content > ul > li.topic-850, [dir] .page-topics .views-field-field-region > .field-content > ul > li.topic-850 {
   background-color: #90bc2f;
 }
+.page-topics.topic-Water h2.topic-title span {
+  color: #044170;
+  font-style: italic;
+}
+.page-topics.topic-Climate-Change-and-Atmosphere h2.topic-title span {
+  color: #31a0ba;
+  font-style: italic;
+}
+.page-topics.topic-Chemicals-and-Wastes h2.topic-title span {
+  color: #e03d0b;
+  font-style: italic;
+}
+.page-topics.topic-Biodiversity h2.topic-title span {
+  color: #90bc2f;
+  font-style: italic;
+}
+.page-topics.topic-4417 h2.topic-title span {
+  color: #044170;
+  font-style: italic;
+}
+.page-topics.topic-852 h2.topic-title span {
+  color: #31a0ba;
+  font-style: italic;
+}
+.page-topics.topic-851 h2.topic-title span {
+  color: #e03d0b;
+  font-style: italic;
+}
+.page-topics.topic-850 h2.topic-title span {
+  color: #90bc2f;
+  font-style: italic;
+}
 .search-block {
   color: #fff;
   position: relative;
@@ -990,6 +1022,9 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   background-color: #0A8FC6;
   border-top: 1px solid #fff;
   padding: 2.5em 0;
+}
+.search-block a.select2-choice span.select2-chosen {
+  line-height: 1.42857143;
 }
 [dir] .page-topics.topic-Water .search-block {
   background-color: #044170;
@@ -2836,6 +2871,11 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 [dir] .page-regions .view-regional-treaties .view-empty, [dir] .page-topics .view-regional-treaties .view-empty {
   margin-top: 27px;
+}
+.page-regions .view-regional-treaties .view-header,
+.page-topics .view-regional-treaties .view-header {
+  color: #8F8F8F;
+  font-size: 0.95em;
 }
 .page-regions .pane-view-global-treaties .views-field-view-node,
 .page-topics .pane-view-global-treaties .views-field-view-node {
