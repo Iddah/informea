@@ -164,7 +164,6 @@ features[variable][] = pathauto_taxonomy_term_person_type_pattern
 features[variable][] = xmlsitemap_settings_node_contact_person
 features[variable][] = xmlsitemap_settings_node_geographical_site
 features[variable][] = xmlsitemap_settings_node_member_party
-features[views_view][] = contacts_hub
 features[views_view][] = contacts_hubs
 features_exclude[field_base][body] = body
 features_exclude[field_base][field_address] = field_address

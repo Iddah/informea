@@ -438,9 +438,9 @@ function treaty_custom_view_node($node, $context) {
       break;
 
     case 'contacts-hub':
-      $view = views_get_view('contacts_hub');
+      $view = views_get_view('search');
       if (is_object($view)) {
-        $view->set_display('treaty_contacts_hub');
+        $view->set_display('search_contacts_hub_treaty');
         $view->set_arguments([$node->nid]);
         $view->override_url = 'node/' . $node->nid . '/' . $context;
         $view->pre_execute();

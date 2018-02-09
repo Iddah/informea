@@ -622,6 +622,13 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
               hide($form['submit']);
               hide($form['text_documents']);
               unset($form['#info']['filter-search_api_views_fulltext']['label']);
+              break;
+          case 'views-exposed-form-search-search-contacts-hub-treaty':
+          case 'views-exposed-form-search-search-contacts-hub-country':
+              hide($form['submit']);
+              hide($form['text_contacts']);
+              unset($form['#info']['filter-search_api_views_fulltext']['label']);
+              break;
           default:
               break;
       }

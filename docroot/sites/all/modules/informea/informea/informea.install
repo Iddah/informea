@@ -518,3 +518,11 @@ function informea_update_7031() {
   features_revert_module('informea');
   features_revert_module('goal');
 }
+
+/**
+ * Task #344 - Contacts hub search view
+ */
+function informea_update_7032() {
+  features_revert_module('country_data');
+  features_revert_module('informea_search');
+}
