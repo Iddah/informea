@@ -548,6 +548,7 @@ function informea_theme_slider() {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+//TODO - update this according to Search view displays.
 function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
     if (isset($form['submit'])) {
