@@ -813,17 +813,19 @@ function informea_theme_views_mini_pager($vars) {
 }
 
 function informea_theme_preprocess_field(&$variables, $hook) {
-  if ($variables['element']['#field_name'] == 'field_term_related_uri') {
-    foreach ($variables['items'] as $key => &$item) {
-      $related_term = thesaurus_term_load_by_uri($item['#element']['url'], 'thesaurus_informea');
-      if (!empty($related_term)) {
-        $name_field = field_get_items('taxonomy_term', $related_term, 'name_field');
-        if (!empty($name_field[0]['value'])) {
-          // Set the title of the link as the term name instead of displaying the full url
-          $item['#element']['title'] = $name_field[0]['value'];
+  switch($variables['element']['#field_name']) {
+    case 'field_term_related_uri':
+      foreach ($variables['items'] as $key => &$item) {
+        $related_term = thesaurus_term_load_by_uri($item['#element']['url'], 'thesaurus_informea');
+        if (!empty($related_term)) {
+          $name_field = field_get_items('taxonomy_term', $related_term, 'name_field');
+          if (!empty($name_field[0]['value'])) {
+            // Set the title of the link as the term name instead of displaying the full url
+            $item['#element']['title'] = $name_field[0]['value'];
+          }
         }
       }
-    }
+      break;
   }
 }
 
@@ -917,3 +919,37 @@ function informea_theme_treaties_menu_block() {
   );
 
 }
+
+// function informea_theme_field($variables) {
+//   $output = '';
+//   // Render the label, if it's not hidden.
+//   if (!$variables['label_hidden']) {
+//     $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+//   }
+
+//   // Render the items.
+//   $has_multiple_items = sizeof($variables['items']) >= 2;
+//   if($has_multiple_items) {
+//     $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+//   }
+
+//   foreach ($variables['items'] as $delta => $item) {
+//     $classes = 'field-item ' . ($delta % 2 ?  'even' : 'odd');
+//     if(!$has_multiple_items) {
+//       if(is_array($variables['content_attributes']) && is_array($variables['item_attributes'][$delta])) {
+//         $variables['item_attributes'][$delta] = drupal_array_merge_deep($variables['content_attributes'], $variables['item_attributes'][$delta]);
+//       }
+//       // kpr($variables['item_attributes'][$delta]);
+//     }
+//     $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta];
+//     $output .= '>' . drupal_render($item) . '</div>';
+//   }
+
+//   if($has_multiple_items) {
+//     $output .= '</div>';
+//   }
+
+//   // Render the top-level DIV.
+//   $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+//   return $output;
+// }

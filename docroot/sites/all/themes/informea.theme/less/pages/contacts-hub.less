@@ -1,7 +1,4 @@
 .page-node-contacts-hub {
-  .page-header {
-    margin-bottom: 0;
-  }
   .region-sidebar-first {
     margin-top: -1px;
   }
@@ -16,7 +13,8 @@
     margin-bottom: 0;
   }
 }
-.view-contacts-hub {
+// .view-contacts-hub {
+.view-search {
   margin-top: 3rem;
   .views-row {
     padding-bottom: 1.5em;
@@ -35,15 +33,21 @@
       margin-bottom: 0;
     }
   }
+  .field-name-field-person-position,
   .views-field-field-person-position,
-  .views-field-field-person-institution {
+  .views-field-field-person-institution,
+  .field-name-field-person-institution {
     display: inline;
   }
-  .views-field-field-person-position + .views-field-field-person-institution {
-    > .field-content:not(:empty):before {
-      content: '|';
-      margin-left: .3rem;
-      margin-right: .3rem;
+  .field-name-field-person-position,
+  .views-field-field-person-position {
+    + .views-field-field-person-institution,
+    + .field-name-field-person-institution {
+      > .field-content:not(:empty):before {
+        content: '|';
+        margin-left: .3rem;
+        margin-right: .3rem;
+      }
     }
   }
   .views-field-field-contact-roles {
@@ -146,17 +150,13 @@
   @media @grid-desktop { position: relative; }
 
   .view-header {
-    color: @regional-page-gray;
     @media @grid-mobile {
       margin-bottom: .5rem;
     }
-    @media @grid-desktop {
-      font-size: .9em;
-      position: absolute;
-      right: 0;
-      top: ~'calc(.5rem + 1.4rem)';
-      white-space: nowrap;
-    }
+  }
+
+  .view-filters {
+    text-align: right;
   }
 
   .views-exposed-form {
@@ -164,7 +164,7 @@
   }
 
   .views-exposed-widgets {
-    margin-top: -.5rem;
+    // margin-top: -.5rem;
     @media @grid-mobile {
       align-items: center;
       display: flex;
@@ -195,18 +195,18 @@
         display: block; // Explicitly set display to prevent button being hidden
       }
     }
-    .views-widget-sort-sort_bef_combine {
-      @media @grid-mobile {
-        flex: 100%;
-        margin-top: 0;
-        // Make room for reset button
-        margin-right: 7em;
-      }
-      @media @grid-desktop {
-        float: right;
-        padding-right: 0;
-      }
-    }
+    // .views-widget-sort-sort_bef_combine {
+    //   @media @grid-mobile {
+    //     flex: 100%;
+    //     margin-top: 0;
+    //     // // Make room for reset button
+    //     // margin-right: 7em;
+    //   }
+    //   @media @grid-desktop {
+    //     float: right;
+    //     padding-right: 0;
+    //   }
+    // }
     .views-reset-button {
       padding-right: 0;
       @media @grid-mobile {
@@ -228,11 +228,11 @@
     }
   }
 
-  .view-header + .view-filters .views-reset-button {
-    @media @grid-desktop {
-      margin-top: 2rem;
-    }
-  }
+  // .view-header + .view-filters .views-reset-button {
+  //   @media @grid-desktop {
+  //     margin-top: 2rem;
+  //   }
+  // }
 
   .views-exposed-widget {
     margin-top: .5rem;
@@ -253,7 +253,6 @@
 
   .form-item-sort-bef-combine {
 
-    @media @grid-desktop { font-size: .9em; }
     &.form-group { margin-bottom: 0; }
     &.form-type-select {
       align-items: center;
@@ -292,30 +291,30 @@
       }
     }
     .form-radios { display: inline-block; }
-    .bef-select-as-links > .form-item {
-      display: flex;
-      > .form-item {
-        font-size: 0;
-        > a {
-          color: @regional-page-gray;
-          font-size: @font-size-base;
-          &.active,
-          &:hover,
-          &:focus {
-            color: @link-color;
-          }
-        }
-      }
-
-      > .form-item + .form-item > a {
-        &:before {
-          content: '|';
-          margin-left: .3em;
-          margin-right: .3em;
-          text-decoration: none;
-        }
-      }
-    }
+    // .bef-select-as-links > .form-item {
+    //   display: flex;
+    //   > .form-item {
+    //     font-size: 0;
+    //     > a {
+    //       color: @regional-page-gray;
+    //       font-size: @font-size-base;
+    //       &.active,
+    //       &:hover,
+    //       &:focus {
+    //         color: @link-color;
+    //       }
+    //     }
+    //   }
+    //
+    //   > .form-item + .form-item > a {
+    //     &:before {
+    //       content: '|';
+    //       margin-left: .3em;
+    //       margin-right: .3em;
+    //       text-decoration: none;
+    //     }
+    //   }
+    // }
   }
 }
 
