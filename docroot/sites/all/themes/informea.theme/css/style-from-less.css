@@ -1014,6 +1014,10 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   color: #90bc2f;
   font-style: italic;
 }
+h2.regional-topic-title span {
+  color: #0A8FC6;
+  font-style: italic;
+}
 .search-block {
   color: #fff;
   position: relative;
