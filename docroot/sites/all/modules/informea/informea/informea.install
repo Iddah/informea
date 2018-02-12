@@ -545,3 +545,11 @@ function informea_update_7033() {
 function informea_update_7034() {
     features_revert_module('geographic_region');
 }
+
+/**
+ * #324 - Add image processing module
+ */
+function informea_update_7035() {
+  module_enable(array('imagecache_actions'));
+  features_revert_module('treaty');
+}
