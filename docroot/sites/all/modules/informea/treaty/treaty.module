@@ -483,8 +483,11 @@ function treaty_custom_view_node($node, $context) {
       foreach (range(1, $maxrow) as $row) {
         $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
       }
+
+      $file_name = strtolower($node->title);
+      $file_name =  preg_replace('/[^a-zA-Z0-9\-\._]/','-', $file_name);
       header('Content-Type: application/vnd.ms-excel');
-      header('Content-Disposition: attachment;filename=treaty.xls');
+      header("Content-Disposition: attachment;filename={$file_name}.xls");
       header('Cache-Control: max-age=0');
       $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
       ob_end_clean();
@@ -1728,12 +1731,19 @@ function treaty_get_node_excel_data($node) {
   if (!$is_article) {
     $parent_article = $node->field_parent_treaty_article[LANGUAGE_NONE][0]['target_id'];
   }
+  $body = '';
+  if (!$is_article) {
+    $body = $node->body[$GLOBALS['language']->language][0]['value'];
+    if (empty($body)) {
+      $body = $node->body['en'][0]['value'];
+    }
+  }
   $treaty = $node->field_treaty[LANGUAGE_NONE][0]['target_id'];
   $values = [
     $node->nid,
     $is_article ? treaty_url_article($treaty->nid, $node->nid) : treaty_url_paragraph($treaty, $parent_article, $node->nid),
     $is_article ? $node->official_title : '',
-    $is_article ? '' : strip_tags($node->body['en'][0]['value']),
+    strip_tags($body),
     implode(', ', treaty_get_sdg_goals($node, 'goals')),
     implode(', ', treaty_get_sdg_goals($node, 'targets')),
     implode(', ', treaty_get_sdg_goals($node, 'indicators')),
