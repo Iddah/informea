@@ -453,16 +453,7 @@ function treaty_custom_view_node($node, $context) {
 
       $row = 2;
       foreach ($articles as $article) {
-        $values = [
-          $article->nid,
-          treaty_url_article($node->nid, $article->nid),
-          $article->official_title,
-          '',
-          implode(', ', _treaty_get_article_sdg_goals($article, 'goals')),
-          implode(', ', _treaty_get_article_sdg_goals($article, 'targets')),
-          implode(', ', _treaty_get_article_sdg_goals($article, 'indicators')),
-          implode(', ', _treaty_get_article_informea_tags($article)),
-        ];
+        $values = treaty_get_node_excel_data($article);
         $column = 'A';
         foreach ($values as $value) {
           $objPHPExcel->getActiveSheet()->setCellValue($column . $row, $value);
@@ -473,16 +464,7 @@ function treaty_custom_view_node($node, $context) {
         if (!empty($article->paragraphs)) {
           foreach ($article->paragraphs as $paragraph) {
             $column = 'A';
-            $values = [
-              $paragraph->nid,
-              treaty_url_paragraph($node->nid, $article->nid, $paragraph->nid),
-              '',
-              strip_tags($paragraph->body['en'][0]['value']),
-              implode(', ', _treaty_get_article_sdg_goals($paragraph, 'goals')),
-              implode(', ', _treaty_get_article_sdg_goals($paragraph, 'targets')),
-              implode(', ', _treaty_get_article_sdg_goals($paragraph, 'indicators')),
-              implode(', ', _treaty_get_article_informea_tags($paragraph)),
-            ];
+            $values = treaty_get_node_excel_data($paragraph);
             foreach ($values as $value) {
               $objPHPExcel->getActiveSheet()->setCellValue($column . $row, $value);
               $column++;
@@ -1692,20 +1674,20 @@ function treaty_get_url_base($nid, $odata_identifier) {
 }
 
 /**
- * Get the titles of an article's SDG goals, filtered by type.
+ * Get the SDG goals IDs, filtered by type.
  *
- * @param $article
- * @param $goal_type
+ * @param $node
+ * @param null $goal_type
  *  - goals
  *  - targets
  *  - indicators
  * @return array
  */
-function _treaty_get_article_sdg_goals($article, $goal_type) {
-  if (empty($article->field_sdg_goals[LANGUAGE_NONE])) {
+function treaty_get_sdg_goals($node, $goal_type = NULL) {
+  if (empty($node->field_sdg_goals[LANGUAGE_NONE])) {
     return [];
   }
-  $goals = $article->field_sdg_goals[LANGUAGE_NONE];
+  $goals = $node->field_sdg_goals[LANGUAGE_NONE];
   $goal_types_tids = [
     'goals' => 1734,
     'targets' =>  1737,
@@ -1714,7 +1696,7 @@ function _treaty_get_article_sdg_goals($article, $goal_type) {
   $specific_goals = [];
   foreach ($goals as $goal_id) {
     $goal = node_load($goal_id['target_id']);
-    if ($goal_types_tids[$goal_type] == $goal->field_goal_type[LANGUAGE_NONE][0]['tid']) {
+    if ($goal_type == NULL || $goal_types_tids[$goal_type] == $goal->field_goal_type[LANGUAGE_NONE][0]['tid']) {
       $specific_goals[] = $goal->field_original_id[LANGUAGE_NONE][0]['value'];
     }
   }
@@ -1722,16 +1704,40 @@ function _treaty_get_article_sdg_goals($article, $goal_type) {
 }
 
 /**
- * Get the titles of an article's InforMEA tags.
+ * Get the InforMEA tag titles.
  */
-function _treaty_get_article_informea_tags($article) {
-  if (empty($article->field_informea_tags[LANGUAGE_NONE])) {
+function treaty_get_informea_tags($node) {
+  if (empty($node->field_informea_tags[LANGUAGE_NONE])) {
     return [];
   }
-  $tags = $article->field_informea_tags[LANGUAGE_NONE];
+  $tags = $node->field_informea_tags[LANGUAGE_NONE];
   $tag_titles = [];
   foreach ($tags as $tag) {
     $tag_titles[] = taxonomy_term_load($tag['tid'])->name;
   }
   return $tag_titles;
+}
+
+/**
+ * Get the values array of the article or paragraph for excel export.
+ *
+ * The column headers are: Node ID, Permalink, Title, Text, SDG goals, SDG targets, SDG indicators, LEO terms.
+ */
+function treaty_get_node_excel_data($node) {
+  $is_article = empty($node->field_parent_treaty_article[LANGUAGE_NONE][0]);
+  if (!$is_article) {
+    $parent_article = $node->field_parent_treaty_article[LANGUAGE_NONE][0]['target_id'];
+  }
+  $treaty = $node->field_treaty[LANGUAGE_NONE][0]['target_id'];
+  $values = [
+    $node->nid,
+    $is_article ? treaty_url_article($treaty->nid, $node->nid) : treaty_url_paragraph($treaty, $parent_article, $node->nid),
+    $is_article ? $node->official_title : '',
+    $is_article ? '' : strip_tags($node->body['en'][0]['value']),
+    implode(', ', treaty_get_sdg_goals($node, 'goals')),
+    implode(', ', treaty_get_sdg_goals($node, 'targets')),
+    implode(', ', treaty_get_sdg_goals($node, 'indicators')),
+    implode(', ', treaty_get_informea_tags($node)),
+  ];
+  return $values;
 }

@@ -10,6 +10,7 @@ $node = $variables['node'];
 $node_wrapper = entity_metadata_wrapper('node', $node);
 $odata_identifier = $node_wrapper->field_odata_identifier->value();
 $print = sprintf('/treaties/%s/print', $odata_identifier);
+$download = sprintf('/treaties/%s/download', $odata_identifier);
 ?>
 <?php if (isset($articles) && is_array($articles)): ?>
   <?php if (!empty($articles)): ?>
@@ -20,6 +21,10 @@ $print = sprintf('/treaties/%s/print', $odata_identifier);
       <a class="btn btn-primary" href="<?php print url($print); ?>" target="_blank">
         <i class="glyphicon glyphicon-print"></i>
         <?php print t('Print treaty text'); ?>
+      </a>
+      <a class="btn btn-primary" href="<?php print url($download); ?>">
+        <i class="glyphicon glyphicon-download"></i>
+        <?php print t('Download'); ?>
       </a>
     </p>
   <?php endif; ?>
