@@ -1745,13 +1745,8 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .view-learning-courses .views-field-field-tags {
   position: absolute;
 }
-.view-learning-courses .views-field-field-tags li {
-  color: #fff;
-  text-transform: uppercase;
-}
 [dir] .view-learning-courses .views-field-field-tags li {
-  background-color: #16222E;
-  padding: .5em 1.5em;
+  padding: 0;
 }
 .view-learning-courses .views-field-field-tags ul {
   list-style: none;
@@ -1762,10 +1757,18 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir=rtl] .view-learning-courses .views-field-field-tags ul {
   padding-right: 0;
 }
-.view-learning-courses .views-field-field-tags .tag-New li {
+.view-learning-courses .views-field-field-tags .tag {
+  text-transform: uppercase;
+  color: #fff;
+}
+[dir] .view-learning-courses .views-field-field-tags .tag {
+  background-color: #16222E;
+  padding: .5em 1.5em;
+}
+.view-learning-courses .views-field-field-tags .tag--4419 {
   color: #333333;
 }
-[dir] .view-learning-courses .views-field-field-tags .tag-New li {
+[dir] .view-learning-courses .views-field-field-tags .tag--4419 {
   background-color: #fc3;
 }
 [dir] .page-node-contacts-hub .page-header {

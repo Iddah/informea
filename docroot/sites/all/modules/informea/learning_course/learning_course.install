@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * #313 - refactored homepage tags
+ */
+function learning_course_update_7001() {
+    features_revert_module('learning_course');
+}
