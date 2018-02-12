@@ -826,6 +826,19 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         }
       }
       break;
+    case 'field_mea_topic':
+      // Add custom CSS classes to topics field elements.
+      if(isset($variables['items'][0]['#items'])){
+        foreach($variables['items'][0]['#items'] as $key=>$item){
+          if(isset($variables['element']['#items'][$key]['tid'])){
+             $variables['items'][0]['#items'][$key] = array(
+              'data' => $item,
+              'class' => array('topic--' . $variables['element']['#items'][$key]['tid']),
+            );
+          }
+        }
+      }
+      break;
   }
 }
 
