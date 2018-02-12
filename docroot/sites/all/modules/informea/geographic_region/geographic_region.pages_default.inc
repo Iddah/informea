@@ -616,7 +616,7 @@ function geographic_region_default_page_manager_pages() {
     'admin_title' => 'Title',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<h2>Treaties and MEAs</h2>',
+    'body' => '<h2 class="regional-topic-title">Treaties and MEAs <span>in %region:name</span></h2>',
     'format' => 'full_html',
     'substitute' => 1,
   );
