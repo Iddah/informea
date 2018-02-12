@@ -20,6 +20,16 @@ module.exports = function (grunt) {
         src: ['libraries']
       }
     },
+    copy: {
+      libraries: {
+        expand: true,
+        cwd: 'node_modules',
+        dest: './libraries/',
+        src: [
+          'bootstrap/less/**',
+        ]
+      }
+    },
     less: {
       options: {
         outputSourceFiles: true,
@@ -83,14 +93,15 @@ module.exports = function (grunt) {
           annotation: 'css/' // ...to the specified directory
         },
       },
-      dist: {
+      bootstrap: {
+        src: [ 'css/bootstrap.css', '../bootstrap/css/overrides.css' ]
+      },
+      oldtheme: {
+        src: [ 'css/style.css']
+      },
+      newtheme: {
         src: [
-          'css/bootstrap.css',
-          '../bootstrap/css/overrides.css',
-          'css/style.css',
           'css/style-from-less.css',
-          '!css/print-style.css'
-
         ]
       }
     },
@@ -101,33 +112,23 @@ module.exports = function (grunt) {
         },
         files: ['Gruntfile.js', 'package.json']
       },
-      screen: {
-        files: ['less/**/*.less', '!less/print-style.less', 'images/*.svg'],
-        tasks: 'less:screen'
-      },
       print: {
         files: ['less/print-style.less'],
         tasks: 'less:print'
       },
-      postcss: {
-        files: ['less/**/*.less', '!less/print-style.less', 'images/*.svg'],
-        tasks: ['less:screen', 'postcss']
-      }
-    },
-    copy: {
-      libraries: {
-        expand: true,
-        cwd: 'node_modules',
-        dest: './libraries/',
-        src: [
-          'bootstrap/less/**',
-        ]
+      oldtheme: {
+        files: ['css/style.css'],
+        tasks: ['postcss:oldtheme']
+      },
+      newtheme: {
+        files: ['less/**/*.less', '!less/print-style.less', 'img/*.svg'],
+        tasks: ['less:screen', 'postcss:newtheme']
       }
     },
   });
 
 
-  grunt.registerTask('css', ['less', 'postcss', 'watch:postcss']);
+  grunt.registerTask('css', ['less', 'postcss', 'watch']);
 
   grunt.registerTask('libraries', ['clean:libraries', 'copy:libraries']);
 
