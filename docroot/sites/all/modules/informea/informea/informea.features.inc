@@ -121,6 +121,53 @@ function informea_image_default_styles() {
     ),
   );
 
+  // Exported image style: logo-large.
+  $styles['logo-large'] = array(
+    'label' => 'logo-large',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 60,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+      3 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '',
+          'height' => 60,
+          'upscale' => 0,
+        ),
+        'weight' => 2,
+      ),
+      4 => array(
+        'name' => 'canvasactions_definecanvas',
+        'data' => array(
+          'RGB' => array(
+            'HEX' => '',
+          ),
+          'under' => 1,
+          'exact' => array(
+            'width' => 64,
+            'height' => 64,
+            'xpos' => 'center',
+            'ypos' => 'center',
+          ),
+          'relative' => array(
+            'leftdiff' => '',
+            'rightdiff' => '',
+            'topdiff' => '',
+            'bottomdiff' => '',
+          ),
+        ),
+        'weight' => 3,
+      ),
+    ),
+  );
+
   return $styles;
 }
 

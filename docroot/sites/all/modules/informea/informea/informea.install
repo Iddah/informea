@@ -560,3 +560,11 @@ function informea_update_7035() {
 function informea_update_7036() {
     features_revert_module('geographic_region');
 }
+
+/**
+ * #324 - Enable imagecache_canvasactions module
+ */
+function informea_update_7037() {
+    module_enable(array('imagecache_canvasactions'));
+    features_revert_module('informea');
+}
