@@ -44,3 +44,10 @@ function country_data_update_7002 () {
 function country_data_update_7003 () {
   features_revert(array('country_data' => ['field_base', 'field_instance']));
 }
+
+/**
+ * 330 Some secondary pages should not be accessible via direct URL.
+ */
+function country_data_update_7004 () {
+  features_revert(array('country_data' => ['field_base', 'field_instance']));
+}

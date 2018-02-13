@@ -1265,10 +1265,8 @@ function treaty_check_permission_reorder_decisions($account = NULL) {
 function treaty_node_access($node, $op, $account) {
   global $user;
   // 220 Hide the # of GEG Goals
-  if ($node && (!$user->uid)) {
-    if ($node->nid == 86217) {
-      return NODE_ACCESS_DENY;
-    }
+  if ($node && (!$user->uid) && (is_object($node)) && ($node->nid == 86217)) {
+    return NODE_ACCESS_DENY;
   }
   if ($op == 'update' || $op == 'delete') {
     if (in_array($node->type, informea_mea_content_types())) {
