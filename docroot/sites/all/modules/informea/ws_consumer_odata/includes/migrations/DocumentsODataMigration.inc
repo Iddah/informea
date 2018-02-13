@@ -47,7 +47,6 @@ class DocumentsODataMigration extends AbstractODataMigration {
 
     $this->addFieldMapping('field_last_update', 'updated');
     $this->addFieldMapping('field_last_update:timezone')->defaultValue('Europe/Zurich');
-    //    $this->addFieldMapping('changed', 'changed'); - causes entity translation errors
 
     $this->addFieldMapping('field_treaty', 'treaties');
 

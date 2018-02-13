@@ -65,7 +65,6 @@ class DecisionsODataMigration extends AbstractODataMigration {
 
     $this->addFieldMapping('field_last_update', 'updated');
     $this->addFieldMapping('field_last_update:timezone')->defaultValue('Europe/Zurich');
-    $this->addFieldMapping('changed', 'updated');
 
     $this->addFieldMapping('field_informea_tags', 'keywords');
     $this->addFieldMapping('field_informea_tags:source_type')->defaultValue('tid');
