@@ -891,33 +891,36 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .field-name-field-mea-topic,
 .views-field-field-mea-topic,
 .views-field-field-region,
-.informea-region,
+.informea-regions,
 .field-name-field-mea-topic > .field-content,
 .views-field-field-mea-topic > .field-content,
 .views-field-field-region > .field-content,
-.informea-region > .field-content {
+.informea-regions > .field-content,
+.informea-type-tags,
+.informea-type-tags > .field-content {
   display: inline;
 }
 .field-name-field-mea-topic ul,
 .views-field-field-mea-topic ul,
 .views-field-field-region ul,
-.informea-region,
-.informea-topics {
+.informea-regions,
+.informea-topics,
+.informea-type-tags {
   list-style: none;
   display: inline;
   font-size: 0;
   position: relative;
 }
-[dir] .field-name-field-mea-topic ul, [dir] .views-field-field-mea-topic ul, [dir] .views-field-field-region ul, [dir] .informea-region, [dir] .informea-topics {
+[dir] .field-name-field-mea-topic ul, [dir] .views-field-field-mea-topic ul, [dir] .views-field-field-region ul, [dir] .informea-regions, [dir] .informea-topics, [dir] .informea-type-tags {
   margin-bottom: 0;
   margin-top: -0.3em;
 }
-[dir=ltr] .field-name-field-mea-topic ul, [dir=ltr] .views-field-field-mea-topic ul, [dir=ltr] .views-field-field-region ul, [dir=ltr] .informea-region, [dir=ltr] .informea-topics {
+[dir=ltr] .field-name-field-mea-topic ul, [dir=ltr] .views-field-field-mea-topic ul, [dir=ltr] .views-field-field-region ul, [dir=ltr] .informea-regions, [dir=ltr] .informea-topics, [dir=ltr] .informea-type-tags {
   padding-left: 0;
   left: -5px;
   left: -0.5rem;
 }
-[dir=rtl] .field-name-field-mea-topic ul, [dir=rtl] .views-field-field-mea-topic ul, [dir=rtl] .views-field-field-region ul, [dir=rtl] .informea-region, [dir=rtl] .informea-topics {
+[dir=rtl] .field-name-field-mea-topic ul, [dir=rtl] .views-field-field-mea-topic ul, [dir=rtl] .views-field-field-region ul, [dir=rtl] .informea-regions, [dir=rtl] .informea-topics, [dir=rtl] .informea-type-tags {
   padding-right: 0;
   right: -5px;
   right: -0.5rem;
@@ -925,110 +928,119 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .field-name-field-mea-topic ul > li,
 .views-field-field-mea-topic ul > li,
 .views-field-field-region ul > li,
-.informea-region > li,
-.informea-topics > li {
+.informea-regions > li,
+.informea-topics > li,
+.informea-type-tags > li {
   display: inline-block;
   font-size: 14px;
   font-size: 1.4rem;
 }
-[dir] .field-name-field-mea-topic ul > li, [dir] .views-field-field-mea-topic ul > li, [dir] .views-field-field-region ul > li, [dir] .informea-region > li, [dir] .informea-topics > li {
+[dir] .field-name-field-mea-topic ul > li, [dir] .views-field-field-mea-topic ul > li, [dir] .views-field-field-region ul > li, [dir] .informea-regions > li, [dir] .informea-topics > li, [dir] .informea-type-tags > li {
   background-color: #DADADA;
   margin-top: .3em;
   padding: .2em .6em .1em;
   text-align: center;
 }
-[dir=ltr] .field-name-field-mea-topic ul > li, [dir=ltr] .views-field-field-mea-topic ul > li, [dir=ltr] .views-field-field-region ul > li, [dir=ltr] .informea-region > li, [dir=ltr] .informea-topics > li {
+[dir=ltr] .field-name-field-mea-topic ul > li, [dir=ltr] .views-field-field-mea-topic ul > li, [dir=ltr] .views-field-field-region ul > li, [dir=ltr] .informea-regions > li, [dir=ltr] .informea-topics > li, [dir=ltr] .informea-type-tags > li {
   margin-left: .3em;
 }
-[dir=rtl] .field-name-field-mea-topic ul > li, [dir=rtl] .views-field-field-mea-topic ul > li, [dir=rtl] .views-field-field-region ul > li, [dir=rtl] .informea-region > li, [dir=rtl] .informea-topics > li {
+[dir=rtl] .field-name-field-mea-topic ul > li, [dir=rtl] .views-field-field-mea-topic ul > li, [dir=rtl] .views-field-field-region ul > li, [dir=rtl] .informea-regions > li, [dir=rtl] .informea-topics > li, [dir=rtl] .informea-type-tags > li {
   margin-right: .3em;
 }
 .field-name-field-mea-topic ul > li.topic-Water,
 .views-field-field-mea-topic ul > li.topic-Water,
 .views-field-field-region ul > li.topic-Water,
-.informea-region > li.topic-Water,
-.informea-topics > li.topic-Water {
+.informea-regions > li.topic-Water,
+.informea-topics > li.topic-Water,
+.informea-type-tags > li.topic-Water {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-Water, [dir] .views-field-field-mea-topic ul > li.topic-Water, [dir] .views-field-field-region ul > li.topic-Water, [dir] .informea-region > li.topic-Water, [dir] .informea-topics > li.topic-Water {
+[dir] .field-name-field-mea-topic ul > li.topic-Water, [dir] .views-field-field-mea-topic ul > li.topic-Water, [dir] .views-field-field-region ul > li.topic-Water, [dir] .informea-regions > li.topic-Water, [dir] .informea-topics > li.topic-Water, [dir] .informea-type-tags > li.topic-Water {
   background-color: #044170;
 }
 .field-name-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere,
 .views-field-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere,
 .views-field-field-region ul > li.topic-Climate-Change-and-Atmosphere,
-.informea-region > li.topic-Climate-Change-and-Atmosphere,
-.informea-topics > li.topic-Climate-Change-and-Atmosphere {
+.informea-regions > li.topic-Climate-Change-and-Atmosphere,
+.informea-topics > li.topic-Climate-Change-and-Atmosphere,
+.informea-type-tags > li.topic-Climate-Change-and-Atmosphere {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere, [dir] .views-field-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere, [dir] .views-field-field-region ul > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-region > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere {
+[dir] .field-name-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere, [dir] .views-field-field-mea-topic ul > li.topic-Climate-Change-and-Atmosphere, [dir] .views-field-field-region ul > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-regions > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-type-tags > li.topic-Climate-Change-and-Atmosphere {
   background-color: #31a0ba;
 }
 .field-name-field-mea-topic ul > li.topic-Chemicals-and-Wastes,
 .views-field-field-mea-topic ul > li.topic-Chemicals-and-Wastes,
 .views-field-field-region ul > li.topic-Chemicals-and-Wastes,
-.informea-region > li.topic-Chemicals-and-Wastes,
-.informea-topics > li.topic-Chemicals-and-Wastes {
+.informea-regions > li.topic-Chemicals-and-Wastes,
+.informea-topics > li.topic-Chemicals-and-Wastes,
+.informea-type-tags > li.topic-Chemicals-and-Wastes {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-Chemicals-and-Wastes, [dir] .views-field-field-mea-topic ul > li.topic-Chemicals-and-Wastes, [dir] .views-field-field-region ul > li.topic-Chemicals-and-Wastes, [dir] .informea-region > li.topic-Chemicals-and-Wastes, [dir] .informea-topics > li.topic-Chemicals-and-Wastes {
+[dir] .field-name-field-mea-topic ul > li.topic-Chemicals-and-Wastes, [dir] .views-field-field-mea-topic ul > li.topic-Chemicals-and-Wastes, [dir] .views-field-field-region ul > li.topic-Chemicals-and-Wastes, [dir] .informea-regions > li.topic-Chemicals-and-Wastes, [dir] .informea-topics > li.topic-Chemicals-and-Wastes, [dir] .informea-type-tags > li.topic-Chemicals-and-Wastes {
   background-color: #e03d0b;
 }
 .field-name-field-mea-topic ul > li.topic-Biodiversity,
 .views-field-field-mea-topic ul > li.topic-Biodiversity,
 .views-field-field-region ul > li.topic-Biodiversity,
-.informea-region > li.topic-Biodiversity,
-.informea-topics > li.topic-Biodiversity {
+.informea-regions > li.topic-Biodiversity,
+.informea-topics > li.topic-Biodiversity,
+.informea-type-tags > li.topic-Biodiversity {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-Biodiversity, [dir] .views-field-field-mea-topic ul > li.topic-Biodiversity, [dir] .views-field-field-region ul > li.topic-Biodiversity, [dir] .informea-region > li.topic-Biodiversity, [dir] .informea-topics > li.topic-Biodiversity {
+[dir] .field-name-field-mea-topic ul > li.topic-Biodiversity, [dir] .views-field-field-mea-topic ul > li.topic-Biodiversity, [dir] .views-field-field-region ul > li.topic-Biodiversity, [dir] .informea-regions > li.topic-Biodiversity, [dir] .informea-topics > li.topic-Biodiversity, [dir] .informea-type-tags > li.topic-Biodiversity {
   background-color: #90bc2f;
 }
 .field-name-field-mea-topic ul > li.topic-4417,
 .views-field-field-mea-topic ul > li.topic-4417,
 .views-field-field-region ul > li.topic-4417,
-.informea-region > li.topic-4417,
-.informea-topics > li.topic-4417 {
+.informea-regions > li.topic-4417,
+.informea-topics > li.topic-4417,
+.informea-type-tags > li.topic-4417 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-4417, [dir] .views-field-field-mea-topic ul > li.topic-4417, [dir] .views-field-field-region ul > li.topic-4417, [dir] .informea-region > li.topic-4417, [dir] .informea-topics > li.topic-4417 {
+[dir] .field-name-field-mea-topic ul > li.topic-4417, [dir] .views-field-field-mea-topic ul > li.topic-4417, [dir] .views-field-field-region ul > li.topic-4417, [dir] .informea-regions > li.topic-4417, [dir] .informea-topics > li.topic-4417, [dir] .informea-type-tags > li.topic-4417 {
   background-color: #044170;
 }
 .field-name-field-mea-topic ul > li.topic-852,
 .views-field-field-mea-topic ul > li.topic-852,
 .views-field-field-region ul > li.topic-852,
-.informea-region > li.topic-852,
-.informea-topics > li.topic-852 {
+.informea-regions > li.topic-852,
+.informea-topics > li.topic-852,
+.informea-type-tags > li.topic-852 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-852, [dir] .views-field-field-mea-topic ul > li.topic-852, [dir] .views-field-field-region ul > li.topic-852, [dir] .informea-region > li.topic-852, [dir] .informea-topics > li.topic-852 {
+[dir] .field-name-field-mea-topic ul > li.topic-852, [dir] .views-field-field-mea-topic ul > li.topic-852, [dir] .views-field-field-region ul > li.topic-852, [dir] .informea-regions > li.topic-852, [dir] .informea-topics > li.topic-852, [dir] .informea-type-tags > li.topic-852 {
   background-color: #31a0ba;
 }
 .field-name-field-mea-topic ul > li.topic-851,
 .views-field-field-mea-topic ul > li.topic-851,
 .views-field-field-region ul > li.topic-851,
-.informea-region > li.topic-851,
-.informea-topics > li.topic-851 {
+.informea-regions > li.topic-851,
+.informea-topics > li.topic-851,
+.informea-type-tags > li.topic-851 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-851, [dir] .views-field-field-mea-topic ul > li.topic-851, [dir] .views-field-field-region ul > li.topic-851, [dir] .informea-region > li.topic-851, [dir] .informea-topics > li.topic-851 {
+[dir] .field-name-field-mea-topic ul > li.topic-851, [dir] .views-field-field-mea-topic ul > li.topic-851, [dir] .views-field-field-region ul > li.topic-851, [dir] .informea-regions > li.topic-851, [dir] .informea-topics > li.topic-851, [dir] .informea-type-tags > li.topic-851 {
   background-color: #e03d0b;
 }
 .field-name-field-mea-topic ul > li.topic-850,
 .views-field-field-mea-topic ul > li.topic-850,
 .views-field-field-region ul > li.topic-850,
-.informea-region > li.topic-850,
-.informea-topics > li.topic-850 {
+.informea-regions > li.topic-850,
+.informea-topics > li.topic-850,
+.informea-type-tags > li.topic-850 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .field-name-field-mea-topic ul > li.topic-850, [dir] .views-field-field-mea-topic ul > li.topic-850, [dir] .views-field-field-region ul > li.topic-850, [dir] .informea-region > li.topic-850, [dir] .informea-topics > li.topic-850 {
+[dir] .field-name-field-mea-topic ul > li.topic-850, [dir] .views-field-field-mea-topic ul > li.topic-850, [dir] .views-field-field-region ul > li.topic-850, [dir] .informea-regions > li.topic-850, [dir] .informea-topics > li.topic-850, [dir] .informea-type-tags > li.topic-850 {
   background-color: #90bc2f;
 }
 .page-topics.topic-Water h2.topic-title span {
@@ -1739,6 +1751,22 @@ h2.regional-topic-title span {
 .informea-switcher_advancer:focus .informea-switcher_advancer-icon {
   fill: #1D7CA7;
 }
+[dir] .informea-type-tags > li {
+  background-color: transparent;
+  background-image: url('../img//tag-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 1.8em;
+}
+[dir=ltr] .informea-type-tags > li {
+  background-position: left top;
+  padding-left: 2em;
+  text-align: left;
+}
+[dir=rtl] .informea-type-tags > li {
+  background-position: right top;
+  padding-right: 2em;
+  text-align: right;
+}
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
   font-weight: normal;
 }
@@ -1898,7 +1926,7 @@ h2.regional-topic-title span {
 [dir=rtl] .informea-teaser .field-label-inline .field-label {
   margin-left: .3em;
 }
-.informea-teaser .group-event-info {
+.informea-teaser__info {
   color: #8F8F8F;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1908,6 +1936,34 @@ h2.regional-topic-title span {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+}
+[dir] .informea-teaser__info {
+  margin-top: .5em;
+}
+.informea-teaser__tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+[dir] .informea-teaser__tags {
+  margin-top: .5em;
+}
+.page-topics .informea-teaser .field-name-field-mea-topic {
+  display: none;
+}
+.page-regions .informea-teaser .field-name-field-region {
+  display: none;
+}
+.informea-teaser.node-treaty .field-name-body {
+  display: none;
+}
+.view-search .informea-teaser.node-treaty .field-name-body {
+  display: block;
 }
 [dir=ltr] .meta-content-type {
   margin-left: 0;
@@ -2102,7 +2158,7 @@ h2.regional-topic-title span {
   min-height: 15em;
 }
 [dir] #block-informea-frontpage-regions-and-parties > .container {
-  background-image: url('../img/world-map.png');
+  background-image: url('../img//world-map.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

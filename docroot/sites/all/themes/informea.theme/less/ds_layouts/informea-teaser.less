@@ -42,11 +42,38 @@
       word-break: normal;
     }
   }
-  .group-event-info {
+
+  &__info {
     color: @regional-page-gray;
     display: flex;
     flex-flow: row wrap;
+    margin-top: .5em;
   }
+
+  &__tags {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: .5em;
+  }
+
+  // Topic tags are hidden on topic related pages
+  .page-topics & {
+    .field-name-field-mea-topic {
+      display: none;
+    }
+  }
+
+  // Region tags are hidden on region related pages
+  .page-regions & {
+    .field-name-field-region {
+      display: none;
+    }
+  }
+
+  // Description field is visible only in the search view
+  &.node-treaty .field-name-body { display: none; }
+  .view-search &.node-treaty .field-name-body { display: block; }
+
 }
 
 .meta-content-type:extend(.view__item-tag) {

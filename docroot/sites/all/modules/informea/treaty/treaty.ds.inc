@@ -18,7 +18,7 @@ function treaty_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -54,19 +54,27 @@ function treaty_ds_layout_settings_info() {
       ),
       'right' => array(
         1 => 'title',
-        2 => 'field_online_course_link',
-        3 => 'field_treaty_text_url',
-        4 => 'field_entry_into_force',
-        5 => 'field_mea_topic',
+        2 => 'group_info',
+        3 => 'body',
+        4 => 'field_online_course_link',
+        5 => 'field_treaty_text_url',
+        6 => 'group_tags',
+        7 => 'field_mea_topic',
+        8 => 'field_region',
+        9 => 'field_type_of_text',
       ),
     ),
     'fields' => array(
       'field_logo' => 'left',
       'title' => 'right',
+      'group_info' => 'right',
+      'body' => 'right',
       'field_online_course_link' => 'right',
       'field_treaty_text_url' => 'right',
-      'field_entry_into_force' => 'right',
+      'group_tags' => 'right',
       'field_mea_topic' => 'right',
+      'field_region' => 'right',
+      'field_type_of_text' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

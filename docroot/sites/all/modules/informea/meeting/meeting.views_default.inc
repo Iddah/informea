@@ -654,7 +654,7 @@ function meeting_views_default_views() {
     'title' => 'title',
     'title_field' => 'title_field',
   );
-  /* Filter criterion: Indexed Content: InforMEA tags */
+  /* Filter criterion: Indexed Content: InforMEA Tags */
   $handler->display->display_options['filters']['field_informea_tags']['id'] = 'field_informea_tags';
   $handler->display->display_options['filters']['field_informea_tags']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['filters']['field_informea_tags']['field'] = 'field_informea_tags';

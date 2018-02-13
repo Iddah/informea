@@ -54,13 +54,21 @@ function feeds_news_ds_layout_settings_info() {
       ),
       'right' => array(
         1 => 'title',
-        2 => 'field_mea_topic',
+        2 => 'group_info',
+        3 => 'field_mea_topic',
+        4 => 'field_feed_item_description',
+        5 => 'field_region',
+        6 => 'group_tags',
       ),
     ),
     'fields' => array(
       'field_image' => 'left',
       'title' => 'right',
+      'group_info' => 'right',
       'field_mea_topic' => 'right',
+      'field_feed_item_description' => 'right',
+      'field_region' => 'right',
+      'group_tags' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
