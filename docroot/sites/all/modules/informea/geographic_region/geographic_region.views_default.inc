@@ -208,8 +208,8 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '4';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'search_item';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -312,6 +312,12 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '4';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '@total regional treaties and protocols';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -732,13 +738,13 @@ function geographic_region_views_default_views() {
     t('All'),
     t('Reg. treaties - by region'),
     t('Regional treaties'),
+    t('@total regional treaties and protocols'),
     t('@total global treaties and protocols'),
     t('There are no global treaties for current filters.'),
     t('[title_field]'),
     t('([field_title_abbreviation])'),
     t('[field_official_name] [field_title_abbreviation]'),
     t('Reg. treaties - by topic'),
-    t('@total regional treaties and protocols'),
   );
   $export['regional_treaties'] = $view;
 
