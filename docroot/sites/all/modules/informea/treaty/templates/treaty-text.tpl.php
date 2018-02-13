@@ -22,17 +22,17 @@ else {
 <?php if (isset($articles) && is_array($articles)): ?>
   <?php if (!empty($articles)): ?>
     <p class="text-right">
-      <button class="btn btn-default" data-toggle="group" data-target="#treaty-text">
+      <button class="btn btn-default" rel="nofollow" data-toggle="group" data-target="#treaty-text">
         <?php print t('Expand all'); ?>
       </button>
       <?php if ($print): ?>
-      <a class="btn btn-primary" href="<?php print url($print); ?>" target="_blank">
+      <a class="btn btn-primary" rel="nofollow" href="<?php print url($print); ?>" target="_blank">
         <i class="glyphicon glyphicon-print"></i>
         <?php print t('Print treaty text'); ?>
       </a>
       <?php endif; ?>
       <?php if ($download): ?>
-      <a class="btn btn-primary" href="<?php print url($download); ?>">
+      <a class="btn btn-primary" rel="nofollow" href="<?php print url($download); ?>">
         <i class="glyphicon glyphicon-download"></i>
         <?php print t('Download'); ?>
       </a>
