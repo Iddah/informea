@@ -553,3 +553,10 @@ function informea_update_7035() {
   module_enable(array('imagecache_actions'));
   features_revert_module('treaty');
 }
+
+/**
+ * #351 - Implement changes to the regional landing page
+ */
+function informea_update_7036() {
+    features_revert_module('geographic_region');
+}
