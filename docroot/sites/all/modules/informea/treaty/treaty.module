@@ -454,6 +454,10 @@ function treaty_custom_view_node($node, $context) {
       $row = 2;
       foreach ($articles as $article) {
         $values = treaty_get_node_excel_data($article);
+        // Do not add articles' text if is broken-down in paragraphs
+        if (!empty($article->paragraphs)) {
+          unset($values[3]);
+        }
         $column = 'A';
         foreach ($values as $value) {
           $objPHPExcel->getActiveSheet()->setCellValue($column . $row, $value);
@@ -473,7 +477,6 @@ function treaty_custom_view_node($node, $context) {
           }
         }
       }
-
       $maxrow = $row--;
       $maxcol = chr(ord($column) - 1);
       $objPHPExcel->getActiveSheet()->getStyle("A1:{$maxcol}{$maxrow}")->getAlignment()->setWrapText(TRUE)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
@@ -1727,27 +1730,33 @@ function treaty_get_informea_tags($node) {
  * The column headers are: Node ID, Permalink, Title, Text, SDG goals, SDG targets, SDG indicators, LEO terms.
  */
 function treaty_get_node_excel_data($node) {
-  $is_article = empty($node->field_parent_treaty_article[LANGUAGE_NONE][0]);
-  if (!$is_article) {
-    $parent_article = $node->field_parent_treaty_article[LANGUAGE_NONE][0]['target_id'];
+  global $language;
+  /** @var \stdClass $wrapper */
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $is_article = $node->type == 'treaty_article';
+  $treaty = $wrapper->field_treaty->value();
+  $treaty = $treaty[0];
+  $title = '';
+  if ($is_article) {
+    $link = treaty_url_article($treaty->nid, $node->nid);
+    $title = $node->official_title;
   }
-  $body = '';
-  if (!$is_article) {
-    $body = $node->body[$GLOBALS['language']->language][0]['value'];
-    if (empty($body)) {
-      $body = $node->body['en'][0]['value'];
-    }
+  else {
+    $parent_article = $wrapper->field_parent_treaty_article->value();
+    $link = treaty_url_paragraph($treaty->nid, $parent_article->nid, $node->nid);
   }
-  $treaty = $node->field_treaty[LANGUAGE_NONE][0]['target_id'];
-  $values = [
+  $body = $wrapper->body->value();
+  if (!empty($body['safe_value'])) {
+    $body = strip_tags($body['safe_value']);
+  }
+  return [
     $node->nid,
-    $is_article ? treaty_url_article($treaty->nid, $node->nid) : treaty_url_paragraph($treaty, $parent_article, $node->nid),
-    $is_article ? $node->official_title : '',
-    strip_tags($body),
+    $link,
+    $title,
+    $body,
     implode(', ', treaty_get_sdg_goals($node, 'goals')),
     implode(', ', treaty_get_sdg_goals($node, 'targets')),
     implode(', ', treaty_get_sdg_goals($node, 'indicators')),
     implode(', ', treaty_get_informea_tags($node)),
   ];
-  return $values;
 }
