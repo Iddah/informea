@@ -576,4 +576,6 @@ function informea_update_7038() {
   features_revert_module('feeds_news');
   features_revert_module('meeting');
   features_revert_module('geographic_region');
+  features_revert_module('treaty');
+
 }

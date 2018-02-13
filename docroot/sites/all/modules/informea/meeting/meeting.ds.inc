@@ -1,35 +1,35 @@
 <?php
 /**
  * @file
- * treaty.ds.inc
+ * meeting.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function treaty_ds_field_settings_info() {
+function meeting_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|treaty|search_item';
+  $ds_fieldsetting->id = 'node|event_calendar|search_item';
   $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'treaty';
+  $ds_fieldsetting->bundle = 'event_calendar';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
-        'wrapper' => 'h3',
+        'wrapper' => 'h4',
         'class' => 'informea-teaser__title',
         'exclude node title settings' => '1',
       ),
     ),
   );
-  $export['node|treaty|search_item'] = $ds_fieldsetting;
+  $export['node|event_calendar|search_item'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -37,36 +37,40 @@ function treaty_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function treaty_ds_layout_settings_info() {
+function meeting_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|treaty|search_item';
+  $ds_layout->id = 'node|event_calendar|search_item';
   $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'treaty';
+  $ds_layout->bundle = 'event_calendar';
   $ds_layout->view_mode = 'search_item';
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
-        0 => 'field_logo',
+        0 => 'event_calendar_date',
       ),
       'right' => array(
         1 => 'title',
-        2 => 'field_online_course_link',
-        3 => 'field_treaty_text_url',
-        4 => 'field_entry_into_force',
-        5 => 'field_mea_topic',
+        2 => 'group_event_info',
+        3 => 'field_region',
+        4 => 'field_country',
+        5 => 'field_city',
+        6 => 'field_location',
+        7 => 'field_treaty',
       ),
     ),
     'fields' => array(
-      'field_logo' => 'left',
+      'event_calendar_date' => 'left',
       'title' => 'right',
-      'field_online_course_link' => 'right',
-      'field_treaty_text_url' => 'right',
-      'field_entry_into_force' => 'right',
-      'field_mea_topic' => 'right',
+      'group_event_info' => 'right',
+      'field_region' => 'right',
+      'field_country' => 'right',
+      'field_city' => 'right',
+      'field_location' => 'right',
+      'field_treaty' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -80,7 +84,7 @@ function treaty_ds_layout_settings_info() {
     'layout_link_custom' => '',
     'layout_disable_css' => FALSE,
   );
-  $export['node|treaty|search_item'] = $ds_layout;
+  $export['node|event_calendar|search_item'] = $ds_layout;
 
   return $export;
 }
