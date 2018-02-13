@@ -154,6 +154,7 @@ features[field_instance][] = taxonomy_term-thesaurus_informea-name_field
 features[filter][] = full_html
 features[image][] = front_page_slider
 features[image][] = logo
+features[image][] = logo-large
 features[language][] = ar
 features[language][] = en
 features[language][] = es
