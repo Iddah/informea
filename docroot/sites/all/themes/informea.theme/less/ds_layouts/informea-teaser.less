@@ -1,13 +1,17 @@
 .informea-teaser {
-  &__title:extend(.view__title--strong all) {}
+  padding: 1em 0;
+  .views-row + .views-row & { border-top: 1px solid #ddd; }
 
   align-items: flex-start;
   display: flex;
   width: 100%;
 
+  &__title:extend(.view__title--strong all) {}
+
   &__left {
-    width: 10rem;
     margin-right: 1.5em;
+    text-align: right;
+    width: 10rem;
     > .field-type-image {
       align-items: center;
       border: 1px solid #D6D6D6;
@@ -38,7 +42,11 @@
       word-break: normal;
     }
   }
-
+  .group-event-info {
+    color: @regional-page-gray;
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
 
 .meta-content-type:extend(.view__item-tag) {

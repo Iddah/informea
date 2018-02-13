@@ -81,25 +81,12 @@
  */
 ?>
 <div id="node-<?php print $node->nid; ?>" class="node--search-item <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-    <div class="left-column">
-        <?php print render($content['left_column']); ?>
-    </div>
-
-    <div class="right-column">
-      <?php print render($title_prefix); ?>
-      <?php if (!$page): ?>
-          <h4<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h4>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-
-        <div class="content"<?php print $content_attributes; ?>>
-          <?php
-          hide($content['links']);
-          hide($content['left_column']);
-          print render($content);
-          ?>
-        </div>
-    </div>
-
+  <?php print render($title_prefix); ?>
+  <?php if (!$page): ?>
+      <h4<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h4>
+  <?php endif; ?>
+  <?php print render($title_suffix); ?>
+  <div class="content"<?php print $content_attributes; ?>>
+    <?php print render($content); ?>
+  </div>
 </div>

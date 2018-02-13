@@ -833,7 +833,7 @@ function informea_theme_preprocess_field(&$variables, $hook) {
           if(isset($variables['element']['#items'][$key]['tid'])){
              $variables['items'][0]['#items'][$key] = array(
               'data' => $item,
-              'class' => array('topic--' . $variables['element']['#items'][$key]['tid']),
+              'class' => array('topic-' . $variables['element']['#items'][$key]['tid']),
             );
           }
         }

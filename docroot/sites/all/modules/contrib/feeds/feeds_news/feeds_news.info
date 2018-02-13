@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = feeds
 dependencies[] = informea
+dependencies[] = textformatter
 dependencies[] = views
 datestamp = 1456055647
 features[ctools][] = feeds:feeds_importer_default:1

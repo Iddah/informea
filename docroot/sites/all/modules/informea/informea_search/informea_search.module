@@ -693,9 +693,18 @@ function informea_search_node_view($node, $view_mode, $langcode) {
     $view = views_get_current_view();
     $content = &$node->content;
     $left_column = [];
-    $meta = [
-      'content_type' => node_type_get_name($node),
-    ];
+
+    switch($node->type) {
+      case 'event_calendar':
+        $meta = [
+          'content_type' => t('Event'),
+        ];
+        break;
+      default:
+        $meta = [
+          'content_type' => node_type_get_name($node),
+        ];
+    }
 
     if (!empty($view->result)) {
       foreach ($view->result as $result) {
@@ -745,7 +754,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
         // Move treaty field to left column.
         if (!empty($content['field_treaty'])) {
           $left_column['field_treaty'] = $content['field_treaty'];
-          unset($content['field_treaty']);
+          // unset($content['field_treaty']);
         }
 
         // Move files to metadata container.
@@ -787,7 +796,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
       case 'event_calendar':
         if (!empty($content['event_calendar_date'])) {
           $left_column['event_calendar_date'] = $content['event_calendar_date'];
-          unset($content['event_calendar_date']);
+          // unset($content['event_calendar_date']);
         }
         break;
 
@@ -795,7 +804,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
         // Move treaty field to left column.
         if (!empty($content['field_treaty'])) {
           $left_column['field_treaty'] = $content['field_treaty'];
-          unset($content['field_treaty']);
+          // unset($content['field_treaty']);
         }
 
         $meta['published'] = [
@@ -812,7 +821,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
         // Move treaty field to left column.
         if (!empty($content['field_treaty'])) {
           $left_column['field_treaty'] = $content['field_treaty'];
-          unset($content['field_treaty']);
+          // unset($content['field_treaty']);
         }
         break;
 
@@ -852,12 +861,11 @@ function informea_search_node_view($node, $view_mode, $langcode) {
         // Move image field to left column.
         if (!empty($content['field_images'])) {
           $left_column['field_images'] = $content['field_images'];
-          unset($content['field_images']);
+          // unset($content['field_images']);
         }
         break;
 
     }
-    $content['left_column'] = $left_column;
     $content['meta'] = [
       '#theme' => 'informea_node_metadata',
       '#meta' => $meta,

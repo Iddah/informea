@@ -568,3 +568,12 @@ function informea_update_7037() {
     module_enable(array('imagecache_canvasactions'));
     features_revert_module('informea');
 }
+
+/**
+ * #326 - Implement changes to the treaty, news, events search item display
+ */
+function informea_update_7038() {
+  features_revert_module('feeds_news');
+  features_revert_module('meeting');
+  features_revert_module('geographic_region');
+}

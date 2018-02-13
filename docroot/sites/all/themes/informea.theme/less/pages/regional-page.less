@@ -59,14 +59,12 @@
   }
   .views-field-field-event-type {
     margin-bottom: .2em;
-    > .field-content {
-      background-color: #DADADA;
-      color: #fff;
-      display: inline-block;
+    > .field-content:extend(.view__item-tag) {
+      color: @text-color;
       font-weight: 300;
+      margin-left: 0;
       min-width: 6em;
       padding: .2em .4em .1em;
-      text-align: center;
     }
     + .views-field {
       ~ .views-field {
@@ -416,8 +414,4 @@
   .alert:first-child {
     margin-top: 20px;
   }
-}
-
-.view-regional-treaties {
-  .view__rows();
 }
