@@ -14,6 +14,10 @@ if ($odata_identifier) {
   $print = sprintf('/treaties/%s/print', $odata_identifier);
   $download = sprintf('/treaties/%s/download', $odata_identifier);
 }
+else {
+  $print = sprintf('/node/%d/print', $node->nid);
+  $download = sprintf('/node/%d/download', $node->nid);
+}
 ?>
 <?php if (isset($articles) && is_array($articles)): ?>
   <?php if (!empty($articles)): ?>
