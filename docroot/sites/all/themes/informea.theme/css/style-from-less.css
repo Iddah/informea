@@ -2272,6 +2272,60 @@ h2.regional-topic-title span {
 .node-type-country .facetapi-facet-field-region {
   display: none;
 }
+ul.treaty-links {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+[dir] ul.treaty-links {
+  margin-top: .7em;
+}
+[dir=ltr] ul.treaty-links {
+  padding-left: 0;
+  margin-left: -3px;
+  margin-left: -0.3rem;
+}
+[dir=rtl] ul.treaty-links {
+  padding-right: 0;
+  margin-right: -3px;
+  margin-right: -0.3rem;
+}
+ul.treaty-links li.treaty-links__link {
+  color: #777;
+}
+[dir] ul.treaty-links li.treaty-links__link {
+  cursor: not-allowed;
+}
+[dir=ltr] ul.treaty-links li.treaty-links__link {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+[dir=rtl] ul.treaty-links li.treaty-links__link {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+ul.treaty-links li.treaty-links__link + li:before {
+  color: #8F8F8F;
+  content: '|';
+}
+[dir=ltr] ul.treaty-links li.treaty-links__link + li:before {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+[dir=rtl] ul.treaty-links li.treaty-links__link + li:before {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+ul.treaty-links li.treaty-links__link a {
+  color: #0A8FC6;
+}
+[dir] ul.treaty-links li.treaty-links__link a {
+  cursor: pointer;
+}
 .page-regions .panels-flexible-row,
 .page-topics .panels-flexible-row {
   width: 100%;
@@ -2383,64 +2437,6 @@ h2.regional-topic-title span {
     margin-left: 0;
     margin-right: 0;
   }
-}
-.page-regions .views-field-treaty-links ul,
-.page-topics .views-field-treaty-links ul {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-[dir] .page-regions .views-field-treaty-links ul, [dir] .page-topics .views-field-treaty-links ul {
-  margin-top: .7em;
-}
-[dir=ltr] .page-regions .views-field-treaty-links ul, [dir=ltr] .page-topics .views-field-treaty-links ul {
-  padding-left: 0;
-  margin-left: -3px;
-  margin-left: -0.3rem;
-}
-[dir=rtl] .page-regions .views-field-treaty-links ul, [dir=rtl] .page-topics .views-field-treaty-links ul {
-  padding-right: 0;
-  margin-right: -3px;
-  margin-right: -0.3rem;
-}
-.page-regions .views-field-treaty-links li,
-.page-topics .views-field-treaty-links li {
-  color: #777;
-}
-[dir] .page-regions .views-field-treaty-links li, [dir] .page-topics .views-field-treaty-links li {
-  cursor: not-allowed;
-}
-[dir=ltr] .page-regions .views-field-treaty-links li, [dir=ltr] .page-topics .views-field-treaty-links li {
-  margin-left: 3px;
-  margin-left: .3rem;
-}
-[dir=rtl] .page-regions .views-field-treaty-links li, [dir=rtl] .page-topics .views-field-treaty-links li {
-  margin-right: 3px;
-  margin-right: .3rem;
-}
-.page-regions .views-field-treaty-links li + li:before,
-.page-topics .views-field-treaty-links li + li:before {
-  color: #8F8F8F;
-  content: '|';
-}
-[dir=ltr] .page-regions .views-field-treaty-links li + li:before, [dir=ltr] .page-topics .views-field-treaty-links li + li:before {
-  margin-right: 3px;
-  margin-right: .3rem;
-}
-[dir=rtl] .page-regions .views-field-treaty-links li + li:before, [dir=rtl] .page-topics .views-field-treaty-links li + li:before {
-  margin-left: 3px;
-  margin-left: .3rem;
-}
-.page-regions .views-field-treaty-links a,
-.page-topics .views-field-treaty-links a {
-  color: #0A8FC6;
-}
-[dir] .page-regions .views-field-treaty-links a, [dir] .page-topics .views-field-treaty-links a {
-  cursor: pointer;
 }
 .page-regions .view-news-and-events .views-field,
 .page-topics .view-news-and-events .views-field {

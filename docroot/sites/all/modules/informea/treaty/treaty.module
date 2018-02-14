@@ -1780,3 +1780,43 @@ function treaty_get_node_excel_data($node) {
     implode(', ', treaty_get_informea_tags($node)),
   ];
 }
+
+function treaty_links($nid){
+    $contextual_menu = ['#theme' => 'item_list'];
+    $node_url = url(drupal_get_path_alias('node/' . $nid), ['absolute' => TRUE]);
+    module_load_include('api.inc', 'treaty');
+    module_load_include('api.inc', 'decision');
+    module_load_include('api.inc', 'country_data');
+    module_load_include('api.inc', 'country_deliverable');
+
+    $items = array(
+        array('url' => 'text','label' => 'Full treaty text', 'function' => NULL),
+        //array('url' => 'protocols','label' => 'Protocols', 'function' => 'treaty_count_child_protocols'),
+        array('url' => 'decisions','label' => 'Meeting decisions', 'function' => 'decision_count_treaty_decisions'),
+        //array('url' => 'parties','label' => 'Parties', 'function' => 'country_data_treaty_count_membership'),
+        array('url' => 'national-reports','label' => 'National reports', 'function' => 'country_deliverable_count_treaty_national_reports'),
+        //array('url' => 'action-plans','label' => 'Action plans', 'function' => 'country_deliverable_count_treaty_action_plans'),
+        //array('url' => 'documents','label' => 'Documents', 'function' => 'country_deliverable_count_treaty_documents'),
+        array('url' => 'contacts-hub','label' => 'Contacts HUB', 'function' => 'treaty_get_contacts_count'),
+    );
+    foreach ($items as $item){
+        build_treaty_links($nid, $node_url, $contextual_menu, $item);
+    }
+    $contextual_menu['#attributes']['class'][] = 'treaty-links';
+    return !empty($contextual_menu['#items']) ? drupal_render($contextual_menu) : NULL;
+}
+
+function build_treaty_links($nid, $node_url, &$contextual_menu, $item = array('url' => '','label' => '', 'function' => NULL)){
+    $link = t($item['label']);
+    if($item['function']){
+        if (function_exists($item['function']) && call_user_func($item['function'],$nid) > 0) {
+            $link = l($link , $node_url . '/' . $item['url']);
+        }
+    }else{
+        $link = l($link, $node_url . '/' . $item['url']);
+    }
+    $contextual_menu['#items'][$item['url']]['data'] = $link;
+    $contextual_menu['#items'][$item['url']]['class'][] = 'treaty-links__link';
+    $contextual_menu['#items'][$item['url']]['class'][] = 'treaty-links__link--' . $item['url'];
+}
+

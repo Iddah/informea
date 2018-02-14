@@ -839,6 +839,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         }
       }
       break;
+    case 'treaty_links':
+       $nid =  $variables['element']['#object']->nid;
+       $variables['items'][0]['#markup'] = treaty_links($nid);
+       break;
   }
 }
 

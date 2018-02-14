@@ -1,3 +1,28 @@
+ul.treaty-links {
+  .list-unstyled();
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -.3rem;
+  margin-top: .7em;
+  li.treaty-links__link {
+    margin-left: .3rem;
+    // emulate disabled behaviour
+    color: #777;
+    cursor: not-allowed;
+    + li {
+      &:before {
+        color: @regional-page-gray;
+        content: '|';
+        margin-right: .3rem;
+      }
+    }
+    a {
+      color: #0A8FC6;
+      cursor: pointer;
+    }
+  }
+}
+
 // Regional page specific styles
 .page-regions,
 .page-topics {
@@ -13,33 +38,6 @@
 
   .region-content {
     > .block-block { .container(); }
-  }
-
-  .views-field-treaty-links {
-    ul {
-      .list-unstyled();
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: -.3rem;
-      margin-top: .7em;
-    }
-    li {
-      margin-left: .3rem;
-      // emulate disabled behaviour
-      color: #777;
-      cursor: not-allowed;
-      + li {
-        &:before {
-          color: @regional-page-gray;
-          content: '|';
-          margin-right: .3rem;
-        }
-      }
-    }
-    a {
-      color: #0A8FC6;
-      cursor: pointer;
-    }
   }
 
   .views-field-title:extend(.view__title--strong all) {}

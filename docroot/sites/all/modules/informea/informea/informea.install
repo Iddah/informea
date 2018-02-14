@@ -577,5 +577,13 @@ function informea_update_7038() {
   features_revert_module('meeting');
   features_revert_module('geographic_region');
   features_revert_module('treaty');
-
 }
+/**
+ * #348 - Topical
+ */
+function informea_update_7039()
+{
+    module_enable(array('ds_extras', 'ds_format', 'ds_ui'));
+    features_revert_module('treaty');
+}
+
