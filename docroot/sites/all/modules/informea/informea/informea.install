@@ -624,3 +624,12 @@ function informea_update_7043() {
   features_revert_module('informea');
   features_revert_module('ecolex');
 }
+
+
+/**
+ * #326 - Created ds field for that copies event_calendar_date
+ * used it to split the date into 2 spans (day + month).
+ */
+function informea_update_7044() {
+  features_revert_module('meeting');
+}

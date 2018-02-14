@@ -34,6 +34,7 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|event_calendar|search_item
+features[ds_fields][] = calendar_date
 features[ds_layout_settings][] = node|event_calendar|search_item
 features[fe_block_settings][] = views-events-homepage_events
 features[features_api][] = api:2
