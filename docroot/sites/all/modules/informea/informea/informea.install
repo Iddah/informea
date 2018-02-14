@@ -624,3 +624,10 @@ function informea_update_7043() {
   features_revert_module('informea');
   features_revert_module('ecolex');
 }
+
+/**
+ * #326 - Fixed ds settings exported in wrong feature
+ */
+function informea_update_7045() {
+  features_revert_module('country');
+}

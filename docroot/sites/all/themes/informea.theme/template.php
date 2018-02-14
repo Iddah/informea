@@ -853,6 +853,18 @@ function informea_theme_preprocess_field(&$variables, $hook) {
             ],]
         ];
         $variables['items'][0]['#markup'] = drupal_render($content_type);
+        break;
+
+    case 'country_flag':
+      if (!empty($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
+        $flag = [
+          '#markup' => theme('image', [
+            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+            'attributes' => ['class' => ['flag']],
+          ]),
+        ];
+        $variables['items'][0]['#markup'] = drupal_render($flag);
+      }
      break;
   }
 }
