@@ -454,9 +454,9 @@ function treaty_custom_view_node($node, $context) {
       $row = 2;
       foreach ($articles as $article) {
         $values = treaty_get_node_excel_data($article);
-        // Do not add articles' text if is broken-down in paragraphs
+        // Do not add articles' text if is broken-down in paragraphs.
         if (!empty($article->paragraphs)) {
-          unset($values[3]);
+          $values[3] = '';
         }
         $column = 'A';
         foreach ($values as $value) {
@@ -488,7 +488,7 @@ function treaty_custom_view_node($node, $context) {
       }
 
       $file_name = strtolower($node->title);
-      $file_name =  preg_replace('/[^a-zA-Z0-9\-\._]/','-', $file_name);
+      $file_name = preg_replace('/[^a-zA-Z0-9\-\._]/', '-', $file_name);
       header('Content-Type: application/vnd.ms-excel');
       header("Content-Disposition: attachment;filename={$file_name}.xls");
       header('Cache-Control: max-age=0');
