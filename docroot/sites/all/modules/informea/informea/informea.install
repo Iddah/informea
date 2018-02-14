@@ -626,6 +626,14 @@ function informea_update_7043() {
 }
 
 /**
+ * #326 - Created ds field for that copies event_calendar_date
+ * used it to split the date into 2 spans (day + month).
+ */
+function informea_update_7044() {
+  features_revert_module('meeting');
+}
+
+/**
  * #326 - Fixed ds settings exported in wrong feature
  */
 function informea_update_7045() {
