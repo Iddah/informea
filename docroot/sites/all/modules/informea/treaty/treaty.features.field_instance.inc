@@ -2179,7 +2179,7 @@ function treaty_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'thumbnail',
+          'image_style' => 'logo-large',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -2278,7 +2278,7 @@ function treaty_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'textformatter',
         'settings' => array(
-          'textformatter_class' => 'textformatter-list',
+          'textformatter_class' => 'informea-topics',
           'textformatter_comma_and' => 0,
           'textformatter_comma_full_stop' => 0,
           'textformatter_comma_override' => 0,

@@ -537,3 +537,45 @@ function informea_update_7033() {
   features_revert_module('informea_topics');
   features_revert_module('informea');
 }
+
+/**
+ * #351 - Implement changes to the regional landing page
+ */
+
+function informea_update_7034() {
+    features_revert_module('geographic_region');
+}
+
+/**
+ * #324 - Add image processing module
+ */
+function informea_update_7035() {
+  module_enable(array('imagecache_actions'));
+  features_revert_module('treaty');
+}
+
+/**
+ * #351 - Implement changes to the regional landing page
+ */
+function informea_update_7036() {
+    features_revert_module('geographic_region');
+}
+
+/**
+ * #324 - Enable imagecache_canvasactions module
+ */
+function informea_update_7037() {
+    module_enable(array('imagecache_canvasactions'));
+    features_revert_module('informea');
+}
+
+/**
+ * #326 - Implement changes to the treaty, news, events search item display
+ */
+function informea_update_7038() {
+  features_revert_module('feeds_news');
+  features_revert_module('meeting');
+  features_revert_module('geographic_region');
+  features_revert_module('treaty');
+
+}

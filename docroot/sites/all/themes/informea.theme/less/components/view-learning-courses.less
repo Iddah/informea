@@ -39,14 +39,16 @@
   .views-field-field-tags {
     position: absolute;
     li {
+      padding: 0;
+    }
+    ul { .list-unstyled(); }
+    .tag{
+      text-transform: uppercase;
       background-color: #16222E;
       color: #fff;
       padding: .5em 1.5em;
-      text-transform: uppercase;
     }
-    ul { .list-unstyled(); }
-
-    .tag-New li {
+    .tag--4419{
       background-color: #fc3;
       color: @text-color;
     }

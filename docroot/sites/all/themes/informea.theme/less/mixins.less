@@ -61,6 +61,7 @@
 
 .view__title--strong:extend(.title--emphasised) {
   font-weight: bold;
+  margin-top: 0;
   &, & a { color: @regional-page-light-blue; }
 }
 
@@ -72,4 +73,11 @@
   margin-top: .3em;
   padding: .2em .6em .1em;
   text-align: center;
+}
+
+.view__rows() {
+  .views-row {
+    padding: 1em 0;
+    + .views-row { border-top: 1px solid #ddd; }
+  }
 }
