@@ -588,3 +588,11 @@ function informea_update_7039() {
   features_revert_module('meeting');
   features_revert_module('treaty');
 }
+
+/**
+ * #326 - Implement changes to the decision & news search item display
+ */
+function informea_update_7040() {
+  features_revert_module('decision');
+  features_revert_module('feeds_news');
+}
