@@ -44,16 +44,58 @@
   }
 
   &__info {
+    // @todo: mixin
+    align-items: center;
     color: @regional-page-gray;
     display: flex;
     flex-flow: row wrap;
+    margin-left: -.3rem;
     margin-top: .5em;
+
+    > .field {
+      display: flex;
+      margin-left: .3rem;
+      color: #777;
+      + .field {
+        &:before {
+          color: @regional-page-gray;
+          content: '|';
+          margin-right: .3rem;
+        }
+      }
+    }
+
+    // @todo hide separator only when the country name is hidden
+    > .field-name-field-country + .field:before { display: none; }
+
   }
+
 
   &__tags {
     display: flex;
     flex-flow: row wrap;
     margin-top: .5em;
+  }
+
+  &__links {
+    // @todo: mixin
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -.3rem;
+    margin-top: .5em;
+
+    > .field {
+      display: flex;
+      margin-left: .3rem;
+      + .field {
+        &:before {
+          color: @regional-page-gray;
+          content: '|';
+          margin-right: .3rem;
+        }
+      }
+    }
   }
 
   // Topic tags are hidden on topic related pages
@@ -73,6 +115,8 @@
   // Description field is visible only in the search view
   &.node-treaty .field-name-body { display: none; }
   .view-search &.node-treaty .field-name-body { display: block; }
+
+  .file-icon { display: none; }
 
 }
 

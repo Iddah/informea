@@ -296,9 +296,8 @@ function meeting_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(

@@ -1,0 +1,25 @@
+.informea-list-of-tags {
+  // @todo mixin
+  .list-unstyled();
+  display: inline;
+  margin-bottom: 0;
+  margin-top: -.3em;
+  font-size: 0;
+  position: relative;
+  left: -.5rem;
+
+  > li {
+    background-color: transparent;
+    background-image: url('@{images-path}/tag-icon.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 1.8em;
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-left: .3em;
+    margin-top: .3em;
+    padding: .2em .6em .1em;
+    padding-left: 2em;
+    text-align: left;
+  }
+}

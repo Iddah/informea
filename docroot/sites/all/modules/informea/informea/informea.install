@@ -596,3 +596,15 @@ function informea_update_7040() {
   features_revert_module('decision');
   features_revert_module('feeds_news');
 }
+
+/**
+ * #326 - Implement changes to the several content type search item display
+ */
+function informea_update_7041() {
+  features_revert_module('country');
+  features_revert_module('country_deliverable');
+  features_revert_module('decision');
+  features_revert_module('meeting');
+  features_revert_module('ecolex');
+
+}

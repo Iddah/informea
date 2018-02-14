@@ -34,7 +34,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -94,7 +94,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -153,7 +153,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -212,7 +212,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -279,7 +279,7 @@ function ecolex_field_default_field_instances() {
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -345,7 +345,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -405,7 +405,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -465,7 +465,7 @@ function ecolex_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -524,7 +524,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -586,7 +586,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -660,7 +660,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -727,7 +727,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -802,7 +802,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -876,10 +876,23 @@ function ecolex_field_default_field_instances() {
         'weight' => 33,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 38,
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-list-of-tags',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -946,7 +959,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1013,7 +1026,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1080,7 +1093,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1147,7 +1160,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1206,7 +1219,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1265,7 +1278,7 @@ function ecolex_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 3,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1341,7 +1354,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1410,7 +1423,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1469,7 +1482,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1528,7 +1541,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1596,7 +1609,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1652,10 +1665,15 @@ function ecolex_field_default_field_instances() {
         'weight' => 58,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1722,7 +1740,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1786,7 +1804,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1846,7 +1864,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1904,7 +1922,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1964,7 +1982,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2024,7 +2042,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2083,7 +2101,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2140,9 +2158,14 @@ function ecolex_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2209,7 +2232,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2288,7 +2311,7 @@ function ecolex_field_default_field_instances() {
         'weight' => 34,
       ),
       'search_item' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'short',
@@ -2299,7 +2322,7 @@ function ecolex_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 4,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2371,7 +2394,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2437,7 +2460,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2503,7 +2526,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2562,7 +2585,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2622,7 +2645,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2678,10 +2701,23 @@ function ecolex_field_default_field_instances() {
         'weight' => 4,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 42,
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-list-of-tags',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2750,7 +2786,7 @@ function ecolex_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 2,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2825,7 +2861,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',

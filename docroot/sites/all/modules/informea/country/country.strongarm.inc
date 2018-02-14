@@ -73,6 +73,15 @@ function country_strongarm() {
         'language' => array(
           'weight' => '4',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

@@ -1,20 +1,20 @@
 <?php
 /**
  * @file
- * meeting.ds.inc
+ * country.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function meeting_ds_field_settings_info() {
+function country_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|event_calendar|search_item';
+  $ds_fieldsetting->id = 'node|country|search_item';
   $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'event_calendar';
+  $ds_fieldsetting->bundle = 'country';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
     'title' => array(
@@ -29,7 +29,7 @@ function meeting_ds_field_settings_info() {
       ),
     ),
   );
-  $export['node|event_calendar|search_item'] = $ds_fieldsetting;
+  $export['node|country|search_item'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -37,42 +37,28 @@ function meeting_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function meeting_ds_layout_settings_info() {
+function country_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|event_calendar|search_item';
+  $ds_layout->id = 'node|country|search_item';
   $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'event_calendar';
+  $ds_layout->bundle = 'country';
   $ds_layout->view_mode = 'search_item';
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
-        0 => 'event_calendar_date',
-      ),
       'right' => array(
-        1 => 'title',
-        2 => 'group_info',
-        3 => 'group_tags',
-        4 => 'field_country',
-        5 => 'field_mea_topic',
-        6 => 'field_region',
-        7 => 'field_location',
-        8 => 'field_treaty',
+        0 => 'title',
+        1 => 'field_region',
+        2 => 'group_tags',
       ),
     ),
     'fields' => array(
-      'event_calendar_date' => 'left',
       'title' => 'right',
-      'group_info' => 'right',
-      'group_tags' => 'right',
-      'field_country' => 'right',
-      'field_mea_topic' => 'right',
       'field_region' => 'right',
-      'field_location' => 'right',
-      'field_treaty' => 'right',
+      'group_tags' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -86,7 +72,7 @@ function meeting_ds_layout_settings_info() {
     'layout_link_custom' => '',
     'layout_disable_css' => FALSE,
   );
-  $export['node|event_calendar|search_item'] = $ds_layout;
+  $export['node|country|search_item'] = $ds_layout;
 
   return $export;
 }

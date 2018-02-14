@@ -30,10 +30,10 @@ function country_field_default_field_instances() {
         'weight' => 2,
       ),
       'search_item' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -91,7 +91,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -147,10 +147,10 @@ function country_field_default_field_instances() {
         'weight' => 0,
       ),
       'search_item' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -212,7 +212,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -269,7 +269,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -328,7 +328,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -392,10 +392,23 @@ function country_field_default_field_instances() {
         'weight' => 1,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-regions',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -461,7 +474,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -520,7 +533,7 @@ function country_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',

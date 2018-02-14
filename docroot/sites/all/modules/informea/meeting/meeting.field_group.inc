@@ -58,10 +58,9 @@ function meeting_field_group_info() {
     'label' => 'Inline info',
     'weight' => '2',
     'children' => array(
-      0 => 'field_city',
-      1 => 'field_country',
-      2 => 'field_location',
-      3 => 'field_treaty',
+      0 => 'field_country',
+      1 => 'field_location',
+      2 => 'field_treaty',
     ),
     'format_type' => 'div',
     'format_settings' => array(

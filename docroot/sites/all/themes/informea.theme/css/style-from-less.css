@@ -888,125 +888,158 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir=rtl] .facetapi-select {
   padding: 0 4px 0 0;
 }
-.informea-topics,
-.informea-regions,
-.informea-topics > .field-content,
-.informea-regions > .field-content,
-.informea-type-tags,
-.informea-type-tags > .field-content {
-  display: inline;
-}
-.informea-regions,
-.informea-topics,
-.informea-type-tags {
+.informea-list-of-tags {
   list-style: none;
   display: inline;
   font-size: 0;
   position: relative;
 }
-[dir] .informea-regions, [dir] .informea-topics, [dir] .informea-type-tags {
+[dir] .informea-list-of-tags {
   margin-bottom: 0;
   margin-top: -0.3em;
 }
-[dir=ltr] .informea-regions, [dir=ltr] .informea-topics, [dir=ltr] .informea-type-tags {
+[dir=ltr] .informea-list-of-tags {
   padding-left: 0;
   left: -5px;
   left: -0.5rem;
 }
-[dir=rtl] .informea-regions, [dir=rtl] .informea-topics, [dir=rtl] .informea-type-tags {
+[dir=rtl] .informea-list-of-tags {
+  padding-right: 0;
+  right: -5px;
+  right: -0.5rem;
+}
+.informea-list-of-tags > li {
+  display: inline-block;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+[dir] .informea-list-of-tags > li {
+  background-color: transparent;
+  background-image: url('../img//tag-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 1.8em;
+  margin-top: .3em;
+  padding: .2em .6em .1em;
+}
+[dir=ltr] .informea-list-of-tags > li {
+  background-position: left top;
+  margin-left: .3em;
+  padding-left: 2em;
+  text-align: left;
+}
+[dir=rtl] .informea-list-of-tags > li {
+  background-position: right top;
+  margin-right: .3em;
+  padding-right: 2em;
+  text-align: right;
+}
+.informea-topics,
+.informea-regions,
+.informea-topics > .field-content,
+.informea-regions > .field-content {
+  display: inline;
+}
+.informea-regions,
+.informea-topics {
+  list-style: none;
+  display: inline;
+  font-size: 0;
+  position: relative;
+}
+[dir] .informea-regions, [dir] .informea-topics {
+  margin-bottom: 0;
+  margin-top: -0.3em;
+}
+[dir=ltr] .informea-regions, [dir=ltr] .informea-topics {
+  padding-left: 0;
+  left: -5px;
+  left: -0.5rem;
+}
+[dir=rtl] .informea-regions, [dir=rtl] .informea-topics {
   padding-right: 0;
   right: -5px;
   right: -0.5rem;
 }
 .informea-regions > li,
-.informea-topics > li,
-.informea-type-tags > li {
+.informea-topics > li {
   display: inline-block;
   font-size: 14px;
   font-size: 1.4rem;
 }
-[dir] .informea-regions > li, [dir] .informea-topics > li, [dir] .informea-type-tags > li {
+[dir] .informea-regions > li, [dir] .informea-topics > li {
   background-color: #DADADA;
   margin-top: .3em;
   padding: .2em .6em .1em;
   text-align: center;
 }
-[dir=ltr] .informea-regions > li, [dir=ltr] .informea-topics > li, [dir=ltr] .informea-type-tags > li {
+[dir=ltr] .informea-regions > li, [dir=ltr] .informea-topics > li {
   margin-left: .3em;
 }
-[dir=rtl] .informea-regions > li, [dir=rtl] .informea-topics > li, [dir=rtl] .informea-type-tags > li {
+[dir=rtl] .informea-regions > li, [dir=rtl] .informea-topics > li {
   margin-right: .3em;
 }
 .informea-regions > li.topic-Water,
-.informea-topics > li.topic-Water,
-.informea-type-tags > li.topic-Water {
+.informea-topics > li.topic-Water {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Water, [dir] .informea-topics > li.topic-Water, [dir] .informea-type-tags > li.topic-Water {
+[dir] .informea-regions > li.topic-Water, [dir] .informea-topics > li.topic-Water {
   background-color: #044170;
 }
 .informea-regions > li.topic-Climate-Change-and-Atmosphere,
-.informea-topics > li.topic-Climate-Change-and-Atmosphere,
-.informea-type-tags > li.topic-Climate-Change-and-Atmosphere {
+.informea-topics > li.topic-Climate-Change-and-Atmosphere {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-type-tags > li.topic-Climate-Change-and-Atmosphere {
+[dir] .informea-regions > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere {
   background-color: #31a0ba;
 }
 .informea-regions > li.topic-Chemicals-and-Wastes,
-.informea-topics > li.topic-Chemicals-and-Wastes,
-.informea-type-tags > li.topic-Chemicals-and-Wastes {
+.informea-topics > li.topic-Chemicals-and-Wastes {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Chemicals-and-Wastes, [dir] .informea-topics > li.topic-Chemicals-and-Wastes, [dir] .informea-type-tags > li.topic-Chemicals-and-Wastes {
+[dir] .informea-regions > li.topic-Chemicals-and-Wastes, [dir] .informea-topics > li.topic-Chemicals-and-Wastes {
   background-color: #e03d0b;
 }
 .informea-regions > li.topic-Biodiversity,
-.informea-topics > li.topic-Biodiversity,
-.informea-type-tags > li.topic-Biodiversity {
+.informea-topics > li.topic-Biodiversity {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Biodiversity, [dir] .informea-topics > li.topic-Biodiversity, [dir] .informea-type-tags > li.topic-Biodiversity {
+[dir] .informea-regions > li.topic-Biodiversity, [dir] .informea-topics > li.topic-Biodiversity {
   background-color: #90bc2f;
 }
 .informea-regions > li.topic-4417,
-.informea-topics > li.topic-4417,
-.informea-type-tags > li.topic-4417 {
+.informea-topics > li.topic-4417 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-4417, [dir] .informea-topics > li.topic-4417, [dir] .informea-type-tags > li.topic-4417 {
+[dir] .informea-regions > li.topic-4417, [dir] .informea-topics > li.topic-4417 {
   background-color: #044170;
 }
 .informea-regions > li.topic-852,
-.informea-topics > li.topic-852,
-.informea-type-tags > li.topic-852 {
+.informea-topics > li.topic-852 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-852, [dir] .informea-topics > li.topic-852, [dir] .informea-type-tags > li.topic-852 {
+[dir] .informea-regions > li.topic-852, [dir] .informea-topics > li.topic-852 {
   background-color: #31a0ba;
 }
 .informea-regions > li.topic-851,
-.informea-topics > li.topic-851,
-.informea-type-tags > li.topic-851 {
+.informea-topics > li.topic-851 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-851, [dir] .informea-topics > li.topic-851, [dir] .informea-type-tags > li.topic-851 {
+[dir] .informea-regions > li.topic-851, [dir] .informea-topics > li.topic-851 {
   background-color: #e03d0b;
 }
 .informea-regions > li.topic-850,
-.informea-topics > li.topic-850,
-.informea-type-tags > li.topic-850 {
+.informea-topics > li.topic-850 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-850, [dir] .informea-topics > li.topic-850, [dir] .informea-type-tags > li.topic-850 {
+[dir] .informea-regions > li.topic-850, [dir] .informea-topics > li.topic-850 {
   background-color: #90bc2f;
 }
 .page-topics.topic-Water h2.topic-title span {
@@ -1717,22 +1750,6 @@ h2.regional-topic-title span {
 .informea-switcher_advancer:focus .informea-switcher_advancer-icon {
   fill: #1D7CA7;
 }
-[dir] .informea-type-tags > li {
-  background-color: transparent;
-  background-image: url('../img//tag-icon.svg');
-  background-repeat: no-repeat;
-  background-size: 1.8em;
-}
-[dir=ltr] .informea-type-tags > li {
-  background-position: left top;
-  padding-left: 2em;
-  text-align: left;
-}
-[dir=rtl] .informea-type-tags > li {
-  background-position: right top;
-  padding-right: 2em;
-  text-align: right;
-}
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
   font-weight: normal;
 }
@@ -1893,6 +1910,9 @@ h2.regional-topic-title span {
   margin-left: .3em;
 }
 .informea-teaser__info {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #8F8F8F;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1905,6 +1925,44 @@ h2.regional-topic-title span {
 }
 [dir] .informea-teaser__info {
   margin-top: .5em;
+}
+[dir=ltr] .informea-teaser__info {
+  margin-left: -3px;
+  margin-left: -0.3rem;
+}
+[dir=rtl] .informea-teaser__info {
+  margin-right: -3px;
+  margin-right: -0.3rem;
+}
+.informea-teaser__info > .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  color: #777;
+}
+[dir=ltr] .informea-teaser__info > .field {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+[dir=rtl] .informea-teaser__info > .field {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+.informea-teaser__info > .field + .field:before {
+  color: #8F8F8F;
+  content: '|';
+}
+[dir=ltr] .informea-teaser__info > .field + .field:before {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+[dir=rtl] .informea-teaser__info > .field + .field:before {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+.informea-teaser__info > .field-name-field-country + .field:before {
+  display: none;
 }
 .informea-teaser__tags {
   display: -webkit-box;
@@ -1919,6 +1977,56 @@ h2.regional-topic-title span {
 [dir] .informea-teaser__tags {
   margin-top: .5em;
 }
+.informea-teaser__links {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+[dir] .informea-teaser__links {
+  margin-top: .5em;
+}
+[dir=ltr] .informea-teaser__links {
+  margin-left: -3px;
+  margin-left: -0.3rem;
+}
+[dir=rtl] .informea-teaser__links {
+  margin-right: -3px;
+  margin-right: -0.3rem;
+}
+.informea-teaser__links > .field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir=ltr] .informea-teaser__links > .field {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+[dir=rtl] .informea-teaser__links > .field {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+.informea-teaser__links > .field + .field:before {
+  color: #8F8F8F;
+  content: '|';
+}
+[dir=ltr] .informea-teaser__links > .field + .field:before {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+[dir=rtl] .informea-teaser__links > .field + .field:before {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
 .page-topics .informea-teaser .field-name-field-mea-topic {
   display: none;
 }
@@ -1930,6 +2038,9 @@ h2.regional-topic-title span {
 }
 .view-search .informea-teaser.node-treaty .field-name-body {
   display: block;
+}
+.informea-teaser .file-icon {
+  display: none;
 }
 [dir=ltr] .meta-content-type {
   margin-left: 0;
