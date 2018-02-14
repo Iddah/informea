@@ -933,12 +933,15 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   padding-right: 2em;
   text-align: right;
 }
+.field-content-type,
 .informea-topics,
 .informea-regions,
+.field-content-type > .field-content,
 .informea-topics > .field-content,
 .informea-regions > .field-content {
   display: inline;
 }
+.field-content-type,
 .informea-regions,
 .informea-topics {
   list-style: none;
@@ -946,101 +949,97 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   font-size: 0;
   position: relative;
 }
-[dir] .informea-regions, [dir] .informea-topics {
+[dir] .field-content-type, [dir] .informea-regions, [dir] .informea-topics {
   margin-bottom: 0;
   margin-top: -0.3em;
 }
-[dir=ltr] .informea-regions, [dir=ltr] .informea-topics {
+[dir=ltr] .field-content-type, [dir=ltr] .informea-regions, [dir=ltr] .informea-topics {
   padding-left: 0;
   left: -5px;
   left: -0.5rem;
 }
-[dir=rtl] .informea-regions, [dir=rtl] .informea-topics {
+[dir=rtl] .field-content-type, [dir=rtl] .informea-regions, [dir=rtl] .informea-topics {
   padding-right: 0;
   right: -5px;
   right: -0.5rem;
 }
+.field-content-type > li,
 .informea-regions > li,
 .informea-topics > li {
   display: inline-block;
   font-size: 14px;
   font-size: 1.4rem;
 }
-[dir] .informea-regions > li, [dir] .informea-topics > li {
+[dir] .field-content-type > li, [dir] .informea-regions > li, [dir] .informea-topics > li {
   background-color: #DADADA;
   margin-top: .3em;
   padding: .2em .6em .1em;
   text-align: center;
 }
-[dir=ltr] .informea-regions > li, [dir=ltr] .informea-topics > li {
+[dir=ltr] .field-content-type > li, [dir=ltr] .informea-regions > li, [dir=ltr] .informea-topics > li {
   margin-left: .3em;
 }
-[dir=rtl] .informea-regions > li, [dir=rtl] .informea-topics > li {
+[dir=rtl] .field-content-type > li, [dir=rtl] .informea-regions > li, [dir=rtl] .informea-topics > li {
   margin-right: .3em;
 }
-.informea-regions > li.topic-Water,
 .informea-topics > li.topic-Water {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Water, [dir] .informea-topics > li.topic-Water {
+[dir] .informea-topics > li.topic-Water {
   background-color: #044170;
 }
-.informea-regions > li.topic-Climate-Change-and-Atmosphere,
 .informea-topics > li.topic-Climate-Change-and-Atmosphere {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Climate-Change-and-Atmosphere, [dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere {
+[dir] .informea-topics > li.topic-Climate-Change-and-Atmosphere {
   background-color: #31a0ba;
 }
-.informea-regions > li.topic-Chemicals-and-Wastes,
 .informea-topics > li.topic-Chemicals-and-Wastes {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Chemicals-and-Wastes, [dir] .informea-topics > li.topic-Chemicals-and-Wastes {
+[dir] .informea-topics > li.topic-Chemicals-and-Wastes {
   background-color: #e03d0b;
 }
-.informea-regions > li.topic-Biodiversity,
 .informea-topics > li.topic-Biodiversity {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-Biodiversity, [dir] .informea-topics > li.topic-Biodiversity {
+[dir] .informea-topics > li.topic-Biodiversity {
   background-color: #90bc2f;
 }
-.informea-regions > li.topic-4417,
 .informea-topics > li.topic-4417 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-4417, [dir] .informea-topics > li.topic-4417 {
+[dir] .informea-topics > li.topic-4417 {
   background-color: #044170;
 }
-.informea-regions > li.topic-852,
 .informea-topics > li.topic-852 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-852, [dir] .informea-topics > li.topic-852 {
+[dir] .informea-topics > li.topic-852 {
   background-color: #31a0ba;
 }
-.informea-regions > li.topic-851,
 .informea-topics > li.topic-851 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-851, [dir] .informea-topics > li.topic-851 {
+[dir] .informea-topics > li.topic-851 {
   background-color: #e03d0b;
 }
-.informea-regions > li.topic-850,
 .informea-topics > li.topic-850 {
   color: #fff;
   font-weight: 300;
 }
-[dir] .informea-regions > li.topic-850, [dir] .informea-topics > li.topic-850 {
+[dir] .informea-topics > li.topic-850 {
   background-color: #90bc2f;
+}
+.field-content-type > li {
+  text-transform: capitalize;
 }
 .page-topics.topic-Water h2.topic-title span {
   color: #044170;

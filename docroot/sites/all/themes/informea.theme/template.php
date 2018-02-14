@@ -844,12 +844,20 @@ function informea_theme_preprocess_field(&$variables, $hook) {
        $variables['items'][0]['#markup'] = treaty_links($nid);
        break;
     case 'content_type':
+        $content_type_machine_name = $variables['element']['#object']->type;
+        switch ($content_type_machine_name) {
+          case 'event_calendar':
+            $content_type_human_readable = t('Event');
+            break;
+          default:
+            $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
+            break;
+        }
         $content_type = [
             '#theme' => 'item_list',
-            '#attributes' => ['class'  => ['field__content-type'],],
+            '#attributes' => ['class'  => ['field-content-type'],],
             '#items' => [0 => [
-                'data' => t($variables['element']['#object']->type),
-                'class' => ['field__content-type--type'],
+                'data' => $content_type_human_readable,
             ],]
         ];
         $variables['items'][0]['#markup'] = drupal_render($content_type);

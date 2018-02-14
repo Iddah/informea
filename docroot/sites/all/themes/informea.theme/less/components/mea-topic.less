@@ -1,6 +1,7 @@
 // .field-name-field-mea-topic,
 // .views-field-field-mea-topic,
 // .views-field-field-region,
+.field-content-type,
 .informea-topics,
 .informea-regions {
 
@@ -14,6 +15,7 @@
 // .field-name-field-mea-topic ul,
 // .views-field-field-mea-topic ul,
 // .views-field-field-region ul,
+.field-content-type,
 .informea-regions,
 .informea-topics {
 
@@ -33,14 +35,19 @@
     margin-top: .3em;
     padding: .2em .6em .1em;
     text-align: center;
-
-    .loop-mea-topics({
-      &.topic-@{mea-topic-class} {
-        background-color: @mea-topic-color;
-        color: #fff;
-        font-weight: 300;
-      }
-    });
-
   }
+}
+
+.informea-topics > li {
+  .loop-mea-topics({
+    &.topic-@{mea-topic-class} {
+      background-color: @mea-topic-color;
+      color: #fff;
+      font-weight: 300;
+    }
+  });
+}
+
+.field-content-type > li {
+  text-transform: capitalize;
 }
