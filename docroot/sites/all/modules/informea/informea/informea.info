@@ -313,7 +313,6 @@ features[views_view][] = taxonomy_mappings
 features[views_view][] = term_related_content
 features[views_view][] = the_content
 features[wysiwyg][] = full_html
-features_exclude[dependencies][ds] = ds
 files[] = informea.translation.inc
 files[] = informea.admin.inc
 files[] = informea.populate.fields.inc

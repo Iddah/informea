@@ -616,3 +616,11 @@ function informea_update_7042() {
   features_revert_module('meeting');
   features_revert_module('ecolex');
 }
+
+/**
+ * #326 - Fixed ds settings exported in wrong feature
+ */
+function informea_update_7042() {
+  features_revert_module('informea');
+  features_revert_module('ecolex');
+}

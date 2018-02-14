@@ -27,6 +27,7 @@ features[ctools][] = elysia_cron:default_elysia_cron_rules:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = page_manager:pages_default:1
 features[ctools][] = strongarm:strongarm:1
+features[ds_field_settings][] = node|court_decisions|search_item
 features[elysia_cron][] = :migration-ecolex
 features[elysia_cron][] = ecolex_migration_legislation_sync
 features[elysia_cron][] = ecolex_migration_literature_sync
