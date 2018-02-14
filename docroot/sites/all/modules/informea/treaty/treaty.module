@@ -5,6 +5,7 @@
  */
 
 include_once 'treaty.features.inc';
+include_once DRUPAL_ROOT . '/sites/all/libraries/PHPExcel/Classes/PHPExcel.php';
 
 use Drupal\akoma_ntoso\AkomaNtoso;
 use Drupal\akoma_ntoso\Elements\Element as AkomaNtosoElement;
@@ -137,7 +138,8 @@ function _treaty_url_get_custom_node_view_types() {
     'national-reports',
     'action-plans',
     'documents',
-    'contacts-hub'
+    'contacts-hub',
+    'download'
   );
 }
 
@@ -231,7 +233,6 @@ function treaty_custom_view_node($node, $context) {
   if ($node->type != 'treaty') {
     return node_view($node);
   }
-
   // Build view mode full - this is the starting point.
   node_build_content($node, 'full');
   $node->context = _treaty_url_context(request_uri());
@@ -450,6 +451,66 @@ function treaty_custom_view_node($node, $context) {
           '#markup' => $view->render(),
         ];
       }
+      break;
+
+    case 'download':
+      $articles = treaty_get_treaty_text($node->nid);
+      $col_headers = ['Node ID', 'Permalink', 'Title', 'Text', 'SDG goals', 'SDG targets', 'SDG indicators', 'LEO terms'];
+
+      $objPHPExcel = new \PHPExcel();
+      $objPHPExcel->setActiveSheetIndex(0);
+
+      foreach ($col_headers as $idx => $col_header) {
+        $cell = chr(ord('A') + $idx) . '1';
+        $objPHPExcel->getActiveSheet()->setCellValue($cell, $col_header)->getStyle($cell)->getFont()->setBold(TRUE);
+      }
+      $objPHPExcel->getActiveSheet()->freezePane("A2");
+
+      $row = 2;
+      foreach ($articles as $article) {
+        $values = treaty_get_node_excel_data($article);
+        // Do not add articles' text if is broken-down in paragraphs
+        if (!empty($article->paragraphs)) {
+          unset($values[3]);
+        }
+        $column = 'A';
+        foreach ($values as $value) {
+          $objPHPExcel->getActiveSheet()->setCellValue($column . $row, $value);
+          $column++;
+        }
+        $objPHPExcel->getActiveSheet()->getStyle('C' . $row)->getFont()->setBold(TRUE);
+        $row++;
+        if (!empty($article->paragraphs)) {
+          foreach ($article->paragraphs as $paragraph) {
+            $column = 'A';
+            $values = treaty_get_node_excel_data($paragraph);
+            foreach ($values as $value) {
+              $objPHPExcel->getActiveSheet()->setCellValue($column . $row, $value);
+              $column++;
+            }
+            $row++;
+          }
+        }
+      }
+      $maxrow = $row--;
+      $maxcol = chr(ord($column) - 1);
+      $objPHPExcel->getActiveSheet()->getStyle("A1:{$maxcol}{$maxrow}")->getAlignment()->setWrapText(TRUE)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+      foreach (range('A', $maxcol) as $column) {
+        $objPHPExcel->getActiveSheet()->getColumnDimension($column)->setAutoSize(TRUE);
+      }
+      foreach (range(1, $maxrow) as $row) {
+        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
+      }
+
+      $file_name = strtolower($node->title);
+      $file_name =  preg_replace('/[^a-zA-Z0-9\-\._]/','-', $file_name);
+      header('Content-Type: application/vnd.ms-excel');
+      header("Content-Disposition: attachment;filename={$file_name}.xls");
+      header('Cache-Control: max-age=0');
+      $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+      ob_end_clean();
+      ob_start();
+      $objWriter->save('php://output');
       break;
   }
 
@@ -1636,4 +1697,86 @@ function treaty_get_url_base($nid, $odata_identifier) {
     }
   }
   return $path;
+}
+
+/**
+ * Get the SDG goals IDs, filtered by type.
+ *
+ * @param $node
+ * @param null $goal_type
+ *  - goals
+ *  - targets
+ *  - indicators
+ * @return array
+ */
+function treaty_get_sdg_goals($node, $goal_type = NULL) {
+  if (empty($node->field_sdg_goals[LANGUAGE_NONE])) {
+    return [];
+  }
+  $goals = $node->field_sdg_goals[LANGUAGE_NONE];
+  $goal_types_tids = [
+    'goals' => 1734,
+    'targets' =>  1737,
+    'indicators' => 1735,
+  ];
+  $specific_goals = [];
+  foreach ($goals as $goal_id) {
+    $goal = node_load($goal_id['target_id']);
+    if ($goal_type == NULL || $goal_types_tids[$goal_type] == $goal->field_goal_type[LANGUAGE_NONE][0]['tid']) {
+      $specific_goals[] = $goal->field_original_id[LANGUAGE_NONE][0]['value'];
+    }
+  }
+  return $specific_goals;
+}
+
+/**
+ * Get the InforMEA tag titles.
+ */
+function treaty_get_informea_tags($node) {
+  if (empty($node->field_informea_tags[LANGUAGE_NONE])) {
+    return [];
+  }
+  $tags = $node->field_informea_tags[LANGUAGE_NONE];
+  $tag_titles = [];
+  foreach ($tags as $tag) {
+    $tag_titles[] = taxonomy_term_load($tag['tid'])->name;
+  }
+  return $tag_titles;
+}
+
+/**
+ * Get the values array of the article or paragraph for excel export.
+ *
+ * The column headers are: Node ID, Permalink, Title, Text, SDG goals, SDG targets, SDG indicators, LEO terms.
+ */
+function treaty_get_node_excel_data($node) {
+  global $language;
+  /** @var \stdClass $wrapper */
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $is_article = $node->type == 'treaty_article';
+  $treaty = $wrapper->field_treaty->value();
+  $treaty = $treaty[0];
+  $title = '';
+  if ($is_article) {
+    $link = treaty_url_article($treaty->nid, $node->nid);
+    $title = $node->official_title;
+  }
+  else {
+    $parent_article = $wrapper->field_parent_treaty_article->value();
+    $link = treaty_url_paragraph($treaty->nid, $parent_article->nid, $node->nid);
+  }
+  $body = $wrapper->body->value();
+  if (!empty($body['safe_value'])) {
+    $body = strip_tags($body['safe_value']);
+  }
+  return [
+    $node->nid,
+    $link,
+    $title,
+    $body,
+    implode(', ', treaty_get_sdg_goals($node, 'goals')),
+    implode(', ', treaty_get_sdg_goals($node, 'targets')),
+    implode(', ', treaty_get_sdg_goals($node, 'indicators')),
+    implode(', ', treaty_get_informea_tags($node)),
+  ];
 }
