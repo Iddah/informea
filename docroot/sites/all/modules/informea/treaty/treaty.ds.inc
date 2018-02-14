@@ -17,6 +17,11 @@ function treaty_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'treaty';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
+    'treaty_links' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -30,6 +35,33 @@ function treaty_ds_field_settings_info() {
     ),
   );
   $export['node|treaty|search_item'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_custom_fields_info().
+ */
+function treaty_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'treaty_links';
+  $ds_field->label = 'Treaty links';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '-',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['treaty_links'] = $ds_field;
 
   return $export;
 }
@@ -62,6 +94,7 @@ function treaty_ds_layout_settings_info() {
         7 => 'field_mea_topic',
         8 => 'field_region',
         9 => 'field_type_of_text',
+        10 => 'treaty_links',
       ),
     ),
     'fields' => array(
@@ -75,6 +108,7 @@ function treaty_ds_layout_settings_info() {
       'field_mea_topic' => 'right',
       'field_region' => 'right',
       'field_type_of_text' => 'right',
+      'treaty_links' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

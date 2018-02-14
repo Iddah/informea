@@ -839,6 +839,21 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         }
       }
       break;
+    case 'treaty_links':
+       $nid =  $variables['element']['#object']->nid;
+       $variables['items'][0]['#markup'] = treaty_links($nid);
+       break;
+    case 'content_type':
+        $content_type = [
+            '#theme' => 'item_list',
+            '#attributes' => ['class'  => ['field__content-type'],],
+            '#items' => [0 => [
+                'data' => t($variables['element']['#object']->type),
+                'class' => ['field__content-type--type'],
+            ],]
+        ];
+        $variables['items'][0]['#markup'] = drupal_render($content_type);
+     break;
   }
 }
 
