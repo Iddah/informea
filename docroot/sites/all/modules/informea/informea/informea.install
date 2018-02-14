@@ -587,3 +587,10 @@ function informea_update_7039()
     features_revert_module('treaty');
 }
 
+/**
+ * #348 - Added content type ds field
+ */
+function informea_update_7040()
+{
+    features_revert_module('informea');
+}
