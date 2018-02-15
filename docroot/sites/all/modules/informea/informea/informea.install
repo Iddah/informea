@@ -662,8 +662,16 @@ function informea_update_7047() {
 }
 
 /**
- * #326 - Glossary terms related updates
+ * #351 - Glossary terms related updates
  */
 function informea_update_7048() {
   features_revert_module('treaty');
+}
+
+/**
+ * #351 - Changed document and events column classes on regional & topical landing pages
+ */
+function informea_update_7049() {
+  features_revert_module('geographic_region');
+  features_revert_module('informea_topics');
 }

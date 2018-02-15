@@ -241,7 +241,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 11,
         ),
-        'class' => 'col-sm-6',
+        'class' => 'col-sm-8',
         'hide_empty' => 0,
       ),
       9 => array(
@@ -252,7 +252,7 @@ function geographic_region_default_page_manager_pages() {
         'children' => array(
           0 => 10,
         ),
-        'class' => 'col-sm-6',
+        'class' => 'col-sm-4',
         'hide_empty' => 0,
       ),
       10 => array(
