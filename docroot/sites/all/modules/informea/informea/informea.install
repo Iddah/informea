@@ -660,3 +660,10 @@ function informea_update_7047() {
   features_revert_module('meeting');
   features_revert_module('treaty');
 }
+
+/**
+ * #326 - Glossary terms related updates
+ */
+function informea_update_7048() {
+  features_revert_module('treaty');
+}
