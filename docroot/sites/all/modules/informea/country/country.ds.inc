@@ -58,7 +58,7 @@ function country_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = 'country|search_item';
+  $ds_field->ui_limit = 'country|*';
   $ds_field->properties = array(
     'code' => array(
       'value' => '-',

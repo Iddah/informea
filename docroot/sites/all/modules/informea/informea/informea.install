@@ -687,3 +687,10 @@ function informea_update_7050() {
   features_revert_module('meeting');
   features_revert_module('treaty');
 }
+
+/**
+ * #351 - Country flag field is available on all view modes
+ */
+function informea_update_7051() {
+  features_revert_module('country');
+}
