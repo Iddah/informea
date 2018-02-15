@@ -120,6 +120,7 @@ function country_deliverable_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_files',
+      1 => 'treaty_links',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -187,6 +188,7 @@ function country_deliverable_field_group_info() {
     'children' => array(
       0 => 'field_region',
       1 => 'field_mea_topic',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(

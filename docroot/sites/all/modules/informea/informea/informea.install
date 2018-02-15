@@ -543,7 +543,7 @@ function informea_update_7033() {
  */
 
 function informea_update_7034() {
-    features_revert_module('geographic_region');
+  features_revert_module('geographic_region');
 }
 
 /**
@@ -558,15 +558,15 @@ function informea_update_7035() {
  * #351 - Implement changes to the regional landing page
  */
 function informea_update_7036() {
-    features_revert_module('geographic_region');
+  features_revert_module('geographic_region');
 }
 
 /**
  * #324 - Enable imagecache_canvasactions module
  */
 function informea_update_7037() {
-    module_enable(array('imagecache_canvasactions'));
-    features_revert_module('informea');
+  module_enable(array('imagecache_canvasactions'));
+  features_revert_module('informea');
 }
 
 /**
@@ -644,8 +644,19 @@ function informea_update_7045() {
  * #348,#351 - Topical & Regional treaty.
  */
 function informea_update_7046() {
-    features_revert_module('geographic_region');
-    features_revert_module('informea');
-    features_revert_module('informea_topics');
-    features_revert_module('treaty');
+  features_revert_module('geographic_region');
+  features_revert_module('informea');
+  features_revert_module('informea_topics');
+  features_revert_module('treaty');
+}
+
+/**
+ * #326 - Several display updates
+ */
+function informea_update_7047() {
+  features_revert_module('country');
+  features_revert_module('country_deliverable');
+  features_revert_module('ecolex');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
 }

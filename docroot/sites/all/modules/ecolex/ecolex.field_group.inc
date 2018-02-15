@@ -148,6 +148,7 @@ function ecolex_field_group_info() {
     'children' => array(
       0 => 'field_files',
       1 => 'field_url',
+      2 => 'treaty_links',
     ),
     'format_type' => 'div',
     'format_settings' => array(

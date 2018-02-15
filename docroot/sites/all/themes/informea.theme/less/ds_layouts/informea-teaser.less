@@ -68,6 +68,33 @@
     // @todo hide separator only when the country name is hidden
     > .field-name-field-country + .field:before { display: none; }
 
+    .field-name-field-country {
+      > .field-items {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        margin-left: -.5rem;
+        > .field-item {
+          margin-left: .5rem;
+        }
+      }
+    }
+    // Override old theme styling
+    .countries-list-item { margin-bottom: 0; }
+
+    .countries-list-item .label,
+    .countries-list-item .label a { font-size: 1em; }
+
+    .countries-list-item .country-flag img { margin: 0; }
+
+    .countries-list-item .label {
+      padding: 0;
+    }
+
+    img {
+      height: 1em;
+      width: auto;
+    }
   }
 
 

@@ -1963,6 +1963,52 @@ h2.regional-topic-title span {
 .informea-teaser__info > .field-name-field-country + .field:before {
   display: none;
 }
+.informea-teaser__info .field-name-field-country > .field-items {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+[dir=ltr] .informea-teaser__info .field-name-field-country > .field-items {
+  margin-left: -5px;
+  margin-left: -0.5rem;
+}
+[dir=rtl] .informea-teaser__info .field-name-field-country > .field-items {
+  margin-right: -5px;
+  margin-right: -0.5rem;
+}
+[dir=ltr] .informea-teaser__info .field-name-field-country > .field-items > .field-item {
+  margin-left: 5px;
+  margin-left: .5rem;
+}
+[dir=rtl] .informea-teaser__info .field-name-field-country > .field-items > .field-item {
+  margin-right: 5px;
+  margin-right: .5rem;
+}
+[dir] .informea-teaser__info .countries-list-item {
+  margin-bottom: 0;
+}
+.informea-teaser__info .countries-list-item .label,
+.informea-teaser__info .countries-list-item .label a {
+  font-size: 1em;
+}
+[dir] .informea-teaser__info .countries-list-item .country-flag img {
+  margin: 0;
+}
+[dir] .informea-teaser__info .countries-list-item .label {
+  padding: 0;
+}
+.informea-teaser__info img {
+  height: 1em;
+  width: auto;
+}
 .informea-teaser__tags {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2402,7 +2448,7 @@ ul.treaty-links {
       flex-wrap: wrap;
 }
 [dir] ul.treaty-links {
-  margin-top: .7em;
+  margin-bottom: 0;
 }
 [dir=ltr] ul.treaty-links {
   padding-left: 0;

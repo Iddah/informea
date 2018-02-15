@@ -27,11 +27,6 @@ function country_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'treaty_links' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -63,7 +58,7 @@ function country_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = '';
+  $ds_field->ui_limit = 'country|search_item';
   $ds_field->properties = array(
     'code' => array(
       'value' => '-',
@@ -91,24 +86,22 @@ function country_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
-        0 => 'country_flag',
-      ),
       'right' => array(
-        1 => 'content_type',
-        2 => 'field_region',
-        3 => 'title',
+        0 => 'content_type',
+        2 => 'title',
+        3 => 'field_region',
         4 => 'group_tags',
-        5 => 'treaty_links',
+      ),
+      'left' => array(
+        1 => 'country_flag',
       ),
     ),
     'fields' => array(
-      'country_flag' => 'left',
       'content_type' => 'right',
-      'field_region' => 'right',
+      'country_flag' => 'left',
       'title' => 'right',
+      'field_region' => 'right',
       'group_tags' => 'right',
-      'treaty_links' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

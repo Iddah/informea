@@ -317,7 +317,7 @@ function country_deliverable_field_default_field_instances() {
         'weight' => 3,
       ),
       'search_item' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
@@ -1410,7 +1410,7 @@ function country_deliverable_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1548,7 +1548,7 @@ function country_deliverable_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',

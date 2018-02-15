@@ -94,6 +94,7 @@ function meeting_field_group_info() {
     'children' => array(
       0 => 'field_region',
       1 => 'field_mea_topic',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(

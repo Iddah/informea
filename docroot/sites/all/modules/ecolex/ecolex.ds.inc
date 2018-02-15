@@ -17,6 +17,11 @@ function ecolex_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'court_decisions';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
+    'treaty_links' => array(
+      'weight' => '11',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',

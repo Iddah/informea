@@ -44,7 +44,7 @@ function treaty_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
     'content_type' => array(
-      'weight' => '0',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -180,25 +180,29 @@ function treaty_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'right' => array(
-        0 => 'content_type',
-        2 => 'title',
-        3 => 'field_mea_topic',
-        4 => 'body',
-        5 => 'field_region',
-        6 => 'field_type_of_text',
-        7 => 'group_tags',
-        8 => 'field_informea_tags',
-        9 => 'treaty_links',
-      ),
       'left' => array(
         1 => 'field_logo',
+      ),
+      'right' => array(
+        1 => 'title',
+        2 => 'group_info',
+        3 => 'body',
+        4 => 'group_tags',
+        5 => 'content_type',
+        6 => 'treaty_links',
+        7 => 'field_mea_topic',
+        8 => 'field_region',
+        9 => 'field_type_of_text',
+        10 => 'field_informea_tags',
       ),
     ),
     'fields' => array(
       'content_type' => 'right',
       'field_logo' => 'left',
       'title' => 'right',
+      'group_info' => 'right',
+      'body' => 'right',
+      'group_tags' => 'right',
       'field_mea_topic' => 'right',
       'body' => 'right',
       'field_region' => 'right',

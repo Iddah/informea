@@ -1,4 +1,4 @@
-<?php
+treaty.features.field_instance.inc<?php
 /**
  * @file
  * treaty.features.field_instance.inc
