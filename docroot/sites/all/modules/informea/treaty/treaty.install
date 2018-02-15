@@ -56,3 +56,10 @@ function treaty_update_7006() {
   $term->field_published[LANGUAGE_NONE][0]['value'] = 1;
   taxonomy_term_save($term);
 }
+
+/**
+ * #348,#351 - Topical & Regional treaty display modes.
+ */
+function treaty_update_7007() {
+    features_revert_module('treaty');
+}
