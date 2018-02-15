@@ -316,7 +316,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'search_item';
+  $handler->display->display_options['row_options']['view_mode'] = 'regional_treaty';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Result summary */
@@ -411,8 +411,8 @@ function geographic_region_views_default_views() {
   );
   $handler->display->display_options['fields']['treaty_links']['decisions_link_title'] = 'Meeting Decisions';
 
-  /* Display: Global treaties */
-  $handler = $view->new_display('block', 'Global treaties', 'block_1');
+  /* Display: Global treaties - by region */
+  $handler = $view->new_display('block', 'Global treaties - by region', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Global treaties';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
@@ -427,7 +427,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'search_item';
+  $handler->display->display_options['row_options']['view_mode'] = 'regional_treaty';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Result summary */
@@ -565,7 +565,7 @@ function geographic_region_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'search_item';
+  $handler->display->display_options['row_options']['view_mode'] = 'topical_treaty';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Result summary */
@@ -721,6 +721,144 @@ function geographic_region_views_default_views() {
   );
   $handler->display->display_options['filters']['field_region_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_region_tid_1']['vocabulary'] = 'geographical_region';
+
+  /* Display: Global treaties - by topic */
+  $handler = $view->new_display('block', 'Global treaties - by topic', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Global treaties';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '1';
+  $handler->display->display_options['pager']['options']['quantity'] = '4';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'topical_treaty';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '@total global treaties and protocols';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'No results text';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no global treaties for current filters.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Official name */
+  $handler->display->display_options['fields']['field_official_name']['id'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['table'] = 'field_data_field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['field'] = 'field_official_name';
+  $handler->display->display_options['fields']['field_official_name']['label'] = '';
+  $handler->display->display_options['fields']['field_official_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_official_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_official_name']['empty'] = '[title_field]';
+  $handler->display->display_options['fields']['field_official_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_official_name']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => 'content',
+    'title_class' => '',
+  );
+  $handler->display->display_options['fields']['field_official_name']['group_column'] = 'entity_id';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['alter']['text'] = '[field_official_name] ([title])';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['title_field']['group_column'] = 'entity_id';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Field: Content: Region */
+  $handler->display->display_options['fields']['field_region']['id'] = 'field_region';
+  $handler->display->display_options['fields']['field_region']['table'] = 'field_data_field_region';
+  $handler->display->display_options['fields']['field_region']['field'] = 'field_region';
+  $handler->display->display_options['fields']['field_region']['label'] = '';
+  $handler->display->display_options['fields']['field_region']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_region']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_region']['group_column'] = 'entity_id';
+  $handler->display->display_options['fields']['field_region']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_region']['multi_type'] = 'ul';
+  /* Field: Content: Title abbreviation */
+  $handler->display->display_options['fields']['field_title_abbreviation']['id'] = 'field_title_abbreviation';
+  $handler->display->display_options['fields']['field_title_abbreviation']['table'] = 'field_data_field_title_abbreviation';
+  $handler->display->display_options['fields']['field_title_abbreviation']['field'] = 'field_title_abbreviation';
+  $handler->display->display_options['fields']['field_title_abbreviation']['label'] = '';
+  $handler->display->display_options['fields']['field_title_abbreviation']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_title_abbreviation']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_title_abbreviation']['alter']['text'] = '([field_title_abbreviation])';
+  $handler->display->display_options['fields']['field_title_abbreviation']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_title_abbreviation']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_title_abbreviation']['group_column'] = 'entity_id';
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['text'] = '[field_official_name] [field_title_abbreviation]';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Topics (field_mea_topic) */
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['id'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['table'] = 'field_data_field_mea_topic';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['field'] = 'field_mea_topic_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_mea_topic_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'treaty' => 'treaty',
+  );
+  /* Filter criterion: Content: Region (field_region) */
+  $handler->display->display_options['filters']['field_region_tid']['id'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['table'] = 'field_data_field_region';
+  $handler->display->display_options['filters']['field_region_tid']['field'] = 'field_region_tid';
+  $handler->display->display_options['filters']['field_region_tid']['value'] = array(
+    0 => '1118',
+  );
+  $handler->display->display_options['filters']['field_region_tid']['vocabulary'] = 'geographical_region';
+  /* Filter criterion: Content: Data source (field_data_source) */
+  $handler->display->display_options['filters']['field_data_source_tid']['id'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['table'] = 'field_data_field_data_source';
+  $handler->display->display_options['filters']['field_data_source_tid']['field'] = 'field_data_source_tid';
+  $handler->display->display_options['filters']['field_data_source_tid']['value'] = array(
+    815 => '815',
+  );
+  $handler->display->display_options['filters']['field_data_source_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_data_source_tid']['vocabulary'] = 'data_source';
   $translatables['regional_treaties'] = array(
     t('Master'),
     t('Global treaties'),
@@ -745,12 +883,14 @@ function geographic_region_views_default_views() {
     t('Reg. treaties - by region'),
     t('Regional treaties'),
     t('@total regional treaties and protocols'),
+    t('Global treaties - by region'),
     t('@total global treaties and protocols'),
     t('There are no global treaties for current filters.'),
     t('[title_field]'),
     t('([field_title_abbreviation])'),
     t('[field_official_name] [field_title_abbreviation]'),
     t('Reg. treaties - by topic'),
+    t('Global treaties - by topic'),
   );
   $export['regional_treaties'] = $view;
 

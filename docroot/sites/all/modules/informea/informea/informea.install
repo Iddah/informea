@@ -639,3 +639,13 @@ function informea_update_7044() {
 function informea_update_7045() {
   features_revert_module('country');
 }
+
+/**
+ * #348,#351 - Topical & Regional treaty.
+ */
+function informea_update_7046() {
+    features_revert_module('geographic_region');
+    features_revert_module('informea');
+    features_revert_module('informea_topics');
+    features_revert_module('treaty');
+}

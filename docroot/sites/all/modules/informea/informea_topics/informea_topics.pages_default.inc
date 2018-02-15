@@ -523,7 +523,7 @@ function informea_topics_default_page_manager_pages() {
   $display->content['new-544f828b-e4cd-4f0a-93b3-b4cfc69c9ddb'] = $pane;
   $display->panels['content__left'][0] = 'new-544f828b-e4cd-4f0a-93b3-b4cfc69c9ddb';
   $pane = new stdClass();
-  $pane->pid = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
+  $pane->pid = 'new-9dd2c7fc-a151-4a23-b748-53fd55a97d31';
   $pane->panel = 'content__right';
   $pane->type = 'views';
   $pane->subtype = 'regional_treaties';
@@ -531,9 +531,9 @@ function informea_topics_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'override_pager_settings' => 0,
-    'use_pager' => 0,
+    'use_pager' => 1,
     'nodes_per_page' => '5',
-    'pager_id' => '0',
+    'pager_id' => '1',
     'offset' => '0',
     'more_link' => 0,
     'feed_icons' => 0,
@@ -541,7 +541,7 @@ function informea_topics_default_page_manager_pages() {
     'link_to_view' => 0,
     'args' => '',
     'url' => '',
-    'display' => 'block_1',
+    'display' => 'block_3',
     'context' => array(
       0 => 'argument_term_2.tid',
     ),
@@ -553,16 +553,13 @@ function informea_topics_default_page_manager_pages() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'pane-view-global-treaties',
-  );
+  $pane->css = array();
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '35a1fe01-4628-4865-a9bc-0a20450239d2';
-  $display->content['new-35a1fe01-4628-4865-a9bc-0a20450239d2'] = $pane;
-  $display->panels['content__right'][0] = 'new-35a1fe01-4628-4865-a9bc-0a20450239d2';
+  $pane->uuid = '9dd2c7fc-a151-4a23-b748-53fd55a97d31';
+  $display->content['new-9dd2c7fc-a151-4a23-b748-53fd55a97d31'] = $pane;
+  $display->panels['content__right'][0] = 'new-9dd2c7fc-a151-4a23-b748-53fd55a97d31';
   $pane = new stdClass();
   $pane->pid = 'new-ff443f25-c59d-41b1-a677-38248aa98285';
   $pane->panel = 'courses';

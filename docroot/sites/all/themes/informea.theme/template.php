@@ -845,8 +845,7 @@ function informea_theme_preprocess_field(&$variables, $hook) {
        break;
     case 'content_type':
         $content_type_machine_name = $variables['element']['#object']->type;
-
-        if($variables['element']['#object']->type == 'event_calendar'){
+        if($content_type_machine_name == 'event_calendar'){
             $content_type_human_readable = t('Event');
         } else {
             $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
@@ -878,20 +877,6 @@ function informea_theme_preprocess_field(&$variables, $hook) {
       $date = field_get_items('node', $node, 'event_calendar_date')[0]['value'];
       $month = date('M.', strtotime($date));
       $day = date('j', strtotime($date));
-      $field_calendar_date = [
-        '#theme' => 'item_list',
-        '#attributes' => ['class'  => ['field-calendar-date'],],
-        '#items' => [
-          0 => [
-            'data' => t($month),
-            'class' => ['field-calendar-date__month'],
-          ],
-          1 => [
-            'data' => t($day),
-            'class' => ['field-calendar-date__day'],
-          ],
-        ],
-      ];
       $markup = '<div class="field-calendar-date"><span class="field-calendar-date__month">'
         .t($month)
         . '</span><span class="field-calendar-date__day">'

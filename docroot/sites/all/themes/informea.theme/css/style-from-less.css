@@ -2026,18 +2026,6 @@ h2.regional-topic-title span {
   margin-left: 3px;
   margin-left: .3rem;
 }
-.page-topics .informea-teaser .field-name-field-mea-topic {
-  display: none;
-}
-.page-regions .informea-teaser .field-name-field-region {
-  display: none;
-}
-.informea-teaser.node-treaty .field-name-body {
-  display: none;
-}
-.view-search .informea-teaser.node-treaty .field-name-body {
-  display: block;
-}
 .informea-teaser .file-icon {
   display: none;
 }
