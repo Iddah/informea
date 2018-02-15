@@ -845,14 +845,13 @@ function informea_theme_preprocess_field(&$variables, $hook) {
        break;
     case 'content_type':
         $content_type_machine_name = $variables['element']['#object']->type;
-        switch ($content_type_machine_name) {
-          case 'event_calendar':
+
+        if($variables['element']['#object']->type == 'event_calendar'){
             $content_type_human_readable = t('Event');
-            break;
-          default:
+        } else {
             $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
-            break;
         }
+
         $content_type = [
             '#theme' => 'item_list',
             '#attributes' => ['class'  => ['field-content-type'],],

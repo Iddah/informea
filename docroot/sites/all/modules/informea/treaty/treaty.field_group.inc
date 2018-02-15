@@ -110,6 +110,7 @@ function treaty_field_group_info() {
       0 => 'field_type_of_text',
       1 => 'field_region',
       2 => 'field_mea_topic',
+      3 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(
