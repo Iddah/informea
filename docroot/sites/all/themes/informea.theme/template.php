@@ -884,6 +884,15 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         . '</span></div>';
       $variables['items'][0]['#markup'] = $markup;
       break;
+    case 'field_files':
+      if($variables['element']['#view_mode'] == 'search_item') {
+        $variables['label'] = t('Download');
+        foreach ($variables['element']['#items'] as $key => $item) {
+          $variables['items'][$key]['#prefix'] = '[';
+          $variables['items'][$key]['#suffix'] = ']';
+        }
+      }
+      break;
   }
 }
 

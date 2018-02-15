@@ -718,14 +718,6 @@ function informea_search_node_view($node, $view_mode, $langcode) {
       }
     }
 
-    if (!empty($content['field_files'])) {
-      $content['field_files']['#prefix'] = t('Download:');
-      foreach ($content['field_files']['#items'] as $key => $item) {
-        $content['field_files'][$key]['#prefix'] = '[';
-        $content['field_files'][$key]['#suffix'] = ']';
-      }
-    }
-
     switch ($node->type) {
       // Move some node fields to the left column or to the metadata container.
       case 'treaty':
