@@ -675,3 +675,15 @@ function informea_update_7049() {
   features_revert_module('geographic_region');
   features_revert_module('informea_topics');
 }
+
+/**
+ * #351 - Added regional & topical landing page view modes to be used with all content types, added topical display mode to news & events view
+ */
+function informea_update_7050() {
+  features_revert_module('feeds_news');
+  features_revert_module('geographic_region');
+  features_revert_module('informea');
+  features_revert_module('informea_topics');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
+}

@@ -30,6 +30,18 @@ function meeting_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -44,6 +56,12 @@ function meeting_field_default_field_instances() {
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 1,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -100,10 +118,30 @@ function meeting_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 3,
       ),
-      'search_item' => array(
+      'news_and_events_item' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -111,6 +149,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -171,6 +215,18 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -182,6 +238,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -227,6 +289,18 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -238,6 +312,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -286,6 +366,18 @@ function meeting_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -297,6 +389,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -348,6 +446,18 @@ function meeting_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 21,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -357,13 +467,19 @@ function meeting_field_default_field_instances() {
           'view_mode' => 'flag_only',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -411,6 +527,18 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 14,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -422,6 +550,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -469,6 +603,18 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 20,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -480,6 +626,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -529,6 +681,18 @@ function meeting_field_default_field_instances() {
         'type' => 'image',
         'weight' => 0,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -540,6 +704,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -610,17 +780,35 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 13,
       ),
-      'search_item' => array(
+      'news_and_events_item' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 29,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -668,6 +856,18 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 12,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -679,6 +879,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -726,17 +932,48 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 5,
       ),
-      'search_item' => array(
+      'news_and_events_item' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'search_item' => array(
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-list-of-tags',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -793,6 +1030,18 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 2,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -804,6 +1053,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -866,6 +1121,18 @@ function meeting_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 22,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -877,6 +1144,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -937,6 +1210,18 @@ function meeting_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 10,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -948,6 +1233,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -997,18 +1288,36 @@ function meeting_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1062,6 +1371,18 @@ function meeting_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 11,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1073,6 +1394,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1122,6 +1449,44 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 25,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-topics',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 6,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-topics',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 3,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'module' => 'textformatter',
@@ -1146,6 +1511,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1201,6 +1572,18 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1212,6 +1595,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1260,6 +1649,31 @@ function meeting_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 23,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-regions',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 7,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'module' => 'textformatter',
@@ -1284,6 +1698,17 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 1,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1340,6 +1765,18 @@ function meeting_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 24,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1351,6 +1788,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1419,6 +1862,18 @@ function meeting_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 4,
       ),
+      'news_and_events_item' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1427,13 +1882,19 @@ function meeting_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1484,6 +1945,18 @@ function meeting_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 6,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1495,6 +1968,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'treaty_listing' => array(
         'label' => 'above',
@@ -1559,6 +2038,18 @@ function meeting_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 18,
       ),
+      'news_and_events_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1570,6 +2061,12 @@ function meeting_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'treaty_listing' => array(
         'label' => 'above',

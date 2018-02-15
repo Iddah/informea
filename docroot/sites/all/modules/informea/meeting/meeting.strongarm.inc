@@ -185,6 +185,39 @@ function meeting_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'ajax' => array(
+        'custom_settings' => TRUE,
+      ),
+      'search_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'treaty_listing' => array(
+        'custom_settings' => TRUE,
+      ),
+      'news_and_events_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'flag_only' => array(
+        'custom_settings' => FALSE,
+      ),
+      'regional_treaty' => array(
+        'custom_settings' => FALSE,
+      ),
+      'topical_treaty' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'regional_landing_page' => array(
+        'custom_settings' => TRUE,
+      ),
+      'topical_landing_page' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

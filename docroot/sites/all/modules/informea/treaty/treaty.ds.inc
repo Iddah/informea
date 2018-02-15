@@ -12,10 +12,10 @@ function treaty_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|treaty|regional_treaty';
+  $ds_fieldsetting->id = 'node|treaty|regional_landing_page';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'treaty';
-  $ds_fieldsetting->view_mode = 'regional_treaty';
+  $ds_fieldsetting->view_mode = 'regional_landing_page';
   $ds_fieldsetting->settings = array(
     'treaty_links' => array(
       'weight' => '4',
@@ -34,7 +34,7 @@ function treaty_ds_field_settings_info() {
       ),
     ),
   );
-  $export['node|treaty|regional_treaty'] = $ds_fieldsetting;
+  $export['node|treaty|regional_landing_page'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -69,10 +69,10 @@ function treaty_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|treaty|topical_treaty';
+  $ds_fieldsetting->id = 'node|treaty|topical_landing_page';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'treaty';
-  $ds_fieldsetting->view_mode = 'topical_treaty';
+  $ds_fieldsetting->view_mode = 'topical_landing_page';
   $ds_fieldsetting->settings = array(
     'treaty_links' => array(
       'weight' => '4',
@@ -91,7 +91,7 @@ function treaty_ds_field_settings_info() {
       ),
     ),
   );
-  $export['node|treaty|topical_treaty'] = $ds_fieldsetting;
+  $export['node|treaty|topical_landing_page'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -110,7 +110,7 @@ function treaty_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = '';
+  $ds_field->ui_limit = 'treaty|*';
   $ds_field->properties = array(
     'code' => array(
       'value' => '-',
@@ -131,10 +131,10 @@ function treaty_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|treaty|regional_treaty';
+  $ds_layout->id = 'node|treaty|regional_landing_page';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'treaty';
-  $ds_layout->view_mode = 'regional_treaty';
+  $ds_layout->view_mode = 'regional_landing_page';
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
@@ -169,7 +169,7 @@ function treaty_ds_layout_settings_info() {
     'layout_link_custom' => '',
     'layout_disable_css' => FALSE,
   );
-  $export['node|treaty|regional_treaty'] = $ds_layout;
+  $export['node|treaty|regional_landing_page'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -181,33 +181,31 @@ function treaty_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
-        1 => 'field_logo',
+        0 => 'field_logo',
       ),
       'right' => array(
         1 => 'title',
         2 => 'group_info',
-        3 => 'body',
-        4 => 'group_tags',
-        5 => 'content_type',
-        6 => 'treaty_links',
+        3 => 'group_tags',
+        4 => 'field_informea_tags',
+        5 => 'treaty_links',
+        6 => 'content_type',
         7 => 'field_mea_topic',
         8 => 'field_region',
         9 => 'field_type_of_text',
-        10 => 'field_informea_tags',
       ),
     ),
     'fields' => array(
-      'content_type' => 'right',
       'field_logo' => 'left',
       'title' => 'right',
       'group_info' => 'right',
-      'body' => 'right',
       'group_tags' => 'right',
+      'field_informea_tags' => 'right',
+      'treaty_links' => 'right',
+      'content_type' => 'right',
       'field_mea_topic' => 'right',
       'field_region' => 'right',
       'field_type_of_text' => 'right',
-      'field_informea_tags' => 'right',
-      'treaty_links' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -225,10 +223,10 @@ function treaty_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|treaty|topical_treaty';
+  $ds_layout->id = 'node|treaty|topical_landing_page';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'treaty';
-  $ds_layout->view_mode = 'topical_treaty';
+  $ds_layout->view_mode = 'topical_landing_page';
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
@@ -238,8 +236,8 @@ function treaty_ds_layout_settings_info() {
       'right' => array(
         1 => 'title',
         2 => 'group_tags',
-        3 => 'field_region',
-        4 => 'field_informea_tags',
+        3 => 'field_informea_tags',
+        4 => 'field_region',
         5 => 'treaty_links',
       ),
     ),
@@ -247,8 +245,8 @@ function treaty_ds_layout_settings_info() {
       'field_logo' => 'left',
       'title' => 'right',
       'group_tags' => 'right',
-      'field_region' => 'right',
       'field_informea_tags' => 'right',
+      'field_region' => 'right',
       'treaty_links' => 'right',
     ),
     'classes' => array(),
@@ -263,34 +261,7 @@ function treaty_ds_layout_settings_info() {
     'layout_link_custom' => '',
     'layout_disable_css' => FALSE,
   );
-  $export['node|treaty|topical_treaty'] = $ds_layout;
-
-  return $export;
-}
-
-/**
- * Implements hook_ds_view_modes_info().
- */
-function treaty_ds_view_modes_info() {
-  $export = array();
-
-  $ds_view_mode = new stdClass();
-  $ds_view_mode->api_version = 1;
-  $ds_view_mode->view_mode = 'regional_treaty';
-  $ds_view_mode->label = 'Regional treaty';
-  $ds_view_mode->entities = array(
-    'node' => 'node',
-  );
-  $export['regional_treaty'] = $ds_view_mode;
-
-  $ds_view_mode = new stdClass();
-  $ds_view_mode->api_version = 1;
-  $ds_view_mode->view_mode = 'topical_treaty';
-  $ds_view_mode->label = 'Topical treaty';
-  $ds_view_mode->entities = array(
-    'node' => 'node',
-  );
-  $export['topical_treaty'] = $ds_view_mode;
+  $export['node|treaty|topical_landing_page'] = $ds_layout;
 
   return $export;
 }

@@ -678,6 +678,12 @@ function informea_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'regional_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'regional_treaty' => array(
         'label' => 'above',
         'settings' => array(),
@@ -695,6 +701,12 @@ function informea_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'topical_landing_page' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'topical_treaty' => array(
         'label' => 'above',

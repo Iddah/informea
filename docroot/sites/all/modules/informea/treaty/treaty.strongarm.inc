@@ -508,16 +508,22 @@ function treaty_strongarm() {
         'custom_settings' => FALSE,
       ),
       'regional_treaty' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'topical_treaty' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'flag_only' => array(
         'custom_settings' => FALSE,
       ),
       'revision' => array(
         'custom_settings' => FALSE,
+      ),
+      'regional_landing_page' => array(
+        'custom_settings' => TRUE,
+      ),
+      'topical_landing_page' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -557,6 +563,14 @@ function treaty_strongarm() {
             'visible' => FALSE,
           ),
           'topical_treaty' => array(
+            'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'regional_landing_page' => array(
+            'weight' => '23',
+            'visible' => FALSE,
+          ),
+          'topical_landing_page' => array(
             'weight' => '21',
             'visible' => FALSE,
           ),

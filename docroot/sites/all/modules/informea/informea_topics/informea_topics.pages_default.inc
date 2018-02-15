@@ -445,7 +445,7 @@ function informea_topics_default_page_manager_pages() {
   $display->content['new-b1b9da07-be2d-4050-beca-eca11fc3d634'] = $pane;
   $display->panels['content__bottom_left'][0] = 'new-b1b9da07-be2d-4050-beca-eca11fc3d634';
   $pane = new stdClass();
-  $pane->pid = 'new-035981b1-8365-4985-8021-10b1aa5913a2';
+  $pane->pid = 'new-991bb8df-83b8-459b-a8d5-1ceeb0f01930';
   $pane->panel = 'content__bottom_right';
   $pane->type = 'views';
   $pane->subtype = 'news_and_events';
@@ -463,14 +463,14 @@ function informea_topics_default_page_manager_pages() {
     'link_to_view' => 0,
     'args' => '',
     'url' => '',
-    'display' => 'block',
+    'display' => 'block_2',
+    'context' => array(
+      0 => 'argument_term_1.tid',
+      1 => 'argument_term_1.tid',
+    ),
     'override_title' => 0,
     'override_title_text' => '',
     'override_title_heading' => 'h2',
-    'context' => array(
-      0 => 'argument_term_1.tid',
-      1 => 'argument_term_2.tid',
-    ),
   );
   $pane->cache = array();
   $pane->style = array(
@@ -480,9 +480,9 @@ function informea_topics_default_page_manager_pages() {
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '035981b1-8365-4985-8021-10b1aa5913a2';
-  $display->content['new-035981b1-8365-4985-8021-10b1aa5913a2'] = $pane;
-  $display->panels['content__bottom_right'][0] = 'new-035981b1-8365-4985-8021-10b1aa5913a2';
+  $pane->uuid = '991bb8df-83b8-459b-a8d5-1ceeb0f01930';
+  $display->content['new-991bb8df-83b8-459b-a8d5-1ceeb0f01930'] = $pane;
+  $display->panels['content__bottom_right'][0] = 'new-991bb8df-83b8-459b-a8d5-1ceeb0f01930';
   $pane = new stdClass();
   $pane->pid = 'new-544f828b-e4cd-4f0a-93b3-b4cfc69c9ddb';
   $pane->panel = 'content__left';
