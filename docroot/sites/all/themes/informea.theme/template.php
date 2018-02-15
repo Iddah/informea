@@ -893,6 +893,9 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         }
       }
       break;
+    case 'field_informea_tags':
+      $variables['label'] = t('Glossary term(s)');
+      break;
   }
 }
 
@@ -987,39 +990,38 @@ function informea_theme_treaties_menu_block() {
 
 }
 
-// function informea_theme_field($variables) {
-//   $output = '';
-//   // Render the label, if it's not hidden.
-//   if (!$variables['label_hidden']) {
-//     $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
-//   }
+function informea_theme_field($variables) {
+  $output = '';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':</div>';
+  }
 
-//   // Render the items.
-//   $has_multiple_items = sizeof($variables['items']) >= 2;
-//   if($has_multiple_items) {
-//     $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
-//   }
+  // Render the items.
+  $has_multiple_items = sizeof($variables['items']) >= 2;
+  if($has_multiple_items) {
+    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  }
 
-//   foreach ($variables['items'] as $delta => $item) {
-//     $classes = 'field-item ' . ($delta % 2 ?  'even' : 'odd');
-//     if(!$has_multiple_items) {
-//       if(is_array($variables['content_attributes']) && is_array($variables['item_attributes'][$delta])) {
-//         $variables['item_attributes'][$delta] = drupal_array_merge_deep($variables['content_attributes'], $variables['item_attributes'][$delta]);
-//       }
-//       // kpr($variables['item_attributes'][$delta]);
-//     }
-//     $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta];
-//     $output .= '>' . drupal_render($item) . '</div>';
-//   }
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ?  'even' : 'odd');
+    if(!$has_multiple_items) {
+      if(is_array($variables['content_attributes']) && is_array($variables['item_attributes'][$delta])) {
+        $variables['item_attributes'][$delta] = drupal_array_merge_deep($variables['content_attributes'], $variables['item_attributes'][$delta]);
+      }
+    }
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta];
+    $output .= '>' . drupal_render($item) . '</div>';
+  }
 
-//   if($has_multiple_items) {
-//     $output .= '</div>';
-//   }
+  if($has_multiple_items) {
+    $output .= '</div>';
+  }
 
-//   // Render the top-level DIV.
-//   $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-//   return $output;
-// }
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
 
 /**
  * Returns HTML for a link to a file.

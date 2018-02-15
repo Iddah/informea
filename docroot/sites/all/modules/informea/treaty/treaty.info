@@ -12,6 +12,7 @@ dependencies[] = entityqueue
 dependencies[] = fe_block
 dependencies[] = feeds_news
 dependencies[] = field_group
+dependencies[] = image
 dependencies[] = number
 dependencies[] = path_breadcrumbs
 dependencies[] = taxonomy_formatter

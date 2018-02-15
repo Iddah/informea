@@ -1,0 +1,24 @@
+.treaty-links {
+  .list-unstyled();
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -.3rem;
+  margin-bottom: 0;
+  &__link {
+    margin-left: .3rem;
+    // emulate disabled behaviour
+    color: #777;
+    cursor: not-allowed;
+    + .treaty-links__link {
+      &:before {
+        color: @regional-page-gray;
+        content: '|';
+        margin-right: .3rem;
+      }
+    }
+    a {
+      color: #0A8FC6;
+      cursor: pointer;
+    }
+  }
+}

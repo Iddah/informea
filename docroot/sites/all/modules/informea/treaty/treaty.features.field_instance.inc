@@ -1,4 +1,4 @@
-treaty.features.field_instance.inc<?php
+<?php
 /**
  * @file
  * treaty.features.field_instance.inc
@@ -2149,7 +2149,7 @@ function treaty_field_default_field_instances() {
         'weight' => 1,
       ),
       'regional_treaty' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'ds',
         'settings' => array(
           'taxonomy_term_link' => 0,
@@ -2175,7 +2175,7 @@ function treaty_field_default_field_instances() {
         'weight' => 13,
       ),
       'topical_treaty' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'ds',
         'settings' => array(
           'taxonomy_term_link' => 0,

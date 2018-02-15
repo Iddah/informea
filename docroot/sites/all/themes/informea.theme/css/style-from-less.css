@@ -1749,6 +1749,60 @@ h2.regional-topic-title span {
 .informea-switcher_advancer:focus .informea-switcher_advancer-icon {
   fill: #1D7CA7;
 }
+.treaty-links {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+[dir] .treaty-links {
+  margin-bottom: 0;
+}
+[dir=ltr] .treaty-links {
+  padding-left: 0;
+  margin-left: -3px;
+  margin-left: -0.3rem;
+}
+[dir=rtl] .treaty-links {
+  padding-right: 0;
+  margin-right: -3px;
+  margin-right: -0.3rem;
+}
+.treaty-links__link {
+  color: #777;
+}
+[dir] .treaty-links__link {
+  cursor: not-allowed;
+}
+[dir=ltr] .treaty-links__link {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+[dir=rtl] .treaty-links__link {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+.treaty-links__link + .treaty-links__link:before {
+  color: #8F8F8F;
+  content: '|';
+}
+[dir=ltr] .treaty-links__link + .treaty-links__link:before {
+  margin-right: 3px;
+  margin-right: .3rem;
+}
+[dir=rtl] .treaty-links__link + .treaty-links__link:before {
+  margin-left: 3px;
+  margin-left: .3rem;
+}
+.treaty-links__link a {
+  color: #0A8FC6;
+}
+[dir] .treaty-links__link a {
+  cursor: pointer;
+}
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
   font-weight: normal;
 }
@@ -2074,6 +2128,15 @@ h2.regional-topic-title span {
 }
 .informea-teaser .file-icon {
   display: none;
+}
+[dir] .informea-teaser .field-name-field-informea-tags, [dir] .informea-teaser .treaty-links {
+  margin-top: 1em;
+}
+.informea-teaser .field-name-field-informea-tags {
+  color: #999;
+}
+.informea-teaser .field-name-field-informea-tags .field-label {
+  font-weight: normal;
 }
 [dir=ltr] .meta-content-type {
   margin-left: 0;
@@ -2437,60 +2500,6 @@ h2.regional-topic-title span {
 }
 .node-type-country .facetapi-facet-field-region {
   display: none;
-}
-ul.treaty-links {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-[dir] ul.treaty-links {
-  margin-bottom: 0;
-}
-[dir=ltr] ul.treaty-links {
-  padding-left: 0;
-  margin-left: -3px;
-  margin-left: -0.3rem;
-}
-[dir=rtl] ul.treaty-links {
-  padding-right: 0;
-  margin-right: -3px;
-  margin-right: -0.3rem;
-}
-ul.treaty-links li.treaty-links__link {
-  color: #777;
-}
-[dir] ul.treaty-links li.treaty-links__link {
-  cursor: not-allowed;
-}
-[dir=ltr] ul.treaty-links li.treaty-links__link {
-  margin-left: 3px;
-  margin-left: .3rem;
-}
-[dir=rtl] ul.treaty-links li.treaty-links__link {
-  margin-right: 3px;
-  margin-right: .3rem;
-}
-ul.treaty-links li.treaty-links__link + li:before {
-  color: #8F8F8F;
-  content: '|';
-}
-[dir=ltr] ul.treaty-links li.treaty-links__link + li:before {
-  margin-right: 3px;
-  margin-right: .3rem;
-}
-[dir=rtl] ul.treaty-links li.treaty-links__link + li:before {
-  margin-left: 3px;
-  margin-left: .3rem;
-}
-ul.treaty-links li.treaty-links__link a {
-  color: #0A8FC6;
-}
-[dir] ul.treaty-links li.treaty-links__link a {
-  cursor: pointer;
 }
 .page-regions .panels-flexible-row,
 .page-topics .panels-flexible-row {
