@@ -1,5 +1,5 @@
 .informea-teaser {
-  padding: 1em 0;
+  padding: 2em 0;
   .views-row + .views-row & { border-top: 1px solid #ddd; }
 
   align-items: flex-start;
@@ -9,8 +9,10 @@
   &__title:extend(.view__title--strong all) {}
 
   &__left {
+    align-items: flex-end;
+    display: flex;
+    flex-flow: column;
     margin-right: 1.5em;
-    text-align: right;
     width: 10rem;
     > .field-type-image {
       align-items: center;
@@ -49,18 +51,18 @@
     color: @regional-page-gray;
     display: flex;
     flex-flow: row wrap;
-    margin-left: -.3rem;
+    margin-left: -.8rem;
     margin-top: .5em;
 
     > .field {
       display: flex;
-      margin-left: .3rem;
+      margin-left: .8rem;
       color: #777;
       + .field {
         &:before {
           color: @regional-page-gray;
           content: '|';
-          margin-right: .3rem;
+          margin-right: .8rem;
         }
       }
     }

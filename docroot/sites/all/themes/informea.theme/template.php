@@ -845,18 +845,22 @@ function informea_theme_preprocess_field(&$variables, $hook) {
        break;
     case 'content_type':
         $content_type_machine_name = $variables['element']['#object']->type;
-        if($content_type_machine_name == 'event_calendar'){
+        switch($content_type_machine_name) {
+          case 'event_calendar':
             $content_type_human_readable = t('Event');
-        } else {
-            $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
+            break;
+          case 'feed_item':
+            $content_type_human_readable = t('News');
+            break;
+        default:
+          $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
         }
-
         $content_type = [
-            '#theme' => 'item_list',
-            '#attributes' => ['class'  => ['field-content-type'],],
-            '#items' => [0 => [
-                'data' => $content_type_human_readable,
-            ],]
+          '#theme' => 'item_list',
+          '#attributes' => ['class'  => ['field-content-type'],],
+          '#items' => [0 => [
+              'data' => $content_type_human_readable,
+          ],]
         ];
         $variables['items'][0]['#markup'] = drupal_render($content_type);
         break;
@@ -875,13 +879,13 @@ function informea_theme_preprocess_field(&$variables, $hook) {
     case 'calendar_date':
       $node = $variables['element']['#object'];
       $date = field_get_items('node', $node, 'event_calendar_date')[0]['value'];
-      $month = date('M.', strtotime($date));
+      $month = date('M', strtotime($date));
       $day = date('j', strtotime($date));
-      $markup = '<div class="field-calendar-date"><span class="field-calendar-date__month">'
+      $markup = '<div class="informea-calendar-date"><div class="informea-calendar-date__month">'
         .t($month)
-        . '</span><span class="field-calendar-date__day">'
+        . '</div><div class="informea-calendar-date__day">'
         . $day
-        . '</span></div>';
+        . '</div></div>';
       $variables['items'][0]['#markup'] = $markup;
       break;
     case 'field_files':
