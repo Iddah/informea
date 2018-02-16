@@ -722,3 +722,10 @@ function informea_update_7054() {
     features_revert_module('feeds_news');
     features_revert_module('geographic_region');
 }
+
+/**
+ * #351 - Added search excerpt custom ds field
+ */
+function informea_update_7055() {
+    features_revert_module('informea_search');
+}

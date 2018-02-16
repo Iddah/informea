@@ -893,6 +893,14 @@ function informea_theme_preprocess_field(&$variables, $hook) {
     case 'field_informea_tags':
       $variables['label'] = t('Glossary term(s)');
       break;
+    case 'search_excerpt':
+      if (!empty($variables['element']['#object']->search_api_excerpt)) {
+        $variables['items'][0]['#markup'] = $variables['element']['#object']->search_api_excerpt;
+      }
+      else {
+        $variables['classes_array'][] = 'hidden';
+      }
+      break;
   }
 }
 
