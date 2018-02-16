@@ -762,6 +762,12 @@ function informea_field_formatter_info() {
       'label' => t('PDF JS viewport'),
       'field types' => array('file'),
     ),
+    'informea_date' => array(
+      'label' => t('Informea date'),
+      'field types' => array('datetime' , 'ds'),
+    ),
+
+
   );
 }
 
@@ -791,6 +797,14 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
       if (!empty($items)) {
         $elements[0] = array(
           '#markup' => theme('informea_pdf_js', array('files' => $items)),
+        );
+      }
+      break;
+
+    case 'informea_date':
+      if (!empty($items)) {
+        $elements[0] = array(
+          '#markup' =>  theme('informea_date', array('items' => $items)),
         );
       }
       break;
@@ -843,6 +857,14 @@ function theme_informea_pdf_js($variables) {
   return FALSE;
 }
 
+function theme_informea_date($variables) {
+    if (isset($variables['items'][0]['value']) && !empty($variables['items'][0]['value'])) {
+        $time = strtotime($variables['items'][0]['value']);
+        return sprintf('<div class="informea-calendar-date"><div class="informea-calendar-date__month">%s</div><div class="informea-calendar-date__day">%s</div><div class="informea-calendar-date__year">%s</div></div>', t(date('M', $time)), date('j', $time), date('Y', $time));
+    }
+    return FALSE;
+}
+
 function informea_theme() {
   return array(
     'informea_field_formatter_external_url' => array(
@@ -870,6 +892,11 @@ function informea_theme() {
         'node' => array(),
       ),
       'template' => 'templates/informea_share_widget',
+    ),
+    'informea_date' => array(
+      'variables' => array(
+          'items' => NULL,
+          ),
     ),
   );
 }

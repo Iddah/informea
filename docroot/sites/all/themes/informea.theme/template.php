@@ -876,18 +876,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
         $variables['items'][0]['#markup'] = drupal_render($flag);
       }
      break;
-    case 'calendar_date':
-      $node = $variables['element']['#object'];
-      $date = field_get_items('node', $node, 'event_calendar_date')[0]['value'];
-      $month = date('M', strtotime($date));
-      $day = date('j', strtotime($date));
-      $markup = '<div class="informea-calendar-date"><div class="informea-calendar-date__month">'
-        .t($month)
-        . '</div><div class="informea-calendar-date__day">'
-        . $day
-        . '</div></div>';
-      $variables['items'][0]['#markup'] = $markup;
-      break;
+      case 'post_date':
+          $variables['items'][0]['value'] = $variables['items'][0]['#markup'];
+          $variables['items'][0]['#markup'] = theme_informea_date($variables);
+          break;
     case 'field_files':
       if($variables['element']['#view_mode'] == 'search_item') {
         $variables['label'] = t('Download');
