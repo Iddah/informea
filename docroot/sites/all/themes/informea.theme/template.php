@@ -869,10 +869,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
     case 'country_flag':
       if (!empty($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
         $flag = [
-          '#markup' => theme('image', [
-            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
-            'attributes' => ['class' => ['flag']],
-          ]),
+          '#theme' => 'image',
+          '#path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+          '#attributes' => ['class' => ['flag']],
+          '#alt' => $variables['element']['#object']->title
         ];
         $variables['items'][0]['#markup'] = drupal_render($flag);
       }
@@ -883,7 +883,7 @@ function informea_theme_preprocess_field(&$variables, $hook) {
           break;
     case 'field_files':
       if($variables['element']['#view_mode'] == 'search_item') {
-        $variables['label'] = t('Download');
+        $variables['label'] = t('Download:');
         foreach ($variables['element']['#items'] as $key => $item) {
           $variables['items'][$key]['#prefix'] = '[';
           $variables['items'][$key]['#suffix'] = ']';
@@ -999,7 +999,8 @@ function informea_theme_field($variables) {
   $output = '';
   // Render the label, if it's not hidden.
   if (!$variables['label_hidden']) {
-    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':</div>';
+    // Removed unnecessary colon
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
   }
 
   // Render the items.
