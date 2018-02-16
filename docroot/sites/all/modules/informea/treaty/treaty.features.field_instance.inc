@@ -610,6 +610,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
       'regional_landing_page' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -694,6 +700,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -776,6 +788,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -857,6 +875,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 44,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -949,6 +973,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 53,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1031,6 +1061,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 25,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1112,6 +1148,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 38,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -1205,6 +1247,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 47,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1282,6 +1330,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 40,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -1371,6 +1425,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 41,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -1463,6 +1523,12 @@ function treaty_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1545,6 +1611,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 60,
+      ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -1636,6 +1708,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 39,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1725,6 +1803,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -1832,6 +1916,12 @@ function treaty_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 3,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -1929,6 +2019,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 37,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -2029,6 +2125,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 21,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -2126,6 +2228,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2211,6 +2319,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 58,
       ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 59,
+      ),
       'regional_landing_page' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -2295,6 +2409,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 17,
+      ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'regional_landing_page' => array(
         'label' => 'above',
@@ -2384,6 +2504,12 @@ function treaty_field_default_field_instances() {
         ),
         'type' => 'taxonomy_term_reference_csv',
         'weight' => 1,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -2503,6 +2629,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 54,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 55,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -2589,6 +2721,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -2669,6 +2807,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 50,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -2761,6 +2905,16 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
+      ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'logo-large',
+        ),
+        'type' => 'image',
+        'weight' => 0,
       ),
       'regional_landing_page' => array(
         'label' => 'hidden',
@@ -2902,6 +3056,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 15,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'regional_landing_page' => array(
         'label' => 'hidden',
         'module' => 'textformatter',
@@ -3031,6 +3191,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 22,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -3118,6 +3284,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 52,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -3198,6 +3370,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -3280,6 +3458,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -3368,6 +3552,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 42,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 43,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -3450,6 +3640,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 8,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -3550,6 +3746,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 57,
       ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 58,
+      ),
       'regional_landing_page' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -3636,6 +3838,12 @@ function treaty_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 6,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -3718,6 +3926,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 51,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -3805,6 +4019,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 31,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -3885,6 +4105,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 34,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -3978,6 +4204,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -4077,6 +4309,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 7,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -4218,6 +4456,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 43,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -4316,6 +4560,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 55,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 56,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -4397,6 +4647,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 35,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -4498,6 +4754,12 @@ function treaty_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 10,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4588,6 +4850,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -4671,6 +4939,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 48,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -4753,6 +5027,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 45,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -4845,6 +5125,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 46,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4935,6 +5221,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 12,
+      ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'regional_landing_page' => array(
         'label' => 'above',
@@ -5039,6 +5331,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 18,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5119,6 +5417,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 28,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -5219,6 +5523,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5317,6 +5627,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'regional_landing_page' => array(
         'label' => 'above',
@@ -5417,6 +5733,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5515,6 +5837,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 27,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -5616,6 +5944,12 @@ function treaty_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 4,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'regional_landing_page' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -5714,6 +6048,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 49,
+      ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
       ),
       'regional_landing_page' => array(
         'label' => 'inline',
@@ -5821,6 +6161,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'regional_landing_page' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -5920,6 +6266,12 @@ function treaty_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 59,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 60,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6007,6 +6359,12 @@ function treaty_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 56,
+      ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 57,
       ),
       'regional_landing_page' => array(
         'label' => 'above',

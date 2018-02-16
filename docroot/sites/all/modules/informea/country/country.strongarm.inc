@@ -78,7 +78,7 @@ function country_strongarm() {
         'custom_settings' => TRUE,
       ),
       'flag_only' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -96,6 +96,15 @@ function country_strongarm() {
         'custom_settings' => FALSE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_only' => array(
+        'custom_settings' => TRUE,
+      ),
+      'regional_landing_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'topical_landing_page' => array(
         'custom_settings' => FALSE,
       ),
     ),

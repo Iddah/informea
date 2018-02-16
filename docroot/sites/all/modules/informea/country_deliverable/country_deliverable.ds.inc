@@ -43,11 +43,6 @@ function country_deliverable_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'treaty_links' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',

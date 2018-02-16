@@ -35,6 +35,12 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'search_item' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -94,6 +100,12 @@ function country_field_default_field_instances() {
         'weight' => 3,
       ),
       'flag_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'image_only' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
@@ -159,6 +171,12 @@ function country_field_default_field_instances() {
         'weight' => 0,
       ),
       'flag_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'image_only' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
@@ -232,6 +250,12 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'image_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -290,6 +314,12 @@ function country_field_default_field_instances() {
         'weight' => 6,
       ),
       'flag_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'image_only' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -355,6 +385,12 @@ function country_field_default_field_instances() {
         'weight' => 7,
       ),
       'flag_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'image_only' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -428,6 +464,12 @@ function country_field_default_field_instances() {
         'weight' => 1,
       ),
       'flag_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'image_only' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
@@ -518,6 +560,12 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'search_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -578,6 +626,12 @@ function country_field_default_field_instances() {
         'weight' => 5,
       ),
       'flag_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'image_only' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

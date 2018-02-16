@@ -39,6 +39,15 @@ function informea_ds_view_modes_info() {
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'image_only';
+  $ds_view_mode->label = 'Image only';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['image_only'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
   $ds_view_mode->view_mode = 'regional_landing_page';
   $ds_view_mode->label = 'Regional Landing Page';
   $ds_view_mode->entities = array(

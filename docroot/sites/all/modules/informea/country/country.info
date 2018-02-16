@@ -26,7 +26,6 @@ features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|country|search_item
 features[ds_fields][] = country_flag
 features[ds_layout_settings][] = node|country|search_item
-features[ds_view_modes][] = flag_only
 features[features_api][] = api:2
 features[field_base][] = field_country_iso2
 features[field_base][] = field_country_iso3

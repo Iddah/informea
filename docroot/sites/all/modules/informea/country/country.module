@@ -342,7 +342,7 @@ function country_node_view($node, $view_mode, $langcode) {
     }
     informea_theme_set_page_breadcrumb($breadcrumbs);
   }
-  if($node->type == 'country' && $view_mode == 'flag_only') {
+  if($node->type == 'country' && $view_mode == 'image_only') {
     if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
       $node->content['flag'] = [
         '#markup' => theme('image', [
@@ -351,8 +351,6 @@ function country_node_view($node, $view_mode, $langcode) {
         ]),
       ];
     }
-    // kpr($node);
-    // exit();
   }
 }
 

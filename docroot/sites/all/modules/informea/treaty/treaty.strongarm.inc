@@ -525,6 +525,9 @@ function treaty_strongarm() {
       'topical_landing_page' => array(
         'custom_settings' => TRUE,
       ),
+      'image_only' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -572,6 +575,10 @@ function treaty_strongarm() {
           ),
           'topical_landing_page' => array(
             'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'image_only' => array(
+            'weight' => '8',
             'visible' => FALSE,
           ),
         ),

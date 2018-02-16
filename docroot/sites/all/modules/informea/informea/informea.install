@@ -694,3 +694,14 @@ function informea_update_7050() {
 function informea_update_7051() {
   features_revert_module('country');
 }
+
+/**
+ * #351 - Added image_only view mode for more general use
+ */
+function informea_update_7052() {
+  features_revert_module('country');
+  features_revert_module('decision');
+  features_revert_module('informea');
+  features_revert_module('meeting');
+  features_revert_module('treaty');
+}

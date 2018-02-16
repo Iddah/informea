@@ -678,6 +678,12 @@ function informea_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'image_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'regional_landing_page' => array(
         'label' => 'above',
         'settings' => array(),

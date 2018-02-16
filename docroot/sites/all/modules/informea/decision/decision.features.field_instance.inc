@@ -1079,7 +1079,7 @@ function decision_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'use_content_language' => 1,
-          'view_mode' => 'teaser',
+          'view_mode' => 'image_only',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 0,

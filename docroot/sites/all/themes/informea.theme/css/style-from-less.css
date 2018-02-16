@@ -1951,6 +1951,7 @@ h2.regional-topic-title span {
 [dir=rtl] .informea-teaser__left {
   margin-left: 1.5em;
 }
+.informea-teaser__left > .field-type-entityreference .node--view-mode-image_only,
 .informea-teaser__left > .field-type-image {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1972,7 +1973,7 @@ h2.regional-topic-title span {
   min-height: 10rem;
   width: 100%;
 }
-[dir] .informea-teaser__left > .field-type-image {
+[dir] .informea-teaser__left > .field-type-entityreference .node--view-mode-image_only, [dir] .informea-teaser__left > .field-type-image {
   border: 1px solid #D6D6D6;
   padding: 6px;
   padding: .6rem;

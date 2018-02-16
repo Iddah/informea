@@ -735,6 +735,7 @@ function informea_theme_preprocess_node(&$vars) {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $view_mode;
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__' . $view_mode;
     $vars['theme_hook_suggestions'][] = 'node__view_mode_' . $view_mode;
+    $vars['classes_array'][] = 'node--view-mode-' . $view_mode;
   }
 }
 
