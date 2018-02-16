@@ -729,3 +729,10 @@ function informea_update_7054() {
 function informea_update_7055() {
     features_revert_module('informea_search');
 }
+
+/**
+ * #326 - Added custom files field formatter
+ */
+function informea_update_7056() {
+    features_revert_module('informea');
+}
