@@ -55,7 +55,7 @@ function feeds_news_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline tags',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_mea_topic',
       1 => 'content_type',

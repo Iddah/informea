@@ -36,7 +36,6 @@ features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|event_calendar|regional_landing_page
 features[ds_field_settings][] = node|event_calendar|search_item
 features[ds_field_settings][] = node|event_calendar|topical_landing_page
-features[ds_fields][] = calendar_date
 features[ds_layout_settings][] = node|event_calendar|regional_landing_page
 features[ds_layout_settings][] = node|event_calendar|search_item
 features[ds_layout_settings][] = node|event_calendar|topical_landing_page

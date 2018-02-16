@@ -23,7 +23,7 @@ function feeds_news_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -32,6 +32,11 @@ function feeds_news_ds_field_settings_info() {
         'class' => 'informea-teaser__title',
         'exclude node title settings' => '1',
       ),
+    ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_short',
     ),
   );
   $export['node|feed_item|regional_landing_page'] = $ds_fieldsetting;
@@ -75,7 +80,7 @@ function feeds_news_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -84,6 +89,11 @@ function feeds_news_ds_field_settings_info() {
         'class' => 'informea-teaser__title',
         'exclude node title settings' => '1',
       ),
+    ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_short',
     ),
   );
   $export['node|feed_item|topical_landing_page'] = $ds_fieldsetting;
@@ -106,18 +116,22 @@ function feeds_news_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
+      'left' => array(
+        0 => 'post_date',
+      ),
       'right' => array(
-        0 => 'title',
-        1 => 'content_type',
-        2 => 'field_mea_topic',
+        1 => 'title',
+        2 => 'content_type',
         3 => 'group_tags',
+        4 => 'field_mea_topic',
       ),
     ),
     'fields' => array(
+      'post_date' => 'left',
       'title' => 'right',
       'content_type' => 'right',
-      'field_mea_topic' => 'right',
       'group_tags' => 'right',
+      'field_mea_topic' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -188,16 +202,20 @@ function feeds_news_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
+      'left' => array(
+        0 => 'post_date',
+      ),
       'right' => array(
-        0 => 'title',
         1 => 'content_type',
-        2 => 'group_tags',
-        3 => 'field_region',
+        2 => 'title',
+        3 => 'group_tags',
+        4 => 'field_region',
       ),
     ),
     'fields' => array(
-      'title' => 'right',
+      'post_date' => 'left',
       'content_type' => 'right',
+      'title' => 'right',
       'group_tags' => 'right',
       'field_region' => 'right',
     ),
