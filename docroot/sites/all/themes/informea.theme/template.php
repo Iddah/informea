@@ -144,7 +144,7 @@ function informea_theme_preprocess_page(&$variables) {
         // see #285 hide treaty block on treaty contacts hub page
         if(!empty($variables['page']['sidebar_first'])) {
           foreach ($variables['page']['sidebar_first'] as $key => $value) {
-            if($value['#settings']->facet == 'field_treaty') {
+            if(isset($value['#settings']) && $value['#settings']->facet == 'field_treaty') {
               $remove = $key;
               break;
             }

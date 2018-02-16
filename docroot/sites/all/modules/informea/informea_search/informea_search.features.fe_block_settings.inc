@@ -20,7 +20,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -37,7 +37,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Decision type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-0Zc331B9jGDF3c2WiWkg3fJ10DgXAor0'] = array(
@@ -48,7 +48,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -65,7 +65,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Geographical scope',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-0faEepcyWgbiJ2byxWHum0bHgu6XcrI8'] = array(
@@ -76,7 +76,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -93,7 +93,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-13ydV0i4Udr7KTwe85M05fQXGpthlfVI'] = array(
@@ -104,7 +104,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -121,7 +121,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-18bE3j8zhJo80qxLPcnj5t1bNCQ3uXbt'] = array(
@@ -132,7 +132,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -149,7 +149,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Authors',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-1eJjUfjaQzB2kcDDuczwhpFt4oxmrpO2'] = array(
@@ -188,7 +188,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -205,7 +205,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Lead Institution',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-31Rw85UkyaDcz6GAwbNinJuzmfNuGM0q'] = array(
@@ -216,7 +216,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -233,7 +233,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-6S6Nx0Zd7h0gisYT18V8BvcC0Q1k5rhm'] = array(
@@ -244,7 +244,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -261,7 +261,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-9wrQU80gNrEzbw1Ie31YkCYHc2sJOz02'] = array(
@@ -272,7 +272,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -289,7 +289,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-DBLWZd0b52LHo0MvO8WwLIfu2wKT4jVd'] = array(
@@ -300,7 +300,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -317,7 +317,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Date of text',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-DDJOxOKhaPZkMK1hcpYUc1sQMHdOXWOJ'] = array(
@@ -328,7 +328,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -345,7 +345,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-FhggtFZUQXw7XRePgNuXg1p9x7vgBSwG'] = array(
@@ -356,7 +356,8 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search
+node/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -373,7 +374,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-LWJWj4tpuIqEkT4y81zNVtf1iWZxryOt'] = array(
@@ -384,7 +385,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -401,7 +402,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Status',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-Lf1UodtmgEv6QpBb0FJQS6GtNsXVqBat'] = array(
@@ -412,7 +413,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -429,7 +430,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Data source',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-PKmIxEaqDpK0PbGDdRV52A7jtupTOImx'] = array(
@@ -440,7 +441,8 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search
+node/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -456,8 +458,8 @@ function informea_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Type',
-    'visibility' => 0,
+    'title' => 'Contact Type',
+    'visibility' => 1,
   );
 
   $export['facetapi-PWq6fh33hqvAZzO5pGxs8RsAmjTxWVM0'] = array(
@@ -468,7 +470,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -485,7 +487,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Field of application',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-UqhCTE3MjCqowbOaw2O2fSYBGezSv1VZ'] = array(
@@ -496,7 +498,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -513,7 +515,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Parent',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-VfaF3l86oox2DNvznoftN4Hw7Kxq40cZ'] = array(
@@ -552,7 +554,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -569,7 +571,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Document Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-W1Sc0UqAaNsAxM01kwyS03BnpbbBtNUH'] = array(
@@ -580,7 +582,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -597,7 +599,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'GEG Theme',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-b01M97N8OapCER3mxeFQvYWX9aRdHkkT'] = array(
@@ -608,7 +610,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -625,7 +627,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-lU0kkFRnzyJwsn07slk30R16Sy1xsgyf'] = array(
@@ -636,7 +638,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -653,7 +655,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Glossary terms',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-pY6nQrARjEae1htfVD1sR1Rz0es9Sj2l'] = array(
@@ -664,7 +666,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -681,7 +683,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Kind',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-q1q1IaIhHLNp0RNuu5q553Ys9RNsdvdq'] = array(
@@ -692,7 +694,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -720,7 +722,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -737,7 +739,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Literature Type',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-tlTj0HRgL67B2gv0e9ATKQRzacTbVHmt'] = array(
@@ -748,7 +750,8 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search
+node/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -765,7 +768,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Role',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-v41eJbSwkglIqPnH3Ny5ME63BDlFKzyC'] = array(
@@ -776,7 +779,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -793,7 +796,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Type of text',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-vS0iz2hKycgOtcX26OSG7x0gpn1kwjKI'] = array(
@@ -804,7 +807,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -821,7 +824,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'SDG Goals',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-ypESKm0EYw6ifS0RNyizmzoFDbTH6rZf'] = array(
@@ -832,7 +835,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -849,7 +852,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Jurisdiction',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['facetapi-zjNTmpdt4IOvmxve1cQtB8i5B3CCWToQ'] = array(
@@ -860,7 +863,7 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -877,7 +880,7 @@ function informea_search_default_fe_block_settings() {
       ),
     ),
     'title' => 'Territorial subdivision',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;
