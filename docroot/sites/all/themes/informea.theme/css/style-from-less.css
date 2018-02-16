@@ -1796,30 +1796,38 @@ h2.regional-topic-title span {
   cursor: not-allowed;
 }
 [dir=ltr] .treaty-links__link {
-  margin-left: 8px;
-  margin-left: .8rem;
+  margin-left: 3px;
+  margin-left: .3rem;
 }
 [dir=rtl] .treaty-links__link {
-  margin-right: 8px;
-  margin-right: .8rem;
+  margin-right: 3px;
+  margin-right: .3rem;
 }
 .treaty-links__link + .treaty-links__link:before {
   color: #8F8F8F;
   content: '|';
 }
 [dir=ltr] .treaty-links__link + .treaty-links__link:before {
-  margin-right: 8px;
-  margin-right: .8rem;
+  margin-right: 3px;
+  margin-right: .3rem;
 }
 [dir=rtl] .treaty-links__link + .treaty-links__link:before {
-  margin-left: 8px;
-  margin-left: .8rem;
+  margin-left: 3px;
+  margin-left: .3rem;
 }
 .treaty-links__link a {
   color: #0A8FC6;
 }
 [dir] .treaty-links__link a {
   cursor: pointer;
+}
+[dir=ltr] .treaty-links__link:first-child {
+  margin-left: 8px;
+  margin-left: .8rem;
+}
+[dir=rtl] .treaty-links__link:first-child {
+  margin-right: 8px;
+  margin-right: .8rem;
 }
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
   font-weight: normal;
