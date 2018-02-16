@@ -705,3 +705,10 @@ function informea_update_7052() {
   features_revert_module('meeting');
   features_revert_module('treaty');
 }
+
+/**
+ * #351 - Fixed event region wrong format
+ */
+function informea_update_7053() {
+  features_revert_module('meeting');
+}
