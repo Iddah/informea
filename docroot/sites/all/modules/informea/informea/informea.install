@@ -712,3 +712,13 @@ function informea_update_7052() {
 function informea_update_7053() {
   features_revert_module('meeting');
 }
+
+/**
+ * #351 - Added post date to be displayed in news and events view, added filter by post date and date descending
+ */
+function informea_update_7054() {
+    features_revert_module('informea_search');
+    features_revert_module('meeting');
+    features_revert_module('feeds_news');
+    features_revert_module('geographic_region');
+}
