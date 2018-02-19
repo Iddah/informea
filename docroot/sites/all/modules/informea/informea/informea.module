@@ -766,8 +766,10 @@ function informea_field_formatter_info() {
       'label' => t('Informea date'),
       'field types' => array('datetime' , 'ds'),
     ),
-
-
+    'informea_linked_file_name' => array(
+      'label' => t('Linked file name'),
+      'field types' => array('file'),
+    ),
   );
 }
 
@@ -800,7 +802,6 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
         );
       }
       break;
-
     case 'informea_date':
       if (!empty($items)) {
         $elements[0] = array(
@@ -808,6 +809,13 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
         );
       }
       break;
+    case 'informea_linked_file_name':
+      foreach ($items as $delta => $item) {
+        $elements[$delta] = array(
+          '#markup' => theme('informea_linked_file_name', array('file' => (object) $item)),
+        );
+      }
+    break;
   }
   return $elements;
 }
@@ -865,6 +873,51 @@ function theme_informea_date($variables) {
     return FALSE;
 }
 
+function theme_informea_linked_file_name($variables) {
+  $file = $variables['file'];
+
+  // Human-readable names, for use as text-alternatives to icons.
+  $mime_name = array(
+    'application/msword' => t('Microsoft Office document icon'),
+    'application/vnd.ms-excel' => t('Office spreadsheet icon'),
+    'application/vnd.ms-powerpoint' => t('Office presentation icon'),
+    'application/pdf' => t('PDF icon'),
+    'video/quicktime' => t('Movie icon'),
+    'audio/mpeg' => t('Audio icon'),
+    'audio/wav' => t('Audio icon'),
+    'image/jpeg' => t('Image icon'),
+    'image/png' => t('Image icon'),
+    'image/gif' => t('Image icon'),
+    'application/zip' => t('Package icon'),
+    'text/html' => t('HTML icon'),
+    'text/plain' => t('Plain text icon'),
+    'application/octet-stream' => t('Binary Data'),
+  );
+
+  $mimetype = file_get_mimetype($file->uri);
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+    ),
+  );
+
+  if (preg_match('/^http/', $file->description)) {
+    $url = $file->description;
+    $options['attributes']['target'] = '_blank';
+  }
+  else {
+    $url = file_create_url($file->uri);
+  }
+
+  // Use filename as the link text.
+  $link_text = $file->filename;
+
+  return '<span class="file">' . l($link_text, $url, $options) . '</span>';
+}
+
 function informea_theme() {
   return array(
     'informea_field_formatter_external_url' => array(
@@ -883,8 +936,13 @@ function informea_theme() {
     ),
     'pdfjs_markup' => array(
       'template' => 'pdfjs_markup',
-      'variables' => array('file'),
+      'variables' => array(
+        'file' => NULL
+      ),
       'path' => drupal_get_path('module', 'informea') . '/templates',
+    ),
+    'informea_linked_file_name' => array(
+      'variables' => array('file'),
     ),
     'informea_share_widget' => array(
       'variables' => array(

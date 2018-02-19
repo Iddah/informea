@@ -869,10 +869,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
     case 'country_flag':
       if (!empty($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
         $flag = [
-          '#markup' => theme('image', [
-            'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
-            'attributes' => ['class' => ['flag']],
-          ]),
+          '#theme' => 'image',
+          '#path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['element']['#object']->field_country_iso2[LANGUAGE_NONE][0]['value']) . '.png',
+          '#attributes' => ['class' => ['flag']],
+          '#alt' => $variables['element']['#object']->title
         ];
         $variables['items'][0]['#markup'] = drupal_render($flag);
       }
@@ -883,7 +883,7 @@ function informea_theme_preprocess_field(&$variables, $hook) {
           break;
     case 'field_files':
       if($variables['element']['#view_mode'] == 'search_item') {
-        $variables['label'] = t('Download');
+        $variables['label'] = t('Download:');
         foreach ($variables['element']['#items'] as $key => $item) {
           $variables['items'][$key]['#prefix'] = '[';
           $variables['items'][$key]['#suffix'] = ']';
@@ -892,6 +892,14 @@ function informea_theme_preprocess_field(&$variables, $hook) {
       break;
     case 'field_informea_tags':
       $variables['label'] = t('Glossary term(s)');
+      break;
+    case 'search_excerpt':
+      if (!empty($variables['element']['#object']->search_api_excerpt)) {
+        $variables['items'][0]['#markup'] = $variables['element']['#object']->search_api_excerpt;
+      }
+      else {
+        $variables['classes_array'][] = 'hidden';
+      }
       break;
   }
 }
@@ -991,7 +999,8 @@ function informea_theme_field($variables) {
   $output = '';
   // Render the label, if it's not hidden.
   if (!$variables['label_hidden']) {
-    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':</div>';
+    // Removed unnecessary colon
+    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
   }
 
   // Render the items.
@@ -1018,71 +1027,6 @@ function informea_theme_field($variables) {
   // Render the top-level DIV.
   $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
   return $output;
-}
-
-/**
- * Returns HTML for a link to a file.
- *
- * @param $variables
- *   An associative array containing:
- *   - file: A file object to which the link will be created.
- *   - icon_directory: (optional) A path to a directory of icons to be used for
- *     files. Defaults to the value of the "file_icon_directory" variable.
- *
- * @ingroup themeable
- */
-function informea_theme_file_link($variables) {
-  $file = $variables['file'];
-  $icon_directory = $variables['icon_directory'];
-
-  $url = file_create_url($file->uri);
-
-  // Human-readable names, for use as text-alternatives to icons.
-  $mime_name = array(
-    'application/msword' => t('Microsoft Office document icon'),
-    'application/vnd.ms-excel' => t('Office spreadsheet icon'),
-    'application/vnd.ms-powerpoint' => t('Office presentation icon'),
-    'application/pdf' => t('PDF icon'),
-    'video/quicktime' => t('Movie icon'),
-    'audio/mpeg' => t('Audio icon'),
-    'audio/wav' => t('Audio icon'),
-    'image/jpeg' => t('Image icon'),
-    'image/png' => t('Image icon'),
-    'image/gif' => t('Image icon'),
-    'application/zip' => t('Package icon'),
-    'text/html' => t('HTML icon'),
-    'text/plain' => t('Plain text icon'),
-    'application/octet-stream' => t('Binary Data'),
-  );
-
-  $mimetype = file_get_mimetype($file->uri);
-
-  $icon = theme('file_icon', array(
-    'file' => $file,
-    'icon_directory' => $icon_directory,
-    'alt' => !empty($mime_name[$mimetype]) ? $mime_name[$mimetype] : t('File'),
-  ));
-
-  // Set options as per anchor format described at
-  // http://microformats.org/wiki/file-format-examples
-  $options = array(
-    'attributes' => array(
-      'type' => $file->filemime . '; length=' . $file->filesize,
-    ),
-  );
-
-  // Use the description as the link text if available.
-  if (empty($file->description)) {
-    $link_text = $file->filename;
-  }
-  else {
-    $link_text = $file->description;
-    $options['attributes']['title'] = check_plain($file->filename);
-  }
-
-  // Removed the html space character so that when the icon is hidden there is no extra spacing
-  return '<span class="file">' . $icon . l($link_text, $url, $options) . '</span>';
-
 }
 
 /**
