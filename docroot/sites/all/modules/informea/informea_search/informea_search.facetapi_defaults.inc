@@ -916,48 +916,68 @@ function informea_search_facetapi_default_facet_settings() {
         'webform' => 0,
       ),
       'facets' => array(
-        'type' => 'type',
+        'field_geographical_scope' => 0,
         'field_ecolex_legislation_status' => 0,
         'field_literature_type' => 0,
-        'field_contact_roles' => 0,
         'field_person_type' => 0,
         'field_territorial_subdivision' => 0,
+        'field_ecolex_decision_status' => 0,
+        'field_contact_roles:field_contact_role' => 0,
+        'field_parent_goal' => 0,
+        'field_lead_institution' => 0,
         'field_goal_type' => 0,
+        'field_geg_theme' => 0,
+        'field_document_authors' => 0,
         'field_declaration_paragraph_type' => 0,
-        'field_mea_topic' => 0,
-        'field_event_type' => 0,
-        'field_jurisdiction' => 0,
-        'field_treaty' => 0,
         'field_region' => 0,
-        'field_country' => 0,
+        'field_mea_topic' => 0,
+        'field_field_of_application' => 0,
+        'field_data_source' => 0,
         'field_informea_tags' => 0,
+        'field_event_type' => 0,
+        'year_of_text' => 0,
+        'field_treaty' => 0,
+        'type' => 0,
+        'field_event_kind' => 0,
+        'field_country' => 0,
+        'field_jurisdiction' => 0,
+        'field_sdg_goals' => 0,
         'field_decision_status' => 0,
         'field_decision_type' => 0,
         'field_action_plan_type' => 0,
-        'field_sorting_date' => 0,
         'field_type_of_text' => 0,
       ),
       'force_deactivation' => 1,
       'regex' => 0,
+      'facet_items_field_geographical_scope' => '',
       'facet_items_field_ecolex_legislation_status' => '',
       'facet_items_field_literature_type' => '',
-      'facet_items_field_contact_roles' => '',
       'facet_items_field_person_type' => '',
       'facet_items_field_territorial_subdivision' => '',
+      'facet_items_field_ecolex_decision_status' => '',
+      'facet_items_field_contact_roles:field_contact_role' => '',
+      'facet_items_field_parent_goal' => '',
+      'facet_items_field_lead_institution' => '',
       'facet_items_field_goal_type' => '',
+      'facet_items_field_geg_theme' => '',
+      'facet_items_field_document_authors' => '',
       'facet_items_field_declaration_paragraph_type' => '',
-      'facet_items_field_mea_topic' => '',
-      'facet_items_field_event_type' => '',
-      'facet_items_field_jurisdiction' => '',
-      'facet_items_field_treaty' => '',
-      'facet_items_type' => 'document',
       'facet_items_field_region' => '',
-      'facet_items_field_country' => '',
+      'facet_items_field_mea_topic' => '',
+      'facet_items_field_field_of_application' => '',
+      'facet_items_field_data_source' => '',
       'facet_items_field_informea_tags' => '',
+      'facet_items_field_event_type' => '',
+      'facet_items_year_of_text' => '',
+      'facet_items_field_treaty' => '',
+      'facet_items_type' => '',
+      'facet_items_field_event_kind' => '',
+      'facet_items_field_country' => '',
+      'facet_items_field_jurisdiction' => '',
+      'facet_items_field_sdg_goals' => '',
       'facet_items_field_decision_status' => '',
       'facet_items_field_decision_type' => '',
       'facet_items_field_action_plan_type' => '',
-      'facet_items_field_sorting_date' => '',
       'facet_items_field_type_of_text' => '',
     ),
     'facet_mincount' => '1',
@@ -3947,7 +3967,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -3983,6 +4032,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_contact_roles:field_contact_role'] = $facet;
 
@@ -4892,7 +4945,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -4934,6 +5016,10 @@ function informea_search_facetapi_default_facet_settings() {
     'auto-submit-delay' => '1500',
     'range_simple' => 10,
     'range_advanced' => '',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_document_type'] = $facet;
 
@@ -6440,7 +6526,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -6476,6 +6591,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_literature_type'] = $facet;
 
@@ -7703,7 +7822,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -7739,6 +7887,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_person_type'] = $facet;
 
@@ -9324,7 +9476,32 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -9368,6 +9545,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:year_of_text'] = $facet;
 

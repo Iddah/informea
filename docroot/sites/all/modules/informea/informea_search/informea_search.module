@@ -72,7 +72,37 @@ function informea_search_facet_items_alter(&$build, &$settings) {
         array_unshift($build, $select_all);
       }
       break;
+
+    case 'search_api@default_index:block:field_contact_roles:field_contact_role':
+    case 'search_api@default_index:block:field_person_type':
+      if (!informea_search_check_facet_url_param('search', 'contact_person')) {
+        $settings->enabled = FALSE;
+        $build = array();
+      }
+      break;
+
+    case 'search_api@default_index:block:field_document_type':
+    case 'search_api@default_index:block:year_of_text':
+      if (!informea_search_check_facet_url_param('search', 'document')) {
+        $settings->enabled = FALSE;
+        $build = array();
+      }
+      break;
+
   }
+}
+
+function informea_search_check_facet_url_param($path = '', $param = NULL){
+  if (preg_match("/^search/", current_path(), $matches)) {
+    $query = drupal_get_query_parameters();
+    if (isset($query['f']) && is_array($query['f'])) {
+      if (in_array("type:$param", $query['f'])) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
+  return TRUE;
 }
 
 /**

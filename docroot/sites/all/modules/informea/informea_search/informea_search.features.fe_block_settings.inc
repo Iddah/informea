@@ -300,7 +300,8 @@ function informea_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search',
+    'pages' => 'search
+node/*/documents',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -357,7 +358,8 @@ function informea_search_default_fe_block_settings() {
     'module' => 'facetapi',
     'node_types' => array(),
     'pages' => 'search
-node/*/contacts-hub',
+node/*/contacts-hub
+node/*/documents',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -554,7 +556,8 @@ node/*/contacts-hub',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search',
+    'pages' => 'search
+node/*/documents',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -610,7 +613,8 @@ node/*/contacts-hub',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search',
+    'pages' => 'search
+node/*/documents',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
