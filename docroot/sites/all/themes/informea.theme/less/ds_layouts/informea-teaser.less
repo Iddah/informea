@@ -12,8 +12,11 @@
     align-items: flex-end;
     display: flex;
     flex-flow: column;
+    flex-shrink: 0;
     margin-right: 1.5em;
     width: 10rem;
+
+    > .field-type-entityreference { width: 100%; }
 
     > .field-type-entityreference .node--view-mode-image_only,
     > .field-type-image {
@@ -119,6 +122,7 @@
     margin-top: .5em;
 
     > .field {
+      &, & a { color: @regional-page-light-blue; }
       display: flex;
       margin-left: .3rem;
       + .field {
@@ -144,6 +148,15 @@
       font-weight: normal;
     }
   }
+
+  .field-name-field-files {
+    .field-item {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
 }
 
 .meta-content-type:extend(.view__item-tag) {

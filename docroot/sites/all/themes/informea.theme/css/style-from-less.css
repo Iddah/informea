@@ -906,6 +906,9 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir=rtl] .facetapi-select {
   padding: 0 4px 0 0;
 }
+.field-name-field-informea-tags.field-label-inline > .field-label:after {
+  content: ':';
+}
 .informea-list-of-tags {
   list-style: none;
   display: inline;
@@ -1934,6 +1937,8 @@ h2.regional-topic-title span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   width: 100px;
   width: 10rem;
 }
@@ -1942,6 +1947,9 @@ h2.regional-topic-title span {
 }
 [dir=rtl] .informea-teaser__left {
   margin-left: 1.5em;
+}
+.informea-teaser__left > .field-type-entityreference {
+  width: 100%;
 }
 .informea-teaser__left > .field-type-entityreference .node--view-mode-image_only,
 .informea-teaser__left > .field-type-image {
@@ -2143,6 +2151,10 @@ h2.regional-topic-title span {
   margin-right: 3px;
   margin-right: .3rem;
 }
+.informea-teaser__links > .field,
+.informea-teaser__links > .field a {
+  color: #1D7CA7;
+}
 .informea-teaser__links > .field + .field:before {
   color: #8F8F8F;
   content: '|';
@@ -2166,6 +2178,11 @@ h2.regional-topic-title span {
 }
 .informea-teaser .field-name-field-informea-tags .field-label {
   font-weight: normal;
+}
+.informea-teaser .field-name-field-files .field-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 [dir=ltr] .meta-content-type {
   margin-left: 0;
