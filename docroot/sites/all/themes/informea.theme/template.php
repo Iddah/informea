@@ -16,18 +16,18 @@
 function informea_theme_preprocess_page(&$variables) {
 
   global $base_url;
-  // Add elearning SVG icon
+  // Add elearning SVG icon.
   $elearning_icon_path = $base_url . '/' . drupal_get_path('theme', 'informea_theme') . '/img/elearning.svg';
   $variables['elearning_icon'] = theme('image', array('path' => $elearning_icon_path, 'attributes' => array('class' => array('elearning-icon'), 'height' => '20', 'width' => '27')));
 
-  // Add Informea Treaties Block
+  // Add Informea Treaties Block.
   $block = block_load('informea', 'informea_treaties_block');
   $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
   $informea_treaties_block = drupal_render($block_array);
   $variables['informea_treaties_block'] = $informea_treaties_block;
 
 
-  // Add Informea Browse All Block
+  // Add Informea Browse All Block.
   $block = block_load('informea', 'informea_browse_all_block');
   $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
   $informea_browse_all_block = drupal_render($block_array);
@@ -38,19 +38,19 @@ function informea_theme_preprocess_page(&$variables) {
 
   $breadcrumbs = array();
   // Add the autocomplete library.
- drupal_add_library('system', 'ui.autocomplete');
+  drupal_add_library('system', 'ui.autocomplete');
   menu_secondary_local_tasks();
   if (current_path() == 'goals') {
     drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/goals.js');
   }
   if (arg(0) == 'taxonomy') {
-    // Unset related terms in taxonomy page
+    // Unset related terms in taxonomy page.
     unset($variables['page']['content']['system_main']['nodes']);
     unset($variables['page']['content']['system_main']['pager']);
     unset($variables['page']['content']['system_main']['no_content']);
   }
 
-  // Handle language prefix in urls
+  // Handle language prefix in urls.
   global $language;
   $path = request_path();
   $path_no_language_prefix = language_url_split_prefix($path, array($language))[1];
@@ -59,30 +59,37 @@ function informea_theme_preprocess_page(&$variables) {
     case 'countries':
       $breadcrumbs[] = t('Parties');
       break;
+
     case 'terms':
       $breadcrumbs[] = t('Glossary');
       break;
+
     case 'events':
       $breadcrumbs[] = t('Events');
       break;
+
     case 'events/past':
       $breadcrumbs[] = t('Past events');
       break;
+
     case 'news':
       $breadcrumbs[] = t('News');
       break;
+
     case 'about':
       $breadcrumbs[] = t('About InforMEA');
       break;
+
     case 'about/api':
       $breadcrumbs[] = t('API documentation');
       break;
+
     case 'search':
       $variables['page']['sidebar_first']['#no_well'] = TRUE;
       break;
   }
 
-  if(isset($variables['node'])) {
+  if (isset($variables['node'])) {
     $node = $variables['node'];
     switch ($node->type) {
       case 'event_calendar':
@@ -112,18 +119,18 @@ function informea_theme_preprocess_page(&$variables) {
         break;
 
       case 'country':
-        // see #285 hide party block on country contacts hub page
-        if(!empty($variables['page']['sidebar_first'])) {
+        //See #285 hide party block on country contacts hub page.
+        /*if (!empty($variables['page']['sidebar_first'])) {
           foreach ($variables['page']['sidebar_first'] as $key => $value) {
-            if($value['#settings']->facet == 'field_country') {
+            if ($value['#settings']->facet == 'field_country') {
               $remove = $key;
               break;
             }
           }
-          if(!empty($remove)) {
+          if (!empty($remove)) {
             unset($variables['page']['sidebar_first'][$remove]);
           }
-        }
+        }*/
         $countries = country_get_countries_select_options();
         $countries1 = $countries;
         // array_unshift($countries1, t('View another party'));
@@ -141,7 +148,7 @@ function informea_theme_preprocess_page(&$variables) {
         break;
 
       case 'treaty':
-        // see #285 hide treaty block on treaty contacts hub page
+/*        // see #285 hide treaty block on treaty contacts hub page
         if(!empty($variables['page']['sidebar_first'])) {
           foreach ($variables['page']['sidebar_first'] as $key => $value) {
             if(isset($value['#settings']) && $value['#settings']->facet == 'field_treaty') {
@@ -152,7 +159,7 @@ function informea_theme_preprocess_page(&$variables) {
           if(!empty($remove)) {
             unset($variables['page']['sidebar_first'][$remove]);
           }
-        }
+        }*/
         if ($local_tasks = menu_secondary_local_tasks()) {
           array_unshift($variables['page']['sidebar_first'], menu_secondary_local_tasks());
         }
@@ -161,13 +168,23 @@ function informea_theme_preprocess_page(&$variables) {
         $variables['treaties'] = $treaties;
         $treaties1 = $treaties;
         $menu_object = menu_get_object();
-        $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
-        if (!empty($menu_object->context)) {
-          $selected_treaty .= '/' . $menu_object->context;
+        if (isset($node->field_odata_identifier[LANGUAGE_NONE][0]['value'])) {
+          $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
+          if (!empty($menu_object->context)) {
+            $selected_treaty .= '/' . $menu_object->context;
+          }
         }
 
         $variables['select-switch-treaties'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
+          '#attributes' => array(
+            'class' => array(
+              'form-control',
+              'node-switcher',
+              'treaty-switcher',
+              'use-select-2',
+            ),
+            'id' => 'treaty-switcher',
+          ),
           '#options' => $treaties1,
           '#type' => 'select',
           '#value' => $selected_treaty,
@@ -232,16 +249,23 @@ function informea_theme_preprocess_page(&$variables) {
   if ($variables['is_front']) {
     // Adds the front page JavaScript file to the page.
     drupal_add_js(drupal_get_path('theme', 'informea_theme') . '/js/front.js');
-    // Country block from the front page
-    // Replace the <select> at this stage to avoid replacement issue coming from i18n_block_translate_block
+    // Country block from the front page.
+    // Replace the <select> at this stage to avoid
+    // replacement issue coming from i18n_block_translate_block.
     if (!empty($variables['page']['front_page_content']['block_10'])) {
       $block_data =& $variables['page']['front_page_content']['block_10'];
       $countries = country_get_countries_select_options();
       array_unshift($countries, t('Select a party…'));
       $html = array(
-        '#attributes' => array('class' => array('form-control', 'node-switcher', 'country-switcher')),
+        '#attributes' => array(
+          'class' => array(
+            'form-control',
+            'node-switcher',
+            'country-switcher',
+          ),
+        ),
         '#options' => $countries,
-        '#type' => 'select'
+        '#type' => 'select',
       );
       $block_data['#markup'] = preg_replace('/<select.*><\/select>/i', drupal_render($html), $block_data['#markup']);
     }
@@ -258,31 +282,39 @@ function informea_theme_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__node__treaty';
     drupal_set_title($node->title);
 
-      $variables['content_column_class'] = ' class="col-sm-9"';
-      $treaties = treaty_get_treaties_as_select_options();
-      $variables['treaties'] = $treaties;
-      $treaties1 = $treaties;
-      $menu_object = menu_get_object();
-      $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
-      if (!empty($menu_object->context)) {
-          $selected_treaty .= '/' . $menu_object->context;
-      }
+    $variables['content_column_class'] = ' class="col-sm-9"';
+    $treaties = treaty_get_treaties_as_select_options();
+    $variables['treaties'] = $treaties;
+    $treaties1 = $treaties;
+    $menu_object = menu_get_object();
+    $selected_treaty = treaty_get_url_by_odata_name($node->field_odata_identifier[LANGUAGE_NONE][0]['value']);
+    if (!empty($menu_object->context)) {
+      $selected_treaty .= '/' . $menu_object->context;
+    }
 
-      $variables['select-switch-treaties'] = array(
-          '#attributes' => array('class' => array('form-control', 'node-switcher', 'treaty-switcher', 'use-select-2'), 'id'=> 'treaty-switcher'),
-          '#options' => $treaties1,
-          '#type' => 'select',
-          '#value' => $selected_treaty,
-      );
+    $variables['select-switch-treaties'] = array(
+      '#attributes' => array(
+        'class' => array(
+          'form-control',
+          'node-switcher',
+          'treaty-switcher',
+          'use-select-2',
+        ),
+        'id' => 'treaty-switcher',
+      ),
+      '#options' => $treaties1,
+      '#type' => 'select',
+      '#value' => $selected_treaty,
+    );
   }
 }
 
 function informea_theme_preprocess_region(&$variables) {
-  // Removes bootstrap well classes from region
-  if(!empty($variables['elements']['#no_well']) && $variables['elements']['#no_well'] == TRUE) {
+  // Removes bootstrap well classes from region.
+  if (!empty($variables['elements']['#no_well']) && $variables['elements']['#no_well'] == TRUE) {
     $classes_to_remove = ['well', 'well well-sm', 'well well-lg'];
     foreach ($classes_to_remove as $class) {
-      if (($key = array_search($class, $variables['classes_array'])) !== false) {
+      if (($key = array_search($class, $variables['classes_array'])) !== FALSE) {
         unset($variables['classes_array'][$key]);
       }
     }

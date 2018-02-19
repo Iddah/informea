@@ -2230,6 +2230,32 @@ h2.regional-topic-title span {
 #s2id_treaty-switcher .select2-arrow {
   color: #fc3;
 }
+.field-name-field-person-department,
+.field-name-field-person-position,
+.field-name-field-person-institution {
+  display: inline;
+}
+.field-name-field-person-department .field-item,
+.field-name-field-person-position .field-item,
+.field-name-field-person-institution .field-item {
+  display: inline;
+}
+.informea-contact-department,
+.informea-contact-position,
+.informea-contact-institution {
+  color: #8F8F8F;
+  display: inline;
+}
+.informea-contact-department:after,
+.informea-contact-position:after {
+  content: '|';
+}
+[dir=ltr] .informea-contact-department:after, [dir=ltr] .informea-contact-position:after {
+  padding-left: 0.2em;
+}
+[dir=rtl] .informea-contact-department:after, [dir=rtl] .informea-contact-position:after {
+  padding-right: 0.2em;
+}
 .region-front-page-content .block-title,
 .region-front-page-content .block:first-child h2.block-title {
   line-height: inherit;

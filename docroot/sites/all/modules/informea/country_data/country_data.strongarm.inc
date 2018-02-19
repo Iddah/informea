@@ -222,10 +222,28 @@ function country_data_strongarm() {
         'custom_settings' => TRUE,
       ),
       'treaty_listing' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'print' => array(
         'custom_settings' => FALSE,
+      ),
+      'search_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'regional_landing_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_only' => array(
+        'custom_settings' => FALSE,
+      ),
+      'topical_landing_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'treaty_page' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

@@ -736,3 +736,12 @@ function informea_update_7055() {
 function informea_update_7056() {
     features_revert_module('informea');
 }
+
+/**
+ * #285 - Contacts Hub style updates
+ */
+function informea_update_7057() {
+  features_revert_module('country_data');
+  features_revert_module('informea_search');
+  features_revert_module('treaty');
+}
