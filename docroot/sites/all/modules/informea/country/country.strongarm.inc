@@ -107,6 +107,12 @@ function country_strongarm() {
       'topical_landing_page' => array(
         'custom_settings' => FALSE,
       ),
+      'image_and_title' => array(
+        'custom_settings' => TRUE,
+      ),
+      'treaty_page' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

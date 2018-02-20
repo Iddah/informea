@@ -10,6 +10,7 @@ include_once 'country.features.inc';
  *  Implements hook_url_inbound_alter().
  */
 function country_url_inbound_alter(&$path, $original_path, $path_language) {
+
   if($node = country_url_match_node($path)) {
     $path = 'node/' . $node->nid;
   }
@@ -61,23 +62,6 @@ function country_menu() {
     'type' => MENU_CALLBACK,
   );
   return $items;
-}
-
-
-/**
- * Implements hook_theme().
- *
- * {@inheritdoc}
- */
-function country_theme() {
-  return array(
-    'country_map' => array(
-      'render element' => 'element',
-      'template' => 'templates/country-map',
-      'variables' => array(),
-      'path' => drupal_get_path('module', 'country'),
-    ),
-  );
 }
 
 /**
@@ -342,7 +326,7 @@ function country_node_view($node, $view_mode, $langcode) {
     }
     informea_theme_set_page_breadcrumb($breadcrumbs);
   }
-  if($node->type == 'country' && $view_mode == 'image_only') {
+/*  if($node->type == 'country' && $view_mode == 'image_only') {
     if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
       $node->content['flag'] = [
         '#markup' => theme('image', [
@@ -351,7 +335,7 @@ function country_node_view($node, $view_mode, $langcode) {
         ]),
       ];
     }
-  }
+  }*/
 }
 
 /**
@@ -911,5 +895,73 @@ function country_form_alter(&$form, &$form_state, $form_id) {
 function country_views_pre_execute(&$view){
   if ($view->name == 'contacts_hubs') {
     $view->build_info['query']->groupBy('node_field_data_field_country.nid');
+  }
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function country_field_formatter_info() {
+
+  return array(
+    'country_flag' => array(
+      'label' => t('Country Flag'),
+      'field types' => array('text'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function country_field_formatter_view($entity_type, $entity, $field, $instance, $lang_code, $items, $display) {
+  $elements = array();
+  switch ($display['type']) {
+    case 'country_flag':
+      foreach ($items as $delta => $item) {
+        $elements[$delta] = array(
+          '#markup' => theme('image',
+             array(
+                'path' => drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($item['value']) . '.png',
+                'attributes' => array('class' => array('flag')),
+              )
+          )
+        );
+      }
+      break;
+    default:
+      break;
+  }
+  return $elements;
+}
+
+
+
+/**
+ * Implements hook_theme().
+ *
+ * {@inheritdoc}
+ */
+function country_theme() {
+  return array(
+    'country_map' => array(
+      'render element' => 'element',
+      'template' => 'templates/country-map',
+      'variables' => array(),
+      'path' => drupal_get_path('module', 'country'),
+    ),
+    'informea_field_formatter_country_flag' => array(
+      'variables' => array(
+        'element' => NULL,
+      ),
+    ),
+  );
+}
+
+
+function theme_informea_field_formatter_country_flag($variables) {
+  if (isset($variables['items'][0]['value']) && !empty($variables['items'][0]['value'])){
+    return drupal_get_path('theme', 'informea_theme') . '/img/flags/flag-' . strtolower($variables['items'][0]['value']) . '.png';
   }
 }

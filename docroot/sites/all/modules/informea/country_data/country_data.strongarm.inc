@@ -245,6 +245,12 @@ function country_data_strongarm() {
       'treaty_page' => array(
         'custom_settings' => TRUE,
       ),
+      'country_page' => array(
+        'custom_settings' => TRUE,
+      ),
+      'image_and_title' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -35,11 +35,19 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
-      'image_only' => array(
-        'label' => 'inline',
+      'image_and_title' => array(
+        'label' => 'hidden',
+        'module' => 'country',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'type' => 'country_flag',
+        'weight' => 0,
+      ),
+      'image_only' => array(
+        'label' => 'hidden',
+        'module' => 'country',
+        'settings' => array(),
+        'type' => 'country_flag',
+        'weight' => 0,
       ),
       'search_item' => array(
         'label' => 'hidden',
@@ -104,6 +112,12 @@ function country_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 3,
+      ),
+      'image_and_title' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'image_only' => array(
         'label' => 'inline',
@@ -176,11 +190,22 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'image_and_title' => array(
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => 'informea-country-name',
+          'title_link' => '',
+          'title_style' => 'div',
+        ),
+        'type' => 'title_linked',
+        'weight' => 1,
+      ),
       'image_only' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'search_item' => array(
         'label' => 'hidden',
@@ -245,6 +270,12 @@ function country_field_default_field_instances() {
         'weight' => 4,
       ),
       'flag_only' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'image_and_title' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
@@ -319,6 +350,12 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'image_and_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'image_only' => array(
         'label' => 'above',
         'settings' => array(),
@@ -385,6 +422,12 @@ function country_field_default_field_instances() {
         'weight' => 7,
       ),
       'flag_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'image_and_title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -469,11 +512,17 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'image_and_title' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'image_only' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'search_item' => array(
         'label' => 'hidden',
@@ -560,6 +609,12 @@ function country_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'image_and_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'image_only' => array(
         'label' => 'above',
         'settings' => array(),
@@ -626,6 +681,12 @@ function country_field_default_field_instances() {
         'weight' => 5,
       ),
       'flag_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'image_and_title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

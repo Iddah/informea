@@ -13,6 +13,133 @@ function country_data_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_list|node|contact_person|country_page';
+  $field_group->group_name = 'group_list';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact_person';
+  $field_group->mode = 'country_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline List',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_person_institution',
+      1 => 'field_person_position',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Inline List',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-inline-list',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_list|node|contact_person|country_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_list|node|contact_person|search_item';
+  $field_group->group_name = 'group_list';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact_person';
+  $field_group->mode = 'search_item';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline List',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_country',
+      1 => 'field_person_institution',
+      2 => 'field_person_position',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Inline List',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-inline-list',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_list|node|contact_person|search_item'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_list|node|contact_person|treaty_page';
+  $field_group->group_name = 'group_list';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact_person';
+  $field_group->mode = 'treaty_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline List',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_person_institution',
+      1 => 'field_person_position',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Inline List',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-inline-list',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_list|node|contact_person|treaty_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tags|node|contact_person|country_page';
+  $field_group->group_name = 'group_tags';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact_person';
+  $field_group->mode = 'country_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline Tags',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_mea_topic',
+      1 => 'content_type',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline Tags',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__tags',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_tags|node|contact_person|country_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_tags|node|contact_person|search_item';
   $field_group->group_name = 'group_tags';
   $field_group->entity_type = 'node';
@@ -54,7 +181,7 @@ function country_data_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Tags',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_mea_topic',
       1 => 'content_type',
@@ -78,6 +205,7 @@ function country_data_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Inline List');
   t('Inline Tags');
 
   return $field_groups;

@@ -816,7 +816,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
           $left_column['field_treaty'] = $content['field_treaty'];
         }
         break;
-
+/*
       case 'country':
         if (!empty($node->field_country_iso2[LANGUAGE_NONE][0]['value'])) {
           $left_column['flag'] = [
@@ -826,7 +826,7 @@ function informea_search_node_view($node, $view_mode, $langcode) {
             ]),
           ];
         }
-        break;
+        break;*/
 
       case 'goal':
         $wrapper = entity_metadata_wrapper('node', $node);
