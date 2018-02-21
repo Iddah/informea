@@ -489,9 +489,9 @@ function treaty_custom_view_node($node, $context) {
 
       $file_name = strtolower($node->title);
       $file_name = preg_replace('/[^a-zA-Z0-9\-\._]/', '-', $file_name);
-      header('Content-Type: application/vnd.ms-excel');
-      header("Content-Disposition: attachment;filename={$file_name}.xls");
-      header('Cache-Control: max-age=0');
+      drupal_add_http_header('Content-Type', 'application/vnd.ms-excel; charset=utf-8');
+      drupal_add_http_header('Content-Disposition', "attachment;filename={$file_name}.xls");
+      drupal_add_http_header('Cache-Control', 'max-age=0');
       $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
       ob_end_clean();
       ob_start();
