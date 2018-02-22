@@ -32,12 +32,9 @@ function country_deliverable_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -113,7 +110,7 @@ function country_deliverable_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -177,7 +174,7 @@ function country_deliverable_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'use_content_language' => 1,
-          'view_mode' => 'teaser',
+          'view_mode' => 'image_and_title',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 3,
@@ -318,9 +315,9 @@ function country_deliverable_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'inline',
-        'module' => 'file',
+        'module' => 'informea',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'informea_linked_file_name',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -550,7 +547,7 @@ function country_deliverable_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -688,7 +685,7 @@ function country_deliverable_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -963,12 +960,9 @@ function country_deliverable_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1036,7 +1030,7 @@ function country_deliverable_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'use_content_language' => 1,
-          'view_mode' => 'teaser',
+          'view_mode' => 'image_and_title',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 1,
@@ -1104,7 +1098,7 @@ function country_deliverable_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1177,9 +1171,9 @@ function country_deliverable_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'inline',
-        'module' => 'file',
+        'module' => 'informea',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'informea_linked_file_name',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -1254,10 +1248,23 @@ function country_deliverable_field_default_field_instances() {
         'weight' => 7,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-list-of-tags',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1330,7 +1337,7 @@ function country_deliverable_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1476,7 +1483,7 @@ function country_deliverable_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1621,7 +1628,7 @@ function country_deliverable_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1757,7 +1764,7 @@ function country_deliverable_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',

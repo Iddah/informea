@@ -1,29 +1,29 @@
 <?php
 /**
  * @file
- * decision.ds.inc
+ * document.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function decision_ds_field_settings_info() {
+function document_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|decision|search_item';
+  $ds_fieldsetting->id = 'node|document|search_item';
   $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'decision';
+  $ds_fieldsetting->bundle = 'document';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
-    'search_excerpt' => array(
-      'weight' => '4',
+    'title_prefix' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'content_type' => array(
-      'weight' => '2',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -39,7 +39,7 @@ function decision_ds_field_settings_info() {
       ),
     ),
   );
-  $export['node|decision|search_item'] = $ds_fieldsetting;
+  $export['node|document|search_item'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -47,47 +47,51 @@ function decision_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function decision_ds_layout_settings_info() {
+function document_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|decision|search_item';
+  $ds_layout->id = 'node|document|search_item';
   $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'decision';
+  $ds_layout->bundle = 'document';
   $ds_layout->view_mode = 'search_item';
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
-        0 => 'field_treaty',
+        0 => 'field_image',
       ),
       'right' => array(
-        1 => 'title',
-        2 => 'group_info',
-        3 => 'content_type',
+        1 => 'content_type',
+        2 => 'title_prefix',
+        3 => 'title',
         4 => 'field_mea_topic',
         5 => 'field_region',
-        6 => 'search_excerpt',
-        7 => 'field_decision_type',
+        6 => 'field_document_type',
+        7 => 'group_info',
         8 => 'group_tags',
-        9 => 'field_informea_tags',
-        10 => 'field_files',
-        11 => 'group_links',
+        9 => 'field_files',
+        10 => 'field_sorting_date',
+        11 => 'field_country',
+        12 => 'field_treaty',
+        13 => 'group_links',
       ),
     ),
     'fields' => array(
-      'field_treaty' => 'left',
-      'title' => 'right',
-      'group_info' => 'right',
+      'field_image' => 'left',
       'content_type' => 'right',
+      'title_prefix' => 'right',
+      'title' => 'right',
       'field_mea_topic' => 'right',
       'field_region' => 'right',
-      'search_excerpt' => 'right',
-      'field_decision_type' => 'right',
+      'field_document_type' => 'right',
+      'group_info' => 'right',
       'group_tags' => 'right',
-      'field_informea_tags' => 'right',
       'field_files' => 'right',
+      'field_sorting_date' => 'right',
+      'field_country' => 'right',
+      'field_treaty' => 'right',
       'group_links' => 'right',
     ),
     'classes' => array(),
@@ -102,7 +106,7 @@ function decision_ds_layout_settings_info() {
     'layout_link_custom' => '',
     'layout_disable_css' => FALSE,
   );
-  $export['node|decision|search_item'] = $ds_layout;
+  $export['node|document|search_item'] = $ds_layout;
 
   return $export;
 }

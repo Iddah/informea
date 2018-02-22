@@ -469,7 +469,7 @@ function meeting_field_default_field_instances() {
           'view_mode' => 'image_only',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1307,7 +1307,7 @@ function meeting_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1892,7 +1892,7 @@ function meeting_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',

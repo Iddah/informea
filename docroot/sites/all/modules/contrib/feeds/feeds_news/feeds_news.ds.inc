@@ -53,6 +53,11 @@ function feeds_news_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'search_excerpt' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -158,12 +163,13 @@ function feeds_news_ds_layout_settings_info() {
     'regions' => array(
       'right' => array(
         0 => 'content_type',
-        2 => 'title',
-        3 => 'field_mea_topic',
-        4 => 'group_info',
-        5 => 'field_feed_item_description',
-        6 => 'field_region',
-        7 => 'group_tags',
+        2 => 'field_treaty',
+        3 => 'title',
+        4 => 'field_mea_topic',
+        5 => 'group_info',
+        6 => 'search_excerpt',
+        7 => 'field_region',
+        8 => 'group_tags',
       ),
       'left' => array(
         1 => 'field_image',
@@ -172,10 +178,11 @@ function feeds_news_ds_layout_settings_info() {
     'fields' => array(
       'content_type' => 'right',
       'field_image' => 'left',
+      'field_treaty' => 'right',
       'title' => 'right',
       'field_mea_topic' => 'right',
       'group_info' => 'right',
-      'field_feed_item_description' => 'right',
+      'search_excerpt' => 'right',
       'field_region' => 'right',
       'group_tags' => 'right',
     ),

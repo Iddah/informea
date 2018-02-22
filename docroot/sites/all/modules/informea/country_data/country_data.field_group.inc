@@ -63,7 +63,7 @@ function country_data_field_group_info() {
       'label' => 'Inline List',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'informea-inline-list',
+        'classes' => 'informea-teaser__info',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -150,8 +150,9 @@ function country_data_field_group_info() {
     'label' => 'Inline Tags',
     'weight' => '4',
     'children' => array(
-      0 => 'field_mea_topic',
-      1 => 'content_type',
+      0 => 'field_region',
+      1 => 'field_mea_topic',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(

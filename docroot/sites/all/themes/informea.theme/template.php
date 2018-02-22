@@ -768,6 +768,11 @@ function informea_theme_preprocess_node(&$vars) {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__' . $view_mode;
     $vars['theme_hook_suggestions'][] = 'node__view_mode_' . $view_mode;
     $vars['classes_array'][] = 'node--view-mode-' . $view_mode;
+
+    // Add title as tooltip if using Image only view mode
+    if($view_mode == 'image_only') {
+      $vars['attributes_array']['title'] = $vars['title'];
+    }
   }
 }
 
@@ -885,8 +890,20 @@ function informea_theme_preprocess_field(&$variables, $hook) {
           case 'feed_item':
             $content_type_human_readable = t('News');
             break;
-        default:
-          $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
+          case 'document':
+          case 'literature':
+            $content_type_human_readable = t('Publication');
+            break;
+          case 'action_plan':
+            $content_type_human_readable = t('National Plan');
+            break;
+          case 'goal':
+          case 'declaration':
+            $content_type_human_readable = t('Goals and Declarations');
+            break;
+          default:
+            $content_type_human_readable = t(ucwords(str_replace('_', ' ', $content_type_machine_name)));
+            break;
         }
         $content_type = [
           '#theme' => 'item_list',
@@ -934,6 +951,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
       }
       break;
   }
+  // @todo restrict
+  // if($variables['element']['#view_mode'] == 'search_item') {
+  //   $variables['attributes_array']['title'] = $variables['element']['#title'];
+  // }
 }
 
 function informea_theme_facetapi_link_inactive($variables) {

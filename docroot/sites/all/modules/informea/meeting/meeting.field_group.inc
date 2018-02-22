@@ -48,6 +48,66 @@ function meeting_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|event_calendar|news_and_events_item';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event_calendar';
+  $field_group->mode = 'news_and_events_item';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '14',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|event_calendar|news_and_events_item'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|event_calendar|regional_landing_page';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event_calendar';
+  $field_group->mode = 'regional_landing_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '13',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|event_calendar|regional_landing_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_info|node|event_calendar|search_item';
   $field_group->group_name = 'group_info';
   $field_group->entity_type = 'node';
@@ -79,6 +139,36 @@ function meeting_field_group_info() {
     ),
   );
   $field_groups['group_info|node|event_calendar|search_item'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|event_calendar|topical_landing_page';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event_calendar';
+  $field_group->mode = 'topical_landing_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '11',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|event_calendar|topical_landing_page'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -158,7 +248,7 @@ function meeting_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Tags',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_event_type',
       1 => 'field_region',

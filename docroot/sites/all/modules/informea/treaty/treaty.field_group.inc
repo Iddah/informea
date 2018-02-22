@@ -97,6 +97,96 @@ function treaty_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|treaty|regional_landing_page';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'treaty';
+  $field_group->mode = 'regional_landing_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '14',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|treaty|regional_landing_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|treaty|search_item';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'treaty';
+  $field_group->mode = 'search_item';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '2',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|treaty|search_item'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info|node|treaty|topical_landing_page';
+  $field_group->group_name = 'group_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'treaty';
+  $field_group->mode = 'topical_landing_page';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline info',
+    'weight' => '14',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Inline info',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'informea-teaser__info',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_info|node|treaty|topical_landing_page'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_tags|node|treaty|regional_landing_page';
   $field_group->group_name = 'group_tags';
   $field_group->entity_type = 'node';
@@ -324,6 +414,7 @@ function treaty_field_group_info() {
   t('ECOLEX');
   t('External links');
   t('Inline Tags');
+  t('Inline info');
   t('Technical data');
 
   return $field_groups;

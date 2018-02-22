@@ -33,11 +33,8 @@ function decision_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 150,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -102,7 +99,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -167,7 +164,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -240,7 +237,7 @@ function decision_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -296,10 +293,11 @@ function decision_field_default_field_instances() {
         'weight' => 8,
       ),
       'search_item' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'informea',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'informea_linked_file_name',
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -381,10 +379,14 @@ function decision_field_default_field_instances() {
         'weight' => 7,
       ),
       'search_item' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'label' => 'inline',
+        'module' => 'ds',
+        'settings' => array(
+          'taxonomy_term_link' => 0,
+          'taxonomy_term_separator' => ', ',
+        ),
+        'type' => 'ds_taxonomy_separator_localized',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -457,7 +459,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -537,7 +539,7 @@ function decision_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -611,7 +613,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -670,7 +672,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -728,7 +730,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -802,7 +804,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -874,7 +876,7 @@ function decision_field_default_field_instances() {
           'textformatter_type' => 'ul',
         ),
         'type' => 'textformatter_list',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -947,7 +949,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1014,7 +1016,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1142,7 +1144,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1217,7 +1219,7 @@ function decision_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',

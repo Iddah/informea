@@ -18,17 +18,42 @@
 
     > .field-type-entityreference { width: 100%; }
 
-    > .field-type-entityreference .node--view-mode-image_only,
+    > .field-name-country-flag,
+    > .field-name-field-treaty.field-type-entityreference,
     > .field-type-image {
       align-items: center;
       border: 1px solid #D6D6D6;
       display: flex;
       flex-basis: 10rem;
-      flex-shrink: 0;
+      flex: 1 0;
       justify-content: center;
       min-height: 10rem;
       padding: .6rem;
       width: 100%;
+    }
+
+    > .field-name-field-treaty.field-type-entityreference {
+      > .field-item {
+      }
+      > .field-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        > .field-item {
+          flex: 0 1 50%;
+        }
+      }
+    }
+
+    > .field-type-image {
+      .field-item {
+        overflow: hidden;
+        img {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
     }
 
   }
@@ -53,41 +78,21 @@
   }
 
   &__info {
-    // @todo: mixin
-    align-items: center;
-    color: @regional-page-gray;
-    display: flex;
-    flex-flow: row wrap;
-    margin-left: -.8rem;
+    .list--inline(~'.field', '|');
+    .clearfix::before,
+    .clearfix::after {
+      display: none;
+    }
+    color: #999;
     margin-top: .5em;
 
-    > .field {
-      display: flex;
-      margin-left: .8rem;
-      color: #777;
-      + .field {
-        &:before {
-          color: @regional-page-gray;
-          content: '|';
-          margin-right: .8rem;
-        }
+    .field-name-field-treaty .field-items {
+      .list--inline(~'.field-item', ',');
+      .field-item + .field-item {
+        margin-left: 0;
       }
     }
 
-    // @todo hide separator only when the country name is hidden
-    > .field-name-field-country + .field:before { display: none; }
-
-    .field-name-field-country {
-      > .field-items {
-        align-items: center;
-        display: flex;
-        flex-flow: row wrap;
-        margin-left: -.5rem;
-        > .field-item {
-          margin-left: .5rem;
-        }
-      }
-    }
     // Override old theme styling
     .countries-list-item { margin-bottom: 0; }
 
@@ -99,11 +104,6 @@
     .countries-list-item .label {
       padding: 0;
     }
-
-    img {
-      height: 1em;
-      width: auto;
-    }
   }
 
 
@@ -114,22 +114,15 @@
   }
 
   &__links {
-    // @todo: mixin
-    align-items: center;
-    display: flex;
-    flex-flow: row wrap;
-    margin-left: -.3rem;
+    .list--inline(~'.field', '|', .3rem);
     margin-top: .5em;
 
     > .field {
       &, & a { color: @regional-page-light-blue; }
-      display: flex;
-      margin-left: .3rem;
       + .field {
         &:before {
-          color: @regional-page-gray;
+          color: @regional-page-light-blue;
           content: '|';
-          margin-right: .3rem;
         }
       }
     }
@@ -137,6 +130,7 @@
 
   .file-icon { display: none; }
 
+  .field-name-search-excerpt,
   .field-name-field-informea-tags,
   .treaty-links {
     margin-top: 1em;
@@ -150,10 +144,24 @@
   }
 
   .field-name-field-files {
+    // Override field.css
+    &.field-label-inline .field-label,
+    &.field-label-inline .field-items {
+      float: none;
+    }
+
     .field-item {
+      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      // white-space: nowrap;
+    }
+  }
+
+  .field-name-field-country {
+    img {
+      height: 1em;
+      width: auto;
     }
   }
 

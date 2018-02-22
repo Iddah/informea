@@ -81,3 +81,49 @@
     + .views-row { border-top: 1px solid #ddd; }
   }
 }
+
+// Inline list mixin. To use call .list--inline(~'[selector]', [spacing]) inside your container
+.list--inline(@item: ~'*', @spacing: .5rem) {
+  // align-items: center;
+  // display: flex;
+  // flex-flow: row wrap;
+  // margin-left: -.5rem;
+  // & > @{item} {
+  //   margin-left: .5rem;
+  // }
+  * {
+    display: inline;
+    vertical-align: top;
+  }
+  img {
+    vertical-align: middle;
+  }
+  & > @{item}:not(:first-child) { margin-left: @spacing; }
+}
+
+.list--inline(@item, @separator, @spacing: .5rem) {
+  .list--inline(@item, @spacing: @spacing);
+  & > @{item} + @{item} {
+    &:before {
+      content: '@{separator}';
+      display: inline;
+      margin-right: @spacing;
+      vertical-align: middle;
+    }
+  }
+}
+// Generate a base class for immediate use
+.list--inline {
+  .list--inline();
+}
+
+// Inline list mixin using flexbox, to use call .list--inline(~'[placeholder-selector]') inside your container
+.list--flex-inline(@item: ~'*', @spacing: .5rem) {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -1 * @spacing;
+  & > @{item} {
+    margin-left: @spacing;
+  }
+}

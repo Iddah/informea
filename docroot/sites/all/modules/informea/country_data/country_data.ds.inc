@@ -226,6 +226,7 @@ function country_data_ds_layout_settings_info() {
         6 => 'group_tags',
         7 => 'content_type',
         8 => 'field_mea_topic',
+        9 => 'field_region',
       ),
       'left' => array(
         1 => 'field_treaty',
@@ -241,6 +242,7 @@ function country_data_ds_layout_settings_info() {
       'group_tags' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
+      'field_region' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

@@ -24,6 +24,7 @@ function country_deliverable_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_country',
+      1 => 'treaty_copy',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -85,7 +86,7 @@ function country_deliverable_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline links',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_files',
     ),
@@ -154,6 +155,7 @@ function country_deliverable_field_group_info() {
       0 => 'field_action_plan_type',
       1 => 'field_region',
       2 => 'field_mea_topic',
+      3 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -185,9 +187,10 @@ function country_deliverable_field_group_info() {
     'label' => 'Inline Tags',
     'weight' => '4',
     'children' => array(
-      0 => 'field_region',
-      1 => 'field_mea_topic',
-      2 => 'content_type',
+      0 => 'field_informea_tags',
+      1 => 'field_region',
+      2 => 'field_mea_topic',
+      3 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(
