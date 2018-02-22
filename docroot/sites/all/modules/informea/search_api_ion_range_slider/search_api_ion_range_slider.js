@@ -7,22 +7,22 @@
       $('div.search-api-ion-range-slider-widget').each(function() {
 
         var widget = $(this);
-        var slider = widget.find('div.range-slider');
+        var slider = widget.find('.js-range-slider');
         var rangeMin = widget.find('input[name=range-min]');
         var rangeMax = widget.find('input[name=range-max]');
         var rangeFrom = widget.find('input[name=range-from]');
         var rangeTo = widget.find('input[name=range-to]');
         var options = {
           type: "double",
-          step: 1,
           min: parseInt(rangeMin.val()),
           max: parseInt(rangeMax.val()),
           from: parseInt(rangeFrom.val()),
           to: parseInt(rangeTo.val()),
           prettify_enabled: false,
+          grid: true
         };
 
-        slider.ionRangeSlider($.extend(options, {
+        slider.ionRangeSlider($.extend({
 
           // on change: when clicking somewhere in the bar
           onStart: function(data) {
@@ -34,14 +34,15 @@
           onChange: function(data) {
             widget.find('input[name=range-from]').val(data.from);
             widget.find('input[name=range-to]').val(data.to);
-          }
-        }));
+          },
 
-        // submit once user stops changing values
-        slider.bind('onFinish', function(data) {
-          clearTimeout(submitTimeout);
-          delaySubmit(widget);
-        });
+          onFinish: function(data) {
+            clearTimeout(submitTimeout);
+            delaySubmit(widget);
+          }
+        }, options));
+
+        var instance = slider.data("ionRangeSlider");
 
         rangeFrom.numeric();
         rangeFrom.bind('keyup', function() {
@@ -51,7 +52,10 @@
             if (value > parseInt(rangeTo.val())) {
               value = parseInt(rangeTo.val());
             }
-            // slider.ionRangeSlider("option", "values", [value, parseInt(rangeTo.val())]);
+            if (value < parseInt(rangeMin.val())) {
+              value = parseInt(rangeMin.val());
+            }
+            instance.update({ from: value });
             delaySubmit(widget);
           }
         });
@@ -64,7 +68,10 @@
             if (value < parseInt(rangeFrom.val())) {
               value = parseInt(rangeFrom.val());
             }
-            // slider.ionRangeSlider("option", "values", [parseInt(rangeFrom.val()), value]);
+            if (value > options.max) {
+              value = options.max;
+            }
+            instance.update({ to: value });
             delaySubmit(widget);
           }
         });

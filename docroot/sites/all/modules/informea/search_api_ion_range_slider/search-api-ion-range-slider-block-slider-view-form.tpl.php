@@ -4,15 +4,14 @@
  */
 ?>
 <?php print drupal_render($form['text-range']); ?>
-<h3>XD</h3>
-<div class="yui3-g">
-  <div class="yui3-u range-slider-box">
-    <?php print drupal_render($form['range-slider']); ?>
-  </div>
-  <div class="yui3-u range-box range-box-left">
+<div class="range-slider-box">
+  <?php print drupal_render($form['range-slider']); ?>
+</div>
+<div class="ion-rangeslider">
+  <div class="ion-rangeslider__left range-box range-box-left">
     <?php print drupal_render($form['range-from']); ?>
   </div>
-  <div class="yui3-u range-box range-box-right">
+  <div class="ion-rangeslider__right range-box range-box-right">
     <?php print drupal_render($form['range-to']); ?>
   </div>
 </div>
