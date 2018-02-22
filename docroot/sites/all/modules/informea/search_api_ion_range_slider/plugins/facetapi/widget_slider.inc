@@ -12,11 +12,11 @@ class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlide
   public function execute() {
     $element = &$this->build[$this->facet['field alias']];
 
-//    $theme_suffix = '';
-//    $theme_suffix .= '__' . preg_replace('/\W+/', '_', $this->facet->getAdapter()->getSearcher());
-//    $theme_suffix .= '__' . preg_replace('/\W+/', '_', $this->facet['field alias']);
+    $theme_suffix = '';
+    $theme_suffix .= '__' . preg_replace('/\W+/', '_', $this->facet->getAdapter()->getSearcher());
+    $theme_suffix .= '__' . preg_replace('/\W+/', '_', $this->facet['field alias']);
     $element = array(
-      '#theme' => 'search_api_ion_range_slider_slider',
+      '#theme' => 'search_api_ion_range_slider_slider' . $theme_suffix,
       '#slider' => $this->_buildUISliderForm(),
     );
 
@@ -25,55 +25,6 @@ class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlide
     drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/jquery.numeric.js');
     drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/search_api_ion_range_slider.js');
   }
-
-  // /**
-  //  * Allows the widget to provide additional settings to the form.
-  //  */
-  // function settingsForm(&$form, &$form_state) {
-  //   $form['widget']['widget_settings']['links'][$this->id]['name'] = array(
-  //     '#type' => 'textfield',
-  //     '#title' => t('Name'),
-  //     '#default_value' => $this->settings->settings['name'],
-  //     '#description' => t('The name of the range field.'),
-  //     '#states' => array('visible' => array('select[name="widget"]' => array('value' => $this->id),),),
-  //   );
-  //   $form['widget']['widget_settings']['links'][$this->id]['prefix'] = array(
-  //     '#type' => 'textfield',
-  //     '#title' => t('Prefix'),
-  //     '#default_value' => $this->settings->settings['prefix'],
-  //     '#description' => t('Adds a prefix to the slider, e.g. $, #.'),
-  //     '#states' => array('visible' => array('select[name="widget"]' => array('value' => $this->id),),),
-  //   );
-  //   $form['widget']['widget_settings']['links'][$this->id]['suffix'] = array(
-  //     '#type' => 'textfield',
-  //     '#title' => t('Suffix'),
-  //     '#default_value' => $this->settings->settings['suffix'],
-  //     '#description' => t('Adds a suffix to the slider, e.g. &euro;, pcs., etc.'),
-  //     '#states' => array('visible' => array('select[name="widget"]' => array('value' => $this->id),),),
-  //   );
-  //   $form['widget']['widget_settings']['links'][$this->id]['auto-submit-delay'] = array(
-  //     '#type' => 'textfield',
-  //     '#title' => t('Auto Submit Delay'),
-  //     '#default_value' => $this->settings->settings['auto-submit-delay'],
-  //     '#description' => t('Automatically submit form after the user changes
-  //       releases slider handles. Enter a delay in milliseconds,
-  //       i.e. 1000 for 1 second.'),
-  //     '#states' => array('visible' => array('select[name="widget"]' => array('value' => $this->id),),),
-  //   );
-  // }
-
-  // /**
-  //  * Returns defaults for the settings form.
-  //  */
-  // function getDefaultSettings() {
-  //   return array(
-  //     'name' => '',
-  //     'prefix' => '',
-  //     'suffix' => '',
-  //     'auto-submit-delay' => 1500,
-  //   );
-  // }
-
 
   /**
    * Builds a UI slider themed form.
@@ -150,7 +101,8 @@ class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlide
      // We need to generate unique form IDs in case multiple forms get rendered
      // on the same page. search_api_ranges_forms() takes care of mapping them
      // back to the base form ID 'search_api_ranges_block_slider_view_form'.
-     return drupal_get_form('search_api_ion_range_slider_block_slider_view_form', $variables);
+//     die($range_field);
+     return drupal_get_form('search_api_ion_range_slider_block_slider_view_form_'  . $range_field, $variables);
    }
 
 }
