@@ -20,9 +20,13 @@ class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlide
       '#slider' => $this->_buildUISliderForm(),
     );
 
-    // Add js.
-    drupal_add_library('system', 'ui.slider');
+    // Add css and js.
+    // drupal_add_library('system', 'ui.slider');
     drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/jquery.numeric.js');
+    drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/normalize.css');
+    drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/ion.rangeSlider.css');
+    drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/ion.rangeSlider.skinFlat.css');
+    drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/js/ion.rangeSlider.min.js');
     drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/search_api_ion_range_slider.js');
   }
 
