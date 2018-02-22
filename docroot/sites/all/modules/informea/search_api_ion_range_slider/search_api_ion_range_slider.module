@@ -79,7 +79,7 @@ function search_api_ion_range_slider_block_slider_view_form_submit($form, &$form
 function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
 
   // Allow the other modules to modify the query parameters.
-  drupal_alter('search_api_ranges_minmax', $variables, $order);
+  drupal_alter('search_api_ion_range_minmax', $variables, $order);
 
   // If query is empty, ignore sending the query.
   // This allows other modules to decide
@@ -122,11 +122,8 @@ function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
   // otherwise our min/max would always equal user input.
   $filters = &$query->getFilter()->getFilters();
   foreach ($filters as $key => $filter) {
-
-    // Check for array: old style filters are objects which we can skip.
-    if (is_array($filter)) {
-      if ($filter[0] == $variables['range_field'] || ($filter[0] != $variables['range_field'] && $filter[2] == '<>')) {
-        $current_filter = $filters[$key];
+    if (isset($filter->tags) && is_array($filter->tags)) {
+      if (in_array('facet:' . $variables['range_field'], $filter->tags)) {
         unset($filters[$key]);
       }
     }
@@ -138,8 +135,10 @@ function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
   // Execute the query and process results.
   $results = search_api_ranges_minmax_execute($query);
   foreach ($filters as $key => $filter) {
-    if (isset($filter->tags) && is_array($filter->tags)) {
-      if (in_array('facet:' . $variables['range_field'], $filter->tags)) {
+
+    // Remove $query->condition($variables['range_field'], NULL, '<>'); to prevent this condition influence on other facets.
+    if (is_array($filter)) {
+      if ($filter[0] == $variables['range_field']) {
         unset($filters[$key]);
       }
     }
@@ -147,10 +146,10 @@ function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
 
   // Return current filter with digital ranges to the query.
   if (isset($current_filter) && is_array($current_filter)) {
-    if ($current_filter[1] != NULL && $current_filter[2] !='<>') {
+    if ($current_filter[1] != NULL && $current_filter[2] != '<>') {
       $query->condition($variables['range_field'], $current_filter[1], $current_filter[2]);
     }
-    if ($current_filter[1] != NULL && $current_filter[2] !='<>') {
+    if ($current_filter[1] != NULL && $current_filter[2] != '<>') {
       $query->condition($variables['range_field'], $current_filter[1], $current_filter[2]);
     }
   }
