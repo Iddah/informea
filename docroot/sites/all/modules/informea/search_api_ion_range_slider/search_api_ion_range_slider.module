@@ -52,7 +52,9 @@ function search_api_ion_range_slider_forms($form_id, $args) {
  * @see search_api_ion_range_slider_forms()
  */
 function search_api_ion_range_slider_block_slider_view_form($form, &$form_state, $variables) {
-  return search_api_ranges_block_slider_view_form($form, $form_state, $variables);
+  $form = search_api_ranges_block_slider_view_form($form, $form_state, $variables);
+  $form['range-slider'] = array('#markup' => '<div class="range-slider"><input type="text" class="js-range-slider" value="" /></div>');
+  return $form;
 }
 
 /**
