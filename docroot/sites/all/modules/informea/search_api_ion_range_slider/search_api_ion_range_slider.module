@@ -251,83 +251,83 @@ function search_api_ion_range_slider_forms($form_id, $args) {
  *
  * @see search_api_ion_range_slider_forms()
  */
-// function search_api_ion_range_slider_block_slider_view_form($form, &$form_state, $variables) {
-//   $form = array();
+ function search_api_ion_range_slider_block_slider_view_form($form, &$form_state, $variables) {
+   $form = array();
 
-//   // For compatibility with Search API ajax,
-//   // we generate the 'ajax target URL' as a hidden field.
-//   $params = drupal_get_query_parameters($_GET, array('q'));
-//   foreach ($variables['active_items'] as $key => $active_item) {
-//     if ($active_item['field alias'] == $variables['range_field']) {
-//       $pos = $active_item['pos'];
-//       unset($params['f'][$pos]);
-//     }
-//   }
+   // For compatibility with Search API ajax,
+   // we generate the 'ajax target URL' as a hidden field.
+   $params = drupal_get_query_parameters($_GET, array('q'));
+   foreach ($variables['active_items'] as $key => $active_item) {
+     if ($active_item['field alias'] == $variables['range_field']) {
+       $pos = $active_item['pos'];
+       unset($params['f'][$pos]);
+     }
+   }
 
-//   // Get path or facetapi_pretty_paths.
-//   $path = $variables['target'];
-//   if (module_exists('facetapi_pretty_paths')) {
-//     $path = request_path();
-//     unset($_GET['f']);
-//   }
+   // Get path or facetapi_pretty_paths.
+   $path = $variables['target'];
+   if (module_exists('facetapi_pretty_paths')) {
+     $path = request_path();
+     unset($_GET['f']);
+   }
 
-//   $form['text-range'] = array(
-//     '#markup' => '<p class="text-range">'
-//       . t(
-//         '!field_name ranges from !prefix_' . $variables['range_field']
-//         . '@from!suffix_' . $variables['range_field'] . ' to !prefix_'
-//         . $variables['range_field'] . '@to!suffix_' . $variables['range_field'],
-//         array(
-//           '!field_name' => t($variables['name']),
-//           '@from' => number_format($variables['min'], 0),
-//           '@to' => number_format($variables['max'], 0),
-//           '!prefix_' . $variables['range_field'] => $variables['prefix'],
-//           '!suffix_' . $variables['range_field'] => $variables['suffix'],
-//          )
-//       ) . '</p>',
-//     );
-//   $form['range-from'] = array(
-//     '#type' => 'textfield',
-//     '#title' => t('From'),
-//     '#size' => 10,
-//     '#default_value' => $variables['from'],
-//   );
-//   $form['range-slider'] = array('#markup' => '<div class="range-slider"></div>');
-//   $form['range-to'] = array(
-//     '#type' => 'textfield',
-//     '#title' => t('To'),
-//     '#size' => 10,
-//     '#default_value' => $variables['to'],
-//   );
-//   $form['range-min'] = array(
-//     '#type' => 'hidden',
-//     '#value' => $variables['min'],
-//   );
-//   $form['range-max'] = array(
-//     '#type' => 'hidden',
-//     '#value' => $variables['max'],
-//   );
-//   $form['path'] = array(
-//     '#type' => 'hidden',
-//     '#value' => $path,
-//   );
-//   $form['range-field'] = array(
-//     '#type' => 'hidden',
-//     '#value' => $variables['range_field'],
-//   );
-//   if ($variables['auto_submit_delay']) {
-//     $form['delay'] = array(
-//       '#type' => 'hidden',
-//       '#value' => $variables['auto_submit_delay'],
-//     );
-//   }
-//   $form['submit'] = array(
-//     '#type' => 'submit',
-//     '#value' => t('Go'),
-//   );
+   $form['text-range'] = array(
+     '#markup' => '<p class="text-range">'
+       . t(
+         '!field_name ranges from !prefix_' . $variables['range_field']
+         . '@from!suffix_' . $variables['range_field'] . ' to !prefix_'
+         . $variables['range_field'] . '@to!suffix_' . $variables['range_field'],
+         array(
+           '!field_name' => t($variables['name']),
+           '@from' => number_format($variables['min'], 0),
+           '@to' => number_format($variables['max'], 0),
+           '!prefix_' . $variables['range_field'] => $variables['prefix'],
+           '!suffix_' . $variables['range_field'] => $variables['suffix'],
+          )
+       ) . '</p>',
+     );
+   $form['range-from'] = array(
+     '#type' => 'textfield',
+     '#title' => t('From'),
+     '#size' => 10,
+     '#default_value' => $variables['from'],
+   );
+   $form['range-slider'] = array('#markup' => '<div class="range-slider"></div>');
+   $form['range-to'] = array(
+     '#type' => 'textfield',
+     '#title' => t('To'),
+     '#size' => 10,
+     '#default_value' => $variables['to'],
+   );
+   $form['range-min'] = array(
+     '#type' => 'hidden',
+     '#value' => $variables['min'],
+   );
+   $form['range-max'] = array(
+     '#type' => 'hidden',
+     '#value' => $variables['max'],
+   );
+   $form['path'] = array(
+     '#type' => 'hidden',
+     '#value' => $path,
+   );
+   $form['range-field'] = array(
+     '#type' => 'hidden',
+     '#value' => $variables['range_field'],
+   );
+   if ($variables['auto_submit_delay']) {
+     $form['delay'] = array(
+       '#type' => 'hidden',
+       '#value' => $variables['auto_submit_delay'],
+     );
+   }
+   $form['submit'] = array(
+     '#type' => 'submit',
+     '#value' => t('Go'),
+   );
 
-//   return $form;
-// }
+   return $form;
+ }
 
 /**
  * Handle slider block submit
