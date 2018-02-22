@@ -329,3 +329,116 @@
     // }
   }
 }
+
+.page-search{
+  .page-header{
+    margin-top:50px;
+    border-top:1px solid #E7E7E7;
+  }
+}
+
+.above-page-header {
+  background: @gray-background;
+  padding:0px;
+
+}
+
+.informea-search-horizontal-tabs-holder {
+  display:flex;
+  h4{
+    align-items: flex-end;
+    color: #111;
+    display: flex;
+    font-size: 1em;
+    font-weight: normal;
+    opacity: .7;
+    white-space: nowrap;
+    margin: 0;
+    padding: 8px 1em 5px;
+    font-size: 14px;
+  }
+}
+ul.informea-search-horizontal-tabs {
+  display: flex;
+  padding: 0px;
+  margin:-10px 0 0 0;
+  li.dropdown{
+    display: flex;
+    padding: 0px;
+    margin:0px;
+    &.active,
+    &:hover{
+      /*position: static;*/
+      background: transparent;
+      background-color: transparent;
+      .dropdown-menu{
+        /*display: table;*/
+        /*display: block;*/
+        /*width: 100%;*/
+      }
+    }
+    &:hover{
+      .dropdown-menu{
+        z-index:9999;
+      }
+    }
+    &.open{
+      &:hover{
+        .dropdown-menu{
+
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    z-index: 999;
+    width: 100%;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border: none;
+    margin-top: 2px;
+
+    li.active{
+      a, a:hover, a:active{
+        font-weight: bold;
+        background: none;
+        background-color: transparent;
+        color:#0A8FC6;
+      }
+    }
+    li {
+      /*display: table-cell;*/
+      display: inline;
+      vertical-align: middle;
+      padding:10px 0px;
+      margin:0px;
+      background:#FFFFFF;
+      &:before{
+        content: '\2022';
+      }
+      &:first-child{
+        padding-left:50px;
+        &:before{
+          content: '\21B3';
+          color: inherit;
+        }
+      }
+      a, a:active{
+        padding:10px 8px;
+        margin:0;
+        display: inline;
+        line-height: 24px;
+        color:#000000;
+        background: none;
+        background-color: transparent;
+        &:hover{
+          background: none;
+          background-color: transparent;
+          color:#0A8FC6;
+        }
+      }
+    }
+  }
+}
+
+

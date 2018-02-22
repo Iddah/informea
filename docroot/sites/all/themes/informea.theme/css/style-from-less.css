@@ -3786,4 +3786,137 @@ fieldset[disabled] a.explore a {
 .view-search .form-item-sort-bef-combine .form-radios {
   display: inline-block;
 }
+[dir] .page-search .page-header {
+  margin-top: 50px;
+  border-top: 1px solid #E7E7E7;
+}
+[dir] .above-page-header {
+  background: #E7E7E7;
+  padding: 0px;
+}
+.informea-search-horizontal-tabs-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+.informea-search-horizontal-tabs-holder h4 {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  font-size: 1em;
+  font-weight: normal;
+  opacity: .7;
+  white-space: nowrap;
+  font-size: 14px;
+}
+[dir] .informea-search-horizontal-tabs-holder h4 {
+  margin: 0;
+  padding: 8px 1em 5px;
+}
+ul.informea-search-horizontal-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] ul.informea-search-horizontal-tabs {
+  padding: 0px;
+  margin: -10px 0 0 0;
+}
+ul.informea-search-horizontal-tabs li.dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] ul.informea-search-horizontal-tabs li.dropdown {
+  padding: 0px;
+  margin: 0px;
+}
+ul.informea-search-horizontal-tabs li.dropdown.active,
+ul.informea-search-horizontal-tabs li.dropdown:hover {
+  /*position: static;*/
+}
+[dir] ul.informea-search-horizontal-tabs li.dropdown.active, [dir] ul.informea-search-horizontal-tabs li.dropdown:hover {
+  background: transparent;
+  background-color: transparent;
+}
+ul.informea-search-horizontal-tabs li.dropdown.active .dropdown-menu,
+ul.informea-search-horizontal-tabs li.dropdown:hover .dropdown-menu {
+  /*display: table;*/
+  /*display: block;*/
+  /*width: 100%;*/
+}
+ul.informea-search-horizontal-tabs li.dropdown:hover .dropdown-menu {
+  z-index: 9999;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu {
+  z-index: 999;
+  width: 100%;
+  -webkit-box-shadow: none;
+}
+[dir] ul.informea-search-horizontal-tabs .dropdown-menu {
+  box-shadow: none;
+  border: none;
+  margin-top: 2px;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li.active a,
+ul.informea-search-horizontal-tabs .dropdown-menu li.active a:hover,
+ul.informea-search-horizontal-tabs .dropdown-menu li.active a:active {
+  font-weight: bold;
+  color: #0A8FC6;
+}
+[dir] ul.informea-search-horizontal-tabs .dropdown-menu li.active a, [dir] ul.informea-search-horizontal-tabs .dropdown-menu li.active a:hover, [dir] ul.informea-search-horizontal-tabs .dropdown-menu li.active a:active {
+  background: none;
+  background-color: transparent;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li {
+  /*display: table-cell;*/
+  display: inline;
+  vertical-align: middle;
+}
+[dir] ul.informea-search-horizontal-tabs .dropdown-menu li {
+  padding: 10px 0px;
+  margin: 0px;
+  background: #FFFFFF;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li:before {
+  content: '\2022';
+}
+[dir=ltr] ul.informea-search-horizontal-tabs .dropdown-menu li:first-child {
+  padding-left: 50px;
+}
+[dir=rtl] ul.informea-search-horizontal-tabs .dropdown-menu li:first-child {
+  padding-right: 50px;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li:first-child:before {
+  content: '\21B3';
+  color: inherit;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li a,
+ul.informea-search-horizontal-tabs .dropdown-menu li a:active {
+  display: inline;
+  line-height: 24px;
+  color: #000000;
+}
+[dir] ul.informea-search-horizontal-tabs .dropdown-menu li a, [dir] ul.informea-search-horizontal-tabs .dropdown-menu li a:active {
+  padding: 10px 8px;
+  margin: 0;
+  background: none;
+  background-color: transparent;
+}
+ul.informea-search-horizontal-tabs .dropdown-menu li a:hover,
+ul.informea-search-horizontal-tabs .dropdown-menu li a:active:hover {
+  color: #0A8FC6;
+}
+[dir] ul.informea-search-horizontal-tabs .dropdown-menu li a:hover, [dir] ul.informea-search-horizontal-tabs .dropdown-menu li a:active:hover {
+  background: none;
+  background-color: transparent;
+}
 /*# sourceMappingURL=style-from-less.css.map */

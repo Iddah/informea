@@ -340,6 +340,9 @@ function informea_theme_theme() {
       'variables' => array('slides' => array(), 'attributes' => array()),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
+    'informea_search_categories_tabs_wrapper' => array(
+      'render element' => 'element',
+    ),
     'informea_search_form_wrapper' => array(
       'render element' => 'element',
     ),
@@ -612,6 +615,60 @@ function informea_theme_form_views_exposed_form_alter(&$form, &$form_state, $for
       $form['field_mea_topic']['#options']['All'] = t('-- All topics --');
     }
   }
+}
+
+function informea_theme_informea_search_categories_tabs_wrapper($variables){
+  $output = '';
+  if( isset($variables['element']['#category-options']) ){
+    $output = '<div class="informea-search-horizontal-tabs-holder"><h4>' . t('Browse by Category:') . '</h4><ul class="nav informea-search-horizontal-tabs">';
+    $li_opened = FALSE;
+    $ul_opened = FALSE;
+    $options = $variables['element']['#category-options'];
+    foreach ($options as $k => $category) {
+      if (!empty($category['is_group_label'])) {
+        if ($li_opened) {
+          if ($ul_opened) {
+            $output .= '</ul>';
+            $ul_opened = FALSE;
+          }
+          $output .= '</li>';
+          $li_opened = FALSE;
+        }
+        $output .= sprintf('<li class="informea-switcher_link dropdown %s%s">', $category['key'] . '-options', ((isset($category['active']) && $category['active'] === TRUE) ? ' active open' : ''));
+        $next_index = $k + 1;
+        if (isset($options[$next_index])) {
+          if (!empty($options[$next_index]['is_group_label'])) {
+            $output .= sprintf('<a href="%s">%s</a>', informea_search_categories_build_link($category['query']), check_plain($category['label']));
+          }
+          else {
+            $output .= sprintf('<a href="%s">%s</a>', informea_search_categories_build_link($category['query']), check_plain($category['label']));
+          }
+        }
+        else {
+          $output .= sprintf('<a href="%s">%s</a>', informea_search_categories_build_link($category['query']), check_plain($category['label']));
+        }
+        $li_opened = TRUE;
+      }
+      else {
+        if ($li_opened && !$ul_opened) {
+          $output .= '<ul class="dropdown-menu">';
+          $ul_opened = TRUE;
+        }
+        $output .= sprintf('<li class="%s"><a href="%s">%s</a></li>', ((isset($category['active']) && $category['active'] === TRUE) ? ' active' : ''), informea_search_categories_build_link($category['query']), check_plain($category['label']));
+      }
+    }
+    if ($li_opened) {
+      if ($ul_opened) {
+        $output .= '</ul>';
+        $ul_opened = FALSE;
+      }
+      $output .= '</li>';
+      $li_opened = FALSE;
+    }
+    $output .= '</ul>';
+    $output .= '</div>';
+  }
+  return $output;
 }
 
 
