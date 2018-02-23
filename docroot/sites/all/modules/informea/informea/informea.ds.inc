@@ -37,7 +37,8 @@ function informea_ds_custom_fields_info() {
     'node' => 'node',
   );
   $ds_field->ui_limit = 'action_plan|search_item
-national_report|search_item';
+national_report|search_item
+contact_person|*';
   $ds_field->properties = array(
     'default' => array(),
     'settings' => array(
