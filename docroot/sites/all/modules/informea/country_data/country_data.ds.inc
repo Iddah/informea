@@ -49,7 +49,7 @@ function country_data_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -117,6 +117,7 @@ function country_data_ds_layout_settings_info() {
         5 => 'group_tags',
         6 => 'content_type',
         7 => 'field_mea_topic',
+        8 => 'field_contact_roles',
       ),
     ),
     'fields' => array(
@@ -128,6 +129,7 @@ function country_data_ds_layout_settings_info() {
       'group_tags' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
+      'field_contact_roles' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -217,32 +219,34 @@ function country_data_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
+      'left' => array(
+        0 => 'field_treaty',
+      ),
       'right' => array(
-        0 => 'field_country',
-        2 => 'field_person_position',
-        3 => 'field_person_institution',
-        4 => 'title',
-        5 => 'group_list',
+        1 => 'field_country',
+        2 => 'title',
+        3 => 'field_person_position',
+        4 => 'group_list',
+        5 => 'field_person_institution',
         6 => 'group_tags',
         7 => 'content_type',
         8 => 'field_mea_topic',
         9 => 'field_region',
-      ),
-      'left' => array(
-        1 => 'field_treaty',
+        10 => 'field_contact_roles',
       ),
     ),
     'fields' => array(
-      'field_country' => 'right',
       'field_treaty' => 'left',
-      'field_person_position' => 'right',
-      'field_person_institution' => 'right',
+      'field_country' => 'right',
       'title' => 'right',
+      'field_person_position' => 'right',
       'group_list' => 'right',
+      'field_person_institution' => 'right',
       'group_tags' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
       'field_region' => 'right',
+      'field_contact_roles' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -269,12 +273,13 @@ function country_data_ds_layout_settings_info() {
     'regions' => array(
       'right' => array(
         0 => 'title',
-        1 => 'group_list',
-        2 => 'field_person_position',
+        1 => 'field_person_position',
+        2 => 'group_list',
         3 => 'group_tags',
         4 => 'field_person_institution',
         6 => 'content_type',
         7 => 'field_mea_topic',
+        8 => 'field_contact_roles',
       ),
       'left' => array(
         5 => 'field_country',
@@ -282,13 +287,14 @@ function country_data_ds_layout_settings_info() {
     ),
     'fields' => array(
       'title' => 'right',
-      'group_list' => 'right',
       'field_person_position' => 'right',
+      'group_list' => 'right',
       'group_tags' => 'right',
       'field_person_institution' => 'right',
       'field_country' => 'left',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
+      'field_contact_roles' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -303,6 +309,24 @@ function country_data_ds_layout_settings_info() {
     'layout_disable_css' => FALSE,
   );
   $export['node|contact_person|treaty_page'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function country_data_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'contact_roles';
+  $ds_view_mode->label = 'Contact roles';
+  $ds_view_mode->entities = array(
+    'field_collection_item' => 'field_collection_item',
+  );
+  $export['contact_roles'] = $ds_view_mode;
 
   return $export;
 }

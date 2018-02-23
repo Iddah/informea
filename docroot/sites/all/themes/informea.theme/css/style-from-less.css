@@ -1955,6 +1955,14 @@ h2.regional-topic-title span {
 [dir] .views-row + .views-row .informea-teaser {
   border-top: 1px solid #ddd;
 }
+.informea-teaser .field-name-field-contact-roles .field-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
 .informea-teaser__left {
   -webkit-box-align: end;
       -ms-flex-align: end;

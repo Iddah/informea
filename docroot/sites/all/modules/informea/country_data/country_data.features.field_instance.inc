@@ -18,7 +18,33 @@ function country_data_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'contact_roles' => array(
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-list-of-tags',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 0,
+      ),
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 1,
+      ),
+      'full' => array(
         'label' => 'hidden',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
@@ -62,7 +88,24 @@ function country_data_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'contact_roles' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+      'full' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
@@ -132,7 +175,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -219,7 +262,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -305,7 +348,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -392,7 +435,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -447,10 +490,13 @@ function country_data_field_default_field_instances() {
         'weight' => 0,
       ),
       'country_page' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 30,
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'contact_roles',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 8,
       ),
       'default' => array(
         'label' => 'above',
@@ -480,8 +526,11 @@ function country_data_field_default_field_instances() {
       ),
       'search_item' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'contact_roles',
+        ),
+        'type' => 'field_collection_fields',
         'weight' => 19,
       ),
       'teaser' => array(
@@ -503,10 +552,13 @@ function country_data_field_default_field_instances() {
         'weight' => 13,
       ),
       'treaty_page' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'contact_roles',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -563,7 +615,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -985,7 +1037,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1151,7 +1203,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1229,7 +1281,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1312,7 +1364,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1487,7 +1539,7 @@ function country_data_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1963,7 +2015,7 @@ function country_data_field_default_field_instances() {
           'view_mode' => 'image_only',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',

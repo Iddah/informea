@@ -52,7 +52,7 @@ function country_data_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline List',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_country',
       1 => 'field_person_institution',
@@ -117,8 +117,9 @@ function country_data_field_group_info() {
     'label' => 'Inline Tags',
     'weight' => '5',
     'children' => array(
-      0 => 'field_mea_topic',
-      1 => 'content_type',
+      0 => 'field_contact_roles',
+      1 => 'field_mea_topic',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -148,11 +149,12 @@ function country_data_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Tags',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_region',
-      1 => 'field_mea_topic',
-      2 => 'content_type',
+      1 => 'field_contact_roles',
+      2 => 'field_mea_topic',
+      3 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -184,8 +186,9 @@ function country_data_field_group_info() {
     'label' => 'Inline Tags',
     'weight' => '3',
     'children' => array(
-      0 => 'field_mea_topic',
-      1 => 'content_type',
+      0 => 'field_contact_roles',
+      1 => 'field_mea_topic',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(

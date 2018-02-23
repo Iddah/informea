@@ -4,50 +4,57 @@
  * Delete duplicate site records
  */
 function country_data_update_7001() {
-    // Delete duplicate site records
+  // Delete duplicate site records.
+  $q = db_select('field_data_title_field', 'a');
+  $q->fields('a', array('title_field_value'));
+  $q->condition('a.bundle', 'geographical_site');
+  $q->condition('a.language', 'en');
+  $q->groupBy('a.title_field_value');
+  $q->addExpression('COUNT(*)', 'ncount');
+  $q->havingCondition('ncount', '1', '>');
+  $titles = $q->execute()->fetchCol();
+
+  $delete = array();
+  foreach ($titles as $title) {
     $q = db_select('field_data_title_field', 'a');
-    $q->fields('a', array('title_field_value'));
+    $q->fields('a', array('entity_id'));
     $q->condition('a.bundle', 'geographical_site');
     $q->condition('a.language', 'en');
-    $q->groupBy('a.title_field_value');
-    $q->addExpression('COUNT(*)', 'ncount');
-    $q->havingCondition('ncount', '1', '>');
-    $titles = $q->execute()->fetchCol();
+    $q->condition('a.title_field_value', $title);
+    $q->orderBy('a.entity_id');
+    $nids = $q->execute()->fetchCol();
+    unset($nids[0]);
+    $delete = array_merge($delete, $nids);
+  }
 
-    $delete = array();
-    foreach($titles as $title) {
-        $q = db_select('field_data_title_field', 'a');
-        $q->fields('a', array('entity_id'));
-        $q->condition('a.bundle', 'geographical_site');
-        $q->condition('a.language', 'en');
-        $q->condition('a.title_field_value', $title);
-        $q->orderBy('a.entity_id');
-        $nids = $q->execute()->fetchCol();
-        unset($nids[0]);
-        $delete = array_merge($delete, $nids);
-    }
-
-    echo sprintf("Removing %d duplicate sites\n", count($delete));
-    node_delete_multiple($delete);
+  echo sprintf("Removing %d duplicate sites\n", count($delete));
+  node_delete_multiple($delete);
 }
 
 /**
- * Person gender field
+ * Person gender field.
  */
 function country_data_update_7002() {
   features_revert(array('country_data' => ['field_base', 'field_instance']));
 }
 
 /**
- * Add field_party_status_original to the 'Member Party' content type
+ * Add field_party_status_original to the 'Member Party' content type.
  */
 function country_data_update_7003() {
   features_revert(array('country_data' => ['field_base', 'field_instance']));
 }
 
 /**
- * Refs #285 - contacts hub view
+ * Refs #285 - contacts hub view.
  */
 function country_data_update_7004() {
   features_revert(array('country_data' => ['views_view', 'field_instance']));
+}
+
+/**
+ * Refs #285 - contacts hub updates.
+ */
+function country_data_update_7005() {
+  features_revert_module('country_data');
 }
