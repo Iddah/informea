@@ -2308,44 +2308,6 @@ h2.regional-topic-title span {
 #s2id_treaty-switcher .select2-arrow {
   color: #fc3;
 }
-.informea-inline-list {
-  color: #8F8F8F;
-}
-.informea-inline-list .field {
-  display: inline;
-}
-.informea-inline-list .field:before {
-  content: '|';
-}
-[dir=ltr] .informea-inline-list .field:before {
-  padding-right: 0.2em;
-}
-[dir=rtl] .informea-inline-list .field:before {
-  padding-left: 0.2em;
-}
-.informea-inline-list .field div {
-  display: inline;
-}
-.informea-inline-list .field:first-child:before,
-.informea-inline-list .field-name-field-country-official-name:before,
-.informea-inline-list .field-name-field-country-name:before {
-  content: '';
-}
-[dir=ltr] .informea-inline-list .field:first-child:before, [dir=ltr] .informea-inline-list .field-name-field-country-official-name:before, [dir=ltr] .informea-inline-list .field-name-field-country-name:before {
-  padding-right: 0;
-}
-[dir=rtl] .informea-inline-list .field:first-child:before, [dir=rtl] .informea-inline-list .field-name-field-country-official-name:before, [dir=rtl] .informea-inline-list .field-name-field-country-name:before {
-  padding-left: 0;
-}
-[dir=ltr] .informea-inline-list .field-name-field-country-official-name, [dir=ltr] .informea-inline-list .field-name-field-country-name {
-  padding-left: 0.2em;
-}
-[dir=rtl] .informea-inline-list .field-name-field-country-official-name, [dir=rtl] .informea-inline-list .field-name-field-country-name {
-  padding-right: 0.2em;
-}
-.informea-inline-list .flag {
-  height: 18px;
-}
 .region-front-page-content .block-title,
 .region-front-page-content .block:first-child h2.block-title {
   line-height: inherit;

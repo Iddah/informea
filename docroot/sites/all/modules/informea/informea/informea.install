@@ -774,3 +774,11 @@ function informea_update_7059() {
   features_revert_module('meeting');
   features_revert_module('treaty');
 }
+
+/**
+ * #326 - Search updates
+ */
+function informea_update_7060() {
+  features_revert_module('informea');
+  features_revert_module('country_data');
+}
