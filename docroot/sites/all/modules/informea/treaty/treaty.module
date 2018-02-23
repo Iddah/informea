@@ -42,22 +42,6 @@ function treaty_menu() {
 }
 
 /**
- * Implements hook_views_data().
- */
-function treaty_views_data() {
-  $data['node']['treaty_links'] = array(
-    'title' => t('Treaty links'),
-    'help' => t('Display links to treaty sections: text, decisions, etc.'),
-    'field' => array(
-      'handler' => 'views_handler_treaty_links',
-      'click sortable' => FALSE,
-    ),
-  );
-
-  return $data;
-}
-
-/**
  * Implements hook_ctools_plugin_directory().
  */
 function treaty_ctools_plugin_directory($owner, $plugin_type) {
@@ -1803,7 +1787,7 @@ function treaty_links($nid){
     foreach ($items as $item){
         build_treaty_links($nid, $node_url, $contextual_menu, $item);
     }
-    $contextual_menu['#attributes']['class'][] = 'treaty-links';
+    $contextual_menu['#attributes']['class'][] = 'content-links';
     return !empty($contextual_menu['#items']) ? drupal_render($contextual_menu) : NULL;
 }
 
@@ -1817,7 +1801,7 @@ function build_treaty_links($nid, $node_url, &$contextual_menu, $item = array('u
         $link = l($link, $node_url . '/' . $item['url']);
     }
     $contextual_menu['#items'][$item['url']]['data'] = $link;
-    $contextual_menu['#items'][$item['url']]['class'][] = 'treaty-links__link';
-    $contextual_menu['#items'][$item['url']]['class'][] = 'treaty-links__link--' . $item['url'];
+    $contextual_menu['#items'][$item['url']]['class'][] = 'content-links__link';
+    $contextual_menu['#items'][$item['url']]['class'][] = 'content-links__link--' . $item['url'];
 }
 

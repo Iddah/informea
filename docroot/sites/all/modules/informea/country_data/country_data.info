@@ -38,6 +38,7 @@ features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|contact_person|country_page
 features[ds_field_settings][] = node|contact_person|search_item
 features[ds_field_settings][] = node|contact_person|treaty_page
+features[ds_fields][] = contact_links
 features[ds_layout_settings][] = node|contact_person|country_page
 features[ds_layout_settings][] = node|contact_person|regional_landing_page
 features[ds_layout_settings][] = node|contact_person|search_item

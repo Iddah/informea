@@ -7,12 +7,29 @@
 include_once 'country_data.features.inc';
 
 function country_data_theme() {
-	return array(
-		'country_data_contact_person' => array(
-			'render element' => 'element',
-			'template' => 'templates/country-data-contact-person',
-			'variables' => array('contact_person' => NULL, 'treaty' => NULL),
-			'path' => drupal_get_path('module', 'country_data'),
-		),
-	);
+  return array(
+    'country_data_contact_person' => array(
+      'render element' => 'element',
+      'template' => 'templates/country-data-contact-person',
+      'variables' => array('contact_person' => NULL, 'treaty' => NULL),
+      'path' => drupal_get_path('module', 'country_data'),
+    ),
+  );
+}
+
+function contact_person_links($nid) {
+  $contextual_menu = array(
+    '#theme' => 'item_list',
+    '#attributes' => array('class' => array('content-links')),
+  );
+  $contextual_menu['#attributes']['class'][] = 'content-links';
+  $node_url = url(drupal_get_path_alias('node/' . $nid), ['absolute' => TRUE]);
+
+  $contextual_menu['#items'] = array(
+      array(
+        'data' => $link = l(t('Full contact profile'), $node_url),
+        'class' => array('content-links__link', 'content-links__link--profile'),
+      ),
+  );
+  return drupal_render($contextual_menu);
 }

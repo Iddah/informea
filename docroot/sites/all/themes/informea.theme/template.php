@@ -881,6 +881,10 @@ function informea_theme_preprocess_field(&$variables, $hook) {
        $nid =  $variables['element']['#object']->nid;
        $variables['items'][0]['#markup'] = treaty_links($nid);
        break;
+    case 'contact_links':
+      $nid =  $variables['element']['#object']->nid;
+      $variables['items'][0]['#markup'] = contact_person_links($nid);
+      break;
     case 'content_type':
         $content_type_machine_name = $variables['element']['#object']->type;
         switch($content_type_machine_name) {

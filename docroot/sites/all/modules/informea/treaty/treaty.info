@@ -362,4 +362,3 @@ features_exclude[taxonomy][thesaurus_informea] = thesaurus_informea
 files[] = treaty.admin.inc
 files[] = treaty.api.inc
 files[] = plugins/views_plugin_access_reorder_decisions.inc
-files[] = includes/views_handler_treaty_links.inc

@@ -58,3 +58,10 @@ function country_data_update_7004() {
 function country_data_update_7005() {
   features_revert_module('country_data');
 }
+
+/**
+ * Refs #285 - contacts hub updates.
+ */
+function country_data_update_7006() {
+  features_revert_module('country_data');
+}

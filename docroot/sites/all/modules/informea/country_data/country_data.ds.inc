@@ -17,6 +17,11 @@ function country_data_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'contact_person';
   $ds_fieldsetting->view_mode = 'country_page';
   $ds_fieldsetting->settings = array(
+    'contact_links' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type' => array(
       'weight' => '6',
       'label' => 'hidden',
@@ -43,6 +48,11 @@ function country_data_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'contact_person';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
+    'contact_links' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type' => array(
       'weight' => '16',
       'label' => 'hidden',
@@ -69,6 +79,11 @@ function country_data_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'contact_person';
   $ds_fieldsetting->view_mode = 'treaty_page';
   $ds_fieldsetting->settings = array(
+    'contact_links' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type' => array(
       'weight' => '6',
       'label' => 'hidden',
@@ -87,6 +102,33 @@ function country_data_ds_field_settings_info() {
     ),
   );
   $export['node|contact_person|treaty_page'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_custom_fields_info().
+ */
+function country_data_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'contact_links';
+  $ds_field->label = 'Contact links';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'contact_person|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '-',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['contact_links'] = $ds_field;
 
   return $export;
 }
@@ -113,11 +155,12 @@ function country_data_ds_layout_settings_info() {
         1 => 'title',
         2 => 'group_list',
         3 => 'field_person_position',
-        4 => 'field_person_institution',
-        5 => 'group_tags',
-        6 => 'content_type',
-        7 => 'field_mea_topic',
-        8 => 'field_contact_roles',
+        4 => 'group_tags',
+        5 => 'contact_links',
+        6 => 'field_person_institution',
+        7 => 'content_type',
+        8 => 'field_mea_topic',
+        9 => 'field_contact_roles',
       ),
     ),
     'fields' => array(
@@ -125,8 +168,9 @@ function country_data_ds_layout_settings_info() {
       'title' => 'right',
       'group_list' => 'right',
       'field_person_position' => 'right',
-      'field_person_institution' => 'right',
       'group_tags' => 'right',
+      'contact_links' => 'right',
+      'field_person_institution' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
       'field_contact_roles' => 'right',
@@ -219,30 +263,32 @@ function country_data_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
-        0 => 'field_treaty',
-      ),
       'right' => array(
-        1 => 'field_country',
-        2 => 'title',
-        3 => 'field_person_position',
-        4 => 'group_list',
-        5 => 'field_person_institution',
+        0 => 'field_country',
+        2 => 'field_person_position',
+        3 => 'title',
+        4 => 'field_person_institution',
+        5 => 'group_list',
         6 => 'group_tags',
-        7 => 'content_type',
-        8 => 'field_mea_topic',
-        9 => 'field_region',
-        10 => 'field_contact_roles',
+        7 => 'contact_links',
+        8 => 'content_type',
+        9 => 'field_mea_topic',
+        10 => 'field_region',
+        11 => 'field_contact_roles',
+      ),
+      'left' => array(
+        1 => 'field_treaty',
       ),
     ),
     'fields' => array(
-      'field_treaty' => 'left',
       'field_country' => 'right',
-      'title' => 'right',
+      'field_treaty' => 'left',
       'field_person_position' => 'right',
-      'group_list' => 'right',
+      'title' => 'right',
       'field_person_institution' => 'right',
+      'group_list' => 'right',
       'group_tags' => 'right',
+      'contact_links' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
       'field_region' => 'right',
@@ -271,27 +317,29 @@ function country_data_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'right' => array(
-        0 => 'title',
-        1 => 'field_person_position',
-        2 => 'group_list',
-        3 => 'group_tags',
-        4 => 'field_person_institution',
-        6 => 'content_type',
-        7 => 'field_mea_topic',
-        8 => 'field_contact_roles',
-      ),
       'left' => array(
-        5 => 'field_country',
+        0 => 'field_country',
+      ),
+      'right' => array(
+        1 => 'title',
+        2 => 'field_person_position',
+        3 => 'group_list',
+        4 => 'field_person_institution',
+        5 => 'group_tags',
+        6 => 'contact_links',
+        7 => 'content_type',
+        8 => 'field_mea_topic',
+        9 => 'field_contact_roles',
       ),
     ),
     'fields' => array(
+      'field_country' => 'left',
       'title' => 'right',
       'field_person_position' => 'right',
       'group_list' => 'right',
-      'group_tags' => 'right',
       'field_person_institution' => 'right',
-      'field_country' => 'left',
+      'group_tags' => 'right',
+      'contact_links' => 'right',
       'content_type' => 'right',
       'field_mea_topic' => 'right',
       'field_contact_roles' => 'right',
