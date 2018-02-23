@@ -22,6 +22,12 @@
           grid: true
         };
 
+        widget.find('input[name=range-from], input[name=range-to]').each(function () {
+          $(this).attr('min', options.min);
+          $(this).attr('max', options.max);
+        });
+
+
         slider.ionRangeSlider($.extend({
 
           // on change: when clicking somewhere in the bar
@@ -45,7 +51,7 @@
         var instance = slider.data("ionRangeSlider");
 
         rangeFrom.numeric();
-        rangeFrom.bind('keyup', function() {
+        rangeFrom.bind('change', function() {
           clearTimeout(submitTimeout);
           if (!isNaN(rangeFrom.val()) && rangeFrom.val() !== '') {
             var value = parseInt(rangeFrom.val());
@@ -61,7 +67,7 @@
         });
 
         rangeTo.numeric();
-        rangeTo.bind('keyup', function() {
+        rangeTo.bind('change', function() {
           clearTimeout(submitTimeout);
           if (!isNaN(rangeTo.val()) && rangeTo.val() !== '') {
             var value = parseInt(rangeTo.val());

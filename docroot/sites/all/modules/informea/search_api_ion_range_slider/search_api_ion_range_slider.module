@@ -54,6 +54,7 @@ function search_api_ion_range_slider_forms($form_id, $args) {
 function search_api_ion_range_slider_block_slider_view_form($form, &$form_state, $variables) {
   $form = search_api_ranges_block_slider_view_form($form, $form_state, $variables);
   $form['range-slider'] = array('#markup' => '<div class="range-slider"><input type="text" class="js-range-slider" value="" /></div>');
+  $form['range-from']['#attributes']['type'] = $form['range-to']['#attributes']['type'] = 'number';
   return $form;
 }
 
@@ -70,7 +71,7 @@ function search_api_ion_range_slider_block_slider_view_form_submit($form, &$form
  * @param array $variables
  *   An array with at least the following keys => values:
  *   - (string) range_field: the name of the slider range field
- *   - (array) query: the Search API query object.
+ *   - (array) query: the Search API query   object.
  *
  * @param string $order
  *   Either ASC (for min) or DESC (for max)
@@ -178,4 +179,50 @@ function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
       $return = floor($return);
   }
   return $return;
+}
+
+/**
+ * Implements theme_textfield().
+ */
+function search_api_ion_range_slider_theme_textfield($variables) {
+  $element = $variables['element'];
+
+  // Overwrite default theme_textfield functionality to support HTML5 number.
+  // To create a number input, set $element['#attributes']['type'] = 'number'.
+  if (!empty($element['#attributes']['type']) && $element['#attributes']['type'] == 'number') {
+    $element['#attributes']['type'] = 'number';
+    element_set_attributes($element, array('id', 'name', 'value'));
+  }
+  else {
+    $element['#attributes']['type'] = 'text';
+    element_set_attributes($element, array('id', 'name', 'value', 'size', 'maxlength'));
+    _form_set_class($element, array('form-text'));
+  };
+
+  $extra = '';
+  if ($element['#autocomplete_path'] && !empty($element['#autocomplete_input'])) {
+    drupal_add_library('system', 'drupal.autocomplete');
+    $element['#attributes']['class'][] = 'form-autocomplete';
+
+    $attributes = array();
+    $attributes['type'] = 'hidden';
+    $attributes['id'] = $element['#autocomplete_input']['#id'];
+    $attributes['value'] = $element['#autocomplete_input']['#url_value'];
+    $attributes['disabled'] = 'disabled';
+    $attributes['class'][] = 'autocomplete';
+    $extra = '<input' . drupal_attributes($attributes) . ' />';
+  }
+
+  $output = '<input' . drupal_attributes($element['#attributes']) . ' />';
+
+  return $output . $extra;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function search_api_ion_range_slider_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['textfield'])) {
+    $theme_registry['textfield']['function'] = 'search_api_ion_range_slider_theme_textfield';
+  }
 }
