@@ -1,18 +1,20 @@
 .informea-teaser {
   padding: 2em 0;
   .views-row + .views-row & { border-top: 1px solid #ddd; }
-  .field-name-field-contact-roles {
-    .field-items {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
+  // .field-name-field-contact-roles {
+  //   .field-items {
+  //     display: flex;
+  //     flex-wrap: wrap;
+  //   }
+  // }
 
   align-items: flex-start;
   display: flex;
   width: 100%;
 
-  &__title:extend(.view__title--strong all) {}
+  &__title:extend(.view__title--strong all) {
+    margin-bottom: .4em;
+  }
 
   &__left {
     align-items: flex-end;
@@ -67,12 +69,14 @@
 
   &__right {
     flex: 1;
+
     .field-name-field-country {
       img {
         height: 1em;
         width: auto;
       }
     }
+
   }
 
   .flag {
@@ -91,19 +95,17 @@
   }
 
   &__info {
-    .list--inline(~'.field', '|');
+    .list--inline(@item: ~'.field', @separator: '|');
+    color: #999;
+    margin-top: .5em;
+
     .clearfix::before,
     .clearfix::after {
       display: none;
     }
-    color: #999;
-    margin-top: .5em;
 
     .field-name-field-treaty .field-items {
-      .list--inline(~'.field-item', ',');
-      .field-item + .field-item {
-        margin-left: 0;
-      }
+      .list--inline(@item: ~'.field-item', @separator: '|');
     }
 
     // Override old theme styling
@@ -119,15 +121,18 @@
     }
   }
 
-
   &__tags {
-    display: flex;
-    flex-flow: row wrap;
+    // display: flex;
+    // flex-flow: row wrap;
     margin-top: .5em;
+    overflow: auto;
+    .field-item {
+      float: left;
+    }
   }
 
   &__links {
-    .list--inline(~'.field', '|', .3rem);
+    .list--inline(@item: ~'.field', @spacing: .3rem, @separator: '|');
     margin-top: .5em;
 
     > .field {
@@ -145,6 +150,8 @@
 
   .field-name-search-excerpt,
   .field-name-field-informea-tags,
+  &__right > .list--inline,
+  &__right > .list--inline--pipe,
   .treaty-links {
     margin-top: 1em;
   }

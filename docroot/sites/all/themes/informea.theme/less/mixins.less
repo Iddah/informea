@@ -82,15 +82,17 @@
   }
 }
 
-// Inline list mixin. To use call .list--inline(~'[selector]', [spacing]) inside your container
-.list--inline(@item: ~'*', @spacing: .5rem) {
-  // align-items: center;
-  // display: flex;
-  // flex-flow: row wrap;
-  // margin-left: -.5rem;
-  // & > @{item} {
-  //   margin-left: .5rem;
-  // }
+.list__separator(@separator, @item: ~'*', @spacing: .5rem) {
+  & > @{item} + @{item} {
+    &:before {
+      content: '@{separator}';
+      display: inline;
+      margin-right: @spacing;
+    }
+  }
+}
+// Inline list mixin. To use call .list--inline(~'[selector]', [spacing], [separator]) inside your container
+.list--inline(@item: ~'*', @spacing: .5rem, @separator: none) {
   * {
     display: inline;
     vertical-align: top;
@@ -98,23 +100,26 @@
   img {
     vertical-align: middle;
   }
-  & > @{item}:not(:first-child) { margin-left: @spacing; }
-}
 
-.list--inline(@item, @separator, @spacing: .5rem) {
-  .list--inline(@item, @spacing: @spacing);
-  & > @{item} + @{item} {
-    &:before {
-      content: '@{separator}';
-      display: inline;
-      margin-right: @spacing;
-      vertical-align: middle;
-    }
+  & > @{item}:not(:first-child) { margin-left: @spacing; }
+
+  & when not (@separator = none) {
+    .list__separator(@separator, @item, @spacing);
   }
 }
 // Generate a base class for immediate use
 .list--inline {
   .list--inline();
+}
+
+// Generate a comma-separated list
+.list--inline--comma:extend(.list--inline all) {
+  .list__separator(',');
+}
+
+// Generate a pipe-separated list
+.list--inline--pipe:extend(.list--inline all) {
+  .list__separator('|');
 }
 
 // Inline list mixin using flexbox, to use call .list--inline(~'[placeholder-selector]') inside your container

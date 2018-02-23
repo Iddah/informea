@@ -782,3 +782,10 @@ function informea_update_7060() {
   features_revert_module('informea');
   features_revert_module('country_data');
 }
+
+/**
+ * #326 - Search updates
+ */
+function informea_update_7061() {
+  features_revert_module('country_data');
+}

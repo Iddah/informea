@@ -129,20 +129,48 @@
 [dir=rtl] .view__item-tag, [dir=rtl] .meta-content-type, [dir=rtl] .page-regions .views-field-field-event-type > .field-content, [dir=rtl] .page-topics .views-field-field-event-type > .field-content {
   margin-right: .3em;
 }
-.list--inline * {
+.list--inline *,
+.list--inline--comma *,
+.list--inline--pipe * {
   display: inline;
   vertical-align: top;
 }
-.list--inline img {
+.list--inline img,
+.list--inline--comma img,
+.list--inline--pipe img {
   vertical-align: middle;
 }
-[dir=ltr] .list--inline > *:not(:first-child) {
+[dir=ltr] .list--inline > *:not(:first-child), [dir=ltr] .list--inline--comma > *:not(:first-child), [dir=ltr] .list--inline--pipe > *:not(:first-child) {
   margin-left: 5px;
   margin-left: 0.5rem;
 }
-[dir=rtl] .list--inline > *:not(:first-child) {
+[dir=rtl] .list--inline > *:not(:first-child), [dir=rtl] .list--inline--comma > *:not(:first-child), [dir=rtl] .list--inline--pipe > *:not(:first-child) {
   margin-right: 5px;
   margin-right: 0.5rem;
+}
+.list--inline--comma > * + *:before {
+  content: ',';
+  display: inline;
+}
+[dir=ltr] .list--inline--comma > * + *:before {
+  margin-right: 5px;
+  margin-right: 0.5rem;
+}
+[dir=rtl] .list--inline--comma > * + *:before {
+  margin-left: 5px;
+  margin-left: 0.5rem;
+}
+.list--inline--pipe > * + *:before {
+  content: '|';
+  display: inline;
+}
+[dir=ltr] .list--inline--pipe > * + *:before {
+  margin-right: 5px;
+  margin-right: 0.5rem;
+}
+[dir=rtl] .list--inline--pipe > * + *:before {
+  margin-left: 5px;
+  margin-left: 0.5rem;
 }
 body {
   position: static;
@@ -942,18 +970,18 @@ body {
   right: 2.8rem;
 }
 [dir] .block-facetapi {
-  margin: 15px 0;
-  margin: 1.5rem 0;
+  padding: 30px 0;
+  padding: 3rem 0;
 }
 [dir] .block-facetapi .block-title {
   margin-top: 0;
   padding-top: 0;
 }
+[dir] .block-facetapi + .block-facetapi {
+  border-top: 1px solid #ddd;
+}
 [dir] .block-facetapi .form-group {
   margin-bottom: 0;
-}
-[dir] .block-facetapi:first-child {
-  padding-top: 0;
 }
 [dir] ul.facetapi-facetapi-links {
   margin: 0;
@@ -977,6 +1005,10 @@ ul.facetapi-facetapi-links .facetapi-active {
 }
 ul.facetapi-facetapi-links .facetapi-active + .item-label {
   color: #0099d5;
+}
+[dir] .block-facetapi-facetapi-select-dropdowns + .block-facetapi-facetapi-select-dropdowns {
+  border-top: none;
+  padding-top: 0;
 }
 .facetapi-facetapi-select-dropdowns .informea-select-2,
 .facetapi-facetapi-select-dropdowns .select2-container .select2-choice {
@@ -1956,13 +1988,8 @@ h2.regional-topic-title span {
 [dir] .views-row + .views-row .informea-teaser {
   border-top: 1px solid #ddd;
 }
-.informea-teaser .field-name-field-contact-roles .field-items {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+[dir] .informea-teaser__title {
+  margin-bottom: .4em;
 }
 .informea-teaser__left {
   -webkit-box-align: end;
@@ -2083,19 +2110,6 @@ h2.regional-topic-title span {
   vertical-align: middle;
 }
 [dir=ltr] .informea-teaser__info > .field:not(:first-child) {
-  margin-left: '|';
-}
-[dir=rtl] .informea-teaser__info > .field:not(:first-child) {
-  margin-right: '|';
-}
-.informea-teaser__info * {
-  display: inline;
-  vertical-align: top;
-}
-.informea-teaser__info img {
-  vertical-align: middle;
-}
-[dir=ltr] .informea-teaser__info > .field:not(:first-child) {
   margin-left: 5px;
   margin-left: 0.5rem;
 }
@@ -2106,7 +2120,6 @@ h2.regional-topic-title span {
 .informea-teaser__info > .field + .field:before {
   content: '|';
   display: inline;
-  vertical-align: middle;
 }
 [dir=ltr] .informea-teaser__info > .field + .field:before {
   margin-right: 5px;
@@ -2138,19 +2151,6 @@ h2.regional-topic-title span {
   vertical-align: middle;
 }
 [dir=ltr] .informea-teaser__info .field-name-field-treaty .field-items > .field-item:not(:first-child) {
-  margin-left: ',';
-}
-[dir=rtl] .informea-teaser__info .field-name-field-treaty .field-items > .field-item:not(:first-child) {
-  margin-right: ',';
-}
-.informea-teaser__info .field-name-field-treaty .field-items * {
-  display: inline;
-  vertical-align: top;
-}
-.informea-teaser__info .field-name-field-treaty .field-items img {
-  vertical-align: middle;
-}
-[dir=ltr] .informea-teaser__info .field-name-field-treaty .field-items > .field-item:not(:first-child) {
   margin-left: 5px;
   margin-left: 0.5rem;
 }
@@ -2159,9 +2159,8 @@ h2.regional-topic-title span {
   margin-right: 0.5rem;
 }
 .informea-teaser__info .field-name-field-treaty .field-items > .field-item + .field-item:before {
-  content: ',';
+  content: '|';
   display: inline;
-  vertical-align: middle;
 }
 [dir=ltr] .informea-teaser__info .field-name-field-treaty .field-items > .field-item + .field-item:before {
   margin-right: 5px;
@@ -2170,12 +2169,6 @@ h2.regional-topic-title span {
 [dir=rtl] .informea-teaser__info .field-name-field-treaty .field-items > .field-item + .field-item:before {
   margin-left: 5px;
   margin-left: 0.5rem;
-}
-[dir=ltr] .informea-teaser__info .field-name-field-treaty .field-items .field-item + .field-item {
-  margin-left: 0;
-}
-[dir=rtl] .informea-teaser__info .field-name-field-treaty .field-items .field-item + .field-item {
-  margin-right: 0;
 }
 [dir] .informea-teaser__info .countries-list-item {
   margin-bottom: 0;
@@ -2191,17 +2184,16 @@ h2.regional-topic-title span {
   padding: 0;
 }
 .informea-teaser__tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  overflow: auto;
 }
 [dir] .informea-teaser__tags {
   margin-top: .5em;
+}
+[dir=ltr] .informea-teaser__tags .field-item {
+  float: left;
+}
+[dir=rtl] .informea-teaser__tags .field-item {
+  float: right;
 }
 [dir] .informea-teaser__links {
   margin-top: .5em;
@@ -2224,7 +2216,6 @@ h2.regional-topic-title span {
 .informea-teaser__links > .field + .field:before {
   content: '|';
   display: inline;
-  vertical-align: middle;
 }
 [dir=ltr] .informea-teaser__links > .field + .field:before {
   margin-right: 3px;
@@ -2245,7 +2236,7 @@ h2.regional-topic-title span {
 .informea-teaser .file-icon {
   display: none;
 }
-[dir] .informea-teaser .field-name-search-excerpt, [dir] .informea-teaser .field-name-field-informea-tags, [dir] .informea-teaser .treaty-links {
+[dir] .informea-teaser .field-name-search-excerpt, [dir] .informea-teaser .field-name-field-informea-tags, [dir] .informea-teaser__right > .list--inline, [dir] .informea-teaser__right > .list--inline--pipe, [dir] .informea-teaser .treaty-links, [dir] .informea-teaser__right > .list--inline--comma, [dir] .informea-teaser__right > .list--inline--pipe {
   margin-top: 1em;
 }
 .informea-teaser .field-name-field-informea-tags {
