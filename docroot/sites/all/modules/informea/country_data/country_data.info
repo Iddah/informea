@@ -146,6 +146,7 @@ features[variable][] = entity_translation_comment_filter_geographical_site
 features[variable][] = entity_translation_hide_translation_links_geographical_site
 features[variable][] = entity_translation_node_metadata_geographical_site
 features[variable][] = entity_translation_settings_node__geographical_site
+features[variable][] = field_bundle_settings_field_collection_item__field_contact_roles
 features[variable][] = field_bundle_settings_node__contact_person
 features[variable][] = field_bundle_settings_node__geographical_site
 features[variable][] = field_bundle_settings_node__member_party
