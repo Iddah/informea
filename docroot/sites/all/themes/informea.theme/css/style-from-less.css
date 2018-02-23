@@ -1014,8 +1014,16 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir] .ion-range-slider-form .form-control {
   border: none;
   border-bottom: 1px solid #e2e2e2;
-          box-shadow: none;
   border-radius: 0;
+          box-shadow: none;
+}
+[dir=ltr] .ion-range-slider-form .form-control {
+  margin-left: .3em;
+  margin-right: .3em;
+}
+[dir=rtl] .ion-range-slider-form .form-control {
+  margin-right: .3em;
+  margin-left: .3em;
 }
 .ion-range-slider .form-submit {
   display: none;
