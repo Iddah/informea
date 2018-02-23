@@ -47,7 +47,7 @@ function search_api_ion_range_slider_forms($form_id, $args) {
 }
 
 /**
- * Generates the jQuery range slider form for range facet blocks.
+ * Generates the ion range slider form for range facet blocks.
  *
  * @see search_api_ion_range_slider_forms()
  */

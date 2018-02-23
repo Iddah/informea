@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Extend search_api_ranges widget to provide Ion rangeslider functionality.
+ */
 class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlider {
 
   /**
@@ -18,7 +21,7 @@ class SearchApiIonRangeSliderWidgetUISlider extends SearchApiRangesWidgetUISlide
 
     // Add css and js.
     // drupal_add_library('system', 'ui.slider').
-    drupal_add_js(drupal_get_path('module', 'search_api_ion_range_slider') . '/jquery.numeric.js');
+    drupal_add_js(drupal_get_path('module', 'search_api_ranges') . '/jquery.numeric.js');
     drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/normalize.css');
     drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/ion.rangeSlider.css');
     drupal_add_css(drupal_get_path('module', 'search_api_ion_range_slider') . '/ion-rangeslider/css/ion.rangeSlider.skinFlat.css');
