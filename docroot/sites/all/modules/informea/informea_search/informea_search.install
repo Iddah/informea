@@ -68,6 +68,6 @@ function informea_search_update_7007() {
  * #342 - Ion Range Slider
  */
 function informea_search_update_7008() {
-  module_enable('search_api_ion_range_slider');
+  module_enable(['search_api_ion_range_slider']);
   features_revert_module('informea_search');
 }
