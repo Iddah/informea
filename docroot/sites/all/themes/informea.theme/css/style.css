@@ -1,4 +1,4 @@
-/* Scaffolding */
+Scaffolding */
 /* ----------- */
 /* Links */
 a {
@@ -1701,12 +1701,7 @@ body.page-treaties h3 {
 [dir] body.node-type-treaty .highlight {
   background-color: #fc3;
 }
-[dir] body.node-type-treaty div.field {
-  margin-bottom: 3px;
-}
-[dir] body.node-type-treaty div.field-name-body {
-  margin-bottom: 10px;
-}
+
 body.node-type-treaty div.field-label {
   min-width: 150px;
 }
@@ -4019,4 +4014,5 @@ span.ecolex-logo {
 .page-node-411454.page-node-done .webform-confirmation + .links {
   display: none;
 }
+
 /*# sourceMappingURL=style.css.map */

@@ -31,7 +31,7 @@ function country_data_field_group_info() {
       'label' => 'Inline List 2',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'informea-teaser__info',
+        'classes' => 'list--inline--pipe',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -62,7 +62,7 @@ function country_data_field_group_info() {
       'label' => 'Inline List 2',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'informea-teaser__info',
+        'classes' => 'list--inline--pipe',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -154,7 +154,7 @@ function country_data_field_group_info() {
       'label' => 'Inline List',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'informea-teaser__info',
+        'classes' => 'list--inline--pipe',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',

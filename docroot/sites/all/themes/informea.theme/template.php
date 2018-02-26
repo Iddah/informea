@@ -697,6 +697,11 @@ function informea_theme_preprocess_block(&$variables) {
     $variables['title_attributes_array']['class'][] = 'lead';
     $variables['title_attributes_array']['class'][] = 'text-center';
   }
+  if($variables['elements']['#block']->module == 'facetapi') {
+    foreach ($variables['elements']['#attributes']['class'] as $class) {
+      $variables['classes_array'][] = 'block-' . $class;
+    }
+  }
 }
 
 function informea_theme_preprocess_views_view_table(&$variables) {

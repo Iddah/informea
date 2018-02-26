@@ -1,5 +1,5 @@
 .block-facetapi {
-  margin: 1.5rem 0;
+  padding: 3rem 0;
 
   .block-title {
     margin-top: 0;
@@ -7,16 +7,11 @@
   }
 
   & + .block-facetapi {
-    // border-top: 1px solid #ddd;
-    // padding-top: 1.5em;
+    border-top: 1px solid #ddd;
   }
 
   .form-group { margin-bottom: 0; }
 
-  &:first-child {
-    // margin-top: 0;
-    padding-top: 0;
-  }
 
 }
 
@@ -47,6 +42,10 @@ ul.facetapi-facetapi-links {
     }
   }
 
+}
+.block-facetapi-facetapi-select-dropdowns + .block-facetapi-facetapi-select-dropdowns {
+  border-top: none;
+  padding-top: 0;
 }
 
 .facetapi-facetapi-select-dropdowns {
