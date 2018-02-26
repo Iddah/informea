@@ -330,10 +330,10 @@
   }
 }
 
-.page-search{
-  .page-header{
-    margin-top:50px;
-    border-top:1px solid #E7E7E7;
+.page-search {
+  .page-header {
+    margin-top: 5rem;
+    border-top: 1px solid #E7E7E7;
   }
 }
 
@@ -343,102 +343,131 @@
 
 }
 
-.informea-search-horizontal-tabs-holder {
-  display:flex;
-  h4{
+.informea-search-horizontal-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -10px;
+  padding-top: 10px;
+
+  h4 {
     align-items: flex-end;
     color: #111;
     display: flex;
     font-size: 1em;
     font-weight: normal;
-    opacity: .7;
-    white-space: nowrap;
+    line-height: @line-height-base;
     margin: 0;
+    opacity: .7;
     padding: 8px 1em 5px;
-    font-size: 14px;
+    white-space: nowrap;
   }
-}
-ul.informea-search-horizontal-tabs {
-  display: flex;
-  padding: 0px;
-  margin:-10px 0 0 0;
-  li.dropdown{
+
+  ul { margin-bottom: 0; }
+
+  .informea-switcher_wrapper {
+    flex: 1;
+    margin-bottom: -5rem;
+    overflow: hidden;
+    @media @grid-mobile {
+      flex: 100%;
+    }
+  }
+
+  .informea-switcher {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    @media @grid-mobile {
+      position: relative;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .informea-switcher_advancer {
+    top: 13px;
+    bottom: auto;
+  }
+
+  .informea-switcher_contents {
     display: flex;
     padding: 0px;
-    margin:0px;
-    &.active,
-    &:hover{
-      /*position: static;*/
-      background: transparent;
-      background-color: transparent;
-      .dropdown-menu{
-        /*display: table;*/
-        /*display: block;*/
-        /*width: 100%;*/
-      }
-    }
-    &:hover{
-      .dropdown-menu{
-        z-index:9999;
-      }
-    }
-    &.open{
-      &:hover{
-        .dropdown-menu{
 
-        }
-      }
-    }
-  }
-  .dropdown-menu {
-    z-index: 999;
-    width: 100%;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    border: none;
-    margin-top: 2px;
+    &:hover .dropdown-menu { display: none; }
 
-    li.active{
-      a, a:hover, a:active{
-        font-weight: bold;
-        background: none;
-        background-color: transparent;
-        color:#0A8FC6;
-      }
-    }
-    li {
-      /*display: table-cell;*/
-      display: inline;
-      vertical-align: middle;
-      padding:10px 0px;
+    .dropdown {
+      display: flex;
+      padding: 0px;
       margin:0px;
-      background:#FFFFFF;
-      &:before{
-        content: '\2022';
+      &.active,
+      &:hover {
+        background: transparent;
+        background-color: transparent;
       }
-      &:first-child{
-        padding-left:50px;
-        &:before{
-          content: '\21B3';
-          color: inherit;
+      &:hover {
+        > .dropdown-menu {
+          display: block;
+          z-index: 9999;
         }
       }
-      a, a:active{
-        padding:10px 8px;
-        margin:0;
-        display: inline;
-        line-height: 24px;
-        color:#000000;
-        background: none;
-        background-color: transparent;
+      &.open{
         &:hover{
+          .dropdown-menu{
+
+          }
+        }
+      }
+    }
+    .dropdown-menu {
+      z-index: 999;
+      width: 100%;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      border: none;
+      margin-top: 2px;
+
+      > li.active {
+        a, a:hover, a:active {
+          font-weight: bold;
           background: none;
           background-color: transparent;
           color:#0A8FC6;
         }
       }
+      > li {
+        background: #FFFFFF;
+        display: inline;
+        margin: 0px;
+        padding: 10px 0px;
+        vertical-align: middle;
+        &:before {
+          content: '\2022';
+        }
+        &:first-child {
+          padding-left: 50px;
+          &:before{
+            color: inherit;
+            content: '\21B3';
+          }
+        }
+        > a,
+        > a:active {
+          padding: 10px 8px;
+          margin:0;
+          display: inline;
+          line-height: 24px;
+          color: #000000;
+          background: none;
+          background-color: transparent;
+          &:hover {
+            background: none;
+            background-color: transparent;
+            color:#0A8FC6;
+          }
+        }
+      }
     }
   }
 }
-
-

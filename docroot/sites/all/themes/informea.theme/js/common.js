@@ -163,14 +163,14 @@
       event.stopPropagation(); //Always stop propagation
     });
 
-    var active_horizontal_switch = $('.informea-switcher_link.dropdown.open');
-    $('.informea-switcher_link.dropdown').hover(
-        function() {
-          active_horizontal_switch.removeClass('open');
-        }, function() {
-          active_horizontal_switch.addClass('open');
-        }
-    );
+    // var active_horizontal_switch = $('.informea-switcher_link.dropdown.open');
+    // $('.informea-switcher_link.dropdown').hover(
+    //     function() {
+    //       active_horizontal_switch.removeClass('open');
+    //     }, function() {
+    //       active_horizontal_switch.addClass('open');
+    //     }
+    // );
 
     /*$('.dropdown').on('shown.bs.dropdown', function() {
       $('.dropdown.active .dropdown-menu').hide();
