@@ -12,6 +12,7 @@ regions[navigation]               = 'Navigation'
 regions[front_page_announcements] = 'Front page announcements'
 regions[front_page_hero]          = 'Front page hero unit'
 regions[front_page_content]       = 'Front page content'
+regions[above_page_header]        = 'Above page header (only on search page)'
 regions[header]                   = 'Top Bar'
 regions[inside_nav]               = 'Inside Main Menu'
 regions[highlighted]              = 'Highlighted'
@@ -37,6 +38,7 @@ stylesheets[all][] = 'css/style-from-less.css'
 
 scripts[] = 'bootstrap/js/bootstrap.min.js'
 scripts[] = 'js/common.js'
+scripts[] = 'js/horizontal-switcher.js'
 
 
 ; Settings

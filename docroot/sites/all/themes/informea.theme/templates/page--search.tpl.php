@@ -77,6 +77,14 @@ if (!empty($page['sidebar_first'])) {
 }
 ?>
 <?php include 'header.tpl.php'; ?>
+<!-- .above-page-header -->
+<?php if (!empty($page['above_page_header'])): ?>
+    <div class="above-page-header">
+        <div class="container">
+            <?php print render($page['above_page_header']); ?>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="page-header">
   <div class="container">
     <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>

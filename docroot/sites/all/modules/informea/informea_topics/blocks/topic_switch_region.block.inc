@@ -33,15 +33,7 @@ function informea_topics_topic_switch_region_block_view() {
         <button id="informeaSwitchAdvancerRight" class="informea-switcher_advancer informea-switcher_advancer--right" type="button">
           <svg class="informea-switcher_advancer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551 1024"><path d="M105.56 985.817L553.53 512 105.56 38.183l-85.857 81.173 409.6 433.23v-81.172l-409.6 433.23 85.856 81.174z"/></svg>
         </button>
-      </div>',
-      '#attached' => [
-        'js' => [
-          [
-            'type' => 'file',
-            'data' => $path . '/js/informea-switcher.js',
-          ],
-        ],
-      ],
+      </div>'
     ];
 
     // Add all regions item
