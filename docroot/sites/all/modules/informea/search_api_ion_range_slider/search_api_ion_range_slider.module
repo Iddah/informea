@@ -1,0 +1,228 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function search_api_ion_range_slider_theme() {
+  $themes = array(
+    'search_api_ion_range_slider_slider' => array(
+      'variables' => array('slider' => ''),
+      'file' => 'search_api_ion_range_slider.theme.inc',
+    ),
+    'search_api_ion_range_slider_block_slider_view_form' => array(
+      'template' => 'search-api-ion-range-slider-block-slider-view-form',
+      'render element' => 'form',
+    ),
+  );
+  return $themes;
+}
+
+/**
+ * Implements hook_facetapi_widgets().
+ */
+function search_api_ion_range_slider_facetapi_widgets() {
+  return array(
+    'search_api_ion_range_slider_ui_slider' => array(
+      'handler' => array(
+        'label' => t('Ion Ranges: Min/Max UI Slider'),
+        'class' => 'SearchApiIonRangeSliderWidgetUISlider',
+        'query types' => array('term'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_forms().
+ */
+function search_api_ion_range_slider_forms($form_id, $args) {
+  // Map all form IDs starting with search_api_ion_range_slider_block_slider_view_form
+  // to our callback.
+  if (strpos($form_id, 'search_api_ion_range_slider_block_slider_view_form') === 0) {
+    $forms[$form_id] = array(
+      'callback' => 'search_api_ion_range_slider_block_slider_view_form',
+    );
+    return $forms;
+  }
+}
+
+/**
+ * Generates the ion range slider form for range facet blocks.
+ *
+ * @see search_api_ion_range_slider_forms()
+ */
+function search_api_ion_range_slider_block_slider_view_form($form, &$form_state, $variables) {
+  $form = search_api_ranges_block_slider_view_form($form, $form_state, $variables);
+  $form['range-slider'] = array('#markup' => '<div class="range-slider"><input type="text" class="js-range-slider" value="" /></div>');
+  $form['range-from']['#attributes']['type'] = $form['range-to']['#attributes']['type'] = 'number';
+  return $form;
+}
+
+/**
+ * Handle slider block submit.
+ */
+function search_api_ion_range_slider_block_slider_view_form_submit($form, &$form_state) {
+  search_api_ranges_block_slider_view_form_submit($form, $form_state);
+}
+
+/**
+ * Find the lowest/highest valuse for the active facets.
+ *
+ * @param array $variables
+ *   An array with at least the following keys => values:
+ *   - (string) range_field: the name of the slider range field
+ *   - (array) query: the Search API query   object.
+ *
+ * @param string $order
+ *   Either ASC (for min) or DESC (for max)
+ *
+ * @return string
+ *   The rounded integer value for min/max
+ */
+function search_api_ion_range_minmax(array $variables, $order = 'ASC') {
+
+  // Allow the other modules to modify the query parameters.
+  drupal_alter('search_api_ion_range_minmax', $variables, $order);
+
+  // If query is empty, ignore sending the query.
+  // This allows other modules to decide
+  // whenever we want to perform the query.
+  if (empty($variables['query'])) {
+    return isset($variables['result']) ? $variables['result'] : NULL;
+  }
+
+  $query = $variables['query'];
+  $index = $variables['index'];
+  $order_lower = strtolower($order);
+
+  // Check if min or max values are indexed for multiple fields.
+  if (search_api_is_list_type($index->options['fields'][$variables['range_field']]['type'])) {
+    $field_name = str_replace(':', '_', $variables['range_field']) . '_' . $order_lower;
+    if (isset($index->options['fields'][$field_name])) {
+      $variables['range_field'] = $field_name;
+    }
+  }
+
+  // Alter sort.
+  $sort = &$query->getSort();
+  $sort = array($variables['range_field'] => $order);
+
+  // Alter options.
+  $options = &$query->getOptions();
+  $options['limit'] = 1;
+  $options['search id'] = 'search_api_ranges:' . $variables['range_field'] . ':minmax/' . $order;
+
+  // For performance, we don't need to return any facets.
+  $options['search_api_facets'] = array();
+
+  // Do not take into account pager query.
+  $options['offset'] = 0;
+
+  // Set some metadata to allow modules to alter based on that information.
+  $query->setOption('search_api_ranges', array('range_field' => $variables['range_field']));
+
+  // Remove current range field from the filters
+  // otherwise our min/max would always equal user input.
+  $filters = &$query->getFilter()->getFilters();
+  foreach ($filters as $key => $filter) {
+    if (isset($filter->tags) && is_array($filter->tags)) {
+      if (in_array('facet:' . $variables['range_field'], $filter->tags)) {
+        unset($filters[$key]);
+      }
+    }
+  }
+
+  // Filter out results with no values for that field.
+  $query->condition($variables['range_field'], NULL, '<>');
+
+  // Execute the query and process results.
+  $results = search_api_ranges_minmax_execute($query);
+  foreach ($filters as $key => $filter) {
+
+    // Remove $query->condition($variables['range_field'], NULL, '<>'); to prevent this condition influence on other facets.
+    if (is_array($filter)) {
+      if ($filter[0] == $variables['range_field']) {
+        unset($filters[$key]);
+      }
+    }
+  }
+
+  // Return current filter with digital ranges to the query.
+  if (isset($current_filter) && is_array($current_filter)) {
+    if ($current_filter[1] != NULL && $current_filter[2] != '<>') {
+      $query->condition($variables['range_field'], $current_filter[1], $current_filter[2]);
+    }
+    if ($current_filter[1] != NULL && $current_filter[2] != '<>') {
+      $query->condition($variables['range_field'], $current_filter[1], $current_filter[2]);
+    }
+  }
+  if (!$results['results']) {
+    return;
+  }
+
+  foreach ($results['results'] as $result) {
+    $entity = entity_load($variables['index']->item_type, array($result['id']));
+    $variables['index']->dataAlter($entity);
+    $wrapper = $variables['index']->entityWrapper($entity[$result['id']]);
+  }
+  $fields[$variables['range_field']]['type'] = 'integer';
+  $fields = search_api_extract_fields($wrapper, $fields);
+
+  // We have to round because jQuery slider cannot handle decimals.
+  $return = $fields[$variables['range_field']]['value'];
+  switch ($order) {
+    case 'DESC':
+      $return = ceil($return);
+      break;
+
+    default:
+      $return = floor($return);
+  }
+  return $return;
+}
+
+/**
+ * Implements theme_textfield().
+ */
+function search_api_ion_range_slider_theme_textfield($variables) {
+  $element = $variables['element'];
+
+  // Overwrite default theme_textfield functionality to support HTML5 number.
+  // To create a number input, set $element['#attributes']['type'] = 'number'.
+  if (!empty($element['#attributes']['type']) && $element['#attributes']['type'] == 'number') {
+    $element['#attributes']['type'] = 'number';
+    element_set_attributes($element, array('id', 'name', 'value'));
+  }
+  else {
+    $element['#attributes']['type'] = 'text';
+    element_set_attributes($element, array('id', 'name', 'value', 'size', 'maxlength'));
+    _form_set_class($element, array('form-text'));
+  };
+
+  $extra = '';
+  if ($element['#autocomplete_path'] && !empty($element['#autocomplete_input'])) {
+    drupal_add_library('system', 'drupal.autocomplete');
+    $element['#attributes']['class'][] = 'form-autocomplete';
+
+    $attributes = array();
+    $attributes['type'] = 'hidden';
+    $attributes['id'] = $element['#autocomplete_input']['#id'];
+    $attributes['value'] = $element['#autocomplete_input']['#url_value'];
+    $attributes['disabled'] = 'disabled';
+    $attributes['class'][] = 'autocomplete';
+    $extra = '<input' . drupal_attributes($attributes) . ' />';
+  }
+
+  $output = '<input' . drupal_attributes($element['#attributes']) . ' />';
+
+  return $output . $extra;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function search_api_ion_range_slider_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['textfield'])) {
+    $theme_registry['textfield']['function'] = 'search_api_ion_range_slider_theme_textfield';
+  }
+}
