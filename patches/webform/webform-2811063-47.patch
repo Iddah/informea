@@ -1,0 +1,15 @@
+diff --git a/components/select.inc b/components/select.inc
+index debaf33..685c9e9 100644
+--- a/components/select.inc
++++ b/components/select.inc
+@@ -762,8 +762,8 @@ function _webform_action_set_select($component, &$element, &$form_state, $value)
+   // Set the value as an array for multiple select or single value otherwise.
+   if ($element['#type'] == 'checkboxes') {
+     $checkbox_values = $element['#options'];
+-    array_walk($checkbox_values, function(&$value, $key) use($value) {
+-      $value = (int)(strval($key) === $value);
++    array_walk($checkbox_values, function(&$option_value, $key) use($value) {
++      $option_value = (int)(strval($key) === $value);
+     });
+   }
+   else {
