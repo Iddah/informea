@@ -1097,6 +1097,7 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .ion-range-slider-form .form-control {
   -webkit-box-shadow: none;
+  min-width: 0;
 }
 [dir] .ion-range-slider-form .form-control {
   border: none;
