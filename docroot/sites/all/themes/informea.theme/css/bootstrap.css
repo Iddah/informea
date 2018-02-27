@@ -5796,10 +5796,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .disabled > a,
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
-  color: #777777;
+  color: #ddd;
 }
 [dir] .pagination > .disabled > span, [dir] .pagination > .disabled > span:hover, [dir] .pagination > .disabled > span:focus, [dir] .pagination > .disabled > a, [dir] .pagination > .disabled > a:hover, [dir] .pagination > .disabled > a:focus {
-  background-color: #fff;
+  background-color: transparent;
   border-color: #ddd;
   cursor: not-allowed;
 }
@@ -5900,7 +5900,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: #777777;
+  color: #ddd;
 }
 [dir] .pager .disabled > a, [dir] .pager .disabled > a:hover, [dir] .pager .disabled > a:focus, [dir] .pager .disabled > span {
   background-color: #fff;
