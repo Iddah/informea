@@ -27,6 +27,7 @@ module.exports = function (grunt) {
         dest: './libraries/',
         src: [
           'bootstrap/less/**',
+          'ion-rangeslider/**',
         ]
       }
     },

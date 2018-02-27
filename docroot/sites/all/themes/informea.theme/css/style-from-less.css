@@ -1246,6 +1246,96 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .informea-switcher_advancer:focus .informea-switcher_advancer-icon {
   fill: #1D7CA7;
 }
+[dir] .irs-line-mid, [dir] .irs-line-left, [dir] .irs-line-right, [dir] .irs-bar, [dir] .irs-bar-edge, [dir] .irs-slider {
+  background-image: url(../img/sprite-skin-flat-informea.png);
+}
+.irs-from,
+.irs-to,
+.irs-single,
+.irs-min,
+.irs-max {
+  font-size: .9em;
+}
+[dir] .irs-from, [dir] .irs-to, [dir] .irs-single, [dir] .irs-min, [dir] .irs-max {
+  background: transparent;
+}
+.irs-from:after,
+.irs-to:after,
+.irs-single:after,
+.irs-min:after,
+.irs-max:after {
+  display: none;
+}
+[dir] .irs-from, [dir] .irs-to, [dir] .irs-single, [dir] .irs-slider {
+  cursor: pointer;
+}
+.irs-min,
+.irs-max,
+.irs-grid-text {
+  color: #777777;
+}
+.irs-from,
+.irs-to,
+.irs-single {
+  color: #0a8fc7;
+  display: block;
+  font-weight: bold;
+}
+[dir] .irs-grid-pol {
+  background: #b7b7b7;
+}
+.irs-slider {
+  top: 20px;
+}
+.ion-range-slider .text-range {
+  display: none;
+}
+.ion-range-slider-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] .ion-range-slider-form {
+  margin-top: 1em;
+}
+.ion-range-slider-form label {
+  font-weight: normal;
+  text-transform: lowercase;
+}
+[dir] .ion-range-slider-form label {
+  margin-bottom: 0;
+}
+.ion-range-slider-form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.ion-range-slider-form .form-control {
+  -webkit-box-shadow: none;
+  min-width: 0;
+}
+[dir] .ion-range-slider-form .form-control {
+  border: none;
+  border-bottom: 1px solid #e2e2e2;
+  border-radius: 0;
+          box-shadow: none;
+}
+[dir=ltr] .ion-range-slider-form .form-control {
+  margin-left: .3em;
+  margin-right: .3em;
+}
+[dir=rtl] .ion-range-slider-form .form-control {
+  margin-right: .3em;
+  margin-left: .3em;
+}
+.ion-range-slider .form-submit {
+  display: none;
+}
 .informea-list-of-tags {
   list-style: none;
   display: inline;

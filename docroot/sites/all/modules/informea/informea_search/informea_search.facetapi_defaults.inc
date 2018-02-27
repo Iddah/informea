@@ -3231,6 +3231,9 @@ function informea_search_facetapi_default_facet_settings() {
       'facets' => array(),
       'force_deactivation' => TRUE,
       'regex' => FALSE,
+      'roles' => array(),
+      'bundle' => 'none',
+      'bundle_selected' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -9475,7 +9478,7 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'search_api_ranges_ui_slider',
+    'widget' => 'search_api_ion_range_slider_ui_slider',
     'filters' => array(
       'active_items' => array(
         'status' => 0,
