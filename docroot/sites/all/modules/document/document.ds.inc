@@ -17,26 +17,10 @@ function document_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'document';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
-    'title_prefix' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'content_type' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h3',
-        'class' => 'informea-teaser__title',
-        'exclude node title settings' => '1',
-      ),
     ),
   );
   $export['node|document|search_item'] = $ds_fieldsetting;
@@ -59,40 +43,38 @@ function document_ds_layout_settings_info() {
   $ds_layout->layout = 'informea_teaser';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
-        0 => 'field_image',
-      ),
       'right' => array(
-        1 => 'content_type',
-        2 => 'title_prefix',
-        3 => 'title',
-        4 => 'field_mea_topic',
-        5 => 'field_region',
+        0 => 'content_type',
+        2 => 'field_mea_topic',
+        3 => 'title_field',
+        4 => 'field_region',
+        5 => 'group_info',
         6 => 'field_document_type',
-        7 => 'group_info',
-        8 => 'group_tags',
+        7 => 'group_tags',
+        8 => 'group_links',
         9 => 'field_files',
         10 => 'field_sorting_date',
         11 => 'field_country',
         12 => 'field_treaty',
-        13 => 'group_links',
+      ),
+      'left' => array(
+        1 => 'field_image',
       ),
     ),
     'fields' => array(
-      'field_image' => 'left',
       'content_type' => 'right',
-      'title_prefix' => 'right',
-      'title' => 'right',
+      'field_image' => 'left',
       'field_mea_topic' => 'right',
+      'title_field' => 'right',
       'field_region' => 'right',
-      'field_document_type' => 'right',
       'group_info' => 'right',
+      'field_document_type' => 'right',
       'group_tags' => 'right',
+      'group_links' => 'right',
       'field_files' => 'right',
       'field_sorting_date' => 'right',
       'field_country' => 'right',
       'field_treaty' => 'right',
-      'group_links' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

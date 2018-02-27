@@ -448,24 +448,12 @@ function geographic_region_views_default_views() {
   );
   $handler->display->display_options['fields']['field_informea_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
-  /* Field: Content: Treaty links */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['treaty_links']['id'] = 'treaty_links';
   $handler->display->display_options['fields']['treaty_links']['table'] = 'node';
   $handler->display->display_options['fields']['treaty_links']['field'] = 'treaty_links';
   $handler->display->display_options['fields']['treaty_links']['label'] = '';
   $handler->display->display_options['fields']['treaty_links']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['treaty_links']['display_links'] = array(
-    'decisions' => 'decisions',
-    'parties' => 'parties',
-    'contacts-hub' => 'contacts-hub',
-    'default' => 0,
-    'protocols' => 0,
-    'text' => 0,
-    'national-reports' => 0,
-    'action-plans' => 0,
-    'documents' => 0,
-  );
-  $handler->display->display_options['fields']['treaty_links']['decisions_link_title'] = 'Meeting Decisions';
 
   /* Display: Global treaties - by region */
   $handler = $view->new_display('block', 'Global treaties - by region', 'block_1');
@@ -696,24 +684,12 @@ function geographic_region_views_default_views() {
   );
   $handler->display->display_options['fields']['field_informea_tags']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_informea_tags']['delta_offset'] = '0';
-  /* Field: Content: Treaty links */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['treaty_links']['id'] = 'treaty_links';
   $handler->display->display_options['fields']['treaty_links']['table'] = 'node';
   $handler->display->display_options['fields']['treaty_links']['field'] = 'treaty_links';
   $handler->display->display_options['fields']['treaty_links']['label'] = '';
   $handler->display->display_options['fields']['treaty_links']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['treaty_links']['display_links'] = array(
-    'decisions' => 'decisions',
-    'parties' => 'parties',
-    'contacts-hub' => 'contacts-hub',
-    'default' => 0,
-    'protocols' => 0,
-    'text' => 0,
-    'national-reports' => 0,
-    'action-plans' => 0,
-    'documents' => 0,
-  );
-  $handler->display->display_options['fields']['treaty_links']['decisions_link_title'] = 'Meeting Decisions';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Region (field_region) */
   $handler->display->display_options['arguments']['field_region_tid']['id'] = 'field_region_tid';

@@ -36,3 +36,11 @@ function document_update_7004() {
 function document_update_7005() {
   features_revert_module('document');
 }
+
+/**
+ * 340 Prepend file extesions to document title field.
+ */
+function document_update_7006() {
+  features_revert_module('document');
+  features_revert_module('geographic_region');
+}

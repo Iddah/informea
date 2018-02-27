@@ -21,7 +21,7 @@ function document_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline info',
-    'weight' => '6',
+    'weight' => '2',
     'children' => array(
       0 => 'field_country',
       1 => 'field_sorting_date',
@@ -55,7 +55,7 @@ function document_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline links',
-    'weight' => '28',
+    'weight' => '4',
     'children' => array(
       0 => 'field_files',
     ),
@@ -87,7 +87,7 @@ function document_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Tags',
-    'weight' => '7',
+    'weight' => '3',
     'children' => array(
       0 => 'field_document_type',
       1 => 'field_mea_topic',
