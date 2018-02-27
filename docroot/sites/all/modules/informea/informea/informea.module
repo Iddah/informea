@@ -773,7 +773,7 @@ function informea_field_formatter_info() {
     'informea_title_linked' => array(
       'label' => t('Title and Attached files extensions'),
       'field types' => array('text'),
-      'settings' => array('title_style' => '', 'title_link' => '', 'title_class' => ''),
+      'settings' => array('title_style' => '', 'title_link' => '', 'title_class' => '' , 'title_extensions_field' => ''),
     ),
   );
 }
@@ -782,6 +782,7 @@ function informea_field_formatter_info() {
  * Implements hook_field_formatter_settings_form().
  */
 function informea_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+
   $settings = $instance['display'][$view_mode]['settings'];
   $element = array();
 
@@ -822,12 +823,11 @@ function informea_field_formatter_settings_form($field, $instance, $view_mode, $
     '#element_validate' => array('_informea_title_validate_class'),
   );
 
-  $element['title_extensions'] = array(
+  $element['title_extensions_field'] = array(
     '#title' => t('Get files extensions form field'),
     '#type' => 'textfield',
-    '#description' => t('The machine name for the file type fields, comma separated values, for multiple fileds.'),
-    '#default_value' => $settings['title_extensions'],
-    //'#element_validate' => array('_informea_title_validate_class'),
+    '#description' => t('The machine name for the file type fields, comma separated values - for multiple fileds.'),
+    '#default_value' => $settings['title_extensions_field'],
   );
 
   return $element;
@@ -865,6 +865,11 @@ function informea_field_formatter_settings_summary($field, $instance, $view_mode
   // Display this setting only if wrapper has a class.
   if (isset($settings['title_class']) && $settings['title_class'] != '_none' && $settings['title_class'] != '') {
     $summary[] = t('Wrap tag classes: @classes', array('@classes' => $settings['title_class']));
+  }
+
+  // Display this setting only if field has a title extension fields set.
+  if (isset($settings['title_extensions_field']) && $settings['title_extensions_field'] != '_none' && $settings['title_extensions_field'] != '') {
+    $summary[] = t('Get files extensions form field: @fields', array('@fields' => $settings['title_extensions_field']));
   }
 
   return implode('<br />', $summary);
@@ -924,7 +929,30 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
         $output = _text_sanitize($instance, $lang_code, $items[0], 'value');
       }
 
-      //$output = '<sup>[pdf,doc,docx]</sup>' . $output;
+      $extensions = [];
+      if ( isset($settings['title_extensions_field'])) {
+        $title_extensions_fields = explode(',', $settings['title_extensions_field']);
+        foreach ($title_extensions_fields as $title_extensions_field){
+          $extensions_field = str_replace(' ', '', $title_extensions_field);
+          if(!empty($extensions_field)) {
+            if( isset($entity->{$extensions_field})){
+              foreach ($entity->{$extensions_field} as $k=>$v){
+                if (is_array($v)) {
+                  foreach ($v as $file) {
+                    $path_parts = pathinfo($file['filename']);
+                    $extensions[strtoupper($path_parts['extension'])] = strtoupper($path_parts['extension']);
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
+
+      if ($extensions) {
+        $output = sprintf('<sup>[%s]</sup>%s', implode(',', $extensions) , $output);
+      }
       $elements = array();
 
       if (!empty($output)) {
