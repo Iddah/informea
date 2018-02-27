@@ -3444,6 +3444,9 @@ fieldset[disabled] a.explore a {
     display: inline-block;
   }
 }
+[dir] .view-news-and-events .views-row-1 > .informea-teaser {
+  padding-top: 0;
+}
 .view-news-and-events .informea-teaser__left {
   width: 50px;
   width: 5rem;
