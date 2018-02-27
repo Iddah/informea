@@ -822,6 +822,14 @@ function informea_field_formatter_settings_form($field, $instance, $view_mode, $
     '#element_validate' => array('_informea_title_validate_class'),
   );
 
+  $element['title_extensions'] = array(
+    '#title' => t('Get files extensions form field'),
+    '#type' => 'textfield',
+    '#description' => t('The machine name for the file type fields, comma separated values, for multiple fileds.'),
+    '#default_value' => $settings['title_extensions'],
+    //'#element_validate' => array('_informea_title_validate_class'),
+  );
+
   return $element;
 }
 
