@@ -789,3 +789,11 @@ function informea_update_7060() {
 function informea_update_7061() {
   features_revert_module('country_data');
 }
+
+/**
+ * #326 - Search results
+ */
+function informea_update_7062() {
+  module_enable(['views_block_area']);
+  features_revert_module('informea_search');
+}

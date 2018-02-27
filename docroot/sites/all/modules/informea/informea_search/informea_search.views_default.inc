@@ -109,7 +109,7 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['sorts']['search_api_relevance']['order'] = 'DESC';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Content: Published */
+  /* Sort criterion: Indexed Content: Date of text */
   $handler->display->display_options['sorts']['field_sorting_date']['id'] = 'field_sorting_date';
   $handler->display->display_options['sorts']['field_sorting_date']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_date']['field'] = 'field_sorting_date';
@@ -157,6 +157,71 @@ Date of text Asc|Sort by Least Recent',
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'search');
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'sort' => array(
+      'bef_format' => 'bef_links',
+      'advanced' => array(
+        'collapsible' => 0,
+        'collapsible_label' => 'Sort options',
+        'combine' => 1,
+        'combine_param' => 'sort_bef_combine',
+        'combine_rewrite' => 'Relevance Asc|
+Relevance Desc|Sort by Relevance
+Date of text Desc|Sort by Most Recent
+Date of text Asc|Sort by Least Recent',
+        'reset' => 0,
+        'reset_label' => '',
+        'is_secondary' => 0,
+        'autosubmit' => 0,
+      ),
+    ),
+    'search_api_views_fulltext' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '<div class="search-results-info">Found @total results</div>';
+  /* Header: Global: Block area */
+  $handler->display->display_options['header']['block']['id'] = 'block';
+  $handler->display->display_options['header']['block']['table'] = 'views';
+  $handler->display->display_options['header']['block']['field'] = 'block';
+  $handler->display->display_options['header']['block']['label'] = '<none>';
+  $handler->display->display_options['header']['block']['empty'] = TRUE;
+  $handler->display->display_options['header']['block']['block_to_insert'] = 'views:-exp-search-search';
+  $handler->display->display_options['header']['block']['title'] = '<none>';
   $handler->display->display_options['path'] = 'search';
 
   /* Display: Documents (treaty) */
@@ -640,6 +705,8 @@ Date of text Asc|Sort by Least Recent'),
     t('Date of text'),
     t('Search'),
     t('Page'),
+    t('<div class="search-results-info">Found @total results</div>'),
+    t('<none>'),
     t('Documents (treaty)'),
     t('Documents'),
     t('This view lists all the documents asociated with a treaty.'),

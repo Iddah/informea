@@ -43,9 +43,6 @@ h1 {
 .breadcrumb > .last {
   color: #c6cedb;
 }
-[dir] .page-header {
-  border-bottom: 1px solid #c6cedb;
-}
 .grey-777 {
   color: #777;
 }
