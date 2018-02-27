@@ -3911,13 +3911,6 @@ span.ecolex-logo {
   background: url(../img/ecolex-logo.png) no-repeat top left;
   background-size: 80px 60px;
 }
-.region-sidebar-first #block-treaty-treaty-documents-local-tasks .nav-pills.nav-stacked {
-  -webkit-box-shadow: none;
-}
-[dir] .region-sidebar-first #block-treaty-treaty-documents-local-tasks .nav-pills.nav-stacked {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
 [dir] .webform-client-form div .captcha {
   margin-top: 20px;
 }
