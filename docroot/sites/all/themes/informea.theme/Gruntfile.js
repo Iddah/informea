@@ -40,9 +40,13 @@ module.exports = function (grunt) {
           require('less-plugin-glob')
         ]
       },
-      screen: {
+      bootstrap: {
         files: {
-          'css/bootstrap.css': 'less/bootstrap.less',
+          'css/bootstrap.css': 'less/bootstrap.less'
+        }
+      },
+      newtheme: {
+        files: {
           'css/style-from-less.css': 'less/style.less'
         }
       },
@@ -121,9 +125,13 @@ module.exports = function (grunt) {
         files: ['css/style.css'],
         tasks: ['postcss:oldtheme']
       },
+      bootstrap: {
+        files: ['less/variable-overrides.less'],
+        tasks: ['less:bootstrap', 'postcss:bootstrap']
+      },
       newtheme: {
         files: ['less/**/*.less', '!less/print-style.less', 'img/*.svg'],
-        tasks: ['less:screen', 'postcss:newtheme']
+        tasks: ['less:newtheme', 'postcss:newtheme']
       }
     },
   });
