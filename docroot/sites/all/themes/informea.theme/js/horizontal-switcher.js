@@ -38,6 +38,17 @@
             ticking = true;
         });
 
+        var resizeTicking = false;
+
+        window.addEventListener("resize", function() {
+            if (!resizeTicking) {
+                window.requestAnimationFrame(function() {
+                    informeaSwitch.setAttribute("data-overflowing", determineOverflow(informeaSwitchContents, informeaSwitch));
+                    resizeTicking = false;
+                });
+            }
+            resizeTicking = true;
+        });
 
         informeaSwitchAdvancerLeft.addEventListener("click", function() {
             // If in the middle of a move return
@@ -126,16 +137,20 @@
 
         function determineOverflow(content, container) {
             var containerMetrics = container.getBoundingClientRect();
-            var containerMetricsRight = Math.floor(containerMetrics.right);
-            var containerMetricsLeft = Math.floor(containerMetrics.left);
+            var containerMetricsRight = containerMetrics.right;
+            var containerMetricsLeft = containerMetrics.left;
             var contentMetrics = content.getBoundingClientRect();
-            var contentMetricsRight = Math.floor(contentMetrics.right);
-            var contentMetricsLeft = Math.floor(contentMetrics.left);
-             if (containerMetricsLeft > contentMetricsLeft && containerMetricsRight < contentMetricsRight) {
+            var contentMetricsRight = contentMetrics.right;
+            var contentMetricsLeft = contentMetrics.left;
+
+            var availableScrollLeft = Math.floor(contentMetricsLeft - containerMetricsLeft );
+            var availableScrollRight = Math.floor(contentMetricsRight - containerMetricsRight);
+
+            if (availableScrollLeft < 0 && availableScrollRight > 0) {
                 return "both";
-            } else if (contentMetricsLeft < containerMetricsLeft) {
+            } else if (availableScrollLeft < 0) {
                 return "left";
-            } else if (contentMetricsRight > containerMetricsRight) {
+            } else if (availableScrollRight > 0) {
                 return "right";
             } else {
                 return "none";

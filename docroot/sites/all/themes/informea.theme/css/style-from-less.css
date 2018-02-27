@@ -302,17 +302,17 @@ body {
     -js-display: flex;
     display: flex;
   }
-  [dir=ltr] .dropdown-menu {
+  [dir=ltr] .navbar .dropdown-menu {
     left: -2em;
   }
-  [dir=rtl] .dropdown-menu {
+  [dir=rtl] .navbar .dropdown-menu {
     right: -2em;
   }
-  [dir=ltr] .dropdown-menu-right {
+  [dir=ltr] .navbar .dropdown-menu-right {
     left: auto;
     right: -2em;
   }
-  [dir=rtl] .dropdown-menu-right {
+  [dir=rtl] .navbar .dropdown-menu-right {
     right: auto;
     left: -2em;
   }
@@ -1025,6 +1025,226 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .field-name-field-informea-tags.field-label-inline > .field-label:after {
   content: ':';
+}
+.informea-switcher {
+  /* Make this scrollable when needed */
+  overflow-x: auto;
+  /* We don't want vertical scrolling */
+  overflow-y: hidden;
+  /* Hide scrollbars on firefox */
+  overflow: -moz-scrollbars-none;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* We don't want internal inline elements to wrap */
+  white-space: nowrap;
+  /* If JS present, let's hide the default scrollbar */
+  /* positioning context for advancers */
+  position: relative;
+  font-size: 0;
+}
+.informea-switcher_wrapper {
+  position: relative;
+}
+[dir] .informea-switcher_wrapper {
+  padding: 0 11px;
+}
+@media screen and (min-width: 1200px) {
+  [dir] .informea-switcher_wrapper {
+    margin-top: -10px;
+  }
+}
+.js .informea-switcher {
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: none;
+  /* Hide overflow since the JS handles the scroll via translate */
+  overflow: hidden;
+  /* Remove the default scrollbar for WebKit implementations */
+}
+.js .informea-switcher::-webkit-scrollbar {
+  display: none;
+}
+.informea-switcher_link {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -js-display: inline-flex;
+  display: inline-flex;
+  font-size: 14px;
+}
+[dir] .informea-switcher_link {
+  margin-bottom: 0;
+}
+.informea-switcher_link > a {
+  display: block;
+  font-weight: bold;
+  white-space: nowrap;
+}
+[dir] .informea-switcher_link > a {
+  border: none;
+  padding: 8px 18px 5px;
+}
+[dir=ltr] .informea-switcher_link > a {
+  border-left: 1px solid #D6D6D6;
+  border-right: 1px solid #D6D6D6;
+  margin-right: 0;
+}
+[dir=rtl] .informea-switcher_link > a {
+  border-right: 1px solid #D6D6D6;
+  border-left: 1px solid #D6D6D6;
+  margin-left: 0;
+}
+[dir=ltr] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
+  border-left: none;
+}
+[dir=rtl] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
+  border-right: none;
+}
+@media (max-width: 991px) {
+  [dir=ltr] .informea-switcher_link.first > a {
+    border-left: none;
+  }
+  [dir=rtl] .informea-switcher_link.first > a {
+    border-right: none;
+  }
+}
+.informea-switcher_link > a,
+.informea-switcher_link > a:hover,
+.informea-switcher_link > a:focus {
+  color: #1C1C1C;
+}
+.informea-switcher_link.active > a,
+.informea-switcher_link.active > a:hover,
+.informea-switcher_link.active > a:focus {
+  color: #1D7CA7;
+}
+[dir] .informea-switcher_link.active > a, [dir] .informea-switcher_link.active > a:hover, [dir] .informea-switcher_link.active > a:focus {
+  border: none;
+  background-color: #fff;
+  padding-top: 18px;
+}
+[dir=ltr] .informea-switcher_link.all-options > a {
+  padding-left: 12px;
+}
+[dir=rtl] .informea-switcher_link.all-options > a {
+  padding-right: 12px;
+}
+.informea-switcher_link.all-options > a:before {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: '';
+  color: #414141;
+}
+[dir] .informea-switcher_link.all-options > a:before {
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-top: .4em dashed;
+  margin-top: -0.2em;
+  border-top: .5em dashed;
+}
+[dir=ltr] .informea-switcher_link.all-options > a:before {
+  margin-left: 2px;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: .4em solid transparent;
+  border-left: .4em solid transparent;
+  margin-left: 0;
+  margin-right: .3em;
+  border-right: .5em solid transparent;
+  border-left: .5em solid transparent;
+}
+[dir=rtl] .informea-switcher_link.all-options > a:before {
+  margin-right: 2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-left: .4em solid transparent;
+  border-right: .4em solid transparent;
+  margin-right: 0;
+  margin-left: .3em;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+}
+.informea-switcher_contents {
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+[dir=ltr] .informea-switcher_contents {
+  float: left;
+}
+[dir=rtl] .informea-switcher_contents {
+  float: right;
+}
+.informea-switcher_contents-no-transition {
+  -webkit-transition: none;
+  transition: none;
+}
+.informea-switcher_advancer {
+  /* Reset the button */
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  /* Now style it as needed */
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  /* Set the buttons invisible by default */
+  opacity: 0;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+[dir] .informea-switcher_advancer {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.informea-switcher_advancer:focus {
+  outline: 0;
+}
+[dir] .informea-switcher_advancer:hover {
+  cursor: pointer;
+}
+[dir=ltr] .informea-switcher_advancer--left {
+  left: 0;
+}
+[dir=rtl] .informea-switcher_advancer--left {
+  right: 0;
+}
+[data-overflowing="both"] ~ .informea-switcher_advancer--left,
+[data-overflowing="left"] ~ .informea-switcher_advancer--left {
+  opacity: 1;
+}
+[dir=ltr] .informea-switcher_advancer--right {
+  right: 0;
+}
+[dir=rtl] .informea-switcher_advancer--right {
+  left: 0;
+}
+[data-overflowing="both"] ~ .informea-switcher_advancer--right,
+[data-overflowing="right"] ~ .informea-switcher_advancer--right {
+  opacity: 1;
+}
+.informea-switcher_advancer-icon {
+  fill: #8F8F8F;
+  height: 2em;
+  -webkit-transition: fill .2s;
+  transition: fill .2s;
+  width: 1.5em;
+}
+.informea-switcher_advancer:hover .informea-switcher_advancer-icon,
+.informea-switcher_advancer:focus .informea-switcher_advancer-icon {
+  fill: #1D7CA7;
 }
 [dir] .irs-line-mid, [dir] .irs-line-left, [dir] .irs-line-right, [dir] .irs-bar, [dir] .irs-bar-edge, [dir] .irs-slider {
   background-image: url(../img/sprite-skin-flat-informea.png);
@@ -1756,226 +1976,6 @@ h2.regional-topic-title span {
 .category-group-inner {
   font-size: 12px;
   font-style: italic;
-}
-.informea-switcher {
-  /* Make this scrollable when needed */
-  overflow-x: auto;
-  /* We don't want vertical scrolling */
-  overflow-y: hidden;
-  /* Hide scrollbars on firefox */
-  overflow: -moz-scrollbars-none;
-  /* For WebKit implementations, provide inertia scrolling */
-  -webkit-overflow-scrolling: touch;
-  /* We don't want internal inline elements to wrap */
-  white-space: nowrap;
-  /* If JS present, let's hide the default scrollbar */
-  /* positioning context for advancers */
-  position: relative;
-  font-size: 0;
-}
-.informea-switcher_wrapper {
-  position: relative;
-}
-[dir] .informea-switcher_wrapper {
-  padding: 0 11px;
-}
-@media screen and (min-width: 1200px) {
-  [dir] .informea-switcher_wrapper {
-    margin-top: -10px;
-  }
-}
-.js .informea-switcher {
-  /* Make an auto-hiding scroller for the 3 people using a IE */
-  -ms-overflow-style: none;
-  /* Hide overflow since the JS handles the scroll via translate */
-  overflow: hidden;
-  /* Remove the default scrollbar for WebKit implementations */
-}
-.js .informea-switcher::-webkit-scrollbar {
-  display: none;
-}
-.informea-switcher_link {
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  -js-display: inline-flex;
-  display: inline-flex;
-  font-size: 14px;
-}
-[dir] .informea-switcher_link {
-  margin-bottom: 0;
-}
-.informea-switcher_link > a {
-  display: block;
-  font-weight: bold;
-  white-space: nowrap;
-}
-[dir] .informea-switcher_link > a {
-  border: none;
-  padding: 8px 18px 5px;
-}
-[dir=ltr] .informea-switcher_link > a {
-  border-left: 1px solid #D6D6D6;
-  border-right: 1px solid #D6D6D6;
-  margin-right: 0;
-}
-[dir=rtl] .informea-switcher_link > a {
-  border-right: 1px solid #D6D6D6;
-  border-left: 1px solid #D6D6D6;
-  margin-left: 0;
-}
-[dir=ltr] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
-  border-left: none;
-}
-[dir=rtl] .informea-switcher_link:not(.active) + .informea-switcher_link > a {
-  border-right: none;
-}
-@media (max-width: 991px) {
-  [dir=ltr] .informea-switcher_link.first > a {
-    border-left: none;
-  }
-  [dir=rtl] .informea-switcher_link.first > a {
-    border-right: none;
-  }
-}
-.informea-switcher_link > a,
-.informea-switcher_link > a:hover,
-.informea-switcher_link > a:focus {
-  color: #1C1C1C;
-}
-.informea-switcher_link.active > a,
-.informea-switcher_link.active > a:hover,
-.informea-switcher_link.active > a:focus {
-  color: #1D7CA7;
-}
-[dir] .informea-switcher_link.active > a, [dir] .informea-switcher_link.active > a:hover, [dir] .informea-switcher_link.active > a:focus {
-  border: none;
-  background-color: #fff;
-  padding-top: 18px;
-}
-[dir=ltr] .informea-switcher_link.all-options > a {
-  padding-left: 12px;
-}
-[dir=rtl] .informea-switcher_link.all-options > a {
-  padding-right: 12px;
-}
-.informea-switcher_link.all-options > a:before {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-  content: '';
-  color: #414141;
-}
-[dir] .informea-switcher_link.all-options > a:before {
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  border-top: .4em dashed;
-  margin-top: -0.2em;
-  border-top: .5em dashed;
-}
-[dir=ltr] .informea-switcher_link.all-options > a:before {
-  margin-left: 2px;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  border-right: .4em solid transparent;
-  border-left: .4em solid transparent;
-  margin-left: 0;
-  margin-right: .3em;
-  border-right: .5em solid transparent;
-  border-left: .5em solid transparent;
-}
-[dir=rtl] .informea-switcher_link.all-options > a:before {
-  margin-right: 2px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-left: .4em solid transparent;
-  border-right: .4em solid transparent;
-  margin-right: 0;
-  margin-left: .3em;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
-}
-.informea-switcher_contents {
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-}
-[dir=ltr] .informea-switcher_contents {
-  float: left;
-}
-[dir=rtl] .informea-switcher_contents {
-  float: right;
-}
-.informea-switcher_contents-no-transition {
-  -webkit-transition: none;
-  transition: none;
-}
-.informea-switcher_advancer {
-  /* Reset the button */
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -js-display: flex;
-  display: flex;
-  /* Now style it as needed */
-  position: absolute;
-  top: 10px;
-  bottom: 0;
-  /* Set the buttons invisible by default */
-  opacity: 0;
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
-}
-[dir] .informea-switcher_advancer {
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-.informea-switcher_advancer:focus {
-  outline: 0;
-}
-[dir] .informea-switcher_advancer:hover {
-  cursor: pointer;
-}
-[dir=ltr] .informea-switcher_advancer--left {
-  left: 0;
-}
-[dir=rtl] .informea-switcher_advancer--left {
-  right: 0;
-}
-[data-overflowing="both"] ~ .informea-switcher_advancer--left,
-[data-overflowing="left"] ~ .informea-switcher_advancer--left {
-  opacity: 1;
-}
-[dir=ltr] .informea-switcher_advancer--right {
-  right: 0;
-}
-[dir=rtl] .informea-switcher_advancer--right {
-  left: 0;
-}
-[data-overflowing="both"] ~ .informea-switcher_advancer--right,
-[data-overflowing="right"] ~ .informea-switcher_advancer--right {
-  opacity: 1;
-}
-.informea-switcher_advancer-icon {
-  fill: #8F8F8F;
-  height: 2em;
-  -webkit-transition: fill .2s;
-  transition: fill .2s;
-  width: 1.5em;
-}
-.informea-switcher_advancer:hover .informea-switcher_advancer-icon,
-.informea-switcher_advancer:focus .informea-switcher_advancer-icon {
-  fill: #1D7CA7;
 }
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
   font-weight: normal;
@@ -3906,5 +3906,185 @@ fieldset[disabled] a.explore a {
 }
 .view-search .form-item-sort-bef-combine .form-radios {
   display: inline-block;
+}
+[dir] .page-search .page-header {
+  margin-top: 50px;
+  margin-top: 5rem;
+  border-top: 1px solid #E7E7E7;
+}
+[dir] .above-page-header {
+  background: #E7E7E7;
+  padding: 0px;
+}
+.informea-search-horizontal-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+[dir] .informea-search-horizontal-tabs {
+  margin-top: -10px;
+  padding-top: 10px;
+}
+.informea-search-horizontal-tabs h4 {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.42857143;
+  opacity: .7;
+  white-space: nowrap;
+}
+[dir] .informea-search-horizontal-tabs h4 {
+  margin: 0;
+  padding: 8px 1em 5px;
+}
+[dir] .informea-search-horizontal-tabs ul {
+  margin-bottom: 0;
+}
+.informea-search-horizontal-tabs .informea-switcher_wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_wrapper {
+  margin-bottom: -50px;
+  margin-bottom: -5rem;
+}
+@media screen and (max-width: 1199px) {
+  .informea-search-horizontal-tabs .informea-switcher_wrapper {
+    -webkit-box-flex: 100%;
+        -ms-flex: 100%;
+            flex: 100%;
+  }
+}
+.informea-search-horizontal-tabs .informea-switcher {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+[dir=ltr] .informea-search-horizontal-tabs .informea-switcher {
+  left: 0;
+  right: 0;
+}
+[dir=rtl] .informea-search-horizontal-tabs .informea-switcher {
+  right: 0;
+  left: 0;
+}
+@media screen and (max-width: 1199px) {
+  .informea-search-horizontal-tabs .informea-switcher {
+    position: relative;
+  }
+  [dir] .informea-search-horizontal-tabs .informea-switcher {
+    padding-bottom: 5rem;
+  }
+}
+.informea-search-horizontal-tabs .informea-switcher_advancer {
+  top: 13px;
+  bottom: auto;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents {
+  padding: 0px;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents:hover .dropdown-menu {
+  display: none;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown {
+  padding: 0px;
+  margin: 0px;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown.active, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown:hover {
+  background: transparent;
+  background-color: transparent;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown:hover > .dropdown-menu {
+  display: block;
+  z-index: 9999;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu {
+  z-index: 999;
+  width: 100%;
+  -webkit-box-shadow: none;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu {
+  box-shadow: none;
+  border: none;
+  margin-top: 2px;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a,
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a:hover,
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a:active {
+  font-weight: bold;
+  color: #0A8FC6;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a:hover, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a:active {
+  background: none;
+  background-color: transparent;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li {
+  display: inline;
+  vertical-align: middle;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li {
+  background: #FFFFFF;
+  margin: 0px;
+  padding: 10px 0px;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:before {
+  content: '\2022';
+}
+[dir=ltr] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child {
+  padding-left: 50px;
+}
+[dir=rtl] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child {
+  padding-right: 50px;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child:before {
+  color: inherit;
+  content: '\21B3';
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a,
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:active {
+  display: inline;
+  line-height: 24px;
+  color: #000000;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:active {
+  padding: 10px 8px;
+  margin: 0;
+  background: none;
+  background-color: transparent;
+}
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:hover,
+.informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:active:hover {
+  color: #0A8FC6;
+}
+[dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:hover, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:active:hover {
+  background: none;
+  background-color: transparent;
 }
 /*# sourceMappingURL=style-from-less.css.map */

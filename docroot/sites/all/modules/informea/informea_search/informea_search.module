@@ -32,6 +32,7 @@ function informea_search_theme($existing, $type, $theme, $path) {
 }
 
 
+
 /**
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
@@ -140,6 +141,12 @@ function informea_search_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
     ],
+    'search_categories_tabs' => [
+      'info' => t('InforMEA search categories'),
+      'cache' => DRUPAL_NO_CACHE,
+      'region' => 'above_page_header',
+      'status' => 1,
+    ],
   ];
 }
 
@@ -155,8 +162,63 @@ function informea_search_block_view($delta = '') {
       unset($form['form_build_id']);
       $block['content'] = $form;
       break;
+
+    case 'search_categories_tabs':
+      $search_category_options = informea_search_categories();
+      $curent_categories = _informea_search_get_current_categories();
+      foreach ($curent_categories as $current_category) {
+        $search_category_options[$current_category]['active'] = TRUE;
+      }
+      $options = array();
+      foreach ($search_category_options as $key => $value) {
+        $options[] = array(
+          'key' => $key,
+          'label' => $value['label'],
+          'is_group_label' => isset($value['is_group_label']) ? $value['is_group_label'] : NULL,
+          'active' => isset($value['active']) ? $value['active'] : NULL,
+          'query' => isset($value['query']) ? $value['query'] : [],
+        );
+      }
+      $last_val = end($options);
+      $last_key = key($options);
+      unset($options[$key]);
+      $options = array($last_key => $last_val) + $options;
+
+      $block['content'] = [
+        '#theme_wrappers' => ['informea_search_categories_tabs_wrapper'],
+        '#category-options' => $options,
+      ];
+      break;
   }
   return $block;
+}
+
+
+function informea_search_categories_build_query($query = []) {
+  $q = [];
+  foreach ($query as $key => $v) {
+    foreach ($v as $param_key => $param) {
+      foreach ($param as $p) {
+        $q[$key][] = "$param_key:$p";
+      }
+    }
+  }
+  $get_query_parameters = drupal_get_query_parameters();
+  if (!empty($get_query_parameters['field_region'])) {
+    $q['f'][] = "field_region:{$get_query_parameters['field_region']}";
+  }
+  if (!empty($get_query_parameters['field_mea_topic'])) {
+    $q['f'][] = "field_mea_topic:{$get_query_parameters['field_mea_topic']}";
+  }
+  if (!empty($get_query_parameters['text'])) {
+    $q['text'] = check_plain($get_query_parameters['text']);
+  }
+  return $q;
+}
+
+function informea_search_categories_build_link($query = []) {
+  $q = informea_search_categories_build_query($query);
+  return url('search', ['query' => $q]);
 }
 
 /**
@@ -358,73 +420,117 @@ function informea_search_ajax_callback($data) {
   print $source;
 }
 
-function informea_search_form($form, $form_state) {
-  $action = 'search';
-  $search_query = !empty($_GET['text']) ? check_plain($_GET['text']) : '';
-  $variant = variable_get('select2_compression_type', 'minified');
-  $search_category_options = [
+function informea_search_categories(){
+  return [
     'treaties' => [
       'label' => t('Treaties'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['treaty', 'decision']]],
     ],
     'treaty' => [
       'label' => t('Treaty texts'),
+      'query' => ['f' => ['type' => ['treaty']]],
     ],
     'decision' => [
       'label' => t('Decisions texts'),
+      'query' => ['f' => ['type' => ['decision']]],
     ],
     'national_submissions' => [
       'label' => t('National Submissions'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['action_plan', 'national_report']]],
     ],
     'action_plan' => [
       'label' => t('National Plans'),
+      'query' => ['f' => ['type' => ['action_plan']]],
     ],
     'national_report' => [
       'label' => t('National Reports'),
+      'query' => ['f' => ['type' => ['national_report']]],
     ],
     'national_legislation_cases' => [
       'label' => t('Law and Cases'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['court_decisions', 'legislation']]],
     ],
     'legislation' => [
       'label' => t('Legislation'),
+      'query' => ['f' => ['type' => ['legislation']]],
     ],
     'court_decisions' => [
       'label' => t('Court Decisions'),
+      'query' => ['f' => ['type' => ['court_decisions']]],
     ],
     'documents_literature' => [
       'label' => t('Documents and Literature'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['document', 'literature']]],
     ],
     'publication' => [
       'label' => t('Publications'),
+      'query' => [
+        'f' => [
+          'type' => ['document'],
+          'field_document_type' => [
+            2805,
+            3159,
+          ],
+        ],
+      ],
     ],
     'manual' => [
       'label' => t('Manuals'),
+      'query' => [
+        'f' => [
+          'type' => ['document'],
+          'field_document_type' => [
+            3178,
+          ],
+        ],
+      ],
     ],
     'technical' => [
       'label' => t('Technical Series'),
+      'query' => [
+        'f' => [
+          'type' => ['document'],
+          'field_document_type' => [
+            2817,
+          ],
+        ],
+      ],
     ],
     'news_events' => [
       'label' => t('News and Events'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['feed_item', 'event_calendar']]],
     ],
     'goals_and_declarations' => [
       'label' => t('Goals and declarations'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['goal', 'declaration']]],
     ],
     'contact_person' => [
-      'label' => t('Contacts Hub'),
+      'label' => t('Contacts HUB'),
       'is_group_label' => TRUE,
+      'query' => ['f' => ['type' => ['contact_person']]],
     ],
     'all' => [
       'label' => t('All Categories'),
       'is_group_label' => TRUE,
     ],
   ];
+}
 
-  $current_category = _informea_search_get_current_category();
+function informea_search_form($form, $form_state) {
+  $action = 'search';
+  $search_query = !empty($_GET['text']) ? check_plain($_GET['text']) : '';
+  $variant = variable_get('select2_compression_type', 'minified');
+  $search_category_options = informea_search_categories();
+
+  $current_category = _informea_search_get_current_categories(TRUE);
+
+  //$current_category = _informea_search_get_current_category();
   $search_category_options[$current_category]['selected'] = TRUE;
 
   $form = [
@@ -490,7 +596,7 @@ function informea_search_external_search() {
   drupal_goto('search/' . $input);
 }
 
-function _informea_search_get_current_category() {
+function _informea_search_get_current_categories($only_latest = FALSE) {
   $types = [];
   $document_types = [];
   if (!empty($_GET['f']) && is_array($_GET['f'])) {
@@ -503,122 +609,55 @@ function _informea_search_get_current_category() {
       }
     }
   }
-  switch ($types) {
-    case ['treaty', 'decision']:
-    case ['decision', 'treaty']:
-      return 'treaties';
 
-    case ['action_plan', 'national_report']:
-    case ['national_report', 'action_plan']:
-      return 'national_submissions';
+  $search_category_options = informea_search_categories();
 
-    case ['court_decisions', 'legislation']:
-    case ['legislation', 'court_decisions']:
-      return 'national_legislation_cases';
-
-    case ['literature', 'document']:
-    case ['document', 'literature']:
-    case ['document']:
-      switch ($document_types) {
-        case ['2805', '3159']:
-        case ['3159', '2805']:
-          return 'publication';
-
-        case ['3178']:
-          return 'manual';
-
-        case ['2817']:
-          return 'technical';
+  $active = [];
+  foreach ($search_category_options as $k => $category) {
+    if (isset($category['query']['f']['type'])) {
+      if (!empty($category['is_group_label'])) {
+        if (array_intersect($types, $category['query']['f']['type'])) {
+          $active[] = $k;
+        }
       }
-      return 'documents_literature';
-
-    case ['feed_item', 'event_calendar']:
-    case ['event_calendar', 'feed_item']:
-      return 'news_events';
-
-    case ['goal', 'declaration']:
-    case ['declaration', 'goal']:
-      return 'goals_and_declarations';
-
-    default:
-      if (count($types) == 1) {
-        return reset($types);
+      else {
+        if ($types == $category['query']['f']['type']) {
+          if (isset($category['query']['f']['field_document_type'])) {
+            if ($document_types == $category['query']['f']['field_document_type']) {
+              $active[] = $k;
+            }
+          }
+          else {
+            $active[] = $k;
+          }
+        }
       }
+    }
   }
-  return 'all';
+  if (count($active) == 0) {
+    $active[] = 'all';
+  }
+
+  if ($only_latest) {
+    $active = end($active);
+  }
+  return $active;
 }
+
 
 function informea_search_prepare_search() {
   $options = [];
   if (!empty($_GET['category'])) {
     $search_category = check_plain($_GET['category']);
-    switch ($search_category) {
-      case 'treaties':
-        $options['query']['f'][] = "type:treaty";
-        $options['query']['f'][] = "type:decision";
-        break;
 
-      case 'national_submissions':
-        $options['query']['f'][] = "type:national_report";
-        $options['query']['f'][] = "type:action_plan";
-        break;
-
-      case 'national_legislation_cases':
-        $options['query']['f'][] = "type:court_decisions";
-        $options['query']['f'][] = "type:legislation";
-        break;
-
-      case 'documents_literature':
-        $options['query']['f'][] = "type:document";
-        $options['query']['f'][] = "type:literature";
-        break;
-
-      case 'publication':
-        $options['query']['f'][] = "type:document";
-        $options['query']['f'][] = "field_document_type:2805";
-        $options['query']['f'][] = "field_document_type:3159";
-        break;
-
-      case 'manual':
-        $options['query']['f'][] = "type:document";
-        $options['query']['f'][] = "field_document_type:3178";
-        break;
-
-      case 'technical':
-        $options['query']['f'][] = "type:document";
-        $options['query']['f'][] = "field_document_type:2817";
-        break;
-
-      case 'news_events':
-        $options['query']['f'][] = "type:feed_item";
-        $options['query']['f'][] = "type:event_calendar";
-        break;
-
-      case 'goals_and_declarations':
-        $options['query']['f'][] = "type:goal";
-        $options['query']['f'][] = "type:declaration";
-        break;
-
-      case 'treaty':
-      case 'decision':
-      case 'legislation':
-      case 'court_decisions':
-      case 'action_plan':
-      case 'national_report':
-      case 'contact_person':
-        $options['query']['f'][] = "type:{$search_category}";
-        break;
-
+    $search_category_options = informea_search_categories();
+    if (isset($search_category_options[$search_category]['query'])) {
+      $options_query = $search_category_options[$search_category]['query'];
     }
-  }
-  if (!empty($_GET['field_region'])) {
-    $options['query']['f'][] = "field_region:{$_GET['field_region']}";
-  }
-  if (!empty($_GET['field_mea_topic'])) {
-    $options['query']['f'][] = "field_mea_topic:{$_GET['field_mea_topic']}";
-  }
-  if (!empty($_GET['text'])) {
-    $options['query']['text'] = check_plain($_GET['text']);
+    else {
+      $options_query = [];
+    }
+    $options['query'] = informea_search_categories_build_query($options_query);
   }
   drupal_goto('search', $options);
 }
