@@ -707,18 +707,21 @@ body {
   margin-right: 5px;
   margin-right: 0.5rem;
 }
-.treaties-menu {
+[dir] .treaties-menu {
+  padding: 0;
+}
+.navbar .treaties-menu {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 30em;
 }
-[dir=ltr] .treaties-menu {
+[dir=ltr] .navbar .treaties-menu {
   left: 0;
   right: 0;
 }
-[dir=rtl] .treaties-menu {
+[dir=rtl] .navbar .treaties-menu {
   right: 0;
   left: 0;
 }
@@ -744,16 +747,13 @@ body {
   border-left: 1px solid #ddd;
   right: 30%;
 }
-.treaties-menu .divider {
-  width: calc(30% - 3em);
-}
 [dir] .treaties-menu .divider {
   margin: 1em 1.5em;
 }
-[dir] .dropdown-full-width > .treaties-menu {
-  padding: 0;
+.navbar .treaties-menu .divider {
+  width: calc(30% - 3em);
 }
-.treaties-menu > li {
+.navbar .treaties-menu > li {
   position: static;
   width: 30%;
 }
@@ -793,7 +793,6 @@ body {
   bottom: 0;
   -webkit-box-shadow: none;
   overflow: auto;
-  top: 0;
   z-index: 0;
 }
 [dir] .treaties-menu-list {
@@ -804,16 +803,23 @@ body {
 }
 [dir=ltr] .treaties-menu-list {
   border-left: 1px solid #ddd;
-  left: 30%;
   padding-left: 2.5em;
   padding-right: 2.5em;
-  right: 0;
 }
 [dir=rtl] .treaties-menu-list {
   border-right: 1px solid #ddd;
-  right: 30%;
   padding-right: 2.5em;
   padding-left: 2.5em;
+}
+.navbar .treaties-menu-list {
+  top: 0;
+}
+[dir=ltr] .navbar .treaties-menu-list {
+  left: 30%;
+  right: 0;
+}
+[dir=rtl] .navbar .treaties-menu-list {
+  right: 30%;
   left: 0;
 }
 [dir] .treaties-menu-heading {
@@ -4058,10 +4064,10 @@ fieldset[disabled] a.explore a {
   content: '\2022';
 }
 [dir=ltr] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child {
-  padding-left: 50px;
+  padding-left: 18px;
 }
 [dir=rtl] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child {
-  padding-right: 50px;
+  padding-right: 18px;
 }
 .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li:first-child:before {
   color: inherit;
