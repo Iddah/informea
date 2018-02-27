@@ -404,18 +404,18 @@ function country_country_contextual_menu_alter(&$contextual_menu, $node) {
 
     $menu_items = array(
       'map' => array(
-        'title' => t('Map and sites'),
+        'title' => t('Map and Sites list'),
       ),
       'parties' => array(
-        'title' => t('Party status'),
+        'title' => t('Party Status'),
         'count' => country_data_get_member_party_count($node->nid)
       ),
       'action-plans' => array(
-        'title' => t('Action plans'),
+        'title' => t('Action Plans'),
         'count' => country_get_action_plan_count($node->nid)
       ),
       'national-reports' => array(
-        'title' => t('National reports'),
+        'title' => t('National Reports'),
         'count' => country_get_national_report_count($node->nid)
       ),
       'legislation' => array(
@@ -427,7 +427,7 @@ function country_country_contextual_menu_alter(&$contextual_menu, $node) {
         'count' => country_get_court_decision_count($node->nid)
       ),
       'documents' => array(
-        'title' => t('Documents'),
+        'title' => t('Documents and Files'),
         'count' => country_get_documents_count($node->nid)
       ),
       'contacts-hub' => array(

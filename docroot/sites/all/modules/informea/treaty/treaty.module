@@ -753,7 +753,7 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
         'count' => treaty_count_child_protocols($node->nid)
       ),
       'text' => array(
-        'title' => t('Treaty text')
+        'title' => t('Treaty Text')
       ),
       'decisions' => array(
         'title' => t('Decisions'),
@@ -766,17 +766,17 @@ function treaty_treaty_contextual_menu_alter(&$contextual_menu, $node, $hide = a
         'disabled' => $p_count <= 0,
       ),
       'national-reports' => array(
-        'title' => t('National reports'),
+        'title' => t('National Reports'),
         'count' => $nr_count > 0 ? $nr_count : t('n/a'),
         'disabled' => $nr_count <= 0,
       ),
       'action-plans' => array(
-        'title' => t('National plans'),
+        'title' => t('National Plans'),
         'count' => $ap_count > 0 ? $ap_count : t('n/a'),
         'disabled' => $ap_count <= 0,
       ),
       'documents' => array(
-        'title' => t('Documents'),
+        'title' => t('Documents and Files'),
         'count' => $doc_count > 0 ? $doc_count : t('n/a'),
         'disabled' => $doc_count <= 0,
       ),
