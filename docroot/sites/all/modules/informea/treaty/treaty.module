@@ -437,6 +437,21 @@ function treaty_custom_view_node($node, $context) {
       }
       break;
 
+    case 'documents':
+      $view = views_get_view('search');
+      if (is_object($view)) {
+        $view->set_display('search_documents');
+        $view->set_arguments([$node->nid]);
+        $view->override_url = 'node/' . $node->nid . '/' . $context;
+        $view->pre_execute();
+        $view->execute();
+        $node->content['context']['treaty'] = [
+          '#type' => 'markup',
+          '#markup' => $view->render(),
+        ];
+      }
+      break;
+
     case 'download':
       $articles = treaty_get_treaty_text($node->nid);
       $col_headers = ['Node ID', 'Permalink', 'Title', 'Text', 'SDG goals', 'SDG targets', 'SDG indicators', 'LEO terms'];

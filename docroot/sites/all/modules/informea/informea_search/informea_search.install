@@ -71,3 +71,10 @@ function informea_search_update_7008() {
   module_enable(['search_api_ion_range_slider']);
   features_revert_module('informea_search');
 }
+
+/**
+ * #339 - Documents and files page
+ */
+function informea_search_update_7009() {
+  features_revert_module('informea_search');
+}
