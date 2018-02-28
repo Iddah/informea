@@ -851,7 +851,7 @@ body {
   }
 }
 @media screen and (min-width: 1200px) {
-  .navbar-nav .navbar .treaties-menu {
+  .navbar .treaties-menu {
     display: -webkit-box;
     display: -ms-flexbox;
     -js-display: flex;
