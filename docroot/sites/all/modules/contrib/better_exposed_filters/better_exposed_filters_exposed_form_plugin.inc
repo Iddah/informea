@@ -821,7 +821,14 @@ dateFormat: "dd-mm-yy"
     drupal_alter('better_exposed_filters_settings', $settings, $context);
 
     // Adds view's arguments (if any) to the path to be used use for #bef_path.
-    $view_path = $this->view->args ? implode('/', array_merge(array($this->view->get_path()), $this->view->args)) : $this->view->get_path();
+    $view_path = $this->view->get_path();
+    if ($this->view->args) {
+      $args_to_replace = [];
+      foreach ($this->view->args as $arg) {
+        $args_to_replace[] = '%';
+      }
+      $view_path = str_replace($args_to_replace, $this->view->args, $this->view->get_path());
+    }
 
     // Some elements may be placed in a secondary fieldset (eg: "Advanced
     // search options"). Place this after the exposed filters and before the
