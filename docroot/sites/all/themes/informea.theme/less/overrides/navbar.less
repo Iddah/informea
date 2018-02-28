@@ -107,7 +107,7 @@
     flex-wrap: wrap;
     overflow: hidden;
     > .dropdown-menu {
-      background-color: #fff;
+      // background-color: #fff;
       flex-basis: 100%;
     }
     > .menu-title {
@@ -135,6 +135,9 @@
 .navbar-default .dropdown-header:extend(.heading--gray-underline) {
   padding-left: 0;
   padding-right: 0;
+  @media @grid-mobile {
+    color: fade(@navbar-default-link-color, 90%);
+  }
 }
 
 // fix specificity
@@ -211,6 +214,9 @@
   font-weight: bold;
   img {
     margin-right: .5em;
+  }
+  @media @grid-mobile {
+    border-radius: @border-radius-base;
   }
 }
 
