@@ -315,6 +315,9 @@ function country_node_view($node, $view_mode, $langcode) {
           $view->set_display('search_contacts_hub_country');
           $view->set_arguments([$node->nid]);
           $view->override_url = 'countries/' . $iso2l . '/' . $context;
+          $view->override_path = 'countries/' . $iso2l . '/' . $context;
+          /*$view->override_url = 'node/' . $node->nid . '/' . $context;
+          $view->override_path = 'node/' . $node->nid . '/' . $context;*/
           $view->pre_execute();
           $view->execute();
           $node->content['context']['hub'] = [
@@ -327,9 +330,14 @@ function country_node_view($node, $view_mode, $langcode) {
       case 'documents':
         $view = views_get_view('search');
         if (is_object($view)) {
+          $wrapper = entity_metadata_wrapper('node', $node);
+          $iso2l = $wrapper->field_country_iso2->value();
           $view->set_display('search_documents_country');
           $view->set_arguments([$node->nid]);
-          $view->override_url = 'node/' . $node->nid . '/' . $context;
+          $view->override_url = 'countries/' . $iso2l . '/' . $context;
+          $view->override_path = 'countries/' . $iso2l . '/' . $context;
+          /*$view->override_url = 'node/' . $node->nid . '/' . $context;
+          $view->override_path = 'node/' . $node->nid . '/' . $context;*/
           $view->pre_execute();
           $view->execute();
           $node->content['context']['country'] = [

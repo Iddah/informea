@@ -1986,7 +1986,7 @@ h2.regional-topic-title span {
   font-size: 12px;
   font-style: italic;
 }
-.page-search .view-header {
+.view-search .view-header {
   display: -webkit-box;
   display: -ms-flexbox;
   -js-display: flex;
@@ -1996,20 +1996,20 @@ h2.regional-topic-title span {
       -ms-flex-direction: row;
           flex-direction: row;
 }
-[dir] .page-search .view-header {
+[dir] .view-search .view-header {
   border-bottom: 1px solid #ddd;
   padding-bottom: .5em;
 }
-[dir=ltr] .page-search .view-header .block-views {
+[dir=ltr] .view-search .view-header .block-views {
   margin-left: auto;
 }
-[dir=rtl] .page-search .view-header .block-views {
+[dir=rtl] .view-search .view-header .block-views {
   margin-right: auto;
 }
-[dir] .page-search .view-header .block-views .views-exposed-widget, [dir] .page-search .view-header .block-views .views-exposed-widgets {
+[dir] .view-search .view-header .block-views .views-exposed-widget, [dir] .view-search .view-header .block-views .views-exposed-widgets {
   margin: 0;
 }
-[dir] .page-search .view-header .block-views .form-group {
+[dir] .view-search .view-header .block-views .form-group {
   margin-bottom: 0;
 }
 .view-learning-courses .views-bootstrap-grid-plugin-style .views-field-title {
