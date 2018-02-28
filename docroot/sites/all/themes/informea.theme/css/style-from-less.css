@@ -1125,6 +1125,14 @@ body {
   padding-right: 40px;
   padding-right: 4rem;
 }
+@media screen and (min-width: 1200px) {
+  [dir=ltr] .navbar-nav .browse-all-menu > li > a {
+    padding-left: 4.8rem;
+  }
+  [dir=rtl] .navbar-nav .browse-all-menu > li > a {
+    padding-right: 4.8rem;
+  }
+}
 [dir=ltr] .navbar-nav > .dropdown > .browse-all-menu > li > .menu-title:before {
   left: 20px;
   left: 2rem;
