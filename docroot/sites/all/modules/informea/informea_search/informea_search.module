@@ -685,6 +685,8 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
         hide($form['submit']);
         hide($form['text']);
         unset($form['#info']['filter-search_api_views_fulltext']['label']);
+
+
         break;
 
       case 'views-exposed-form-search-search-documents':
@@ -702,6 +704,34 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
 
       default:
         break;
+    }
+    if (isset($form['sort_bef_combine'])) {
+      $query = drupal_get_query_parameters();
+      $sort = isset($query['sort_bef_combine']) ? $query['sort_bef_combine'] : $form['sort_bef_combine']['#default_value'];
+      switch ($sort) {
+        case 'search_api_relevance DESC':
+          $form['sort_bef_combine']['#options']['search_api_relevance DESC'] = t('Sorted by Relevance');
+          break;
+
+        case 'field_sorting_date ASC':
+          $form['sort_bef_combine']['#options']['field_sorting_date ASC'] = t('Sorted by Least Recent');
+          break;
+
+        case 'field_sorting_date DESC':
+          $form['sort_bef_combine']['#options']['field_sorting_date DESC'] = t('Sorted by Most Recent');
+          break;
+
+        case 'title_index ASC':
+          $form['sort_bef_combine']['#options']['title_index ASC'] = t('Sorted from A to Z');
+          break;
+
+        case 'title_index DESC':
+          $form['sort_bef_combine']['#options']['title_index DESC'] = t('Sorted from Z to A');
+          break;
+
+        default:
+          break;
+      }
     }
   }
 }
@@ -901,3 +931,4 @@ function informea_search_node_view($node, $view_mode, $langcode) {
     ];
   }
 }
+

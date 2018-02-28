@@ -425,9 +425,14 @@ function treaty_custom_view_node($node, $context) {
     case 'contacts-hub':
       $view = views_get_view('search');
       if (is_object($view)) {
+        $wrapper = entity_metadata_wrapper('node', $node);
+        $odata_identifier = $wrapper->field_odata_identifier->value();
         $view->set_display('search_contacts_hub_treaty');
         $view->set_arguments([$node->nid]);
-        $view->override_url = 'node/' . $node->nid . '/' . $context;
+        /*$view->override_url = 'node/' . $node->nid . '/' . $context;
+        $view->override_path = 'node/' . $node->nid . '/' . $context;*/
+        $view->override_url = 'treaties/' . $odata_identifier . '/' . $context;
+        $view->override_path = 'treaties/' . $odata_identifier . '/' . $context;
         $view->pre_execute();
         $view->execute();
         $node->content['context']['hub'] = [
@@ -440,9 +445,14 @@ function treaty_custom_view_node($node, $context) {
     case 'documents':
       $view = views_get_view('search');
       if (is_object($view)) {
+        $wrapper = entity_metadata_wrapper('node', $node);
+        $odata_identifier = $wrapper->field_odata_identifier->value();
         $view->set_display('search_documents');
         $view->set_arguments([$node->nid]);
-        $view->override_url = 'node/' . $node->nid . '/' . $context;
+        /*$view->override_url = 'node/' . $node->nid . '/' . $context;
+        $view->override_path = 'node/' . $node->nid . '/' . $context;*/
+        $view->override_url = 'treaties/' . $odata_identifier . '/' . $context;
+        $view->override_path = 'treaties/' . $odata_identifier . '/' . $context;
         $view->pre_execute();
         $view->execute();
         $node->content['context']['treaty'] = [
