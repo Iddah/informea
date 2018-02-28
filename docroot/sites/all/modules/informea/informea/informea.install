@@ -797,3 +797,12 @@ function informea_update_7062() {
   module_enable(['views_block_area']);
   features_revert_module('informea_search');
 }
+
+
+/**
+ * #377,378,379,380 - Separate News and Events.
+ */
+function informea_update_7063() {
+  features_revert_module('geographic_region');
+  features_revert_module('informea_topics');
+}
