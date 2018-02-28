@@ -6,7 +6,7 @@ $regions = $variables['regions'];
 <ul class="treaties-menu dropdown-menu">
   <?php foreach ($topics as $tid => $topic): ?>
     <li class="treaties-menu-topic dropdown" aria-haspopup="true">
-      <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+      <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><b></b></a>
       <a class="treaties-menu-title menu-title">
         <?php print sprintf('%s <b><i>%s</i></b>', t('Treaties in'), $topic); ?>
       </a>
@@ -56,7 +56,7 @@ $regions = $variables['regions'];
   <li role="separator" class="divider"></li>
   <?php foreach ($regions as $tid => $region): ?>
     <li class="treaties-menu-region dropdown" aria-haspopup="true">
-      <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"></a>
+      <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><b></b></a>
       <a class="treaties-menu-title menu-title">
         <?php
           if ($tid == $variables['global_region_tid']) {

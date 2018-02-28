@@ -1,37 +1,51 @@
 @treaties-logo-width: 3em; // in em
 
+.dropdown-treaties-menu .dropdown-toggle {
+  @media @grid-mobile {
+    display: none;
+  }
+}
 .treaties-menu {
   padding: 0;
+  // Hide treaties menu on mobile
   .navbar & {
     flex-direction: column;
     left: 0;
-    min-height: 30em;
     right: 0;
-  }
-  @media @grid-desktop {
-    .navbar-nav & { display: flex; }
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    border-right: 1px solid #ddd;
-    height: 100%;
-    left: 30%;
+    @media @grid-mobile {
+      &, .open & { display: none; }
+    }
+    @media @grid-desktop {
+      .navbar-nav & {
+        display: flex;
+        min-height: 30em;
+      }
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-right: 1px solid #ddd;
+        height: 100%;
+        left: 30%;
+      }
+    }
   }
 
   .divider {
     margin: 1em 1.5em;
     .navbar & {
-      width: calc(~'30% - 3em');
+      @media @grid-desktop {
+        width: calc(~'30% - 3em');
+      }
     }
   }
 
   > li {
     .navbar & {
-      position: static;
-      width: 30%;
+      @media @grid-desktop {
+        position: static;
+        width: 30%;
+      }
     }
   }
 
@@ -135,10 +149,15 @@
 .navbar-nav > .dropdown > .treaties-menu > li > .menu-title:focus,
 .navbar-nav > .dropdown > .treaties-menu .dropdown-toggle:focus + .menu-title {
 
-  &::before,
-  &::after {
+  &::before {
     display: inline-block;
     visibility: visible;
+  }
+  @media @grid-desktop {
+    &::after {
+      display: inline-block;
+      visibility: visible;
+    }
   }
 
   &.treaties-menu-all-link {
@@ -149,30 +168,51 @@
 
 .browse-all-menu,
 .more-menu {
-  padding-left: 2.8rem;
-  padding-right: 2.8rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  @media @grid-desktop {
+    padding-left: 2.8rem;
+    padding-right: 2.8rem;
+  }
   > li {
-    margin-left: -2.8rem;
-    margin-right: -2.8rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    @media @grid-desktop {
+      margin-left: -2.8rem;
+      margin-right: -2.8rem;
+    }
   }
   > .dropdown-header {
     margin-left: 0;
     margin-right: 0;
   }
   > .divider {
-    margin-left: -1rem;
-    margin-right: -1rem;
+    @media @grid-desktop {
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
   }
 }
 
 .browse-all-menu {
   padding-bottom: 1.5em;
-  .navbar-nav & > li > a {
-    padding-left: 4.8rem;
+
+  @media @grid-mobile {
+    padding-top: 1.5em;
   }
+
+  .navbar-nav & > li > a {
+    padding-left: 4rem;
+  }
+
   .navbar-nav > .dropdown > & > li > .menu-title {
     &:before {
-      left: 2.8rem;
+      left: 2rem;
+      @media @grid-desktop {
+        left: 2.8rem;
+      }
     }
+
   }
+
 }

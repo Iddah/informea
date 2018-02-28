@@ -5507,13 +5507,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 [dir] .navbar-default .navbar-toggle {
-  border-color: #ddd;
+  border-color: transparent;
 }
 [dir] .navbar-default .navbar-toggle:hover, [dir] .navbar-default .navbar-toggle:focus {
-  background-color: #ddd;
+  background-color: transparent;
 }
 [dir] .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #fff;
 }
 [dir] .navbar-default .navbar-collapse, [dir] .navbar-default .navbar-form {
   border-color: #e7e7e7;

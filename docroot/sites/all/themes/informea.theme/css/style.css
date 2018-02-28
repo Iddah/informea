@@ -535,7 +535,7 @@ h1 {
 [dir] .navbar-default .navbar-nav > .active > a:focus {
   background-color: #eee;
 }
-[dir] .navbar-default .navbar-toggle {
+/* [dir] .navbar-default .navbar-toggle {
   border-color: #fff;
 }
 [dir] .navbar-default .navbar-toggle .icon-bar {
@@ -556,7 +556,7 @@ h1 {
 }
 [dir] .navbar-default .navbar-toggle:active .icon-bar {
   background-color: #16232e;
-}
+} */
 [dir] .navbar-default .navbar-collapse,
 [dir] .navbar-default .navbar-form {
   border-color: rgba(26, 58, 111, .25);
@@ -603,26 +603,26 @@ h1 {
   }
 }
 @media (max-width: 1199px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > .dropdown-header,
+  /* .navbar-default .navbar-nav .open .dropdown-menu > .dropdown-header,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > .dropdown-header {
     color: #fff;
-  }
-  [dir] .navbar-default .navbar-nav .open .dropdown-menu .divider {
+  } */
+/*   [dir] .navbar-default .navbar-nav .open .dropdown-menu .divider {
     background-color: rgba(247, 247, 247, .25);
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a,
+  } */
+  /*.navbar-default .navbar-nav .open .dropdown-menu > li > a,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > ul > li > a {
     color: #c6cedb;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  } */
+  /* .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > ul > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a:focus,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > ul > li > a:focus {
     color: #fff;
-  }
+  } */
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > ul > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a:focus,

@@ -142,7 +142,7 @@
         $body.removeClass('select2-open');
       });
 
-    $('.dropdown-full-width').on('click touchstart', '.dropdown-menu', function(event) {
+    $('#navbar').on('click touchstart', '.dropdown-menu, dropdown-toggle', function(event) {
       var events = $._data(document, 'events') || {};
       events = events.click || [];
       for(var i = 0; i < events.length; i++) {

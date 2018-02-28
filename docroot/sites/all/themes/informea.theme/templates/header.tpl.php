@@ -43,9 +43,9 @@
 
 
       <ul class="nav navbar-nav" aria-hidden="true">
-        <li class="dropdown dropdown-full-width">
-          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-          <?php print '<a href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
+        <li class="dropdown dropdown-full-width dropdown-treaties-menu">
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
+          <?php print '<a class="menu-title" href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
           <?php print $informea_treaties_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
@@ -53,7 +53,7 @@
         <li><?php print l(t('Events'), 'events', array('attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
         <li class="dropdown">
-          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
           <?php print '<a class="menu-title">' . t('More') . ' <span>+</span></a>'; ?>
           <ul class="dropdown-menu more-menu">
               <li><?php print l(t('Documents and Literature'), 'search', array('query' => array('f[0]' => 'type:document', 'f[1]' => 'type:literature'), 'attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
@@ -69,7 +69,7 @@
         </li>
         </li>
         <li class="dropdown">
-          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
           <?php print '<a class="menu-title">' . t('Browse all …') . ' <span class="caret"></span></a>'; ?>
           <?php print $informea_browse_all_block; ?>
         </li><!-- .dropdown -->
