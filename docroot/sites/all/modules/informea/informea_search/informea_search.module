@@ -505,6 +505,14 @@ function informea_search_categories(){
       'is_group_label' => TRUE,
       'query' => ['f' => ['type' => ['feed_item', 'event_calendar']]],
     ],
+    'news' => [
+      'label' => t('News'),
+      'query' => ['f' => ['type' => ['feed_item']]],
+    ],
+    'Events' => [
+      'label' => t('Events'),
+      'query' => ['f' => ['type' => ['event_calendar']]],
+    ],
     'goals_and_declarations' => [
       'label' => t('Goals and declarations'),
       'is_group_label' => TRUE,
