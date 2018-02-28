@@ -3179,68 +3179,6 @@ iframe.pdfjs {
   text-transform: uppercase;
   white-space: nowrap;
 }
-.back-to-top {
-  bottom: 30px;
-  display: block;
-  display: none;
-  height: 56px;
-  position: fixed;
-  width: 56px;
-}
-[dir] .back-to-top {
-  background-color: #ffcc33;
-  border-radius: 50%;
-}
-[dir=ltr] .back-to-top {
-  right: 30px;
-}
-[dir=rtl] .back-to-top {
-  left: 30px;
-}
-.back-to-top:before {
-  bottom: 54px;
-  content: "";
-  display: block;
-  height: 0;
-  position: fixed;
-  width: 0;
-}
-[dir] .back-to-top:before {
-  border-bottom: 12px solid #005289;
-  border-top: 12px solid transparent;
-}
-[dir=ltr] .back-to-top:before {
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  right: 46px;
-}
-[dir=rtl] .back-to-top:before {
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-  left: 46px;
-}
-.back-to-top:after {
-  bottom: 53px;
-  content: "";
-  display: block;
-  height: 0;
-  position: fixed;
-  width: 0;
-}
-[dir] .back-to-top:after {
-  border-bottom: 12px solid #ffcc33;
-  border-top: 12px solid transparent;
-}
-[dir=ltr] .back-to-top:after {
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  right: 46px;
-}
-[dir=rtl] .back-to-top:after {
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-  left: 46px;
-}
 .view-strategic-goals-and-targets h2 {
   font-size: 21px;
   font-weight: 400;

@@ -204,7 +204,7 @@
     </div><!-- .footer-section -->
   </div><!-- .container -->
 </footer><!-- .footer -->
-<a class="back-to-top" href="#"></a>
+<a class="scroll-button" href="#"></a>
 <script type="text/javascript">
   setTimeout(function(){var a=document.createElement("script");
     var b=document.getElementsByTagName("script")[0];

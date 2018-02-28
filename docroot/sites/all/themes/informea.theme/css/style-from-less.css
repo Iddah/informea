@@ -726,17 +726,6 @@ body {
 [dir=rtl] .select2-default {
   color: #333333 !important;
 }
-.back-to-top {
-  z-index: 1050;
-}
-[dir=ltr] .back-to-top {
-  -webkit-box-shadow: 1px 1px 3px;
-  box-shadow: 1px 1px 3px;
-}
-[dir=rtl] .back-to-top {
-  -webkit-box-shadow: -1px 1px 3px;
-          box-shadow: -1px 1px 3px;
-}
 .informea-calendar-date {
   font-size: 1.3em;
   text-transform: uppercase;
@@ -1674,6 +1663,98 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .field-content-type > li {
   text-transform: capitalize;
+}
+.scroll-button {
+  bottom: 30px;
+  display: block;
+  height: 56px;
+  opacity: 0;
+  position: fixed;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+  width: 56px;
+  z-index: 1050;
+  pointer-events: none;
+}
+[dir] .scroll-button {
+  background-color: #ffcc33;
+  border-radius: 50%;
+}
+[dir=ltr] .scroll-button {
+  -webkit-box-shadow: 1px 1px 3px;
+  box-shadow: 1px 1px 3px;
+  right: 30px;
+}
+[dir=rtl] .scroll-button {
+  -webkit-box-shadow: -1px 1px 3px;
+          box-shadow: -1px 1px 3px;
+  left: 30px;
+}
+.scroll-button::before,
+.scroll-button::after {
+  content: "";
+  display: block;
+  height: 0;
+  position: fixed;
+  width: 0;
+}
+[dir] .scroll-button::before, [dir] .scroll-button::after {
+  border-bottom: 12px solid;
+  border-top: 12px solid transparent;
+}
+[dir=ltr] .scroll-button::before, [dir=ltr] .scroll-button::after {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  right: 46px;
+}
+[dir=rtl] .scroll-button::before, [dir=rtl] .scroll-button::after {
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  left: 46px;
+}
+.scroll-button:before {
+  bottom: 54px;
+}
+[dir] .scroll-button:before {
+  border-bottom-color: #005289;
+}
+.scroll-button:after {
+  bottom: 53px;
+}
+[dir] .scroll-button:after {
+  border-bottom-color: #ffcc33;
+}
+.scroll-button.scroll-to-top {
+  opacity: 1;
+  pointer-events: all;
+}
+.page-topics .scroll-button.scroll-to-bottom,
+.page-regions .scroll-button.scroll-to-bottom {
+  opacity: 1;
+  pointer-events: all;
+}
+.page-topics .scroll-button.scroll-to-bottom::before,
+.page-regions .scroll-button.scroll-to-bottom::before {
+  -webkit-transform: scale(-1);
+  bottom: 39px;
+}
+[dir] .page-topics .scroll-button.scroll-to-bottom::before, [dir] .page-regions .scroll-button.scroll-to-bottom::before {
+          transform: scale(-1);
+}
+.page-topics .scroll-button.scroll-to-bottom::after,
+.page-regions .scroll-button.scroll-to-bottom::after {
+  -webkit-transform: scale(-1);
+  bottom: 40px;
+}
+[dir] .page-topics .scroll-button.scroll-to-bottom::after, [dir] .page-regions .scroll-button.scroll-to-bottom::after {
+          transform: scale(-1);
+}
+.page-topics .scroll-button::before,
+.page-regions .scroll-button::before,
+.page-topics .scroll-button::after,
+.page-regions .scroll-button::after {
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 .page-topics.topic-Water h2.topic-title span {
   color: #044170;

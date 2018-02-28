@@ -107,31 +107,6 @@
       }).show();
     });
 
-    $('.back-to-top').on('click', function (event) {
-      event.preventDefault();
-
-      $('html, body').animate({
-        scrollTop: 0
-      }, 600);
-    });
-
-    var timer;
-
-    $(window).on('scroll', function () {
-      if (!timer) {
-        timer = setTimeout(function () {
-          if ($(window).scrollTop() > 100) {
-            $('.back-to-top').fadeIn();
-          } else {
-            $('.back-to-top').fadeOut();
-          }
-
-          timer = null;
-        }, 300);
-      }
-    });
-
-
     var $body = $('body');
 
     $('.use-select-2')

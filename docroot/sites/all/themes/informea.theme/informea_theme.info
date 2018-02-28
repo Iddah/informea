@@ -38,6 +38,7 @@ stylesheets[all][] = 'css/style-from-less.css'
 
 scripts[] = 'bootstrap/js/bootstrap.min.js'
 scripts[] = 'js/common.js'
+scripts[] = 'js/scroll-buttons.js'
 scripts[] = 'js/horizontal-switcher.js'
 
 
