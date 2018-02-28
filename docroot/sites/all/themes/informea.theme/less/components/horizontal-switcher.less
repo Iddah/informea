@@ -45,14 +45,16 @@
     // min-height: 44px;
   }
   &_link > a {
-    border-left: 1px solid #D6D6D6;
-    border-right: 1px solid #D6D6D6;
     border: none;
     display: block;
     font-weight: bold;
     margin-right: 0;
     padding: @topic-switcher-padding-top 18px @topic-switcher-padding-bottom;
     white-space: nowrap;
+    @media @grid-desktop {
+      border-left: 1px solid #D6D6D6;
+      border-right: 1px solid #D6D6D6;
+    }
   }
   &_link:not(.active) + &_link > a {
     border-left: none;
