@@ -128,8 +128,12 @@
   justify-content: center;
   margin: 0 auto;
   flex-wrap: wrap;
-  @media (min-width: @screen-md-min) {
-    flex-wrap: nowrap;
+  // @media (min-width: @screen-md-min) {
+  //   flex-wrap: nowrap;
+  // }
+  @media @grid-mobile {
+    align-items: center;
+    flex-direction: column;
   }
   .pane-content {
     overflow: hidden;
