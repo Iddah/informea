@@ -3281,8 +3281,6 @@ h2.regional-topic-title span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 [dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region {
   margin: 0 auto;
