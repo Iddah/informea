@@ -37,43 +37,76 @@ function informea_search_theme($existing, $type, $theme, $path) {
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
 function informea_search_facet_items_alter(&$build, &$settings) {
+
+  $facets_titles = [
+    'field_region' => 'All Regions',
+    'field_mea_topic' => 'All Topics',
+    'field_informea_tags' => 'All Glossary Terms',
+  ];
+
+  $text = isset($facets_titles[$settings->facet]) ? t($facets_titles[$settings->facet]) : t('All items');
+  $select_all = [
+    '#html' => TRUE,
+    '#active' => TRUE,
+    '#markup' => sprintf('%s <span class="item-label all">%s</span>', t('Showing'), $text),
+    '#query' => ['f' => []],
+    '#count' => 99999999,
+  ];
+
+
+  foreach ($build as &$item) {
+    $item['#html'] = TRUE;
+
+    if ($item['#active']) {
+      $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('Showing'), $item['#markup']);
+    }
+    else {
+      $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('Show'), $item['#markup']);
+    }
+
+    $select_all['#path'] = $item['#path'];
+
+    if (!empty($item['#active'])) {
+      $select_all['#active'] = FALSE;
+      $select_all['#markup'] = sprintf('<span class="item-label-holder">%s <span class="item-label">%s</span></span>', t('Show'), $text);
+    }
+    if (!empty($item['#query']['f'])) {
+      $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
+    }
+    if (!empty($item['#query']['text'])) {
+      $select_all['#query']['text'] = $item['#query']['text'];
+    }
+  }
+
+
+
+ if (!empty($select_all['#path'])) {
+    // Display "In All Regions" / "In All Topics" option.
+    foreach ($select_all['#query']['f'] as $key => $value) {
+      if (preg_match('/^' . $settings->facet . ':/', $value)) {
+        unset($select_all['#query']['f'][$key]);
+      }
+    }
+
+    $select_all['#class'] = ['facet-select-all'];
+
+    $new_build = [
+      $select_all
+    ];
+    foreach ($build as $b) {
+      $new_build[] = $b;
+    }
+    $build = $new_build;
+  }
+
+  //kpr($build);
+
+
   switch ($settings->name) {
     case 'search_api@default_index:block:field_region':
     case 'search_api@default_index:block:field_mea_topic':
-      $text = $settings->facet == 'field_region' ? t('All Regions') : t('All Topics');
-      $select_all = [
-        '#html' => TRUE,
-        '#active' => TRUE,
-        '#markup' => sprintf('%s <span class="item-label">%s</span>', t('In'), $text),
-        '#query' => ['f' => []],
-        '#count' => NULL,
-      ];
-      foreach ($build as &$item) {
-        $item['#html'] = TRUE;
-        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $item['#markup']);
 
-        $select_all['#path'] = $item['#path'];
-        if (!empty($item['#active'])) {
-          $select_all['#active'] = FALSE;
-        }
-        if (!empty($item['#query']['f'])) {
-          $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
-        }
-        if (!empty($item['#query']['text'])) {
-          $select_all['#query']['text'] = $item['#query']['text'];
-        }
-      }
-      if (!empty($select_all['#path'])) {
-        // Display "In All Regions" / "In All Topics" option.
-        foreach ($select_all['#query']['f'] as $key => $value) {
-          if (preg_match('/^' . $settings->facet . ':/', $value)) {
-            unset($select_all['#query']['f'][$key]);
-          }
-        }
-        array_unshift($build, $select_all);
-      }
-      break;
-
+    break;
     case 'search_api@default_index:block:field_contact_roles:field_contact_role':
     case 'search_api@default_index:block:field_person_type':
       if (!informea_search_check_facet_url_param('search', 'contact_person')) {
@@ -92,6 +125,16 @@ function informea_search_facet_items_alter(&$build, &$settings) {
 
   }
 }
+
+/*function informea_search_block_view_alter(&$data, $block) {
+  if ($block->module == 'facetapi') {
+    if ($data) {
+      var_dump($data);
+      exit;
+    }
+  }
+}*/
+
 
 function informea_search_check_facet_url_param($path = '', $param = NULL){
   if (preg_match("/^search/", current_path(), $matches)) {

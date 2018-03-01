@@ -658,7 +658,7 @@ node/*/documents',
         'weight' => 0,
       ),
     ),
-    'title' => 'Glossary terms',
+    'title' => '<none>',
     'visibility' => 1,
   );
 

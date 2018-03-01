@@ -2764,7 +2764,7 @@ function informea_search_facetapi_default_facet_settings() {
     'individual_parent' => '0',
     'query_type' => 'term',
     'limit_active_items' => 1,
-    'default_true' => TRUE,
+    'default_true' => '1',
     'facet_search_ids' => array(),
     'exclude' => 0,
   );
@@ -4826,7 +4826,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -4862,6 +4891,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_document_authors'] = $facet;
 
@@ -5775,7 +5808,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -5811,6 +5873,10 @@ function informea_search_facetapi_default_facet_settings() {
       'value' => '',
       'format' => 'full_html',
     ),
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_geographical_scope'] = $facet;
 
@@ -5947,7 +6013,36 @@ function informea_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -5983,6 +6078,10 @@ function informea_search_facetapi_default_facet_settings() {
     'reset_option_label' => '--Reset--',
     'submit_page' => '',
     'hide_facet_count' => 0,
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_index:block:field_informea_tags'] = $facet;
 
@@ -8191,9 +8290,9 @@ function informea_search_facetapi_default_facet_settings() {
       ),
     ),
     'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
       'display' => 'display',
-      'active' => 0,
-      'count' => 0,
       'natural' => 0,
       'indexed' => 0,
     ),
@@ -8229,6 +8328,12 @@ function informea_search_facetapi_default_facet_settings() {
     'regex' => 0,
     'show_minimum_items' => 2,
     'rewrite_items' => 1,
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'auto-submit-delay' => '1500',
+    'range_simple' => 10,
+    'range_advanced' => '',
   );
   $export['search_api@default_index:block:field_region'] = $facet;
 
