@@ -2178,15 +2178,10 @@ h2.regional-topic-title span {
   text-align: right;
 }
 .search-block #search-form {
-  width: auto;
+  width: 100%;
 }
 [dir] .search-block #search-form {
-  margin: 0 auto;
-}
-@media (min-width: 768px) {
-  .search-block #search-form {
-    width: 80%;
-  }
+  margin: 0;
 }
 .search-block #search-form .input-group {
   display: -webkit-box;
