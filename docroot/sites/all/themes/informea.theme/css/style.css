@@ -1671,13 +1671,13 @@ button.toggle {
   }
 }
 /* Treaties page */
-body.page-treaties h3 {
+/* body.page-treaties h3 {
   font-size: 1.2em;
   font-weight: normal;
 }
 [dir] body.page-treaties h3 {
   margin-top: 0;
-}
+} */
 [dir] body.page-treaties div.regional {
   margin-top: 25px;
 }
