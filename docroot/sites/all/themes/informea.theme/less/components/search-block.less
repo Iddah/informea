@@ -1,6 +1,7 @@
 h2.topic-title {
-  span{
+  span {
     .loop-mea-topics({
+      .page-treaties.topic-@{mea-topic-class} &,
       .page-topics.topic-@{mea-topic-class} & {
         color: @mea-topic-color;
         font-style: italic;
@@ -28,6 +29,7 @@ h2.regional-topic-title {
     }
   }
   .loop-mea-topics({
+    .page-treaties.topic-@{mea-topic-class} &,
     .page-topics.topic-@{mea-topic-class} & {
       // position: relative;
       background-color: @mea-topic-color;
