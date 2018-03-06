@@ -5,6 +5,10 @@
  */
 
 include_once 'informea_search.features.inc';
+include_once 'plugins/facetapi/FacetapiWidgetCheckboxLinksCustom.php';
+
+# TODO. Remove this line after making sure that all is fixed in https://support.informea.org/issues/227.
+include_once 'plugins/facetapi/FacetapiWidgetCheckboxLinksInformea.php';
 
 /**
  * Implements hook_entity_info_alter().
@@ -28,7 +32,19 @@ function informea_search_theme($existing, $type, $theme, $path) {
       ],
       'path' => drupal_get_path('module', 'informea_search') . '/templates',
     ],
+    'informea_facetapi_link_active' => array(
+      'variables' => array('text' => NULL, 'path' => NULL, 'options' => array()),
+    ),
   ];
+}
+
+function theme_informea_facetapi_link_active($variables) {
+  // Sanitizes the link text if necessary.
+  $sanitize = empty($variables['options']['html']);
+  $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
+  $variables['text'] = $link_text;
+  $variables['options']['html'] = TRUE;
+  return theme_link($variables);
 }
 
 
@@ -37,44 +53,11 @@ function informea_search_theme($existing, $type, $theme, $path) {
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
 function informea_search_facet_items_alter(&$build, &$settings) {
+
+  $process = TRUE;
   switch ($settings->name) {
-    case 'search_api@default_index:block:field_region':
-    case 'search_api@default_index:block:field_mea_topic':
-      $text = $settings->facet == 'field_region' ? t('All Regions') : t('All Topics');
-      $select_all = [
-        '#html' => TRUE,
-        '#active' => TRUE,
-        '#markup' => sprintf('%s <span class="item-label">%s</span>', t('In'), $text),
-        '#query' => ['f' => []],
-        '#count' => NULL,
-      ];
-      foreach ($build as &$item) {
-        $item['#html'] = TRUE;
-        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', t('only in'), $item['#markup']);
-
-        $select_all['#path'] = $item['#path'];
-        if (!empty($item['#active'])) {
-          $select_all['#active'] = FALSE;
-        }
-        if (!empty($item['#query']['f'])) {
-          $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
-        }
-        if (!empty($item['#query']['text'])) {
-          $select_all['#query']['text'] = $item['#query']['text'];
-        }
-      }
-      if (!empty($select_all['#path'])) {
-        // Display "In All Regions" / "In All Topics" option.
-        foreach ($select_all['#query']['f'] as $key => $value) {
-          if (preg_match('/^' . $settings->facet . ':/', $value)) {
-            unset($select_all['#query']['f'][$key]);
-          }
-        }
-        array_unshift($build, $select_all);
-      }
-      break;
-
     case 'search_api@default_index:block:field_contact_roles:field_contact_role':
+      $process = FALSE;
     case 'search_api@default_index:block:field_person_type':
       if (!informea_search_check_facet_url_param('search', 'contact_person')) {
         $settings->enabled = FALSE;
@@ -83,6 +66,7 @@ function informea_search_facet_items_alter(&$build, &$settings) {
       break;
 
     case 'search_api@default_index:block:field_document_type':
+      $process = FALSE;
     case 'search_api@default_index:block:year_of_text':
       if (!informea_search_check_facet_url_param('search', 'document')) {
         $settings->enabled = FALSE;
@@ -90,8 +74,106 @@ function informea_search_facet_items_alter(&$build, &$settings) {
       }
       break;
 
+    case 'search_api@default_index:block:field_informea_tags':
+      $process = FALSE;
+
+     /* foreach ($build as &$item) {
+         if($item['#active']) {
+           $item['#theme'] = 'informea_facetapi_link_active';
+         }
+      }*/
+      break;
   }
+  if ($process) {
+
+    $prefix = t('Show');
+    $prefixing = t('Showing');
+
+    $facets_titles = [
+      'field_region' => 'All Regions',
+      'field_mea_topic' => 'All Topics',
+      'field_informea_tags' => 'All Glossary Terms',
+      'field_data_source' => 'All Data Sources',
+      'field_field_of_application' => 'All Fields of Application',
+      'field_jurisdiction' => 'All Jurisdictions',
+      'field_decision_status' => 'All Statuses',
+      'field_decision_type' => 'All Decision Types',
+      'field_type_of_text' => 'All Types of Text',
+      'field_action_plan_type' => 'All Types',
+      'field_territorial_subdivision' => 'All Territorial Subdivisions',
+      'field_ecolex_decision_status' => 'All Statuses',
+      'field_document_authors' => 'All Authors',
+      'field_literature_type' => 'All Literature Types',
+      'field_event_type' => 'All Types',
+      'field_event_kind' => 'All Kinds',
+      'field_goal_type' => 'All Types',
+      'field_geg_theme' => 'All GEG Themes',
+      'field_person_type' => 'All Contact Types',
+    ];
+
+    if ($settings->facet == 'field_territorial_subdivision') {
+      $prefix = t('Show from');
+      $prefixing = t('Showing from');
+    }
+
+    $text = isset($facets_titles[$settings->facet]) ? t($facets_titles[$settings->facet]) : t('All items');
+    $select_all = [
+      '#html' => TRUE,
+      '#active' => TRUE,
+      '#markup' => sprintf('%s <span class="item-label all">%s</span>', $prefixing, $text),
+      '#query' => ['f' => []],
+      '#count' => 99999999,
+    ];
+
+
+    foreach ($build as &$item) {
+      $item['#html'] = TRUE;
+
+      if ($item['#active']) {
+        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', $prefixing, $item['#markup']);
+      }
+      else {
+        $item['#markup'] = sprintf('%s <span class="item-label">%s</span>', $prefix, $item['#markup']);
+      }
+
+      $select_all['#path'] = $item['#path'];
+
+      if (!empty($item['#active'])) {
+        $select_all['#active'] = FALSE;
+        $select_all['#markup'] = sprintf('<span class="item-label-holder">%s <span class="item-label">%s</span></span>', $prefix, $text);
+      }
+      if (!empty($item['#query']['f'])) {
+        $select_all['#query']['f'] = array_merge($select_all['#query']['f'], $item['#query']['f']);
+      }
+      if (!empty($item['#query']['text'])) {
+        $select_all['#query']['text'] = $item['#query']['text'];
+      }
+    }
+
+
+
+    if (!empty($select_all['#path'])) {
+      // Display "In All Regions" / "In All Topics" option.
+      foreach ($select_all['#query']['f'] as $key => $value) {
+        if (preg_match('/^' . $settings->facet . ':/', $value)) {
+          unset($select_all['#query']['f'][$key]);
+        }
+      }
+
+      $select_all['#class'] = ['facet-select-all'];
+
+      $new_build = [
+        $select_all
+      ];
+      foreach ($build as $b) {
+        $new_build[] = $b;
+      }
+      $build = $new_build;
+    }
+  }
+
 }
+
 
 function informea_search_check_facet_url_param($path = '', $param = NULL){
   if (preg_match("/^search/", current_path(), $matches)) {
@@ -748,11 +830,19 @@ function informea_search_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_facetapi_widgets().
  */
 function informea_search_facetapi_widgets() {
+  // TODO. Remove facetapi_checkbox_links_altered after making sure that all is fixed in https://support.informea.org/issues/227.
   return [
     'facetapi_checkbox_links_altered' => [
       'handler' => [
         'label' => t('Links with checkboxes (altered by informea)'),
         'class' => 'FacetapiWidgetCheckboxLinksInformea',
+        'query types' => ['term', 'date'],
+      ],
+    ],
+    'facetapi_checkbox_links_custom' => [
+      'handler' => [
+        'label' => t('Links with checkboxes (custom)'),
+        'class' => 'FacetapiWidgetCheckboxLinksCustom',
         'query types' => ['term', 'date'],
       ],
     ],
@@ -939,4 +1029,3 @@ function informea_search_node_view($node, $view_mode, $langcode) {
     ];
   }
 }
-

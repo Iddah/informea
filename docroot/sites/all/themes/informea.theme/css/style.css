@@ -2226,7 +2226,7 @@ ul[class*="facetapi"] {
   padding: 0;
 }
 [dir=ltr] ul[class*="facetapi"] {
-  margin: 0 0 0 5px;
+  margin: 0;
 }
 [dir=rtl] ul[class*="facetapi"] {
   margin: 0 5px 0 0;

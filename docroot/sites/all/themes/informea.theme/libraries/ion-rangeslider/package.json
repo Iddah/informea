@@ -1,53 +1,13 @@
 {
-  "_from": "ion-rangeslider",
-  "_id": "ion-rangeslider@2.2.0",
-  "_inBundle": false,
-  "_integrity": "sha1-OI8SzXBZOmGzNo+tbE8wpdqLl8k=",
-  "_location": "/ion-rangeslider",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "ion-rangeslider",
-    "name": "ion-rangeslider",
-    "escapedName": "ion-rangeslider",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/ion-rangeslider/-/ion-rangeslider-2.2.0.tgz",
-  "_shasum": "388f12cd70593a61b3368fad6c4f30a5da8b97c9",
-  "_spec": "ion-rangeslider",
-  "_where": "/Users/mara/Work/informea/docroot/sites/all/themes/informea.theme",
+  "name": "ion-rangeslider",
+  "version": "2.2.0",
+  "description": "Cool, comfortable and easily customizable range slider with many options and skin support",
+  "homepage": "http://ionden.com/a/plugins/ion.rangeSlider/en.html",
   "author": {
     "name": "Denis Ineshin",
     "email": "ionden.tech@gmail.com",
     "url": "IonDen"
   },
-  "bugs": {
-    "url": "https://github.com/IonDen/ion.rangeSlider/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "jquery": ">=1.8"
-  },
-  "deprecated": false,
-  "description": "Cool, comfortable and easily customizable range slider with many options and skin support",
-  "directories": {
-    "lib": "js"
-  },
-  "homepage": "http://ionden.com/a/plugins/ion.rangeSlider/en.html",
-  "ignore": [
-    ".idea",
-    "PSD",
-    "bower.json",
-    "ion-rangeSlider.jquery.json",
-    "readme.ru.md"
-  ],
   "keywords": [
     "jquery-plugin",
     "ecosystem:jquery",
@@ -63,13 +23,28 @@
     "noui",
     "skins"
   ],
-  "license": "MIT",
   "main": "./js/ion.rangeSlider.js",
-  "name": "ion-rangeslider",
+  "directories": {
+    "lib": "js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/IonDen/ion.rangeSlider.git"
   },
+  "bugs": {
+    "url": "https://github.com/IonDen/ion.rangeSlider/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.8"
+  },
+  "ignore": [
+    ".idea",
+    "PSD",
+    "bower.json",
+    "ion-rangeSlider.jquery.json",
+    "readme.ru.md"
+  ],
   "spm": {
     "main": "js/ion.rangeSlider.js",
     "dependencies": {
@@ -83,5 +58,30 @@
       "readme.ru.md"
     ]
   },
-  "version": "2.2.0"
+  "gitHead": "4bb522d3d28aedaaf035e3daa0f2f46850b2242c",
+  "_id": "ion-rangeslider@2.2.0",
+  "scripts": {},
+  "_shasum": "388f12cd70593a61b3368fad6c4f30a5da8b97c9",
+  "_from": "ion-rangeslider@>=2.2.0 <3.0.0",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "7.5.0",
+  "_npmUser": {
+    "name": "ionden",
+    "email": "denis.ineshin@gmail.com"
+  },
+  "dist": {
+    "shasum": "388f12cd70593a61b3368fad6c4f30a5da8b97c9",
+    "tarball": "https://registry.npmjs.org/ion-rangeslider/-/ion-rangeslider-2.2.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "ionden",
+      "email": "denis.ineshin@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/ion-rangeslider-2.2.0.tgz_1498025112313_0.5591320572420955"
+  },
+  "_resolved": "https://registry.npmjs.org/ion-rangeslider/-/ion-rangeslider-2.2.0.tgz"
 }
