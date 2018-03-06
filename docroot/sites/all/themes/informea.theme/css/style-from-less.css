@@ -4582,10 +4582,4 @@ fieldset[disabled] a.explore a {
 [dir] .facetapi-facetapi-checkbox-links-custom li a.facetapi-active {
   background-image: url('../img//checkbox-active.svg');
 }
-.page-treaties .view-regional-treaties .field-name-content-type {
-  display: none;
-}
-[dir] .page-treaties .informea-treaties-listings {
-  margin-top: 1em;
-}
 /*# sourceMappingURL=style-from-less.css.map */
