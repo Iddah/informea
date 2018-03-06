@@ -41,3 +41,10 @@ function ecolex_update_7005() {
 function ecolex_update_7006() {
   features_revert(array('ecolex' => ['field_instance']));
 }
+
+/**
+ * #388 - Treaties page update.
+ */
+function ecolex_update_7007() {
+  features_revert_module('ecolex');
+}

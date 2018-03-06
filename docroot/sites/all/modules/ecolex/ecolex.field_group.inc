@@ -403,7 +403,7 @@ function ecolex_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Tags',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_type_of_text',
       1 => 'field_region',
