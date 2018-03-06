@@ -1,11 +1,24 @@
 h2.topic-title {
-  span{
+  .topic-title-all {
+    display: none;
+  }
+  span {
     .loop-mea-topics({
+      .page-treaties.topic-@{mea-topic-class} &,
       .page-topics.topic-@{mea-topic-class} & {
         color: @mea-topic-color;
         font-style: italic;
       }
     });
+    .page-treaties.topic- & {
+      display: none;
+    }
+  }
+}
+.page-treaties.topic- {
+  .topic-title-all {
+    display: inline-block;
+    margin-right: .2em;
   }
 }
 h2.regional-topic-title {
@@ -28,6 +41,7 @@ h2.regional-topic-title {
     }
   }
   .loop-mea-topics({
+    .page-treaties.topic-@{mea-topic-class} &,
     .page-topics.topic-@{mea-topic-class} & {
       // position: relative;
       background-color: @mea-topic-color;

@@ -34,7 +34,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -465,7 +465,7 @@ function ecolex_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2460,7 +2460,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2858,10 +2858,16 @@ function ecolex_field_default_field_instances() {
         'weight' => 10,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 45,
+        'label' => 'hidden',
+        'module' => 'informea',
+        'settings' => array(
+          'title_class' => 'informea-teaser__title',
+          'title_extensions_field' => 'field_files',
+          'title_link' => 'content',
+          'title_style' => 'h3',
+        ),
+        'type' => 'informea_title_linked',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2923,7 +2929,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3248,7 +3254,7 @@ function ecolex_field_default_field_instances() {
           'view_mode' => 'image_and_title',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4192,7 +4198,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4347,7 +4353,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4407,7 +4413,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4747,7 +4753,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5010,7 +5016,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5143,7 +5149,7 @@ function ecolex_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5214,7 +5220,7 @@ function ecolex_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5624,10 +5630,16 @@ function ecolex_field_default_field_instances() {
         'weight' => 30,
       ),
       'search_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 40,
+        'label' => 'hidden',
+        'module' => 'informea',
+        'settings' => array(
+          'title_class' => 'informea-teaser__title',
+          'title_extensions_field' => 'field_files',
+          'title_link' => 'content',
+          'title_style' => 'h3',
+        ),
+        'type' => 'informea_title_linked',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

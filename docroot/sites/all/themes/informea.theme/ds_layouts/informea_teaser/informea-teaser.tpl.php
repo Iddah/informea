@@ -3,10 +3,11 @@
 <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
 <?php endif; ?>
-
+<?php if ($left): ?>
 <<?php print $left_wrapper ?> class="informea-teaser__left<?php print $left_classes; ?>">
 <?php print $left; ?>
 </<?php print $left_wrapper ?>>
+<?php endif; ?>
 
 <<?php print $right_wrapper ?> class="informea-teaser__right<?php print $right_classes; ?>">
 <?php print $right; ?>

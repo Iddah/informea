@@ -806,3 +806,10 @@ function informea_update_7063() {
   features_revert_module('geographic_region');
   features_revert_module('informea_topics');
 }
+
+/**
+ * #388 - Treaties page remove unused blocks.
+ */
+function informea_update_7064() {
+  features_revert_module('informea');
+}
