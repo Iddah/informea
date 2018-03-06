@@ -3,7 +3,9 @@
   border-radius: 50%;
   bottom: 30px;
   box-shadow: 1px 1px 3px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 56px;
   opacity: 0;
   position: fixed;
@@ -14,57 +16,75 @@
   pointer-events: none;
 
   &::before, &::after {
-    border-bottom: 12px solid;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid transparent;
     content: "";
     display: block;
     height: 0;
-    position: fixed;
-    right: 46px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
     width: 0;
-  }
-
-  &:before {
-    border-bottom-color: #005289;
-    bottom: 54px;
-  }
-
-  &:after {
-    border-bottom-color: #ffcc33;
-    bottom: 53px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
   }
 
   &.scroll-to-top {
-    opacity: 1;
-    pointer-events: all;
+
+    &::before, &::after {
+      border-bottom: 12px solid;
+      border-top: 12px solid transparent;
+    }
+
+    &::before {
+      border-bottom-color: #005289;
+      margin-top: -6px;
+    }
+
+    &::after {
+      border-bottom-color: #ffcc33;
+      margin-top: -5px;
+    }
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .page-topics &,
+    .page-regions & {
+      opacity: 0.5;
+      bottom: 30px + 10px + 56px;
+      &.active {
+        opacity: 1;
+      }
+    }
+
   }
 
   &.scroll-to-bottom {
+
+    &::before, &::after {
+      border-top: 12px solid;
+      border-bottom: 12px solid transparent;
+    }
+
+    &::before {
+      border-top-color: #005289;
+      margin-top: 7px;
+    }
+
+    &::after {
+      border-top-color: #ffcc33;
+      margin-top: 6px;
+    }
+
     .page-topics &,
     .page-regions & {
-      opacity: 1;
-      pointer-events: all;
-
-
-      &::before {
-        transform: scale(-1);
-        bottom: 39px;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+        pointer-events: all;
       }
 
-      &::after {
-        transform: scale(-1);
-        bottom: 40px;
-      }
-
-    }
-  }
-
-  .page-topics &,
-  .page-regions & {
-    &::before, &::after {
-      transition: .2s;
     }
   }
 

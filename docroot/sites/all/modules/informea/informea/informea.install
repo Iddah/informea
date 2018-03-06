@@ -813,3 +813,13 @@ function informea_update_7063() {
 function informea_update_7064() {
   features_revert_module('informea');
 }
+
+/**
+ * #381 - Consistency in panel headings on regional & topical pages.
+ */
+function informea_update_7065() {
+  features_revert_module('geographic_region');
+  features_revert_module('informea_topics');
+  features_revert_module('learning_course');
+
+}
