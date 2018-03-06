@@ -1,0 +1,21 @@
+diff --git a/docroot/sites/all/modules/contrib/facetapi/plugins/facetapi/widget_links.inc b/docroot/sites/all/modules/contrib/facetapi/plugins/facetapi/widget_links.inc
+index 0ae49b3..f630c17 100644
+--- a/docroot/sites/all/modules/contrib/facetapi/plugins/facetapi/widget_links.inc
++++ b/docroot/sites/all/modules/contrib/facetapi/plugins/facetapi/widget_links.inc
+@@ -86,6 +86,7 @@ class FacetapiWidgetLinks extends FacetapiWidget {
+    *   The "items" parameter for theme_item_list().
+    */
+   function buildListItems($build) {
++
+     $settings = $this->settings->settings;
+ 
+     // Initializes links attributes, adds rel="nofollow" if configured.
+@@ -96,7 +97,7 @@ class FacetapiWidgetLinks extends FacetapiWidget {
+     $items = array();
+     foreach ($build as $value => $item) {
+       $row = array('class' => array());
+-
++      $attributes['class'] = [];
+       // Allow adding classes via altering.
+       if (isset($item['#class'])) {
+         $attributes['class'] = array_merge($attributes['class'], $item['#class']);

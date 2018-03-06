@@ -1,5 +1,7 @@
 <?php
 
+// TODO. Remove this file after making sure that all is fixed in https://support.informea.org/issues/227.
+
 class FacetapiWidgetCheckboxLinksInformea extends FacetapiWidgetCheckboxLinks {
 
   public function __construct($id, array $realm, \FacetapiFacet $facet, \stdClass $settings) {

@@ -1,9 +1,13 @@
 .block-facetapi {
   padding: 3rem 0;
-
+  .facetapi-limit-link{
+    font-size: 14px;
+    font-weight: 700;
+  }
   .block-title {
     margin-top: 0;
     padding-top: 0;
+    font-weight: 700;
   }
 
   & + .block-facetapi {
@@ -20,12 +24,12 @@
 ul.facetapi-facetapi-links {
   margin: 0;
 
-  li { padding: .2em 0; }
+  li { padding: .2em 0; color: #8F8F8F;}
 
-  &.facetapi-facet-field-region,
+  /*&.facetapi-facet-field-region,
   &.facetapi-facet-field-mea-topic {
     li { color: #8F8F8F; }
-  }
+  }*/
 
   .item-label {
     color: @text-color;
@@ -60,4 +64,11 @@ ul.facetapi-facetapi-links {
 
 .facetapi-select:extend(.select2-container .select2-choice) {
   padding: 0 0 0 4px;
+}
+
+.facet-select-all {
+  font-size: 0;
+  .item-label-holder {
+    font-size: 14px;
+  }
 }
