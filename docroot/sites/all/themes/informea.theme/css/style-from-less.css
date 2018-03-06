@@ -1931,9 +1931,18 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .scroll-button {
   bottom: 30px;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 56px;
-  opacity: 0.5;
+  opacity: 0;
   position: fixed;
   -webkit-transition: opacity .2s;
   transition: opacity .2s;
@@ -1960,68 +1969,67 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   content: "";
   display: block;
   height: 0;
-  position: fixed;
+  position: absolute;
+  top: 50%;
   width: 0;
 }
-[dir] .scroll-button::before, [dir] .scroll-button::after {
+[dir=ltr] .scroll-button::before, [dir=ltr] .scroll-button::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+}
+[dir=rtl] .scroll-button::before, [dir=rtl] .scroll-button::after {
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+}
+.scroll-button.scroll-to-top {
+  opacity: 0.5;
+}
+[dir] .scroll-button.scroll-to-top::before, [dir] .scroll-button.scroll-to-top::after {
   border-bottom: 12px solid;
   border-top: 12px solid transparent;
 }
-[dir=ltr] .scroll-button::before, [dir=ltr] .scroll-button::after {
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  right: 46px;
-}
-[dir=rtl] .scroll-button::before, [dir=rtl] .scroll-button::after {
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-  left: 46px;
-}
-.scroll-button:before {
-  bottom: 54px;
-}
-[dir] .scroll-button:before {
+[dir] .scroll-button.scroll-to-top::before {
   border-bottom-color: #005289;
+  margin-top: -6px;
 }
-.scroll-button:after {
-  bottom: 53px;
-}
-[dir] .scroll-button:after {
+[dir] .scroll-button.scroll-to-top::after {
   border-bottom-color: #ffcc33;
-}
-.scroll-button.scroll-to-top {
-  bottom: 96px;
+  margin-top: -5px;
 }
 .scroll-button.scroll-to-top.active {
   opacity: 1;
   pointer-events: all;
 }
-.scroll-button.scroll-to-top::before {
-  bottom: 117px;
+.page-topics .scroll-button.scroll-to-top,
+.page-regions .scroll-button.scroll-to-top {
+  bottom: 96px;
 }
-.scroll-button.scroll-to-top::after {
-  bottom: 116px;
+[dir] .scroll-button.scroll-to-bottom::before, [dir] .scroll-button.scroll-to-bottom::after {
+  border-top: 12px solid;
+  border-bottom: 12px solid transparent;
+}
+[dir] .scroll-button.scroll-to-bottom::before {
+  border-top-color: #005289;
+  margin-top: 7px;
+}
+[dir] .scroll-button.scroll-to-bottom::after {
+  border-top-color: #ffcc33;
+  margin-top: 6px;
+}
+.page-topics .scroll-button.scroll-to-bottom,
+.page-regions .scroll-button.scroll-to-bottom {
+  opacity: 0.5;
 }
 .page-topics .scroll-button.scroll-to-bottom.active,
 .page-regions .scroll-button.scroll-to-bottom.active {
   opacity: 1;
   pointer-events: all;
-}
-.page-topics .scroll-button.scroll-to-bottom::before,
-.page-regions .scroll-button.scroll-to-bottom::before {
-  -webkit-transform: scale(-1);
-  bottom: 39px;
-}
-[dir] .page-topics .scroll-button.scroll-to-bottom::before, [dir] .page-regions .scroll-button.scroll-to-bottom::before {
-          transform: scale(-1);
-}
-.page-topics .scroll-button.scroll-to-bottom::after,
-.page-regions .scroll-button.scroll-to-bottom::after {
-  -webkit-transform: scale(-1);
-  bottom: 40px;
-}
-[dir] .page-topics .scroll-button.scroll-to-bottom::after, [dir] .page-regions .scroll-button.scroll-to-bottom::after {
-          transform: scale(-1);
 }
 h2.topic-title .topic-title-all {
   display: none;
