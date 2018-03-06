@@ -1987,9 +1987,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
 }
-.scroll-button.scroll-to-top {
-  opacity: 0.5;
-}
 [dir] .scroll-button.scroll-to-top::before, [dir] .scroll-button.scroll-to-top::after {
   border-bottom: 12px solid;
   border-top: 12px solid transparent;
@@ -2008,7 +2005,12 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .page-topics .scroll-button.scroll-to-top,
 .page-regions .scroll-button.scroll-to-top {
+  opacity: 0.5;
   bottom: 96px;
+}
+.page-topics .scroll-button.scroll-to-top.active,
+.page-regions .scroll-button.scroll-to-top.active {
+  opacity: 1;
 }
 [dir] .scroll-button.scroll-to-bottom::before, [dir] .scroll-button.scroll-to-bottom::after {
   border-top: 12px solid;

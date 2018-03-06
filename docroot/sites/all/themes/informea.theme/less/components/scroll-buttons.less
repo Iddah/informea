@@ -29,7 +29,6 @@
   }
 
   &.scroll-to-top {
-    opacity: 0.5;
 
     &::before, &::after {
       border-bottom: 12px solid;
@@ -52,7 +51,11 @@
     }
     .page-topics &,
     .page-regions & {
+      opacity: 0.5;
       bottom: 30px + 10px + 56px;
+      &.active {
+        opacity: 1;
+      }
     }
 
   }
