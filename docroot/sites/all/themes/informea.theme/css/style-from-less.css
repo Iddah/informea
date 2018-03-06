@@ -608,10 +608,17 @@ body {
   display: -ms-inline-flexbox;
   -js-display: inline-flex;
   display: inline-flex;
+}
+[dir=ltr] .select2-container {
   width: auto !important;
 }
-.region-sidebar-first .select2-container,
-.region-sidebar-second .select2-container {
+[dir=rtl] .select2-container {
+  width: auto !important;
+}
+[dir=ltr] .region-sidebar-first .select2-container, [dir=ltr] .region-sidebar-second .select2-container {
+  width: 100% !important;
+}
+[dir=rtl] .region-sidebar-first .select2-container, [dir=rtl] .region-sidebar-second .select2-container {
   width: 100% !important;
 }
 .select2-container .select2-choice,
@@ -733,7 +740,10 @@ body {
 .select2-container .select2-choice .select2-arrow b {
   display: block;
 }
-.select2-default {
+[dir=ltr] .select2-default {
+  color: #333333 !important;
+}
+[dir=rtl] .select2-default {
   color: #333333 !important;
 }
 .informea-calendar-date {
@@ -2625,13 +2635,14 @@ h2.regional-topic-title span {
   margin-bottom: .4em;
 }
 .informea-teaser__title sup {
-  fonts-size: 10px !important;
   font-weight: 500;
 }
 [dir=ltr] .informea-teaser__title sup {
+  fonts-size: 10px !important;
   padding-right: 3px;
 }
 [dir=rtl] .informea-teaser__title sup {
+  fonts-size: 10px !important;
   padding-left: 3px;
 }
 .informea-teaser__left {
@@ -3147,7 +3158,10 @@ h2.regional-topic-title span {
     min-width: 20em;
   }
 }
-.frontpage-browse .select2-container {
+[dir=ltr] .frontpage-browse .select2-container {
+  width: 100% !important;
+}
+[dir=rtl] .frontpage-browse .select2-container {
   width: 100% !important;
 }
 [dir] #col-about {
@@ -4413,11 +4427,6 @@ fieldset[disabled] a.explore a {
   background: #E7E7E7;
   padding: 0px;
 }
-.page-treaties .view-regional-treaties .field-name-content-type {
-  display: none;
-}
-[dir] .page-treaties .informea-treaties-listings {
-  margin-top: 1em;
 .informea-search-horizontal-tabs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4608,5 +4617,11 @@ fieldset[disabled] a.explore a {
 }
 [dir] .facetapi-facetapi-checkbox-links-custom li a.facetapi-active {
   background-image: url('../img//checkbox-active.svg');
+}
+.page-treaties .view-regional-treaties .field-name-content-type {
+  display: none;
+}
+[dir] .page-treaties .informea-treaties-listings {
+  margin-top: 1em;
 }
 /*# sourceMappingURL=style-from-less.css.map */
