@@ -1933,7 +1933,7 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   bottom: 30px;
   display: block;
   height: 56px;
-  opacity: 0;
+  opacity: 0.5;
   position: fixed;
   -webkit-transition: opacity .2s;
   transition: opacity .2s;
@@ -1990,11 +1990,20 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   border-bottom-color: #ffcc33;
 }
 .scroll-button.scroll-to-top {
+  bottom: 96px;
+}
+.scroll-button.scroll-to-top.active {
   opacity: 1;
   pointer-events: all;
 }
-.page-topics .scroll-button.scroll-to-bottom,
-.page-regions .scroll-button.scroll-to-bottom {
+.scroll-button.scroll-to-top::before {
+  bottom: 117px;
+}
+.scroll-button.scroll-to-top::after {
+  bottom: 116px;
+}
+.page-topics .scroll-button.scroll-to-bottom.active,
+.page-regions .scroll-button.scroll-to-bottom.active {
   opacity: 1;
   pointer-events: all;
 }
@@ -2013,13 +2022,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 [dir] .page-topics .scroll-button.scroll-to-bottom::after, [dir] .page-regions .scroll-button.scroll-to-bottom::after {
           transform: scale(-1);
-}
-.page-topics .scroll-button::before,
-.page-regions .scroll-button::before,
-.page-topics .scroll-button::after,
-.page-regions .scroll-button::after {
-  -webkit-transition: .2s;
-  transition: .2s;
 }
 h2.topic-title .topic-title-all {
   display: none;
@@ -3620,18 +3622,25 @@ h2.regional-topic-title span {
 }
 .pane-geographic-region-region-downloadable-documents > .pane-title,
 .pane-news-and-events > .pane-title,
-.pane-contacts-hubs > .pane-title {
+.pane-contacts-hubs > .pane-title,
+.view-learning-courses > .view-header > h2 {
   color: #2B2B2B;
   font-size: 23px;
   font-weight: bold;
 }
-[dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title {
+[dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title, [dir] .view-learning-courses > .view-header > h2 {
   margin-bottom: 2em;
 }
 @media (min-width: 768px) {
-  [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title {
+  [dir] .pane-geographic-region-region-downloadable-documents > .pane-title, [dir] .pane-news-and-events > .pane-title, [dir] .pane-contacts-hubs > .pane-title, [dir] .view-learning-courses > .view-header > h2 {
     margin-top: 0;
   }
+}
+.view-learning-courses > .view-header > h2 {
+  color: inherit;
+}
+[dir] .view-learning-courses > .view-header > h2 {
+  margin-top: 20px;
 }
 [dir] .regional-page-accent-panel-container {
   background-color: #F3F3F3;
