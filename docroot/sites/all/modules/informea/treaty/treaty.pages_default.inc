@@ -228,7 +228,7 @@ function treaty_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '%topic:name_field';
+  $display->title = 'Treaties and MEAs %topic:name_field';
   $display->uuid = '97e0aee3-d430-4dfd-8c22-76c3a49e31cc';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'page_treaties_listing_page__panel_context_a79a37f2-5e6a-4b1f-bb75-baeca5468f6f';
