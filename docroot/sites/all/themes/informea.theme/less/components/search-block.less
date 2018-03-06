@@ -1,4 +1,7 @@
 h2.topic-title {
+  .topic-title-all{
+    display:none;
+  }
   span {
     .loop-mea-topics({
       .page-treaties.topic-@{mea-topic-class} &,
@@ -7,6 +10,14 @@ h2.topic-title {
         font-style: italic;
       }
     });
+    .page-treaties.topic- & {
+      display: none;
+    }
+  }
+}
+.page-treaties.topic-{
+  .topic-title-all{
+    display:block;
   }
 }
 h2.regional-topic-title {

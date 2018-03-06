@@ -344,7 +344,7 @@ function treaty_default_page_manager_pages() {
     'admin_title' => 'Title',
     'title' => '',
     'title_heading' => 'h2',
-    'body' => '<h2 class="topic-title">Treaties and MEAs <span>in %topic:name</span></h2>',
+    'body' => '<h2 class="topic-title"><strong class="topic-title-all">All </strong>Treaties and MEAs <span>in %topic:name</span></h2>',
     'format' => 'full_html',
     'substitute' => 1,
   );
