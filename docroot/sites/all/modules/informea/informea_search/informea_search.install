@@ -86,3 +86,10 @@ function informea_search_update_7010() {
   features_revert_module('informea_search');
 }
 
+/**
+ * #326 - Updated all facets.
+ */
+function informea_search_update_7011() {
+  features_revert_module('informea_search');
+  features_revert_module('informea');
+}

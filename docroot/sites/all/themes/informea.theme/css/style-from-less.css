@@ -1142,6 +1142,13 @@ body {
   padding: 30px 0;
   padding: 3rem 0;
 }
+.block-facetapi .facetapi-limit-link {
+  font-size: 14px;
+  font-weight: 700;
+}
+.block-facetapi .block-title {
+  font-weight: 700;
+}
 [dir] .block-facetapi .block-title {
   margin-top: 0;
   padding-top: 0;
@@ -2387,6 +2394,16 @@ h2.regional-topic-title span {
 }
 [dir] .informea-teaser__title {
   margin-bottom: .4em;
+}
+.informea-teaser__title sup {
+  fonts-size: 10px !important;
+  font-weight: 500;
+}
+[dir=ltr] .informea-teaser__title sup {
+  padding-right: 3px;
+}
+[dir=rtl] .informea-teaser__title sup {
+  padding-left: 3px;
 }
 .informea-teaser__left {
   -webkit-box-align: end;
@@ -4387,5 +4404,25 @@ fieldset[disabled] a.explore a {
 [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:hover, [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li > a:active:hover {
   background: none;
   background-color: transparent;
+}
+[dir] .facetapi-facetapi-checkbox-links-custom li {
+  margin: 5px 0px;
+}
+[dir] .facetapi-facetapi-checkbox-links-custom li a {
+  background-color: transparent;
+  background-image: url('../img//checkbox.svg');
+  background-repeat: no-repeat;
+  background-size: 1em;
+}
+[dir=ltr] .facetapi-facetapi-checkbox-links-custom li a {
+  background-position: left 2px;
+  padding-left: 1.3em;
+}
+[dir=rtl] .facetapi-facetapi-checkbox-links-custom li a {
+  background-position: right 2px;
+  padding-right: 1.3em;
+}
+[dir] .facetapi-facetapi-checkbox-links-custom li a.facetapi-active {
+  background-image: url('../img//checkbox-active.svg');
 }
 /*# sourceMappingURL=style-from-less.css.map */
