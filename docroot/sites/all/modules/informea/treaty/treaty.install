@@ -61,5 +61,12 @@ function treaty_update_7006() {
  * #348,#351 - Topical & Regional treaty display modes.
  */
 function treaty_update_7007() {
-    features_revert_module('treaty');
+  features_revert_module('treaty');
+}
+
+/**
+ * #388 - Treaties page title updates.
+ */
+function treaty_update_7008() {
+  features_revert_module('treaty');
 }

@@ -473,6 +473,7 @@ function treaty_views_default_views() {
 
   /* Display: Regional table */
   $handler = $view->new_display('page', 'Regional table', 'page');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['path'] = 'treaties';
 
   /* Display: Reorder treaties */
