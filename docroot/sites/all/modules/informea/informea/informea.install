@@ -821,5 +821,11 @@ function informea_update_7065() {
   features_revert_module('geographic_region');
   features_revert_module('informea_topics');
   features_revert_module('learning_course');
+}
 
+/**
+ * #381 - Fixed regional & global treaties view filters.
+ */
+function informea_update_7066() {
+  features_revert_module('geographic_region');
 }
