@@ -1865,14 +1865,14 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   z-index: 9999;
 }
 .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu {
-  z-index: 999;
-  width: 100%;
   -webkit-box-shadow: none;
+  width: 100%;
+  z-index: 999;
 }
 [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu {
-  box-shadow: none;
   border: none;
-  margin-top: 2px;
+          box-shadow: none;
+  margin-top: 0;
 }
 .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a,
 .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li.active a:hover,
@@ -1889,7 +1889,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   vertical-align: middle;
 }
 [dir] .informea-search-horizontal-tabs .informea-switcher_contents .dropdown-menu > li {
-  background: #FFFFFF;
   margin: 0px;
   padding: 10px 0px;
 }
