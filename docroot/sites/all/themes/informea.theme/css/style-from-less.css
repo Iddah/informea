@@ -3882,6 +3882,11 @@ h2.regional-topic-title span {
 .pane-geographic-region-region-downloadable-documents .section-title {
   color: #8F8F8F;
 }
+@media (min-width: 768px) {
+  [dir] .pane-regional-treaties {
+    padding-bottom: 7em;
+  }
+}
 .pane-geographic-region-region-downloadable-documents > .pane-title,
 .pane-news-and-events > .pane-title,
 .pane-contacts-hubs > .pane-title,
@@ -3906,7 +3911,6 @@ h2.regional-topic-title span {
 }
 [dir] .regional-page-accent-panel-container {
   background-color: #F3F3F3;
-  margin-top: 7em;
   padding: 4em 0;
 }
 [dir] .regional-page-contacts-panel-container .pane-contacts-hubs {
