@@ -431,7 +431,7 @@ function geographic_region_default_page_manager_pages() {
   $pane->configuration = array(
     'override_title' => 1,
     'override_title_text' => 'Documents and files',
-    'override_title_heading' => 'h3',
+    'override_title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
