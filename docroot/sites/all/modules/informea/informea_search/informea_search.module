@@ -193,6 +193,12 @@ function informea_search_check_facet_url_param($path = '', $param = NULL){
  */
 function informea_search_views_pre_render(&$view) {
   switch ($view->name) {
+    case 'search':
+      if ($view->total_rows == 0) {
+        $view->header = [];
+      }
+      break;
+
     case 'informea_search':
       drupal_add_library('informea', 'smallipop');
       drupal_add_js(drupal_get_path('module', 'informea_search') . '/js/informea_search.js');
