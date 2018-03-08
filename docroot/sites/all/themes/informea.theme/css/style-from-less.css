@@ -635,6 +635,27 @@ body {
         -ms-flex-order: -1;
             order: -1;
   }
+  .navbar-default .navbar-nav .dropdown > .dropdown-toggle.menu-title {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
+  }
+  [dir=ltr] .navbar-default .navbar-nav .dropdown > .dropdown-toggle.menu-title > span {
+    margin-left: .2em;
+  }
+  [dir=rtl] .navbar-default .navbar-nav .dropdown > .dropdown-toggle.menu-title > span {
+    margin-right: .2em;
+  }
+  [dir=ltr] .navbar-default .navbar-nav .dropdown > .dropdown-toggle.menu-title > b {
+    margin-left: auto;
+  }
+  [dir=rtl] .navbar-default .navbar-nav .dropdown > .dropdown-toggle.menu-title > b {
+    margin-right: auto;
+  }
   .navbar-default .navbar-nav .dropdown > .dropdown-toggle > b {
     display: inline-block;
     width: 0;
@@ -662,13 +683,13 @@ body {
   }
 }
 @media screen and (min-width: 1200px) {
-  .navbar-default .navbar-nav .dropdown-toggle {
+  .navbar-default .navbar-nav .dropdown-toggle:not(.menu-title) {
     opacity: 0;
     vertical-align: middle;
     width: 0;
     height: 0;
   }
-  [dir] .navbar-default .navbar-nav .dropdown-toggle {
+  [dir] .navbar-default .navbar-nav .dropdown-toggle:not(.menu-title) {
     padding: 0;
   }
 }
@@ -789,11 +810,6 @@ body {
 }
 [dir=rtl] #free-online-courses-menu-link img {
   margin-left: .5em;
-}
-@media screen and (max-width: 1199px) {
-  [dir] #free-online-courses-menu-link {
-    border-radius: 4px;
-  }
 }
 .navbar-default .navbar-toggle {
   height: 34px;
