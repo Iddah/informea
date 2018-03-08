@@ -119,16 +119,13 @@ function meeting_views_query_alter(&$view, &$query) {
   }
 }
 
-function meeting_views_post_execute(&$view) {
-//  if ($view->name == 'meeting_decisions' && !empty($view->exposed_widgets)) {
-//    $form_state = array(
-//      'view' => $view,
-//      'display' => $view->display_handler->display,
-//      'method' => 'get',
-//      'rerender' => TRUE,
-//      'no_redirect' => TRUE,
-//    );
-//    $form = drupal_build_form('views_exposed_form', $form_state);
-//    $view->exposed_widgets = drupal_render($form);
-//  }
+/**
+ * Implements hook_node_presave().
+ */
+function meeting_node_presave($node) {
+  if ($node->type == 'event_calendar') {
+    if (isset($node->event_calendar_date)) {
+      $node->field_sorting_date = $node->event_calendar_date;
+    }
+  }
 }

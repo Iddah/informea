@@ -21,3 +21,11 @@ function meeting_update_7002() {
   features_revert_module('meeting');
   node_type_delete('event_calendar_imported');
 }
+
+/**
+ * Task #326 - Added field_sorting_date to event_calendar & feed_item ctype.
+ */
+function meeting_update_7003() {
+  features_revert_module('meeting');
+  features_revert_module('feeds');
+}

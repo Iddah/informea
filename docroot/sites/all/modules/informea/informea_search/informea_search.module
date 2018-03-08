@@ -67,11 +67,13 @@ function informea_search_facet_items_alter(&$build, &$settings) {
 
     case 'search_api@default_index:block:field_document_type':
       $process = FALSE;
-    case 'search_api@default_index:block:year_of_text':
+
+      // TODO. Check if this should be applied.
+      /*  case 'search_api@default_index:block:year_of_text':
       if (!informea_search_check_facet_url_param('search', 'document')) {
-        $settings->enabled = FALSE;
-        $build = array();
-      }
+      $settings->enabled = FALSE;
+      $build = array();
+      }*/
       break;
 
     case 'search_api@default_index:block:field_informea_tags':
