@@ -20,10 +20,11 @@ function informea_topics_install() {
   }
 }
 
+
 /**
- * #377,378,379,380 - Separate News and Events.
+ * Task #391 -Breadcrumbs.
  */
-function informea_topics_update_7001() {
+function informea_topics_update_7002() {
   features_revert_module('geographic_region');
   features_revert_module('informea_topics');
 }

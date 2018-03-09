@@ -901,9 +901,11 @@ body {
 }
 [dir=ltr] .select2-container .select2-choice > .select2-chosen {
   margin-right: 0;
+  padding-right: .05em;
 }
 [dir=rtl] .select2-container .select2-choice > .select2-chosen {
   margin-left: 0;
+  padding-left: .05em;
 }
 .select2-container .select2-choice .select2-arrow {
   -webkit-box-shadow: none;
@@ -2187,11 +2189,11 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .field-content-type > li {
   text-transform: capitalize;
 }
-[dir=ltr] .pane-page-breadcrumb {
-  float: left;
-}
-[dir=rtl] .pane-page-breadcrumb {
-  float: right;
+.pane-page-breadcrumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
 }
 .scroll-button {
   bottom: 30px;

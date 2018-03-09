@@ -667,6 +667,35 @@ function informea_topics_default_page_manager_pages() {
   $display->content['new-1b3ee554-9339-481f-b4fe-ad30a436af2f'] = $pane;
   $display->panels['title'][0] = 'new-1b3ee554-9339-481f-b4fe-ad30a436af2f';
   $pane = new stdClass();
+  $pane->pid = 'new-63d6d6ae-d594-4741-93c0-1182e7e3d955';
+  $pane->panel = 'title';
+  $pane->type = 'custom';
+  $pane->subtype = 'custom';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'admin_title' => '',
+    'title' => '',
+    'title_heading' => 'h2',
+    'body' => '<h2 class="topic-title">Treaties and MEAs <span>in %topic:name</span></h2>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'regional-page-panels-title',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '63d6d6ae-d594-4741-93c0-1182e7e3d955';
+  $display->content['new-63d6d6ae-d594-4741-93c0-1182e7e3d955'] = $pane;
+  $display->panels['title'][1] = 'new-63d6d6ae-d594-4741-93c0-1182e7e3d955';
+  $pane = new stdClass();
   $pane->pid = 'new-f5988be0-5766-485f-9635-dc90bbdeca72';
   $pane->panel = 'title';
   $pane->type = 'page_feed_icons';
@@ -680,11 +709,11 @@ function informea_topics_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'f5988be0-5766-485f-9635-dc90bbdeca72';
   $display->content['new-f5988be0-5766-485f-9635-dc90bbdeca72'] = $pane;
-  $display->panels['title'][1] = 'new-f5988be0-5766-485f-9635-dc90bbdeca72';
+  $display->panels['title'][2] = 'new-f5988be0-5766-485f-9635-dc90bbdeca72';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

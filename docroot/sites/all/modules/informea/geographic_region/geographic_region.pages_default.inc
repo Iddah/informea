@@ -645,6 +645,34 @@ function geographic_region_default_page_manager_pages() {
   $display->content['new-ff443f25-c59d-41b1-a677-38248aa98285'] = $pane;
   $display->panels['courses'][0] = 'new-ff443f25-c59d-41b1-a677-38248aa98285';
   $pane = new stdClass();
+  $pane->pid = 'new-72b92dd8-cfac-4820-a757-3c6fea091be0';
+  $pane->panel = 'title';
+  $pane->type = 'page_breadcrumb';
+  $pane->subtype = 'page_breadcrumb';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'panels_breadcrumbs_admin_title' => '',
+    'panels_breadcrumbs_state' => 0,
+    'panels_breadcrumbs_titles' => '',
+    'panels_breadcrumbs_paths' => '',
+    'panels_breadcrumbs_home' => 0,
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '72b92dd8-cfac-4820-a757-3c6fea091be0';
+  $display->content['new-72b92dd8-cfac-4820-a757-3c6fea091be0'] = $pane;
+  $display->panels['title'][0] = 'new-72b92dd8-cfac-4820-a757-3c6fea091be0';
+  $pane = new stdClass();
   $pane->pid = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $pane->panel = 'title';
   $pane->type = 'custom';
@@ -668,11 +696,11 @@ function geographic_region_default_page_manager_pages() {
     'css_class' => 'regional-page-panels-title',
   );
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = '65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $display->content['new-65913b9c-9240-4fcd-aae9-bac32e4d2255'] = $pane;
-  $display->panels['title'][0] = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
+  $display->panels['title'][1] = 'new-65913b9c-9240-4fcd-aae9-bac32e4d2255';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
