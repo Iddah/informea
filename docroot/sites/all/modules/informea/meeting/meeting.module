@@ -74,11 +74,13 @@ function meeting_views_pre_render(&$view) {
       $node = menu_get_object();
       if (!empty($node->nid) && $node->type == 'event_calendar') {
         $wrapper = entity_metadata_wrapper('node', $node);
-        $treaty = $wrapper->field_treaty->value()[0];
-        $view->display_handler->set_option('use_more', TRUE);
-        $view->display_handler->set_option('use_more_text', t('Browse all meetings'));
-        $view->display_handler->set_option('link_display', 'custom_url');
-        $view->display_handler->set_option('link_url', 'node/' . $treaty->nid . '/decisions');
+        if (isset($wrapper->field_treaty->value()[0])) {
+          $treaty = $wrapper->field_treaty->value()[0];
+          $view->display_handler->set_option('use_more', TRUE);
+          $view->display_handler->set_option('use_more_text', t('Browse all meetings'));
+          $view->display_handler->set_option('link_display', 'custom_url');
+          $view->display_handler->set_option('link_url', 'node/' . $treaty->nid . '/decisions');
+        }
       }
     }
   }
