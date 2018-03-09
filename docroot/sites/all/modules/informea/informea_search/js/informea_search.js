@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-
   var smallIpop = $('.smallipop');
   if (smallIpop.length > 0) {
     smallIpop.smallipop({
@@ -9,4 +8,8 @@ jQuery(document).ready(function ($) {
       popupOffset: 0
     });
   }
+
+  $("#edit-search-category").on("change", function (){
+    $("#search-form").submit();
+  });
 });

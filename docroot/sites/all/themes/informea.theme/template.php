@@ -709,10 +709,9 @@ function informea_theme_links__locale_block(&$variables) {
   }
 
   $output = '<li class="dropdown">';
-  $output .= '<a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>';
-  $output .= '<a class="menu-title">';
+  $output .= '<a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">';
   $output .= $language->language;
-  $output .= ' <span class="caret"></span></a>';
+  $output .= ' <span class="caret"></span><b></b></a>';
   $output .= theme_links($variables1);
   $output .= '</li>';
 

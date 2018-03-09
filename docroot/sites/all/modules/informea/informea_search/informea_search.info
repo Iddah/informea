@@ -18,6 +18,8 @@ dependencies[] = search_api_facetapi
 dependencies[] = search_api_solr
 dependencies[] = strongarm
 dependencies[] = views
+# TODO. Remove this line after making sure that all is fixed in https://support.informea.org/issues/227.
+files[] = plugins/facetapi/FacetapiWidgetCheckboxLinksInformea.php
 features[ctools][] = ds:ds:1
 features[ctools][] = facetapi:facetapi_defaults:1
 features[ctools][] = path_breadcrumbs:path_breadcrumbs:1
@@ -254,6 +256,3 @@ features[views_view][] = search
 files[] = informea_search.pages.inc
 files[] = informea_search.results.inc
 files[] = plugins/facetapi/FacetapiWidgetCheckboxLinksCustom.php
-# TODO. Remove this line after making sure that all is fixed in https://support.informea.org/issues/227.
-files[] = plugins/facetapi/FacetapiWidgetCheckboxLinksInformea.php
-
