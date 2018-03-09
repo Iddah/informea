@@ -1328,15 +1328,6 @@ function treaty_block_info() {
     'pages' => 'treaties'
   );
 
-  $blocks['treaty_documents_local_tasks'] = array(
-    'info' => t('Treaty documents local tasks'),
-    'status' => TRUE,
-    'region' => 'sidebar_first',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'node/*/documents*',
-    'weight' => '-100',
-  );
-
   $blocks['treaty_switch_topic'] = array(
     'info' => t('Browse treaties by Environmental Topic'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -1357,18 +1348,6 @@ function treaty_block_view($delta = '') {
     case 'treaty_global':
       $block['subject'] = t('Global treaties');
       $block['content'] = treaty_block_contents($delta);
-      break;
-
-    case 'treaty_documents_local_tasks':
-      if (is_numeric(arg(1))) {
-        $node = node_load(arg(1));
-        if (!empty($node->type) && $node->type == 'treaty') {
-          $node->context = 'documents';
-          $menu = [];
-          treaty_treaty_contextual_menu_alter($menu, $node);
-          $block['content'] = $menu;
-        }
-      }
       break;
 
     case 'treaty_switch_topic':
