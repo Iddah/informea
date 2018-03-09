@@ -621,6 +621,7 @@ function informea_search_categories(){
 }
 
 function informea_search_form($form, $form_state) {
+  drupal_add_js(drupal_get_path('module', 'informea_search') . '/js/informea_search.js');
   $action = 'search';
   $search_query = !empty($_GET['text']) ? check_plain($_GET['text']) : '';
   $variant = variable_get('select2_compression_type', 'minified');
