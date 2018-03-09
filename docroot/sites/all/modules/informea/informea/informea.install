@@ -829,3 +829,11 @@ function informea_update_7065() {
 function informea_update_7066() {
   features_revert_module('geographic_region');
 }
+
+/**
+ * #391 - Add breadcrumbs for /treaties/topic and /topics/topic/region.
+ */
+function informea_update_7067() {
+  features_revert_module('informea_topics');
+  features_revert_module('treaty');
+}
