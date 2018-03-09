@@ -51,6 +51,7 @@ features[field_instance][] = node-feed_item-field_image
 features[field_instance][] = node-feed_item-field_mea_topic
 features[field_instance][] = node-feed_item-field_parent_feed
 features[field_instance][] = node-feed_item-field_region
+features[field_instance][] = node-feed_item-field_sorting_date
 features[field_instance][] = node-feed_item-field_treaty
 features[field_instance][] = node-feed_item-field_url
 features[node][] = feed

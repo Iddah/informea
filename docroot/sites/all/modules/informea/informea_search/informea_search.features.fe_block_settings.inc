@@ -614,7 +614,8 @@ node/*/documents',
     'module' => 'facetapi',
     'node_types' => array(),
     'pages' => 'search
-node/*/documents',
+node/*/documents
+node/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
