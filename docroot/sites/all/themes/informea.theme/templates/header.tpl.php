@@ -53,8 +53,10 @@
         <li><?php print l(t('Events'), 'events', array('attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
         <li class="dropdown">
-          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
-          <?php print '<a class="menu-title">' . t('More') . ' <span>+</span></a>'; ?>
+          <a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <?php print t('More') . ' <span>+</span>'; ?>
+            <b></b>
+          </a>
           <ul class="dropdown-menu more-menu">
             <li><?php print l(t('Documents and Literature'), 'search', array('query' => array('f[0]' => 'type:document', 'f[1]' => 'type:literature'), 'attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
             <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => array('menu-title'), 'id' => 'terms-menu-link'))); ?></li>
@@ -69,8 +71,10 @@
         </li>
         </li>
         <li class="dropdown">
-          <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
-          <?php print '<a class="menu-title">' . t('Browse all …') . ' <span class="caret"></span></a>'; ?>
+          <a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <?php print t('Browse all …') . ' <span class="caret"></span>'; ?>
+            <b></b>
+          </a>
           <?php print $informea_browse_all_block; ?>
         </li><!-- .dropdown -->
         <?php print render($page['inside_nav']); ?>
