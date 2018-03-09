@@ -639,6 +639,15 @@ function feeds_node_presave($node) {
   if (isset($node->feeds_item->node_changed)) {
     $node->changed = $node->feeds_item->node_changed;
   }
+  // Populate field_sorting_date.
+  if (isset($node->created)) {
+    $timezone = date('e', $node->created);
+    $node->field_sorting_date[LANGUAGE_NONE][0] = [
+      'value' => date('Y-m-d h:i:s', $node->created),
+      'timezone' => $timezone,
+      'timezone_db' => $timezone,
+    ];
+  }
 }
 
 /**

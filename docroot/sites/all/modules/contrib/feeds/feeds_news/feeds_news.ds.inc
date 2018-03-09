@@ -69,6 +69,11 @@ function feeds_news_ds_field_settings_info() {
         'exclude node title settings' => '1',
       ),
     ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_short',
+    ),
   );
   $export['node|feed_item|search_item'] = $ds_fieldsetting;
 
@@ -172,12 +177,12 @@ function feeds_news_ds_layout_settings_info() {
         8 => 'group_tags',
       ),
       'left' => array(
-        1 => 'field_image',
+        1 => 'post_date',
       ),
     ),
     'fields' => array(
       'content_type' => 'right',
-      'field_image' => 'left',
+      'post_date' => 'left',
       'field_treaty' => 'right',
       'title' => 'right',
       'field_mea_topic' => 'right',

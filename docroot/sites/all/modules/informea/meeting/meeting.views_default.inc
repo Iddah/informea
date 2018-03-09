@@ -588,7 +588,7 @@ function meeting_views_default_views() {
   $handler->display->display_options['fields']['field_decision_number']['field'] = 'field_decision_number';
   $handler->display->display_options['fields']['field_decision_number']['label'] = '';
   $handler->display->display_options['fields']['field_decision_number']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Name */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -600,7 +600,7 @@ function meeting_views_default_views() {
     'title_link' => 'content',
     'title_class' => '',
   );
-  /* Sort criterion: Indexed Content: Sorting order */
+  /* Sort criterion: Indexed Content: Order */
   $handler->display->display_options['sorts']['field_sorting_order']['id'] = 'field_sorting_order';
   $handler->display->display_options['sorts']['field_sorting_order']['table'] = 'search_api_index_default_index';
   $handler->display->display_options['sorts']['field_sorting_order']['field'] = 'field_sorting_order';
