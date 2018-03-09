@@ -1,6 +1,7 @@
 // Regional page specific styles
 .page-regions,
-.page-topics {
+.page-topics,
+.page-treaties {
   .panels-flexible-row {
     width: 100%;
     &.row { margin-left: 0; margin-right: 0; }
@@ -137,6 +138,11 @@
   }
 }
 
+.view-learning-courses > .view-header > h2:extend(.pane-contacts-hubs > .pane-title) {
+  color: inherit;
+  margin-top: @line-height-computed;
+}
+
 // Gray bg panel group
 .regional-page-accent-panel-container {
   background-color: #F3F3F3;
@@ -240,7 +246,7 @@
       width: 100%;
     }
   }
-  .form-text {
+  .form-text:extend(.form-control all) {
     height: 50px;
   }
   .form-item,

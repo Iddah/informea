@@ -49,14 +49,14 @@
           <?php print $informea_treaties_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
-        <li><?php print l(t('Laws and Cases'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-link'))); ?></li>
+        <li><?php print l(t('Laws and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
         <li><?php print l(t('Events'), 'events', array('attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
         <li class="dropdown">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
           <?php print '<a class="menu-title">' . t('More') . ' <span>+</span></a>'; ?>
           <ul class="dropdown-menu more-menu">
-              <li><?php print l(t('Documents and Literature'), 'search', array('query' => array('f[0]' => 'type:document', 'f[1]' => 'type:literature'), 'attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
+            <li><?php print l(t('Documents and Literature'), 'search', array('query' => array('f[0]' => 'type:document', 'f[1]' => 'type:literature'), 'attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
             <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => array('menu-title'), 'id' => 'terms-menu-link'))); ?></li>
             <li><?php print l(t('Contacts Hub'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'contacts-hub-menu-link'))); ?></li>
             <li class="divider" role="separator"></li>

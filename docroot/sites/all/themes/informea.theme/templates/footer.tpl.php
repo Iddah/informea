@@ -204,7 +204,8 @@
     </div><!-- .footer-section -->
   </div><!-- .container -->
 </footer><!-- .footer -->
-<a class="scroll-button" href="#"></a>
+<a class="scroll-button scroll-to-top" href="#" title="<?php print t('Scroll to top'); ?>"></a>
+<a class="scroll-button scroll-to-bottom" href="#" title="<?php print t('Scroll down'); ?>"></a>
 <script type="text/javascript">
   setTimeout(function(){var a=document.createElement("script");
     var b=document.getElementsByTagName("script")[0];

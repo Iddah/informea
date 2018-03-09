@@ -67,11 +67,13 @@ function informea_search_facet_items_alter(&$build, &$settings) {
 
     case 'search_api@default_index:block:field_document_type':
       $process = FALSE;
-    case 'search_api@default_index:block:year_of_text':
+
+      // TODO. Check if this should be applied.
+      /*  case 'search_api@default_index:block:year_of_text':
       if (!informea_search_check_facet_url_param('search', 'document')) {
-        $settings->enabled = FALSE;
-        $build = array();
-      }
+      $settings->enabled = FALSE;
+      $build = array();
+      }*/
       break;
 
     case 'search_api@default_index:block:field_informea_tags':
@@ -193,6 +195,12 @@ function informea_search_check_facet_url_param($path = '', $param = NULL){
  */
 function informea_search_views_pre_render(&$view) {
   switch ($view->name) {
+    case 'search':
+      if ($view->total_rows == 0) {
+        $view->header = [];
+      }
+      break;
+
     case 'informea_search':
       drupal_add_library('informea', 'smallipop');
       drupal_add_js(drupal_get_path('module', 'informea_search') . '/js/informea_search.js');

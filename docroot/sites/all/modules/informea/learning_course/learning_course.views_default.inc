@@ -39,7 +39,7 @@ function learning_course_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h3 class="description text-center">Explore FREE courses related to <i>[field_mea_topic]</i></h3>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="description text-center">Explore FREE courses related to <i>[field_mea_topic]</i></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   /* Footer: Global: Text area */
@@ -257,7 +257,7 @@ function learning_course_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<h3 class="description text-center">Explore FREE courses related to <i>[field_mea_topic]</i></h3>'),
+    t('<h2 class="description text-center">Explore FREE courses related to <i>[field_mea_topic]</i></h2>'),
     t('<div class="text-right"><a href="https://e-learning.informea.org/">See all FREE Courses</a></div>'),
     t('Link to elearning platform'),
     t('<div class="explore text-center">Explore our FREE courses on the e-learning platform <a href="https://e-learning.informea.org/">Explore all courses</a></div>'),
