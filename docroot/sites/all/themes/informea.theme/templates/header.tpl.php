@@ -49,7 +49,7 @@
           <?php print $informea_treaties_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
-        <li><?php print l(t('Laws and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
+        <li><?php print l(t('Law and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
         <li><?php print l(t('Events'), 'search', array('query' => array('f[0]' => 'type:event_calendar'), 'attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'search', array('query' => array('f[0]' => 'type:goal', 'f[1]' => 'type:declaration'), 'attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
           <li class="dropdown">
