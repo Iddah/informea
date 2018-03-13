@@ -60,7 +60,7 @@
           <ul class="dropdown-menu more-menu">
             <li><?php print l(t('Documents and Literature'), 'search', array('query' => array('f[0]' => 'type:document', 'f[1]' => 'type:literature'), 'attributes' => array('class' => array('menu-title'), 'id' => 'documents-menu-link'))); ?></li>
             <li><?php print l(t('Glossary'), 'terms', array('attributes' => array('class' => array('menu-title'), 'id' => 'terms-menu-link'))); ?></li>
-            <li><?php print l(t('Contacts Hub'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'contacts-hub-menu-link'))); ?></li>
+            <li><?php print l(t('Contacts Hub'), 'search', array('query' => array('f[0]' => 'type:contact_person'), 'attributes' => array('class' => array('menu-title'), 'id' => 'contacts-hub-menu-link'))); ?></li>
             <li class="divider" role="separator"></li>
             <li><?php print l(t('About InforMEA'), 'about', array('attributes' => array('class' => array('menu-title'), 'id' => 'about-menu-link'))); ?></li>
             <li><?php print l(t('Contact'), 'contact', array('attributes' => array('class' => array('menu-title'), 'id' => 'contact-menu-link'))); ?></li>
