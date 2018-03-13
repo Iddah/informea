@@ -22,7 +22,7 @@ function informea_default_fe_block_boxes() {
   $fe_block_boxes->info = 'Homepage need help';
   $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'homepage_need_help';
-  $fe_block_boxes->body = '<p>Need help searching through InforMEA? <a href="#">Check our Guideline here &gt;</a></p>';
+  $fe_block_boxes->body = '<p>Need help searching through InforMEA? <a href="/?tour=informea_site_tour">Take our tour</a></p>';
 
   $export['homepage_need_help'] = $fe_block_boxes;
 
