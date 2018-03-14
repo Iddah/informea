@@ -184,13 +184,23 @@ function informea_block_info() {
       'status' => 1,
       'visibility' => BLOCK_VISIBILITY_LISTED,
     ),
-    'informea_treaties_block' => array(
+    'informea_treaties_menu_block' => array(
       'info' => t('Informea treaties menu'),
+      'cache' => DRUPAL_NO_CACHE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    ),
+    'informea_treaties_footer_block' => array(
+      'info' => t('Informea treaties footer menu'),
       'cache' => DRUPAL_NO_CACHE,
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     ),
     'informea_browse_all_block' => array(
       'info' => t('Informea browse all menu'),
+      'cache' => DRUPAL_NO_CACHE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    ),
+    'informea_footer_block' => array(
+      'info' => t('Informea footer menu'),
       'cache' => DRUPAL_NO_CACHE,
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     ),
@@ -266,12 +276,94 @@ function informea_block_view($delta = '') {
       $block['content'] = drupal_get_form('informea_subscribe_updates_form');
       break;
 
-    case 'informea_treaties_block':
+    case 'informea_treaties_menu_block':
+    case 'informea_treaties_footer_block':
       $block['subject'] = NULL;
-      $block['content'] = informea_theme_treaties_menu_block();
+
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'treaty')
+        ->propertyCondition('status', NODE_PUBLISHED)
+        ->fieldCondition('field_data_source', 'tid', '815')
+        ->fieldCondition('field_show_in_main_menu', 'value', TRUE);
+      $results = $query->execute();
+
+      $treaties = [];
+      $topics_list = [];
+      $regions_list = [];
+
+      $global_region_tid = 1118;
+      $global_region = taxonomy_term_load($global_region_tid);
+
+      if (!empty($results['node'])) {
+        foreach ($results['node'] as $result) {
+          $node = node_load($result->nid);
+          $treaty = [
+            'title' => $node->title,
+            'logo_uri' => !empty($node->field_logo['en'][0]['uri']) ? $node->field_logo['en'][0]['uri'] : '',
+            'url' => '/node/' . $result->nid,
+            'is_global' => FALSE,
+            'regions' => [],
+            'topics' => [],
+          ];
+
+          if (!empty($node->field_region['und'])) {
+            foreach ($node->field_region['und'] as $region) {
+              $term = taxonomy_term_load($region['tid']);
+              if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+                $regions_list[$term->tid] = $term->name;
+                if ($term->tid == $global_region_tid) {
+                  $treaty['is_global'] = TRUE;
+                }
+                $treaty['regions'][$term->tid] = $term->name;
+              }
+            }
+          }
+
+          if (!empty($node->field_mea_topic['und'])) {
+            foreach ($node->field_mea_topic['und'] as $topic) {
+              $term = taxonomy_term_load($topic['tid']);
+              if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
+                $topics_list[$term->tid] = $term->name;
+                $treaty['topics'][$term->tid] = $term->name;
+              }
+            }
+          }
+
+          foreach ($treaty['regions'] as $tid => $name) {
+            $treaties[$tid][$node->nid] = $treaty;
+          }
+          foreach ($treaty['topics'] as $tid => $name) {
+            $segment = $treaty['is_global'] ? 'global' : 'regional';
+            $treaties[$tid][$segment][$node->nid] = $treaty;
+          }
+        }
+      }
+
+      uasort($regions_list, function ($a, $b) use ($global_region) {
+        if ($a == $global_region->name) {
+          return 1;
+        }
+        elseif ($b == $global_region->name) {
+          return -1;
+        }
+        return ($a < $b) ? -1 : 1;
+      });
+      asort($topics_list);
+
+      $block['content'] = theme(
+        $delta . '_theme',
+        array(
+          'regions' => $regions_list,
+          'topics' => $topics_list,
+          'treaties' => $treaties,
+          'global_region_tid' => $global_region_tid,
+        )
+      );
       break;
 
     case 'informea_browse_all_block':
+    case 'informea_footer_block':
       $block['subject'] = NULL;
       $vocabulary = taxonomy_vocabulary_machine_name_load('mea_topic');
       $topics = informea_get_published_taxonomy_terms($vocabulary->vid);
@@ -300,7 +392,7 @@ function informea_block_view($delta = '') {
       }
 
       $block['content'] = theme(
-        'informea_browse_all_menu_block',
+        $delta . '_theme',
         array(
           'topics' => $topic_links,
           'regions' => $region_links,

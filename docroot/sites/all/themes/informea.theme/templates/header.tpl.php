@@ -21,7 +21,7 @@
     <div class="navbar-header header-brand">
       <?php if ($logo): ?>
         <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          <img src="<?php print $logo; ?>" width="226" height="54" alt="<?php print t('Home'); ?>" />
         </a><!-- .logo .navbar-btn .pull-left -->
       <?php endif; ?>
     </div><!-- .navbar-header -->
@@ -46,7 +46,7 @@
         <li class="dropdown dropdown-full-width dropdown-treaties-menu">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
           <?php print '<a class="menu-title" href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
-          <?php print $informea_treaties_block; ?>
+          <?php print $informea_treaties_menu_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
         <li><?php print l(t('Law and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
@@ -67,7 +67,7 @@
             <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'get-involved-menu-link'))); ?></li>
           </ul>
         </li><!-- .dropdown -->
-        <li><?php print l($elearning_icon . t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'id' => 'free-online-courses-menu-link'), 'html' => TRUE)); ?>
+        <li><?php print l((!empty($elearning_icon) ? $elearning_icon : '') . t('Free online courses'), 'http://e-learning.informea.org/', array('attributes' => array('target' => '_blank', 'class' => array('free-online-courses'), 'id' => 'free-online-courses-menu-link'), 'html' => TRUE)); ?>
         </li>
         </li>
         <li class="dropdown">

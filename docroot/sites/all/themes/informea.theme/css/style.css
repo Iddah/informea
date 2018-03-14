@@ -1579,8 +1579,6 @@ button.toggle {
 }
 [dir] .footer-section:last-child {
   border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 /* Footer inline lists */
 [dir] .footer-section > .list-inline {
