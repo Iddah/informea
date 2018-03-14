@@ -4200,6 +4200,9 @@ fieldset[disabled] a.explore a {
 .region-involvement .form-text {
   height: 50px;
 }
+[dir] .region-involvement .form-text {
+  border: none;
+}
 @media (min-width: 768px) {
   .region-involvement .form-item,
   .region-involvement .form-wrapper {
