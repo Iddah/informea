@@ -16,9 +16,8 @@ function goal_update_7002() {
 }
 
 /**
- * Task #400 - Rebuild Goals search results page
+ * Task #400 - Rebuild Goals search results page.
  */
 function goal_update_7003() {
   features_revert_module('goal');
 }
-
