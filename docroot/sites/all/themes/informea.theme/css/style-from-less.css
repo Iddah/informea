@@ -2181,7 +2181,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   transition: opacity .2s;
   width: 56px;
   z-index: 1050;
-  pointer-events: none;
 }
 [dir] .scroll-button {
   background-color: #ffcc33;
@@ -2234,16 +2233,25 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 }
 .scroll-button.scroll-to-top.active {
   opacity: 1;
-  pointer-events: all;
+  z-index: 1051;
+}
+[dir] .scroll-button.scroll-to-top.active {
+  cursor: pointer;
 }
 .page-topics .scroll-button.scroll-to-top,
 .page-regions .scroll-button.scroll-to-top {
-  opacity: 0.5;
   bottom: 96px;
+  opacity: 0.5;
+}
+[dir] .page-topics .scroll-button.scroll-to-top, [dir] .page-regions .scroll-button.scroll-to-top {
+  cursor: not-allowed;
 }
 .page-topics .scroll-button.scroll-to-top.active,
 .page-regions .scroll-button.scroll-to-top.active {
   opacity: 1;
+}
+[dir] .page-topics .scroll-button.scroll-to-top.active, [dir] .page-regions .scroll-button.scroll-to-top.active {
+  cursor: pointer;
 }
 [dir] .scroll-button.scroll-to-bottom::before, [dir] .scroll-button.scroll-to-bottom::after {
   border-top: 12px solid;
@@ -2261,10 +2269,16 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .page-regions .scroll-button.scroll-to-bottom {
   opacity: 0.5;
 }
+[dir] .page-topics .scroll-button.scroll-to-bottom, [dir] .page-regions .scroll-button.scroll-to-bottom {
+  cursor: not-allowed;
+}
 .page-topics .scroll-button.scroll-to-bottom.active,
 .page-regions .scroll-button.scroll-to-bottom.active {
   opacity: 1;
-  pointer-events: all;
+  z-index: 1051;
+}
+[dir] .page-topics .scroll-button.scroll-to-bottom.active, [dir] .page-regions .scroll-button.scroll-to-bottom.active {
+  cursor: pointer;
 }
 h2.topic-title .topic-title-all {
   display: none;

@@ -13,8 +13,7 @@
 
     $('body').on('click', '.scroll-to-top', function (event) {
       event.preventDefault();
-
-      if(!isScrolling) {
+      if($(this).hasClass('active') && !isScrolling) {
         isScrolling = true;
         $('html, body').animate({
           scrollTop: 0
@@ -26,8 +25,7 @@
 
     $('body').on('click', '.scroll-to-bottom', function (event) {
       event.preventDefault();
-
-      if(!isScrolling) {
+      if($(this).hasClass('active') && !isScrolling) {
         isScrolling = true;
         $('html, body').animate({
           scrollTop: $window.scrollTop() + scrollDistance
