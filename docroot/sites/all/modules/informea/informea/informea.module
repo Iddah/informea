@@ -783,53 +783,54 @@ function informea_field_formatter_info() {
  */
 function informea_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
 
-  $settings = $instance['display'][$view_mode]['settings'];
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
   $element = array();
 
-  $wrap_tags = array(
-    '_none' => t('- None -'),
-    'div' => t('DIV'),
-    'h1' => t('H1'),
-    'h2' => t('H2'),
-    'h3' => t('H3'),
-    'h4' => t('H4'),
-    'h5' => t('H5'),
-    'h6' => t('H6'),
-    'span' => t('SPAN'),
-  );
-  $element['title_style'] = array(
-    '#title' => t('Wrap title in tag'),
-    '#type' => 'select',
-    '#default_value' => !empty($settings['title_style']) ? $settings['title_style'] : '_none',
-    '#options' => $wrap_tags,
-  );
+  if ($display['type'] == 'informea_title_linked') {
+    $wrap_tags = array(
+      '_none' => t('- None -'),
+      'div' => t('DIV'),
+      'h1' => t('H1'),
+      'h2' => t('H2'),
+      'h3' => t('H3'),
+      'h4' => t('H4'),
+      'h5' => t('H5'),
+      'h6' => t('H6'),
+      'span' => t('SPAN'),
+    );
+    $element['title_style'] = array(
+      '#title' => t('Wrap title in tag'),
+      '#type' => 'select',
+      '#default_value' => !empty($settings['title_style']) ? $settings['title_style'] : '_none',
+      '#options' => $wrap_tags,
+    );
 
-  $link_types = array(
-    'content' => t('Content'),
-  );
-  $element['title_link'] = array(
-    '#title' => t('Link title to'),
-    '#type' => 'select',
-    '#default_value' => $settings['title_link'],
-    '#empty_option' => t('Nothing'),
-    '#options' => $link_types,
-  );
+    $link_types = array(
+      'content' => t('Content'),
+    );
+    $element['title_link'] = array(
+      '#title' => t('Link title to'),
+      '#type' => 'select',
+      '#default_value' => $settings['title_link'],
+      '#empty_option' => t('Nothing'),
+      '#options' => $link_types,
+    );
 
-  $element['title_class'] = array(
-    '#title' => t('Tag classes'),
-    '#type' => 'textfield',
-    '#description' => t('A CSS class to use in the wrapper tag for the title.'),
-    '#default_value' => $settings['title_class'],
-    '#element_validate' => array('_informea_title_validate_class'),
-  );
-
-  $element['title_extensions_field'] = array(
-    '#title' => t('Get files extensions form field'),
-    '#type' => 'textfield',
-    '#description' => t('The machine name for the file type fields, comma separated values - for multiple fileds.'),
-    '#default_value' => $settings['title_extensions_field'],
-  );
-
+    $element['title_class'] = array(
+      '#title' => t('Tag classes'),
+      '#type' => 'textfield',
+      '#description' => t('A CSS class to use in the wrapper tag for the title.'),
+      '#default_value' => $settings['title_class'],
+      '#element_validate' => array('_informea_title_validate_class'),
+    );
+    $element['title_extensions_field'] = array(
+      '#title' => t('Get files extensions form field'),
+      '#type' => 'textfield',
+      '#description' => t('The machine name for the file type fields, comma separated values - for multiple fileds.'),
+      '#default_value' => $settings['title_extensions_field'],
+    );
+  }
   return $element;
 }
 
@@ -872,6 +873,11 @@ function informea_field_formatter_settings_summary($field, $instance, $view_mode
     $summary[] = t('Get files extensions form field: @fields', array('@fields' => $settings['title_extensions_field']));
   }
 
+  // Display this setting only if field has a title extension fields set.
+  if (isset($settings['combined_fields']) && $settings['combined_fields'] != '_none' && $settings['combined_fields'] != '') {
+    $summary[] = t('Display values from fields: @fields', array('@fields' => $settings['combined_fields']));
+  }
+
   return implode('<br />', $summary);
 }
 
@@ -879,6 +885,7 @@ function informea_field_formatter_settings_summary($field, $instance, $view_mode
  * Implements hook_field_formatter_view().
  */
 function informea_field_formatter_view($entity_type, $entity, $field, $instance, $lang_code, $items, $display) {
+  global $language;
   $elements = array();
   switch ($display['type']) {
     case 'external_url':
@@ -930,12 +937,12 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
       }
 
       $extensions = [];
-      if ( isset($settings['title_extensions_field'])) {
+      if (isset($settings['title_extensions_field'])) {
         $title_extensions_fields = explode(',', $settings['title_extensions_field']);
         foreach ($title_extensions_fields as $title_extensions_field){
           $extensions_field = str_replace(' ', '', $title_extensions_field);
-          if(!empty($extensions_field)) {
-            if( isset($entity->{$extensions_field})){
+          if (!empty($extensions_field)) {
+            if (isset($entity->{$extensions_field})) {
               foreach ($entity->{$extensions_field} as $k=>$v){
                 if (is_array($v)) {
                   foreach ($v as $file) {
@@ -953,6 +960,8 @@ function informea_field_formatter_view($entity_type, $entity, $field, $instance,
       if ($extensions) {
         $output = sprintf('<sup>[%s]</sup>%s', implode(',', $extensions) , $output);
       }
+
+
       $elements = array();
 
       if (!empty($output)) {

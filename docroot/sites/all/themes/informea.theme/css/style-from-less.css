@@ -2993,6 +2993,33 @@ h2.regional-topic-title span {
 [dir=rtl] .informea-teaser__title sup {
   padding-left: 3px;
 }
+.informea-teaser .node-goal .field-type-image {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
+  -ms-flex-preferred-size: 10rem;
+      flex-basis: 10rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0;
+          flex: 1 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100px;
+  min-height: 10rem;
+  width: 100%;
+}
+[dir] .informea-teaser .node-goal .field-type-image {
+  border: 1px solid #D6D6D6;
+  padding: 6px;
+  padding: .6rem;
+}
 .informea-teaser__left {
   -webkit-box-align: end;
       -ms-flex-align: end;
