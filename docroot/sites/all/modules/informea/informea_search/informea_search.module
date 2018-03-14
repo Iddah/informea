@@ -53,6 +53,7 @@ function theme_informea_facetapi_link_active($variables) {
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
 function informea_search_facet_items_alter(&$build, &$settings) {
+  global $language;
 
   $process = TRUE;
   switch ($settings->name) {
@@ -78,12 +79,18 @@ function informea_search_facet_items_alter(&$build, &$settings) {
 
     case 'search_api@default_index:block:field_informea_tags':
       $process = FALSE;
+      break;
 
-     /* foreach ($build as &$item) {
-         if($item['#active']) {
-           $item['#theme'] = 'informea_facetapi_link_active';
-         }
-      }*/
+    case 'search_api@default_index:block:field_goal_source':
+      foreach ($build as &$item) {
+        $tax = taxonomy_term_load($item['#indexed_value']);
+        if (isset($tax->field_abbreviation[$language->language][0]['value'])) {
+          $item['#markup'] = $tax->field_abbreviation[$language->language][0]['value'];
+        }
+        elseif (isset($tax->field_abbreviation[LANGUAGE_NONE][0]['value'])) {
+          $item['#markup'] = $tax->field_abbreviation[LANGUAGE_NONE][0]['value'];
+        }
+      }
       break;
   }
   if ($process) {
@@ -111,6 +118,7 @@ function informea_search_facet_items_alter(&$build, &$settings) {
       'field_goal_type' => 'All Types',
       'field_geg_theme' => 'All GEG Themes',
       'field_person_type' => 'All Contact Types',
+      'field_goal_source' => 'All Sources',
     ];
 
     if ($settings->facet == 'field_territorial_subdivision') {

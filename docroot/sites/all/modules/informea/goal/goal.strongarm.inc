@@ -116,6 +116,30 @@ function goal_strongarm() {
       'print' => array(
         'custom_settings' => FALSE,
       ),
+      'search_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'image_only' => array(
+        'custom_settings' => TRUE,
+      ),
+      'country_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_and_title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'regional_landing_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'topical_landing_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'treaty_page' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

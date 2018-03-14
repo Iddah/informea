@@ -891,6 +891,7 @@ function informea_theme_views_mini_pager($vars) {
 }
 
 function informea_theme_preprocess_field(&$variables, $hook) {
+  global $language;
   switch($variables['element']['#field_name']) {
     case 'field_term_related_uri':
       foreach ($variables['items'] as $key => &$item) {
@@ -993,6 +994,24 @@ function informea_theme_preprocess_field(&$variables, $hook) {
       else {
         $variables['classes_array'][] = 'hidden';
       }
+      break;
+    case 'goal_title':
+      $output = $variables['element']['#object']->title;
+      if (isset($variables['element']['#object']->field_summary[$language->language][0]['value'])) {
+        $output .= ' ' . $variables['element']['#object']->field_summary[$language->language][0]['value'];
+      } else if (isset($variables['element']['#object']->field_summary[LANGUAGE_NONE][0]['value'])) {
+        $output .= ' ' . $variables['element']['#object']->field_summary[LANGUAGE_NONE][0]['value'];
+      }
+      $uri = entity_uri('node', $variables['element']['#object']);
+      $output = l($output, $uri['path'], ['html' => TRUE]);
+      $output_variables = array(
+        'element' => array(
+          '#tag' => 'h3',
+          '#value' => $output,
+          '#attributes' => array('class' => array('informea-teaser__title')),
+        ),
+      );
+      $variables['items'][0]['#markup'] = theme('html_tag', $output_variables);
       break;
   }
   // @todo restrict
