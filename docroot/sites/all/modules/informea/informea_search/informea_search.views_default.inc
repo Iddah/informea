@@ -222,6 +222,54 @@ Date of text Asc|Sort by Least Recent',
   $handler->display->display_options['header']['block']['empty'] = TRUE;
   $handler->display->display_options['header']['block']['block_to_insert'] = 'views:-exp-search-search';
   $handler->display->display_options['header']['block']['title'] = '<none>';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'text';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Indexed Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = '<>';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'decision_paragraph' => 'decision_paragraph',
+    'declaration_section' => 'declaration_section',
+    'declaration_paragraph' => 'declaration_paragraph',
+    'national_report_paragraph' => 'national_report_paragraph',
+    'treaty_article' => 'treaty_article',
+    'treaty_paragraph' => 'treaty_paragraph',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Indexed Content: Source */
+  $handler->display->display_options['filters']['field_goal_source']['id'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['table'] = 'search_api_index_default_index';
+  $handler->display->display_options['filters']['field_goal_source']['field'] = 'field_goal_source';
+  $handler->display->display_options['filters']['field_goal_source']['operator'] = '<>';
+  $handler->display->display_options['filters']['field_goal_source']['value'] = array(
+    1740 => '1740',
+  );
   $handler->display->display_options['path'] = 'search';
 
   /* Display: Documents (treaty) */

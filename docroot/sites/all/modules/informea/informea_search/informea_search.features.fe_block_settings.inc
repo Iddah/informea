@@ -111,7 +111,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -65,
+        'weight' => -67,
       ),
       'seven' => array(
         'region' => '',
@@ -139,7 +139,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -62,
+        'weight' => -64,
       ),
       'seven' => array(
         'region' => '',
@@ -236,6 +236,34 @@ function informea_search_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['facetapi-5Eh0H0XN0ATjcrGVA3LJsXKqKoocceVu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '5Eh0H0XN0ATjcrGVA3LJsXKqKoocceVu',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => 'search',
+    'roles' => array(),
+    'themes' => array(
+      'informea_theme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'informea_theme',
+        'weight' => -70,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
   $export['facetapi-6S6Nx0Zd7h0gisYT18V8BvcC0Q1k5rhm'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -279,7 +307,7 @@ function informea_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -67,
+        'weight' => -69,
       ),
       'seven' => array(
         'region' => '',
@@ -308,7 +336,7 @@ node/*/documents',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -63,
+        'weight' => -65,
       ),
       'seven' => array(
         'region' => '',
@@ -366,7 +394,7 @@ node/*/documents',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -64,
+        'weight' => -66,
       ),
       'seven' => array(
         'region' => '',
@@ -622,7 +650,7 @@ node/*/contacts-hub',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'informea_theme',
-        'weight' => -66,
+        'weight' => -68,
       ),
       'seven' => array(
         'region' => '',

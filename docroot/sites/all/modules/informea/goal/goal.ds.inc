@@ -17,26 +17,20 @@ function goal_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'goal';
   $ds_fieldsetting->view_mode = 'search_item';
   $ds_fieldsetting->settings = array(
+    'goal_title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type' => array(
       'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'search_excerpt' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h3',
-        'class' => 'informea-teaser__title',
-        'exclude node title settings' => '1',
-      ),
     ),
   );
   $export['node|goal|search_item'] = $ds_fieldsetting;
@@ -61,26 +55,28 @@ function goal_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'field_images',
+        8 => 'field_parent_goal',
       ),
       'right' => array(
-        1 => 'title',
+        1 => 'goal_title',
         2 => 'group_info',
         3 => 'search_excerpt',
-        4 => 'group_tags',
-        5 => 'field_mea_topic',
-        6 => 'content_type',
+        4 => 'field_mea_topic',
+        5 => 'content_type',
+        6 => 'group_tags',
         7 => 'field_goal_type',
       ),
     ),
     'fields' => array(
       'field_images' => 'left',
-      'title' => 'right',
+      'goal_title' => 'right',
       'group_info' => 'right',
       'search_excerpt' => 'right',
-      'group_tags' => 'right',
       'field_mea_topic' => 'right',
       'content_type' => 'right',
+      'group_tags' => 'right',
       'field_goal_type' => 'right',
+      'field_parent_goal' => 'left',
     ),
     'classes' => array(),
     'wrappers' => array(
