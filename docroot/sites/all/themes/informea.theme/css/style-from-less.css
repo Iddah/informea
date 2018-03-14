@@ -876,10 +876,17 @@ body {
   display: -ms-inline-flexbox;
   -js-display: inline-flex;
   display: inline-flex;
+}
+[dir=ltr] .select2-container {
   width: auto !important;
 }
-.region-sidebar-first .select2-container,
-.region-sidebar-second .select2-container {
+[dir=rtl] .select2-container {
+  width: auto !important;
+}
+[dir=ltr] .region-sidebar-first .select2-container, [dir=ltr] .region-sidebar-second .select2-container {
+  width: 100% !important;
+}
+[dir=rtl] .region-sidebar-first .select2-container, [dir=rtl] .region-sidebar-second .select2-container {
   width: 100% !important;
 }
 .select2-container .select2-choice,
@@ -1003,7 +1010,10 @@ body {
 .select2-container .select2-choice .select2-arrow b {
   display: block;
 }
-.select2-default {
+[dir=ltr] .select2-default {
+  color: #333333 !important;
+}
+[dir=rtl] .select2-default {
   color: #333333 !important;
 }
 .informea-calendar-date {
@@ -3490,7 +3500,10 @@ h2.regional-topic-title span {
     min-width: 20em;
   }
 }
-.frontpage-browse .select2-container {
+[dir=ltr] .frontpage-browse .select2-container {
+  width: 100% !important;
+}
+[dir=rtl] .frontpage-browse .select2-container {
   width: 100% !important;
 }
 [dir] #col-about {
