@@ -3811,6 +3811,26 @@ h2.regional-topic-title span {
   border-top: none;
   margin-top: 0;
 }
+.page-get-involved .page-header {
+  display: none;
+}
+[dir] .page-get-involved .page-header {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.page-get-involved .page-title {
+  color: #fff;
+}
+[dir] .page-get-involved .page-title {
+  background-color: #1b7da7;
+}
+.page-get-involved .page-title h1 {
+  color: inherit;
+}
+[dir] .page-get-involved .page-title h1 {
+  text-align: center;
+}
 .node-type-country .facetapi-facet-field-region {
   display: none;
 }
