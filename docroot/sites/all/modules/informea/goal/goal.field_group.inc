@@ -55,8 +55,9 @@ function goal_field_group_info() {
     'label' => 'Inline Tags',
     'weight' => '5',
     'children' => array(
-      0 => 'field_goal_type',
-      1 => 'content_type',
+      0 => 'field_goal_source',
+      1 => 'field_goal_type',
+      2 => 'content_type',
     ),
     'format_type' => 'div',
     'format_settings' => array(

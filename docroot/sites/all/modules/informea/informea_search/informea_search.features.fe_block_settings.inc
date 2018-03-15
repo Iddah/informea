@@ -532,8 +532,8 @@ node/*/contacts-hub',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'informea_theme',
         'weight' => -36,
       ),
@@ -617,8 +617,8 @@ node/*/documents',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'informea_theme',
         'weight' => -55,
       ),

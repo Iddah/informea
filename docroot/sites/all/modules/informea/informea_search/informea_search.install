@@ -102,3 +102,11 @@ function informea_search_update_7012() {
   features_revert_module('informea');
   features_revert_module('goal');
 }
+
+/**
+ * Task #400 - Rebuild Goals search results page
+ */
+function informea_search_update_7013() {
+  features_revert_module('informea_search');
+  features_revert_module('goal');
+}

@@ -1593,3 +1593,16 @@ function informea_get_published_taxonomy_terms($vocabulary) {
   return $terms;
 }
 
+/**
+ * Implements hook_page_build().
+ */
+function informea_page_build(&$page) {
+  // Make sure the current page isn't cacheable if a tour is running.
+  $current_name = !empty($_SESSION['tour']) ? $_SESSION['tour'] : NULL;
+  if (!empty($_GET['tour']) && ($_GET['tour'] == $current_name || empty($_GET['step']))) {
+    $current_name = $_GET['tour'];
+  }
+  if (!empty($current_name)) {
+    drupal_page_is_cacheable(FALSE);
+  }
+}
