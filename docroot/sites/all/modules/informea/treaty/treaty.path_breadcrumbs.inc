@@ -816,7 +816,7 @@ function treaty_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '/treaties',
-      1 => '/treaties/%topic',
+      1 => '<none>',
     ),
     'home' => 1,
     'translatable' => 1,

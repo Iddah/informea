@@ -102,7 +102,7 @@ function geographic_region_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '<none>',
-      1 => '<none>',
+      1 => '/regions/%region:name',
       2 => '<none>',
     ),
     'home' => 1,
