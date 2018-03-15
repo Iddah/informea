@@ -1682,49 +1682,6 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   background-color: #fff;
   padding-top: 18px;
 }
-[dir=ltr] .informea-switcher_link.all-options > a {
-  padding-left: 12px;
-}
-[dir=rtl] .informea-switcher_link.all-options > a {
-  padding-right: 12px;
-}
-.informea-switcher_link.all-options > a:before {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-  content: '';
-  color: #414141;
-}
-[dir] .informea-switcher_link.all-options > a:before {
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  border-top: .4em dashed;
-  margin-top: -0.2em;
-  border-top: .5em dashed;
-}
-[dir=ltr] .informea-switcher_link.all-options > a:before {
-  margin-left: 2px;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  border-right: .4em solid transparent;
-  border-left: .4em solid transparent;
-  margin-left: 0;
-  margin-right: .3em;
-  border-right: .5em solid transparent;
-  border-left: .5em solid transparent;
-}
-[dir=rtl] .informea-switcher_link.all-options > a:before {
-  margin-right: 2px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-left: .4em solid transparent;
-  border-right: .4em solid transparent;
-  margin-right: 0;
-  margin-left: .3em;
-  border-left: .5em solid transparent;
-  border-right: .5em solid transparent;
-}
 .informea-switcher_contents {
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   transition: -webkit-transform 0.2s ease-in-out;
@@ -2992,6 +2949,33 @@ h2.regional-topic-title span {
 }
 [dir=rtl] .informea-teaser__title sup {
   padding-left: 3px;
+}
+.informea-teaser .node-goal .field-type-image {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
+  -ms-flex-preferred-size: 10rem;
+      flex-basis: 10rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0;
+          flex: 1 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100px;
+  min-height: 10rem;
+  width: 100%;
+}
+[dir] .informea-teaser .node-goal .field-type-image {
+  border: 1px solid #D6D6D6;
+  padding: 6px;
+  padding: .6rem;
 }
 .informea-teaser__left {
   -webkit-box-align: end;

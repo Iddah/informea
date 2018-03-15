@@ -28,6 +28,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|goal|search_item
+features[ds_fields][] = goal_title
 features[ds_layout_settings][] = node|goal|search_item
 features[fe_block_boxes][] = goals_disclaimer
 features[fe_block_settings][] = block-goals_disclaimer
