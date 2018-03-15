@@ -33,6 +33,7 @@ features[field_group][] = group_tags|node|declaration|search_item
 features[field_instance][] = node-declaration-body
 features[field_instance][] = node-declaration-field_abbreviation
 features[field_instance][] = node-declaration-field_mea_topic
+features[field_instance][] = node-declaration-field_sorting_date
 features[field_instance][] = node-declaration-title_field
 features[field_instance][] = node-declaration_paragraph-body
 features[field_instance][] = node-declaration_paragraph-field_declaration_paragraph_type
