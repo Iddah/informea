@@ -837,3 +837,10 @@ function informea_update_7067() {
   features_revert_module('informea_topics');
   features_revert_module('treaty');
 }
+
+/**
+ * #404 - Update the site tour.
+ */
+function informea_update_7068() {
+  features_revert_module('informea');
+}

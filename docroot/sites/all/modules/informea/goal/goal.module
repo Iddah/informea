@@ -478,3 +478,20 @@ function goal_get_icon($entity, $output) {
   }
   return $cache[$parent_nid];
 }
+
+/**
+ * Implements hook_node_presave().
+ */
+function goal_node_presave($node) {
+  if ($node->type == 'goal') {
+    // Populate field_sorting_date.
+    if (isset($node->created)) {
+      $timezone = date('e', $node->created);
+      $node->field_sorting_date[LANGUAGE_NONE][0] = [
+        'value' => date('Y-m-d h:i:s', $node->created),
+        'timezone' => $timezone,
+        'timezone_db' => $timezone,
+      ];
+    }
+  }
+}

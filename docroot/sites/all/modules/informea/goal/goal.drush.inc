@@ -46,6 +46,11 @@ function goal_drush_command() {
     'aliases' => array('iffurl'),
   );
 
+  $items['informea-goals-populate-field-sorting-date'] = array(
+    'description' => 'Populate field_sorting_date value for all goals ctypes, with value from node created field',
+    'aliases' => array('ig-pfsd'),
+  );
+
   return $items;
 }
 
@@ -664,6 +669,20 @@ function drush_goal_sdg_aichi_goal_fix() {
     $updated++;
     if (function_exists('drush_log')) {
       drush_log("Updated node $node->nid", 'success');
+    }
+  }
+}
+
+function drush_goal_informea_goals_populate_field_sorting_date() {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'goal')
+    ->execute();
+  if ($result['node']) {
+    foreach ($result['node'] as $nid => $node) {
+      $n = node_load($nid);
+      node_save($n);
+      drush_log("Updated goal: " . $nid . " date: " . date('Y-m-d h:i:s O', $n->created), "ok");
     }
   }
 }

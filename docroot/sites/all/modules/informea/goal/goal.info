@@ -66,6 +66,7 @@ features[field_instance][] = node-goal-field_official_order
 features[field_instance][] = node-goal-field_original_id
 features[field_instance][] = node-goal-field_parent_goal
 features[field_instance][] = node-goal-field_referenced_decisions
+features[field_instance][] = node-goal-field_sorting_date
 features[field_instance][] = node-goal-field_sorting_order
 features[field_instance][] = node-goal-field_summary
 features[field_instance][] = node-goal-field_unstats_links
