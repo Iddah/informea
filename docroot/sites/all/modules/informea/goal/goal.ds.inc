@@ -82,7 +82,7 @@ function goal_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'field_images',
-        8 => 'field_parent_goal',
+        9 => 'field_parent_goal',
       ),
       'right' => array(
         1 => 'goal_title',
@@ -91,7 +91,9 @@ function goal_ds_layout_settings_info() {
         4 => 'field_mea_topic',
         5 => 'content_type',
         6 => 'group_tags',
-        7 => 'field_goal_type',
+        7 => 'field_goal_source',
+        8 => 'field_goal_type',
+        10 => 'field_informea_tags',
       ),
     ),
     'fields' => array(
@@ -102,8 +104,10 @@ function goal_ds_layout_settings_info() {
       'field_mea_topic' => 'right',
       'content_type' => 'right',
       'group_tags' => 'right',
+      'field_goal_source' => 'right',
       'field_goal_type' => 'right',
       'field_parent_goal' => 'left',
+      'field_informea_tags' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
