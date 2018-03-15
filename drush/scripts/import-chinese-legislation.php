@@ -127,7 +127,7 @@ class LegislationImportFromCSV {
 
 $arguments = drush_get_arguments();
 if(empty($arguments[2]) || empty($arguments[3])) {
-  drush_set_error(sprintf('Usage: "drush scr %s /informea/drush/Chinese.csv local.informea"', basename(__FILE__)));
+  drush_set_error(sprintf('Usage: "drush scr %s /informea/drush/Chinese.csv https://www.informea.org"', basename(__FILE__)));
   exit;
 }
 $runner = new LegislationImportFromCSV($arguments[2], $arguments[3]);
