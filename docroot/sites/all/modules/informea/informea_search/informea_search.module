@@ -7,6 +7,23 @@
 include_once 'informea_search.features.inc';
 
 /**
+ * Implements hook_entity_load().
+ */
+function informea_search_entity_load($entities, $type) {
+  global $conf;
+  if ($type == 'search_api_server') {
+    foreach ($entities as &$entity) {
+      if (!empty($conf['search_api_server_pass'])) {
+        $entity->options['http_pass'] = $conf['search_api_server_pass'];
+      }
+      if (!empty($conf['search_api_server_user'])) {
+        $entity->options['http_user'] = $conf['search_api_server_user'];
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_facet_items_alter(&$build, &$settings);
  */
 function informea_search_facet_items_alter(&$build, &$settings) {

@@ -70,34 +70,6 @@ search-publications/*',
     'visibility' => 1,
   );
 
-  $export['facetapi-5dVDefUus1Cng13EbCDnPRh5v5tXEP7B'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '5dVDefUus1Cng13EbCDnPRh5v5tXEP7B',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'informea_theme' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'informea_theme',
-        'weight' => -46,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['facetapi-7R00LhqRFhlzPLK775MhkBao9G1ddsJq'] = array(
     'cache' => -1,
     'custom' => 0,

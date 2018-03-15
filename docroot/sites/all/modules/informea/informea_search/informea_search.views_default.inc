@@ -391,7 +391,7 @@ function informea_search_views_default_views() {
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Field: Indexed Content: Name */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_fulltext_solr_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -616,7 +616,7 @@ function informea_search_views_default_views() {
     'title_link' => '',
     'title_class' => 'country-flag',
   );
-  /* Field: Indexed Content: Name */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_court_decisions';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -1105,7 +1105,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['field_country_iso2']['label'] = '';
   $handler->display->display_options['fields']['field_country_iso2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_country_iso2']['element_default_classes'] = FALSE;
-  /* Field: Indexed Content: Name */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_legislations';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -1342,7 +1342,7 @@ function informea_search_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'LOGO';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Name */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_informea_publications';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
