@@ -1604,5 +1604,6 @@ function informea_page_build(&$page) {
   }
   if (!empty($current_name)) {
     drupal_page_is_cacheable(FALSE);
+    drupal_add_js(drupal_get_path('module', 'informea') . '/js/informea_tour.js');
   }
 }

@@ -708,7 +708,7 @@ function informea_theme_links__locale_block(&$variables) {
     $variables1['links'][$k]['attributes']['class'][] = 'menu-title';
   }
 
-  $output = '<li class="dropdown">';
+  $output = '<li id="language-switcher" class="dropdown">';
   $output .= '<a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">';
   $output .= $language->language;
   $output .= ' <span class="caret"></span><b></b></a>';
