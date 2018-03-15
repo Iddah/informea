@@ -121,3 +121,20 @@ function get_declaration_section_parents(&$parents, $section) {
     get_declaration_section_parents($parents, $parent_section);
   }
 }
+
+/**
+ * Implements hook_node_presave().
+ */
+function declaration_node_presave($node) {
+  if ($node->type == 'declaration') {
+    // Populate field_sorting_date.
+    if (isset($node->created)) {
+      $timezone = date('e', $node->created);
+      $node->field_sorting_date[LANGUAGE_NONE][0] = [
+        'value' => date('Y-m-d h:i:s', $node->created),
+        'timezone' => $timezone,
+        'timezone_db' => $timezone,
+      ];
+    }
+  }
+}
