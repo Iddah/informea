@@ -591,6 +591,17 @@ body {
   [dir] .navbar-nav .dropdown:hover > .dropdown-menu, [dir] .navbar-nav .dropdown.open > .dropdown-menu {
             transition-delay: .3s;
   }
+  .navbar-nav .dropdown.bootstrap-tour-selected:not(.open):hover > .dropdown-menu {
+    visibility: hidden;
+  }
+  .navbar-nav .dropdown.bootstrap-tour-selected > .dropdown-menu,
+  .navbar-nav .dropdown.bootstrap-tour-selected:hover > .dropdown-menu,
+  .navbar-nav .dropdown.bootstrap-tour-selected.open > .dropdown-menu {
+    -webkit-transition-delay: 0s;
+  }
+  [dir] .navbar-nav .dropdown.bootstrap-tour-selected > .dropdown-menu, [dir] .navbar-nav .dropdown.bootstrap-tour-selected:hover > .dropdown-menu, [dir] .navbar-nav .dropdown.bootstrap-tour-selected.open > .dropdown-menu {
+            transition-delay: 0s;
+  }
   .navbar-nav .dropdown:hover > .treaties-menu,
   .navbar-nav .dropdown.open > .treaties-menu {
     display: -webkit-box;
