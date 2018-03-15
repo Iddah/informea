@@ -39,6 +39,7 @@ class LegislationImportFromCSV {
 
 
   public function import() {
+    $count = 0;
     foreach($this->records as $idx => $record) {
       //var_dump($record);
       try {
@@ -52,6 +53,7 @@ class LegislationImportFromCSV {
         node_save($node);
         $this->setTranslation($node, 'zh-hans');
         node_save($node);
+        $count++;
       } catch (Exception $e) {
         drush_log(
           sprintf("Error creating legislation node for CSV row #%d (%s)\n", $idx + 1, $e->getMessage()),
@@ -60,7 +62,7 @@ class LegislationImportFromCSV {
       }
       drush_log(sprintf("row #%d: Created legislation node: %s/node/%d\n", $idx + 1, $this->siteUrl, $node->nid), \Drush\Log\LogLevel::OK);
     }
-    drush_log('Done', Drush\Log\LogLevel::OK);
+    drush_log('Done, records created: ' . $count, Drush\Log\LogLevel::OK);
   }
 
   /**
@@ -86,11 +88,14 @@ class LegislationImportFromCSV {
     $node->field_type_of_text[LANGUAGE_NONE][0] = array('tid' => $type_of_text_tid);
 
     foreach(explode(';', $record['field_informea_tags']) as $i=>$term_name) {
+      //var_dump($term_name);
       $tid = ODataMigrationUtil::getTaxonomyTermByName(trim($term_name), $thesaurus_vid);
       if (empty($tid)) {
-       throw new Exception('Cannot find type of term = ' . $record['field_informea_tags']);
-       }
-       $node->field_informea_tags[LANGUAGE_NONE][$i] = array('tid' => $tid);
+        drush_log('Cannot find term in taxonomy:' . $term_name, \Drush\Log\LogLevel::WARNING);
+      }
+      else {
+        $node->field_informea_tags[LANGUAGE_NONE][$i] = array('tid' => $tid);
+      }
     }
 
     $node->field_url['zh-hans'][0]['url']= $record['field_url_cn'];
