@@ -70,3 +70,11 @@ function treaty_update_7007() {
 function treaty_update_7008() {
   features_revert_module('treaty');
 }
+
+/**
+ * #391 - Breadcrumbs.
+ */
+function treaty_update_7009() {
+  features_revert_module('treaty');
+  features_revert_module('geographic_region');
+}
