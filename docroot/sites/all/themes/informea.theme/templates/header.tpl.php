@@ -50,7 +50,7 @@
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
         <li><?php print l(t('Law and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
-        <li><?php print l(t('Events'), 'search', array('query' => array('f[0]' => 'type:event_calendar'), 'attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
+        <li><?php $current_year = date('Y');  print l(t('Events'), 'search', array('query' => array('f[0]' => 'type:event_calendar', 'f[1]' => 'year_of_text:[' . ($current_year - 1) . ' TO ' . $current_year . ']', 'sort_bef_combine' => 'field_sorting_date DESC'), 'attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
           <li class="dropdown">
           <a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
