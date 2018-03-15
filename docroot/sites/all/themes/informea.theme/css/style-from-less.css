@@ -475,6 +475,11 @@ body {
   padding-bottom: 20px;
   padding-top: 20px;
 }
+@media (max-width: 767px) {
+  .footer-section--treaties {
+    display: none;
+  }
+}
 @media (min-width: 768px) {
   .footer-section--info > .container {
     display: -webkit-box;
