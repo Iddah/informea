@@ -3,7 +3,7 @@
 /**
  * Browse treaties by Environmental Topic block.
  */
-function treaty_switch_topic_block_view() {
+function treaty_switch_topic_block_view($all_topics_path = 'treaties') {
   $block = [];
   // $region_id = _geographic_region_page_get_region_argument();
   // if (!empty($region_id)) {
@@ -15,7 +15,7 @@ function treaty_switch_topic_block_view() {
     });
 
     $current_topic = _geographic_region_page_get_argument('topic');
-    $all_topics_path = 'treaties';
+    //$all_topics_path = 'treaties';
 
     $block['content'] = [
       '#prefix' =>

@@ -411,6 +411,9 @@ function informea_block_view($delta = '') {
         elseif ($page['name'] == 'page-region_page') {
           $title = geographic_region_page_title() ?: $title;
         }
+        elseif ($page['name'] == 'page-global_treaties') {
+          $title = geographic_region_global_page_title() ?: $title;
+        }
       }
       $block['content'] = $title;
       break;
