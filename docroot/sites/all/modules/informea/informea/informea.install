@@ -851,3 +851,10 @@ function informea_update_7068() {
 function informea_update_7069() {
   features_revert_module('geographic_region');
 }
+
+/**
+ * refs #404 - Update.
+ */
+function informea_update_7070() {
+  features_revert_module('informea');
+}
