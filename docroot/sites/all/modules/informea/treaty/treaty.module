@@ -1333,6 +1333,11 @@ function treaty_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['treaty_global_switch_topic'] = array(
+    'info' => t('Browse global treaties by Environmental Topic'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   return $blocks;
 }
 
@@ -1352,6 +1357,10 @@ function treaty_block_view($delta = '') {
 
     case 'treaty_switch_topic':
       return treaty_switch_topic_block_view();
+      break;
+
+    case 'treaty_global_switch_topic':
+      return treaty_switch_topic_block_view('/regions/global');
       break;
 
   }

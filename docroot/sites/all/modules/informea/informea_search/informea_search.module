@@ -688,7 +688,7 @@ function informea_search_form($form, $form_state) {
 
   $page = page_manager_get_current_page();
   if (!empty($page['name'])) {
-    if ($page['name'] == 'page-region_page' || $page['name'] == 'page-topic_page' && !empty($page['contexts'])) {
+    if ($page['name'] == 'page-region_page' || $page['name'] == 'page-topic_page' || $page['name'] == 'page-global_treaties' && !empty($page['contexts'])) {
       foreach ($page['contexts'] as $context) {
         if (!empty($context->keyword) && !empty($context->argument)) {
           if ($context->keyword == 'region') {
@@ -705,6 +705,13 @@ function informea_search_form($form, $form_state) {
           }
         }
       }
+    }
+
+    if ($page['name'] == 'page-global_treaties') {
+      $form['field_region'] = [
+        '#type' => 'hidden',
+        '#value' => 1118,
+      ];
     }
   }
 

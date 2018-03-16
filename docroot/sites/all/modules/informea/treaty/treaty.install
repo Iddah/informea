@@ -78,3 +78,10 @@ function treaty_update_7009() {
   features_revert_module('treaty');
   features_revert_module('geographic_region');
 }
+
+/**
+ * #392 - Added global treaties page listing.
+ */
+function treaty_update_7010() {
+  features_revert_module('treaty');
+}

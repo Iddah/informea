@@ -242,8 +242,9 @@ function treaty_ds_layout_settings_info() {
         1 => 'title',
         2 => 'group_tags',
         3 => 'field_informea_tags',
-        4 => 'field_region',
-        5 => 'treaty_links',
+        4 => 'treaty_links',
+        5 => 'field_region',
+        6 => 'field_mea_topic',
       ),
     ),
     'fields' => array(
@@ -251,8 +252,9 @@ function treaty_ds_layout_settings_info() {
       'title' => 'right',
       'group_tags' => 'right',
       'field_informea_tags' => 'right',
-      'field_region' => 'right',
       'treaty_links' => 'right',
+      'field_region' => 'right',
+      'field_mea_topic' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
