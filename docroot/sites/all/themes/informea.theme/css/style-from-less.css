@@ -2398,6 +2398,7 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir] .scroll-button {
   background-color: #ffcc33;
   border-radius: 50%;
+  cursor: default;
 }
 [dir=ltr] .scroll-button {
   -webkit-box-shadow: 1px 1px 3px;
@@ -2466,6 +2467,12 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 [dir] .page-topics .scroll-button.scroll-to-top.active, [dir] .page-regions .scroll-button.scroll-to-top.active {
   cursor: pointer;
 }
+.scroll-button.scroll-to-bottom {
+  pointer-events: none;
+}
+[dir] .scroll-button.scroll-to-bottom {
+  cursor: none;
+}
 [dir] .scroll-button.scroll-to-bottom::before, [dir] .scroll-button.scroll-to-bottom::after {
   border-top: 12px solid;
   border-bottom: 12px solid transparent;
@@ -2481,6 +2488,7 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .page-topics .scroll-button.scroll-to-bottom,
 .page-regions .scroll-button.scroll-to-bottom {
   opacity: 0.5;
+  pointer-events: all;
 }
 [dir] .page-topics .scroll-button.scroll-to-bottom, [dir] .page-regions .scroll-button.scroll-to-bottom {
   cursor: not-allowed;
