@@ -100,6 +100,7 @@ class LegislationImportFromCSV {
 
     $node->field_url['zh-hans'][0]['url']= $record['field_url_cn'];
     $node->field_url['en'][0]['url'] = $record['field_url_en'];
+    $node->field_data_source[LANGUAGE_NONE][0] = array('tid' => 815);
     $node->type = $type;
     node_object_prepare($node);
     $node->language = $language;
