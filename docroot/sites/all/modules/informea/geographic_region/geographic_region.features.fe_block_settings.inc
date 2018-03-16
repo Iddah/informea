@@ -21,7 +21,8 @@ function geographic_region_default_fe_block_settings() {
     'module' => 'block',
     'node_types' => array(),
     'pages' => 'regions/*
-topics/*',
+topics/*
+get-involved',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -50,7 +51,8 @@ topics/*',
     'module' => 'block',
     'node_types' => array(),
     'pages' => 'regions/*
-topics/*',
+topics/*
+get-involved',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -79,7 +81,8 @@ topics/*',
     'module' => 'mailchimp_signup',
     'node_types' => array(),
     'pages' => 'regions/*
-topics/*',
+topics/*
+get-involved',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -108,7 +111,8 @@ topics/*',
     'module' => 'social_media_links',
     'node_types' => array(),
     'pages' => 'regions/*
-topics/*',
+topics/*
+get-involved',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(
@@ -249,7 +253,8 @@ topics/*',
     'module' => 'views',
     'node_types' => array(),
     'pages' => 'regions/*
-topics/*',
+topics/*
+get-involved',
     'roles' => array(),
     'themes' => array(
       'informea_theme' => array(

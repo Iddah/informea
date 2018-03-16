@@ -844,3 +844,10 @@ function informea_update_7067() {
 function informea_update_7068() {
   features_revert_module('informea');
 }
+
+/**
+ * #399 - Get involved page
+ */
+function informea_update_7069() {
+  features_revert_module('geographic_region');
+}

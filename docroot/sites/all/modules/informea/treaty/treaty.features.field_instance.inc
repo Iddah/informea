@@ -2515,7 +2515,7 @@ function treaty_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'ds',
         'settings' => array(
-          'taxonomy_term_link' => 0,
+          'taxonomy_term_link' => 1,
           'taxonomy_term_separator' => ', ',
         ),
         'type' => 'ds_taxonomy_separator_localized',
@@ -2535,7 +2535,7 @@ function treaty_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'ds',
         'settings' => array(
-          'taxonomy_term_link' => 0,
+          'taxonomy_term_link' => 1,
           'taxonomy_term_separator' => ', ',
         ),
         'type' => 'ds_taxonomy_separator_localized',
@@ -2551,7 +2551,7 @@ function treaty_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'ds',
         'settings' => array(
-          'taxonomy_term_link' => 0,
+          'taxonomy_term_link' => 1,
           'taxonomy_term_separator' => ', ',
         ),
         'type' => 'ds_taxonomy_separator_localized',
@@ -2573,7 +2573,7 @@ function treaty_field_default_field_instances() {
         'settings' => array(
           'element_class' => '',
           'element_option' => '- None -',
-          'links_option' => 0,
+          'links_option' => 1,
           'separator_option' => ', ',
           'wrapper_class' => '',
           'wrapper_option' => '- None -',
@@ -3126,10 +3126,23 @@ function treaty_field_default_field_instances() {
         'weight' => 27,
       ),
       'topical_landing_page' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'label' => 'hidden',
+        'module' => 'textformatter',
+        'settings' => array(
+          'textformatter_class' => 'informea-topics',
+          'textformatter_comma_and' => 0,
+          'textformatter_comma_full_stop' => 0,
+          'textformatter_comma_override' => 0,
+          'textformatter_comma_tag' => 'div',
+          'textformatter_contrib' => array(),
+          'textformatter_separator_custom' => '',
+          'textformatter_separator_custom_class' => 'textformatter-separator',
+          'textformatter_separator_custom_tag' => 'span',
+          'textformatter_term_plain' => 1,
+          'textformatter_type' => 'ul',
+        ),
+        'type' => 'textformatter_list',
+        'weight' => 5,
       ),
       'topical_treaty' => array(
         'label' => 'above',

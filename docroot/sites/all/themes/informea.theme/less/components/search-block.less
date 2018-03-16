@@ -5,12 +5,14 @@ h2.topic-title {
   span {
     .loop-mea-topics({
       .page-treaties.topic-@{mea-topic-class} &,
-      .page-topics.topic-@{mea-topic-class} & {
+      .page-topics.topic-@{mea-topic-class} & ,
+      .page-regions-global.topic-@{mea-topic-class} & {
         color: @mea-topic-color;
         font-style: italic;
       }
     });
-    .page-treaties.topic- & {
+    .page-treaties.topic- &,
+    .page-regions-global.topic- & {
       display: none;
     }
   }

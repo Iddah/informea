@@ -39,6 +39,7 @@ h1 {
   background-color: transparent;
   margin: 10px 0;
   padding: 0;
+  text-transform: capitalize;
 }
 .breadcrumb > .last {
   color: #c6cedb;
@@ -1579,8 +1580,6 @@ button.toggle {
 }
 [dir] .footer-section:last-child {
   border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 /* Footer inline lists */
 [dir] .footer-section > .list-inline {

@@ -205,6 +205,7 @@ features[node][] = organisation
 features[node][] = treaty
 features[node][] = treaty_article
 features[node][] = treaty_paragraph
+features[page_manager_pages][] = global_treaties
 features[page_manager_pages][] = treaties_listing_page
 features[path_breadcrumbs][] = treaties
 features[path_breadcrumbs][] = treaties_action_plans

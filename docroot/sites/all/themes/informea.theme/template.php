@@ -15,23 +15,38 @@
  */
 function informea_theme_preprocess_page(&$variables) {
 
-  global $base_url;
-  // Add elearning SVG icon.
-  $elearning_icon_path = $base_url . '/' . drupal_get_path('theme', 'informea_theme') . '/img/elearning.svg';
-  $variables['elearning_icon'] = theme('image', array('path' => $elearning_icon_path, 'attributes' => array('class' => array('elearning-icon'), 'height' => '20', 'width' => '27')));
+  $variables['elearning_icon'] = _informea_theme_get_elearning_icon();
 
   // Add Informea Treaties Block.
-  $block = block_load('informea', 'informea_treaties_block');
+  $block = block_load('informea', 'informea_treaties_menu_block');
   $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
-  $informea_treaties_block = drupal_render($block_array);
-  $variables['informea_treaties_block'] = $informea_treaties_block;
+  $informea_treaties_menu_block = drupal_render($block_array);
+  $variables['informea_treaties_menu_block'] = $informea_treaties_menu_block;
 
+  // Add Informea Treaties Footer Block.
+  $block = block_load('informea', 'informea_treaties_footer_block');
+  $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $informea_treaties_footer_block = drupal_render($block_array);
+  $variables['informea_treaties_footer_block'] = $informea_treaties_footer_block;
 
   // Add Informea Browse All Block.
   $block = block_load('informea', 'informea_browse_all_block');
   $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
   $informea_browse_all_block = drupal_render($block_array);
   $variables['informea_browse_all_block'] = $informea_browse_all_block;
+
+  // Add Informea Footer Browse Block.
+  $block = block_load('informea', 'informea_footer_block');
+  $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $informea_footer_block = drupal_render($block_array);
+  $variables['informea_footer_block'] = $informea_footer_block;
+
+  // Add Informea Footer Browse Block.
+  $block = block_load('locale', 'language_content');
+  $block_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $language_content_block = drupal_render($block_array);
+  $variables['language_content_block'] = $language_content_block;
+
 
   $variant = variable_get('select2_compression_type', 'minified');
   libraries_load('select2', $variant);
@@ -320,7 +335,7 @@ function informea_theme_theme() {
         'type' => NULL,
       ),
     ),
-    'informea_treaties_menu_block' => array(
+    'informea_treaties_menu_block_theme' => array(
       'render element' => 'element',
       'template' => 'templates/informea-treaties-menu-block',
       'variables' => array(
@@ -331,13 +346,34 @@ function informea_theme_theme() {
       ),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
-    'informea_browse_all_menu_block' => array(
+    'informea_browse_all_block_theme' => array(
       'render element' => 'element',
       'template' => 'templates/informea-browse-all-menu-block',
       'variables' => array(
         'topics' => array(),
         'regions' => array(),
         'global_region_url' => 0,
+      ),
+      'path' => drupal_get_path('theme', 'informea_theme'),
+    ),
+    'informea_footer_block_theme' => array(
+      'render element' => 'element',
+      'template' => 'templates/informea-footer-menu-block',
+      'variables' => array(
+        'topics' => array(),
+        'regions' => array(),
+        'global_region_url' => 0,
+      ),
+      'path' => drupal_get_path('theme', 'informea_theme'),
+    ),
+    'informea_treaties_footer_block_theme' => array(
+      'render element' => 'element',
+      'template' => 'templates/informea-treaties-footer-block',
+      'variables' => array(
+        'treaties' => array(),
+        'topics' => array(),
+        'regions' => array(),
+        'global_region_tid' => 0,
       ),
       'path' => drupal_get_path('theme', 'informea_theme'),
     ),
@@ -708,7 +744,8 @@ function informea_theme_links__locale_block(&$variables) {
     $variables1['links'][$k]['attributes']['class'][] = 'menu-title';
   }
 
-  $output = '<li id="language-switcher" class="dropdown">';
+
+  $output = '<li class="dropdown language-switcher">';
   $output .= '<a tabindex="0" class="dropdown-toggle menu-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">';
   $output .= $language->language;
   $output .= ' <span class="caret"></span><b></b></a>';
@@ -1027,90 +1064,6 @@ function informea_theme_facetapi_link_inactive($variables) {
   return theme_facetapi_link_inactive($variables);
 }
 
-function informea_theme_treaties_menu_block() {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'treaty')
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->fieldCondition('field_data_source', 'tid', '815')
-    ->fieldCondition('field_show_in_main_menu', 'value', TRUE);
-  $results = $query->execute();
-
-  $treaties = [];
-  $topics_list = [];
-  $regions_list = [];
-
-  $global_region_tid = 1118;
-  $global_region = taxonomy_term_load($global_region_tid);
-
-  if (!empty($results['node'])) {
-    foreach ($results['node'] as $result) {
-      $node = node_load($result->nid);
-      $treaty = [
-        'title' => $node->title,
-        'logo_uri' => !empty($node->field_logo['en'][0]['uri']) ? $node->field_logo['en'][0]['uri'] : '',
-        'url' => '/node/' . $result->nid,
-        'is_global' => FALSE,
-        'regions' => [],
-        'topics' => [],
-      ];
-
-      if (!empty($node->field_region['und'])) {
-        foreach ($node->field_region['und'] as $region) {
-          $term = taxonomy_term_load($region['tid']);
-          if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
-            $regions_list[$term->tid] = $term->name;
-            if ($term->tid == $global_region_tid) {
-              $treaty['is_global'] = TRUE;
-            }
-            $treaty['regions'][$term->tid] = $term->name;
-          }
-        }
-      }
-
-      if (!empty($node->field_mea_topic['und'])) {
-        foreach ($node->field_mea_topic['und'] as $topic) {
-          $term = taxonomy_term_load($topic['tid']);
-          if (!empty($term->field_published[LANGUAGE_NONE][0]['value'])) {
-            $topics_list[$term->tid] = $term->name;
-            $treaty['topics'][$term->tid] = $term->name;
-          }
-        }
-      }
-
-      foreach ($treaty['regions'] as $tid => $name) {
-        $treaties[$tid][$node->nid] = $treaty;
-      }
-      foreach ($treaty['topics'] as $tid => $name) {
-        $segment = $treaty['is_global'] ? 'global' : 'regional';
-        $treaties[$tid][$segment][$node->nid] = $treaty;
-      }
-    }
-  }
-
-  uasort($regions_list, function ($a, $b) use ($global_region) {
-    if ($a == $global_region->name) {
-      return 1;
-    }
-    elseif ($b == $global_region->name) {
-      return -1;
-    }
-    return ($a < $b) ? -1 : 1;
-  });
-  asort($topics_list);
-
-  return theme(
-    'informea_treaties_menu_block',
-    array(
-      'regions' => $regions_list,
-      'topics' => $topics_list,
-      'treaties' => $treaties,
-      'global_region_tid' => $global_region_tid,
-    )
-  );
-
-}
-
 function informea_theme_field($variables) {
   $output = '';
   // Render the label, if it's not hidden.
@@ -1288,4 +1241,11 @@ function informea_theme_pager($variables) {
     )) . '</div>';
   }
   return $output;
+}
+
+function _informea_theme_get_elearning_icon() {
+  global $base_url;
+  // Add elearning SVG icon.
+  $elearning_icon_path = $base_url . '/' . drupal_get_path('theme', 'informea_theme') . '/img/elearning.svg';
+  return theme('image', array('path' => $elearning_icon_path, 'attributes' => array('class' => array('elearning-icon'), 'height' => '20', 'width' => '27')));
 }
