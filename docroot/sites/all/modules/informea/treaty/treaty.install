@@ -85,3 +85,10 @@ function treaty_update_7009() {
 function treaty_update_7010() {
   features_revert_module('treaty');
 }
+
+/**
+ * refs #403 - Update.
+ */
+function treaty_update_7011() {
+  features_revert_module('treaty');
+}
