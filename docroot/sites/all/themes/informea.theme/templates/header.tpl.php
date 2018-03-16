@@ -45,11 +45,11 @@
       <ul class="nav navbar-nav" aria-hidden="true">
         <li class="dropdown dropdown-full-width dropdown-treaties-menu">
           <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b></b></a>
-          <?php print '<a class="menu-title" href="/treaties">' . t('Treaties') . ' <span class="caret"></span></a>'; ?>
+          <?php print l(t('Treaties') . ' <span class="caret"></span>' , 'treaties', array('attributes' => array('class' => array('menu-title'), 'id' => 'treaties-menu-link'), 'html' => TRUE)); ?>
           <?php print $informea_treaties_menu_block; ?>
         </li><!-- .dropdown -->
         <li><?php print l(t('Parties'), 'countries', array('attributes' => array('class' => array('menu-title'), 'id' => 'parties-menu-link'))); ?></li>
-        <li><?php print l(t('Law and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-lin'))); ?></li>
+        <li><?php print l(t('Law and Cases'), 'search', array('query' => array('f[0]' => 'type:court_decisions', 'f[1]' => 'type:legislation'), 'attributes' => array('class' => array('menu-title'), 'id' => 'laws-and-cases-menu-link'))); ?></li>
         <li><?php print l(t('Events'), 'search', array('query' => array('f[0]' => 'type:event_calendar', 'f[1]' => 'year_of_text:[* TO ' . date('Y') . ']', 'sort_bef_combine' => 'field_sorting_date DESC'), 'attributes' => array('class' => array('menu-title'), 'id' => 'events-menu-link'))); ?></li>
         <li><?php print l(t('Goals'), 'goals', array('attributes' => array('class' => array('menu-title'), 'id' => 'goals-menu-link'))); ?></li>
           <li class="dropdown">
