@@ -297,6 +297,7 @@ function treaty_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_region',
+      1 => 'field_mea_topic',
     ),
     'format_type' => 'div',
     'format_settings' => array(

@@ -94,7 +94,6 @@
           <li><?php print l(t('Contact'), 'contact', array('attributes' => array('class' => array('menu-title'), 'id' => 'contact-menu-link'))); ?></li>
           <li><?php print l(t('Get Involved'), '', array('attributes' => array('class' => array('menu-title'), 'id' => 'get-involved-menu-link'))); ?></li>
           <?php print $language_content_block; ?>
-          <li><?php print $user->uid == 0 ? l(t('Log in'), 'user/login') : l(t('Log out'), 'user/logout'); ?></li>
         </ul>
       </div>
     </div><!-- .footer-section -->

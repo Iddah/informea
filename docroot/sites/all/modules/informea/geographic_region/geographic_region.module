@@ -121,12 +121,39 @@ function geographic_region_page_title() {
     $options = [];
     $title = '';
     foreach ($terms as $term) {
-      if ($term->tid != 1118) { // Exclude "Global" region
-        if ($term->tid == $region_id) {
-          $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
-        }
-        $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
+      if ($term->tid == $region_id) {
+        $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
       }
+      $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
+    }
+    if (!empty($options)) {
+      return [
+        '#type' => 'select',
+        '#options' => $options,
+        '#default_value' => url('/taxonomy/term/' . $region_id),
+        '#prefix' => '<h1>' . $title . '</h1>',
+        '#attributes' => ['onChange' => 'window.location.href=this.value', 'class' => ['use-select-2'], 'id' => 'edit-geographic-region'],
+      ];
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Page title for regional page.
+ */
+function geographic_region_global_page_title() {
+  $region_id = 1118;
+  if (!empty($region_id)) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('geographical_region');
+    $terms = entity_load('taxonomy_term', FALSE, ['vid' => $vocabulary->vid]);
+    $options = [];
+    $title = '';
+    foreach ($terms as $term) {
+      if ($term->tid == $region_id) {
+        $title = sprintf('%s <span class="sr-only">%s</span>', t('Discover environmental information concerning'), $term->name);
+      }
+      $options[url('/taxonomy/term/' . $term->tid)] = $term->name;
     }
     if (!empty($options)) {
       return [

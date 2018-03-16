@@ -475,6 +475,11 @@ body {
   padding-bottom: 20px;
   padding-top: 20px;
 }
+@media (max-width: 767px) {
+  .footer-section--treaties {
+    display: none;
+  }
+}
 @media (min-width: 768px) {
   .footer-section--info > .container {
     display: -webkit-box;
@@ -637,6 +642,7 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 [dir] .page-header {
   border-bottom: 1px solid #ddd;
@@ -1693,7 +1699,8 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .informea-search-horizontal-tabs,
 .pane-geographic-region-region-switch-topic,
 .pane-informea-topics-topic-switch-region,
-.pane-treaty-treaty-switch-topic {
+.pane-treaty-treaty-switch-topic,
+.pane-treaty-treaty-global-switch-topic {
   display: -webkit-box;
   display: -ms-flexbox;
   -js-display: flex;
@@ -1702,7 +1709,7 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
       -ms-flex-pack: center;
           justify-content: center;
 }
-[dir] .horizontal-tabs, [dir] .informea-search-horizontal-tabs, [dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic {
+[dir] .horizontal-tabs, [dir] .informea-search-horizontal-tabs, [dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic, [dir] .pane-treaty-treaty-global-switch-topic {
   margin-top: -10px;
   padding-top: 10px;
 }
@@ -1711,7 +1718,8 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   .informea-search-horizontal-tabs,
   .pane-geographic-region-region-switch-topic,
   .pane-informea-topics-topic-switch-region,
-  .pane-treaty-treaty-switch-topic {
+  .pane-treaty-treaty-switch-topic,
+  .pane-treaty-treaty-global-switch-topic {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
@@ -1720,7 +1728,8 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .informea-search-horizontal-tabs h4,
 .pane-geographic-region-region-switch-topic .pane-title,
 .pane-informea-topics-topic-switch-region .pane-title,
-.pane-treaty-treaty-switch-topic .pane-title {
+.pane-treaty-treaty-switch-topic .pane-title,
+.pane-treaty-treaty-global-switch-topic .pane-title {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -1735,14 +1744,14 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   opacity: .7;
   white-space: nowrap;
 }
-[dir] .horizontal-tabs__title, [dir] .informea-search-horizontal-tabs h4, [dir] .pane-geographic-region-region-switch-topic .pane-title, [dir] .pane-informea-topics-topic-switch-region .pane-title, [dir] .pane-treaty-treaty-switch-topic .pane-title {
+[dir] .horizontal-tabs__title, [dir] .informea-search-horizontal-tabs h4, [dir] .pane-geographic-region-region-switch-topic .pane-title, [dir] .pane-informea-topics-topic-switch-region .pane-title, [dir] .pane-treaty-treaty-switch-topic .pane-title, [dir] .pane-treaty-treaty-global-switch-topic .pane-title {
   margin: 0;
   padding: 8px 1em 5px;
 }
-[dir=ltr] .horizontal-tabs__title, [dir=ltr] .informea-search-horizontal-tabs h4, [dir=ltr] .pane-geographic-region-region-switch-topic .pane-title, [dir=ltr] .pane-informea-topics-topic-switch-region .pane-title, [dir=ltr] .pane-treaty-treaty-switch-topic .pane-title {
+[dir=ltr] .horizontal-tabs__title, [dir=ltr] .informea-search-horizontal-tabs h4, [dir=ltr] .pane-geographic-region-region-switch-topic .pane-title, [dir=ltr] .pane-informea-topics-topic-switch-region .pane-title, [dir=ltr] .pane-treaty-treaty-switch-topic .pane-title, [dir=ltr] .pane-treaty-treaty-global-switch-topic .pane-title {
   text-align: right;
 }
-[dir=rtl] .horizontal-tabs__title, [dir=rtl] .informea-search-horizontal-tabs h4, [dir=rtl] .pane-geographic-region-region-switch-topic .pane-title, [dir=rtl] .pane-informea-topics-topic-switch-region .pane-title, [dir=rtl] .pane-treaty-treaty-switch-topic .pane-title {
+[dir=rtl] .horizontal-tabs__title, [dir=rtl] .informea-search-horizontal-tabs h4, [dir=rtl] .pane-geographic-region-region-switch-topic .pane-title, [dir=rtl] .pane-informea-topics-topic-switch-region .pane-title, [dir=rtl] .pane-treaty-treaty-switch-topic .pane-title, [dir=rtl] .pane-treaty-treaty-global-switch-topic .pane-title {
   text-align: left;
 }
 @media screen and (max-width: 1199px) {
@@ -1750,7 +1759,8 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   .informea-search-horizontal-tabs h4,
   .pane-geographic-region-region-switch-topic .pane-title,
   .pane-informea-topics-topic-switch-region .pane-title,
-  .pane-treaty-treaty-switch-topic .pane-title {
+  .pane-treaty-treaty-switch-topic .pane-title,
+  .pane-treaty-treaty-global-switch-topic .pane-title {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
     -webkit-box-pack: center;
@@ -1761,10 +1771,11 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
 .horizontal-tabs__content,
 .pane-geographic-region-region-switch-topic .pane-content,
 .pane-informea-topics-topic-switch-region .pane-content,
-.pane-treaty-treaty-switch-topic .pane-content {
+.pane-treaty-treaty-switch-topic .pane-content,
+.pane-treaty-treaty-global-switch-topic .pane-content {
   overflow: hidden;
 }
-[dir] .horizontal-tabs__content, [dir] .pane-geographic-region-region-switch-topic .pane-content, [dir] .pane-informea-topics-topic-switch-region .pane-content, [dir] .pane-treaty-treaty-switch-topic .pane-content {
+[dir] .horizontal-tabs__content, [dir] .pane-geographic-region-region-switch-topic .pane-content, [dir] .pane-informea-topics-topic-switch-region .pane-content, [dir] .pane-treaty-treaty-switch-topic .pane-content, [dir] .pane-treaty-treaty-global-switch-topic .pane-content {
   margin-top: -10px;
   padding-top: 10px;
 }
@@ -2080,16 +2091,17 @@ ul.facetapi-facetapi-links .facetapi-active + .item-label {
   background: none;
   background-color: transparent;
 }
-[dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic, [dir] .topic-switcher-panel-container {
+[dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic, [dir] .topic-switcher-panel-container, [dir] .pane-treaty-treaty-global-switch-topic {
   background-color: #E7E7E7;
 }
-[dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic {
+[dir] .pane-geographic-region-region-switch-topic, [dir] .pane-informea-topics-topic-switch-region, [dir] .pane-treaty-treaty-switch-topic, [dir] .pane-treaty-treaty-global-switch-topic {
   margin: 0 auto;
   padding-top: 0;
 }
 .pane-geographic-region-region-switch-topic .pane-title:after,
 .pane-informea-topics-topic-switch-region .pane-title:after,
-.pane-treaty-treaty-switch-topic .pane-title:after {
+.pane-treaty-treaty-switch-topic .pane-title:after,
+.pane-treaty-treaty-global-switch-topic .pane-title:after {
   content: ':';
 }
 [dir] .irs-line-mid, [dir] .irs-line-left, [dir] .irs-line-right, [dir] .irs-bar, [dir] .irs-bar-edge, [dir] .irs-slider {
@@ -2464,46 +2476,55 @@ h2.topic-title .topic-title-all {
   display: none;
 }
 .page-treaties.topic-Water h2.topic-title span,
-.page-topics.topic-Water h2.topic-title span {
+.page-topics.topic-Water h2.topic-title span,
+.page-regions-global.topic-Water h2.topic-title span {
   color: #044170;
   font-style: italic;
 }
 .page-treaties.topic-Climate-Change-and-Atmosphere h2.topic-title span,
-.page-topics.topic-Climate-Change-and-Atmosphere h2.topic-title span {
+.page-topics.topic-Climate-Change-and-Atmosphere h2.topic-title span,
+.page-regions-global.topic-Climate-Change-and-Atmosphere h2.topic-title span {
   color: #31a0ba;
   font-style: italic;
 }
 .page-treaties.topic-Chemicals-and-Wastes h2.topic-title span,
-.page-topics.topic-Chemicals-and-Wastes h2.topic-title span {
+.page-topics.topic-Chemicals-and-Wastes h2.topic-title span,
+.page-regions-global.topic-Chemicals-and-Wastes h2.topic-title span {
   color: #e03d0b;
   font-style: italic;
 }
 .page-treaties.topic-Biodiversity h2.topic-title span,
-.page-topics.topic-Biodiversity h2.topic-title span {
+.page-topics.topic-Biodiversity h2.topic-title span,
+.page-regions-global.topic-Biodiversity h2.topic-title span {
   color: #90bc2f;
   font-style: italic;
 }
 .page-treaties.topic-4417 h2.topic-title span,
-.page-topics.topic-4417 h2.topic-title span {
+.page-topics.topic-4417 h2.topic-title span,
+.page-regions-global.topic-4417 h2.topic-title span {
   color: #044170;
   font-style: italic;
 }
 .page-treaties.topic-852 h2.topic-title span,
-.page-topics.topic-852 h2.topic-title span {
+.page-topics.topic-852 h2.topic-title span,
+.page-regions-global.topic-852 h2.topic-title span {
   color: #31a0ba;
   font-style: italic;
 }
 .page-treaties.topic-851 h2.topic-title span,
-.page-topics.topic-851 h2.topic-title span {
+.page-topics.topic-851 h2.topic-title span,
+.page-regions-global.topic-851 h2.topic-title span {
   color: #e03d0b;
   font-style: italic;
 }
 .page-treaties.topic-850 h2.topic-title span,
-.page-topics.topic-850 h2.topic-title span {
+.page-topics.topic-850 h2.topic-title span,
+.page-regions-global.topic-850 h2.topic-title span {
   color: #90bc2f;
   font-style: italic;
 }
-.page-treaties.topic- h2.topic-title span {
+.page-treaties.topic- h2.topic-title span,
+.page-regions-global.topic- h2.topic-title span {
   display: none;
 }
 .page-treaties.topic- .topic-title-all {
@@ -3803,6 +3824,26 @@ h2.regional-topic-title span {
 [dir] .front .footer {
   border-top: none;
   margin-top: 0;
+}
+.page-get-involved .page-header {
+  display: none;
+}
+[dir] .page-get-involved .page-header {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.page-get-involved .page-title {
+  color: #fff;
+}
+[dir] .page-get-involved .page-title {
+  background-color: #1b7da7;
+}
+.page-get-involved .page-title h1 {
+  color: inherit;
+}
+[dir] .page-get-involved .page-title h1 {
+  text-align: center;
 }
 .node-type-country .facetapi-facet-field-region {
   display: none;

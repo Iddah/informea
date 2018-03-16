@@ -31,6 +31,7 @@ features[fe_block_settings][] = views-take_part_webform-block
 features[features_api][] = api:2
 features[image][] = medium_wide
 features[mailchimp_signup][] = subscribe_to_newsletter
+features[page_manager_pages][] = get_involved_page
 features[page_manager_pages][] = region_page
 features[path_breadcrumbs][] = regions_region
 features[path_breadcrumbs][] = regions_region_topic
