@@ -15,6 +15,17 @@
       margin-left: .2em;
     }
   }
+
+  &.active {
+    color: @navbar-default-link-active-color;
+
+    @media @grid-mobile {
+      &, &:hover, &:focus {
+        color: @navbar-default-link-active-color;
+      }
+    }
+  }
+
 }
 
 @media @grid-mobile {
@@ -216,19 +227,40 @@
 .navbar-nav > .dropdown > .dropdown-menu > li:hover > .menu-title,
 .navbar-nav > .dropdown > .dropdown-menu > li.open > .menu-title,
 .navbar-nav > .dropdown > .dropdown-menu > li > .menu-title:focus,
+.navbar-nav > .dropdown > .dropdown-menu .dropdown-toggle:focus + .menu-title,
+.navbar-nav > .dropdown > .dropdown-menu > li > .menu-title.active {
+    @media @grid-desktop {
+      background-color: #0099d5;
+      &, & i { color: #fff; }
+    }
+}
+
+.navbar-nav > .dropdown > .dropdown-menu > li:hover > .menu-title,
+.navbar-nav > .dropdown > .dropdown-menu > li.open > .menu-title,
+.navbar-nav > .dropdown > .dropdown-menu > li > .menu-title:focus,
 .navbar-nav > .dropdown > .dropdown-menu .dropdown-toggle:focus + .menu-title {
-
-  @media @grid-desktop {
-    background-color: #0099d5;
-    &, & i { color: #fff; }
-  }
-
 
   &::before { visibility: visible; }
 
   &::after { display: none; }
 
 }
+
+.navbar-nav > .dropdown:hover > .dropdown-menu > li > .menu-title.active,
+.navbar-nav > .dropdown.open > .dropdown-menu > li > .menu-title.active {
+  @media @grid-mobile {
+    &::before {
+      visibility: visible;
+    }
+
+    &::after {
+      display: none;
+    }
+
+  }
+
+}
+
 #free-online-courses-menu-link,
 .free-online-courses-link {
   background-color: #fc3;

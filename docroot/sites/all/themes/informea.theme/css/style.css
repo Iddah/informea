@@ -509,7 +509,7 @@ h1 {
     border-left: 0;
   }
 }
-.navbar-default .navbar-nav > li > a:hover,
+/* .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #8a95a6;
 }
@@ -532,7 +532,7 @@ h1 {
 [dir] .navbar-default .navbar-nav > .active > a:hover,
 [dir] .navbar-default .navbar-nav > .active > a:focus {
   background-color: #eee;
-}
+} */
 /* [dir] .navbar-default .navbar-toggle {
   border-color: #fff;
 }
