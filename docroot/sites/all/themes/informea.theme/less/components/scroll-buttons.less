@@ -3,6 +3,7 @@
   border-radius: 50%;
   bottom: 30px;
   box-shadow: 1px 1px 3px;
+  cursor: default;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,6 +65,8 @@
   }
 
   &.scroll-to-bottom {
+    pointer-events: none;
+    cursor: none;
 
     &::before, &::after {
       border-top: 12px solid;
@@ -84,6 +87,7 @@
     .page-regions & {
       opacity: 0.5;
       cursor: not-allowed;
+      pointer-events: all;
       &.active {
         cursor: pointer;
         opacity: 1;
