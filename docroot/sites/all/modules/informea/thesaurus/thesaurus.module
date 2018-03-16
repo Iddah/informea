@@ -99,7 +99,15 @@ function thesaurus_get_disclaimer_block() {
   $ecolex_node = false;
   if ($node = menu_get_object()) {
     if ($node->type == 'legislation') {
-      $faolex_node = true;
+      $wrapper = entity_metadata_wrapper('node', $node);
+      if ($source = @$wrapper->field_data_source->value()[0]->tid) {
+        if ($source == DATA_SOURCE_ECOLEX) {
+          $ecolex_node = true;
+        }
+        if ($source == DATA_SOURCE_FAOLEX) {
+          $faolex_node = true;
+        }
+      }
     }
     if ($node->type == 'literature') {
       $ecolex_node = true;
